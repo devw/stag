@@ -1843,6 +1843,13 @@ source-map@^0.7.3, source-map@~0.7.2:
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.7.3.tgz#5302f8169031735226544092e64981f751750383"
   integrity sha512-CkCj6giN3S+n9qrYiBTX5gystlENnRW5jZeNLHpe6aue+SrHcG5VYwujhW9s4dY31mEGsxBDrHR6oI69fTXsaQ==
 
+ss-loader@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/ss-loader/-/ss-loader-1.0.1.tgz#de081e696d18db9edf55855f219e5551952fbd6f"
+  integrity sha512-GS2frIbDeb8ipbxJjNcUktXDMwHwnr2xyhVfjYx7ZkOxpKOFH4bo8OC7c75uiaeIQJd8QeZG2wpHV6KNjYi8uw==
+  dependencies:
+    tslib "^1.9.0"
+
 string-width@^3.0.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/string-width/-/string-width-3.1.0.tgz#22767be21b62af1081574306f69ac51b62203961"

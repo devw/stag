@@ -1,10 +1,13 @@
+import "./configs/main.css";
 const doT = require("./doT");
 const { templates } = require("./templates");
 const { data } = require("./configs");
+const { popupActions } = require("./actions");
 
 const getDef = () => ({
     header: document.getElementById("headertmpl").text,
-    // customheader: document.getElementById('customizableheadertmpl').text
+    account: document.getElementById("account").text,
+    landing: document.getElementById("landing").text,
 });
 
 const appendTemplate = (e) => {
@@ -22,3 +25,4 @@ const getPage = () => {
 };
 
 document.getElementsByTagName("body")[0].innerHTML = getPage();
+popupActions();
