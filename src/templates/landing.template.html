@@ -2,4 +2,17 @@
 <div class="account-popup__title z-h4 heading">
     {{=it.loginRegister}}
 </div>
-
+<div class="account-popup__subtitle text t-4">
+    <p>{{=it.enterYourEmailToContinue}}</p>
+</div>
+<div class="account-popup__error" data-account-error=""></div>
+<div class="account-popup__inputs-container ">
+    <input class="input-text" name="email" placeholder="{{=it.yourEmail}}" type="email">
+</div>
+<div class="account-popup__button">
+    <button class="button button--full button--secondary" name="signIn" disabled="">{{=it.signIn}}</button>
+</div>
+<br>
+<div class="account-popup__button">
+    <button class="button button--full button--secondary" name="signUp" disabled="">{{=it.signUp}}</button>
+</div>
