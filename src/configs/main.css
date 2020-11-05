@@ -3,6 +3,7 @@
     --main-text-color: #111;
     --large-text-size: 1.875rem;
     --align-items: center;
+    --landing_image: url("https://raw.githubusercontent.com/devw/script-tag/master/docs/a53af018001d43d4aa79c9a4b7331f3b.png");
 }
 
 div.account-popup {
@@ -37,8 +38,9 @@ div.account-popup__content {
     padding-bottom: 32px;
 }
 
-.account-popup__image {
+.landing_image {
     width: 180px;
+    content: var(--landing_image);
 }
 .account-popup__checkbox {
     margin-right: 10px;
