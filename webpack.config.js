@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const NodemonPlugin = require("nodemon-webpack-plugin");
 
 module.exports = {
     entry: "./src/index.js",
@@ -11,5 +12,6 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: "Output Management",
         }),
+        new NodemonPlugin(),
     ],
 };
