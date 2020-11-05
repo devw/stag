@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const NodemonPlugin = require("nodemon-webpack-plugin");
 
 module.exports = {
+    mode: "development",
     entry: "./src/index.js",
     output: {
         filename: "main.js",

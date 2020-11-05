@@ -1,10 +1,24 @@
 const doT = require("./doT");
+const { templates } = require("./templates");
+const { data } = require("./configs");
 
-const component = () => {
-    const element = globalThis.document.createElement("div");
-    element.innerHTML = "Hello3";
-    console.log(doT);
-    return element;
+const getDef = () => ({
+    header: document.getElementById("headertmpl").text,
+    // customheader: document.getElementById('customizableheadertmpl').text
+});
+
+const appendTemplate = (e) => {
+    const elemDiv = document.createElement("div");
+    elemDiv.innerHTML = e.trim();
+    document.body.appendChild(elemDiv);
 };
 
-document.body.appendChild(component());
+const getPage = () => {
+    templates.forEach(appendTemplate);
+    return doT.template({
+        tmpl: document.getElementById("pagetmpl").text,
+        def: getDef(),
+    })(data);
+};
+
+document.getElementsByTagName("body")[0].innerHTML = getPage();

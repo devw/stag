@@ -1,9 +1,5 @@
 "use strict";
 
-// doT.js
-// 2011-2014, Laura Doktorova, https://github.com/olado/doT
-// Licensed under the MIT license.
-
 module.exports = {
     template,
     compile,
@@ -91,7 +87,7 @@ function unescape(code) {
     return code.replace(/\\('|\\)/g, "$1").replace(/[\r\t\n]/g, " ");
 }
 
-function template(tmpl, c, def) {
+function template({ tmpl, c = undefined, def }) {
     const ds = c && c.delimiters;
     const syn = ds && !sameDelimiters(ds) ? getSyntax(ds) : currentSyntax;
     c = c ? { ...templateSettings, ...c } : templateSettings;
