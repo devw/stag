@@ -1,8 +1,13 @@
-import "./configs/main.css";
+import "./configs/style.css";
 const doT = require("./doT");
 const { templates } = require("./templates");
-const { data } = require("./configs");
 const { popupActions } = require("./actions");
+const data = require("./configs/text.yml");
+
+// const fs = require("fs");
+// const data = fs.readFileSync("./configs/text.yml", "utf8");
+
+console.log(data);
 
 const getDef = () => ({
     account: document.getElementById("account").text,

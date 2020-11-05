@@ -19,6 +19,11 @@ module.exports = {
                 test: /\.css$/i,
                 use: ["style-loader", "css-loader"],
             },
+            {
+                test: /\.ya?ml$/,
+                type: "json", // Required by Webpack v4
+                use: "yaml-loader",
+            },
         ],
     },
     plugins: [
