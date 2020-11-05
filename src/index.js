@@ -5,7 +5,6 @@ const { data } = require("./configs");
 const { popupActions } = require("./actions");
 
 const getDef = () => ({
-    header: document.getElementById("headertmpl").text,
     account: document.getElementById("account").text,
     landing: document.getElementById("landing").text,
 });
