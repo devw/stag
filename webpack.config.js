@@ -9,6 +9,14 @@ module.exports = {
         filename: "main.js",
         path: path.resolve(__dirname, "dist"),
     },
+    module: {
+        rules: [
+            {
+                test: /\.html$/i,
+                loader: "html-loader",
+            },
+        ],
+    },
     plugins: [
         new HtmlWebpackPlugin({
             title: "Output Management",

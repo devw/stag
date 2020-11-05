@@ -1,20 +1,12 @@
-import html from "./popup.template.html";
-console.log(html);
+const rootTmpl = require("./root.template.html");
+const headerTmpl = require("./header.template.html");
+
+const getTemplate = ({ id, html }) =>
+    `<script id="${id}" type="text/x-dot-template">${html}</script>`;
 
 const templates = [];
 
-templates.push(`
-    <script id="headertmpl" type="text/x-dot-template">
-        <h1>{{=it.title}}</h1>
-    </script>
-`);
-
-templates.push(`
-    <script id="pagetmpl" type="text/x-dot-template">
-        <h2>Here is the page using a header template</h2>
-        {{#def.header}}
-        {{=it.name}}
-    </script>
-`);
+templates.push(getTemplate({ id: "headertmpl", html: headerTmpl }));
+templates.push(getTemplate({ id: "pagetmpl", html: rootTmpl }));
 
 module.exports = { templates };
