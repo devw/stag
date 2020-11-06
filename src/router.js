@@ -1,7 +1,8 @@
 const doT = require("./doT");
 const data = require("./configs/text.yml");
-const { ROOT_ID, CONTAINER_ID } = require("./configs/pages-id.yml");
+const id_pages = require("./configs/pages-id.yml");
 const { templates } = require("./templates");
+const { CONTAINER_ID, ROOT_ID } = id_pages;
 
 const getTemplate = (template_id) => {
     templates.forEach(appendTemplate);
