@@ -1,4 +1,6 @@
 const $ = document.querySelector.bind(document);
+const { router } = require("../router");
+const { REGISTER_ID } = require("../configs/pages-id.config");
 
 const toggleButtons = ({ target }) => {
     const btn = $("button");
@@ -7,12 +9,17 @@ const toggleButtons = ({ target }) => {
 };
 
 const disableBtn = (btn) => btn.setAttribute("disabled", "true");
+
 const activeBtn = (btn, target) => {
     btn.removeAttribute("disabled");
     sessionStorage.setItem("email", target.value);
 };
 
-const switchPages = () => {};
+const register = (e) => {
+    document.getElementsByTagName("body")[0].innerHTML = router.get(
+        REGISTER_ID
+    );
+};
 
 const popupActions = () => {
     // close listener
@@ -20,7 +27,7 @@ const popupActions = () => {
         $("[name='account-popup'").style.display = "none";
     });
     $(".input-text")?.addEventListener("input", toggleButtons);
-    // $("[name=validate]").addEventListener("click", register);
+    $("[name=validate]")?.addEventListener("click", register);
 };
 
 module.exports = {
