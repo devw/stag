@@ -1,16 +1,17 @@
 :root {
-    --background-color: rgba(100, 91, 91, 0.7);
+    --background-color: #fff;
     --main-text-color: #111;
     --large-text-size: 1.875rem;
     --align-items: center;
     --landing_image: url("https://raw.githubusercontent.com/devw/script-tag/master/docs/a53af018001d43d4aa79c9a4b7331f3b.png");
+    --text-input-margin: 10px;
 }
 
 div.account-popup {
     color: var(--main-text-color);
     width: 70%;
     height: 100%;
-    background-color: var(--background-color);
+    background-color: rgba(90, 91, 91, 0.4);
     position: absolute;
     top: 0;
     display: flex;
@@ -31,7 +32,7 @@ div.account-popup__close-popup {
 
 div.account-popup__content {
     width: 500px;
-    background-color: white;
+    background-color: var(--background-color);
     border-radius: 4px;
     position: relative;
     padding: 22px;
@@ -61,14 +62,12 @@ div.account-popup__content {
 
 .account-popup__inputs-container {
     margin-bottom: 10px;
-    .input-text {
-        border-bottom: 1px solid;
-        padding-left: 2px;
-        margin-bottom: 13px;
-        &::placeholder {
-            text-transform: uppercase;
-        }
-    }
+}
+
+.input-text {
+    border-bottom: 1px solid;
+    padding-left: 2px;
+    margin-bottom: var(--text-input-margin);
 }
 
 .z-h4,
@@ -78,6 +77,9 @@ div.account-popup__content {
     font-size: var(--large-text-size);
     letter-spacing: 0.59px;
     line-height: 36px;
+}
+
+.account-popup__container {
     text-align: var(--align-items);
 }
 
