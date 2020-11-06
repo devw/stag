@@ -21,7 +21,7 @@ div.account-popup {
     right: 0;
 }
 
-div.account-popup__close-popup {
+div.popup-close {
     position: absolute;
     top: 0;
     right: 14px;

@@ -1,8 +1,8 @@
 const $ = document.querySelector.bind(document);
 const { router } = require("../router");
-const { REGISTER_ID } = require("../configs/pages-id.config");
+const { REGISTER_ID, SIGN_IN, APP_ID } = require("../configs/pages-id.yml");
 
-const toggleButtons = ({ target }) => {
+const toggleButton = ({ target }) => {
     const btn = $("button");
     const isEmail = /\S+@\S+\.\S+/.test(target.value);
     isEmail ? activeBtn(btn, target) : disableBtn(btn);
@@ -15,21 +15,17 @@ const activeBtn = (btn, target) => {
     sessionStorage.setItem("email", target.value);
 };
 
-const register = (e) => {
-    document.getElementsByTagName("body")[0].innerHTML = router.get(
-        REGISTER_ID
-    );
-};
+const register = () => ($(`#${APP_ID}`).innerHTML = router.get(REGISTER_ID));
+
+const closeApp = () => ($(`#${APP_ID}`).innerHTML = "");
 
 const popupActions = () => {
-    // close listener
-    $(".account-popup__close-popup")?.addEventListener("click", (e) => {
-        $("[name='account-popup'").style.display = "none";
-    });
-    $(".input-text")?.addEventListener("input", toggleButtons);
+    $(".popup-close")?.addEventListener("click", closeApp);
+    $(".input-text")?.addEventListener("input", toggleButton);
     $("[name=validate]")?.addEventListener("click", register);
+    $(`${REGISTER_ID} form`)?.addEventListener("input", toggleButton);
 };
 
-module.exports = {
-    popupActions,
-};
+module.exports = popupActions;
+
+window.addEventListener("load", popupActions);

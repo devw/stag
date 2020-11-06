@@ -1,6 +1,6 @@
 const doT = require("./doT");
 const data = require("./configs/text.yml");
-const { ROOT_ID, CONTAINER_ID } = require("./configs/pages-id.config");
+const { ROOT_ID, CONTAINER_ID } = require("./configs/pages-id.yml");
 const { templates } = require("./templates");
 
 const getTemplate = (template_id) => {

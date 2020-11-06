@@ -1,7 +1,9 @@
 require("./configs/style.css");
-const { popupActions } = require("./actions");
+require("./actions");
 const { router } = require("./router");
-const { LANDING_ID } = require("./configs/pages-id.config");
+const { APP_ID, LANDING_ID } = require("./configs/pages-id.yml");
 
-document.getElementsByTagName("body")[0].innerHTML = router.get(LANDING_ID);
-popupActions();
+const node = document.createElement("div");
+node.setAttribute("id", APP_ID);
+node.innerHTML = router.get(LANDING_ID);
+document.body.appendChild(node);
