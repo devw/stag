@@ -3,11 +3,17 @@ const doT = require("./doT");
 const { templates } = require("./templates");
 const { popupActions } = require("./actions");
 const data = require("./configs/text.yml");
+const {
+    ROOT_ID,
+    LANDING_ID,
+    REGISTER_ID,
+    CONTAINER_ID,
+} = require("./configs/pages-id.config");
 
 const getDef = () => ({
-    container: document.getElementById("container").text,
-    landing: document.getElementById("landing").text,
-    register: document.getElementById("register").text,
+    [CONTAINER_ID]: document.getElementById(CONTAINER_ID).text,
+    [LANDING_ID]: document.getElementById(LANDING_ID).text,
+    [REGISTER_ID]: document.getElementById(REGISTER_ID).text,
 });
 
 const appendTemplate = (e) => {
@@ -19,7 +25,7 @@ const appendTemplate = (e) => {
 const getPage = () => {
     templates.forEach(appendTemplate);
     return doT.template({
-        tmpl: document.getElementById("pagetmpl").text,
+        tmpl: document.getElementById(ROOT_ID).text,
         def: getDef(),
     })(data);
 };
