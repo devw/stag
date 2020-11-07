@@ -21,7 +21,7 @@ div.popup-close {
     cursor: pointer;
 }
 
-div.account-popup__content {
+div.theme {
     width: 500px;
     background-color: var(--background-color);
     border-radius: 4px;
@@ -32,7 +32,7 @@ div.account-popup__content {
 
 .landing_image {
     width: 180px;
-    content: var(--landing_image);
+    content: var(--image);
 }
 .account-popup__checkbox {
     margin-right: 10px;
@@ -70,11 +70,13 @@ div.account-popup__content {
     line-height: 36px;
 }
 
-.container {
+.content {
     text-align: var(--align-items);
+    margin: var(--margin);
+    padding: var(--padding);
 }
 
-.container .input-text {
+.content .input-text {
     border-top-style: hidden;
     border-right-style: hidden;
     border-left-style: hidden;
@@ -83,7 +85,7 @@ div.account-popup__content {
     font: 400 13.3333px Arial;
 }
 
-.container button {
+.content button {
     padding: 10px;
     width: 100%;
     background-color: #de7154;
@@ -92,7 +94,7 @@ div.account-popup__content {
     color: #fff;
 }
 
-.container button:disabled,
+.content button:disabled,
 button[disabled] {
     background-color: #c6c1be;
 }

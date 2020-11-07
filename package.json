@@ -17,6 +17,8 @@
     "js-yaml": "^3.14.0",
     "json-loader": "^0.5.7",
     "nodemon-webpack-plugin": "^4.3.2",
+    "sass": "^1.29.0",
+    "sass-loader": "^10.0.5",
     "ss-loader": "^1.0.1",
     "webpack": "^5.4.0",
     "webpack-cli": "^4.2.0",

@@ -1,15 +1,17 @@
-<img class="landing_image"/>
-<div class="account-popup__title z-h4 heading">
-    {{=it.loginRegister}}
+<div class="page-landing">
+    <img class="landing_image"/>
+    <div class="z-h4 heading">
+        {{=it.loginRegister}}
+    </div>
+    <div class="account-popup__subtitle text t-4">
+        <p>{{=it.enterYourEmailToContinue}}</p>
+    </div>
+    <div class="account-popup__error" data-account-error=""></div>
+    <div class="account-popup__inputs-container ">
+        <input class="input-text" name="email" placeholder="{{=it.yourEmail}}" type="email">
+    </div>
+    <div class="account-popup__button">
+        <button class="button button--full button--secondary" name="validate" disabled="">{{=it.validate}}</button>
+    </div>
 </div>
-<div class="account-popup__subtitle text t-4">
-    <p>{{=it.enterYourEmailToContinue}}</p>
-</div>
-<div class="account-popup__error" data-account-error=""></div>
-<div class="account-popup__inputs-container ">
-    <input class="input-text" name="email" placeholder="{{=it.yourEmail}}" type="email">
-</div>
-<div class="account-popup__button">
-    <button class="button button--full button--secondary" name="validate" disabled="">{{=it.validate}}</button>
-</div>
-<br>
+

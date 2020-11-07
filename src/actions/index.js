@@ -1,10 +1,5 @@
 const { router } = require("../router");
-const {
-    REGISTER_ID,
-    SIGN_IN,
-    APP_ID,
-    LANDING_ID,
-} = require("../configs/pages-id.yml");
+const { REGISTER_ID, APP_ID } = require("../configs/pages-id.yml");
 const $ = document.querySelector.bind(document);
 
 const toggleButton = ({ target }) => {
@@ -13,8 +8,12 @@ const toggleButton = ({ target }) => {
     isEmail ? activeBtn(btn, target) : disableBtn(btn);
 };
 
-const initContainer = () =>
-    $(`#${APP_ID} .popup-close`).addEventListener("click", closeApp);
+const closeApp = () => ($(`#${APP_ID}`).innerHTML = "");
+
+const initContainer = () => {
+    console.log($(`#${APP_ID}`));
+    // $(`#${APP_ID} .popup-close`).addEventListener("click", closeApp);
+};
 
 const disableBtn = (btn) => btn.setAttribute("disabled", "true");
 
@@ -28,7 +27,6 @@ const register = () => {
     initContainer();
     $(`#${APP_ID}`).addEventListener("input", toggleButton);
 };
-const closeApp = () => ($(`#${APP_ID}`).innerHTML = "");
 
 const landing = () => {
     initContainer();

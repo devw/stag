@@ -1,5 +1,5 @@
-require("./styles/main.css");
-require("./styles/custom.css");
+require("./styles/main.scss");
+require("./styles/custom.scss");
 require("./actions");
 const { router } = require("./router");
 const { APP_ID, LANDING_ID } = require("./configs/pages-id.yml");
