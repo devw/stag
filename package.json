@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "pre-build": "node src/yaml2json",
-    "build": "webpack",
+    "pb": "node src/yaml2json",
+    "build": "yarn pb & webpack",
     "watch": "nodemon src/index.js"
   },
   "devDependencies": {

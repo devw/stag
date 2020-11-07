@@ -1,52 +1,15 @@
 theme:
   common:
-    --background-color: rgba(100, 91, 91, 0.7)
-    --main-text-color: "#111"
-    --large-text-size: 1.875rem
-    --align-items: center
-    --landing_image: url("https://raw.githu...")
+    background-color: "#fff"
+    main-text-color: "#111"
+    large-text-size: 1.875rem
+    align-items: center
+    landing_image: url("https://tinyurl.com/yxqebeg7")
     box-model: #dans theme.
-        --margin: "1em 0.4em"
-        --padding: "0.8em"
-        --border: "none" # 1px solid red; | ...
+      margin: "1em 0.4em"
+      padding: "0.8em"
+      border: "none" # 1px solid red; | ...
     fonts: # dans theme
-        --titles-family:  "serif" # cursive | Georgia, serif | ...
-        --subtitle-family: "..."
-        --content-family: "serif" # cursive | Georgia, serif | ...
-
-    --titles-weight:  "serif" # cursive | Georgia, serif | ...
-    --subtitle-weight: "..."
-    --content-weight: "serif" # cursive | Georgia, serif | ...
-  
-    text-inupt: # en em. # dans theme sauf pour border-style.
-      --margin: "15px 0px"
-      --padding: "10px"
-      --border: "none" # 1px solid red; | ...
-      --border-style: "full border" # | "only bottom border"
-    label:
-        --position: "inside text box" # | "above texdt box" ..
-    # checkbox:
-      # Any specificities ?
-    password: hasConfirmation #with_password_confirmation ?
-    submit:
-      # theming aussi .. border / radius / padding / alignement (left - right) ...
-
-layout:
-  --modal: normal # normal | full-screen
-  --style: normal_form # slider.  
-  --progress-indicator: "none" # horizontal | vertical | circle
-  --animations:
-    --transition: "none" # fade | slide-from-right | slide-from-left | flip | cube | gallery
-    --delay: "200ms" # int > 0 & < x 
-
-pages:
-  common:
-    --image: url("...")
-    --background_image: url("...")
-  landing: 
-    --image: url("https://raw.githubusercontent.com/devw/script-tag/master/docs/a53af018001d43d4aa79c9a4b7331f3b.png") # fallback value: ${self:pages.common.header.image} 
-  register:
-    --image: url("https://raw.githubusercontent.com/devw/script-tag/master/docs/a53af018001d43d4aa79c9a4b7331f3b.png") 
-  activation:
-    --image: url("https://raw.githubusercontent.com/devw/script-tag/master/docs/a53af018001d43d4aa79c9a4b7331f3b.png") 
-  
+      titles-family:  "serif" # cursive | Georgia, serif | ...
+      subtitle-family: "..."
+      content-family: "serif" # cursive | Georgia, serif | ...

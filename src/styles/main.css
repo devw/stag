@@ -1,12 +1,3 @@
-:root {
-    --background-color: #fff;
-    --main-text-color: #111;
-    --large-text-size: 1.875rem;
-    --align-items: center;
-    --landing_image: url("https://raw.githubusercontent.com/devw/script-tag/master/docs/a53af018001d43d4aa79c9a4b7331f3b.png");
-    --text-input-margin: 10px;
-}
-
 div.account-popup {
     color: var(--main-text-color);
     width: 70%;
@@ -67,7 +58,7 @@ div.account-popup__content {
 .input-text {
     border-bottom: 1px solid;
     padding-left: 2px;
-    margin-bottom: var(--text-input-margin);
+    margin-bottom: var(--margin);
 }
 
 .z-h4,
@@ -79,11 +70,11 @@ div.account-popup__content {
     line-height: 36px;
 }
 
-.account-popup__container {
+.container {
     text-align: var(--align-items);
 }
 
-.account-popup__container .input-text {
+.container .input-text {
     border-top-style: hidden;
     border-right-style: hidden;
     border-left-style: hidden;
@@ -92,7 +83,7 @@ div.account-popup__content {
     font: 400 13.3333px Arial;
 }
 
-.account-popup__container button {
+.container button {
     padding: 10px;
     width: 100%;
     background-color: #de7154;
@@ -101,7 +92,7 @@ div.account-popup__content {
     color: #fff;
 }
 
-.account-popup__container button:disabled,
+.container button:disabled,
 button[disabled] {
     background-color: #c6c1be;
 }
