@@ -1,7 +1,7 @@
-const rootTmpl = require("./root.template.html");
-const containerTmpl = require("./container.template.html");
-const landingTmpl = require("./landing.template.html");
-const registerTmpl = require("./register.template.html");
+const rootTmpl = require("./root.html");
+const containerTmpl = require("./container.html");
+const landingTmpl = require("./landing.html");
+const registerTmpl = require("./register.html");
 const {
     ROOT_ID,
     LANDING_ID,
