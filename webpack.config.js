@@ -24,6 +24,14 @@ module.exports = {
                 type: "json", // Required by Webpack v4
                 use: "yaml-loader",
             },
+            {
+                test: /\.json5$/i,
+                loader: "json5-loader",
+                options: {
+                    esModule: false,
+                },
+                type: "javascript/auto",
+            },
         ],
     },
     plugins: [

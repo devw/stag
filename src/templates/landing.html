@@ -1,17 +1,27 @@
 <div class="page-landing">
     <img class="landing_image"/>
-    <div class="z-h4 heading">
+    <div class="title">
         {{=it.loginRegister}}
     </div>
-    <div class="account-popup__subtitle text t-4">
+    <div class="sub-title">
         <p>{{=it.enterYourEmailToContinue}}</p>
     </div>
     <div class="account-popup__error" data-account-error=""></div>
     <div class="account-popup__inputs-container ">
         <input class="input-text" name="email" placeholder="{{=it.yourEmail}}" type="email">
     </div>
-    <div class="account-popup__button">
-        <button class="button button--full button--secondary" name="validate" disabled="">{{=it.validate}}</button>
-    </div>
+    {{? it.hasSocialLogin }}
+        <div>
+            <a href="#" class="fb btn">
+                <i class="fa fa-facebook fa-fw"></i> Login with Facebook
+            </a>
+            <a href="#" class="google btn"><i class="fa fa-google fa-fw">
+                </i> Login with Google+
+            </a>
+        </div>
+    {{?? true }}
+        <div class="account-popup__button">
+            <button class="button button--full button--secondary" name="validate" disabled="">{{=it.validate}}</button>
+        </div>
+    {{?}}
 </div>
-

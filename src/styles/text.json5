@@ -1,0 +1,13 @@
+{
+	"name": "Config page",
+	"loginRegister": "Connexion / Inscription",
+	"enterYourEmailToContinue": "Première étape, Indiquez votre adresse mail ci-dessous.",
+	"yourEmail": "Votre email",
+	"signIn": "Se Connecter",
+	"signUp": "S'inscrire",
+	"fillInfoToCreateAccount": "Renseignez vos informations pour créer votre compte Franklin.",
+	"login": "Connexion",
+	"enterEmailPswToConnect": "Renseignez votre adresse email et votre mot de passe pour vous connecter.",
+	"validate": "Valider",
+	"hasSocialLogin": true
+}

@@ -1,22 +1,26 @@
 theme:
   background-color: "#fff"
-  main-text-color: "#111"
+  main-text-color: "#0d3c32"
   large-text-size: 1.875rem
-  align-items: left
+  align-items: center
   image: url("https://tinyurl.com/yxqebeg7")
   box-model: #dans theme.
-    margin: "1em 0.4em"
-    padding: "0.8em"
+    margin: "0.1em"
+    padding: "0.1em"
     border: "none" # 1px solid red; | ...
   fonts: # dans theme
     titles-family:  "serif" # cursive | Georgia, serif | ...
     subtitle-family: "..."
     content-family: "serif" # cursive | Georgia, serif | ...
+    placeholder-text-transform: uppercase
+  
 
 page-landing:
   image: url("https://cdn.shopify.com/s/files/1/2598/9270/files/Chien-Chat-1.png?v=1595510115")
+  image-width: 50%
 
 page-register:
   image: url("https://cdn.shopify.com/s/files/1/2598/9270/files/Chien-16.png?v=1595509535")
+  image-width: 30%
 
 

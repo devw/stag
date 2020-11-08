@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "pb": "node src/yaml2json",
-    "build": "yarn pb & webpack",
+    "load": "node src/yaml2json ${0}",
+    "build": "webpack",
     "watch": "nodemon src/index.js"
   },
   "devDependencies": {
@@ -16,6 +16,7 @@
     "html-webpack-plugin": "^4.5.0",
     "js-yaml": "^3.14.0",
     "json-loader": "^0.5.7",
+    "json5-loader": "^4.0.1",
     "nodemon-webpack-plugin": "^4.3.2",
     "sass": "^1.29.0",
     "sass-loader": "^10.0.5",
