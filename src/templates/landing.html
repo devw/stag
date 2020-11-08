@@ -9,14 +9,17 @@
     <div class="account-popup__error" data-account-error=""></div>
     <div class="account-popup__inputs-container ">
         <input class="input-text" name="email" placeholder="{{=it.yourEmail}}" type="email">
+        {{? it.hasSocialLogin }}
+            <div class="email-validate" name="validate">OK</div>
+        {{?? true }}{{?}}
     </div>
     {{? it.hasSocialLogin }}
         <div>
+            <div class="or-social-login">{{=it.or}}</div>
             <a href="#" class="fb btn">
                 <i class="fa fa-facebook fa-fw"></i> Login with Facebook
             </a>
-            <a href="#" class="google btn"><i class="fa fa-google fa-fw">
-                </i> Login with Google+
+            <a href="#" class="google btn"><i class="fa fa-google fa-fw"></i> Login with Google+
             </a>
         </div>
     {{?? true }}

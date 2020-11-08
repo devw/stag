@@ -1,9 +1,15 @@
 theme:
-  background-color: "#fff"
-  main-text-color: "#0d3c32"
-  large-text-size: 1.875rem
   align-items: center
-  image: url("https://tinyurl.com/yxqebeg7")
+  background-color: "#fff"
+  image: none
+  title:
+    title-text-transform: uppercase
+    title-font-size: 1.875rem
+    title-font-family: '"Helvetica Neue", Arial, "Lucida Grande", sans-serif'
+    title-letter-spacing: 0.5px
+    title-font-weight: 700
+    title-line-height: 36px
+  main-text-color: "#0d3c32"
   box-model: #dans theme.
     margin: "0.1em"
     padding: "0.1em"
@@ -13,6 +19,12 @@ theme:
     subtitle-family: "..."
     content-family: "serif" # cursive | Georgia, serif | ...
     placeholder-text-transform: uppercase
+  input:
+    input-margin: 13px
+  buttons:
+    button-background-color: '#de7154'
+    button-disabled-background-color: '#c6c1be'
+    button-disabled-opacity: 1
   
 
 page-landing:

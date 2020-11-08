@@ -9,10 +9,8 @@ const {
     CONTAINER_ID,
 } = require("../configs/pages-id.yml");
 
-const getTemplate = ({ id, html }) => {
-    return `<script id="${id}" type="text/x-dot-template">${html}</script>`;
-};
-
+const getTemplate = ({ id, html }) =>
+    `<script id="${id}" type="text/x-dot-template">${html}</script>`;
 const templates = [];
 
 templates.push(getTemplate({ id: ROOT_ID, html: rootTmpl }));
