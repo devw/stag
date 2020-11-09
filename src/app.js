@@ -1,5 +1,4 @@
 require("./styles/main.scss");
-require("./styles/custom.scss");
 require("./actions");
 const { router } = require("./router");
 const { APP_ID, LANDING_ID } = require("./configs/pages-id.yml");

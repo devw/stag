@@ -4,8 +4,6 @@ const id_pages = require("./configs/pages-id.yml");
 const { templates } = require("./templates");
 const { CONTAINER_ID, ROOT_ID } = id_pages;
 
-console.log(data.loginRegister);
-
 const getTemplate = (template_id) => {
     templates.forEach(appendTemplate);
     return doT.template({
