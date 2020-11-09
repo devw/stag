@@ -1,5 +1,7 @@
-
-name: "Config page"
+hasSocialLogin: true
+hasGender: true
+hasPasswordVerification: true
+createAccount: Inscription
 loginRegister: "Connexion / Inscription"
 enterYourEmailToContinue: "Première étape, Indiquez votre adresse mail ci-dessous."
 yourEmail: "Email"
@@ -10,6 +12,3 @@ login: "Connexion"
 enterEmailPswToConnect: Renseignez votre adresse email et votre mot de passe pour vous connecter.
 validate: "Valider"
 or: ou
-hasSocialLogin: true
-
-

@@ -1,4 +1,36 @@
-div.theme {
+/* Table of contents
+
+1. Global styles
+2. Theme/Typography
+3. Pages
+    3.1 Landing page
+    3.2 Register page
+    3.4 Sign-in page
+4. Modules
+    3.1 social-login
+    3.2 gender
+    3.3 password-verification
+4. Components
+    4.1 buttons
+    4.2 inputs
+    4.3 images
+
+*/
+
+/*  ===================
+    1. Global styles
+    =================== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/*  ===================
+    2. Theme/Typography
+    =================== */
+
+.theme {
     color: var(--main-text-color);
     background-color: var(--background-color);
     border-radius: 4px;
@@ -8,12 +40,7 @@ div.theme {
     width: 500px;
 }
 
-::placeholder {
-    text-transform: var(--placeholder-text-transform);
-    font-size: var(--placeholder-font-size);
-}
-
-div.popup-close {
+.popup-close {
     position: absolute;
     top: 0;
     right: 14px;
@@ -21,6 +48,49 @@ div.popup-close {
     transform: rotate(45deg);
     cursor: pointer;
 }
+
+.title {
+    font-size: var(--title-font-size);
+    letter-spacing: 0.59px;
+    line-height: var(--title-line-height);
+    font-weight: var(--title-font-weight);
+    font-family: var(--title-font-family);
+    text-transform: var(--title-text-transform);
+    letter-spacing: var(--title-letter-spacing);
+}
+
+.sub-title {
+    margin: 18px 0;
+}
+
+/*  ===================
+    3. Pages
+    =================== */
+
+/*  ===================
+    3. Modules
+    =================== */
+
+/*  ===================
+    4. Components
+    =================== */
+
+/* placeholder */
+
+::placeholder {
+    text-transform: var(--placeholder-text-transform);
+    font-size: var(--placeholder-font-size);
+}
+
+.content {
+    text-align: var(--align-items);
+    margin: var(--margin);
+    padding: var(--padding);
+}
+
+/*  ===================
+    Modules
+    =================== */
 
 div.email-validate {
     cursor: pointer;
@@ -32,12 +102,6 @@ div.email-validate {
 
 div.or-social-login {
     margin: 15px 0;
-}
-
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
 }
 
 .landing_image {
@@ -58,25 +122,9 @@ div.container {
     right: 0;
 }
 
-.content {
-    text-align: var(--align-items);
-    margin: var(--margin);
-    padding: var(--padding);
-}
-
-.sub-title {
-    margin: 18px 0;
-}
-
-.title {
-    font-size: var(--title-font-size);
-    letter-spacing: 0.59px;
-    line-height: var(--title-line-height);
-    font-weight: var(--title-font-weight);
-    font-family: var(--title-font-family);
-    text-transform: var(--title-text-transform);
-    letter-spacing: var(--title-letter-spacing);
-}
+/*  ===================
+    Components
+    =================== */
 
 .content .input-text {
     border-top-style: hidden;
@@ -123,6 +171,19 @@ div.container {
 button[disabled] {
     background-color: var(--button-disabled-background-color);
     opacity: var(--button-disabled-opacity);
+}
+
+.gender {
+    text-align: left;
+    margin: 20px 0;
+}
+
+.birth-date {
+    display: flex;
+    align-items: center;
+    .birth-date-text {
+        min-width: 40%;
+    }
 }
 
 .fb {
