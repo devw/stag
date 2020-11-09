@@ -32,7 +32,7 @@ fs.writeFile(
 const writeJsonText = () => {
     const data = fs.readFileSync(`./src/configs/${themeName}-text.yml`, "utf8");
     fs.writeFile(
-        "src/styles/text.json5",
+        "src/styles/text.json",
         JSON.stringify(yaml.load(data), null, "\t"),
         () => {}
     );

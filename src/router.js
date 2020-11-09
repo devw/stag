@@ -1,5 +1,5 @@
 const doT = require("./doT");
-const data = require("./styles/text.json5");
+const data = require("./styles/text.json");
 const id_pages = require("./configs/pages-id.yml");
 const { templates } = require("./templates");
 const { CONTAINER_ID, ROOT_ID } = id_pages;
