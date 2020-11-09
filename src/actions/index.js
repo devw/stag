@@ -32,11 +32,13 @@ const initContainer = () => {
 
 const loadJsonVars = async (e) => {
     const theme = e.target.value;
-    const resp = await fetch(`data/${theme}-custom.json`);
-    loadCssVars(await resp.json());
     const text = await fetch(`data/${theme}-text.json`);
-    register(await text.json());
-    initContainer();
+    const resp = await fetch(`data/${theme}-custom.json`);
+    const textJson = await text.json();
+    const respJson = await resp.json();
+    loadCssVars(respJson);
+    $(`#${APP_ID}`).innerHTML = router.get(REGISTER_ID, textJson);
+    landing();
 };
 
 const disableBtn = (btn) => btn.setAttribute("disabled", "true");
@@ -47,7 +49,7 @@ const activeBtn = (btn, target) => {
 };
 
 const register = (text = data) => {
-    $(`#${APP_ID}`).innerHTML = router.get(REGISTER_ID, data);
+    $(`#${APP_ID}`).innerHTML = router.get(REGISTER_ID, text);
     initContainer();
     $(`#${APP_ID}`).addEventListener("input", toggleButton);
 };
@@ -59,4 +61,4 @@ const landing = () => {
     loadCssVars(cssVars);
 };
 
-window.addEventListener("load", landing);
+window.addEventListener("load", () => landing(data));

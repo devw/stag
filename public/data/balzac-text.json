@@ -1,6 +1,6 @@
 {
 	"hasSocialLogin": true,
-	"hasGender": true,
+	"hasGender": false,
 	"hasPasswordVerification": false,
 	"hasBirthDate": false,
 	"createAccount": "Inscription",
