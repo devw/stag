@@ -1,0 +1,22 @@
+{
+	"hasGender": false,
+	"hasSocialLogin": false,
+	"hasPasswordVerification": true,
+	"hasBirthDate": false,
+	"createAccount": "Inscription",
+	"loginRegister": "Connexion / Inscription",
+	"enterYourEmailToContinue": "Renseignez votre adresse email pour continuer.",
+	"yourEmail": "Votre email",
+	"signIn": "Se Connecter",
+	"signUp": "S'inscrire",
+	"fillInfoToCreateAccount": "Renseignez vos informations pour créer votre compte Franklin.",
+	"login": "Connexion",
+	"enterEmailPswToConnect": "Renseignez votre adresse email et votre mot de passe pour vous connecter.",
+	"validate": "Valider",
+	"login-register": "Connexion / Inscription",
+	"yourFirstName": "Votre nom",
+	"yourLastName": "Your last name",
+	"yourPassword": "Votre mot de passe",
+	"confirmYourPassword": "Confirmez votre mot de passe",
+	"subscribeNewsletter": "Je m'inscris à la newsletter Franklin"
+}

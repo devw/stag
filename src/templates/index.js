@@ -1,16 +1,21 @@
-const rootTmpl = require("./root.template.html");
-const headerTmpl = require("./header.template.html");
-const accountTmpl = require("./account.template.html");
-const landingTmpl = require("./landing.template.html");
+const rootTmpl = require("./root.html");
+const containerTmpl = require("./container.html");
+const landingTmpl = require("./landing.html");
+const registerTmpl = require("./register.html");
+const {
+    ROOT_ID,
+    LANDING_ID,
+    REGISTER_ID,
+    CONTAINER_ID,
+} = require("../configs/pages-id.yml");
 
 const getTemplate = ({ id, html }) =>
     `<script id="${id}" type="text/x-dot-template">${html}</script>`;
-
 const templates = [];
 
-templates.push(getTemplate({ id: "headertmpl", html: headerTmpl }));
-templates.push(getTemplate({ id: "pagetmpl", html: rootTmpl }));
-templates.push(getTemplate({ id: "account", html: accountTmpl }));
-templates.push(getTemplate({ id: "landing", html: landingTmpl }));
+templates.push(getTemplate({ id: ROOT_ID, html: rootTmpl }));
+templates.push(getTemplate({ id: CONTAINER_ID, html: containerTmpl }));
+templates.push(getTemplate({ id: LANDING_ID, html: landingTmpl }));
+templates.push(getTemplate({ id: REGISTER_ID, html: registerTmpl }));
 
 module.exports = { templates };

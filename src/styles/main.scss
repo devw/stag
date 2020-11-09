@@ -1,0 +1,199 @@
+/* Table of contents
+
+- Global styles
+- Theme/Typography
+- Pages
+    3.1 Landing page
+    3.2 Register page
+    3.4 Sign-in page
+- Modules
+    3.1 social-login
+    3.2 gender
+    3.3 password-verification
+- Components
+    4.1 buttons
+    4.2 inputs
+*/
+
+/*  ===================
+    1. Global styles
+    =================== */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/*  ===================
+    2. Theme/Typography
+    =================== */
+
+.theme {
+    background-color: var(--background-color);
+    border-radius: 4px;
+    color: var(--primary-text-color);
+    padding: 22px;
+    padding-bottom: 32px;
+    position: relative;
+    width: 500px;
+}
+
+.container {
+    align-items: center;
+    background-color: rgba(90, 91, 91, 0.4);
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 70%;
+    z-index: 100;
+}
+
+.content {
+    margin: var(--margin);
+    padding: var(--padding);
+    text-align: var(--align-items);
+}
+
+/*  ===================
+    3. Pages
+    =================== */
+
+/*  ===================
+    3. Modules
+    =================== */
+
+/*  ===================
+    4. Components
+    =================== */
+
+.btn-close {
+    cursor: pointer;
+    font-size: 40px;
+    position: absolute;
+    right: 14px;
+    top: 0;
+    transform: rotate(45deg);
+}
+
+.title {
+    font-family: var(--title-font-family);
+    font-size: var(--title-font-size);
+    font-weight: var(--title-font-weight);
+    letter-spacing: 0.59px;
+    letter-spacing: var(--title-letter-spacing);
+    line-height: var(--title-line-height);
+    text-transform: var(--title-text-transform);
+}
+
+.sub-title {
+    margin: 18px 0;
+}
+
+::placeholder {
+    font-size: var(--placeholder-font-size);
+    text-transform: var(--placeholder-text-transform);
+}
+
+/*  ===================
+    Modules
+    =================== */
+
+.email-validate {
+    cursor: pointer;
+    display: inline;
+    font-weight: 900;
+    position: absolute;
+    right: 40px;
+}
+
+.or-social-login {
+    margin: 15px 0;
+}
+
+.landing_image {
+    content: var(--image);
+    width: var(--image-width);
+}
+
+// gender module for Respire theme
+.gender {
+    margin: 20px 0;
+    text-align: left;
+}
+
+// birth-date module for Respire theme
+.birth-date {
+    align-items: center;
+    display: flex;
+    .birth-date-text {
+        min-width: 40%;
+    }
+}
+
+// social login module for Balzac theme
+.fb {
+    background-color: #3b5998;
+    color: white;
+}
+
+.google {
+    background-color: #dd4b39;
+    color: white;
+}
+
+/*  ===================
+    Components
+    =================== */
+
+// 4.1 buttons
+.btn {
+    background-color: var(--button-background-color);
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 10px;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+.btn:disabled,
+.btn[disabled] {
+    background-color: var(--button-disabled-background-color);
+    opacity: var(--button-disabled-opacity);
+}
+
+// 4.1 checkbox
+.checkbox {
+    margin-right: 10px;
+}
+
+.checkbox-container {
+    align-items: center;
+    display: flex;
+    margin-top: 14px;
+}
+
+// 4.1 input fields
+.mandatory-container {
+    margin-top: 10px;
+}
+
+.inputs-container {
+    margin-bottom: 10px;
+}
+
+.input-text {
+    border-bottom: 1px solid;
+    border-bottom-style: groove;
+    border-left-style: hidden;
+    border-right-style: hidden;
+    border-top-style: hidden;
+    font: 400 13.3333px Arial;
+    margin-bottom: var(--input-margin);
+    padding-left: 2px;
+    width: 100%;
+}

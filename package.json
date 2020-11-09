@@ -4,16 +4,22 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "dev": "node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
-    "watch": "nodemon src/index.js"
+    "load": "node src/yaml2json ${0}",
+    "prebuild": "rm -rf docs",
+    "build": "rm -rf dist; webpack; cp -r public/* dist; mv dist docs"
   },
   "devDependencies": {
     "html-loader": "^1.3.2",
     "html-webpack-plugin": "^4.5.0",
-    "nodemon-webpack-plugin": "^4.3.2",
+    "js-yaml": "^3.14.0",
+    "json-loader": "^0.5.7",
+    "sass": "^1.29.0",
+    "sass-loader": "^10.0.5",
     "ss-loader": "^1.0.1",
     "webpack": "^5.4.0",
-    "webpack-cli": "^4.2.0"
+    "webpack-cli": "^4.2.0",
+    "yaml-loader": "^0.6.0"
   }
 }

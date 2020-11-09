@@ -1,12 +1,11 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const NodemonPlugin = require("nodemon-webpack-plugin");
 
 module.exports = {
     mode: "development",
-    entry: "./src/index.js",
+    entry: "./src/app.js",
     output: {
-        filename: "main.js",
+        filename: "bundle.js",
         path: path.resolve(__dirname, "dist"),
     },
     module: {
@@ -16,8 +15,13 @@ module.exports = {
                 loader: "html-loader",
             },
             {
-                test: /\.css$/i,
-                use: ["style-loader", "css-loader"],
+                test: /\.s[ac]ss$/i,
+                use: ["style-loader", "css-loader", "sass-loader"],
+            },
+            {
+                test: /\.ya?ml$/,
+                type: "json", // Required by Webpack v4
+                use: "yaml-loader",
             },
         ],
     },
@@ -25,6 +29,5 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: "Output Management",
         }),
-        new NodemonPlugin(),
     ],
 };

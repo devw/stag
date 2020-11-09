@@ -1,0 +1,50 @@
+theme:
+  align-items: center
+  background-color: "#fff"
+  image: none
+  primary-text-color: "#0d3c32"
+  secondary-text-color: "#000"
+  tertiary-text-color: "#000"
+  error-text-color: "#f00"
+  hint-text-color: "#333"
+  primary-color: "#000"
+  secondary-color: "#000"
+  tertiary-color: "#777"
+  large-text-size: 2.5em
+  medium-text-size: 1.8em
+  normal-text-size: 16px
+  small-text-size: 0.8em
+  title:
+    title-text-transform: none
+    title-font-size: 3rem
+    title-font-family: '"Burgess","Helvetica Neue",Arial,"Lucida Grande",sans-serif'
+    title-letter-spacing: 0
+    title-font-weight: 0
+    title-line-height: 45px
+  box-model: #dans theme.
+    margin: "0.1em"
+    padding: "0.1em"
+    border: "none" # 1px solid red; | ...
+  fonts: # dans theme
+    titles-family:  "serif" # cursive | Georgia, serif | ...
+    subtitle-family: "..."
+    content-family: "serif" # cursive | Georgia, serif | ...
+  input:
+    input-margin: 13px
+  placeholders:
+    placeholder-text-transform: none
+    placeholder-font-size: 16px
+  button:
+    button-background-color: '#007266'
+    button-disabled-background-color: '#007266'
+    button-disabled-opacity: 0.5
+  
+page-landing:
+  image: none
+  image-width: 50%
+
+page-register:
+  image: none
+  image-width: 30%
+
+
