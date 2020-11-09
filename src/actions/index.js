@@ -33,7 +33,6 @@ const loadJsonVars = async (e) => {
     const style = await fetch(`data/${theme}-custom.json`);
     const textJson = await text.json();
     const styleJson = await style.json();
-
     landing(textJson, styleJson);
 };
 
@@ -56,6 +55,7 @@ const landing = (text = data, css = cssVars) => {
     initContainer();
     $(`#${APP_ID} .input-text`).addEventListener("input", toggleButton);
     $(`#${APP_ID} [name='validate']`).addEventListener("click", register);
+    $(`#${APP_ID} .js-json-code`).innerHTML = JSON.stringify(css);
 };
 
 const dashboard = () => {
