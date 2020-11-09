@@ -2,7 +2,7 @@ theme:
   align-items: center
   background-color: "#fff"
   image: none
-  main-text-color: "#000"
+  primary-text-color: "#000"
   secondary-text-color: "#000"
   tertiary-text-color: "#000"
   error-text-color: "#f00"

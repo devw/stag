@@ -3,11 +3,11 @@
     <div class="title">
         {{=it.createAccount}}
     </div>
-    <div class="account-popup__subtitle text t-4">
+    <div class="subtitle text t-4">
         <p>{{=it.fillInfoToCreateAccount}}</p>
     </div>
-    <div class="account-popup__error" data-account-error=""></div>
-    <form action="javascript:void(0);" class="account-popup__inputs-container " dataRegisterForm="">
+    <div class="error" data-account-error=""></div>
+    <form action="javascript:void(0);" class="inputs-container" dataRegisterForm="">
         {{? it.hasGender }}
             <div class="gender">
                 <input data-register-gender="" type="radio" name="gender" id="male" value="male" checked="" data-wg-notranslate="manual">
@@ -33,11 +33,11 @@
                 <input placeholder="aaaa" class="input-text input__birth" data-register-year="" type="number" min="1900" max="2020">
             </div>
         {{?? true }}{{?}}
-        <div class="account-popup__button">
-            <button class="button button--full button--secondary button--disabled" disabled="">{{=it.createAccount}}</button>
+        <div class="button">
+            <button class="btn btn-primary" disabled="">{{=it.createAccount}}</button>
         </div>
-        <div class="account-popup__checkbox-container">
-            <input class="account-popup__checkbox" data-register-newscheck="" name="acceptsMarketing" type="checkbox">
+        <div class="checkbox-container">
+            <input class="checkbox" data-register-newscheck="" name="acceptsMarketing" type="checkbox">
             <div class="text t-5 uppercase pointer" data-register-newstext="">
                 {{=it.subscribeNewsletter}}
             </div>

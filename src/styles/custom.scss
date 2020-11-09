@@ -3,7 +3,7 @@
 	--align-items: center;
 	--background-color: #fff;
 	--image: none;
-	--main-text-color: #0d3c32;
+	--primary-text-color: #0d3c32;
 	--secondary-text-color: #000;
 	--tertiary-text-color: #000;
 	--error-text-color: #f00;
@@ -15,29 +15,30 @@
 	--medium-text-size: 1.8em;
 	--normal-text-size: 16px;
 	--small-text-size: 0.8em;
-	--title-text-transform: uppercase;
-	--title-font-size: 1.875rem;
-	--title-font-family: "Helvetica Neue", Arial, "Lucida Grande", sans-serif;
-	--title-letter-spacing: 0.5px;
-	--title-font-weight: 700;
-	--title-line-height: 36px;
+	--title-text-transform: none;
+	--title-font-size: 3rem;
+	--title-font-family: "Burgess","Helvetica Neue",Arial,"Lucida Grande",sans-serif;
+	--title-letter-spacing: 0;
+	--title-font-weight: 0;
+	--title-line-height: 45px;
 	--margin: 0.1em;
 	--padding: 0.1em;
 	--border: none;
 	--titles-family: serif;
 	--subtitle-family: ...;
 	--content-family: serif;
-	--placeholder-text-transform: uppercase;
 	--input-margin: 13px;
-	--button-background-color: #de7154;
-	--button-disabled-background-color: #c6c1be;
-	--button-disabled-opacity: 1;
+	--placeholder-text-transform: none;
+	--placeholder-font-size: 16px;
+	--button-background-color: #007266;
+	--button-disabled-background-color: #007266;
+	--button-disabled-opacity: 0.5;
 }
 .page-landing {
-	--image: url("https://cdn.shopify.com/s/files/1/2598/9270/files/Chien-Chat-1.png?v=1595510115");
+	--image: none;
 	--image-width: 50%;
 }
 .page-register {
-	--image: url("https://cdn.shopify.com/s/files/1/2598/9270/files/Chien-16.png?v=1595509535");
+	--image: none;
 	--image-width: 30%;
 }

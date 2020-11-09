@@ -1,6 +1,8 @@
 hasSocialLogin: true
 hasGender: true
-hasPasswordVerification: true
+hasPasswordVerification: false
+hasBirthDate: false
+
 createAccount: Inscription
 loginRegister: "Connexion / Inscription"
 enterYourEmailToContinue: "Première étape, Indiquez votre adresse mail ci-dessous."

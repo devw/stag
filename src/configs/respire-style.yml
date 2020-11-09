@@ -2,7 +2,7 @@ theme:
   align-items: center
   background-color: "#fff"
   image: none
-  main-text-color: "#0d3c32"
+  primary-text-color: "#0d3c32"
   secondary-text-color: "#000"
   tertiary-text-color: "#000"
   error-text-color: "#f00"
@@ -39,7 +39,6 @@ theme:
     button-disabled-background-color: '#007266'
     button-disabled-opacity: 0.5
   
-
 page-landing:
   image: none
   image-width: 50%

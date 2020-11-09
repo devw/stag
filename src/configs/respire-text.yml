@@ -2,6 +2,7 @@ hasGender: true
 hasSocialLogin: false
 hasBirthDate: true
 hasPasswordVerification: false
+
 createAccount: Inscription
 loginRegister: "Connexion / Inscription"
 enterYourEmailToContinue: "Renseignez votre adresse mail pour vous connecter ou vous inscrire."

@@ -11,8 +11,7 @@ const toggleButton = ({ target }) => {
 const closeApp = () => ($(`#${APP_ID}`).innerHTML = "");
 
 const initContainer = () => {
-    console.log($(`#${APP_ID}`));
-    // $(`#${APP_ID} .popup-close`).addEventListener("click", closeApp);
+    $(`#${APP_ID} .js-close`).addEventListener("click", closeApp);
 };
 
 const disableBtn = (btn) => btn.setAttribute("disabled", "true");

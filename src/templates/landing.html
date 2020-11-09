@@ -6,8 +6,8 @@
     <div class="sub-title">
         <p>{{=it.enterYourEmailToContinue}}</p>
     </div>
-    <div class="account-popup__error" data-account-error=""></div>
-    <div class="account-popup__inputs-container ">
+    <div class="error" data-account-error=""></div>
+    <div class="inputs-container ">
         <input class="input-text" name="email" placeholder="{{=it.yourEmail}}" type="email">
         {{? it.hasSocialLogin }}
             <div class="email-validate" name="validate">OK</div>
@@ -23,8 +23,8 @@
             </a>
         </div>
     {{?? true }}
-        <div class="account-popup__button">
-            <button class="button button--full button--secondary" name="validate" disabled="">{{=it.validate}}</button>
+        <div class="button">
+            <button class="btn btn-primary" name="validate" disabled="">{{=it.validate}}</button>
         </div>
     {{?}}
 </div>
