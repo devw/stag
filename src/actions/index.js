@@ -27,7 +27,6 @@ const initContainer = () => {
 };
 
 const loadJsonVars = async (e) => {
-    console.log(e.target.value);
     const theme = e.target.value;
     const text = await fetch(`data/${theme}-text.json`);
     const style = await fetch(`data/${theme}-custom.json`);
