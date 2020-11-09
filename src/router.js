@@ -1,10 +1,9 @@
 const doT = require("./doT");
-const data = require("./styles/text.json");
 const id_pages = require("./configs/pages-id.yml");
 const { templates } = require("./templates");
 const { CONTAINER_ID, ROOT_ID } = id_pages;
 
-const getTemplate = (template_id) => {
+const getTemplate = (template_id, data) => {
     templates.forEach(appendTemplate);
     return doT.template({
         tmpl: document.getElementById(ROOT_ID).text,

@@ -1,2 +1,25 @@
-<h2>Here is the root page</h2>
+<h2>Here is the root page2</h2>
 {{#def.container}}
+<form action="" style="width: 300px">
+    <textarea name="" id="" cols="30" rows="10" style="white-space: break-spaces;">
+
+            {
+                "theme": {
+                    "--align-items": "center",
+                    "--background-color": "#fff",
+                    "--image": "none",
+                    "--primary-text-color": "#0d3c32"
+                }
+            }
+
+    </textarea>
+    <input type="button" class="btn js-load-json" value="load json from textarea">
+    <hr>
+    <div class="js-load-json-theme">
+        <div class="title">Load conf with a fetch request</div>
+        <input type="button" class="btn " value="franklin" style="margin: 10px 0;">
+        <input type="button" class="btn " value="balzac" style="margin: 10px 0;">
+        <input type="button" class="btn " value="respire" style="margin: 10px 0;">
+    </div>
+</form>
+

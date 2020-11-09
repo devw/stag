@@ -30,6 +30,10 @@ theme:
     subtitle-family: "..."
     content-family: "serif" # cursive | Georgia, serif | ...
     placeholder-text-transform: uppercase
+  button:
+    button-background-color: '#111'
+    button-disabled-background-color: '#111'
+    button-disabled-opacity: 0.5
 page-landing:
   image: url("https://cdn.shopify.com/s/files/1/0407/2855/9766/files/Ellipse_3_1.png?v=1596746569")
   image-width: 30%
