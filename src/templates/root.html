@@ -1,25 +1,14 @@
 <h2>Here is the root page2</h2>
 {{#def.container}}
 <form action="" style="width: 300px">
-    <textarea name="" id="" cols="30" rows="10" style="white-space: break-spaces;">
-
-            {
-                "theme": {
-                    "--align-items": "center",
-                    "--background-color": "#fff",
-                    "--image": "none",
-                    "--primary-text-color": "#0d3c32"
-                }
-            }
-
-    </textarea>
-    <input type="button" class="btn js-load-json" value="load json from textarea">
-    <hr>
+    <textarea name="" class="js-json-code" cols="30" rows="10" style="white-space: break-spaces;"></textarea>
+    <input type="button" class="btn btn-primary js-load-json" value="load json from textarea">
+    <hr> <hr>
     <div class="js-load-json-theme">
-        <div class="title">Load conf with a fetch request</div>
-        <input type="button" class="btn " value="franklin" style="margin: 10px 0;">
-        <input type="button" class="btn " value="balzac" style="margin: 10px 0;">
-        <input type="button" class="btn " value="respire" style="margin: 10px 0;">
+        <h3>Load conf with a fetch request</h3>
+        <input type="button" class="btn btn-primary " value="franklin" style="margin: 10px 0;">
+        <input type="button" class="btn btn-primary" value="balzac" style="margin: 10px 0;">
+        <input type="button" class="btn btn-primary" value="respire" style="margin: 10px 0;">
     </div>
 </form>
 
