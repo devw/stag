@@ -8,39 +8,43 @@
     </div>
     <div class="error" data-account-error=""></div>
     <form action="javascript:void(0);" class="inputs-container" dataRegisterForm="">
-        {{? it.hasGender }}
-            <div class="gender">
-                <input data-register-gender="" type="radio" name="gender" id="male" value="male" checked="" data-wg-notranslate="manual">
-                <label class="input-radio__label" for="male">Monsieur</label>
-                <input data-register-gender="" type="radio" name="gender" id="female" value="female" data-wg-notranslate="manual">
-            <label class="input-radio__label" for="female">Madame</label>
-            </div>
-        {{?? true }}{{?}}
-        <input class="input-text" name="email" placeholder="{{=it.yourEmail}}" type="email">
-        <input class="input-text" name="firstName" placeholder="{{=it.yourFirstName}}" type="text">
-        <input class="input-text" name="lastName" placeholder="{{=it.yourLastName}}" type="text">
-        <input class="input-text" name="password" placeholder="{{=it.yourPassword}}" type="password">
-        {{? it.hasPasswordVerification }}
-            <input class="input-text" name="confirmPassword" placeholder="{{=it.confirmYourPassword}}" type="password">
-        {{?? true }}{{?}}
-        {{? it.hasBirthDate }}
-            <div class="birth-date">
-                <div class="birth-date-text">
-                    Date de naissance
+        {{? it.hasCarousel }}
+            {{#def.carousel}}
+        {{?? true }}
+            {{? it.hasGender }}
+                <div class="gender">
+                    <input data-register-gender="" type="radio" name="gender" id="male" value="male" checked="" data-wg-notranslate="manual">
+                    <label class="input-radio__label" for="male">Monsieur</label>
+                    <input data-register-gender="" type="radio" name="gender" id="female" value="female" data-wg-notranslate="manual">
+                <label class="input-radio__label" for="female">Madame</label>
                 </div>
-                <input placeholder="jj" class="input-text input__birth" data-register-day="" type="number" min="01" max="31">
-                <input placeholder="mm" class="input-text input__birth" data-register-month="" type="number" min="01" max="12">
-                <input placeholder="aaaa" class="input-text input__birth" data-register-year="" type="number" min="1900" max="2020">
+            {{?? true }}{{?}}
+            <input class="input-text" name="email" placeholder="{{=it.yourEmail}}" type="email">
+            <input class="input-text" name="firstName" placeholder="{{=it.yourFirstName}}" type="text">
+            <input class="input-text" name="lastName" placeholder="{{=it.yourLastName}}" type="text">
+            <input class="input-text" name="password" placeholder="{{=it.yourPassword}}" type="password">
+            {{? it.hasPasswordVerification }}
+                <input class="input-text" name="confirmPassword" placeholder="{{=it.confirmYourPassword}}" type="password">
+            {{?? true }}{{?}}
+            {{? it.hasBirthDate }}
+                <div class="birth-date">
+                    <div class="birth-date-text">
+                        Date de naissance
+                    </div>
+                    <input placeholder="jj" class="input-text input__birth" data-register-day="" type="number" min="01" max="31">
+                    <input placeholder="mm" class="input-text input__birth" data-register-month="" type="number" min="01" max="12">
+                    <input placeholder="aaaa" class="input-text input__birth" data-register-year="" type="number" min="1900" max="2020">
+                </div>
+            {{?? true }}{{?}}
+            <div class="button">
+                <button class="btn btn-primary" disabled="">{{=it.createAccount}}</button>
             </div>
-        {{?? true }}{{?}}
-        <div class="button">
-            <button class="btn btn-primary" disabled="">{{=it.createAccount}}</button>
-        </div>
-        <div class="checkbox-container">
-            <input class="checkbox" data-register-newscheck="" name="acceptsMarketing" type="checkbox">
-            <div class="text t-5 uppercase pointer" data-register-newstext="">
-                {{=it.subscribeNewsletter}}
+            <div class="checkbox-container">
+                <input class="checkbox" data-register-newscheck="" name="acceptsMarketing" type="checkbox">
+                <div class="text t-5 uppercase pointer" data-register-newstext="">
+                    {{=it.subscribeNewsletter}}
+                </div>
             </div>
-        </div>
+        {{?}}
     </form>   
 </div> 

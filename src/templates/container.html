@@ -3,13 +3,8 @@
         <div class="loader" style="display: none;"></div>
         <div class="btn-close js-close">+</div>
         <div class="content">
-            {{#def.landing || ''}}
-            {{? it.hasCarousel }}
-                {{#def.registerCarousel || ''}}
-            {{?? true }}
-                {{#def.register || ''}}
-            {{?}}
-            
+            {{#def.landing }}
+            {{#def.register}}
         </div>
     </div>
 </div>

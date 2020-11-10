@@ -6,7 +6,7 @@ const {
     CONTAINER_ID,
     LANDING_ID,
     REGISTER_ID,
-    REGISTER_CAROUSEL_ID,
+    CAROUSEL_ID,
 } = require("../configs/pages-id.yml");
 const $ = document.querySelector.bind(document);
 
@@ -14,7 +14,7 @@ const getDef = () => ({
     [CONTAINER_ID]: document.getElementById(CONTAINER_ID).text,
     [LANDING_ID]: document.getElementById(LANDING_ID).text,
     [REGISTER_ID]: document.getElementById(REGISTER_ID).text,
-    [REGISTER_CAROUSEL_ID]: document.getElementById(REGISTER_CAROUSEL_ID).text,
+    [CAROUSEL_ID]: document.getElementById(CAROUSEL_ID).text,
 });
 
 const appendTemplate = (e) => {
