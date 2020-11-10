@@ -4,7 +4,7 @@
 		"--align-items": "center",
 		"--background-color": "#fff",
 		"--image": "none",
-		"--primary-text-color": "#000",
+		"--primary-text-color": "#0d3c32",
 		"--secondary-text-color": "#000",
 		"--tertiary-text-color": "#000",
 		"--error-text-color": "#f00",
@@ -16,29 +16,31 @@
 		"--medium-text-size": "1.8em",
 		"--normal-text-size": "16px",
 		"--small-text-size": "0.8em",
-		"--title-text-transform": "uppercase",
-		"--title-font-size": "24px",
-		"--title-font-family": "\"Helvetica Neue\", Arial, \"Lucida Grande\", sans-serif",
-		"--title-letter-spacing": "0.5px",
-		"--title-font-weight": 600,
-		"--title-line-height": "36px",
+		"--title-text-transform": "none",
+		"--title-font-size": "3rem",
+		"--title-font-family": "\"Burgess\",\"Helvetica Neue\",Arial,\"Lucida Grande\",sans-serif",
+		"--title-letter-spacing": 0,
+		"--title-font-weight": 0,
+		"--title-line-height": "45px",
 		"--margin": "0.1em",
 		"--padding": "0.1em",
 		"--border": "none",
 		"--titles-family": "serif",
 		"--subtitle-family": "...",
 		"--content-family": "serif",
-		"--placeholder-text-transform": "uppercase",
-		"--button-background-color": "#111",
-		"--button-disabled-background-color": "#111",
+		"--input-margin": "13px",
+		"--placeholder-text-transform": "none",
+		"--placeholder-font-size": "16px",
+		"--button-background-color": "#007266",
+		"--button-disabled-background-color": "#007266",
 		"--button-disabled-opacity": 0.5
 	},
 	"page-landing": {
-		"--image": "url(\"https://cdn.shopify.com/s/files/1/0407/2855/9766/files/Ellipse_3_1.png?v=1596746569\")",
-		"--image-width": "30%"
+		"--image": "none",
+		"--image-width": "50%"
 	},
 	"page-register": {
-		"--image": "url(\"https://cdn.shopify.com/s/files/1/0407/2855/9766/files/Ellipse_3_1.png?v=1596746569\")",
+		"--image": "none",
 		"--image-width": "30%"
 	}
 }
