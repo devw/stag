@@ -3,18 +3,26 @@ const { APP_ID } = require("../configs/pages-id.yml");
 const utils = require("../utils");
 const load = require("./load");
 
-const init = () =>
-    $(`#${APP_ID} .js-load-json-theme`).addEventListener("click", loadJsonVars);
+const init = () => {
+    $(`#${APP_ID} .js-load-json-theme`).addEventListener("click", uploadTheme);
+    $(`#${APP_ID} .js-load-json`).addEventListener("click", loadFromTextarea);
+};
 
-const loadJsonVars = async (e) => {
+const loadFromTextarea = (e) => {
+    const css = e.target.previousElementSibling.value;
+    utils.updateCss(JSON.parse(css));
+};
+
+const uploadTheme = async (e) => {
     const theme = e.target.value;
     const text = await fetch(`data/${theme}-text.json`);
     const style = await fetch(`data/${theme}-custom.json`);
-    const textJson = await text.json();
     const styleJson = await style.json();
-    utils.updatePages(textJson, styleJson);
+    utils.updatePages(await text.json());
+    utils.updateCss(styleJson);
     load.loadActions();
     $(`#${APP_ID} .page-landing`).style.setProperty("display", "block");
+    $(`#${APP_ID} .js-json-code`).value = JSON.stringify(styleJson);
 };
 
 module.exports = {

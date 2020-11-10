@@ -1,6 +1,6 @@
 const { APP_ID } = require("../configs/pages-id.yml");
 
-exports.loadCssVars = (cssVars) => {
+exports.updateCss = (cssVars) => {
     let currentSelector = document.querySelector(`#${APP_ID}`);
     (function traverse(obj, key) {
         if (obj !== null && typeof obj == "object") {

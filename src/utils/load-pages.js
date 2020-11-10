@@ -1,7 +1,4 @@
-const { loadCssVars } = require("./load-css");
 const { templates } = require("../templates");
-const cssVars = require("../../public/data/custom.json");
-const data = require("../../public/data/text.json");
 const doT = require("../doT");
 const id_pages = require("../configs/pages-id.yml");
 const { APP_ID, ROOT_ID, CONTAINER_ID, LANDING_ID, REGISTER_ID } = id_pages;
@@ -27,7 +24,6 @@ const getTemplate = (data) => {
     })(data);
 };
 
-exports.updatePages = (text = data, css = cssVars) => {
-    loadCssVars(css);
+exports.updatePages = (text) => {
     $(`#${APP_ID}`).innerHTML = getTemplate(text);
 };
