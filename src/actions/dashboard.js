@@ -1,5 +1,9 @@
 const $ = document.querySelector.bind(document);
-const { REGISTER_ID, LANDING_ID, APP_ID } = require("../configs/pages-id.yml");
+const { APP_ID } = require("../configs/pages-id.yml");
+const router = require("../router");
+
+const init = () =>
+    $(`#${APP_ID} .js-load-json-theme`).addEventListener("click", loadJsonVars);
 
 const loadJsonVars = async (e) => {
     const theme = e.target.value;
@@ -7,18 +11,11 @@ const loadJsonVars = async (e) => {
     const style = await fetch(`data/${theme}-custom.json`);
     const textJson = await text.json();
     const styleJson = await style.json();
-    console.log(textJson);
-    console.log(styleJson);
-    // landing(textJson, styleJson);
+    router.loadTemplates(textJson, styleJson);
+    router.loadActions();
+    $(`#${APP_ID} .page-landing`).style.setProperty("display", "block");
 };
 
-const dashboard = () => {
-    // $(`#${APP_ID} .js-load-json`).addEventListener("click", (e) => {
-    //     const jsonValue = e.target.previousElementSibling.value;
-    //     loadCssVars(JSON.parse(jsonValue));
-    // });
-    $(`#${APP_ID} .js-load-json-theme`).addEventListener("click", loadJsonVars);
-    // $(`#${APP_ID} .js-json-code`).innerHTML = JSON.stringify(css);
+module.exports = {
+    init: init,
 };
-
-dashboard();
