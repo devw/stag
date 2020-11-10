@@ -6,10 +6,10 @@ const disableBtn = (btn) => btn.setAttribute("disabled", "true");
 
 const activeBtn = (btn, target) => {
     btn.removeAttribute("disabled");
-    sessionStorage.setItem("email", target.value);
+    sessionStorage.setItem("email", target.value); //TODO fix it
 };
 const toggleButton = ({ target }) => {
-    const btn = $("button");
+    const btn = $("button"); //TODO fix it
     const isEmail = /\S+@\S+\.\S+/.test(target.value);
     isEmail ? activeBtn(btn, target) : disableBtn(btn);
 };
