@@ -1,17 +1,23 @@
 const doT = require("./doT");
 const id_pages = require("./configs/pages-id.yml");
 const { templates } = require("./templates");
-const { CONTAINER_ID, ROOT_ID } = id_pages;
+const { ROOT_ID, CONTAINER_ID, LANDING_ID, REGISTER_ID } = id_pages;
 
-const getTemplate = (template_id, data) => {
+const getTemplate = (data) => {
     templates.forEach(appendTemplate);
     return doT.template({
         tmpl: document.getElementById(ROOT_ID).text,
-        def: getDef(template_id),
+        def: getDef(),
     })(data);
 };
 
-const getDef = (template_id) => ({
+const getDef = () => ({
+    [CONTAINER_ID]: document.getElementById(CONTAINER_ID).text,
+    [LANDING_ID]: document.getElementById(LANDING_ID).text,
+    [REGISTER_ID]: document.getElementById(REGISTER_ID).text,
+});
+
+const _getDef = (template_id) => ({
     [CONTAINER_ID]: document.getElementById(CONTAINER_ID).text,
     [template_id]: document.getElementById(template_id).text,
 });

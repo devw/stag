@@ -23,16 +23,6 @@ const closeApp = () => ($(`#${APP_ID}`).innerHTML = "");
 
 const initContainer = () => {
     $(`#${APP_ID} .js-close`).addEventListener("click", closeApp);
-    dashboard();
-};
-
-const loadJsonVars = async (e) => {
-    const theme = e.target.value;
-    const text = await fetch(`data/${theme}-text.json`);
-    const style = await fetch(`data/${theme}-custom.json`);
-    const textJson = await text.json();
-    const styleJson = await style.json();
-    landing(textJson, styleJson);
 };
 
 const disableBtn = (btn) => btn.setAttribute("disabled", "true");
@@ -43,13 +33,13 @@ const activeBtn = (btn, target) => {
 };
 
 const register = (text = data) => {
-    $(`#${APP_ID}`).innerHTML = router.get(REGISTER_ID, text);
+    // $(`#${APP_ID}`).innerHTML = router.get(REGISTER_ID, text);
     initContainer();
     $(`#${APP_ID}`).addEventListener("input", toggleButton);
 };
 
 const landing = (text = data, css = cssVars) => {
-    $(`#${APP_ID}`).innerHTML = router.get(LANDING_ID, text);
+    $(`#${APP_ID}`).innerHTML = router.get(text);
     loadCssVars(css);
     initContainer();
     $(`#${APP_ID} .input-text`).addEventListener("input", toggleButton);
@@ -57,14 +47,7 @@ const landing = (text = data, css = cssVars) => {
     $(`#${APP_ID} .js-json-code`).innerHTML = JSON.stringify(css);
 };
 
-const dashboard = () => {
-    $(`#${APP_ID} .js-load-json`).addEventListener("click", (e) => {
-        const jsonValue = e.target.previousElementSibling.value;
-        loadCssVars(JSON.parse(jsonValue));
-    });
-    $(`#${APP_ID} .js-load-json-theme`).addEventListener("click", loadJsonVars);
-};
-
 window.addEventListener("load", () => {
     landing();
+    require("./dashboard");
 });
