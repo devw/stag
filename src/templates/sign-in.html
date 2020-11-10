@@ -1,18 +1,18 @@
 <div class="page-sign-in">
     <img class="landing_image"/>
     <div class="title">
-        {{login}}
+        {{=it.login}}
     </div>
     <div class="subtitle">
-        <p>{{enter-email-psw-to-connect}}</p>
+        <p>{{=it.enterEmailPswToConnect}}</p>
     </div>
     <div class="error" data-account-error=""></div>
     <form action="javascript:void(0);" class="inputs-container">
-        <input class="input-text" data-type="email" name="email" placeholder="{{your-email}}" type="email">
-        <input class="input-text" data-signin-password="" name="password" placeholder="{{your-password}}"
+        <input class="input-text" data-type="email" name="email" placeholder="{{=it.yourEmail}}" type="email">
+        <input class="input-text" data-signin-password="" name="password" placeholder="{{=it.yourPassword}}"
             type="password">
         <div class="">
-            <button class="btn" disabled="">{{sign-in}}</button>
+            <button class="btn" disabled="">{{=it.signIn}}</button>
         </div>
     </form>
 </div>
