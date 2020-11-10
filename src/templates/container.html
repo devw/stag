@@ -4,7 +4,12 @@
         <div class="btn-close js-close">+</div>
         <div class="content">
             {{#def.landing || ''}}
-            {{#def.register || ''}}
+            {{? it.hasCarousel }}
+                {{#def.registerCarousel || ''}}
+            {{?? true }}
+                {{#def.register || ''}}
+            {{?}}
+            
         </div>
     </div>
 </div>
