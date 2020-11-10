@@ -9,15 +9,7 @@ const toggleButton = ({ target }) => {
     const isEmail = /\S+@\S+\.\S+/.test(target.value);
     isEmail ? activeBtn(btn, target) : disableBtn(btn);
 };
-
-const loadCssVars = (cssVars) => {
-    let currentSelector = document.querySelector(`#${APP_ID}`);
-    (function traverse(obj, key) {
-        if (obj !== null && typeof obj == "object") {
-            Object.entries(obj).forEach(([key, value]) => traverse(value, key));
-        } else currentSelector.style.setProperty(key, obj);
-    })(cssVars);
-};
+const { loadCssVars } = require("../utils");
 
 const closeApp = () => ($(`#${APP_ID}`).innerHTML = "");
 
@@ -39,15 +31,19 @@ const register = (text = data) => {
 };
 
 const landing = (text = data, css = cssVars) => {
-    $(`#${APP_ID}`).innerHTML = router.get(text);
+    $(`#${APP_ID} .page-landing`).style.setProperty("display", "block");
+};
+
+const loadTemplates = (text = data, css = cssVars) => {
     loadCssVars(css);
+    $(`#${APP_ID}`).innerHTML = router.get(text);
+    require("./dashboard");
     initContainer();
-    $(`#${APP_ID} .input-text`).addEventListener("input", toggleButton);
-    $(`#${APP_ID} [name='validate']`).addEventListener("click", register);
-    $(`#${APP_ID} .js-json-code`).innerHTML = JSON.stringify(css);
+    // $(`#${APP_ID} .input-text`).addEventListener("input", toggleButton);
+    // $(`#${APP_ID} [name='validate']`).addEventListener("click", register);
 };
 
 window.addEventListener("load", () => {
+    loadTemplates();
     landing();
-    require("./dashboard");
 });

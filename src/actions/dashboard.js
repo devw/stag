@@ -18,6 +18,7 @@ const dashboard = () => {
     //     loadCssVars(JSON.parse(jsonValue));
     // });
     $(`#${APP_ID} .js-load-json-theme`).addEventListener("click", loadJsonVars);
+    // $(`#${APP_ID} .js-json-code`).innerHTML = JSON.stringify(css);
 };
 
 dashboard();
