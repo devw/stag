@@ -1,4 +1,4 @@
-const { loadTemplates, loadActions } = require("../router");
+const { loadTemplates, loadActions } = require("../utils");
 const { APP_ID } = require("../configs/pages-id.yml");
 const $ = document.querySelector.bind(document);
 

@@ -1,6 +1,6 @@
 const $ = document.querySelector.bind(document);
 const { APP_ID } = require("../configs/pages-id.yml");
-const router = require("../router");
+const router = require("../utils");
 
 const init = () =>
     $(`#${APP_ID} .js-load-json-theme`).addEventListener("click", loadJsonVars);
