@@ -1,6 +1,6 @@
 // TODO sign-in logic
 
-const { APP_ID } = require("../configs/pages-id.yml");
+const { APP_ID, SIGNIN_ID } = require("../configs/pages-id.yml");
 const { isLogged } = require("../services");
 const $ = document.querySelector.bind(document);
 let form;
@@ -21,7 +21,7 @@ const toggleButton = (e) => {
 };
 
 exports.init = () => {
-    form = $(`#${APP_ID} .js-page-sign-in form`);
+    form = $(`#${APP_ID} .${SIGNIN_ID}`);
     form.addEventListener("input", toggleButton);
     form.addEventListener("submit", onSubmit);
 };

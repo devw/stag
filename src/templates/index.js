@@ -13,12 +13,17 @@ const {
 
 const getTemplate = ({ id, html }) =>
     `<script id="${id}" type="text/x-dot-template">${html}</script>`;
+
+const getPartialTemplate = ({ id, html }) => {
+    html = `<div class="${id}" style="display: none">${html}</div>`;
+    return `<script id="${id}" type="text/x-dot-template">${html}</script>`;
+};
 const templates = [];
 
 templates.push(getTemplate({ id: ROOT_ID, html: rootTmpl }));
 templates.push(getTemplate({ id: CONTAINER_ID, html: containerTmpl }));
-templates.push(getTemplate({ id: LANDING_ID, html: landingTmpl }));
-templates.push(getTemplate({ id: REGISTER_ID, html: registerTmpl }));
-templates.push(getTemplate({ id: SIGNIN_ID, html: signInTmpl }));
+templates.push(getPartialTemplate({ id: LANDING_ID, html: landingTmpl }));
+templates.push(getPartialTemplate({ id: REGISTER_ID, html: registerTmpl }));
+templates.push(getPartialTemplate({ id: SIGNIN_ID, html: signInTmpl }));
 
 module.exports = { templates };

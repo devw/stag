@@ -1,30 +1,28 @@
-<div class="page page-landing js-page-landing">
-    <img class="landing_image"/>
-    <div class="title">
-        {{=it.loginRegister}}
-    </div>
-    <div class="sub-title">
-        <p>{{=it.enterYourEmailToContinue}}</p>
-    </div>
-    <div class="error" data-account-error=""></div>
-    <div class="inputs-container ">
-        <input class="input-text" name="email" placeholder="{{=it.yourEmail}}" type="email">
-        {{? it.hasSocialLogin }}
-            <div class="email-validate" name="validate">OK</div>
-        {{?? true }}{{?}}
-    </div>
-    {{? it.hasSocialLogin }}
-        <div>
-            <div class="or-social-login">{{=it.or}}</div>
-            <a href="#" class="fb btn">
-                <i class="fa fa-facebook fa-fw"></i> Login with Facebook
-            </a>
-            <a href="#" class="google btn"><i class="fa fa-google fa-fw"></i> Login with Google+
-            </a>
-        </div>
-    {{?? true }}
-        <div class="button">
-            <button class="btn btn-primary" name="validate" disabled="">{{=it.validate}}</button>
-        </div>
-    {{?}}
+<img class="landing_image"/>
+<div class="title">
+    {{=it.loginRegister}}
 </div>
+<div class="sub-title">
+    <p>{{=it.enterYourEmailToContinue}}</p>
+</div>
+<div class="error" data-account-error=""></div>
+<div class="inputs-container ">
+    <input class="input-text" name="email" placeholder="{{=it.yourEmail}}" type="email">
+    {{? it.hasSocialLogin }}
+        <div class="email-validate" name="validate">OK</div>
+    {{?? true }}{{?}}
+</div>
+{{? it.hasSocialLogin }}
+    <div>
+        <div class="or-social-login">{{=it.or}}</div>
+        <a href="#" class="fb btn">
+            <i class="fa fa-facebook fa-fw"></i> Login with Facebook
+        </a>
+        <a href="#" class="google btn"><i class="fa fa-google fa-fw"></i> Login with Google+
+        </a>
+    </div>
+{{?? true }}
+    <div class="button">
+        <button class="btn btn-primary" name="validate" disabled="">{{=it.validate}}</button>
+    </div>
+{{?}}

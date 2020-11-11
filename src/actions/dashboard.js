@@ -1,5 +1,5 @@
 const $ = document.querySelector.bind(document);
-const { APP_ID } = require("../configs/pages-id.yml");
+const { APP_ID, LANDING_ID } = require("../configs/pages-id.yml");
 const utils = require("../utils");
 const load = require("./load");
 
@@ -21,7 +21,7 @@ const uploadTheme = async (e) => {
     utils.updatePages(await text.json());
     utils.updateCss(styleJson);
     load.loadActions();
-    $(`#${APP_ID} .page-landing`).style.setProperty("display", "block");
+    $(`#${APP_ID} .${LANDING_ID}`).style.setProperty("display", "block");
     $(`#${APP_ID} .js-json-code`).value = JSON.stringify(styleJson);
 };
 
