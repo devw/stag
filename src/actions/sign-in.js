@@ -1,5 +1,3 @@
-// TODO sign-in logic
-
 const { APP_ID, SIGNIN_ID } = require("../configs/pages-id.yml");
 const { isLogged } = require("../services");
 const $ = document.querySelector.bind(document);

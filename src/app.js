@@ -1,4 +1,5 @@
 require("./styles/main.scss");
+require("./styles/loader.scss");
 require("./actions");
 const { APP_ID } = require("./configs/pages-id.yml");
 
