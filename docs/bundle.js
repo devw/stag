@@ -31,7 +31,7 @@ eval("// Module\nvar code = \"<div class=\\\"container\\\">\\n    <div class=\\\
 /*! CommonJS bailout: module.exports is used directly at 4:0-14 */
 /***/ ((module) => {
 
-eval("// Module\nvar code = \"<img class=\\\"landing_image\\\"/>\\n<div class=\\\"title\\\">\\n    {{=it.loginRegister}}\\n</div>\\n<div class=\\\"sub-title\\\">\\n    <p>{{=it.enterYourEmailToContinue}}</p>\\n</div>\\n<div class=\\\"error\\\" data-account-error=\\\"\\\"></div>\\n<div class=\\\"inputs-container \\\">\\n    <input class=\\\"input-text\\\" name=\\\"email\\\" placeholder=\\\"{{=it.yourEmail}}\\\" type=\\\"email\\\">\\n    {{? it.hasSocialLogin }}\\n        <div class=\\\"email-validate\\\" name=\\\"validate\\\">OK</div>\\n    {{?? true }}{{?}}\\n</div>\\n{{? it.hasSocialLogin }}\\n    <div>\\n        <div class=\\\"or-social-login\\\">{{=it.or}}</div>\\n        <a href=\\\"#\\\" class=\\\"fb btn\\\">\\n            <i class=\\\"fa fa-facebook fa-fw\\\"></i> Login with Facebook\\n        </a>\\n        <a href=\\\"#\\\" class=\\\"google btn\\\"><i class=\\\"fa fa-google fa-fw\\\"></i> Login with Google+\\n        </a>\\n    </div>\\n{{?? true }}\\n    <div class=\\\"button\\\">\\n        <button class=\\\"btn btn-primary\\\" name=\\\"validate\\\" disabled=\\\"\\\">{{=it.validate}}</button>\\n    </div>\\n{{?}}\\n\";\n// Exports\nmodule.exports = code;\n\n//# sourceURL=webpack://stag-dotjs/./src/templates/landing.html?");
+eval("// Module\nvar code = \"<img class=\\\"landing_image\\\"/>\\n<div class=\\\"title\\\">\\n    {{=it.loginRegister}}\\n</div>\\n<div class=\\\"sub-title\\\">\\n    <p>{{=it.enterYourEmailToContinue}}</p>\\n</div>\\n<div class=\\\"error\\\" data-account-error=\\\"\\\"></div>\\n<form action=\\\"javascript:void(0);\\\" class=\\\"inputs-container\\\">\\n    <div class=\\\"inputs-container \\\">\\n        <input class=\\\"input-text\\\" name=\\\"email\\\" placeholder=\\\"{{=it.yourEmail}}\\\" type=\\\"email\\\">\\n        {{? it.hasSocialLogin }}\\n            <div class=\\\"email-validate\\\" name=\\\"validate\\\">OK</div>\\n        {{?? true }}{{?}}\\n    </div>\\n    {{? it.hasSocialLogin }}\\n        <div>\\n            <div class=\\\"or-social-login\\\">{{=it.or}}</div>\\n            <a href=\\\"#\\\" class=\\\"fb btn\\\">\\n                <i class=\\\"fa fa-facebook fa-fw\\\"></i> Login with Facebook\\n            </a>\\n            <a href=\\\"#\\\" class=\\\"google btn\\\"><i class=\\\"fa fa-google fa-fw\\\"></i> Login with Google+\\n            </a>\\n        </div>\\n    {{?? true }}\\n        <div class=\\\"button\\\">\\n            <button class=\\\"btn btn-primary\\\" name=\\\"validate\\\" disabled=\\\"\\\">{{=it.validate}}</button>\\n        </div>\\n    {{?}}\\n</form>\\n\";\n// Exports\nmodule.exports = code;\n\n//# sourceURL=webpack://stag-dotjs/./src/templates/landing.html?");
 
 /***/ }),
 
@@ -220,7 +220,7 @@ eval("const { updatePages } = __webpack_require__(/*! ../utils */ \"./src/utils/
 /*! runtime requirements: __webpack_exports__, __webpack_require__ */
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("const {\n    APP_ID,\n    LANDING_ID,\n    REGISTER_ID,\n    SIGNIN_ID,\n} = __webpack_require__(/*! ../configs/pages-id.yml */ \"./src/configs/pages-id.yml\");\nconst { isRegistered } = __webpack_require__(/*! ../services */ \"./src/services/index.js\");\nconst $ = document.querySelector.bind(document);\n\nconst disableBtn = (btn) => btn.setAttribute(\"disabled\", \"true\");\n\nlet node;\n\nconst activeBtn = (btn, target) => {\n    btn.removeAttribute(\"disabled\");\n    sessionStorage.setItem(\"email\", target.value); //TODO fix it\n};\nconst toggleButton = ({ target }) => {\n    const btn = $(\"button\"); //TODO fix it\n    const isEmail = /\\S+@\\S+\\.\\S+/.test(target.value);\n    isEmail ? activeBtn(btn, target) : disableBtn(btn);\n};\n\nconst onSubmit = async () => {\n    const email = $(`#${APP_ID} [type='email']`).value;\n    (await isRegistered(email)) ? signIn() : register();\n};\n\nconst register = () => {\n    node.style.setProperty(\"display\", \"none\");\n    $(`#${APP_ID} .${REGISTER_ID}`).style.setProperty(\"display\", \"block\");\n};\n\nconst signIn = () => {\n    node.style.setProperty(\"display\", \"none\");\n    $(`#${APP_ID} .${SIGNIN_ID}`).style.setProperty(\"display\", \"block\");\n};\n\nexports.init = () => {\n    node = $(`#${APP_ID} .${LANDING_ID}`);\n    node.style.setProperty(\"display\", \"block\");\n    node.addEventListener(\"input\", toggleButton);\n    $(`#${APP_ID} [name='validate']`).addEventListener(\"click\", onSubmit);\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/actions/landing.js?");
+eval("const {\n    APP_ID,\n    LANDING_ID,\n    REGISTER_ID,\n    SIGNIN_ID,\n} = __webpack_require__(/*! ../configs/pages-id.yml */ \"./src/configs/pages-id.yml\");\nconst { isRegistered } = __webpack_require__(/*! ../services */ \"./src/services/index.js\");\nconst $ = document.querySelector.bind(document);\nconst { toggleModules } = __webpack_require__(/*! ../utils */ \"./src/utils/index.js\");\n\nconst disableBtn = (btn) => btn.setAttribute(\"disabled\", \"true\");\n\nlet form;\n\nconst activeBtn = (btn, target) => {\n    btn.removeAttribute(\"disabled\");\n    sessionStorage.setItem(\"email\", target.value); //TODO fix it\n};\nconst toggleButton = ({ target }) => {\n    const btn = $(\"button\"); //TODO fix it\n    const isEmail = /\\S+@\\S+\\.\\S+/.test(target.value);\n    isEmail ? activeBtn(btn, target) : disableBtn(btn);\n};\n\nconst onSubmit = async () => {\n    const email = $(`#${APP_ID} [type='email']`).value;\n    (await isRegistered(email)) ? signIn() : register();\n};\n\nconst register = () => {\n    toggleModules([LANDING_ID, REGISTER_ID]);\n};\n\nconst signIn = () => {\n    toggleModules([LANDING_ID, SIGNIN_ID]);\n};\n\nexports.init = () => {\n    toggleModules([LANDING_ID]);\n    form = $(`#${APP_ID} .${LANDING_ID} form`);\n    form.addEventListener(\"input\", toggleButton);\n    form.addEventListener(\"submit\", onSubmit);\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/actions/landing.js?");
 
 /***/ }),
 
@@ -299,13 +299,14 @@ eval("const rootTmpl = __webpack_require__(/*! ./root.html */ \"./src/templates/
   !*** ./src/utils/index.js ***!
   \****************************/
 /*! default exports */
+/*! export toggleModules [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export updateCss [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export updatePages [provided] [no usage info] [missing usage info prevents renaming] */
 /*! other exports [not provided] [no usage info] */
 /*! runtime requirements: __webpack_exports__, __webpack_require__ */
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("const { updatePages } = __webpack_require__(/*! ./load-pages */ \"./src/utils/load-pages.js\");\nconst { updateCss } = __webpack_require__(/*! ./load-css */ \"./src/utils/load-css.js\");\n\nexports.updatePages = updatePages;\nexports.updateCss = updateCss;\n\n\n//# sourceURL=webpack://stag-dotjs/./src/utils/index.js?");
+eval("const { updatePages } = __webpack_require__(/*! ./load-pages */ \"./src/utils/load-pages.js\");\nconst { updateCss } = __webpack_require__(/*! ./load-css */ \"./src/utils/load-css.js\");\nconst { toggleModules: toggleModules } = __webpack_require__(/*! ./toggle-module */ \"./src/utils/toggle-module.js\");\n\nexports.updatePages = updatePages;\nexports.updateCss = updateCss;\nexports.toggleModules = toggleModules;\n\n\n//# sourceURL=webpack://stag-dotjs/./src/utils/index.js?");
 
 /***/ }),
 
@@ -334,6 +335,20 @@ eval("const { APP_ID } = __webpack_require__(/*! ../configs/pages-id.yml */ \"./
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 eval("const { templates } = __webpack_require__(/*! ../templates */ \"./src/templates/index.js\");\nconst doT = __webpack_require__(/*! ../doT */ \"./src/doT.js\");\nconst {\n    APP_ID,\n    ROOT_ID,\n    CONTAINER_ID,\n    LANDING_ID,\n    REGISTER_ID,\n    SIGNIN_ID,\n} = __webpack_require__(/*! ../configs/pages-id.yml */ \"./src/configs/pages-id.yml\");\nconst $ = document.querySelector.bind(document);\n\nconst getDef = () => ({\n    [CONTAINER_ID]: document.getElementById(CONTAINER_ID).text,\n    [LANDING_ID]: document.getElementById(LANDING_ID).text,\n    [REGISTER_ID]: document.getElementById(REGISTER_ID).text,\n    [SIGNIN_ID]: document.getElementById(SIGNIN_ID).text,\n});\n\nconst appendTemplate = (e) => {\n    const elemDiv = document.createElement(\"div\");\n    elemDiv.innerHTML = e.trim();\n    document.body.appendChild(elemDiv);\n};\n\nconst getTemplate = (data) => {\n    templates.forEach(appendTemplate);\n    return doT.template({\n        tmpl: document.getElementById(ROOT_ID).text,\n        def: getDef(),\n    })(data);\n};\n\nexports.updatePages = (text) => {\n    $(`#${APP_ID}`).innerHTML = getTemplate(text);\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/utils/load-pages.js?");
+
+/***/ }),
+
+/***/ "./src/utils/toggle-module.js":
+/*!************************************!*\
+  !*** ./src/utils/toggle-module.js ***!
+  \************************************/
+/*! default exports */
+/*! export toggleModules [provided] [no usage info] [missing usage info prevents renaming] */
+/*! other exports [not provided] [no usage info] */
+/*! runtime requirements: __webpack_exports__, __webpack_require__ */
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+eval("const { APP_ID } = __webpack_require__(/*! ../configs/pages-id.yml */ \"./src/configs/pages-id.yml\");\nconst $ = document.querySelector.bind(document);\n\nconst toggleModule = (id) => {\n    const module = $(`#${APP_ID} .${id}`);\n    module.style.getPropertyValue(\"display\") == \"none\"\n        ? module.style.setProperty(\"display\", \"block\")\n        : module.style.setProperty(\"display\", \"none\");\n};\n\nexports.toggleModules = (ids) => {\n    ids.forEach(toggleModule);\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/utils/toggle-module.js?");
 
 /***/ }),
 

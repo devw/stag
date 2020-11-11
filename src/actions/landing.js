@@ -6,10 +6,11 @@ const {
 } = require("../configs/pages-id.yml");
 const { isRegistered } = require("../services");
 const $ = document.querySelector.bind(document);
+const { toggleModules } = require("../utils");
 
 const disableBtn = (btn) => btn.setAttribute("disabled", "true");
 
-let node;
+let form;
 
 const activeBtn = (btn, target) => {
     btn.removeAttribute("disabled");
@@ -27,18 +28,16 @@ const onSubmit = async () => {
 };
 
 const register = () => {
-    node.style.setProperty("display", "none");
-    $(`#${APP_ID} .${REGISTER_ID}`).style.setProperty("display", "block");
+    toggleModules([LANDING_ID, REGISTER_ID]);
 };
 
 const signIn = () => {
-    node.style.setProperty("display", "none");
-    $(`#${APP_ID} .${SIGNIN_ID}`).style.setProperty("display", "block");
+    toggleModules([LANDING_ID, SIGNIN_ID]);
 };
 
 exports.init = () => {
-    node = $(`#${APP_ID} .${LANDING_ID}`);
-    node.style.setProperty("display", "block");
-    node.addEventListener("input", toggleButton);
-    $(`#${APP_ID} [name='validate']`).addEventListener("click", onSubmit);
+    toggleModules([LANDING_ID]);
+    form = $(`#${APP_ID} .${LANDING_ID} form`);
+    form.addEventListener("input", toggleButton);
+    form.addEventListener("submit", onSubmit);
 };
