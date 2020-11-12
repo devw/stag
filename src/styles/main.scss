@@ -171,6 +171,11 @@
     cursor: pointer;
 }
 
+.btn-small {
+    width: 40%;
+    margin: 20px auto;
+}
+
 .btn:disabled,
 .btn[disabled] {
     background-color: var(--button-disabled-background-color);

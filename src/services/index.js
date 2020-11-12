@@ -18,7 +18,6 @@ exports.isRegistered = async (email) => {
         toggleLoading();
         setTimeout(() => {
             // res(/@gm/.test(email));
-            console.log(localStorage.getItem("email"));
             res(localStorage.getItem("email") === email);
             localStorage.setItem("email", email);
             toggleLoading();
