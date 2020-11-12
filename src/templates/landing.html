@@ -7,7 +7,7 @@
 <form action="javascript:void(0);" class="inputs-container">
     <div class="inputs-container">
         <input
-            class="input-text"
+            class="input-text {{? it.hasSocialLogin }} input-text-secondary {{?? true}}{{?}}"
             name="email"
             placeholder="{{=it.yourEmail}}"
             type="email"
