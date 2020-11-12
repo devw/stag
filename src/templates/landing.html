@@ -1,30 +1,44 @@
-<img class="landing_image"/>
-<div class="title">
-    {{=it.loginRegister}}
-</div>
+<img class="landing_image" />
+<div class="title">{{=it.loginRegister}}</div>
 <div class="sub-title">
     <p>{{=it.enterYourEmailToContinue}}</p>
 </div>
 <div class="error" data-account-error=""></div>
 <form action="javascript:void(0);" class="inputs-container">
-    <div class="inputs-container ">
-        <input class="input-text" name="email" placeholder="{{=it.yourEmail}}" type="email">
+    <div class="inputs-container">
+        <input
+            class="input-text"
+            name="email"
+            placeholder="{{=it.yourEmail}}"
+            type="email"
+        />
         {{? it.hasSocialLogin }}
-            <div class="email-validate" name="validate">OK</div>
+        <input
+            type="submit"
+            class="btn-secondary"
+            name="validate"
+            disabled=""
+            value="OK"
+        />
         {{?? true }}{{?}}
     </div>
     {{? it.hasSocialLogin }}
-        <div>
-            <div class="or-social-login">{{=it.or}}</div>
-            <a href="#" class="fb btn">
-                <i class="fa fa-facebook fa-fw"></i> Login with Facebook
-            </a>
-            <a href="#" class="google btn"><i class="fa fa-google fa-fw"></i> Login with Google+
-            </a>
-        </div>
+    <div>
+        <div class="or-social-login">{{=it.or}}</div>
+        <a href="#" class="fb btn">
+            <i class="fa fa-facebook fa-fw"></i> Login with Facebook
+        </a>
+        <a href="#" class="google btn"
+            ><i class="fa fa-google fa-fw"></i> Login with Google+
+        </a>
+    </div>
     {{?? true }}
-        <div class="button">
-            <button class="btn btn-primary" name="validate" disabled="">{{=it.validate}}</button>
-        </div>
+    <input
+        type="submit"
+        class="btn btn-primary"
+        name="validate"
+        disabled=""
+        value="{{=it.validate}}"
+    />
     {{?}}
 </form>

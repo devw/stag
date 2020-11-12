@@ -7,9 +7,7 @@ const {
 const { isRegistered } = require("../services");
 const $ = document.querySelector.bind(document);
 const { toggleModules } = require("../utils");
-
 const disableBtn = (btn) => btn.setAttribute("disabled", "true");
-
 let form;
 
 const activeBtn = (btn, target) => {
@@ -17,7 +15,7 @@ const activeBtn = (btn, target) => {
     sessionStorage.setItem("email", target.value); //TODO fix it
 };
 const toggleButton = ({ target }) => {
-    const btn = $("button"); //TODO fix it
+    const btn = form.querySelector("input[type='submit']");
     const isEmail = /\S+@\S+\.\S+/.test(target.value);
     isEmail ? activeBtn(btn, target) : disableBtn(btn);
 };
