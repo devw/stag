@@ -1,5 +1,5 @@
 const $ = document.querySelector.bind(document);
-const { APP_ID, LANDING_ID } = require("../configs/pages-id.yml");
+const { APP_ID, LANDING_ID } = require("../templates/");
 const utils = require("../utils");
 const load = require("./load");
 

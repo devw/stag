@@ -1,4 +1,4 @@
-const { APP_ID, REGISTER_ID, SIGNIN_ID } = require("../configs/pages-id.yml");
+const { APP_ID, REGISTER_ID, SIGNIN_ID } = require("../templates/");
 const { isRegistered } = require("../services");
 const $ = document.querySelector.bind(document);
 const { toggleModules, serialize, isFormFilled } = require("../utils");

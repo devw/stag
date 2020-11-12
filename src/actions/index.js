@@ -1,6 +1,6 @@
 const { updatePages } = require("../utils");
 const { updateCss } = require("../utils");
-const { APP_ID, LANDING_ID } = require("../configs/pages-id.yml");
+const { APP_ID, LANDING_ID } = require("../templates/");
 const { loadActions } = require("./load");
 const css = require("../../public/data/custom.json");
 const text = require("../../public/data/text.json");

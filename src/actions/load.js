@@ -2,7 +2,7 @@ const { init: initDashboard } = require("./dashboard");
 const { init: initLanding } = require("./landing");
 const { init: initSignIn } = require("./sign-in");
 const { init: initRegistration } = require("./registration");
-const { APP_ID } = require("../configs/pages-id.yml");
+const { APP_ID } = require("../templates/");
 const $ = document.querySelector.bind(document);
 
 const initContainer = () => {

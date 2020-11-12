@@ -1,4 +1,4 @@
-const { APP_ID } = require("../configs/pages-id.yml");
+const { APP_ID } = require("../templates/");
 
 exports.updateCss = (cssVars) => {
     let currentSelector = document.querySelector(`#${APP_ID}`);

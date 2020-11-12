@@ -1,4 +1,4 @@
-const { APP_ID } = require("../configs/pages-id.yml");
+const { APP_ID } = require("../templates/");
 const $ = document.querySelector.bind(document);
 
 const toggleModule = (id) => {

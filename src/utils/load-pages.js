@@ -1,13 +1,13 @@
-const { templates } = require("../templates");
 const doT = require("../doT");
 const {
+    templates,
     APP_ID,
     ROOT_ID,
     CONTAINER_ID,
     LANDING_ID,
     REGISTER_ID,
     SIGNIN_ID,
-} = require("../configs/pages-id.yml");
+} = require("../templates/");
 const $ = document.querySelector.bind(document);
 
 const getDef = () => ({

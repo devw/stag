@@ -1,4 +1,4 @@
-const { APP_ID, SIGNIN_ID } = require("../configs/pages-id.yml");
+const { APP_ID, SIGNIN_ID } = require("../templates/");
 const { isLogged } = require("../services");
 const $ = document.querySelector.bind(document);
 let form;
