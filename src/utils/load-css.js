@@ -1,7 +1,7 @@
 const { APP_ID } = require("../templates/");
 const $ = document.querySelector.bind(document);
 
-const pretty = (ugly) => JSON.stringify(ugly, undefined, 2);
+const pretty = (ugly) => JSON.stringify(ugly, undefined, 1);
 
 exports.updateCss = (cssVars) => {
     $(`#${APP_ID} .js-json-code`).value = pretty(cssVars); //REMOVE

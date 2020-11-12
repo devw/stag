@@ -204,11 +204,9 @@
 }
 
 .input-text {
+    border: none;
+    outline: none;
     border-bottom: 1px solid;
-    border-bottom-style: groove;
-    border-left-style: hidden;
-    border-right-style: hidden;
-    border-top-style: hidden;
     font: 400 13.3333px Arial;
     margin-bottom: var(--input-margin);
     padding-left: 2px;
