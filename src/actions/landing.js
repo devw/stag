@@ -22,6 +22,8 @@ const toggleButton = ({ target }) => {
 
 const onSubmit = async () => {
     const email = $(`#${APP_ID} [type='email']`).value;
+    $(`#${APP_ID} .${REGISTER_ID} form [type='email']`).value = email;
+    $(`#${APP_ID} .${SIGNIN_ID} form [type='email']`).value = email;
     (await isRegistered(email)) ? signIn() : register();
 };
 
