@@ -3,11 +3,6 @@ const { APP_ID, LANDING_ID } = require("../templates/");
 const utils = require("../utils");
 const load = require("./load");
 
-const init = () => {
-    $(`#${APP_ID} .js-load-json-theme`).addEventListener("click", uploadTheme);
-    $(`#${APP_ID} .js-load-json`).addEventListener("click", loadFromTextarea);
-};
-
 const loadFromTextarea = (e) => {
     const css = e.target.previousElementSibling.value;
     utils.updateCss(JSON.parse(css));
@@ -22,7 +17,11 @@ const uploadTheme = async (e) => {
     utils.updateCss(styleJson);
     load.loadActions();
     $(`#${APP_ID} .${LANDING_ID}`).style.setProperty("display", "block");
-    $(`#${APP_ID} .js-json-code`).value = JSON.stringify(styleJson);
+};
+
+const init = () => {
+    $(`#${APP_ID} .js-load-json-theme`).addEventListener("click", uploadTheme);
+    $(`#${APP_ID} .js-load-json`).addEventListener("click", loadFromTextarea);
 };
 
 module.exports = {

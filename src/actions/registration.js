@@ -15,7 +15,7 @@ const toggleButton = ({ target }) => {
 };
 
 const onSubmit = async () => {
-    console.log(serialize(form));
+    serialize(form);
     isRegistered("@gm"); // TODO to fix
     toggleModules([REGISTER_ID, SIGNIN_ID]);
 };
