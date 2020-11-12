@@ -1,7 +1,7 @@
 const { APP_ID, REGISTER_ID } = require("../configs/pages-id.yml");
 const { isRegistered } = require("../services");
 const $ = document.querySelector.bind(document);
-const { toggleModules, serialize } = require("../utils");
+const { toggleModules, serialize, isFormFilled } = require("../utils");
 const disableBtn = (btn) => btn.setAttribute("disabled", "true");
 let form;
 
@@ -10,7 +10,13 @@ const activeBtn = (btn, target) => {
     sessionStorage.setItem("email", target.value); //TODO fix it
 };
 const toggleButton = ({ target }) => {
-    target.nextElementSibling.removeAttribute("disabled");
+    if (target.value.length > 2)
+        target.nextElementSibling.removeAttribute("disabled");
+
+    const btn = form.querySelector("input[type='submit']");
+    isFormFilled(form)
+        ? btn.removeAttribute("disabled")
+        : btn.setAttribute("disabled", "true");
 };
 
 const onSubmit = async () => {

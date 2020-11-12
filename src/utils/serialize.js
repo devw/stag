@@ -3,8 +3,8 @@ const serialize = (form) => {
     return Array.from(new FormData(form)).reduce(reducer, {});
 };
 
-const isFormFilled = (node) => {
-    const inputs = serialize(node.querySelector("form"));
+const isFormFilled = (form) => {
+    const inputs = serialize(form);
     return Object.values(inputs).every((e) => e.length > 0);
 };
 
