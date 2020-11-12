@@ -17,7 +17,10 @@ exports.isRegistered = async (email) => {
     return new Promise((res, _) => {
         toggleLoading();
         setTimeout(() => {
-            res(/@gm/.test(email));
+            // res(/@gm/.test(email));
+            console.log(localStorage.getItem("email"));
+            res(localStorage.getItem("email") === email);
+            localStorage.setItem("email", email);
             toggleLoading();
         }, 500);
     });
@@ -28,7 +31,8 @@ exports.isLogged = async (email, psw) => {
     return new Promise((res, _) => {
         toggleLoading();
         setTimeout(() => {
-            res(/@gm/.test(email) && /a/.test(psw));
+            res(localStorage.getItem("email") === email);
+            // res(/@gm/.test(email) && /a/.test(psw));
             toggleLoading();
         }, 500);
     });
