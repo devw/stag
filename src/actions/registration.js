@@ -1,14 +1,9 @@
-const { APP_ID, REGISTER_ID } = require("../configs/pages-id.yml");
+const { APP_ID, REGISTER_ID, SIGNIN_ID } = require("../configs/pages-id.yml");
 const { isRegistered } = require("../services");
 const $ = document.querySelector.bind(document);
 const { toggleModules, serialize, isFormFilled } = require("../utils");
-const disableBtn = (btn) => btn.setAttribute("disabled", "true");
 let form;
 
-const activeBtn = (btn, target) => {
-    btn.removeAttribute("disabled");
-    sessionStorage.setItem("email", target.value); //TODO fix it
-};
 const toggleButton = ({ target }) => {
     if (target.value.length > 2)
         target.nextElementSibling.removeAttribute("disabled");
@@ -21,6 +16,8 @@ const toggleButton = ({ target }) => {
 
 const onSubmit = async () => {
     console.log(serialize(form));
+    isRegistered("@gm"); // TODO to fix
+    toggleModules([REGISTER_ID, SIGNIN_ID]);
 };
 
 const goNextSlide = () => {
@@ -47,6 +44,4 @@ exports.init = () => {
         e.addEventListener("click", goPrevSlide)
     );
     form.addEventListener("submit", onSubmit);
-
-    // form.addEventListener("submit", onSubmit);
 };
