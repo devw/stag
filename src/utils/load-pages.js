@@ -1,13 +1,22 @@
 const { templates } = require("../templates");
 const doT = require("../doT");
-const id_pages = require("../configs/pages-id.yml");
-const { APP_ID, ROOT_ID, CONTAINER_ID, LANDING_ID, REGISTER_ID } = id_pages;
+const {
+    APP_ID,
+    ROOT_ID,
+    CONTAINER_ID,
+    LANDING_ID,
+    REGISTER_ID,
+    SIGNIN_ID,
+} = require("../configs/pages-id.yml");
 const $ = document.querySelector.bind(document);
 
 const getDef = () => ({
     [CONTAINER_ID]: document.getElementById(CONTAINER_ID).text,
     [LANDING_ID]: document.getElementById(LANDING_ID).text,
     [REGISTER_ID]: document.getElementById(REGISTER_ID).text,
+    [SIGNIN_ID]: document.getElementById(SIGNIN_ID).text,
+    registerNoSlides: document.getElementById("registerNoSlides").text,
+    registerWithSlides: document.getElementById("registerWithSlides").text,
 });
 
 const appendTemplate = (e) => {

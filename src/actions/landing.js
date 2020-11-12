@@ -1,28 +1,41 @@
-const { APP_ID } = require("../configs/pages-id.yml");
+const {
+    APP_ID,
+    LANDING_ID,
+    REGISTER_ID,
+    SIGNIN_ID,
+} = require("../configs/pages-id.yml");
+const { isRegistered } = require("../services");
 const $ = document.querySelector.bind(document);
-
+const { toggleModules } = require("../utils");
 const disableBtn = (btn) => btn.setAttribute("disabled", "true");
+let form;
 
 const activeBtn = (btn, target) => {
     btn.removeAttribute("disabled");
-    sessionStorage.setItem("email", target.value);
+    sessionStorage.setItem("email", target.value); //TODO fix it
 };
 const toggleButton = ({ target }) => {
-    const btn = $("button");
+    const btn = form.querySelector("input[type='submit']");
     const isEmail = /\S+@\S+\.\S+/.test(target.value);
     isEmail ? activeBtn(btn, target) : disableBtn(btn);
 };
 
+const onSubmit = async () => {
+    const email = $(`#${APP_ID} [type='email']`).value;
+    (await isRegistered(email)) ? signIn() : register();
+};
+
 const register = () => {
-    $(`#${APP_ID} .page`).style.setProperty("display", "none");
-    $(`#${APP_ID} .page-register`).style.setProperty("display", "block");
+    toggleModules([LANDING_ID, REGISTER_ID]);
 };
 
-const init = () => {
-    $(`#${APP_ID} .input-text`).addEventListener("input", toggleButton);
-    $(`#${APP_ID} [name='validate']`).addEventListener("click", register);
+const signIn = () => {
+    toggleModules([LANDING_ID, SIGNIN_ID]);
 };
 
-module.exports = {
-    init: init,
+exports.init = () => {
+    toggleModules([LANDING_ID]);
+    form = $(`#${APP_ID} .${LANDING_ID} form`);
+    form.addEventListener("input", toggleButton);
+    form.addEventListener("submit", onSubmit);
 };

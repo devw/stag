@@ -4,7 +4,7 @@
 		"--align-items": "center",
 		"--background-color": "#fff",
 		"--image": "none",
-		"--primary-text-color": "#0d3c32",
+		"--primary-text-color": "#000",
 		"--secondary-text-color": "#000",
 		"--tertiary-text-color": "#000",
 		"--error-text-color": "#f00",
@@ -17,10 +17,10 @@
 		"--normal-text-size": "16px",
 		"--small-text-size": "0.8em",
 		"--title-text-transform": "uppercase",
-		"--title-font-size": "1.875rem",
+		"--title-font-size": "24px",
 		"--title-font-family": "\"Helvetica Neue\", Arial, \"Lucida Grande\", sans-serif",
 		"--title-letter-spacing": "0.5px",
-		"--title-font-weight": 700,
+		"--title-font-weight": 600,
 		"--title-line-height": "36px",
 		"--margin": "0.1em",
 		"--padding": "0.1em",
@@ -29,17 +29,16 @@
 		"--subtitle-family": "...",
 		"--content-family": "serif",
 		"--placeholder-text-transform": "uppercase",
-		"--input-margin": "13px",
-		"--button-background-color": "#de7154",
-		"--button-disabled-background-color": "#c6c1be",
-		"--button-disabled-opacity": 1
+		"--button-background-color": "#111",
+		"--button-disabled-background-color": "#111",
+		"--button-disabled-opacity": 0.5
 	},
 	"page-landing": {
-		"--image": "url(\"https://cdn.shopify.com/s/files/1/2598/9270/files/Chien-Chat-1.png?v=1595510115\")",
-		"--image-width": "50%"
+		"--image": "url(\"https://cdn.shopify.com/s/files/1/0407/2855/9766/files/Ellipse_3_1.png?v=1596746569\")",
+		"--image-width": "30%"
 	},
 	"page-register": {
-		"--image": "url(\"https://cdn.shopify.com/s/files/1/2598/9270/files/Chien-16.png?v=1595509535\")",
+		"--image": "url(\"https://cdn.shopify.com/s/files/1/0407/2855/9766/files/Ellipse_3_1.png?v=1596746569\")",
 		"--image-width": "30%"
 	}
 }
