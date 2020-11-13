@@ -23,19 +23,17 @@ let jsonVars = {};
     });
 })();
 
-fs.writeFile(
-    `./public/data/custom.json`,
-    JSON.stringify(jsonVars, null, "\t"),
-    () => {}
-);
-
-const writeJsonText = () => {
+const writeStyle = () => {
+    const pretty = JSON.stringify(jsonVars, null, "\t");
+    fs.writeFile(`./public/data/style.json`, pretty, () => {});
+    fs.writeFile(`./public/data/${themeName}-style.json`, pretty, () => {});
+};
+const writeText = () => {
     const data = fs.readFileSync(`./src/configs/${themeName}-text.yml`, "utf8");
-    fs.writeFile(
-        `./public/data/text.json`,
-        JSON.stringify(yaml.load(data), null, "\t"),
-        () => {}
-    );
+    const pretty = JSON.stringify(yaml.load(data), null, "\t");
+    fs.writeFile(`./public/data/text.json`, pretty, () => {});
+    fs.writeFile(`./public/data/${themeName}-text.json`, pretty, () => {});
 };
 
-writeJsonText();
+writeStyle();
+writeText();

@@ -10,10 +10,9 @@ const loadStyle = () => {
 };
 
 const loadTheme = async (e) => {
-    console.log("....loadTheme");
     const theme = e.target.value;
     const text = await fetch(`data/${theme}-text.json`);
-    const style = await fetch(`data/${theme}-custom.json`);
+    const style = await fetch(`data/${theme}-style.json`);
     const styleJson = await style.json();
     utils.updatePages(await text.json());
     utils.updateCss(styleJson);

@@ -1,0 +1,37 @@
+{
+	"theme": {
+		"--background-color": "#fff",
+		"--container-border-radius": "0em",
+		"--primary-text-color": "#0d3c32",
+		"--error-text-color": "#f00",
+		"--hint-text-color": "#333",
+		"--btn-background-color": "#de7154",
+		"--btn-disabled-background-color": "#c6c1be",
+		"--btn-disabled-opacity": 1,
+		"--large-font-family": "Helvetica Neue",
+		"--large-font-size": "1.875rem",
+		"--large-font-weight": 700,
+		"--large-line-height": "2em",
+		"--large-letter-spacing": "0.05em",
+		"--large-text-transform": "none",
+		"--medium-text-size": "1.1em",
+		"--medium-font-weight": 300,
+		"--content-width": "530px",
+		"--content-padding": "1.5em",
+		"--placeholder-text-transform": "uppercase",
+		"--placeholder-font-size": "inherit",
+		"--placeholder-color": "inherit",
+		"--text-input-margin": "0.9em",
+		"--image-padding": "1em",
+		"--image-size": "40%",
+		"--image-url": "url('https://cdn.shopify.com/s/files/1/2598/9270/files/Chien-Chat-1.png?v=1595510115')"
+	},
+	"page-landing": {
+		"--image": "url(\"https://cdn.shopify.com/s/files/1/2598/9270/files/Chien-Chat-1.png?v=1595510115\")",
+		"--image-width": "40%"
+	},
+	"page-register": {
+		"--image": "url(\"https://cdn.shopify.com/s/files/1/2598/9270/files/Chien-16.png?v=1595509535\")",
+		"--image-width": "40%"
+	}
+}
