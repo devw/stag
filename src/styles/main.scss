@@ -28,7 +28,7 @@
             var(--container-bg-color) 100%,
             var(--container-bg-color) 100%
         ),
-        var(--container-bg-image) no-repeat center center fixed;
+        var(--container-bg-image) center / cover;
     background-size: cover;
     display: flex;
     height: 100%;
@@ -38,7 +38,7 @@
     text-align: center;
     top: 0;
     width: 70%; /* to host the dashboard, otherwise 100% */
-    z-index: 100;
+    z-index: 99;
 }
 
 .content {
@@ -87,6 +87,7 @@
 }
 
 // Buttons
+// I need to refactor it
 .btn {
     border: none;
     color: #fff;
@@ -106,6 +107,11 @@
     opacity: var(--btn-disabled-opacity);
 }
 
+.btn-small {
+    width: 40%;
+    margin: 20px auto;
+}
+
 .btn-close {
     cursor: pointer;
     font-size: 40px;
@@ -113,20 +119,6 @@
     right: 14px;
     top: 0;
     transform: rotate(45deg);
-}
-
-.btn-secondary {
-    border: none;
-    background-color: inherit;
-    padding: 14px 28px;
-    font-size: 16px;
-    font-weight: 900;
-    cursor: pointer;
-}
-
-.btn-small {
-    width: 40%;
-    margin: 20px auto;
 }
 
 // 4.1 checkbox
