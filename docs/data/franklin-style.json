@@ -1,12 +1,14 @@
 {
 	"theme": {
-		"--background-color": "#fff",
 		"--container-border-radius": "0em",
+		"--container-bg-color": "rgba(90, 91, 91, 0.4)",
+		"--container-bg-image": "url('https://cdn.shopify.com/s/files/1/2598/9270/files/Home-validee_1600x.jpg?v=1604650372')",
+		"--content-bg-color": "#fff",
 		"--primary-text-color": "#0d3c32",
 		"--error-text-color": "#f00",
 		"--hint-text-color": "#333",
-		"--btn-background-color": "#de7154",
-		"--btn-disabled-background-color": "#c6c1be",
+		"--btn-bg-color": "#de7154",
+		"--btn-disabled-bg-color": "#c6c1be",
 		"--btn-disabled-opacity": 1,
 		"--large-font-family": "Helvetica Neue",
 		"--large-font-size": "1.875rem",

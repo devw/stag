@@ -1,12 +1,14 @@
 theme:
-  background-color: "#fff"
   container-border-radius: 0.4em
+  container-bg-color: rgba(90, 91, 91, 0.5)
+  container-bg-image: url('https://cdn.shopify.com/s/files/1/0407/2855/9766/files/last_e439d1ee-abbe-4a69-a023-20ac8c56c7e4_1944x.jpg?v=1604655638')
+  content-bg-color: "#fff"
   primary-text-color: "#000"
   error-text-color: "#f00"
   hint-text-color: "#333"
   button:
-    btn-background-color: '#111'
-    btn-disabled-background-color: '#111'
+    btn-bg-color: '#111'
+    btn-disabled-bg-color: '#111'
     btn-disabled-opacity: 0.5
   title:
     large-font-family: Helvetica Neue
