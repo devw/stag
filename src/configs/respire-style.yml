@@ -1,44 +1,41 @@
 theme:
   background-color: "#fff"
+  container-border-radius: 0em
   primary-text-color: "#0d3c32"
-  tertiary-text-color: "#000"
   error-text-color: "#f00"
   hint-text-color: "#333"
-  medium-text-size: 1.8em
-  normal-text-size: 16px
-  small-text-size: 0.8em
-  title:
-    title-text-transform: none
-    title-font-size: 3rem
-    l-font-family: '"Burgess","Helvetica Neue",Arial,"Lucida Grande",sans-serif'
-    title-letter-spacing: 0
-    title-font-weight: 0
-    title-line-height: 45px
-  box-model: #dans theme.
-    content-margin: "0.1em"
-    content-padding: "0.1em"
-  fonts: # dans theme
-    titles-family:  "serif" # cursive | Georgia, serif | ...
-    subtitle-family: "..."
-    content-family: "serif" # cursive | Georgia, serif | ...
-  input:
-    input-margin: 13px
-  placeholders:
-    placeholder-text-transform: none
-    placeholder-font-size: 16px
-  text-input:
-    text-input-margin: 0.1em
   button:
-    button-background-color: '#007266'
-    button-disabled-background-color: '#007266'
-    button-disabled-opacity: 0.5
-  
+    btn-background-color: '#007266'
+    btn-disabled-background-color: '#007266'
+    btn-disabled-opacity: 0.5
+  title:
+    large-font-family: Burgess
+    large-font-size: 3.1em
+    large-font-weight: 300
+    large-line-height: 1.1em
+    large-letter-spacing: 0.05em
+    large-text-transform: none
+  sub-title:
+    medium-text-size: 0.98em
+    medium-font-weight: 300
+  content: 
+    content-width: 530px
+    content-padding: 1.5em
+  placeholder: 
+    placeholder-text-transform: uppercase
+    placeholder-font-size: 1.1em
+    placeholder-color: inherit
+  text-input:
+    text-input-margin: 0.9em
+  image:
+    image-padding: 0
+    image-size: 40%
+    image-url: none
+
 page-landing:
   image: none
-  image-width: 50%
+  image-width: 40%
 
 page-register:
   image: none
-  image-width: 30%
-
-
+  image-width: 40%
