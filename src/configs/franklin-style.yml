@@ -1,43 +1,41 @@
 theme:
   background-color: "#fff"
+  container-border-radius: 0em
   primary-text-color: "#0d3c32"
-  tertiary-text-color: "#000"
   error-text-color: "#f00"
   hint-text-color: "#333"
-  medium-text-size: 1.8em
-  normal-text-size: 16px
-  small-text-size: 0.8em
+  button:
+    btn-background-color: '#de7154'
+    btn-disabled-background-color: '#c6c1be'
+    btn-disabled-opacity: 1
   title:
-    title-text-transform: uppercase
-    title-font-size: 1.875rem
-    l-font-family: '"Helvetica Neue", Arial, "Lucida Grande", sans-serif'
-    title-letter-spacing: 0.5px
-    title-font-weight: 700
-    title-line-height: 36px
+    large-font-family: Helvetica Neue
+    large-font-size: 1.875rem
+    large-font-weight: 700
+    large-line-height: 2em
+    large-letter-spacing: 0.05em
+    large-text-transform: none
   sub-title:
-    
-  box-model: #dans theme.
-    margin: "0.1em"
-    padding: "0.1em"
-  fonts: # dans theme
-    titles-family:  "serif" # cursive | Georgia, serif | ...
-    subtitle-family: "..."
-    content-family: "serif" # cursive | Georgia, serif | ...
+    medium-text-size: 1.1em
+    medium-font-weight: 300
+  content: 
+    content-width: 530px
+    content-padding: 1.5em
+  placeholder: 
     placeholder-text-transform: uppercase
-  input:
-    input-margin: 13px
-  buttons:
-    button-background-color: '#de7154'
-    button-disabled-background-color: '#c6c1be'
-    button-disabled-opacity: 1
-  
+    placeholder-font-size: inherit
+    placeholder-color: inherit
+  text-input:
+    text-input-margin: 0.9em
+  image:
+    image-padding: 1em
+    image-size: 40%
+    image-url: url('https://cdn.shopify.com/s/files/1/2598/9270/files/Chien-Chat-1.png?v=1595510115')
 
 page-landing:
   image: url("https://cdn.shopify.com/s/files/1/2598/9270/files/Chien-Chat-1.png?v=1595510115")
-  image-width: 50%
+  image-width: 40%
 
 page-register:
   image: url("https://cdn.shopify.com/s/files/1/2598/9270/files/Chien-16.png?v=1595509535")
-  image-width: 30%
-
-
+  image-width: 40%

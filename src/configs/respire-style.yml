@@ -26,6 +26,8 @@ theme:
   placeholders:
     placeholder-text-transform: none
     placeholder-font-size: 16px
+  text-input:
+    text-input-margin: 0.1em
   button:
     button-background-color: '#007266'
     button-disabled-background-color: '#007266'

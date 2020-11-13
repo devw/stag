@@ -21,15 +21,17 @@ const onSubmit = async () => {
 };
 
 const goNextSlide = () => {
+    const shift = $(".carousel").style.getPropertyValue("width");
     $(".carousel").scrollBy({
-        left: +450, // TODO to fix
+        left: parseInt(shift, 10),
         behavior: "smooth",
     });
 };
 
 const goPrevSlide = () => {
+    const shift = $(".carousel").style.getPropertyValue("width");
     $(".carousel").scrollBy({
-        left: -450, // TODO to fix
+        left: parseInt(shift, 10),
         behavior: "smooth",
     });
 };

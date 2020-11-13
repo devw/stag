@@ -6,7 +6,7 @@ theme:
   hint-text-color: "#333"
   button:
     btn-background-color: '#111'
-    btn-disabled-background-color: 'none'
+    btn-disabled-background-color: '#111'
     btn-disabled-opacity: 0.5
   title:
     large-font-family: Helvetica Neue
@@ -19,12 +19,14 @@ theme:
     medium-text-size: 1.1em
     medium-font-weight: 300
   content: 
-    content-width: auto
+    content-width: 500px
     content-padding: 2.1em
   placeholder: 
     placeholder-text-transform: uppercase
     placeholder-font-size: inherit
     placeholder-color: "#111"
+  text-input:
+    text-input-margin: 1.1em
   image:
     image-padding: 1em
     image-size: 50%

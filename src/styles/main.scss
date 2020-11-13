@@ -42,7 +42,7 @@
     border-radius: var(--container-border-radius);
     padding: var(--content-padding);
     position: relative;
-    width: var(--content-width);
+    max-width: var(--content-width);
 }
 
 /*  ===================
@@ -149,7 +149,7 @@
     outline: none;
     border-bottom: 1px solid;
     font: 400 13.3333px Arial;
-    margin-bottom: var(--input-margin);
+    margin-bottom: var(--text-input-margin);
     padding-left: 2px;
     width: 100%;
 }
