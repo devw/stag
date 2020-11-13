@@ -4,7 +4,7 @@ const $ = document.querySelector.bind(document);
 const pretty = (ugly) => JSON.stringify(ugly, undefined, 1);
 
 exports.updateCss = (cssVars) => {
-    $(`#${APP_ID} .js-json-code`).value = pretty(cssVars); //REMOVE
+    $(`#${APP_ID} .js-custom-style`).value = pretty(cssVars); //REMOVE
     (function traverse(obj, key) {
         if (obj !== null && typeof obj == "object") {
             Object.entries(obj).forEach(([key, value]) => traverse(value, key));

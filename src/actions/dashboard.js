@@ -3,12 +3,14 @@ const { APP_ID, LANDING_ID } = require("../templates/");
 const utils = require("../utils");
 const load = require("./load");
 
-const loadFromTextarea = (e) => {
-    const css = e.target.previousElementSibling.value;
+const loadStyle = () => {
+    console.log("....loadStyle");
+    const css = $(`#${APP_ID} .js-custom-style`).value;
     utils.updateCss(JSON.parse(css));
 };
 
-const uploadTheme = async (e) => {
+const loadTheme = async (e) => {
+    console.log("....loadTheme");
     const theme = e.target.value;
     const text = await fetch(`data/${theme}-text.json`);
     const style = await fetch(`data/${theme}-custom.json`);
@@ -20,8 +22,8 @@ const uploadTheme = async (e) => {
 };
 
 const init = () => {
-    $(`#${APP_ID} .js-load-json-theme`).addEventListener("click", uploadTheme);
-    $(`#${APP_ID} .js-load-json`).addEventListener("click", loadFromTextarea);
+    $(`#${APP_ID} .js-load-theme`).addEventListener("click", loadTheme);
+    $(`#${APP_ID} .js-load-style`).addEventListener("click", loadStyle);
 };
 
 module.exports = {

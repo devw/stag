@@ -4,7 +4,6 @@ theme:
   image: none
   primary-text-color: "#000"
   secondary-text-color: "#000"
-  tertiary-text-color: "#000"
   error-text-color: "#f00"
   hint-text-color: "#333"
   primary-color: "#000"
