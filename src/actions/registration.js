@@ -2,7 +2,7 @@ const { APP_ID, REGISTER_ID, SIGNIN_ID } = require("../templates/");
 const { isRegistered } = require("../services");
 const $ = document.querySelector.bind(document);
 const { toggleModules, serialize, isFormFilled } = require("../utils");
-let form;
+let form, errorNode;
 
 const toggleButton = ({ target }) => {
     if (target.value.length > 2)
@@ -14,8 +14,15 @@ const toggleButton = ({ target }) => {
         : btn.setAttribute("disabled", "true");
 };
 
+const arePasswordsDiff = ({ password, confirmPassword }) =>
+    confirmPassword && confirmPassword !== password;
+
 const onSubmit = async () => {
-    serialize(form);
+    const inputs = serialize(form);
+    if (arePasswordsDiff(inputs)) {
+        errorNode.style.setProperty("display", "block");
+        return null;
+    }
     isRegistered("@gm"); // TODO to fix
     toggleModules([REGISTER_ID, SIGNIN_ID]);
 };
@@ -39,6 +46,7 @@ const goPrevSlide = () => {
 };
 
 exports.init = () => {
+    errorNode = $(`#${APP_ID} .${REGISTER_ID} .js-error`);
     form = $(`#${APP_ID} .${REGISTER_ID} form`);
     form.addEventListener("input", toggleButton);
     form.querySelectorAll(".js-next").forEach((e) =>
