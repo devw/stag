@@ -1,49 +1,43 @@
 theme:
-  align-items: center
-  background-color: "#fff"
-  image: none
+  container-border-radius: 0em
+  container-bg-color: rgba(90, 91, 91, 0.4)
+  container-bg-image: url('https://cdn.shopify.com/s/files/1/2598/9270/products/Packshotfriandiseschatvolaille_600x.jpg?v=1599487575')
+  content-bg-color: "#fff"
   primary-text-color: "#0d3c32"
-  secondary-text-color: "#000"
-  tertiary-text-color: "#000"
   error-text-color: "#f00"
   hint-text-color: "#333"
-  primary-color: "#000"
-  secondary-color: "#000"
-  tertiary-color: "#777"
-  large-text-size: 2.5em
-  medium-text-size: 1.8em
-  normal-text-size: 16px
-  small-text-size: 0.8em
+  button:
+    btn-bg-color: '#de7154'
+    btn-disabled-bg-color: '#c6c1be'
+    btn-disabled-opacity: 1
   title:
-    title-text-transform: uppercase
-    title-font-size: 1.875rem
-    title-font-family: '"Helvetica Neue", Arial, "Lucida Grande", sans-serif'
-    title-letter-spacing: 0.5px
-    title-font-weight: 700
-    title-line-height: 36px
-  box-model: #dans theme.
-    margin: "0.1em"
-    padding: "0.1em"
-    border: "none" # 1px solid red; | ...
-  fonts: # dans theme
-    titles-family:  "serif" # cursive | Georgia, serif | ...
-    subtitle-family: "..."
-    content-family: "serif" # cursive | Georgia, serif | ...
+    large-font-family: Helvetica Neue
+    large-font-size: 1.875rem
+    large-font-weight: 700
+    large-line-height: 2em
+    large-letter-spacing: 0.05em
+    large-text-transform: none
+  sub-title:
+    medium-text-size: 1.1em
+    medium-font-weight: 300
+  content: 
+    content-width: 530px
+    content-padding: 1.5em
+  placeholder: 
     placeholder-text-transform: uppercase
-  input:
-    input-margin: 13px
-  buttons:
-    button-background-color: '#de7154'
-    button-disabled-background-color: '#c6c1be'
-    button-disabled-opacity: 1
-  
+    placeholder-font-size: inherit
+    placeholder-color: inherit
+  text-input:
+    text-input-margin: 0.9em
+  image:
+    image-padding: 1em
+    image-size: 40%
+    image-url: url('https://cdn.shopify.com/s/files/1/2598/9270/files/Chien-Chat-1.png?v=1595510115')
 
 page-landing:
   image: url("https://cdn.shopify.com/s/files/1/2598/9270/files/Chien-Chat-1.png?v=1595510115")
-  image-width: 50%
+  image-width: 40%
 
 page-register:
   image: url("https://cdn.shopify.com/s/files/1/2598/9270/files/Chien-16.png?v=1595509535")
-  image-width: 30%
-
-
+  image-width: 40%

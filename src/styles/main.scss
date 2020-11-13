@@ -1,19 +1,12 @@
-/* Table of contents
+/*  ===================
+    Table of contents
 
-- Global styles
-- Theme/Typography
-- Pages
-    3.1 Landing page
-    3.2 Register page
-    3.4 Sign-in page
-- Modules
-    3.1 social-login
-    3.2 gender
-    3.3 password-verification
-- Components
-    4.1 buttons
-    4.2 inputs
-*/
+        - Global styles
+        - Theme/Typography
+        - Components
+        - Partials
+
+    =================== */
 
 /*  ===================
     1. Global styles
@@ -26,57 +19,98 @@
 }
 
 /*  ===================
-    2. Theme/Typography
+    Theme/Typography
     =================== */
-
-.theme {
-    background-color: var(--background-color);
-    border-radius: 4px;
-    color: var(--primary-text-color);
-    padding: 22px;
-    padding-bottom: 32px;
-    position: relative;
-    width: 500px;
-}
 
 .container {
     align-items: center;
-    background-color: rgba(90, 91, 91, 0.4);
+    background: linear-gradient(
+            var(--container-bg-color) 100%,
+            var(--container-bg-color) 100%
+        ),
+        var(--container-bg-image) center / cover;
+    background-size: cover;
     display: flex;
     height: 100%;
     justify-content: center;
     position: absolute;
     right: 0;
+    text-align: center;
     top: 0;
-    width: 70%;
-    z-index: 100;
+    width: 70%; /* to host the dashboard, otherwise 100% */
+    z-index: 99;
 }
 
 .content {
-    margin: var(--margin);
-    padding: var(--padding);
-    text-align: var(--align-items);
-}
-
-.mt-1 {
-    margin-top: 5px;
-}
-
-.mb-1 {
-    margin-bottom: 5px;
+    color: var(--primary-text-color);
+    background-color: var(--content-bg-color);
+    border-radius: var(--container-border-radius);
+    padding: var(--content-padding);
+    position: relative;
+    max-width: var(--content-width);
 }
 
 /*  ===================
-    3. Pages
+    Components
     =================== */
 
-/*  ===================
-    3. Modules
-    =================== */
+// Header Image
+.image {
+    content: var(--image-url);
+    padding: var(--image-padding);
+    width: var(--image-size);
+}
 
-/*  ===================
-    4. Components
-    =================== */
+// Title
+.title {
+    font-family: var(--large-font-family);
+    font-size: var(--large-font-size);
+    font-weight: var(--large-font-weight);
+    letter-spacing: var(--large-letter-spacing);
+    line-height: var(--large-line-height);
+    text-transform: var(--large-text-transform);
+}
+
+// Sub-title
+.sub-title {
+    // margin: 18px 0;
+    font-size: var(--medium-text-size);
+    font-weight: var(--medium-font-weight);
+}
+
+// Placeholder
+::placeholder {
+    background-color: var(--content-bg-color);
+    font-size: var(--placeholder-font-size);
+    color: var(--placeholder-color);
+    text-transform: var(--placeholder-text-transform);
+}
+
+// Buttons
+// I need to refactor it
+.btn {
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 10px;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+.btn.btn-primary {
+    background-color: var(--btn-bg-color);
+}
+
+.btn:disabled,
+.btn[disabled] {
+    background-color: var(--btn-disabled-bg-color);
+    opacity: var(--btn-disabled-opacity);
+}
+
+.btn-small {
+    width: 40%;
+    margin: 20px auto;
+}
 
 .btn-close {
     cursor: pointer;
@@ -87,27 +121,43 @@
     transform: rotate(45deg);
 }
 
-.title {
-    font-family: var(--title-font-family);
-    font-size: var(--title-font-size);
-    font-weight: var(--title-font-weight);
-    letter-spacing: 0.59px;
-    letter-spacing: var(--title-letter-spacing);
-    line-height: var(--title-line-height);
-    text-transform: var(--title-text-transform);
+// 4.1 checkbox
+.checkbox {
+    margin-right: 10px;
 }
 
-.sub-title {
-    margin: 18px 0;
+.checkbox-container {
+    align-items: center;
+    display: flex;
+    margin-top: 14px;
 }
 
-::placeholder {
-    font-size: var(--placeholder-font-size);
-    text-transform: var(--placeholder-text-transform);
+// 4.1 input fields
+.mandatory-container {
+    margin-top: 10px;
+}
+
+.inputs-container {
+    margin-bottom: 10px;
+}
+
+.input-text {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid;
+    font: 400 13.3333px Arial;
+    margin-bottom: var(--text-input-margin);
+    padding-left: 2px;
+    width: 100%;
+}
+
+.input-text-secondary {
+    display: inline;
+    width: 75%;
 }
 
 /*  ===================
-    Modules
+    Partials
     =================== */
 
 .or-social-login {
@@ -115,8 +165,8 @@
 }
 
 .landing_image {
-    content: var(--image);
-    width: var(--image-width);
+    // content: var(--image);
+    // width: var(--image-width);
 }
 
 // gender module for Respire theme
@@ -145,77 +195,17 @@
     color: white;
 }
 
+.mt-1 {
+    margin-top: 5px;
+}
+
+.mb-1 {
+    margin-bottom: 5px;
+}
 /*  ===================
-    Components
+    3. Pages
     =================== */
 
-// 4.1 buttons
-.btn {
-    border: none;
-    color: #fff;
-    cursor: pointer;
-    padding: 10px;
-    text-transform: uppercase;
-    width: 100%;
-}
-
-.btn.btn-primary {
-    background-color: var(--button-background-color);
-}
-
-.btn-secondary {
-    border: none;
-    background-color: inherit;
-    padding: 14px 28px;
-    font-size: 16px;
-    font-weight: 900;
-    cursor: pointer;
-}
-
-.btn-small {
-    width: 40%;
-    margin: 20px auto;
-}
-
-.btn:disabled,
-.btn[disabled] {
-    background-color: var(--button-disabled-background-color);
-    opacity: var(--button-disabled-opacity);
-}
-
-// 4.1 checkbox
-.checkbox {
-    margin-right: 10px;
-}
-
-.checkbox-container {
-    align-items: center;
-    display: flex;
-    margin-top: 14px;
-}
-
-// 4.1 input fields
-.mandatory-container {
-    margin-top: 10px;
-}
-
-.inputs-container {
-    margin-bottom: 10px;
-}
-
-.input-text {
-    border-bottom: 1px solid;
-    border-bottom-style: groove;
-    border-left-style: hidden;
-    border-right-style: hidden;
-    border-top-style: hidden;
-    font: 400 13.3333px Arial;
-    margin-bottom: var(--input-margin);
-    padding-left: 2px;
-    width: 100%;
-}
-
-.input-text-secondary {
-    display: inline;
-    width: 75%;
-}
+/*  ===================
+    3. Modules
+    =================== */

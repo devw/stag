@@ -1,39 +1,39 @@
 theme:
-  align-items: center
-  background-color: "#fff"
-  image: none
+  container-border-radius: 0.4em
+  container-bg-color: rgba(90, 91, 91, 0.5)
+  container-bg-image: url('https://www.galerieslafayette.com/magasin-rosny-sous-bois/files/2019/04/balzac.jpg')
+  content-bg-color: "#fff"
   primary-text-color: "#000"
-  secondary-text-color: "#000"
-  tertiary-text-color: "#000"
   error-text-color: "#f00"
   hint-text-color: "#333"
-  primary-color: "#000"
-  secondary-color: "#000"
-  tertiary-color: "#777"
-  large-text-size: 2.5em
-  medium-text-size: 1.8em
-  normal-text-size: 16px
-  small-text-size: 0.8em
-  title:
-    title-text-transform: uppercase
-    title-font-size: 24px
-    title-font-family: '"Helvetica Neue", Arial, "Lucida Grande", sans-serif'
-    title-letter-spacing: 0.5px
-    title-font-weight: 600
-    title-line-height: 36px
-  box-model: #dans theme.
-    margin: "0.1em"
-    padding: "0.1em"
-    border: "none" # 1px solid red; | ...
-  fonts: # dans theme
-    titles-family:  "serif" # cursive | Georgia, serif | ...
-    subtitle-family: "..."
-    content-family: "serif" # cursive | Georgia, serif | ...
-    placeholder-text-transform: uppercase
   button:
-    button-background-color: '#111'
-    button-disabled-background-color: '#111'
-    button-disabled-opacity: 0.5
+    btn-bg-color: '#111'
+    btn-disabled-bg-color: '#111'
+    btn-disabled-opacity: 0.5
+  title:
+    large-font-family: Helvetica Neue
+    large-font-size: 1.35em
+    large-font-weight: 600
+    large-line-height: 2em
+    large-letter-spacing: 0.05em
+    large-text-transform: uppercase
+  sub-title:
+    medium-text-size: 1.1em
+    medium-font-weight: 300
+  content: 
+    content-width: 500px
+    content-padding: 2.1em
+  placeholder: 
+    placeholder-text-transform: uppercase
+    placeholder-font-size: inherit
+    placeholder-color: "#111"
+  text-input:
+    text-input-margin: 1.1em
+  image:
+    image-padding: 1em
+    image-size: 50%
+    image-url: url('https://cdn.shopify.com/s/files/1/0407/2855/9766/files/Ellipse_3_1.png?v=1596746569')
+
 page-landing:
   image: url("https://cdn.shopify.com/s/files/1/0407/2855/9766/files/Ellipse_3_1.png?v=1596746569")
   image-width: 30%

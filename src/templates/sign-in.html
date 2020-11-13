@@ -1,16 +1,30 @@
-<img class="landing_image"/>
-<div class="title">
-    {{=it.login}}
-</div>
+<img class="image" />
+<div class="title">{{=it.login}}</div>
 <div class="subtitle">
     <p>{{=it.enterEmailPswToConnect}}</p>
 </div>
 <div class="error" data-account-error=""></div>
 <form action="javascript:void(0);" class="inputs-container">
-    <input class="input-text" data-type="email" name="email" placeholder="{{=it.yourEmail}}" type="email">
-    <input class="input-text" data-signin-password="" name="password" placeholder="{{=it.yourPassword}}"
-        type="password">
+    <input
+        class="input-text"
+        data-type="email"
+        name="email"
+        placeholder="{{=it.yourEmail}}"
+        type="email"
+    />
+    <input
+        class="input-text"
+        data-signin-password=""
+        name="password"
+        placeholder="{{=it.yourPassword}}"
+        type="password"
+    />
     <div class="">
-        <input class="btn btn-primary"  disabled="" type="submit" value="{{=it.signIn}}">
+        <input
+            class="btn btn-primary"
+            disabled=""
+            type="submit"
+            value="{{=it.signIn}}"
+        />
     </div>
 </form>

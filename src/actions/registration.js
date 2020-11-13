@@ -15,21 +15,25 @@ const toggleButton = ({ target }) => {
 };
 
 const onSubmit = async () => {
-    console.log(serialize(form));
+    serialize(form);
     isRegistered("@gm"); // TODO to fix
     toggleModules([REGISTER_ID, SIGNIN_ID]);
 };
 
 const goNextSlide = () => {
-    $(".carousel").scrollBy({
-        left: +450, // TODO to fix
+    const node = form.querySelector(".carousel");
+    const shift = node.style.getPropertyValue("width");
+    node.scrollBy({
+        left: parseInt(shift, 10),
         behavior: "smooth",
     });
 };
 
 const goPrevSlide = () => {
-    $(".carousel").scrollBy({
-        left: -450, // TODO to fix
+    const node = form.querySelector(".carousel");
+    const shift = node.style.getPropertyValue("width");
+    node.scrollBy({
+        left: -parseInt(shift, 10),
         behavior: "smooth",
     });
 };

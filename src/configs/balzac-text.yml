@@ -15,3 +15,6 @@ login: "Connexion"
 enterEmailPswToConnect: Renseignez votre adresse email et votre mot de passe pour vous connecter.
 validate: "Valider"
 or: ou
+yourPassword: Votre mot de passe
+confirmYourPassword: Confirmez votre mot de passe
+subscribeNewsletter: Je m'inscris à la newsletter
