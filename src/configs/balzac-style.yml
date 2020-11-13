@@ -2,7 +2,10 @@ theme:
   container-border-radius: 0.4em
   container-bg-color: rgba(90, 91, 91, 0.5)
   container-bg-image: url('https://www.galerieslafayette.com/magasin-rosny-sous-bois/files/2019/04/balzac.jpg')
-  content-bg-color: "#fff"
+  content: 
+    content-width: 500px
+    content-padding: 2.1em
+    content-bg-color: "#fff"
   primary-text-color: "#000"
   error-text-color: "#f00"
   hint-text-color: "#333"
@@ -20,9 +23,6 @@ theme:
   sub-title:
     medium-text-size: 1.1em
     medium-font-weight: 300
-  content: 
-    content-width: 500px
-    content-padding: 2.1em
   placeholder: 
     placeholder-text-transform: uppercase
     placeholder-font-size: inherit
