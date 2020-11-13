@@ -11,7 +11,7 @@ theme:
     btn-disabled-bg-color: '#007266'
     btn-disabled-opacity: 0.5
   title:
-    large-font-family: Burgess
+    large-font-family: Termina
     large-font-size: 3.1em
     large-font-weight: 300
     large-line-height: 1.1em

@@ -3,7 +3,7 @@
 	"hasSocialLogin": false,
 	"hasPasswordVerification": true,
 	"hasBirthDate": false,
-	"createAccount": "Inscription",
+	"createAccount": "Création de compte",
 	"loginRegister": "Connexion / Inscription",
 	"enterYourEmailToContinue": "Renseignez votre adresse email pour continuer.",
 	"yourEmail": "Votre email",

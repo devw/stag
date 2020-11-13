@@ -1,40 +1,39 @@
 {
 	"theme": {
-		"--container-border-radius": "0em",
-		"--container-bg-color": "rgba(90, 91, 91, 0.4)",
-		"--container-bg-image": "url('https://cdn.shopify.com/s/files/1/2598/9270/products/Packshotfriandiseschatvolaille_600x.jpg?v=1599487575')",
+		"--container-border-radius": "0.4em",
+		"--container-bg-color": "rgba(90, 91, 91, 0.5)",
+		"--container-bg-image": "url('https://www.galerieslafayette.com/magasin-rosny-sous-bois/files/2019/04/balzac.jpg')",
 		"--content-bg-color": "#fff",
-		"--primary-text-color": "#0d3c32",
-		"--error-bg-color": "#bfd9cb",
-		"--error-text-color": "#0d3c32",
+		"--primary-text-color": "#000",
+		"--error-text-color": "#f00",
 		"--hint-text-color": "#333",
-		"--btn-bg-color": "#de7154",
-		"--btn-disabled-bg-color": "#c6c1be",
-		"--btn-disabled-opacity": 1,
+		"--btn-bg-color": "#111",
+		"--btn-disabled-bg-color": "#111",
+		"--btn-disabled-opacity": 0.5,
 		"--large-font-family": "Helvetica Neue",
-		"--large-font-size": "1.875rem",
-		"--large-font-weight": 700,
+		"--large-font-size": "1.35em",
+		"--large-font-weight": 600,
 		"--large-line-height": "2em",
 		"--large-letter-spacing": "0.05em",
-		"--large-text-transform": "none",
+		"--large-text-transform": "uppercase",
 		"--medium-text-size": "1.1em",
 		"--medium-font-weight": 300,
-		"--content-width": "530px",
-		"--content-padding": "1.5em",
+		"--content-width": "500px",
+		"--content-padding": "2.1em",
 		"--placeholder-text-transform": "uppercase",
 		"--placeholder-font-size": "inherit",
-		"--placeholder-color": "inherit",
-		"--text-input-margin": "0.9em",
+		"--placeholder-color": "#111",
+		"--text-input-margin": "1.1em",
 		"--image-padding": "1em",
-		"--image-size": "40%",
-		"--image-url": "url('https://cdn.shopify.com/s/files/1/2598/9270/files/Chien-Chat-1.png?v=1595510115')"
+		"--image-size": "50%",
+		"--image-url": "url('https://cdn.shopify.com/s/files/1/0407/2855/9766/files/Ellipse_3_1.png?v=1596746569')"
 	},
 	"page-landing": {
-		"--image": "url(\"https://cdn.shopify.com/s/files/1/2598/9270/files/Chien-Chat-1.png?v=1595510115\")",
-		"--image-width": "40%"
+		"--image": "url(\"https://cdn.shopify.com/s/files/1/0407/2855/9766/files/Ellipse_3_1.png?v=1596746569\")",
+		"--image-width": "30%"
 	},
 	"page-register": {
-		"--image": "url(\"https://cdn.shopify.com/s/files/1/2598/9270/files/Chien-16.png?v=1595509535\")",
-		"--image-width": "40%"
+		"--image": "url(\"https://cdn.shopify.com/s/files/1/0407/2855/9766/files/Ellipse_3_1.png?v=1596746569\")",
+		"--image-width": "30%"
 	}
 }

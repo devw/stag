@@ -29,7 +29,7 @@ const onSubmit = async () => {
 
 const goNextSlide = () => {
     const node = form.querySelector(".carousel");
-    const shift = node.style.getPropertyValue("width");
+    const shift = getComputedStyle(node).getPropertyValue("width");
     node.scrollBy({
         left: parseInt(shift, 10),
         behavior: "smooth",
@@ -38,7 +38,7 @@ const goNextSlide = () => {
 
 const goPrevSlide = () => {
     const node = form.querySelector(".carousel");
-    const shift = node.style.getPropertyValue("width");
+    const shift = getComputedStyle(node).getPropertyValue("width");
     node.scrollBy({
         left: -parseInt(shift, 10),
         behavior: "smooth",
