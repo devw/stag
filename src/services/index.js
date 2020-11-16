@@ -1,5 +1,6 @@
 const { APP_ID, CONTAINER_ID } = require("../templates/");
 const $ = document.querySelector.bind(document);
+const { AWS_ENDPOINT } = require("../config.js");
 
 const toggleLoading = () => {
     const loading = $(`#${APP_ID} .loading`);
@@ -13,16 +14,11 @@ const toggleLoading = () => {
 };
 
 exports.isRegistered = async (email) => {
-    //TODO use AWS endpoint
-    return new Promise((res, _) => {
-        toggleLoading();
-        setTimeout(() => {
-            // res(/@gm/.test(email));
-            res(localStorage.getItem("email") === email);
-            localStorage.setItem("email", email);
-            toggleLoading();
-        }, 500);
-    });
+    toggleLoading();
+    const res = await fetch(`${AWS_ENDPOINT}/customers/search/${email}`);
+    const json = await res.json();
+    toggleLoading();
+    return json.data;
 };
 
 exports.isLogged = async (email, psw) => {
