@@ -21,8 +21,7 @@ const getHeader = (body) => ({
 
 const postRequest = async (fetchBody) => {
     const response = await fetch(
-        globalThis.Shopify?.shop ||
-            "https://antonio-franklin.myshopify.com/api/graphql",
+        globalThis.Shopify?.shop,
         getHeader(fetchBody)
     );
     return await response.json();
