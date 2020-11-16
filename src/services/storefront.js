@@ -31,7 +31,7 @@ const postRequest = async (fetchBody) => {
 exports.registerViaStorefront = async (formData) => {
     const fetchBody = getParams({ query: customerCreate, input: formData });
     console.log(fetchBody);
-    // return await postRequest(fetchBody);
+    return await postRequest(fetchBody);
 };
 
 exports.signInViaStorefront = async (formData) => {
