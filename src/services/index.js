@@ -1,6 +1,8 @@
 const { APP_ID, CONTAINER_ID } = require("../templates/");
 const $ = document.querySelector.bind(document);
 const { AWS_ENDPOINT } = require("../config.js");
+const { registerViaProxy } = require("./proxy");
+const { registerViaStorefront, signInViaStorefront } = require("./storefront");
 
 const toggleLoading = () => {
     const loading = $(`#${APP_ID} .loading`);
@@ -21,13 +23,16 @@ exports.isRegistered = async (email) => {
     return json.data;
 };
 
-exports.isLogged = async (email, psw) => {
-    //TODO use shop endpoint
+exports.register = async (inputs) => {
+    registerViaStorefront(inputs);
+    return registerViaProxy(inputs);
+};
+
+exports.isLogged = async (inputs) => {
     return new Promise((res, _) => {
         toggleLoading();
         setTimeout(() => {
-            res(localStorage.getItem("email") === email);
-            // res(/@gm/.test(email) && /a/.test(psw));
+            signInViaStorefront(inputs);
             toggleLoading();
         }, 500);
     });
