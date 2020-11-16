@@ -206,7 +206,7 @@ eval("const $ = document.querySelector.bind(document);\nconst { APP_ID, LANDING_
 /*! runtime requirements: __webpack_require__ */
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const { updatePages } = __webpack_require__(/*! ../utils */ \"./src/utils/index.js\");\nconst { updateCss } = __webpack_require__(/*! ../utils */ \"./src/utils/index.js\");\nconst { loadActions } = __webpack_require__(/*! ./load */ \"./src/actions/load.js\");\nconst css = __webpack_require__(/*! ../../public/data/style.json */ \"./public/data/style.json\");\nconst text = __webpack_require__(/*! ../../public/data/text.json */ \"./public/data/text.json\");\n\nglobalThis.addEventListener(\"load\", () => {\n    updatePages(text);\n    updateCss(css);\n    loadActions();\n});\n\n\n//# sourceURL=webpack://stag-dotjs/./src/actions/index.js?");
+eval("const { updatePages } = __webpack_require__(/*! ../utils */ \"./src/utils/index.js\");\nconst { updateCss } = __webpack_require__(/*! ../utils */ \"./src/utils/index.js\");\nconst { loadActions } = __webpack_require__(/*! ./load */ \"./src/actions/load.js\");\nconst css = __webpack_require__(/*! ../../public/data/style.json */ \"./public/data/style.json\");\nconst text = __webpack_require__(/*! ../../public/data/text.json */ \"./public/data/text.json\");\nconsole.log(\"asda\");\n\nsetTimeout(() => {\n    updatePages(text);\n    updateCss(css);\n    loadActions();\n}, 0); // TODO to fix\n\n// globalThis.addEventListener(\"load\", () => {\n//     updatePages(text);\n//     updateCss(css);\n//     loadActions();\n// });\n\n\n//# sourceURL=webpack://stag-dotjs/./src/actions/index.js?");
 
 /***/ }),
 
@@ -618,7 +618,7 @@ eval("\n\nvar isOldIE = function isOldIE() {\n  var memo;\n  return function mem
   \********************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: __webpack_require__ */
-eval("__webpack_require__(/*! ./styles/main.scss */ \"./src/styles/main.scss\");\n__webpack_require__(/*! ./styles/loader.scss */ \"./src/styles/loader.scss\");\n__webpack_require__(/*! ./styles/carousel.scss */ \"./src/styles/carousel.scss\");\n__webpack_require__(/*! ./actions */ \"./src/actions/index.js\");\nconst { APP_ID } = __webpack_require__(/*! ./templates/ */ \"./src/templates/index.js\");\n\nconst node = document.createElement(\"div\");\nnode.setAttribute(\"id\", APP_ID);\ndocument.body.prepend(node);\n\n\n//# sourceURL=webpack://stag-dotjs/./src/app.js?");
+eval("__webpack_require__(/*! ./styles/main.scss */ \"./src/styles/main.scss\");\n__webpack_require__(/*! ./styles/loader.scss */ \"./src/styles/loader.scss\");\n__webpack_require__(/*! ./styles/carousel.scss */ \"./src/styles/carousel.scss\");\n\n__webpack_require__(/*! ./actions */ \"./src/actions/index.js\");\nconst { APP_ID } = __webpack_require__(/*! ./templates/ */ \"./src/templates/index.js\");\n\nconst node = document.createElement(\"div\");\nnode.setAttribute(\"id\", APP_ID);\ndocument.body.prepend(node);\n\n\n//# sourceURL=webpack://stag-dotjs/./src/app.js?");
 })();
 
 /******/ })()
