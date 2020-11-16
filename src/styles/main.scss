@@ -50,6 +50,15 @@
     max-width: var(--content-width);
 }
 
+.error {
+    background-color: var(--error-bg-color);
+    border-radius: 3px;
+    color: var(--error-text-color);
+    display: none;
+    margin: 10px 0;
+    padding: 5px;
+}
+
 /*  ===================
     Components
     =================== */

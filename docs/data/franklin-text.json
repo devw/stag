@@ -3,7 +3,7 @@
 	"hasSocialLogin": false,
 	"hasPasswordVerification": true,
 	"hasBirthDate": false,
-	"createAccount": "Inscription",
+	"createAccount": "Création de compte",
 	"loginRegister": "Connexion / Inscription",
 	"enterYourEmailToContinue": "Renseignez votre adresse email pour continuer.",
 	"yourEmail": "Votre email",
@@ -18,5 +18,6 @@
 	"yourLastName": "Your last name",
 	"yourPassword": "Votre mot de passe",
 	"confirmYourPassword": "Confirmez votre mot de passe",
-	"subscribeNewsletter": "Je m'inscris à la newsletter Franklin"
+	"subscribeNewsletter": "Je m'inscris à la newsletter Franklin",
+	"passwordsDoNotMatch": "Les mots de passes ne correspondent pas"
 }
