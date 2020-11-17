@@ -1,5 +1,5 @@
 const { APP_ID, REGISTER_ID, SIGNIN_ID } = require("../templates/");
-const { isRegistered } = require("../services");
+const { register } = require("../services");
 const $ = document.querySelector.bind(document);
 const { toggleModules, serialize, isFormFilled } = require("../utils");
 let form, errorNode;
@@ -23,7 +23,7 @@ const onSubmit = async () => {
         errorNode.style.setProperty("display", "block");
         return null;
     }
-    isRegistered("@gm"); // TODO to fix
+    register(inputs); // TODO to fix
     toggleModules([REGISTER_ID, SIGNIN_ID]);
 };
 
