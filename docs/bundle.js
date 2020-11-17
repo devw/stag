@@ -337,7 +337,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /*! runtime requirements: __webpack_exports__, __webpack_require__ */
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("const { AWS_ENDPOINT } = __webpack_require__(/*! ../config.js */ \"./src/config.js\");\n\nexports.registerViaProxy = async (inputs) => {\n    const response = await fetch(`${AWS_ENDPOINT}/customers/add/`, {\n        method: \"POST\",\n        headers: {\n            \"Content-Type\": \"application/json\",\n        },\n        body: JSON.stringify(inputs),\n    });\n    return response.json();\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/services/proxy.js?");
+eval("const { AWS_ENDPOINT } = __webpack_require__(/*! ../config.js */ \"./src/config.js\");\n\nexports.registerViaProxy = async (inputs) => {\n    const response = await fetch(`${AWS_ENDPOINT}/user/add/`, {\n        method: \"POST\",\n        headers: {\n            \"Content-Type\": \"application/json\",\n        },\n        body: JSON.stringify(inputs),\n    });\n    return response.json();\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/services/proxy.js?");
 
 /***/ }),
 
