@@ -2,10 +2,10 @@ const { customerCreate, customerTokenCreate } = require("./mutations");
 const { AWS_ENDPOINT } = require("../config.js");
 
 const getStorefrontToken = async () => {
-    const shop = globalThis.Shopify?.shop || "antonio-balzac.myshopify.com"; // for local testing
+    const shop = globalThis.Shopify?.shop;
     const response = await fetch(`${AWS_ENDPOINT}/shops/${shop}`);
     const result = await response.json();
-    const { storefrontToken } = result[0]; // TODO change the API to get just one result
+    const { storefrontToken } = result[0];
     return storefrontToken;
 };
 

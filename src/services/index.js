@@ -17,7 +17,7 @@ const toggleLoading = () => {
 
 exports.isRegistered = async (email) => {
     toggleLoading();
-    const res = await fetch(`${AWS_ENDPOINT}/customers/search/${email}`);
+    const res = await fetch(`${AWS_ENDPOINT}/user/${email}`);
     const json = await res.json();
     toggleLoading();
     return json.data;
@@ -29,11 +29,7 @@ exports.register = async (inputs) => {
 };
 
 exports.isLogged = async (inputs) => {
-    return new Promise((res, _) => {
-        toggleLoading();
-        setTimeout(() => {
-            signInViaStorefront(inputs);
-            toggleLoading();
-        }, 500);
-    });
+    toggleLoading();
+    signInViaStorefront(inputs);
+    toggleLoading();
 };
