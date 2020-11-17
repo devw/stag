@@ -1,4 +1,4 @@
-const { customerCreate, customerAccessTokenCreate } = require("./mutations");
+const { customerCreate, customerTokenCreate } = require("./mutations");
 const { AWS_ENDPOINT } = require("../config.js");
 
 const getStorefrontToken = async () => {
@@ -11,35 +11,31 @@ const getStorefrontToken = async () => {
 
 const getParams = ({ query, input }) => ({
     query: query,
-    variables: {
-        input: input,
-    },
+    variables: { input: input },
 });
 
-const getHeader = (body) => ({
+const getHeader = async (body) => ({
     method: "POST",
     headers: {
         "Content-Type": "application/json",
-        Accept: "application/json",
-        "X-Shopify-Storefront-Access-Token": getStorefrontToken(),
+        "X-Shopify-Storefront-Access-Token": await getStorefrontToken(),
     },
     body: JSON.stringify(body),
 });
 
 const postRequest = async (fetchBody) => {
-    const response = await fetch(`/api/graphql`, getHeader(fetchBody));
+    const header = getHeader(fetchBody);
+    globalThis.header = header;
+    const response = await fetch(`/api/graphql`, await header);
     return await response.json();
 };
 
-exports.registerViaStorefront = async (formData) => {
-    const fetchBody = getParams({ query: customerCreate, input: formData });
+exports.registerViaStorefront = async (input) => {
+    const fetchBody = getParams({ query: customerCreate, input: input });
     return await postRequest(fetchBody);
 };
 
-exports.signInViaStorefront = async (formData) => {
-    const fetchBody = getParams({
-        query: customerAccessTokenCreate,
-        input: formData,
-    });
+exports.signInViaStorefront = async (input) => {
+    const fetchBody = getParams({ query: customerTokenCreate, input: input });
     return await postRequest(fetchBody);
 };

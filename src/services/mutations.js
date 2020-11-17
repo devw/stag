@@ -11,7 +11,7 @@ export const customerCreate = `mutation customerCreate($input: CustomerCreateInp
     }
   }`;
 
-export const customerAccessTokenCreate = `mutation customerAccessTokenCreate($input: CustomerAccessTokenCreateInput!) {
+export const customerTokenCreate = `mutation customerAccessTokenCreate($input: CustomerAccessTokenCreateInput!) {
     customerAccessTokenCreate(input: $input) {
       customerAccessToken {
         accessToken
