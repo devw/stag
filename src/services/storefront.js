@@ -31,6 +31,7 @@ const postRequest = async (fetchBody) => {
 };
 
 exports.registerViaStorefront = async (input) => {
+    delete input.confirmPassword;
     const fetchBody = getParams({ query: customerCreate, input: input });
     return await postRequest(fetchBody);
 };
