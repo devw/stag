@@ -4,14 +4,8 @@ const { loadActions } = require("./load");
 const css = require("../../public/data/style.json");
 const text = require("../../public/data/text.json");
 
-setTimeout(() => {
+globalThis.addEventListener("load", () => {
     updatePages(text);
     updateCss(css);
     loadActions();
-}, 0); // TODO to fix
-
-// globalThis.addEventListener("load", () => {
-//     updatePages(text);
-//     updateCss(css);
-//     loadActions();
-// });
+});

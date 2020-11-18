@@ -1,8 +1,5 @@
 const { APP_ID, CONTAINER_ID } = require("../templates/");
 const $ = document.querySelector.bind(document);
-const { AWS_ENDPOINT } = require("../config.js");
-const { registerViaProxy } = require("./proxy");
-const { registerViaStorefront, signInViaStorefront } = require("./storefront");
 
 const toggleLoading = () => {
     const loading = $(`#${APP_ID} .loading`);
@@ -16,20 +13,26 @@ const toggleLoading = () => {
 };
 
 exports.isRegistered = async (email) => {
-    toggleLoading();
-    const res = await fetch(`${AWS_ENDPOINT}/user/${email}`);
-    const json = await res.json();
-    toggleLoading();
-    return json.data;
+    //TODO use AWS endpoint
+    return new Promise((res, _) => {
+        toggleLoading();
+        setTimeout(() => {
+            // res(/@gm/.test(email));
+            res(localStorage.getItem("email") === email);
+            localStorage.setItem("email", email);
+            toggleLoading();
+        }, 500);
+    });
 };
 
-exports.register = async (inputs) => {
-    registerViaStorefront(inputs);
-    return registerViaProxy(inputs);
-};
-
-exports.isLogged = async (inputs) => {
-    toggleLoading();
-    signInViaStorefront(inputs);
-    toggleLoading();
+exports.isLogged = async (email, psw) => {
+    //TODO use shop endpoint
+    return new Promise((res, _) => {
+        toggleLoading();
+        setTimeout(() => {
+            res(localStorage.getItem("email") === email);
+            // res(/@gm/.test(email) && /a/.test(psw));
+            toggleLoading();
+        }, 500);
+    });
 };
