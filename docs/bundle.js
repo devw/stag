@@ -31,7 +31,7 @@ eval("// Module\nvar code = \"{{? it.isPopover }}\\n<div class=\\\"container pop
 /*! CommonJS bailout: module.exports is used directly at 4:0-14 */
 /***/ ((module) => {
 
-eval("// Module\nvar code = \"{{#def.container}}\\n<div class=\\\"js-dashboard\\\" style=\\\"display: none\\\">\\n    <form action=\\\"\\\" style=\\\"width: 28%\\\">\\n        <input\\n            type=\\\"button\\\"\\n            class=\\\"btn btn-primary js-load-style\\\"\\n            value=\\\"load json from textarea\\\"\\n        />\\n        <textarea\\n            class=\\\"js-custom-style\\\"\\n            style=\\\"width: 100%; max-width: 100%; height: 60vh; margin: 1rem 0\\\"\\n        ></textarea>\\n        <div class=\\\"js-load-theme\\\">\\n            <input\\n                type=\\\"button\\\"\\n                class=\\\"btn btn-primary\\\"\\n                value=\\\"franklin\\\"\\n                style=\\\"margin: 10px 0\\\"\\n            />\\n            <input\\n                type=\\\"button\\\"\\n                class=\\\"btn btn-primary\\\"\\n                value=\\\"balzac\\\"\\n                style=\\\"margin: 10px 0\\\"\\n            />\\n            <input\\n                type=\\\"button\\\"\\n                class=\\\"btn btn-primary\\\"\\n                value=\\\"respire\\\"\\n                style=\\\"margin: 10px 0\\\"\\n            />\\n            <input\\n                type=\\\"button\\\"\\n                class=\\\"btn btn-primary\\\"\\n                value=\\\"warehouse\\\"\\n                style=\\\"margin: 10px 0\\\"\\n            />\\n        </div>\\n    </form>\\n</div>\\n\";\n// Exports\nmodule.exports = code;\n\n//# sourceURL=webpack://stag-dotjs/./src/templates/dashboard.html?");
+eval("// Module\nvar code = \"{{#def.container}}\\n<div class=\\\"js-dashboard\\\" style=\\\"display: none\\\">\\n    <form action=\\\"\\\">\\n        <input\\n            type=\\\"button\\\"\\n            class=\\\"btn btn-primary js-load-style\\\"\\n            value=\\\"load json from textarea\\\"\\n        />\\n        <textarea\\n            class=\\\"js-custom-style\\\"\\n            style=\\\"width: 100%; max-width: 100%; height: 60vh; margin: 1rem 0\\\"\\n        ></textarea>\\n        <div class=\\\"js-load-theme\\\">\\n            <input\\n                type=\\\"button\\\"\\n                class=\\\"btn btn-primary\\\"\\n                value=\\\"franklin\\\"\\n                style=\\\"margin: 10px 0\\\"\\n            />\\n            <input\\n                type=\\\"button\\\"\\n                class=\\\"btn btn-primary\\\"\\n                value=\\\"balzac\\\"\\n                style=\\\"margin: 10px 0\\\"\\n            />\\n            <input\\n                type=\\\"button\\\"\\n                class=\\\"btn btn-primary\\\"\\n                value=\\\"respire\\\"\\n                style=\\\"margin: 10px 0\\\"\\n            />\\n            <input\\n                type=\\\"button\\\"\\n                class=\\\"btn btn-primary\\\"\\n                value=\\\"warehouse\\\"\\n                style=\\\"margin: 10px 0\\\"\\n            />\\n        </div>\\n    </form>\\n</div>\\n\";\n// Exports\nmodule.exports = code;\n\n//# sourceURL=webpack://stag-dotjs/./src/templates/dashboard.html?");
 
 /***/ }),
 
@@ -134,7 +134,6 @@ eval("// Module\nvar code = \"<img class=\\\"image\\\" />\\n<div class=\\\"title
 /*!   export --large-letter-spacing [provided] [no usage info] [missing usage info prevents renaming] */
 /*!   export --large-line-height [provided] [no usage info] [missing usage info prevents renaming] */
 /*!   export --large-text-transform [provided] [no usage info] [missing usage info prevents renaming] */
-/*!   export --link-color [provided] [no usage info] [missing usage info prevents renaming] */
 /*!   export --medium-font-weight [provided] [no usage info] [missing usage info prevents renaming] */
 /*!   export --medium-text-size [provided] [no usage info] [missing usage info prevents renaming] */
 /*!   export --placeholder-color [provided] [no usage info] [missing usage info prevents renaming] */
@@ -142,15 +141,13 @@ eval("// Module\nvar code = \"<img class=\\\"image\\\" />\\n<div class=\\\"title
 /*!   export --placeholder-text-transform [provided] [no usage info] [missing usage info prevents renaming] */
 /*!   export --primary-text-color [provided] [no usage info] [missing usage info prevents renaming] */
 /*!   export --text-input-margin [provided] [no usage info] [missing usage info prevents renaming] */
-/*!   export --transform-opacity [provided] [no usage info] [missing usage info prevents renaming] */
-/*!   export --transform-scale [provided] [no usage info] [missing usage info prevents renaming] */
 /*!   other exports [not provided] [no usage info] */
 /*! other exports [not provided] [no usage info] */
 /*! runtime requirements: module */
 /***/ ((module) => {
 
 "use strict";
-eval("module.exports = JSON.parse(\"{\\\"theme\\\":{\\\"--container-border-radius\\\":\\\"0.2em\\\",\\\"--container-bg-color\\\":\\\"rgba(90, 91, 91, 0.4)\\\",\\\"--container-bg-image\\\":\\\"url(\\\\\\\"https://images-na.ssl-images-amazon.com/images/I/81Dpm0mr03L.jpg\\\\\\\")\\\",\\\"--content-width\\\":\\\"530px\\\",\\\"--content-padding\\\":\\\"1.2em\\\",\\\"--content-bg-color\\\":\\\"#fff\\\",\\\"--transform-opacity\\\":0.2,\\\"--transform-scale\\\":0.8,\\\"--primary-text-color\\\":\\\"#1e2d7d\\\",\\\"--error-text-color\\\":\\\"#ff0000\\\",\\\"--hint-text-color\\\":\\\"#333\\\",\\\"--btn-bg-color\\\":\\\"#00badb\\\",\\\"--btn-disabled-bg-color\\\":\\\"#00badb\\\",\\\"--btn-disabled-opacity\\\":1,\\\"--large-font-family\\\":\\\"Termina\\\",\\\"--large-font-size\\\":\\\"1.3em\\\",\\\"--large-font-weight\\\":500,\\\"--large-line-height\\\":\\\"1.1em\\\",\\\"--large-letter-spacing\\\":\\\"0.05em\\\",\\\"--large-text-transform\\\":\\\"none\\\",\\\"--medium-text-size\\\":\\\"0.98em\\\",\\\"--medium-font-weight\\\":300,\\\"--placeholder-text-transform\\\":\\\"uppercase\\\",\\\"--placeholder-font-size\\\":\\\"1.1em\\\",\\\"--placeholder-color\\\":\\\"inherit\\\",\\\"--text-input-margin\\\":\\\"0.9em\\\",\\\"--image-padding\\\":0,\\\"--image-size\\\":\\\"40%\\\",\\\"--image-url\\\":\\\"none\\\",\\\"--link-color\\\":\\\"#00badb\\\"},\\\"page-landing\\\":{\\\"--image\\\":\\\"none\\\",\\\"--image-width\\\":\\\"40%\\\"},\\\"page-register\\\":{\\\"--image\\\":\\\"none\\\",\\\"--image-width\\\":\\\"40%\\\"}}\");\n\n//# sourceURL=webpack://stag-dotjs/./public/data/style.json?");
+eval("module.exports = JSON.parse(\"{\\\"theme\\\":{\\\"--container-border-radius\\\":\\\"0.4em\\\",\\\"--container-bg-color\\\":\\\"rgba(90, 91, 91, 0.5)\\\",\\\"--container-bg-image\\\":\\\"url('https://www.galerieslafayette.com/magasin-rosny-sous-bois/files/2019/04/balzac.jpg')\\\",\\\"--content-width\\\":\\\"500px\\\",\\\"--content-padding\\\":\\\"2.1em\\\",\\\"--content-bg-color\\\":\\\"#fff\\\",\\\"--primary-text-color\\\":\\\"#000\\\",\\\"--error-text-color\\\":\\\"#f00\\\",\\\"--hint-text-color\\\":\\\"#333\\\",\\\"--btn-bg-color\\\":\\\"#111\\\",\\\"--btn-disabled-bg-color\\\":\\\"#111\\\",\\\"--btn-disabled-opacity\\\":0.5,\\\"--large-font-family\\\":\\\"Helvetica Neue\\\",\\\"--large-font-size\\\":\\\"1.35em\\\",\\\"--large-font-weight\\\":600,\\\"--large-line-height\\\":\\\"2em\\\",\\\"--large-letter-spacing\\\":\\\"0.05em\\\",\\\"--large-text-transform\\\":\\\"uppercase\\\",\\\"--medium-text-size\\\":\\\"1.1em\\\",\\\"--medium-font-weight\\\":300,\\\"--placeholder-text-transform\\\":\\\"uppercase\\\",\\\"--placeholder-font-size\\\":\\\"inherit\\\",\\\"--placeholder-color\\\":\\\"#111\\\",\\\"--text-input-margin\\\":\\\"1.1em\\\",\\\"--image-padding\\\":\\\"1em\\\",\\\"--image-size\\\":\\\"50%\\\",\\\"--image-url\\\":\\\"url('https://cdn.shopify.com/s/files/1/0407/2855/9766/files/Ellipse_3_1.png?v=1596746569')\\\"},\\\"page-landing\\\":{\\\"--image\\\":\\\"url(\\\\\\\"https://cdn.shopify.com/s/files/1/0407/2855/9766/files/Ellipse_3_1.png?v=1596746569\\\\\\\")\\\",\\\"--image-width\\\":\\\"30%\\\"},\\\"page-register\\\":{\\\"--image\\\":\\\"url(\\\\\\\"https://cdn.shopify.com/s/files/1/0407/2855/9766/files/Ellipse_3_1.png?v=1596746569\\\\\\\")\\\",\\\"--image-width\\\":\\\"30%\\\"}}\");\n\n//# sourceURL=webpack://stag-dotjs/./public/data/style.json?");
 
 /***/ }),
 
@@ -161,35 +158,30 @@ eval("module.exports = JSON.parse(\"{\\\"theme\\\":{\\\"--container-border-radiu
 /*! default exports */
 /*! export confirmYourPassword [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export createAccount [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export doYouLostPsw [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export enterEmailPswToConnect [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export enterYourEmailToContinue [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export fillInfoToCreateAccount [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export hasBirthDate [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export hasCarousel [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export hasGender [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export hasNewsLetter [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export hasPasswordVerification [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export hasSocialLogin [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export isNewCustomer [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export isPopover [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export login [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export login-register [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export loginRegister [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export recoverPsw [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export or [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export signIn [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export signUp [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export subscribeNewsletter [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export validate [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export yourEmail [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export yourFirstName [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export yourLastName [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export yourPassword [provided] [no usage info] [missing usage info prevents renaming] */
 /*! other exports [not provided] [no usage info] */
 /*! runtime requirements: module */
 /***/ ((module) => {
 
 "use strict";
-eval("module.exports = JSON.parse(\"{\\\"hasGender\\\":false,\\\"hasSocialLogin\\\":false,\\\"hasBirthDate\\\":false,\\\"hasPasswordVerification\\\":false,\\\"isPopover\\\":true,\\\"hasNewsLetter\\\":false,\\\"createAccount\\\":\\\"Create your account\\\",\\\"loginRegister\\\":\\\"Login to my account\\\",\\\"enterYourEmailToContinue\\\":\\\"Enter your e-mail and password:\\\",\\\"yourEmail\\\":\\\"Votre Courriel\\\",\\\"signIn\\\":\\\"Se Connecter\\\",\\\"signUp\\\":\\\"S'inscrire\\\",\\\"fillInfoToCreateAccount\\\":\\\"Please fill in the information below:\\\",\\\"login\\\":\\\"Connexion\\\",\\\"enterEmailPswToConnect\\\":\\\"Enter your e-mail and password:.\\\",\\\"recoverPsw\\\":\\\"Recover password\\\",\\\"validate\\\":\\\"Valider\\\",\\\"login-register\\\":\\\"Connexion / Inscription\\\",\\\"yourFirstName\\\":\\\"Prénom\\\",\\\"yourLastName\\\":\\\"Nom\\\",\\\"yourPassword\\\":\\\"Votre mot de passe\\\",\\\"confirmYourPassword\\\":\\\"Confirmez votre mot de passe\\\",\\\"subscribeNewsletter\\\":\\\"Je m'inscris à la newsletter\\\",\\\"isNewCustomer\\\":\\\"New customer?\\\",\\\"doYouLostPsw\\\":\\\"Lost password?\\\"}\");\n\n//# sourceURL=webpack://stag-dotjs/./public/data/text.json?");
+eval("module.exports = JSON.parse(\"{\\\"hasSocialLogin\\\":true,\\\"hasGender\\\":true,\\\"hasPasswordVerification\\\":false,\\\"hasBirthDate\\\":false,\\\"hasCarousel\\\":true,\\\"isPopover\\\":false,\\\"createAccount\\\":\\\"Inscription\\\",\\\"loginRegister\\\":\\\"Connexion / Inscription\\\",\\\"enterYourEmailToContinue\\\":\\\"Première étape, Indiquez votre adresse mail ci-dessous.\\\",\\\"yourEmail\\\":\\\"Email\\\",\\\"signIn\\\":\\\"Se Connecter\\\",\\\"signUp\\\":\\\"S'inscrire\\\",\\\"fillInfoToCreateAccount\\\":\\\"Renseignez vos informations pour créer votre compte Franklin.\\\",\\\"login\\\":\\\"Connexion\\\",\\\"enterEmailPswToConnect\\\":\\\"Renseignez votre adresse email et votre mot de passe pour vous connecter.\\\",\\\"validate\\\":\\\"Valider\\\",\\\"or\\\":\\\"ou\\\",\\\"yourPassword\\\":\\\"Votre mot de passe\\\",\\\"confirmYourPassword\\\":\\\"Confirmez votre mot de passe\\\",\\\"subscribeNewsletter\\\":\\\"Je m'inscris à la newsletter\\\"}\");\n\n//# sourceURL=webpack://stag-dotjs/./public/data/text.json?");
 
 /***/ }),
 
@@ -199,10 +191,10 @@ eval("module.exports = JSON.parse(\"{\\\"hasGender\\\":false,\\\"hasSocialLogin\
   \**********************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
-/*! CommonJS bailout: module.exports is used directly at 30:0-14 */
+/*! CommonJS bailout: module.exports is used directly at 29:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const $ = document.querySelector.bind(document);\nconst { APP_ID, LANDING_ID } = __webpack_require__(/*! ../templates/ */ \"./src/templates/index.js\");\nconst utils = __webpack_require__(/*! ../utils */ \"./src/utils/index.js\");\nconst load = __webpack_require__(/*! ./load */ \"./src/actions/load.js\");\nconst { STAG_ENDPOINT } = __webpack_require__(/*! ../config */ \"./src/config.js\");\n\nconst loadStyle = () => {\n    console.log(\"....loadStyle\");\n    const css = $(`#${APP_ID} .js-custom-style`).value;\n    utils.updateCss(JSON.parse(css));\n};\n\nconst loadTheme = async (e) => {\n    const theme = e.target.value;\n    console.log(`${STAG_ENDPOINT}/data/${theme}-text.json`);\n    const text = await fetch(`${STAG_ENDPOINT}/data/${theme}-text.json`);\n    const style = await fetch(`${STAG_ENDPOINT}/data/${theme}-style.json`);\n    const styleJson = await style.json();\n    utils.updatePages(await text.json());\n    utils.updateCss(styleJson);\n    load.loadActions();\n    $(`#${APP_ID} .container`).style.setProperty(\"display\", \"flex\"); // TODO refactor and show also the dashboard\n};\n\nconst init = () => {\n    $(`#${APP_ID} .js-load-theme`).addEventListener(\"click\", loadTheme);\n    $(`#${APP_ID} .js-load-style`).addEventListener(\"click\", loadStyle);\n};\n\nmodule.exports = {\n    init: init,\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/actions/dashboard.js?");
+eval("const $ = document.querySelector.bind(document);\nconst { APP_ID } = __webpack_require__(/*! ../templates/ */ \"./src/templates/index.js\");\nconst utils = __webpack_require__(/*! ../utils */ \"./src/utils/index.js\");\nconst load = __webpack_require__(/*! ./load */ \"./src/actions/load.js\");\nconst { STAG_ENDPOINT } = __webpack_require__(/*! ../config */ \"./src/config.js\");\n\nconst loadStyle = () => {\n    const css = $(`#${APP_ID} .js-custom-style`).value;\n    utils.updateCss(JSON.parse(css));\n};\n\nconst loadTheme = async (e) => {\n    const theme = e.target.value;\n    const text = await fetch(`${STAG_ENDPOINT}/data/${theme}-text.json`);\n    const style = await fetch(`${STAG_ENDPOINT}/data/${theme}-style.json`);\n    const styleJson = await style.json();\n    utils.updatePages(await text.json());\n    utils.updateCss(styleJson);\n    load.loadActions();\n    $(`#${APP_ID} .container`).style.setProperty(\"display\", \"flex\"); // TODO refactor and show also the dashboard\n    $(`#${APP_ID} .js-dashboard`).style.setProperty(\"display\", \"block\");\n};\n\nconst init = () => {\n    $(`#${APP_ID} .js-load-theme`).addEventListener(\"click\", loadTheme);\n    $(`#${APP_ID} .js-load-style`).addEventListener(\"click\", loadStyle);\n};\n\nmodule.exports = {\n    init: init,\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/actions/dashboard.js?");
 
 /***/ }),
 
@@ -242,7 +234,7 @@ eval("const { APP_ID, LANDING_ID, REGISTER_ID, SIGNIN_ID } = __webpack_require__
 /*! runtime requirements: __webpack_exports__, __webpack_require__ */
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("const { init: initDashboard } = __webpack_require__(/*! ./dashboard */ \"./src/actions/dashboard.js\");\nconst { init: initLanding } = __webpack_require__(/*! ./landing */ \"./src/actions/landing.js\");\nconst { init: initSignIn } = __webpack_require__(/*! ./sign-in */ \"./src/actions/sign-in.js\");\nconst { init: initRegistration } = __webpack_require__(/*! ./registration */ \"./src/actions/registration.js\");\nconst { APP_ID } = __webpack_require__(/*! ../templates/ */ \"./src/templates/index.js\");\nconst $ = document.querySelector.bind(document);\n\n//TODO refactoring too code repetition\n\nconst closeApp = () => {\n    $(`#${APP_ID} .container`).style.setProperty(\"display\", \"none\");\n    $(`#${APP_ID} .js-dashboard`).style.setProperty(\"display\", \"none\");\n    document.body.classList.remove(\"remove-scrolling\");\n};\n\nconst dashboard = () => {\n    $(`#${APP_ID} .js-dashboard`).style.setProperty(\"display\", \"block\");\n    $(`#${APP_ID} .js-dashboard`).style.setProperty(\"position\", \"absolute\");\n    $(`#${APP_ID} .js-dashboard`).style.setProperty(\"top\", \"0px\");\n    $(`#${APP_ID} .js-dashboard`).style.setProperty(\"width\", \"100vw\");\n};\n\nconst initContainer = () => {\n    $(`#${APP_ID} .js-close`).addEventListener(\"click\", closeApp);\n    $(`#${APP_ID} .js-toggle-dashboard`).addEventListener(\"click\", dashboard);\n};\n\nexports.loadActions = () => {\n    initDashboard();\n    initLanding();\n    initContainer();\n    initSignIn();\n    initRegistration();\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/actions/load.js?");
+eval("const { init: initDashboard } = __webpack_require__(/*! ./dashboard */ \"./src/actions/dashboard.js\");\nconst { init: initLanding } = __webpack_require__(/*! ./landing */ \"./src/actions/landing.js\");\nconst { init: initSignIn } = __webpack_require__(/*! ./sign-in */ \"./src/actions/sign-in.js\");\nconst { init: initRegistration } = __webpack_require__(/*! ./registration */ \"./src/actions/registration.js\");\nconst { APP_ID } = __webpack_require__(/*! ../templates/ */ \"./src/templates/index.js\");\nconst $ = document.querySelector.bind(document);\n\n//TODO refactoring too code repetition\n\nconst closeApp = () => {\n    $(`#${APP_ID} .container`).style.setProperty(\"display\", \"none\");\n    $(`#${APP_ID} .js-dashboard`).style.setProperty(\"display\", \"none\");\n    document.body.classList.remove(\"remove-scrolling\");\n};\n\nconst dashboard = () =>\n    $(`#${APP_ID} .js-dashboard`).style.setProperty(\"display\", \"block\");\n\nconst initContainer = () => {\n    $(`#${APP_ID} .js-close`).addEventListener(\"click\", closeApp);\n    $(`#${APP_ID} .js-toggle-dashboard`).addEventListener(\"click\", dashboard);\n};\n\nexports.loadActions = () => {\n    initDashboard();\n    initLanding();\n    initContainer();\n    initSignIn();\n    initRegistration();\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/actions/load.js?");
 
 /***/ }),
 
@@ -270,7 +262,7 @@ eval("const { APP_ID, REGISTER_ID, SIGNIN_ID } = __webpack_require__(/*! ../temp
 /*! runtime requirements: __webpack_exports__, __webpack_require__ */
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("const { APP_ID, SIGNIN_ID, REGISTER_ID } = __webpack_require__(/*! ../templates/ */ \"./src/templates/index.js\");\nconst { isLogged } = __webpack_require__(/*! ../services */ \"./src/services/index.js\");\nconst { serialize, toggleModules } = __webpack_require__(/*! ../utils */ \"./src/utils/index.js\");\n\nconst $ = document.querySelector.bind(document);\nlet form;\n\nconst onSubmit = async (e) => {\n    const inputs = serialize(form);\n    alert(await isLogged(inputs));\n};\n\nconst toggleButton = (e) => {\n    const email = form.querySelector(\"[name='email']\").value;\n    const isEmail = /\\S+@\\S+\\.\\S+/.test(email);\n    if (isEmail)\n        form.querySelector(\"input[type='submit']\").removeAttribute(\"disabled\");\n};\n\nconst register = () => {\n    toggleModules([REGISTER_ID, SIGNIN_ID]);\n};\n\nexports.init = () => {\n    form = $(`#${APP_ID} .${SIGNIN_ID} form`);\n    console.log(form);\n    form.addEventListener(\"input\", toggleButton);\n    form.addEventListener(\"submit\", onSubmit);\n    $(`#${APP_ID} .js-create-account`)?.addEventListener(\"click\", register);\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/actions/sign-in.js?");
+eval("const { APP_ID, SIGNIN_ID, REGISTER_ID } = __webpack_require__(/*! ../templates/ */ \"./src/templates/index.js\");\nconst { isLogged } = __webpack_require__(/*! ../services */ \"./src/services/index.js\");\nconst { serialize, toggleModules } = __webpack_require__(/*! ../utils */ \"./src/utils/index.js\");\n\nconst $ = document.querySelector.bind(document);\nlet form;\n\nconst onSubmit = async (e) => {\n    const inputs = serialize(form);\n    alert(await isLogged(inputs));\n};\n\nconst toggleButton = (e) => {\n    const email = form.querySelector(\"[name='email']\").value;\n    const isEmail = /\\S+@\\S+\\.\\S+/.test(email);\n    if (isEmail)\n        form.querySelector(\"input[type='submit']\").removeAttribute(\"disabled\");\n};\n\nconst register = () => toggleModules([REGISTER_ID, SIGNIN_ID]);\n\nexports.init = () => {\n    form = $(`#${APP_ID} .${SIGNIN_ID} form`);\n    console.log(form);\n    form.addEventListener(\"input\", toggleButton);\n    form.addEventListener(\"submit\", onSubmit);\n    $(`#${APP_ID} .js-create-account`)?.addEventListener(\"click\", register);\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/actions/sign-in.js?");
 
 /***/ }),
 
@@ -466,6 +458,22 @@ eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../.
 
 /***/ }),
 
+/***/ "../../../node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/dashboard.scss":
+/*!***********************************************************************************************************************!*\
+  !*** ../../../node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/dashboard.scss ***!
+  \***********************************************************************************************************************/
+/*! unknown exports (runtime-defined) */
+/*! runtime requirements: __webpack_exports__, module, __webpack_require__, module.id */
+/*! CommonJS bailout: exports is used directly at 3:0-7 */
+/*! CommonJS bailout: exports.push(...) prevents optimization as exports is passed as call context at 5:0-12 */
+/*! CommonJS bailout: exports is used directly at 7:17-24 */
+/*! CommonJS bailout: module.exports is used directly at 7:0-14 */
+/***/ ((module, exports, __webpack_require__) => {
+
+eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../../node_modules/css-loader/dist/runtime/api.js */ \"../../../node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.id, \".js-dashboard {\\n  position: absolute;\\n  top: 0px;\\n  width: 30vw;\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack://stag-dotjs/./src/styles/dashboard.scss?../../../node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js");
+
+/***/ }),
+
 /***/ "../../../node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/loader.scss":
 /*!********************************************************************************************************************!*\
   !*** ../../../node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/loader.scss ***!
@@ -522,6 +530,19 @@ eval("\n\n/*\n  MIT License http://www.opensource.org/licenses/mit-license.php\n
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 eval("var api = __webpack_require__(/*! !../../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\");\n            var content = __webpack_require__(/*! !!../../../../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./carousel.scss */ \"../../../node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/carousel.scss\");\n\n            content = content.__esModule ? content.default : content;\n\n            if (typeof content === 'string') {\n              content = [[module.id, content, '']];\n            }\n\nvar options = {};\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = api(content, options);\n\n\n\nmodule.exports = content.locals || {};\n\n//# sourceURL=webpack://stag-dotjs/./src/styles/carousel.scss?");
+
+/***/ }),
+
+/***/ "./src/styles/dashboard.scss":
+/*!***********************************!*\
+  !*** ./src/styles/dashboard.scss ***!
+  \***********************************/
+/*! unknown exports (runtime-defined) */
+/*! runtime requirements: module, __webpack_require__, module.id */
+/*! CommonJS bailout: module.exports is used directly at 19:0-14 */
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("var api = __webpack_require__(/*! !../../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\");\n            var content = __webpack_require__(/*! !!../../../../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./dashboard.scss */ \"../../../node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/dashboard.scss\");\n\n            content = content.__esModule ? content.default : content;\n\n            if (typeof content === 'string') {\n              content = [[module.id, content, '']];\n            }\n\nvar options = {};\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = api(content, options);\n\n\n\nmodule.exports = content.locals || {};\n\n//# sourceURL=webpack://stag-dotjs/./src/styles/dashboard.scss?");
 
 /***/ }),
 
@@ -626,7 +647,7 @@ eval("\n\nvar isOldIE = function isOldIE() {\n  var memo;\n  return function mem
   \********************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: __webpack_require__ */
-eval("__webpack_require__(/*! ./styles/main.scss */ \"./src/styles/main.scss\");\n__webpack_require__(/*! ./styles/loader.scss */ \"./src/styles/loader.scss\");\n__webpack_require__(/*! ./styles/carousel.scss */ \"./src/styles/carousel.scss\");\n\n__webpack_require__(/*! ./actions */ \"./src/actions/index.js\");\nconst { APP_ID } = __webpack_require__(/*! ./templates/ */ \"./src/templates/index.js\");\n\nconst node = document.createElement(\"div\");\nnode.setAttribute(\"id\", APP_ID);\ndocument.body.append(node);\n\nconst placePopover = (e) => {\n    const dom = node.querySelector(\".container\");\n    const shift = parseInt(getComputedStyle(dom).getPropertyValue(\"width\"));\n    dom.style.setProperty(\"left\", `${e.clientX - shift / 2}px`);\n    dom.style.setProperty(\"top\", `${e.clientY + 20}px`);\n};\n\nconst $ = document.querySelector.bind(document);\nconst openAccount = (e) => {\n    e.preventDefault();\n    e.stopPropagation();\n    const dom = node.querySelector(\".container\");\n    dom.style.setProperty(\"display\", \"flex\");\n    if (dom.classList.contains(\"popover\")) placePopover(e);\n};\n$(\".site-header__account\").addEventListener(\"click\", openAccount);\n\n\n//# sourceURL=webpack://stag-dotjs/./src/app.js?");
+eval("__webpack_require__(/*! ./styles/main.scss */ \"./src/styles/main.scss\");\n__webpack_require__(/*! ./styles/loader.scss */ \"./src/styles/loader.scss\");\n__webpack_require__(/*! ./styles/carousel.scss */ \"./src/styles/carousel.scss\");\n__webpack_require__(/*! ./styles/dashboard.scss */ \"./src/styles/dashboard.scss\");\n\n__webpack_require__(/*! ./actions */ \"./src/actions/index.js\");\nconst { APP_ID } = __webpack_require__(/*! ./templates/ */ \"./src/templates/index.js\");\n\nconst node = document.createElement(\"div\");\nnode.setAttribute(\"id\", APP_ID);\ndocument.body.append(node);\n\nconst placePopover = (e) => {\n    const dom = node.querySelector(\".container\");\n    const shift = parseInt(getComputedStyle(dom).getPropertyValue(\"width\"));\n    dom.style.setProperty(\"left\", `${e.clientX - shift / 2}px`);\n    dom.style.setProperty(\"top\", `${e.clientY + 20}px`);\n};\n\nconst $ = document.querySelector.bind(document);\nconst openAccount = (e) => {\n    e.preventDefault();\n    e.stopPropagation();\n    const dom = node.querySelector(\".container\");\n    dom.style.setProperty(\"display\", \"flex\");\n    if (dom.classList.contains(\"popover\")) placePopover(e);\n};\n$(\".site-header__account\").addEventListener(\"click\", openAccount);\n\n\n//# sourceURL=webpack://stag-dotjs/./src/app.js?");
 })();
 
 /******/ })()

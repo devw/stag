@@ -17,9 +17,7 @@ const toggleButton = (e) => {
         form.querySelector("input[type='submit']").removeAttribute("disabled");
 };
 
-const register = () => {
-    toggleModules([REGISTER_ID, SIGNIN_ID]);
-};
+const register = () => toggleModules([REGISTER_ID, SIGNIN_ID]);
 
 exports.init = () => {
     form = $(`#${APP_ID} .${SIGNIN_ID} form`);

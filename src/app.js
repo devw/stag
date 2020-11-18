@@ -1,6 +1,7 @@
 require("./styles/main.scss");
 require("./styles/loader.scss");
 require("./styles/carousel.scss");
+require("./styles/dashboard.scss");
 
 require("./actions");
 const { APP_ID } = require("./templates/");
