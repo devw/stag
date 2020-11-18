@@ -17,7 +17,7 @@ const loadTheme = async (e) => {
     utils.updatePages(await text.json());
     utils.updateCss(styleJson);
     load.loadActions();
-    $(`#${APP_ID} .${LANDING_ID}`).style.setProperty("display", "block");
+    $(`#${APP_ID} .container`).style.setProperty("display", "flex"); // TODO refactor and show also the dashboard
 };
 
 const init = () => {

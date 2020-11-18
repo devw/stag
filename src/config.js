@@ -1,3 +1,3 @@
 module.exports = {
-    AWS_ENDPOINT: "https://e79672368e56.ngrok.io",
+    AWS_ENDPOINT: "http://ec2-3-19-56-186.us-east-2.compute.amazonaws.com/",
 };
