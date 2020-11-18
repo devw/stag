@@ -23,23 +23,21 @@
     overflow: hidden;
 }
 
+@keyframes fade_in_show {
+    0% {
+        opacity: var(--transform-opacity);
+        transform: scale(var(--transform-scale));
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
 /*  ===================
     Theme/Typography
     =================== */
-
-// .modal {
-//     align-items: center;
-//     justify-content: center;
-//     text-align: center;
-//     position: absolute;
-//     top: 0px;
-//     right: 0px;
-//     width: 100%;
-//     height: 100%;
-//     overflow: hidden;
-//     background: rgba(201, 76, 76, 0.8);
-//     z-index: 99;
-// }
 
 .container {
     text-align: center;
@@ -47,11 +45,11 @@
     position: absolute;
 }
 
-.popover {
+.container.popover {
     box-shadow: 0 1px 5px 2px rgba(0, 0, 0, 0.1);
 }
 
-.modal {
+.container.modal {
     align-items: center;
     background: linear-gradient(
             var(--container-bg-color) 100%,

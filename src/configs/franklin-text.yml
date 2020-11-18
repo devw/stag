@@ -3,6 +3,7 @@ hasSocialLogin: false
 hasPasswordVerification: true
 hasBirthDate: false
 isPopover: false
+hasNewsLetter: true
 
 createAccount: Création de compte
 loginRegister: "Connexion / Inscription"

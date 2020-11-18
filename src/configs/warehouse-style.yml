@@ -6,6 +6,9 @@ theme:
     content-width: 530px
     content-padding: 1.2em
     content-bg-color: "#fff"
+  transform:
+    transform-opacity: 0.2
+    transform-scale: 0.8
   primary-text-color: "#1e2d7d"
   error-text-color: "#ff0000"
   hint-text-color: "#333"

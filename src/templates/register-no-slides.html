@@ -87,6 +87,7 @@
     disabled=""
     value="{{=it.createAccount}}"
 />
+{{? it.hasNewsLetter }}
 <div class="checkbox-container">
     <input
         class="checkbox"
@@ -98,3 +99,4 @@
         {{=it.subscribeNewsletter}}
     </div>
 </div>
+{{?? true }}{{?}}

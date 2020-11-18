@@ -3,6 +3,7 @@ hasSocialLogin: false
 hasBirthDate: false
 hasPasswordVerification: false
 isPopover: true
+hasNewsLetter: false
 
 createAccount: Create your account
 loginRegister: "Login to my account"
