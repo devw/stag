@@ -18,7 +18,6 @@ const placePopover = (e) => {
 
 const $ = document.querySelector.bind(document);
 const openAccount = (e) => {
-    console.log("....openAccount");
     e.preventDefault();
     e.stopPropagation();
     const dom = node.querySelector(".container");

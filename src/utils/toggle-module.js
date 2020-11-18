@@ -5,7 +5,7 @@ const toggleModule = (id) => {
     const module = $(`#${APP_ID} .${id}`);
     if (module.style.getPropertyValue("display") == "none") {
         module.style.setProperty("display", "block");
-        // module.style.setProperty("animation", "fade_in_show 0.5s");
+        module.style.setProperty("animation", "fade_in_show 0.5s");
     } else {
         module.style.setProperty("display", "none");
     }

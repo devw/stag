@@ -23,17 +23,17 @@
     overflow: hidden;
 }
 
-// @keyframes fade_in_show {
-//     0% {
-//         opacity: var(--transform-opacity);
-//         transform: scale(var(--transform-scale));
-//     }
+@keyframes fade_in_show {
+    0% {
+        opacity: 1;
+        transform: scale(var(--transform-scale));
+    }
 
-//     100% {
-//         opacity: 1;
-//         transform: scale(1);
-//     }
-// }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
 
 /*  ===================
     Theme/Typography
