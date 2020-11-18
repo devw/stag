@@ -83,7 +83,7 @@ eval("// Module\nvar code = \"<div class=\\\"carousel\\\" style=\\\"width: 100%\
 /*! CommonJS bailout: module.exports is used directly at 4:0-14 */
 /***/ ((module) => {
 
-eval("// Module\nvar code = \"<img class=\\\"image\\\" />\\n<div class=\\\"title\\\">{{=it.createAccount}}</div>\\n<div class=\\\"subtitle text t-4\\\">\\n    <p>{{=it.fillInfoToCreateAccount}}</p>\\n</div>\\n<div class=\\\"error js-error\\\">{{=it.passwordsDoNotMatch}}</div>\\n<form action=\\\"javascript:void(0);\\\" class=\\\"inputs-container\\\" dataRegisterForm=\\\"\\\">\\n    {{? it.hasCarousel }} {{#def.registerWithSlides }} {{?? true }}\\n    {{#def.registerNoSlides }} {{?}}\\n</form>\\n\";\n// Exports\nmodule.exports = code;\n\n//# sourceURL=webpack://stag-dotjs/./src/templates/register.html?");
+eval("// Module\nvar code = \"<img class=\\\"image\\\" />\\n<div class=\\\"title\\\">{{=it.createAccount}}</div>\\n<div class=\\\"subtitle text t-4\\\">\\n    <p>{{=it.fillInfoToCreateAccount}}</p>\\n</div>\\n<div class=\\\"error js-error\\\">{{=it.passwordsDoNotMatch}}</div>\\n\\n<form\\n    method=\\\"post\\\"\\n    action=\\\"/account\\\"\\n    id=\\\"RegisterForm\\\"\\n    accept-charset=\\\"UTF-8\\\"\\n    novalidate=\\\"novalidate\\\"\\n>\\n    <input type=\\\"hidden\\\" name=\\\"form_type\\\" value=\\\"create_customer\\\" /><input\\n        type=\\\"hidden\\\"\\n        name=\\\"utf8\\\"\\n        value=\\\"✓\\\"\\n    />\\n    <label for=\\\"RegisterForm-FirstName\\\">First Name</label>\\n    <input\\n        type=\\\"text\\\"\\n        name=\\\"customer[first_name]\\\"\\n        id=\\\"RegisterForm-FirstName\\\"\\n        autocomplete=\\\"given-name\\\"\\n    />\\n    <label for=\\\"RegisterForm-LastName\\\">Last Name</label>\\n    <input\\n        type=\\\"text\\\"\\n        name=\\\"customer[last_name]\\\"\\n        id=\\\"RegisterForm-LastName\\\"\\n        autocomplete=\\\"family-name\\\"\\n    />\\n    <label for=\\\"RegisterForm-email\\\">Email</label>\\n    <input\\n        type=\\\"email\\\"\\n        name=\\\"customer[email]\\\"\\n        id=\\\"RegisterForm-email\\\"\\n        class=\\\"\\\"\\n        autocorrect=\\\"off\\\"\\n        autocapitalize=\\\"off\\\"\\n        autocomplete=\\\"email\\\"\\n        aria-required=\\\"true\\\"\\n    /><label for=\\\"RegisterForm-password\\\">Password</label>\\n    <input\\n        type=\\\"password\\\"\\n        name=\\\"customer[password]\\\"\\n        id=\\\"RegisterForm-password\\\"\\n        class=\\\"\\\"\\n        aria-required=\\\"true\\\"\\n    />\\n    <p class=\\\"text-center\\\">\\n        <input type=\\\"submit\\\" value=\\\"Create\\\" class=\\\"btn\\\" />\\n    </p>\\n</form>\\n\";\n// Exports\nmodule.exports = code;\n\n//# sourceURL=webpack://stag-dotjs/./src/templates/register.html?");
 
 /***/ }),
 
@@ -134,6 +134,7 @@ eval("// Module\nvar code = \"<img class=\\\"image\\\" />\\n<div class=\\\"title
 /*!   export --large-letter-spacing [provided] [no usage info] [missing usage info prevents renaming] */
 /*!   export --large-line-height [provided] [no usage info] [missing usage info prevents renaming] */
 /*!   export --large-text-transform [provided] [no usage info] [missing usage info prevents renaming] */
+/*!   export --link-color [provided] [no usage info] [missing usage info prevents renaming] */
 /*!   export --medium-font-weight [provided] [no usage info] [missing usage info prevents renaming] */
 /*!   export --medium-text-size [provided] [no usage info] [missing usage info prevents renaming] */
 /*!   export --placeholder-color [provided] [no usage info] [missing usage info prevents renaming] */
@@ -141,13 +142,15 @@ eval("// Module\nvar code = \"<img class=\\\"image\\\" />\\n<div class=\\\"title
 /*!   export --placeholder-text-transform [provided] [no usage info] [missing usage info prevents renaming] */
 /*!   export --primary-text-color [provided] [no usage info] [missing usage info prevents renaming] */
 /*!   export --text-input-margin [provided] [no usage info] [missing usage info prevents renaming] */
+/*!   export --transform-opacity [provided] [no usage info] [missing usage info prevents renaming] */
+/*!   export --transform-scale [provided] [no usage info] [missing usage info prevents renaming] */
 /*!   other exports [not provided] [no usage info] */
 /*! other exports [not provided] [no usage info] */
 /*! runtime requirements: module */
 /***/ ((module) => {
 
 "use strict";
-eval("module.exports = JSON.parse(\"{\\\"theme\\\":{\\\"--container-border-radius\\\":\\\"0.4em\\\",\\\"--container-bg-color\\\":\\\"rgba(90, 91, 91, 0.5)\\\",\\\"--container-bg-image\\\":\\\"url('https://www.galerieslafayette.com/magasin-rosny-sous-bois/files/2019/04/balzac.jpg')\\\",\\\"--content-width\\\":\\\"500px\\\",\\\"--content-padding\\\":\\\"2.1em\\\",\\\"--content-bg-color\\\":\\\"#fff\\\",\\\"--primary-text-color\\\":\\\"#000\\\",\\\"--error-text-color\\\":\\\"#f00\\\",\\\"--hint-text-color\\\":\\\"#333\\\",\\\"--btn-bg-color\\\":\\\"#111\\\",\\\"--btn-disabled-bg-color\\\":\\\"#111\\\",\\\"--btn-disabled-opacity\\\":0.5,\\\"--large-font-family\\\":\\\"Helvetica Neue\\\",\\\"--large-font-size\\\":\\\"1.35em\\\",\\\"--large-font-weight\\\":600,\\\"--large-line-height\\\":\\\"2em\\\",\\\"--large-letter-spacing\\\":\\\"0.05em\\\",\\\"--large-text-transform\\\":\\\"uppercase\\\",\\\"--medium-text-size\\\":\\\"1.1em\\\",\\\"--medium-font-weight\\\":300,\\\"--placeholder-text-transform\\\":\\\"uppercase\\\",\\\"--placeholder-font-size\\\":\\\"inherit\\\",\\\"--placeholder-color\\\":\\\"#111\\\",\\\"--text-input-margin\\\":\\\"1.1em\\\",\\\"--image-padding\\\":\\\"1em\\\",\\\"--image-size\\\":\\\"50%\\\",\\\"--image-url\\\":\\\"url('https://cdn.shopify.com/s/files/1/0407/2855/9766/files/Ellipse_3_1.png?v=1596746569')\\\"},\\\"page-landing\\\":{\\\"--image\\\":\\\"url(\\\\\\\"https://cdn.shopify.com/s/files/1/0407/2855/9766/files/Ellipse_3_1.png?v=1596746569\\\\\\\")\\\",\\\"--image-width\\\":\\\"30%\\\"},\\\"page-register\\\":{\\\"--image\\\":\\\"url(\\\\\\\"https://cdn.shopify.com/s/files/1/0407/2855/9766/files/Ellipse_3_1.png?v=1596746569\\\\\\\")\\\",\\\"--image-width\\\":\\\"30%\\\"}}\");\n\n//# sourceURL=webpack://stag-dotjs/./public/data/style.json?");
+eval("module.exports = JSON.parse(\"{\\\"theme\\\":{\\\"--container-border-radius\\\":\\\"0.2em\\\",\\\"--container-bg-color\\\":\\\"rgba(90, 91, 91, 0.4)\\\",\\\"--container-bg-image\\\":\\\"url(\\\\\\\"https://images-na.ssl-images-amazon.com/images/I/81Dpm0mr03L.jpg\\\\\\\")\\\",\\\"--content-width\\\":\\\"530px\\\",\\\"--content-padding\\\":\\\"1.2em\\\",\\\"--content-bg-color\\\":\\\"#fff\\\",\\\"--transform-opacity\\\":0.2,\\\"--transform-scale\\\":0.8,\\\"--primary-text-color\\\":\\\"#1e2d7d\\\",\\\"--error-text-color\\\":\\\"#ff0000\\\",\\\"--hint-text-color\\\":\\\"#333\\\",\\\"--btn-bg-color\\\":\\\"#00badb\\\",\\\"--btn-disabled-bg-color\\\":\\\"#00badb\\\",\\\"--btn-disabled-opacity\\\":1,\\\"--large-font-family\\\":\\\"Termina\\\",\\\"--large-font-size\\\":\\\"1.3em\\\",\\\"--large-font-weight\\\":500,\\\"--large-line-height\\\":\\\"1.1em\\\",\\\"--large-letter-spacing\\\":\\\"0.05em\\\",\\\"--large-text-transform\\\":\\\"none\\\",\\\"--medium-text-size\\\":\\\"0.98em\\\",\\\"--medium-font-weight\\\":300,\\\"--placeholder-text-transform\\\":\\\"uppercase\\\",\\\"--placeholder-font-size\\\":\\\"1.1em\\\",\\\"--placeholder-color\\\":\\\"inherit\\\",\\\"--text-input-margin\\\":\\\"0.9em\\\",\\\"--image-padding\\\":0,\\\"--image-size\\\":\\\"40%\\\",\\\"--image-url\\\":\\\"none\\\",\\\"--link-color\\\":\\\"#00badb\\\"},\\\"page-landing\\\":{\\\"--image\\\":\\\"none\\\",\\\"--image-width\\\":\\\"40%\\\"},\\\"page-register\\\":{\\\"--image\\\":\\\"none\\\",\\\"--image-width\\\":\\\"40%\\\"}}\");\n\n//# sourceURL=webpack://stag-dotjs/./public/data/style.json?");
 
 /***/ }),
 
@@ -158,30 +161,35 @@ eval("module.exports = JSON.parse(\"{\\\"theme\\\":{\\\"--container-border-radiu
 /*! default exports */
 /*! export confirmYourPassword [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export createAccount [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export doYouLostPsw [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export enterEmailPswToConnect [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export enterYourEmailToContinue [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export fillInfoToCreateAccount [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export hasBirthDate [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export hasCarousel [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export hasGender [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export hasNewsLetter [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export hasPasswordVerification [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export hasSocialLogin [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export isNewCustomer [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export isPopover [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export login [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export login-register [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export loginRegister [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export or [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export recoverPsw [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export signIn [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export signUp [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export subscribeNewsletter [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export validate [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export yourEmail [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export yourFirstName [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export yourLastName [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export yourPassword [provided] [no usage info] [missing usage info prevents renaming] */
 /*! other exports [not provided] [no usage info] */
 /*! runtime requirements: module */
 /***/ ((module) => {
 
 "use strict";
-eval("module.exports = JSON.parse(\"{\\\"hasSocialLogin\\\":true,\\\"hasGender\\\":true,\\\"hasPasswordVerification\\\":false,\\\"hasBirthDate\\\":false,\\\"hasCarousel\\\":true,\\\"isPopover\\\":false,\\\"createAccount\\\":\\\"Inscription\\\",\\\"loginRegister\\\":\\\"Connexion / Inscription\\\",\\\"enterYourEmailToContinue\\\":\\\"Première étape, Indiquez votre adresse mail ci-dessous.\\\",\\\"yourEmail\\\":\\\"Email\\\",\\\"signIn\\\":\\\"Se Connecter\\\",\\\"signUp\\\":\\\"S'inscrire\\\",\\\"fillInfoToCreateAccount\\\":\\\"Renseignez vos informations pour créer votre compte Franklin.\\\",\\\"login\\\":\\\"Connexion\\\",\\\"enterEmailPswToConnect\\\":\\\"Renseignez votre adresse email et votre mot de passe pour vous connecter.\\\",\\\"validate\\\":\\\"Valider\\\",\\\"or\\\":\\\"ou\\\",\\\"yourPassword\\\":\\\"Votre mot de passe\\\",\\\"confirmYourPassword\\\":\\\"Confirmez votre mot de passe\\\",\\\"subscribeNewsletter\\\":\\\"Je m'inscris à la newsletter\\\"}\");\n\n//# sourceURL=webpack://stag-dotjs/./public/data/text.json?");
+eval("module.exports = JSON.parse(\"{\\\"hasGender\\\":false,\\\"hasSocialLogin\\\":false,\\\"hasBirthDate\\\":false,\\\"hasPasswordVerification\\\":false,\\\"isPopover\\\":true,\\\"hasNewsLetter\\\":false,\\\"createAccount\\\":\\\"Create your account\\\",\\\"loginRegister\\\":\\\"Login to my account\\\",\\\"enterYourEmailToContinue\\\":\\\"Enter your e-mail and password:\\\",\\\"yourEmail\\\":\\\"Votre Courriel\\\",\\\"signIn\\\":\\\"Se Connecter\\\",\\\"signUp\\\":\\\"S'inscrire\\\",\\\"fillInfoToCreateAccount\\\":\\\"Please fill in the information below:\\\",\\\"login\\\":\\\"Connexion\\\",\\\"enterEmailPswToConnect\\\":\\\"Enter your e-mail and password:.\\\",\\\"recoverPsw\\\":\\\"Recover password\\\",\\\"validate\\\":\\\"Valider\\\",\\\"login-register\\\":\\\"Connexion / Inscription\\\",\\\"yourFirstName\\\":\\\"Prénom\\\",\\\"yourLastName\\\":\\\"Nom\\\",\\\"yourPassword\\\":\\\"Votre mot de passe\\\",\\\"confirmYourPassword\\\":\\\"Confirmez votre mot de passe\\\",\\\"subscribeNewsletter\\\":\\\"Je m'inscris à la newsletter\\\",\\\"isNewCustomer\\\":\\\"New customer?\\\",\\\"doYouLostPsw\\\":\\\"Lost password?\\\"}\");\n\n//# sourceURL=webpack://stag-dotjs/./public/data/text.json?");
 
 /***/ }),
 
