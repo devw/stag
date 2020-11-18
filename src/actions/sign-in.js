@@ -26,5 +26,5 @@ exports.init = () => {
     console.log(form);
     form.addEventListener("input", toggleButton);
     form.addEventListener("submit", onSubmit);
-    $(`#${APP_ID} .js-create-account`).addEventListener("click", register);
+    $(`#${APP_ID} .js-create-account`)?.addEventListener("click", register);
 };
