@@ -123,6 +123,7 @@ eval("// Module\nvar code = \"<img class=\\\"image\\\" />\\n<div class=\\\"title
 /*!   export --content-bg-color [provided] [no usage info] [missing usage info prevents renaming] */
 /*!   export --content-padding [provided] [no usage info] [missing usage info prevents renaming] */
 /*!   export --content-width [provided] [no usage info] [missing usage info prevents renaming] */
+/*!   export --error-bg-color [provided] [no usage info] [missing usage info prevents renaming] */
 /*!   export --error-text-color [provided] [no usage info] [missing usage info prevents renaming] */
 /*!   export --hint-text-color [provided] [no usage info] [missing usage info prevents renaming] */
 /*!   export --image-padding [provided] [no usage info] [missing usage info prevents renaming] */
@@ -134,7 +135,6 @@ eval("// Module\nvar code = \"<img class=\\\"image\\\" />\\n<div class=\\\"title
 /*!   export --large-letter-spacing [provided] [no usage info] [missing usage info prevents renaming] */
 /*!   export --large-line-height [provided] [no usage info] [missing usage info prevents renaming] */
 /*!   export --large-text-transform [provided] [no usage info] [missing usage info prevents renaming] */
-/*!   export --link-color [provided] [no usage info] [missing usage info prevents renaming] */
 /*!   export --medium-font-weight [provided] [no usage info] [missing usage info prevents renaming] */
 /*!   export --medium-text-size [provided] [no usage info] [missing usage info prevents renaming] */
 /*!   export --placeholder-color [provided] [no usage info] [missing usage info prevents renaming] */
@@ -142,15 +142,13 @@ eval("// Module\nvar code = \"<img class=\\\"image\\\" />\\n<div class=\\\"title
 /*!   export --placeholder-text-transform [provided] [no usage info] [missing usage info prevents renaming] */
 /*!   export --primary-text-color [provided] [no usage info] [missing usage info prevents renaming] */
 /*!   export --text-input-margin [provided] [no usage info] [missing usage info prevents renaming] */
-/*!   export --transform-opacity [provided] [no usage info] [missing usage info prevents renaming] */
-/*!   export --transform-scale [provided] [no usage info] [missing usage info prevents renaming] */
 /*!   other exports [not provided] [no usage info] */
 /*! other exports [not provided] [no usage info] */
 /*! runtime requirements: module */
 /***/ ((module) => {
 
 "use strict";
-eval("module.exports = JSON.parse(\"{\\\"theme\\\":{\\\"--container-border-radius\\\":\\\"0.2em\\\",\\\"--container-bg-color\\\":\\\"rgba(90, 91, 91, 0.4)\\\",\\\"--container-bg-image\\\":\\\"url(\\\\\\\"https://images-na.ssl-images-amazon.com/images/I/81Dpm0mr03L.jpg\\\\\\\")\\\",\\\"--content-width\\\":\\\"530px\\\",\\\"--content-padding\\\":\\\"1.2em\\\",\\\"--content-bg-color\\\":\\\"#fff\\\",\\\"--transform-opacity\\\":0.2,\\\"--transform-scale\\\":0.8,\\\"--primary-text-color\\\":\\\"#1e2d7d\\\",\\\"--error-text-color\\\":\\\"#ff0000\\\",\\\"--hint-text-color\\\":\\\"#333\\\",\\\"--btn-bg-color\\\":\\\"#00badb\\\",\\\"--btn-disabled-bg-color\\\":\\\"#00badb\\\",\\\"--btn-disabled-opacity\\\":1,\\\"--large-font-family\\\":\\\"Termina\\\",\\\"--large-font-size\\\":\\\"1.3em\\\",\\\"--large-font-weight\\\":500,\\\"--large-line-height\\\":\\\"1.1em\\\",\\\"--large-letter-spacing\\\":\\\"0.05em\\\",\\\"--large-text-transform\\\":\\\"none\\\",\\\"--medium-text-size\\\":\\\"0.98em\\\",\\\"--medium-font-weight\\\":300,\\\"--placeholder-text-transform\\\":\\\"uppercase\\\",\\\"--placeholder-font-size\\\":\\\"1.1em\\\",\\\"--placeholder-color\\\":\\\"inherit\\\",\\\"--text-input-margin\\\":\\\"0.9em\\\",\\\"--image-padding\\\":0,\\\"--image-size\\\":\\\"40%\\\",\\\"--image-url\\\":\\\"none\\\",\\\"--link-color\\\":\\\"#00badb\\\"},\\\"page-landing\\\":{\\\"--image\\\":\\\"none\\\",\\\"--image-width\\\":\\\"40%\\\"},\\\"page-register\\\":{\\\"--image\\\":\\\"none\\\",\\\"--image-width\\\":\\\"40%\\\"}}\");\n\n//# sourceURL=webpack://stag-dotjs/./public/data/style.json?");
+eval("module.exports = JSON.parse(\"{\\\"theme\\\":{\\\"--container-border-radius\\\":\\\"0em\\\",\\\"--container-bg-color\\\":\\\"rgba(90, 91, 91, 0.4)\\\",\\\"--container-bg-image\\\":\\\"url('https://cdn.shopify.com/s/files/1/2598/9270/products/Packshotfriandiseschatvolaille_600x.jpg?v=1599487575')\\\",\\\"--content-width\\\":\\\"530px\\\",\\\"--content-padding\\\":\\\"1.5em\\\",\\\"--content-bg-color\\\":\\\"#fff\\\",\\\"--primary-text-color\\\":\\\"#0d3c32\\\",\\\"--error-bg-color\\\":\\\"#bfd9cb\\\",\\\"--error-text-color\\\":\\\"#0d3c32\\\",\\\"--hint-text-color\\\":\\\"#333\\\",\\\"--btn-bg-color\\\":\\\"#de7154\\\",\\\"--btn-disabled-bg-color\\\":\\\"#c6c1be\\\",\\\"--btn-disabled-opacity\\\":1,\\\"--large-font-family\\\":\\\"Helvetica Neue\\\",\\\"--large-font-size\\\":\\\"1.875rem\\\",\\\"--large-font-weight\\\":700,\\\"--large-line-height\\\":\\\"2em\\\",\\\"--large-letter-spacing\\\":\\\"0.05em\\\",\\\"--large-text-transform\\\":\\\"none\\\",\\\"--medium-text-size\\\":\\\"1.1em\\\",\\\"--medium-font-weight\\\":300,\\\"--placeholder-text-transform\\\":\\\"uppercase\\\",\\\"--placeholder-font-size\\\":\\\"inherit\\\",\\\"--placeholder-color\\\":\\\"inherit\\\",\\\"--text-input-margin\\\":\\\"0.9em\\\",\\\"--image-padding\\\":\\\"1em\\\",\\\"--image-size\\\":\\\"40%\\\",\\\"--image-url\\\":\\\"url('https://cdn.shopify.com/s/files/1/2598/9270/files/Chien-Chat-1.png?v=1595510115')\\\"},\\\"page-landing\\\":{\\\"--image\\\":\\\"url(\\\\\\\"https://cdn.shopify.com/s/files/1/2598/9270/files/Chien-Chat-1.png?v=1595510115\\\\\\\")\\\",\\\"--image-width\\\":\\\"40%\\\"},\\\"page-register\\\":{\\\"--image\\\":\\\"url(\\\\\\\"https://cdn.shopify.com/s/files/1/2598/9270/files/Chien-16.png?v=1595509535\\\\\\\")\\\",\\\"--image-width\\\":\\\"40%\\\"}}\");\n\n//# sourceURL=webpack://stag-dotjs/./public/data/style.json?");
 
 /***/ }),
 
@@ -161,7 +159,6 @@ eval("module.exports = JSON.parse(\"{\\\"theme\\\":{\\\"--container-border-radiu
 /*! default exports */
 /*! export confirmYourPassword [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export createAccount [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export doYouLostPsw [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export enterEmailPswToConnect [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export enterYourEmailToContinue [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export fillInfoToCreateAccount [provided] [no usage info] [missing usage info prevents renaming] */
@@ -170,12 +167,11 @@ eval("module.exports = JSON.parse(\"{\\\"theme\\\":{\\\"--container-border-radiu
 /*! export hasNewsLetter [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export hasPasswordVerification [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export hasSocialLogin [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export isNewCustomer [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export isPopover [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export login [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export login-register [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export loginRegister [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export recoverPsw [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export passwordsDoNotMatch [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export signIn [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export signUp [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export subscribeNewsletter [provided] [no usage info] [missing usage info prevents renaming] */
@@ -189,7 +185,7 @@ eval("module.exports = JSON.parse(\"{\\\"theme\\\":{\\\"--container-border-radiu
 /***/ ((module) => {
 
 "use strict";
-eval("module.exports = JSON.parse(\"{\\\"hasGender\\\":false,\\\"hasSocialLogin\\\":false,\\\"hasBirthDate\\\":false,\\\"hasPasswordVerification\\\":false,\\\"isPopover\\\":true,\\\"hasNewsLetter\\\":false,\\\"createAccount\\\":\\\"Create your account\\\",\\\"loginRegister\\\":\\\"Login to my account\\\",\\\"enterYourEmailToContinue\\\":\\\"Enter your e-mail and password:\\\",\\\"yourEmail\\\":\\\"Votre Courriel\\\",\\\"signIn\\\":\\\"Se Connecter\\\",\\\"signUp\\\":\\\"S'inscrire\\\",\\\"fillInfoToCreateAccount\\\":\\\"Please fill in the information below:\\\",\\\"login\\\":\\\"Connexion\\\",\\\"enterEmailPswToConnect\\\":\\\"Enter your e-mail and password:.\\\",\\\"recoverPsw\\\":\\\"Recover password\\\",\\\"validate\\\":\\\"Valider\\\",\\\"login-register\\\":\\\"Connexion / Inscription\\\",\\\"yourFirstName\\\":\\\"Prénom\\\",\\\"yourLastName\\\":\\\"Nom\\\",\\\"yourPassword\\\":\\\"Votre mot de passe\\\",\\\"confirmYourPassword\\\":\\\"Confirmez votre mot de passe\\\",\\\"subscribeNewsletter\\\":\\\"Je m'inscris à la newsletter\\\",\\\"isNewCustomer\\\":\\\"New customer?\\\",\\\"doYouLostPsw\\\":\\\"Lost password?\\\"}\");\n\n//# sourceURL=webpack://stag-dotjs/./public/data/text.json?");
+eval("module.exports = JSON.parse(\"{\\\"hasGender\\\":false,\\\"hasSocialLogin\\\":false,\\\"hasPasswordVerification\\\":true,\\\"hasBirthDate\\\":false,\\\"isPopover\\\":false,\\\"hasNewsLetter\\\":true,\\\"createAccount\\\":\\\"Création de compte\\\",\\\"loginRegister\\\":\\\"Connexion / Inscription\\\",\\\"enterYourEmailToContinue\\\":\\\"Renseignez votre adresse email pour continuer.\\\",\\\"yourEmail\\\":\\\"Votre email\\\",\\\"signIn\\\":\\\"Se Connecter\\\",\\\"signUp\\\":\\\"S'inscrire\\\",\\\"fillInfoToCreateAccount\\\":\\\"Renseignez vos informations pour créer votre compte Franklin.\\\",\\\"login\\\":\\\"Connexion\\\",\\\"enterEmailPswToConnect\\\":\\\"Renseignez votre adresse email et votre mot de passe pour vous connecter.\\\",\\\"validate\\\":\\\"Valider\\\",\\\"login-register\\\":\\\"Connexion / Inscription\\\",\\\"yourFirstName\\\":\\\"Votre nom\\\",\\\"yourLastName\\\":\\\"Your last name\\\",\\\"yourPassword\\\":\\\"Votre mot de passe\\\",\\\"confirmYourPassword\\\":\\\"Confirmez votre mot de passe\\\",\\\"subscribeNewsletter\\\":\\\"Je m'inscris à la newsletter Franklin\\\",\\\"passwordsDoNotMatch\\\":\\\"Les mots de passes ne correspondent pas\\\"}\");\n\n//# sourceURL=webpack://stag-dotjs/./public/data/text.json?");
 
 /***/ }),
 
@@ -626,7 +622,7 @@ eval("\n\nvar isOldIE = function isOldIE() {\n  var memo;\n  return function mem
   \********************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: __webpack_require__ */
-eval("__webpack_require__(/*! ./styles/main.scss */ \"./src/styles/main.scss\");\n__webpack_require__(/*! ./styles/loader.scss */ \"./src/styles/loader.scss\");\n__webpack_require__(/*! ./styles/carousel.scss */ \"./src/styles/carousel.scss\");\n\n__webpack_require__(/*! ./actions */ \"./src/actions/index.js\");\nconst { APP_ID } = __webpack_require__(/*! ./templates/ */ \"./src/templates/index.js\");\n\nconst node = document.createElement(\"div\");\nnode.setAttribute(\"id\", APP_ID);\ndocument.body.append(node);\n\nconst placePopover = (e) => {\n    const dom = node.querySelector(\".container\");\n    const shift = parseInt(getComputedStyle(dom).getPropertyValue(\"width\"));\n    dom.style.setProperty(\"left\", `${e.clientX - shift / 2}px`);\n    dom.style.setProperty(\"top\", `${e.clientY + 20}px`);\n};\n\nconst $ = document.querySelector.bind(document);\nconst openAccount = (e) => {\n    e.preventDefault();\n    e.stopPropagation();\n    const dom = node.querySelector(\".container\");\n    dom.style.setProperty(\"display\", \"flex\");\n    if (dom.classList.contains(\"popover\")) placePopover(e);\n};\n$(\".site-header__account\").addEventListener(\"click\", openAccount);\n\n\n//# sourceURL=webpack://stag-dotjs/./src/app.js?");
+eval("__webpack_require__(/*! ./styles/main.scss */ \"./src/styles/main.scss\");\n__webpack_require__(/*! ./styles/loader.scss */ \"./src/styles/loader.scss\");\n__webpack_require__(/*! ./styles/carousel.scss */ \"./src/styles/carousel.scss\");\n\n__webpack_require__(/*! ./actions */ \"./src/actions/index.js\");\nconst { APP_ID } = __webpack_require__(/*! ./templates/ */ \"./src/templates/index.js\");\n\nconst node = document.createElement(\"div\");\nnode.setAttribute(\"id\", APP_ID);\ndocument.body.append(node);\n\nconst placePopover = (e) => {\n    const dom = node.querySelector(\".container\");\n    const shift = parseInt(getComputedStyle(dom).getPropertyValue(\"width\"));\n    dom.style.setProperty(\"left\", `${e.clientX - shift / 2}px`);\n    dom.style.setProperty(\"top\", `${e.clientY + 20}px`);\n};\n\nconst $ = document.querySelector.bind(document);\nconst openAccount = (e) => {\n    console.log(\"....openAccount\");\n    e.preventDefault();\n    e.stopPropagation();\n    const dom = node.querySelector(\".container\");\n    dom.style.setProperty(\"display\", \"flex\");\n    if (dom.classList.contains(\"popover\")) placePopover(e);\n};\n$(\".site-header__account\").addEventListener(\"click\", openAccount);\n\n\n//# sourceURL=webpack://stag-dotjs/./src/app.js?");
 })();
 
 /******/ })()
