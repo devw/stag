@@ -87,6 +87,7 @@
     disabled=""
     value="{{=it.createAccount}}"
 />
+{{? it.hasNewsLetter }}
 <div class="checkbox-container">
     <input
         class="checkbox"
@@ -97,4 +98,13 @@
     <div class="text t-5 uppercase pointer" data-register-newstext="">
         {{=it.subscribeNewsletter}}
     </div>
+</div>
+{{?? true }}{{?}}
+<div class="secondary-action">
+    {{? it.isPopover }}
+    <p>
+        Already have an account?
+        <a href="#" class="link js-login">Login here</a>
+    </p>
+    {{?? true }}{{?}}
 </div>

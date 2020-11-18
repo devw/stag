@@ -5,9 +5,20 @@ const { init: initRegistration } = require("./registration");
 const { APP_ID } = require("../templates/");
 const $ = document.querySelector.bind(document);
 
+//TODO refactoring too code repetition
+
+const closeApp = () => {
+    $(`#${APP_ID} .container`).style.setProperty("display", "none");
+    $(`#${APP_ID} .js-dashboard`).style.setProperty("display", "none");
+    document.body.classList.remove("remove-scrolling");
+};
+
+const dashboard = () =>
+    $(`#${APP_ID} .js-dashboard`).style.setProperty("display", "block");
+
 const initContainer = () => {
-    const closeApp = () => ($(`#${APP_ID}`).innerHTML = "");
     $(`#${APP_ID} .js-close`).addEventListener("click", closeApp);
+    $(`#${APP_ID} .js-toggle-dashboard`).addEventListener("click", dashboard);
 };
 
 exports.loadActions = () => {

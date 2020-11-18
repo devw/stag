@@ -4,6 +4,7 @@
 	"hasPasswordVerification": false,
 	"hasBirthDate": false,
 	"hasCarousel": true,
+	"isPopover": false,
 	"createAccount": "Inscription",
 	"loginRegister": "Connexion / Inscription",
 	"enterYourEmailToContinue": "Première étape, Indiquez votre adresse mail ci-dessous.",

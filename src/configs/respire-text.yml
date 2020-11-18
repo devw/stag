@@ -2,6 +2,7 @@ hasGender: true
 hasSocialLogin: false
 hasBirthDate: true
 hasPasswordVerification: false
+isPopover: false
 
 createAccount: Inscription
 loginRegister: "Connexion / Inscription"

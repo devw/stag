@@ -3,9 +3,12 @@ const $ = document.querySelector.bind(document);
 
 const toggleModule = (id) => {
     const module = $(`#${APP_ID} .${id}`);
-    module.style.getPropertyValue("display") == "none"
-        ? module.style.setProperty("display", "block")
-        : module.style.setProperty("display", "none");
+    if (module.style.getPropertyValue("display") == "none") {
+        module.style.setProperty("display", "block");
+        module.style.setProperty("animation", "fade_in_show 0.5s");
+    } else {
+        module.style.setProperty("display", "none");
+    }
 };
 
 exports.toggleModules = (ids) => {

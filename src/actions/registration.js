@@ -56,4 +56,8 @@ exports.init = () => {
         e.addEventListener("click", goPrevSlide)
     );
     form.addEventListener("submit", onSubmit);
+
+    $(`#${APP_ID} .${REGISTER_ID} .js-login`)?.addEventListener("click", () =>
+        toggleModules([REGISTER_ID, SIGNIN_ID])
+    );
 };

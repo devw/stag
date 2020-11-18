@@ -3,6 +3,7 @@ hasGender: true
 hasPasswordVerification: false
 hasBirthDate: false
 hasCarousel: true
+isPopover: false
 
 createAccount: Inscription
 loginRegister: "Connexion / Inscription"
