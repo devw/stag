@@ -22,8 +22,6 @@ const openAccount = (e) => {
     e.stopPropagation();
     const dom = node.querySelector(".container");
     dom.style.setProperty("display", "flex");
-    dom.classList.contains("popover")
-        ? placePopover(e)
-        : document.body.classList.add("remove-scrolling");
+    if (dom.classList.contains("popover")) placePopover(e);
 };
 $(".site-header__account").addEventListener("click", openAccount);
