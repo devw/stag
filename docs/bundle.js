@@ -192,10 +192,10 @@ eval("module.exports = JSON.parse(\"{\\\"hasGender\\\":true,\\\"hasSocialLogin\\
   \**********************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
-/*! CommonJS bailout: module.exports is used directly at 28:0-14 */
+/*! CommonJS bailout: module.exports is used directly at 30:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const $ = document.querySelector.bind(document);\nconst { APP_ID, LANDING_ID } = __webpack_require__(/*! ../templates/ */ \"./src/templates/index.js\");\nconst utils = __webpack_require__(/*! ../utils */ \"./src/utils/index.js\");\nconst load = __webpack_require__(/*! ./load */ \"./src/actions/load.js\");\n\nconst loadStyle = () => {\n    console.log(\"....loadStyle\");\n    const css = $(`#${APP_ID} .js-custom-style`).value;\n    utils.updateCss(JSON.parse(css));\n};\n\nconst loadTheme = async (e) => {\n    const theme = e.target.value;\n    const text = await fetch(`data/${theme}-text.json`);\n    const style = await fetch(`data/${theme}-style.json`);\n    const styleJson = await style.json();\n    utils.updatePages(await text.json());\n    utils.updateCss(styleJson);\n    load.loadActions();\n    $(`#${APP_ID} .container`).style.setProperty(\"display\", \"flex\"); // TODO refactor and show also the dashboard\n};\n\nconst init = () => {\n    $(`#${APP_ID} .js-load-theme`).addEventListener(\"click\", loadTheme);\n    $(`#${APP_ID} .js-load-style`).addEventListener(\"click\", loadStyle);\n};\n\nmodule.exports = {\n    init: init,\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/actions/dashboard.js?");
+eval("const $ = document.querySelector.bind(document);\nconst { APP_ID, LANDING_ID } = __webpack_require__(/*! ../templates/ */ \"./src/templates/index.js\");\nconst utils = __webpack_require__(/*! ../utils */ \"./src/utils/index.js\");\nconst load = __webpack_require__(/*! ./load */ \"./src/actions/load.js\");\nconst { STAG_ENDPOINT } = __webpack_require__(/*! ../config */ \"./src/config.js\");\n\nconst loadStyle = () => {\n    console.log(\"....loadStyle\");\n    const css = $(`#${APP_ID} .js-custom-style`).value;\n    utils.updateCss(JSON.parse(css));\n};\n\nconst loadTheme = async (e) => {\n    const theme = e.target.value;\n    console.log(`${STAG_ENDPOINT}/data/${theme}-text.json`);\n    const text = await fetch(`${STAG_ENDPOINT}/data/${theme}-text.json`);\n    const style = await fetch(`${STAG_ENDPOINT}/data/${theme}-style.json`);\n    const styleJson = await style.json();\n    utils.updatePages(await text.json());\n    utils.updateCss(styleJson);\n    load.loadActions();\n    $(`#${APP_ID} .container`).style.setProperty(\"display\", \"flex\"); // TODO refactor and show also the dashboard\n};\n\nconst init = () => {\n    $(`#${APP_ID} .js-load-theme`).addEventListener(\"click\", loadTheme);\n    $(`#${APP_ID} .js-load-style`).addEventListener(\"click\", loadStyle);\n};\n\nmodule.exports = {\n    init: init,\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/actions/dashboard.js?");
 
 /***/ }),
 
@@ -276,7 +276,7 @@ eval("const { APP_ID, SIGNIN_ID } = __webpack_require__(/*! ../templates/ */ \".
 /*! CommonJS bailout: module.exports is used directly at 1:0-14 */
 /***/ ((module) => {
 
-eval("module.exports = {\n    AWS_ENDPOINT: \"http://ec2-3-19-56-186.us-east-2.compute.amazonaws.com/\",\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/config.js?");
+eval("module.exports = {\n    AWS_ENDPOINT: \"http://ec2-3-19-56-186.us-east-2.compute.amazonaws.com/\",\n    STAG_ENDPOINT: \"https://devw.github.io/stag/\",\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/config.js?");
 
 /***/ }),
 

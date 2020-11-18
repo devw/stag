@@ -2,6 +2,7 @@ const $ = document.querySelector.bind(document);
 const { APP_ID, LANDING_ID } = require("../templates/");
 const utils = require("../utils");
 const load = require("./load");
+const { STAG_ENDPOINT } = require("../config");
 
 const loadStyle = () => {
     console.log("....loadStyle");
@@ -11,8 +12,9 @@ const loadStyle = () => {
 
 const loadTheme = async (e) => {
     const theme = e.target.value;
-    const text = await fetch(`data/${theme}-text.json`);
-    const style = await fetch(`data/${theme}-style.json`);
+    console.log(`${STAG_ENDPOINT}/data/${theme}-text.json`);
+    const text = await fetch(`${STAG_ENDPOINT}/data/${theme}-text.json`);
+    const style = await fetch(`${STAG_ENDPOINT}/data/${theme}-style.json`);
     const styleJson = await style.json();
     utils.updatePages(await text.json());
     utils.updateCss(styleJson);
