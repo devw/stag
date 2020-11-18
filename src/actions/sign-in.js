@@ -5,7 +5,7 @@ const { serialize, toggleModules } = require("../utils");
 const $ = document.querySelector.bind(document);
 let form;
 
-const onSubmit = async (e) => {
+const onSubmit = async (_) => {
     const inputs = serialize(form);
     alert(await isLogged(inputs));
 };

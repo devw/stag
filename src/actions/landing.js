@@ -31,7 +31,7 @@ const signIn = () => {
 };
 
 exports.init = () => {
-    $(`#${APP_ID} .modal`)
+    $(`#${APP_ID} .js-modal`)
         ? toggleModules([LANDING_ID])
         : toggleModules([SIGNIN_ID]); // TODO improve it
     form = $(`#${APP_ID} .${LANDING_ID} form`);
