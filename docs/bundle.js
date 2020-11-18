@@ -446,7 +446,7 @@ eval("const serialize = (form) => {\n    const reducer = (acc, cur) => ({ ...acc
 /*! runtime requirements: __webpack_exports__, __webpack_require__ */
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("const { APP_ID } = __webpack_require__(/*! ../templates/ */ \"./src/templates/index.js\");\nconst $ = document.querySelector.bind(document);\n\nconst toggleModule = (id) => {\n    const module = $(`#${APP_ID} .${id}`);\n    if (module.style.getPropertyValue(\"display\") == \"none\") {\n        // module.style.setProperty(\"display\", \"block\");\n        // module.style.setProperty(\"animation\", \"fade_in_show 0.5s\");\n    } else {\n        module.style.setProperty(\"display\", \"none\");\n    }\n};\n\nexports.toggleModules = (ids) => {\n    ids.forEach(toggleModule);\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/utils/toggle-module.js?");
+eval("const { APP_ID } = __webpack_require__(/*! ../templates/ */ \"./src/templates/index.js\");\nconst $ = document.querySelector.bind(document);\n\nconst toggleModule = (id) => {\n    const module = $(`#${APP_ID} .${id}`);\n    if (module.style.getPropertyValue(\"display\") == \"none\") {\n        module.style.setProperty(\"display\", \"block\");\n        // module.style.setProperty(\"animation\", \"fade_in_show 0.5s\");\n    } else {\n        module.style.setProperty(\"display\", \"none\");\n    }\n};\n\nexports.toggleModules = (ids) => {\n    ids.forEach(toggleModule);\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/utils/toggle-module.js?");
 
 /***/ }),
 
