@@ -33,6 +33,8 @@ theme:
     image-padding: 0
     image-size: 40%
     image-url: none
+  link:
+    link-color: "#00badb"
 
 page-landing:
   image: none

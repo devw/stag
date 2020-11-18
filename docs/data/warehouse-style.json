@@ -26,7 +26,8 @@
 		"--text-input-margin": "0.9em",
 		"--image-padding": 0,
 		"--image-size": "40%",
-		"--image-url": "none"
+		"--image-url": "none",
+		"--link-color": "#00badb"
 	},
 	"page-landing": {
 		"--image": "none",

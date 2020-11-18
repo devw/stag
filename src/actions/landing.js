@@ -31,7 +31,9 @@ const signIn = () => {
 };
 
 exports.init = () => {
-    toggleModules([LANDING_ID]);
+    $(`#${APP_ID} .modal`)
+        ? toggleModules([LANDING_ID])
+        : toggleModules([SIGNIN_ID]); // TODO improve it
     form = $(`#${APP_ID} .${LANDING_ID} form`);
     form.addEventListener("input", toggleButton);
     form.addEventListener("submit", onSubmit);
