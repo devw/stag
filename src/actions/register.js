@@ -45,7 +45,7 @@ const onSubmit = async (e) => {
     e.preventDefault();
     const inputs = serialize(form);
     checkInputs(inputs);
-    form.action = "https://antonio-balzac.myshopify.com/account/register";
+    form.action = "/account/register";
     const resp = await sendHttpRequest("POST", e.target.action);
     console.log(resp);
     $(".js-shopify-response").innerHTML = resp;
