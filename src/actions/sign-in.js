@@ -14,7 +14,7 @@ const onSubmit = async (e) => {
         errorNode.style.setProperty("display", "block");
         return null;
     }
-    form.action = "https://antonio-balzac.myshopify.com/account/login";
+    form.action = "/account/login";
     const resp = await sendHttpRequest("POST", e);
     console.log(resp);
     $(".js-shopify-response").innerHTML = resp;
