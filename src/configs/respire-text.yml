@@ -20,3 +20,4 @@ yourLastName: Nom
 yourPassword: Votre mot de passe
 confirmYourPassword: Confirmez votre mot de passe
 subscribeNewsletter: Je m'inscris à la newsletter
+passwordTooShort: Le mot de passe doit comporter au moins 5 caractères.

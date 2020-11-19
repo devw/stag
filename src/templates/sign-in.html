@@ -4,21 +4,41 @@
     <p>{{=it.enterEmailPswToConnect}}</p>
 </div>
 <div class="error" data-account-error=""></div>
-<form action="javascript:void(0);" class="inputs-container">
+<div class="error js-error">{{=it.passwordTooShort}}</div>
+<form
+    method="post"
+    id="customer_login"
+    accept-charset="UTF-8"
+    novalidate="novalidate"
+    class="inputs-container"
+>
+    <input type="hidden" name="form_type" value="customer_login" /><input
+        type="hidden"
+        name="utf8"
+        value="✓"
+    />
+
     <input
-        class="input-text"
-        data-type="email"
-        name="email"
-        placeholder="{{=it.yourEmail}}"
         type="email"
-    />
-    <input
+        name="customer[email]"
+        autocomplete="email"
         class="input-text"
-        data-signin-password=""
-        name="password"
-        placeholder="{{=it.yourPassword}}"
-        type="password"
+        placeholder="{{=it.yourEmail}}"
     />
+
+    <input
+        type="password"
+        value=""
+        name="customer[password]"
+        class="input-text"
+        placeholder="{{=it.yourPassword}}"
+    />
+
+    {{? it.hasPasswordRecover }}
+    <div class="text-center">
+        <p><a href="#recover" id="RecoverPassword">Forgot your password?</a></p>
+    </div>
+    {{?? true }}{{?}}
     <input
         class="btn btn-primary"
         disabled=""

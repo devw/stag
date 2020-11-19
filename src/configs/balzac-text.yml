@@ -4,6 +4,7 @@ hasPasswordVerification: false
 hasBirthDate: false
 hasCarousel: true
 isPopover: false
+hasPasswordRecover: false
 
 createAccount: Inscription
 loginRegister: "Connexion / Inscription"

@@ -96,7 +96,7 @@ eval("// Module\nvar code = \"<img class=\\\"image\\\" />\\n<div class=\\\"title
 /*! CommonJS bailout: module.exports is used directly at 4:0-14 */
 /***/ ((module) => {
 
-eval("// Module\nvar code = \"<img class=\\\"image\\\" />\\n<div class=\\\"title\\\">{{=it.login}}</div>\\n<div class=\\\"subtitle\\\">\\n    <p>{{=it.enterEmailPswToConnect}}</p>\\n</div>\\n<div class=\\\"error\\\" data-account-error=\\\"\\\"></div>\\n<form action=\\\"javascript:void(0);\\\" class=\\\"inputs-container\\\">\\n    <input\\n        class=\\\"input-text\\\"\\n        data-type=\\\"email\\\"\\n        name=\\\"email\\\"\\n        placeholder=\\\"{{=it.yourEmail}}\\\"\\n        type=\\\"email\\\"\\n    />\\n    <input\\n        class=\\\"input-text\\\"\\n        data-signin-password=\\\"\\\"\\n        name=\\\"password\\\"\\n        placeholder=\\\"{{=it.yourPassword}}\\\"\\n        type=\\\"password\\\"\\n    />\\n    <input\\n        class=\\\"btn btn-primary\\\"\\n        disabled=\\\"\\\"\\n        type=\\\"submit\\\"\\n        value=\\\"{{=it.signIn}}\\\"\\n    />\\n</form>\\n<div class=\\\"secondary-action\\\">\\n    {{? it.isPopover }}\\n    <p>\\n        {{=it.isNewCustomer}}\\n        <a href=\\\"#\\\" class=\\\"link js-create-account\\\">{{=it.createAccount}}</a>\\n    </p>\\n    {{?? true }}{{?}}\\n    <p>\\n        {{=it.doYouLostPsw}}\\n        <a href=\\\"/account#recover-password\\\" class=\\\"link\\\">{{=it.recoverPsw}}</a>\\n    </p>\\n</div>\\n\";\n// Exports\nmodule.exports = code;\n\n//# sourceURL=webpack://stag-dotjs/./src/templates/sign-in.html?");
+eval("// Module\nvar code = \"<img class=\\\"image\\\" />\\n<div class=\\\"title\\\">{{=it.login}}</div>\\n<div class=\\\"subtitle\\\">\\n    <p>{{=it.enterEmailPswToConnect}}</p>\\n</div>\\n<div class=\\\"error\\\" data-account-error=\\\"\\\"></div>\\n<div class=\\\"error js-error\\\">{{=it.passwordTooShort}}</div>\\n<form\\n    method=\\\"post\\\"\\n    id=\\\"customer_login\\\"\\n    accept-charset=\\\"UTF-8\\\"\\n    novalidate=\\\"novalidate\\\"\\n    class=\\\"inputs-container\\\"\\n>\\n    <input type=\\\"hidden\\\" name=\\\"form_type\\\" value=\\\"customer_login\\\" /><input\\n        type=\\\"hidden\\\"\\n        name=\\\"utf8\\\"\\n        value=\\\"✓\\\"\\n    />\\n\\n    <input\\n        type=\\\"email\\\"\\n        name=\\\"customer[email]\\\"\\n        autocomplete=\\\"email\\\"\\n        class=\\\"input-text\\\"\\n        placeholder=\\\"{{=it.yourEmail}}\\\"\\n    />\\n\\n    <input\\n        type=\\\"password\\\"\\n        value=\\\"\\\"\\n        name=\\\"customer[password]\\\"\\n        class=\\\"input-text\\\"\\n        placeholder=\\\"{{=it.yourPassword}}\\\"\\n    />\\n\\n    {{? it.hasPasswordRecover }}\\n    <div class=\\\"text-center\\\">\\n        <p><a href=\\\"#recover\\\" id=\\\"RecoverPassword\\\">Forgot your password?</a></p>\\n    </div>\\n    {{?? true }}{{?}}\\n    <input\\n        class=\\\"btn btn-primary\\\"\\n        disabled=\\\"\\\"\\n        type=\\\"submit\\\"\\n        value=\\\"{{=it.signIn}}\\\"\\n    />\\n</form>\\n<div class=\\\"secondary-action\\\">\\n    {{? it.isPopover }}\\n    <p>\\n        {{=it.isNewCustomer}}\\n        <a href=\\\"#\\\" class=\\\"link js-create-account\\\">{{=it.createAccount}}</a>\\n    </p>\\n    {{?? true }}{{?}}\\n    <p>\\n        {{=it.doYouLostPsw}}\\n        <a href=\\\"/account#recover-password\\\" class=\\\"link\\\">{{=it.recoverPsw}}</a>\\n    </p>\\n</div>\\n\";\n// Exports\nmodule.exports = code;\n\n//# sourceURL=webpack://stag-dotjs/./src/templates/sign-in.html?");
 
 /***/ }),
 
@@ -123,8 +123,8 @@ eval("// Module\nvar code = \"<img class=\\\"image\\\" />\\n<div class=\\\"title
 /*!   export --content-bg-color [provided] [no usage info] [missing usage info prevents renaming] */
 /*!   export --content-padding [provided] [no usage info] [missing usage info prevents renaming] */
 /*!   export --content-width [provided] [no usage info] [missing usage info prevents renaming] */
+/*!   export --error-bg-color [provided] [no usage info] [missing usage info prevents renaming] */
 /*!   export --error-text-color [provided] [no usage info] [missing usage info prevents renaming] */
-/*!   export --hint-text-color [provided] [no usage info] [missing usage info prevents renaming] */
 /*!   export --image-padding [provided] [no usage info] [missing usage info prevents renaming] */
 /*!   export --image-size [provided] [no usage info] [missing usage info prevents renaming] */
 /*!   export --image-url [provided] [no usage info] [missing usage info prevents renaming] */
@@ -134,7 +134,6 @@ eval("// Module\nvar code = \"<img class=\\\"image\\\" />\\n<div class=\\\"title
 /*!   export --large-letter-spacing [provided] [no usage info] [missing usage info prevents renaming] */
 /*!   export --large-line-height [provided] [no usage info] [missing usage info prevents renaming] */
 /*!   export --large-text-transform [provided] [no usage info] [missing usage info prevents renaming] */
-/*!   export --link-color [provided] [no usage info] [missing usage info prevents renaming] */
 /*!   export --medium-font-weight [provided] [no usage info] [missing usage info prevents renaming] */
 /*!   export --medium-text-size [provided] [no usage info] [missing usage info prevents renaming] */
 /*!   export --placeholder-color [provided] [no usage info] [missing usage info prevents renaming] */
@@ -142,15 +141,13 @@ eval("// Module\nvar code = \"<img class=\\\"image\\\" />\\n<div class=\\\"title
 /*!   export --placeholder-text-transform [provided] [no usage info] [missing usage info prevents renaming] */
 /*!   export --primary-text-color [provided] [no usage info] [missing usage info prevents renaming] */
 /*!   export --text-input-margin [provided] [no usage info] [missing usage info prevents renaming] */
-/*!   export --transform-opacity [provided] [no usage info] [missing usage info prevents renaming] */
-/*!   export --transform-scale [provided] [no usage info] [missing usage info prevents renaming] */
 /*!   other exports [not provided] [no usage info] */
 /*! other exports [not provided] [no usage info] */
 /*! runtime requirements: module */
 /***/ ((module) => {
 
 "use strict";
-eval("module.exports = JSON.parse(\"{\\\"theme\\\":{\\\"--container-border-radius\\\":\\\"0.2em\\\",\\\"--container-bg-color\\\":\\\"rgba(90, 91, 91, 0.4)\\\",\\\"--container-bg-image\\\":\\\"url(\\\\\\\"https://images-na.ssl-images-amazon.com/images/I/81Dpm0mr03L.jpg\\\\\\\")\\\",\\\"--content-width\\\":\\\"530px\\\",\\\"--content-padding\\\":\\\"1.2em\\\",\\\"--content-bg-color\\\":\\\"#fff\\\",\\\"--transform-opacity\\\":0.2,\\\"--transform-scale\\\":0.8,\\\"--primary-text-color\\\":\\\"#1e2d7d\\\",\\\"--error-text-color\\\":\\\"#ff0000\\\",\\\"--hint-text-color\\\":\\\"#333\\\",\\\"--btn-bg-color\\\":\\\"#00badb\\\",\\\"--btn-disabled-bg-color\\\":\\\"#00badb\\\",\\\"--btn-disabled-opacity\\\":1,\\\"--large-font-family\\\":\\\"Termina\\\",\\\"--large-font-size\\\":\\\"1.3em\\\",\\\"--large-font-weight\\\":500,\\\"--large-line-height\\\":\\\"1.1em\\\",\\\"--large-letter-spacing\\\":\\\"0.05em\\\",\\\"--large-text-transform\\\":\\\"none\\\",\\\"--medium-text-size\\\":\\\"0.98em\\\",\\\"--medium-font-weight\\\":300,\\\"--placeholder-text-transform\\\":\\\"uppercase\\\",\\\"--placeholder-font-size\\\":\\\"1.1em\\\",\\\"--placeholder-color\\\":\\\"inherit\\\",\\\"--text-input-margin\\\":\\\"0.9em\\\",\\\"--image-padding\\\":0,\\\"--image-size\\\":\\\"40%\\\",\\\"--image-url\\\":\\\"none\\\",\\\"--link-color\\\":\\\"#00badb\\\"},\\\"page-landing\\\":{\\\"--image\\\":\\\"none\\\",\\\"--image-width\\\":\\\"40%\\\"},\\\"page-register\\\":{\\\"--image\\\":\\\"none\\\",\\\"--image-width\\\":\\\"40%\\\"}}\");\n\n//# sourceURL=webpack://stag-dotjs/./public/data/style.json?");
+eval("module.exports = JSON.parse(\"{\\\"theme\\\":{\\\"--container-border-radius\\\":\\\"0.2em\\\",\\\"--container-bg-color\\\":\\\"rgba(90, 91, 91, 0.4)\\\",\\\"--container-bg-image\\\":\\\"url(\\\\\\\"https://images-na.ssl-images-amazon.com/images/I/81Dpm0mr03L.jpg\\\\\\\")\\\",\\\"--content-width\\\":\\\"530px\\\",\\\"--content-padding\\\":\\\"1.5em\\\",\\\"--content-bg-color\\\":\\\"#fff\\\",\\\"--primary-text-color\\\":\\\"#0d3c32\\\",\\\"--error-bg-color\\\":\\\"#bfd9cb\\\",\\\"--error-text-color\\\":\\\"#0d3c32\\\",\\\"--btn-bg-color\\\":\\\"#007266\\\",\\\"--btn-disabled-bg-color\\\":\\\"#007266\\\",\\\"--btn-disabled-opacity\\\":0.5,\\\"--large-font-family\\\":\\\"Termina\\\",\\\"--large-font-size\\\":\\\"3.1em\\\",\\\"--large-font-weight\\\":300,\\\"--large-line-height\\\":\\\"1.1em\\\",\\\"--large-letter-spacing\\\":\\\"0.05em\\\",\\\"--large-text-transform\\\":\\\"none\\\",\\\"--medium-text-size\\\":\\\"0.98em\\\",\\\"--medium-font-weight\\\":300,\\\"--placeholder-text-transform\\\":\\\"uppercase\\\",\\\"--placeholder-font-size\\\":\\\"1.1em\\\",\\\"--placeholder-color\\\":\\\"inherit\\\",\\\"--text-input-margin\\\":\\\"0.9em\\\",\\\"--image-padding\\\":0,\\\"--image-size\\\":\\\"40%\\\",\\\"--image-url\\\":\\\"none\\\"},\\\"page-landing\\\":{\\\"--image\\\":\\\"none\\\",\\\"--image-width\\\":\\\"40%\\\"},\\\"page-register\\\":{\\\"--image\\\":\\\"none\\\",\\\"--image-width\\\":\\\"40%\\\"}}\");\n\n//# sourceURL=webpack://stag-dotjs/./public/data/style.json?");
 
 /***/ }),
 
@@ -161,21 +158,18 @@ eval("module.exports = JSON.parse(\"{\\\"theme\\\":{\\\"--container-border-radiu
 /*! default exports */
 /*! export confirmYourPassword [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export createAccount [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export doYouLostPsw [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export enterEmailPswToConnect [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export enterYourEmailToContinue [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export fillInfoToCreateAccount [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export hasBirthDate [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export hasGender [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export hasNewsLetter [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export hasPasswordVerification [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export hasSocialLogin [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export isNewCustomer [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export isPopover [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export login [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export login-register [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export loginRegister [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export recoverPsw [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export passwordTooShort [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export signIn [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export signUp [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export subscribeNewsletter [provided] [no usage info] [missing usage info prevents renaming] */
@@ -189,7 +183,7 @@ eval("module.exports = JSON.parse(\"{\\\"theme\\\":{\\\"--container-border-radiu
 /***/ ((module) => {
 
 "use strict";
-eval("module.exports = JSON.parse(\"{\\\"hasGender\\\":false,\\\"hasSocialLogin\\\":false,\\\"hasBirthDate\\\":false,\\\"hasPasswordVerification\\\":false,\\\"isPopover\\\":true,\\\"hasNewsLetter\\\":false,\\\"createAccount\\\":\\\"Create your account\\\",\\\"loginRegister\\\":\\\"Login to my account\\\",\\\"enterYourEmailToContinue\\\":\\\"Enter your e-mail and password:\\\",\\\"yourEmail\\\":\\\"Votre Courriel\\\",\\\"signIn\\\":\\\"Se Connecter\\\",\\\"signUp\\\":\\\"S'inscrire\\\",\\\"fillInfoToCreateAccount\\\":\\\"Please fill in the information below:\\\",\\\"login\\\":\\\"Connexion\\\",\\\"enterEmailPswToConnect\\\":\\\"Enter your e-mail and password:.\\\",\\\"recoverPsw\\\":\\\"Recover password\\\",\\\"validate\\\":\\\"Valider\\\",\\\"login-register\\\":\\\"Connexion / Inscription\\\",\\\"yourFirstName\\\":\\\"Prénom\\\",\\\"yourLastName\\\":\\\"Nom\\\",\\\"yourPassword\\\":\\\"Votre mot de passe\\\",\\\"confirmYourPassword\\\":\\\"Confirmez votre mot de passe\\\",\\\"subscribeNewsletter\\\":\\\"Je m'inscris à la newsletter\\\",\\\"isNewCustomer\\\":\\\"New customer?\\\",\\\"doYouLostPsw\\\":\\\"Lost password?\\\"}\");\n\n//# sourceURL=webpack://stag-dotjs/./public/data/text.json?");
+eval("module.exports = JSON.parse(\"{\\\"hasGender\\\":true,\\\"hasSocialLogin\\\":false,\\\"hasBirthDate\\\":true,\\\"hasPasswordVerification\\\":false,\\\"isPopover\\\":false,\\\"createAccount\\\":\\\"Inscription\\\",\\\"loginRegister\\\":\\\"Connexion / Inscription\\\",\\\"enterYourEmailToContinue\\\":\\\"Renseignez votre adresse mail pour vous connecter ou vous inscrire.\\\",\\\"yourEmail\\\":\\\"Votre Courriel\\\",\\\"signIn\\\":\\\"Se Connecter\\\",\\\"signUp\\\":\\\"S'inscrire\\\",\\\"fillInfoToCreateAccount\\\":\\\"Renseignez vos informations pour créer votre compte Franklin.\\\",\\\"login\\\":\\\"Connexion\\\",\\\"enterEmailPswToConnect\\\":\\\"Renseignez votre adresse email et votre mot de passe pour vous connecter.\\\",\\\"validate\\\":\\\"Valider\\\",\\\"login-register\\\":\\\"Connexion / Inscription\\\",\\\"yourFirstName\\\":\\\"Prénom\\\",\\\"yourLastName\\\":\\\"Nom\\\",\\\"yourPassword\\\":\\\"Votre mot de passe\\\",\\\"confirmYourPassword\\\":\\\"Confirmez votre mot de passe\\\",\\\"subscribeNewsletter\\\":\\\"Je m'inscris à la newsletter\\\",\\\"passwordTooShort\\\":\\\"Le mot de passe doit comporter au moins 5 caractères.\\\"}\");\n\n//# sourceURL=webpack://stag-dotjs/./public/data/text.json?");
 
 /***/ }),
 
@@ -270,7 +264,7 @@ eval("const { APP_ID, REGISTER_ID, SIGNIN_ID } = __webpack_require__(/*! ../temp
 /*! runtime requirements: __webpack_exports__, __webpack_require__ */
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("const { APP_ID, SIGNIN_ID, REGISTER_ID } = __webpack_require__(/*! ../templates/ */ \"./src/templates/index.js\");\nconst { isLogged } = __webpack_require__(/*! ../services */ \"./src/services/index.js\");\nconst { serialize, toggleModules } = __webpack_require__(/*! ../utils */ \"./src/utils/index.js\");\n\nconst $ = document.querySelector.bind(document);\nlet form;\n\nconst onSubmit = async (_) => {\n    const inputs = serialize(form);\n    alert(await isLogged(inputs));\n};\n\nconst toggleButton = (e) => {\n    const email = form.querySelector(\"[name='email']\").value;\n    const isEmail = /\\S+@\\S+\\.\\S+/.test(email);\n    if (isEmail)\n        form.querySelector(\"input[type='submit']\").removeAttribute(\"disabled\");\n};\n\nconst register = () => toggleModules([REGISTER_ID, SIGNIN_ID]);\n\nexports.init = () => {\n    form = $(`#${APP_ID} .${SIGNIN_ID} form`);\n    console.log(form);\n    form.addEventListener(\"input\", toggleButton);\n    form.addEventListener(\"submit\", onSubmit);\n    $(`#${APP_ID} .js-create-account`)?.addEventListener(\"click\", register);\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/actions/sign-in.js?");
+eval("const { APP_ID, SIGNIN_ID, REGISTER_ID } = __webpack_require__(/*! ../templates/ */ \"./src/templates/index.js\");\nconst { isValidEmail, isValidPsw } = __webpack_require__(/*! ../utils/ */ \"./src/utils/index.js\");\n\nconst { serialize, toggleModules } = __webpack_require__(/*! ../utils */ \"./src/utils/index.js\");\n\nconst $ = document.querySelector.bind(document);\nlet form, errorNode;\n\nconst onSubmit = async (e) => {\n    e.preventDefault();\n    const inputs = serialize(form);\n    if (!isValidPsw(inputs[\"customer[password]\"])) {\n        errorNode.style.setProperty(\"display\", \"block\");\n        return null;\n    }\n    console.log(\"isValidPsw\");\n\n    // const action = \"https://antonio-balzac.myshopify.com/account/login\";\n    form.action = \"https://antonio-balzac.myshopify.com/account/login\";\n    globalThis.__form = form;\n    globalThis.__inputs = inputs;\n    // form.submit();\n};\n\nconst toggleButton = (e) => {\n    const email = form.querySelector('[name=\"customer[email]\"]').value;\n    isValidEmail(email)\n        ? form.querySelector(\"[type='submit']\").removeAttribute(\"disabled\")\n        : form.querySelector(\"[type='submit']\").setAttribute(\"disabled\", \"\");\n};\n\nconst register = () => toggleModules([REGISTER_ID, SIGNIN_ID]);\n\nexports.init = () => {\n    form = $(`#${APP_ID} .${SIGNIN_ID} form`);\n    errorNode = $(`#${APP_ID} .${SIGNIN_ID} .js-error`);\n    console.log(\"asdssssssssss\", form);\n    form.addEventListener(\"input\", toggleButton);\n    form.addEventListener(\"submit\", onSubmit);\n    $(`#${APP_ID} .js-create-account`)?.addEventListener(\"click\", register);\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/actions/sign-in.js?");
 
 /***/ }),
 
@@ -283,7 +277,7 @@ eval("const { APP_ID, SIGNIN_ID, REGISTER_ID } = __webpack_require__(/*! ../temp
 /*! CommonJS bailout: module.exports is used directly at 1:0-14 */
 /***/ ((module) => {
 
-eval("module.exports = {\n    AWS_ENDPOINT: \"http://ec2-3-19-56-186.us-east-2.compute.amazonaws.com/\",\n    STAG_ENDPOINT: \"https://devw.github.io/stag/\",\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/config.js?");
+eval("module.exports = {\n    // AWS_ENDPOINT: \"http://ec2-3-19-56-186.us-east-2.compute.amazonaws.com/\",\n    AWS_ENDPOINT: \"https://e8dbd8ceba1d.ngrok.io\",\n    STAG_ENDPOINT: \"https://devw.github.io/stag/\",\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/config.js?");
 
 /***/ }),
 
@@ -313,7 +307,7 @@ eval("\n\nmodule.exports = {\n    template,\n    compile,\n    setDelimiters,\n}
 /*! runtime requirements: __webpack_exports__, __webpack_require__ */
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("const { APP_ID, CONTAINER_ID } = __webpack_require__(/*! ../templates/ */ \"./src/templates/index.js\");\nconst $ = document.querySelector.bind(document);\nconst { AWS_ENDPOINT } = __webpack_require__(/*! ../config.js */ \"./src/config.js\");\nconst { registerViaProxy } = __webpack_require__(/*! ./proxy */ \"./src/services/proxy.js\");\nconst { registerViaStorefront, signInViaStorefront } = __webpack_require__(/*! ./storefront */ \"./src/services/storefront.js\");\n\nconst toggleLoading = () => {\n    const loading = $(`#${APP_ID} .loading`);\n    if (loading.style.getPropertyValue(\"display\") == \"none\") {\n        loading.style.setProperty(\"display\", \"block\");\n        $(`.${CONTAINER_ID}`).style.setProperty(\"opacity\", 0.2);\n    } else {\n        loading.style.setProperty(\"display\", \"none\");\n        $(`.${CONTAINER_ID}`).style.setProperty(\"opacity\", 1);\n    }\n};\n\nexports.isRegistered = async (email) => {\n    toggleLoading();\n    const res = await fetch(`${AWS_ENDPOINT}/user/${email}`);\n    const json = await res.json();\n    toggleLoading();\n    return json.data;\n};\n\nexports.register = async (inputs) => {\n    registerViaStorefront(inputs);\n    return registerViaProxy(inputs);\n};\n\nexports.isLogged = async (inputs) => {\n    toggleLoading();\n    signInViaStorefront(inputs);\n    toggleLoading();\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/services/index.js?");
+eval("const { registerViaProxy, isRegistered } = __webpack_require__(/*! ./proxy */ \"./src/services/proxy.js\");\nconst { registerViaStorefront, signInViaStorefront } = __webpack_require__(/*! ./storefront */ \"./src/services/storefront.js\");\nconst { toggleLoading } = __webpack_require__(/*! ../utils/toggle-loading */ \"./src/utils/toggle-loading.js\");\n\nexports.register = async (inputs) => {\n    registerViaStorefront(inputs);\n    return registerViaProxy(inputs);\n};\n\nexports.isRegistered = isRegistered;\n\n// TODO this should be removed\nexports.isLogged = async (inputs) => {\n    toggleLoading();\n    signInViaStorefront(inputs);\n    toggleLoading();\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/services/index.js?");
 
 /***/ }),
 
@@ -338,12 +332,13 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   !*** ./src/services/proxy.js ***!
   \*******************************/
 /*! default exports */
+/*! export isRegistered [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export registerViaProxy [provided] [no usage info] [missing usage info prevents renaming] */
 /*! other exports [not provided] [no usage info] */
 /*! runtime requirements: __webpack_exports__, __webpack_require__ */
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("const { AWS_ENDPOINT } = __webpack_require__(/*! ../config.js */ \"./src/config.js\");\n\nexports.registerViaProxy = async (inputs) => {\n    const response = await fetch(`${AWS_ENDPOINT}/user/add/`, {\n        method: \"POST\",\n        headers: {\n            \"Content-Type\": \"application/json\",\n        },\n        body: JSON.stringify(inputs),\n    });\n    return response.json();\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/services/proxy.js?");
+eval("const { AWS_ENDPOINT } = __webpack_require__(/*! ../config.js */ \"./src/config.js\");\nconst { toggleLoading } = __webpack_require__(/*! ../utils/toggle-loading */ \"./src/utils/toggle-loading.js\");\n\nexports.registerViaProxy = async (inputs) => {\n    const response = await fetch(`${AWS_ENDPOINT}/user/add/`, {\n        method: \"POST\",\n        headers: {\n            \"Content-Type\": \"application/json\",\n        },\n        body: JSON.stringify(inputs),\n    });\n    return response.json();\n};\n\nexports.isRegistered = async (email) => {\n    toggleLoading();\n    const res = await fetch(`${AWS_ENDPOINT}/user/${email}`);\n    const json = await res.json();\n    toggleLoading();\n    return json.data;\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/services/proxy.js?");
 
 /***/ }),
 
@@ -381,6 +376,8 @@ eval("const dashboardTmpl = __webpack_require__(/*! ./dashboard.html */ \"./src/
   \****************************/
 /*! default exports */
 /*! export isFormFilled [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export isValidEmail [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export isValidPsw [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export serialize [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export toggleModules [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export updateCss [provided] [no usage info] [missing usage info prevents renaming] */
@@ -389,7 +386,22 @@ eval("const dashboardTmpl = __webpack_require__(/*! ./dashboard.html */ \"./src/
 /*! runtime requirements: __webpack_exports__, __webpack_require__ */
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("const { updatePages } = __webpack_require__(/*! ./load-pages */ \"./src/utils/load-pages.js\");\nconst { updateCss } = __webpack_require__(/*! ./load-css */ \"./src/utils/load-css.js\");\nconst { toggleModules } = __webpack_require__(/*! ./toggle-module */ \"./src/utils/toggle-module.js\");\nconst { serialize, isFormFilled } = __webpack_require__(/*! ./serialize */ \"./src/utils/serialize.js\");\n\nexports.updatePages = updatePages;\nexports.updateCss = updateCss;\nexports.toggleModules = toggleModules;\nexports.serialize = serialize;\nexports.isFormFilled = isFormFilled;\n\n\n//# sourceURL=webpack://stag-dotjs/./src/utils/index.js?");
+eval("const { updatePages } = __webpack_require__(/*! ./load-pages */ \"./src/utils/load-pages.js\");\nconst { updateCss } = __webpack_require__(/*! ./load-css */ \"./src/utils/load-css.js\");\nconst { toggleModules } = __webpack_require__(/*! ./toggle-module */ \"./src/utils/toggle-module.js\");\nconst { serialize, isFormFilled } = __webpack_require__(/*! ./serialize */ \"./src/utils/serialize.js\");\nconst { isValidPsw, isValidEmail } = __webpack_require__(/*! ./input-checker */ \"./src/utils/input-checker.js\");\n\nexports.updatePages = updatePages;\nexports.updateCss = updateCss;\nexports.toggleModules = toggleModules;\nexports.serialize = serialize;\nexports.isFormFilled = isFormFilled;\nexports.isValidPsw = isValidPsw;\nexports.isValidEmail = isValidEmail;\n\n\n//# sourceURL=webpack://stag-dotjs/./src/utils/index.js?");
+
+/***/ }),
+
+/***/ "./src/utils/input-checker.js":
+/*!************************************!*\
+  !*** ./src/utils/input-checker.js ***!
+  \************************************/
+/*! default exports */
+/*! export isValidEmail [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export isValidPsw [provided] [no usage info] [missing usage info prevents renaming] */
+/*! other exports [not provided] [no usage info] */
+/*! runtime requirements: __webpack_exports__ */
+/***/ ((__unused_webpack_module, exports) => {
+
+eval("exports.isValidPsw = (value) => value.length > 4;\nexports.isValidEmail = (email) => /\\S+@\\S+\\.\\S+/.test(email);\n\n\n//# sourceURL=webpack://stag-dotjs/./src/utils/input-checker.js?");
 
 /***/ }),
 
@@ -433,6 +445,20 @@ eval("const doT = __webpack_require__(/*! ../doT */ \"./src/doT.js\");\nconst {\
 /***/ ((__unused_webpack_module, exports) => {
 
 eval("const serialize = (form) => {\n    const reducer = (acc, cur) => ({ ...acc, [cur[0]]: cur[1] });\n    return Array.from(new FormData(form)).reduce(reducer, {});\n};\n\nconst isFormFilled = (form) => {\n    const inputs = serialize(form);\n    return Object.values(inputs).every((e) => e.length > 0);\n};\n\nexports.serialize = serialize;\nexports.isFormFilled = isFormFilled;\n\n\n//# sourceURL=webpack://stag-dotjs/./src/utils/serialize.js?");
+
+/***/ }),
+
+/***/ "./src/utils/toggle-loading.js":
+/*!*************************************!*\
+  !*** ./src/utils/toggle-loading.js ***!
+  \*************************************/
+/*! default exports */
+/*! export toggleLoading [provided] [no usage info] [missing usage info prevents renaming] */
+/*! other exports [not provided] [no usage info] */
+/*! runtime requirements: __webpack_exports__, __webpack_require__ */
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+eval("const { APP_ID, CONTAINER_ID } = __webpack_require__(/*! ../templates/ */ \"./src/templates/index.js\");\n\nconst $ = document.querySelector.bind(document);\n\nconst toggleLoading = () => {\n    const loading = $(`#${APP_ID} .loading`);\n    if (loading.style.getPropertyValue(\"display\") == \"none\") {\n        loading.style.setProperty(\"display\", \"block\");\n        $(`.${CONTAINER_ID}`).style.setProperty(\"opacity\", 0.2);\n    } else {\n        loading.style.setProperty(\"display\", \"none\");\n        $(`.${CONTAINER_ID}`).style.setProperty(\"opacity\", 1);\n    }\n};\n\nexports.toggleLoading = toggleLoading;\n\n\n//# sourceURL=webpack://stag-dotjs/./src/utils/toggle-loading.js?");
 
 /***/ }),
 
