@@ -8,7 +8,7 @@ exports.sendHttpRequest = (method, e) =>
         xhr.send(new FormData(e.target));
         xhr.onload = () => {
             $(".js-shopify-response").innerHTML = xhr.responseText;
-            cleanResponse();
+            // cleanResponse();
             const result = shopifyResult();
             res(result);
         };

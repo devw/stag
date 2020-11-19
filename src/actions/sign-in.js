@@ -17,7 +17,7 @@ const onSubmit = async (e) => {
     form.action = "/account/login";
     const resp = await sendHttpRequest("POST", e);
     console.log("response.....", resp);
-    $(".js-shopify-response").innerHTML = resp;
+    // $(".js-shopify-response").innerHTML = resp;
 };
 
 const toggleButton = (e) => {
