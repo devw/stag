@@ -1,4 +1,5 @@
 const { APP_ID, REGISTER_ID, SIGNIN_ID } = require("../templates");
+const { sendHttpRequest } = require("../services");
 const $ = document.querySelector.bind(document);
 const {
     toggleModules,
@@ -22,7 +23,7 @@ const arePasswordsDiff = (inputs) =>
     inputs.confirmPassword &&
     inputs.confirmPassword !== inputs["customer[password]"];
 
-// TODO improve the logic
+// TODO refactor this part
 const checkInputs = (inputs) => {
     const pswDiff = errorNode.querySelector(".js-psw-diff");
     const pswValid = errorNode.querySelector(".js-psw-valid");
@@ -44,9 +45,13 @@ const onSubmit = async (e) => {
     e.preventDefault();
     const inputs = serialize(form);
     checkInputs(inputs);
-    form.action = "https://antonio-balzac.myshopify.com/account";
-    globalThis.__form = form;
-    globalThis.__inputs = inputs;
+    form.action = "https://antonio-balzac.myshopify.com/account/register";
+    const resp = await sendHttpRequest("POST", e.target.action);
+    console.log(resp);
+    $(".js-shopify-response").innerHTML = resp;
+
+    // globalThis.__form = form;
+    // globalThis.__inputs = inputs;
     // form.submit();
 };
 

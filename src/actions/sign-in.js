@@ -1,5 +1,6 @@
 const { APP_ID, SIGNIN_ID, REGISTER_ID } = require("../templates/");
 const { isValidEmail, isValidPsw } = require("../utils/");
+const { sendHttpRequest } = require("../services");
 
 const { serialize, toggleModules } = require("../utils");
 
@@ -13,11 +14,10 @@ const onSubmit = async (e) => {
         errorNode.style.setProperty("display", "block");
         return null;
     }
-
-    // const action = "https://antonio-balzac.myshopify.com/account/login";
     form.action = "https://antonio-balzac.myshopify.com/account/login";
-    globalThis.__form = form;
-    globalThis.__inputs = inputs;
+    const resp = await sendHttpRequest("POST", e);
+    console.log(resp);
+    $(".js-shopify-response").innerHTML = resp;
     // form.submit();
 };
 
@@ -33,7 +33,6 @@ const register = () => toggleModules([REGISTER_ID, SIGNIN_ID]);
 exports.init = () => {
     form = $(`#${APP_ID} .${SIGNIN_ID} form`);
     errorNode = $(`#${APP_ID} .${SIGNIN_ID} .js-error`);
-    console.log("asdssssssssss", form);
     form.addEventListener("input", toggleButton);
     form.addEventListener("submit", onSubmit);
     $(`#${APP_ID} .js-create-account`)?.addEventListener("click", register);
