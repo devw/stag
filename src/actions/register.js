@@ -1,7 +1,11 @@
-const { APP_ID, REGISTER_ID, SIGNIN_ID } = require("../templates/");
-const { register } = require("../services");
+const { APP_ID, REGISTER_ID, SIGNIN_ID } = require("../templates");
 const $ = document.querySelector.bind(document);
-const { toggleModules, serialize, isFormFilled } = require("../utils");
+const {
+    toggleModules,
+    serialize,
+    isFormFilled,
+    isValidPsw,
+} = require("../utils");
 let form, errorNode;
 
 const toggleButton = ({ target }) => {
@@ -14,17 +18,36 @@ const toggleButton = ({ target }) => {
         : btn.setAttribute("disabled", "true");
 };
 
-const arePasswordsDiff = ({ password, confirmPassword }) =>
-    confirmPassword && confirmPassword !== password;
+const arePasswordsDiff = (inputs) =>
+    inputs.confirmPassword &&
+    inputs.confirmPassword !== inputs["customer[password]"];
 
-const onSubmit = async () => {
-    const inputs = serialize(form);
+// TODO improve the logic
+const checkInputs = (inputs) => {
+    const pswDiff = errorNode.querySelector(".js-psw-diff");
+    const pswValid = errorNode.querySelector(".js-psw-valid");
     if (arePasswordsDiff(inputs)) {
-        errorNode.style.setProperty("display", "block");
+        pswDiff.style.setProperty("display", "block");
         return null;
+    } else {
+        pswDiff.style.setProperty("display", "none");
     }
-    register(inputs); // TODO to fix
-    toggleModules([REGISTER_ID, SIGNIN_ID]);
+    if (!isValidPsw(inputs["customer[password]"])) {
+        pswValid.style.setProperty("display", "block");
+        return null;
+    } else {
+        pswValid.style.setProperty("display", "none");
+    }
+};
+
+const onSubmit = async (e) => {
+    e.preventDefault();
+    const inputs = serialize(form);
+    checkInputs(inputs);
+    form.action = "https://antonio-balzac.myshopify.com/account";
+    globalThis.__form = form;
+    globalThis.__inputs = inputs;
+    // form.submit();
 };
 
 const goNextSlide = () => {

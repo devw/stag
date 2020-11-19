@@ -21,29 +21,35 @@
     <label class="input-radio__label" for="female">Madame</label>
 </div>
 {{?? true }}{{?}}
-<input
-    class="input-text"
-    name="email"
-    placeholder="{{=it.yourEmail}}"
-    type="email"
+
+<input type="hidden" name="form_type" value="create_customer" /><input
+    type="hidden"
+    name="utf8"
+    value="✓"
 />
 <input
+    type="text"
     class="input-text"
-    name="firstName"
+    name="customer[first_name]"
     placeholder="{{=it.yourFirstName}}"
-    type="text"
 />
 <input
+    type="text"
     class="input-text"
-    name="lastName"
+    name="customer[last_name]"
     placeholder="{{=it.yourLastName}}"
-    type="text"
 />
 <input
+    type="email"
+    placeholder="{{=it.yourEmail}}"
+    name="customer[email]"
     class="input-text"
-    name="password"
-    placeholder="{{=it.yourPassword}}"
+/>
+<input
     type="password"
+    name="customer[password]"
+    class="input-text"
+    placeholder="{{=it.yourPassword}}"
 />
 {{? it.hasPasswordVerification }}
 <input
@@ -81,12 +87,16 @@
     />
 </div>
 {{?? true }}{{?}}
-<input
-    type="submit"
-    class="btn btn-primary"
-    disabled=""
-    value="{{=it.createAccount}}"
-/>
+
+<p class="text-center">
+    <input
+        class="btn btn-primary"
+        disabled=""
+        type="submit"
+        value="{{=it.createAccount}}"
+    />
+</p>
+
 {{? it.hasNewsLetter }}
 <div class="checkbox-container">
     <input

@@ -13,7 +13,6 @@ const onSubmit = async (e) => {
         errorNode.style.setProperty("display", "block");
         return null;
     }
-    console.log("isValidPsw");
 
     // const action = "https://antonio-balzac.myshopify.com/account/login";
     form.action = "https://antonio-balzac.myshopify.com/account/login";
