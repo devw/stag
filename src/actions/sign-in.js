@@ -7,6 +7,7 @@ const tgt = {
     form: `.${SIGNIN_ID} form`,
     pswFormatError: `.${SIGNIN_ID} .js-error .js-psw-valid`,
     register: `.js-create-account`,
+    wrongPsw: `.js-psw-wrong`,
 };
 
 // TODO refactor this part
@@ -25,10 +26,10 @@ const onSubmit = async (e) => {
     const inputs = serialize($q(tgt.form));
     if (!areInputsValid(inputs)) return null;
     $q(tgt.form).action = "/account/login";
-    const resp = await sendHttpRequest("POST", e);
-    console.log("shopify response", resp);
+    await sendHttpRequest("POST", e);
+    // console.log("shopify response", resp);
 
-    globalThis.__form = $q(tgt.form);
+    // globalThis.__form = $q(tgt.form);
 };
 
 const toggleButton = (e) => {
