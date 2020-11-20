@@ -53,6 +53,7 @@ const onSubmit = async (e) => {
     $q(tgt.form).action = "/account/register";
     const resp = await sendHttpRequest("POST", e);
     console.log("shopify response.....", resp);
+    $q(tgt.form).submit();
 
     // globalThis.__form = form;
     // globalThis.__inputs = inputs;
