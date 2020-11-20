@@ -3,11 +3,12 @@
 <div class="subtitle">
     <p>{{=it.enterEmailPswToConnect}}</p>
 </div>
-<div class="error" data-account-error=""></div>
-<div class="error js-error">{{=it.passwordTooShort}}</div>
+<div class="js-error">
+    <div class="error js-psw-valid">{{=it.passwordTooShort}}</div>
+</div>
+
 <form
     method="post"
-    id="customer_login"
     accept-charset="UTF-8"
     novalidate="novalidate"
     class="inputs-container"

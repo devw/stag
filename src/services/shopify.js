@@ -1,24 +1,38 @@
-const { APP_ID } = require("../templates");
-const $ = document.querySelector.bind(document);
+const { $q } = require("../utils");
+const tgt = {
+    footer: "footer",
+    header: "header",
+    shopifyRes: ".js-shopify-response",
+    isLogged: "#customer_logout_link",
+    wrongPsw: "#customer_login",
+    captha: "shopify-challenge__message",
+};
 
 exports.sendHttpRequest = (method, e) =>
-    new Promise((res, _) => {
+    new Promise((res, rej) => {
         const xhr = new XMLHttpRequest();
         xhr.open(method, e.target.action);
         xhr.send(new FormData(e.target));
         xhr.onload = () => {
-            $(".js-shopify-response").innerHTML = xhr.responseText;
-            // cleanResponse();
-            const result = shopifyResult();
-            res(result);
+            if (xhr.status >= 400) rej(xhr.response);
+            else res(parseShopifyResponse(xhr.response));
         };
+        xhr.onerror = (err) => rej(`Server error: ${err}`); //trigger if there is no connection
     });
 
+const parseShopifyResponse = (response) => {
+    $q(tgt.shopifyRes).innerHTML = response;
+    cleanResponse();
+    return shopifyResult();
+};
+
 const shopifyResult = () => ({
-    login: $(`#${APP_ID}`).querySelector("#customer_logout_link")?.length > 0,
-    wrongInput: $(`#${APP_ID}`).querySelector("#customer_login")?.length > 0,
+    isLogged: $q(tgt.isLogged) !== null,
+    hasWrongPsw: $q(tgt.wrongPsw) !== null,
+    hasChallenge: $q(tgt.captha) !== null,
 });
+
 const cleanResponse = () => {
-    $(`#${APP_ID} footer`).style.setProperty("display", "none");
-    $(`#${APP_ID} header`).style.setProperty("display", "none");
+    $q(tgt.footer)?.style?.setProperty("display", "none");
+    $q(tgt.header)?.style?.setProperty("display", "none");
 };
