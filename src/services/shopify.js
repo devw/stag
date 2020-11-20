@@ -11,8 +11,10 @@ const tgt = {
 exports.sendHttpRequest = (method, e) =>
     new Promise((res, rej) => {
         const xhr = new XMLHttpRequest();
+        const formData = new FormData(e.target);
+        formData.delete("confirmPassword");
         xhr.open(method, e.target.action);
-        xhr.send(new FormData(e.target));
+        xhr.send(formData);
         xhr.onload = () => {
             if (xhr.status >= 400) rej(xhr.response);
             else res(parseShopifyResponse(e, xhr.response));
