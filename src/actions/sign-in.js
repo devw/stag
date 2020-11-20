@@ -27,6 +27,7 @@ const onSubmit = async (e) => {
     $q(tgt.form).action = "/account/login";
     const resp = await sendHttpRequest("POST", e);
     console.log("shopify response.....", resp);
+    globalThis.__form = $q(tgt.form);
 };
 
 const toggleButton = (e) => {
