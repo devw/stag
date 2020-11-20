@@ -3,14 +3,14 @@ const tgt = {
     pswWrong: ".js-psw-wrong",
     close: ".js-close",
     shopifyRes: ".js-shopify-response",
-    isLogged: "#customer_logout_link",
+    isLogged: ".customer_logout_link",
     wrongPsw: "#customer_login",
     captha: ".shopify-challenge__button.btn",
 };
 
 exports.sendHttpRequest = (method, e) => {
     const htmlFixture = require("../fixtures/wrong-email-psw.html");
-    const htmlLogged = `<div id="#customer_logout_link">link</div>`;
+    const htmlLogged = `<div id=".customer_logout_link">link</div>`;
 
     // return new Promise((res, rej) => {
     //     res(parseShopifyResponse(e, htmlLogged));
