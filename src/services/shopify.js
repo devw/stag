@@ -9,12 +9,12 @@ const tgt = {
 };
 
 exports.sendHttpRequest = (method, e) => {
-    // const wrongEmailFixture = require("../fixtures/wrong-email-psw.html");
+    const wrongEmailFixture = require("../fixtures/wrong-email-psw.html");
     // const isLoggedHtml = `<div id="customer_logout_link">link</div>`;
 
-    // return new Promise((res, rej) => {
-    //     res(parseShopifyResponse(e, wrongEmailFixture));
-    // });
+    return new Promise((res, rej) => {
+        res(parseShopifyResponse(e, wrongEmailFixture));
+    });
 
     return new Promise((res, rej) => {
         const xhr = new XMLHttpRequest();
@@ -46,6 +46,7 @@ const parseShopifyResponse = ({ target }, response) => {
 };
 
 const onWrongPsw = (target) => {
+    return null;
     const error = target.previousSibling.querySelector(tgt.pswWrong);
     error.style.setProperty("display", "block");
 };

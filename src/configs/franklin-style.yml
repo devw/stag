@@ -9,6 +9,7 @@ theme:
   primary-text-color: "#0d3c32"
   error-bg-color: "#bfd9cb"
   error-text-color: "#0d3c32"
+  error-text-align: left
   hint-text-color: "#333"
   button:
     btn-bg-color: '#de7154'

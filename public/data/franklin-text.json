@@ -1,7 +1,7 @@
 {
 	"hasGender": false,
 	"hasSocialLogin": false,
-	"hasPasswordVerification": true,
+	"hasPasswordVerification": false,
 	"hasBirthDate": false,
 	"isPopover": false,
 	"hasNewsLetter": true,
@@ -23,5 +23,17 @@
 	"subscribeNewsletter": "Je m'inscris à la newsletter Franklin",
 	"passwordsDoNotMatch": "Les mots de passes ne correspondent pas",
 	"passwordTooShort": "Le mot de passe doit comporter au moins 5 caractères.",
-	"incorrectEmailOrPassword": "Adresse email ou mot de passe incorrect."
+	"incorrectEmailOrPassword": "Adresse email ou mot de passe incorrect.",
+	"password": {
+		"pswMinLength": 6,
+		"pswMinLengthErr": "Le mot de passe doit comporter au moins 6 caractères",
+		"pswMaxLength": 18,
+		"pswMaxLengthErr": "Password too long",
+		"pswUppercase": true,
+		"pswUppercaseErr": "Missing uppercase letters on your password",
+		"pswNumber": true,
+		"pswNumberErr": "Missing numbers on your password",
+		"pswSpecialCharacter": true,
+		"pswSpecialCharacterErr": "Missing special characters on your password"
+	}
 }

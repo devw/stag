@@ -6,7 +6,6 @@ const {
     isFormFilled,
     isValidPsw,
     $q,
-    $qq,
 } = require("../utils");
 const tgt = {
     form: `.${REGISTER_ID} form`,
@@ -31,18 +30,21 @@ const arePasswordsDiff = (inputs) =>
 
 // TODO refactor this part
 const areInputsValid = (inputs) => {
-    if (arePasswordsDiff(inputs)) {
-        $q(tgt.pswDiffError).style.setProperty("display", "block");
-        return false;
-    } else {
-        $q(tgt.pswDiffError).style.setProperty("display", "none");
-    }
-    if (!isValidPsw(inputs["customer[password]"])) {
-        $q(tgt.pswFormatError).style.setProperty("display", "block");
-        return false;
-    } else {
-        $q(tgt.pswFormatError).style.setProperty("display", "none");
-    }
+    // TODO move arePasswordsDiff in input-checker utility
+    // if (arePasswordsDiff(inputs)) {
+    //     $q(tgt.pswDiffError).style.setProperty("display", "block");
+    //     return false;
+    // } else {
+    //     $q(tgt.pswDiffError).style.setProperty("display", "none");
+    // }
+    console.log("asdsa");
+    isValidPsw(inputs["customer[password]"]);
+    // if (!isValidPsw(inputs["customer[password]"])) {
+    //     $q(tgt.pswFormatError).style.setProperty("display", "block");
+    //     return false;
+    // } else {
+    //     $q(tgt.pswFormatError).style.setProperty("display", "none");
+    // }
     return true;
 };
 
