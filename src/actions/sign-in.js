@@ -26,7 +26,8 @@ const onSubmit = async (e) => {
     if (!areInputsValid(inputs)) return null;
     $q(tgt.form).action = "/account/login";
     const resp = await sendHttpRequest("POST", e);
-    console.log("shopify response.....", resp);
+    console.log("shopify response", resp);
+
     globalThis.__form = $q(tgt.form);
 };
 
