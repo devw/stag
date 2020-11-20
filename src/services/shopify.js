@@ -1,10 +1,7 @@
 const { $q } = require("../utils");
-const { $qq } = require("../utils/q-selector");
 const tgt = {
     pswWrong: ".js-psw-wrong",
-    close: "js-close",
-    footer: "footer",
-    header: "header",
+    close: ".js-close",
     shopifyRes: ".js-shopify-response",
     isLogged: "#customer_logout_link",
     wrongPsw: "#customer_login",
@@ -13,9 +10,10 @@ const tgt = {
 
 exports.sendHttpRequest = (method, e) => {
     const htmlFixture = require("../fixtures/wrong-email-psw.html");
+    const htmlLogged = `<div id="#customer_logout_link">link</div>`;
 
     // return new Promise((res, rej) => {
-    //     res(parseShopifyResponse(e, htmlFixture));
+    //     res(parseShopifyResponse(e, htmlLogged));
     // });
 
     return new Promise((res, rej) => {
@@ -30,21 +28,22 @@ exports.sendHttpRequest = (method, e) => {
     });
 };
 
-const shopifyResult = () => ({
-    isLogged: $q(tgt.isLogged) !== null,
-    hasWrongPsw: $q(tgt.wrongPsw) !== null,
-    hasChallenge: $q(tgt.captha) !== null,
+const shopifyResult = (html) => ({
+    isLogged: new RegExp(tgt.isLogged).test(html),
+    hasWrongPsw: new RegExp(tgt.wrongPsw).test(html),
+    hasChallenge: new RegExp(tgt.captha).test(html),
     // TODO adding other checks (unique email, ....)
 });
 
 const parseShopifyResponse = ({ target }, response) => {
     $q(tgt.shopifyRes).innerHTML = response;
-    cleanResponse();
-    const resp = shopifyResult();
+    const resp = shopifyResult(response);
+    console.log($q(tgt.close));
+    globalThis._tgtClose = $q(tgt.close);
     if (resp.isLogged) $q(tgt.close).click();
     else if (resp.hasWrongPsw) onWrongPsw(target);
     else if (resp.hasChallenge) onChallenge(target);
-    return shopifyResult();
+    return resp;
 };
 
 const onChallenge = (target) => {
@@ -60,9 +59,4 @@ const onWrongPsw = (target) => {
     globalThis.__target = target;
     const error = target.previousSibling.querySelector(tgt.pswWrong);
     error.style.setProperty("display", "block");
-};
-
-const cleanResponse = () => {
-    $q(tgt.footer)?.style?.setProperty("display", "none");
-    $q(tgt.header)?.style?.setProperty("display", "none");
 };

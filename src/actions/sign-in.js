@@ -26,8 +26,8 @@ const onSubmit = async (e) => {
     const inputs = serialize($q(tgt.form));
     if (!areInputsValid(inputs)) return null;
     $q(tgt.form).action = "/account/login";
-    await sendHttpRequest("POST", e);
-    // console.log("shopify response", resp);
+    const resp = await sendHttpRequest("POST", e);
+    console.log("shopify response", resp);
 
     // globalThis.__form = $q(tgt.form);
 };
