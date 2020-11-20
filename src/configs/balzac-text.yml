@@ -4,6 +4,7 @@ hasPasswordVerification: false
 hasBirthDate: false
 hasCarousel: true
 isPopover: false
+hasPasswordRecover: false
 
 createAccount: Inscription
 loginRegister: "Connexion / Inscription"
@@ -19,3 +20,6 @@ or: ou
 yourPassword: Votre mot de passe
 confirmYourPassword: Confirmez votre mot de passe
 subscribeNewsletter: Je m'inscris à la newsletter
+yourLastName: Votre nom de famille
+yourFirstName: Votre nom
+passwordTooShort: Le mot de passe doit comporter au moins 5 caractères.

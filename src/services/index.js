@@ -1,33 +1,17 @@
-const { APP_ID, CONTAINER_ID } = require("../templates/");
-const $ = document.querySelector.bind(document);
-const { AWS_ENDPOINT } = require("../config.js");
-const { registerViaProxy } = require("./proxy");
+const { registerViaProxy, isRegistered } = require("./proxy");
 const { registerViaStorefront, signInViaStorefront } = require("./storefront");
+const { toggleLoading } = require("../utils/toggle-loading");
+const { sendHttpRequest } = require("./shopify");
 
-const toggleLoading = () => {
-    const loading = $(`#${APP_ID} .loading`);
-    if (loading.style.getPropertyValue("display") == "none") {
-        loading.style.setProperty("display", "block");
-        $(`.${CONTAINER_ID}`).style.setProperty("opacity", 0.2);
-    } else {
-        loading.style.setProperty("display", "none");
-        $(`.${CONTAINER_ID}`).style.setProperty("opacity", 1);
-    }
-};
+exports.isRegistered = isRegistered;
+exports.sendHttpRequest = sendHttpRequest;
 
-exports.isRegistered = async (email) => {
-    toggleLoading();
-    const res = await fetch(`${AWS_ENDPOINT}/user/${email}`);
-    const json = await res.json();
-    toggleLoading();
-    return json.data;
-};
-
+// TODO this should be removed
 exports.register = async (inputs) => {
     registerViaStorefront(inputs);
     return registerViaProxy(inputs);
 };
-
+// TODO this should be removed
 exports.isLogged = async (inputs) => {
     toggleLoading();
     signInViaStorefront(inputs);

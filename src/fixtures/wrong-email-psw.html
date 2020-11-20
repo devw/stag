@@ -1,0 +1,68 @@
+<div id="CustomerLoginForm" class="form-vertical">
+    <h1 id="LoginHeading" class="text-center">Login</h1>
+
+    <form
+        method="post"
+        action="/account/login"
+        id="customer_login"
+        accept-charset="UTF-8"
+        novalidate="novalidate"
+    >
+        <input type="hidden" name="form_type" value="customer_login" /><input
+            type="hidden"
+            name="utf8"
+            value="✓"
+        />
+        <div class="form-message form-message--error">
+            <h2
+                class="h3 form-message__title"
+                tabindex="-1"
+                data-form-status=""
+            >
+                Please adjust the following:
+            </h2>
+            <div class="errors">
+                <ul>
+                    <li>Incorrect email or password.</li>
+                </ul>
+            </div>
+        </div>
+        <label for="CustomerEmail">Email</label>
+        <input
+            type="email"
+            name="customer[email]"
+            id="CustomerEmail"
+            autocomplete="email"
+            autocorrect="off"
+            autocapitalize="off"
+            class="input--error"
+            aria-invalid="true"
+        />
+
+        <label for="CustomerPassword">Password</label>
+        <input
+            type="password"
+            value=""
+            name="customer[password]"
+            id="CustomerPassword"
+            class="input--error"
+            aria-invalid="true"
+        />
+
+        <div class="text-center">
+            <p>
+                <a href="#recover" id="RecoverPassword"
+                    >Forgot your password?</a
+                >
+            </p>
+
+            <input type="submit" class="btn" value="Sign In" />
+
+            <p>
+                <a href="/account/register" id="customer_register_link"
+                    >Create account</a
+                >
+            </p>
+        </div>
+    </form>
+</div>

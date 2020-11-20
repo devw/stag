@@ -3,6 +3,7 @@
 	"hasSocialLogin": false,
 	"hasBirthDate": true,
 	"hasPasswordVerification": false,
+	"isPopover": false,
 	"createAccount": "Inscription",
 	"loginRegister": "Connexion / Inscription",
 	"enterYourEmailToContinue": "Renseignez votre adresse mail pour vous connecter ou vous inscrire.",
@@ -18,5 +19,6 @@
 	"yourLastName": "Nom",
 	"yourPassword": "Votre mot de passe",
 	"confirmYourPassword": "Confirmez votre mot de passe",
-	"subscribeNewsletter": "Je m'inscris à la newsletter"
+	"subscribeNewsletter": "Je m'inscris à la newsletter",
+	"passwordTooShort": "Le mot de passe doit comporter au moins 5 caractères."
 }

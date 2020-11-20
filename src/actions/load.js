@@ -1,7 +1,7 @@
 const { init: initDashboard } = require("./dashboard");
 const { init: initLanding } = require("./landing");
 const { init: initSignIn } = require("./sign-in");
-const { init: initRegistration } = require("./registration");
+const { init: initRegistration } = require("./register");
 const { APP_ID } = require("../templates/");
 const $ = document.querySelector.bind(document);
 
