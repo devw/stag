@@ -35,6 +35,7 @@ const shopifyResult = () => ({
 });
 
 const onChallenge = (target) => {
+    target.style.setProperty("display", "none");
     $q(tgt.captha).addEventListener("click", (e) => {
         e.preventDefault();
         target.submit();
