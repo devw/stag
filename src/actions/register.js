@@ -50,7 +50,7 @@ const onSubmit = async (e) => {
     e.preventDefault();
     const inputs = serialize($q(tgt.form));
     if (!areInputsValid(inputs)) return null;
-    $q(tgt.form).action = "/account/register";
+    $q(tgt.form).action = "/register";
     const resp = await sendHttpRequest("POST", e);
     console.log("shopify response", resp);
 
