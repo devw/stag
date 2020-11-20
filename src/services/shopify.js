@@ -1,19 +1,19 @@
-const { $q } = require("../utils");
+const { $q, $qq } = require("../utils");
 const tgt = {
     pswWrong: ".js-psw-wrong",
     close: ".js-close",
     shopifyRes: ".js-shopify-response",
-    isLogged: ".customer_logout_link",
+    isLogged: "#customer_logout_link",
     wrongPsw: "#customer_login",
     captha: ".shopify-challenge__button.btn",
 };
 
 exports.sendHttpRequest = (method, e) => {
-    const htmlFixture = require("../fixtures/wrong-email-psw.html");
-    const htmlLogged = `<div id=".customer_logout_link">link</div>`;
+    // const wrongEmailFixture = require("../fixtures/wrong-email-psw.html");
+    // const isLoggedHtml = `<div id="customer_logout_link">link</div>`;
 
     // return new Promise((res, rej) => {
-    //     res(parseShopifyResponse(e, htmlLogged));
+    //     res(parseShopifyResponse(e, wrongEmailFixture));
     // });
 
     return new Promise((res, rej) => {
@@ -29,34 +29,23 @@ exports.sendHttpRequest = (method, e) => {
 };
 
 const shopifyResult = (html) => ({
-    isLogged: new RegExp(tgt.isLogged).test(html),
-    hasWrongPsw: new RegExp(tgt.wrongPsw).test(html),
-    hasChallenge: new RegExp(tgt.captha).test(html),
+    isLogged: html.querySelector(tgt.isLogged) != null,
+    hasWrongPsw: html.querySelector(tgt.wrongPsw) != null,
+    hasChallenge: html.querySelector(tgt.captha) != null,
     // TODO adding other checks (unique email, ....)
 });
 
 const parseShopifyResponse = ({ target }, response) => {
-    $q(tgt.shopifyRes).innerHTML = response;
-    const resp = shopifyResult(response);
-    console.log($q(tgt.close));
-    globalThis._tgtClose = $q(tgt.close);
+    const htmlResponse = new DOMParser().parseFromString(response, "text/html");
+    const resp = shopifyResult(htmlResponse);
+    console.log(resp);
     if (resp.isLogged) $q(tgt.close).click();
     else if (resp.hasWrongPsw) onWrongPsw(target);
-    else if (resp.hasChallenge) onChallenge(target);
+    else if (resp.hasChallenge) target.submit();
     return resp;
 };
 
-const onChallenge = (target) => {
-    target.submit();
-    // target.style.setProperty("display", "none");
-    // $q(tgt.captha).addEventListener("click", (e) => {
-    //     e.preventDefault();
-    //     target.submit();
-    // });
-};
-
 const onWrongPsw = (target) => {
-    globalThis.__target = target;
     const error = target.previousSibling.querySelector(tgt.pswWrong);
     error.style.setProperty("display", "block");
 };
