@@ -14,9 +14,9 @@ const tgt = {
 exports.sendHttpRequest = (method, e) => {
     const htmlFixture = require("../fixtures/wrong-email-psw.html");
 
-    return new Promise((res, rej) => {
-        res(parseShopifyResponse(e, htmlFixture));
-    });
+    // return new Promise((res, rej) => {
+    //     res(parseShopifyResponse(e, htmlFixture));
+    // });
 
     return new Promise((res, rej) => {
         const xhr = new XMLHttpRequest();
