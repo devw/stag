@@ -1,7 +1,7 @@
 hasGender: false
 hasSocialLogin: false
 hasBirthDate: false
-hasPasswordVerification: false
+hasPasswordConfirmation: false
 isPopover: true
 hasNewsLetter: false
 
