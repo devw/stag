@@ -1,7 +1,7 @@
 hasGender: true
 hasSocialLogin: false
 hasBirthDate: true
-hasPasswordVerification: false
+hasPasswordConfirmation: false
 isPopover: false
 
 createAccount: Inscription

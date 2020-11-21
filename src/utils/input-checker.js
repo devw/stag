@@ -1,40 +1,57 @@
-// exports.isValidPsw = (value) => value.length > 4;
 const { $q } = require("./q-selector");
 const errorSelector = ".register .js-error";
+const { password } = require("../../public/data/text.json");
 
-exports.isValidEmail = (email) => /\S+@\S+\.\S+/.test(email);
-
-exports.isValidPsw = (str) => {
+const showError = (errorMsgs) => {
+    const list = document.createElement("ul");
+    errorMsgs.forEach((e) => {
+        const item = document.createElement("li");
+        item.appendChild(document.createTextNode(e));
+        list.appendChild(item);
+    });
+    $q(errorSelector).appendChild(list);
+    $q(errorSelector).style.setProperty("display", "block");
+    return false;
+};
+const resetErrorMsgs = () => {
     $q(errorSelector).innerText = "";
     $q(errorSelector).style.setProperty("display", "none");
+};
 
-    const text = require("../../public/data/text.json");
-    const psw = text.password;
+const getPswConfirmationError = (inputs) => {
+    const errorMsgs = [];
+    const areDifferent =
+        inputs.confirmPassword &&
+        inputs.confirmPassword !== inputs["customer[password]"];
+    if (areDifferent) errorMsgs.push(password.passwordConfirmationError);
+    return errorMsgs;
+};
+
+const getPasswordPolicyErrors = (inputs) => {
+    const str = inputs["customer[password]"];
+    const pswPolicy = password;
     const errorMsgs = [];
 
-    if (str.length < psw.pswMinLength) errorMsgs.push(psw.pswMinLengthErr);
+    if (str.length < pswPolicy.pswMinLength)
+        errorMsgs.push(pswPolicy.pswMinLengthErr);
+    if (str.length > pswPolicy.pswMaxLength)
+        errorMsgs.push(pswPolicy.pswMaxLengthErr);
+    if (pswPolicy.pswUppercase && !/(?=.*[A-Z])/.test(str))
+        errorMsgs.push(pswPolicy.pswUppercaseErr);
+    if (pswPolicy.pswNumber && !/(?=.*\d)/.test(str))
+        errorMsgs.push(pswPolicy.pswNumberErr);
+    if (pswPolicy.pswSpecialCharacter && !/(?=.*[\W|_])/.test(str))
+        errorMsgs.push(pswPolicy.pswSpecialCharacterErr);
 
-    if (str.length > psw.pswMaxLength) errorMsgs.push(psw.pswMaxLengthErr);
-
-    if (psw.pswUppercase && !/(?=.*[A-Z])/.test(str))
-        errorMsgs.push(psw.pswUppercaseErr);
-
-    if (psw.pswNumber && !/(?=.*\d)/.test(str))
-        errorMsgs.push(psw.pswNumberErr);
-
-    if (psw.pswSpecialCharacter && !/(?=.*[\W|_])/.test(str))
-        errorMsgs.push(psw.pswSpecialCharacterErr);
-
-    if (errorMsgs.length > 0) {
-        const list = document.createElement("ul");
-        errorMsgs.forEach((e) => {
-            const item = document.createElement("li");
-            item.appendChild(document.createTextNode(e));
-            list.appendChild(item);
-        });
-        $q(errorSelector).appendChild(list);
-        $q(errorSelector).style.setProperty("display", "block");
-        return false;
-    }
-    return true;
+    return errorMsgs;
 };
+
+exports.isValidPsw = (inputs) => {
+    resetErrorMsgs();
+    const pswConfirmationErrs = getPswConfirmationError(inputs);
+    const pswPolicyErrs = getPasswordPolicyErrors(inputs);
+    const errorMsgs = pswConfirmationErrs.concat(pswPolicyErrs);
+    return errorMsgs.length === 0 ? true : showError(errorMsgs) && false;
+};
+
+exports.isValidEmail = (email) => /\S+@\S+\.\S+/.test(email);

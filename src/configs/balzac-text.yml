@@ -1,6 +1,6 @@
 hasSocialLogin: true
 hasGender: true
-hasPasswordVerification: false
+hasPasswordConfirmation: false
 hasBirthDate: false
 hasCarousel: true
 isPopover: false

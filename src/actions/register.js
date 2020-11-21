@@ -24,37 +24,14 @@ const toggleButton = ({ target }) => {
         : btn.setAttribute("disabled", "true");
 };
 
-const arePasswordsDiff = (inputs) =>
-    inputs.confirmPassword &&
-    inputs.confirmPassword !== inputs["customer[password]"];
-
-// TODO refactor this part
-const areInputsValid = (inputs) => {
-    // TODO move arePasswordsDiff in input-checker utility
-    // if (arePasswordsDiff(inputs)) {
-    //     $q(tgt.pswDiffError).style.setProperty("display", "block");
-    //     return false;
-    // } else {
-    //     $q(tgt.pswDiffError).style.setProperty("display", "none");
-    // }
-
-    return isValidPsw(inputs["customer[password]"]);
-    // if (!isValidPsw(inputs["customer[password]"])) {
-    //     $q(tgt.pswFormatError).style.setProperty("display", "block");
-    //     return false;
-    // } else {
-    //     $q(tgt.pswFormatError).style.setProperty("display", "none");
-    // }
-};
-
 const onSubmit = async (e) => {
     e.preventDefault();
+    //TODO you do not need serialize!
     const inputs = serialize($q(tgt.form));
-    if (!areInputsValid(inputs)) return null;
+    if (!isValidPsw(inputs)) return null;
     $q(tgt.form).action = "/account";
     const resp = await sendHttpRequest("POST", e);
     console.log("shopify response", resp);
-
     globalThis.__form = $q(tgt.form);
 };
 

@@ -1,6 +1,6 @@
-const { $q, $qq } = require("../utils");
+const { $q } = require("../utils");
 const tgt = {
-    pswWrong: ".js-psw-wrong",
+    errorMsg: ".js-error",
     close: ".js-close",
     shopifyRes: ".js-shopify-response",
     isLogged: "#customer_logout_link",
@@ -9,12 +9,8 @@ const tgt = {
 };
 
 exports.sendHttpRequest = (method, e) => {
-    const wrongEmailFixture = require("../fixtures/wrong-email-psw.html");
+    // const wrongEmailFixture = require("../fixtures/wrong-email-psw.html");
     // const isLoggedHtml = `<div id="customer_logout_link">link</div>`;
-
-    // return new Promise((res, rej) => {
-    //     res(parseShopifyResponse(e, wrongEmailFixture));
-    // });
 
     return new Promise((res, rej) => {
         const xhr = new XMLHttpRequest();
@@ -46,7 +42,8 @@ const parseShopifyResponse = ({ target }, response) => {
 };
 
 const onWrongPsw = (target) => {
-    return null;
-    const error = target.previousSibling.querySelector(tgt.pswWrong);
+    const { incorrectEmailOrPassword } = require("../../public/data/text.json");
+    const error = target.previousSibling;
+    error.innerHTML = incorrectEmailOrPassword;
     error.style.setProperty("display", "block");
 };

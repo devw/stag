@@ -1,6 +1,6 @@
 hasGender: false
 hasSocialLogin: false
-hasPasswordVerification: false
+hasPasswordConfirmation: true
 hasBirthDate: false
 isPopover: false
 hasNewsLetter: true
@@ -21,10 +21,10 @@ yourLastName: Your last name
 yourPassword: Votre mot de passe
 confirmYourPassword: Confirmez votre mot de passe
 subscribeNewsletter: Je m'inscris à la newsletter Franklin
-passwordsDoNotMatch: Les mots de passes ne correspondent pas
 passwordTooShort: Le mot de passe doit comporter au moins 5 caractères.
 incorrectEmailOrPassword: Adresse email ou mot de passe incorrect.
 password:
+  passwordConfirmationError: Les mots de passes ne correspondent pas
   pswMinLength: 6
   pswMinLengthErr: "Le mot de passe doit comporter au moins 6 caractères"
   pswMaxLength: 18
