@@ -1,18 +1,16 @@
 // exports.isValidPsw = (value) => value.length > 4;
 const { $q } = require("./q-selector");
+const errorSelector = ".register .js-error";
+
 exports.isValidEmail = (email) => /\S+@\S+\.\S+/.test(email);
 
 exports.isValidPsw = (str) => {
-    $q(".register .js-error").innerText = "";
-    $q(".register .js-error").style.setProperty("display", "none");
+    $q(errorSelector).innerText = "";
+    $q(errorSelector).style.setProperty("display", "none");
 
     const text = require("../../public/data/text.json");
     const psw = text.password;
-
     const errorMsgs = [];
-
-    globalThis.$q = $q;
-    globalThis.psw = psw;
 
     if (str.length < psw.pswMinLength) errorMsgs.push(psw.pswMinLengthErr);
 
@@ -28,13 +26,15 @@ exports.isValidPsw = (str) => {
         errorMsgs.push(psw.pswSpecialCharacterErr);
 
     if (errorMsgs.length > 0) {
-        let list = document.createElement("ul");
-        for (let i = 0; i < errorMsgs.length; i++) {
-            let item = document.createElement("li");
-            item.appendChild(document.createTextNode(errorMsgs[i]));
+        const list = document.createElement("ul");
+        errorMsgs.forEach((e) => {
+            const item = document.createElement("li");
+            item.appendChild(document.createTextNode(e));
             list.appendChild(item);
-        }
-        $q(".register .js-error").appendChild(list);
-        $q(".register .js-error").style.setProperty("display", "block");
+        });
+        $q(errorSelector).appendChild(list);
+        $q(errorSelector).style.setProperty("display", "block");
+        return false;
     }
+    return true;
 };

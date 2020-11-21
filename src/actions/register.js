@@ -37,15 +37,14 @@ const areInputsValid = (inputs) => {
     // } else {
     //     $q(tgt.pswDiffError).style.setProperty("display", "none");
     // }
-    console.log("asdsa");
-    isValidPsw(inputs["customer[password]"]);
+
+    return isValidPsw(inputs["customer[password]"]);
     // if (!isValidPsw(inputs["customer[password]"])) {
     //     $q(tgt.pswFormatError).style.setProperty("display", "block");
     //     return false;
     // } else {
     //     $q(tgt.pswFormatError).style.setProperty("display", "none");
     // }
-    return true;
 };
 
 const onSubmit = async (e) => {
