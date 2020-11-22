@@ -23,3 +23,8 @@ subscribeNewsletter: Je m'inscris à la newsletter
 yourLastName: Votre nom de famille
 yourFirstName: Votre nom
 passwordTooShort: Le mot de passe doit comporter au moins 5 caractères.
+password:
+  passwordConfirmationError: Les mots de passes ne correspondent pas
+  pswMinLength: 6
+  pswMinLengthErr: "Le mot de passe doit comporter au moins 6 caractères"
+  pswMaxLength: 18

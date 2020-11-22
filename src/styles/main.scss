@@ -193,11 +193,6 @@
     width: 100%;
 }
 
-.input-text-secondary {
-    display: inline;
-    width: 75%;
-}
-
 /*  ===================
     Partials
     =================== */
@@ -238,7 +233,11 @@
 }
 
 .mt-1 {
-    margin-top: 5px;
+    margin-top: 10px;
+}
+
+.mt-2 {
+    margin-top: 20px;
 }
 
 .mb-1 {
