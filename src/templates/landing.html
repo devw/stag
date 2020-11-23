@@ -6,12 +6,6 @@
 <div class="error" data-account-error=""></div>
 <form action="javascript:void(0);" class="inputs-container">
     <div class="inputs-container">
-        <input
-            class="input-text {{? it.hasSocialLogin }} input-text-primary {{?? true}}{{?}}"
-            name="email"
-            placeholder="{{=it.yourEmail}}"
-            type="email"
-        />
         {{? it.hasSocialLogin }}
         <input
             type="submit"
@@ -28,6 +22,12 @@
             value="OK"
         />
         {{?? true }}{{?}}
+        <input
+            class="input-text {{? it.hasSocialLogin }} input-text-primary {{?? true}}{{?}}"
+            name="email"
+            placeholder="{{=it.yourEmail}}"
+            type="email"
+        />
     </div>
     {{? it.hasSocialLogin }}
     <div>

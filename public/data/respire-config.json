@@ -1,0 +1,72 @@
+{
+	"style": {
+		"theme": {
+			"--container-border-radius": "0.2em",
+			"--container-bg-color": "rgba(90, 91, 91, 0.4)",
+			"--container-bg-image": "url(\"https://images-na.ssl-images-amazon.com/images/I/81Dpm0mr03L.jpg\")",
+			"--content-width": "530px",
+			"--content-padding": "1.5em",
+			"--content-bg-color": "#fff",
+			"--primary-text-color": "#0d3c32",
+			"--error-bg-color": "#bfd9cb",
+			"--error-text-color": "#0d3c32",
+			"--btn-bg-color": "#007266",
+			"--btn-disabled-bg-color": "#007266",
+			"--btn-disabled-opacity": 0.5,
+			"--large-font-family": "Termina",
+			"--large-font-size": "3.1em",
+			"--large-font-weight": 300,
+			"--large-line-height": "1.1em",
+			"--large-letter-spacing": "0.05em",
+			"--large-text-transform": "none",
+			"--medium-text-size": "0.98em",
+			"--medium-font-weight": 300,
+			"--placeholder-text-transform": "uppercase",
+			"--placeholder-font-size": "1.1em",
+			"--placeholder-color": "inherit",
+			"--text-input-margin": "0.9em",
+			"--image-padding": 0,
+			"--image-size": "40%",
+			"--image-url": "none"
+		},
+		"page-landing": {
+			"--image": "none",
+			"--image-width": "40%"
+		},
+		"page-register": {
+			"--image": "none",
+			"--image-width": "40%"
+		}
+	},
+	"text": {
+		"hasGender": true,
+		"hasSocialLogin": false,
+		"hasBirthDate": true,
+		"hasPasswordConfirmation": false,
+		"isPopover": false,
+		"createAccount": "Inscription",
+		"loginRegister": "Connexion / Inscription",
+		"enterYourEmailToContinue": "Renseignez votre adresse mail pour vous connecter ou vous inscrire.",
+		"yourEmail": "Votre Courriel",
+		"signIn": "Se Connecter",
+		"signUp": "S'inscrire",
+		"fillInfoToCreateAccount": "Renseignez vos informations pour créer votre compte Franklin.",
+		"login": "Connexion",
+		"enterEmailPswToConnect": "Renseignez votre adresse email et votre mot de passe pour vous connecter.",
+		"validate": "Valider",
+		"login-register": "Connexion / Inscription",
+		"yourFirstName": "Prénom",
+		"yourLastName": "Nom",
+		"yourPassword": "Votre mot de passe",
+		"confirmYourPassword": "Confirmez votre mot de passe",
+		"subscribeNewsletter": "Je m'inscris à la newsletter",
+		"passwordTooShort": "Le mot de passe doit comporter au moins 5 caractères.",
+		"incorrectEmailOrPassword": "Adresse email ou mot de passe incorrect.",
+		"password": {
+			"passwordConfirmationError": "Les mots de passes ne correspondent pas",
+			"pswMinLength": 6,
+			"pswMinLengthErr": "Le mot de passe doit comporter au moins 6 caractères",
+			"pswMaxLength": 18
+		}
+	}
+}

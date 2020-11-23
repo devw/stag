@@ -12,12 +12,6 @@
     1. Global styles
     =================== */
 
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-
 .remove-scrolling {
     height: 100%;
     overflow: hidden;
@@ -162,8 +156,7 @@
     color: var(--link-color);
 }
 
-// show password
-
+// show password icon
 .eye.icon {
     color: #000;
     position: absolute;

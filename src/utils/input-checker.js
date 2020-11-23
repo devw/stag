@@ -1,6 +1,7 @@
 const { $q } = require("./q-selector");
 const errorSelector = ".register .js-error";
-const { password } = require("../../public/data/text.json");
+// const { text } = require("../../public/data/config.json");
+// const password = text.password;
 
 const showError = (errorMsgs) => {
     const list = document.createElement("ul");
@@ -19,6 +20,7 @@ const resetErrorMsgs = () => {
 };
 
 const getPswConfirmationError = (inputs) => {
+    const { password } = JSON.parse($q(`.js-custom-style`).value).text;
     const errorMsgs = [];
     const areDifferent =
         inputs.confirmPassword &&
@@ -29,6 +31,7 @@ const getPswConfirmationError = (inputs) => {
 
 const getPasswordPolicyErrors = (inputs) => {
     const str = inputs["customer[password]"];
+    const { password } = JSON.parse($q(`.js-custom-style`).value).text;
     const pswPolicy = password;
     const errorMsgs = [];
 

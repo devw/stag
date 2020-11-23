@@ -1,13 +1,12 @@
 const { updatePages } = require("../utils");
 const { updateCss } = require("../utils");
 const { loadActions } = require("./load");
-const css = require("../../public/data/style.json");
-const text = require("../../public/data/text.json");
+const config = require("../../public/data/config.json");
 
 setTimeout(() => {
-    updatePages(text);
-    updateCss(css);
-    loadActions();
+    updatePages(config.text);
+    updateCss(config.style);
+    loadActions(config);
 }, 0); // TODO to fix
 
 // globalThis.addEventListener("load", () => {
