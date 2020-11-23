@@ -6,21 +6,28 @@
 <div class="error" data-account-error=""></div>
 <form action="javascript:void(0);" class="inputs-container">
     <div class="inputs-container">
-        <input
-            class="input-text {{? it.hasSocialLogin }} input-text-secondary {{?? true}}{{?}}"
-            name="email"
-            placeholder="{{=it.yourEmail}}"
-            type="email"
-        />
         {{? it.hasSocialLogin }}
         <input
             type="submit"
-            style="background: none; border: none; font-weight: 900"
-            name="validate"
+            class="slider-icon"
+            style="
+                background: none;
+                border: none;
+                font-weight: 900;
+                cursor: pointer;
+                position: absolute;
+                right: 40px;
+            "
             disabled=""
             value="OK"
         />
         {{?? true }}{{?}}
+        <input
+            class="input-text {{? it.hasSocialLogin }} input-text-primary {{?? true}}{{?}}"
+            name="email"
+            placeholder="{{=it.yourEmail}}"
+            type="email"
+        />
     </div>
     {{? it.hasSocialLogin }}
     <div>

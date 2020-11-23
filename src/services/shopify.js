@@ -42,8 +42,8 @@ const parseShopifyResponse = ({ target }, response) => {
 };
 
 const onWrongPsw = (target) => {
-    const { incorrectEmailOrPassword } = require("../../public/data/text.json");
+    const { text } = require("../../public/data/config.json");
     const error = target.previousSibling;
-    error.innerHTML = incorrectEmailOrPassword;
+    error.innerHTML = text.incorrectEmailOrPassword;
     error.style.setProperty("display", "block");
 };

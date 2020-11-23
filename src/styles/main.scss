@@ -12,12 +12,6 @@
     1. Global styles
     =================== */
 
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-
 .remove-scrolling {
     height: 100%;
     overflow: hidden;
@@ -58,12 +52,12 @@
         var(--container-bg-image) center / cover;
     background-size: cover;
     display: flex;
-    height: 100%;
+    height: 100vh;
     justify-content: center;
     opacity: 1;
     right: 0;
     top: 0;
-    width: 70%; /* to host the dashboard, otherwise 100% */
+    width: 100vw;
 }
 
 .content {
@@ -162,6 +156,31 @@
     color: var(--link-color);
 }
 
+// show password icon
+.eye.icon {
+    color: #000;
+    position: absolute;
+    margin-left: 3px;
+    margin-top: 3px;
+    width: 12px;
+    height: 12px;
+    border-radius: 70% 15%;
+    border: solid 1px currentColor;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.eye.icon:before {
+    content: "";
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    border: solid 1px currentColor;
+}
+
 // 4.1 checkbox
 .checkbox {
     margin-right: 10px;
@@ -191,11 +210,6 @@
     margin-bottom: var(--text-input-margin);
     padding-left: 2px;
     width: 100%;
-}
-
-.input-text-secondary {
-    display: inline;
-    width: 75%;
 }
 
 /*  ===================
@@ -238,7 +252,11 @@
 }
 
 .mt-1 {
-    margin-top: 5px;
+    margin-top: 10px;
+}
+
+.mt-2 {
+    margin-top: 20px;
 }
 
 .mb-1 {

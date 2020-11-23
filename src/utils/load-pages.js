@@ -36,3 +36,11 @@ const getTemplate = (data) => {
 exports.updatePages = (text) => {
     $(`#${APP_ID}`).innerHTML = getTemplate(text);
 };
+
+exports.updateCss = (cssVars) => {
+    (function traverse(obj, key) {
+        if (obj !== null && typeof obj == "object") {
+            Object.entries(obj).forEach(([key, value]) => traverse(value, key));
+        } else $(`#${APP_ID}`).style.setProperty(key, obj);
+    })(cssVars);
+};

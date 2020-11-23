@@ -1,0 +1,72 @@
+{
+	"style": {
+		"theme": {
+			"--container-border-radius": "0.2em",
+			"--container-bg-color": "rgba(90, 91, 91, 0.4)",
+			"--container-bg-image": "url(\"https://images-na.ssl-images-amazon.com/images/I/81Dpm0mr03L.jpg\")",
+			"--content-width": "530px",
+			"--content-padding": "1.2em",
+			"--content-bg-color": "#fff",
+			"--transform-opacity": 0.2,
+			"--transform-scale": 0.8,
+			"--primary-text-color": "#1e2d7d",
+			"--error-text-color": "#ff0000",
+			"--hint-text-color": "#333",
+			"--btn-bg-color": "#00badb",
+			"--btn-disabled-bg-color": "#00badb",
+			"--btn-disabled-opacity": 1,
+			"--large-font-family": "Termina",
+			"--large-font-size": "1.3em",
+			"--large-font-weight": 500,
+			"--large-line-height": "1.1em",
+			"--large-letter-spacing": "0.05em",
+			"--large-text-transform": "none",
+			"--medium-text-size": "0.98em",
+			"--medium-font-weight": 300,
+			"--placeholder-text-transform": "uppercase",
+			"--placeholder-font-size": "1.1em",
+			"--placeholder-color": "inherit",
+			"--text-input-margin": "0.9em",
+			"--image-padding": 0,
+			"--image-size": "40%",
+			"--image-url": "none",
+			"--link-color": "#00badb"
+		},
+		"page-landing": {
+			"--image": "none",
+			"--image-width": "40%"
+		},
+		"page-register": {
+			"--image": "none",
+			"--image-width": "40%"
+		}
+	},
+	"text": {
+		"hasGender": false,
+		"hasSocialLogin": false,
+		"hasBirthDate": false,
+		"hasPasswordConfirmation": false,
+		"isPopover": true,
+		"hasNewsLetter": false,
+		"createAccount": "Create your account",
+		"loginRegister": "Login to my account",
+		"enterYourEmailToContinue": "Enter your e-mail and password:",
+		"yourEmail": "Votre Courriel",
+		"signIn": "Se Connecter",
+		"signUp": "S'inscrire",
+		"fillInfoToCreateAccount": "Please fill in the information below:",
+		"login": "Connexion",
+		"enterEmailPswToConnect": "Enter your e-mail and password:.",
+		"recoverPsw": "Recover password",
+		"validate": "Valider",
+		"login-register": "Connexion / Inscription",
+		"yourFirstName": "Prénom",
+		"yourLastName": "Nom",
+		"yourPassword": "Votre mot de passe",
+		"confirmYourPassword": "Confirmez votre mot de passe",
+		"subscribeNewsletter": "Je m'inscris à la newsletter",
+		"isNewCustomer": "New customer?",
+		"doYouLostPsw": "Lost password?",
+		"incorrectEmailOrPassword": "Adresse email ou mot de passe incorrect."
+	}
+}

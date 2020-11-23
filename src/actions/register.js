@@ -14,6 +14,11 @@ const tgt = {
     pswFormatError: `.${REGISTER_ID} .js-error .js-psw-valid`,
 };
 
+const toggleSecret = (e) => {
+    const secret = $q("[name='customer[password]']");
+    secret.type = secret.type === "password" ? "text" : "password";
+};
+
 const toggleButton = ({ target }) => {
     if (target.value.length > 2)
         target.nextElementSibling.removeAttribute("disabled");
@@ -26,6 +31,7 @@ const toggleButton = ({ target }) => {
 
 const onSubmit = async (e) => {
     e.preventDefault();
+
     //TODO you do not need serialize!
     const inputs = serialize($q(tgt.form));
     if (!isValidPsw(inputs)) return null;
@@ -35,20 +41,12 @@ const onSubmit = async (e) => {
     globalThis.__form = $q(tgt.form);
 };
 
-const goNextSlide = () => {
-    const node = $q(tgt.form).querySelector(".carousel");
-    const shift = getComputedStyle(node).getPropertyValue("width");
-    node.scrollBy({
-        left: parseInt(shift, 10),
-        behavior: "smooth",
-    });
-};
-
-const goPrevSlide = () => {
-    const node = $q(tgt.form).querySelector(".carousel");
-    const shift = getComputedStyle(node).getPropertyValue("width");
-    node.scrollBy({
-        left: -parseInt(shift, 10),
+const changeSlide = (e) => {
+    const ele = $q(tgt.form).querySelector(".carousel");
+    const shift = parseInt(getComputedStyle(ele).getPropertyValue("width"), 10);
+    const left = /js-next/.test(e.target.className) ? shift : -shift;
+    ele.scrollBy({
+        left: left,
         behavior: "smooth",
     });
 };
@@ -57,14 +55,12 @@ exports.init = () => {
     const form = $q(tgt.form);
 
     form.addEventListener("input", toggleButton);
-    form.querySelectorAll(".js-next").forEach((e) =>
-        e.addEventListener("click", goNextSlide)
-    );
-    form.querySelectorAll(".js-prev").forEach((e) =>
-        e.addEventListener("click", goPrevSlide)
+    form.querySelectorAll(".js-next, .js-prev").forEach((e) =>
+        e.addEventListener("click", changeSlide)
     );
     form.addEventListener("submit", onSubmit);
     $q(tgt.login)?.addEventListener("click", () =>
         toggleModules([REGISTER_ID, SIGNIN_ID])
     );
+    form.querySelector(".js-show-psw")?.addEventListener("click", toggleSecret);
 };

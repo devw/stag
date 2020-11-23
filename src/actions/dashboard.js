@@ -1,31 +1,27 @@
-const $ = document.querySelector.bind(document);
-const { APP_ID } = require("../templates/");
-const utils = require("../utils");
-const load = require("./load");
-const { STAG_ENDPOINT } = require("../config");
+const { $q } = require("../utils");
 
-const loadStyle = () => {
-    const css = $(`#${APP_ID} .js-custom-style`).value;
-    utils.updateCss(JSON.parse(css));
+const getConfig = async ({ target }) => {
+    if (/textarea/.test(target.className)) {
+        return JSON.parse($q(`.js-custom-style`).value);
+    }
+    const { STAG_ENDPOINT } = require("../config");
+    let resp = await fetch(`${STAG_ENDPOINT}/data/${target.value}-config.json`);
+    return await resp.json();
 };
 
-const loadTheme = async (e) => {
-    const theme = e.target.value;
-    const text = await fetch(`${STAG_ENDPOINT}/data/${theme}-text.json`);
-    const style = await fetch(`${STAG_ENDPOINT}/data/${theme}-style.json`);
-    const styleJson = await style.json();
-    utils.updatePages(await text.json());
-    utils.updateCss(styleJson);
-    load.loadActions();
-    $(`#${APP_ID} .container`).style.setProperty("display", "flex"); // TODO refactor and show also the dashboard
-    $(`#${APP_ID} .js-dashboard`).style.setProperty("display", "block");
+const changeTheme = async (e) => {
+    const { loadActions } = require("./load");
+    const { updatePages, updateCss } = require("../utils");
+    const config = await getConfig(e);
+    updatePages(config.text);
+    updateCss(config.style);
+    loadActions(config);
+    $q(`.container`).style.setProperty("display", "flex");
+    $q(`.js-dashboard`).style.setProperty("display", "block");
 };
 
-const init = () => {
-    $(`#${APP_ID} .js-load-theme`).addEventListener("click", loadTheme);
-    $(`#${APP_ID} .js-load-style`).addEventListener("click", loadStyle);
-};
-
-module.exports = {
-    init: init,
+exports.init = (config) => {
+    $q(`.js-load-default-theme`).addEventListener("click", changeTheme);
+    $q(`.js-load-from-textarea`).addEventListener("click", changeTheme);
+    $q(`.js-custom-style`).value = JSON.stringify(config, undefined, 1);
 };

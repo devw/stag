@@ -1,5 +1,4 @@
-const { updatePages } = require("./load-pages");
-const { updateCss } = require("./load-css");
+const { updatePages, updateCss } = require("./load-pages");
 const { toggleModules } = require("./toggle-module");
 const { serialize, isFormFilled } = require("./serialize");
 const { isValidPsw, isValidEmail } = require("./input-checker");

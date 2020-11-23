@@ -1,7 +1,7 @@
 .carousel {
-    height: 150px;
+    height: 170px;
     position: relative;
-    overflow-x: scroll;
+    overflow: hidden;
 }
 .carousel > div {
     width: 100%;
@@ -11,7 +11,8 @@
 
 .cursor-prev {
     cursor: pointer;
-    left: 20px;
     position: absolute;
     text-align: left;
+    padding: 0 10px;
+    line-height: 10px;
 }
