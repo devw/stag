@@ -25,3 +25,11 @@ subscribeNewsletter: Je m'inscris à la newsletter
 isNewCustomer: New customer?
 doYouLostPsw: Lost password?
 incorrectEmailOrPassword: Adresse email ou mot de passe incorrect.
+password:
+  passwordConfirmationError: Les mots de passes ne correspondent pas
+  pswMinLength: 6
+  pswMinLengthErr: "Le mot de passe doit comporter au moins 6 caractères"
+  pswMaxLength: 18
+redirect:
+  redirectAfterLogin: /collections/all
+  redirectAfterRegister: /collections/all

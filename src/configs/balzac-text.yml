@@ -29,3 +29,6 @@ password:
   pswMinLength: 6
   pswMinLengthErr: "Le mot de passe doit comporter au moins 6 caractères"
   pswMaxLength: 18
+redirect:
+  redirectAfterLogin: /collections/all
+  redirectAfterRegister: /collections/all
