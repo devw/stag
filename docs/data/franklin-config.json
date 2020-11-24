@@ -77,6 +77,10 @@
 			"pswNumberErr": "Missing numbers on your password",
 			"pswSpecialCharacter": true,
 			"pswSpecialCharacterErr": "Missing special characters on your password"
+		},
+		"redirect": {
+			"redirectAfterLogin": "/collections/all",
+			"redirectAfterRegister": "/collections/all"
 		}
 	}
 }

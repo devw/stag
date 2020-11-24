@@ -13,6 +13,11 @@
     accept-charset="UTF-8"
     novalidate="novalidate"
 >
+    <input
+        type="hidden"
+        name="return_to"
+        value="{{=it.redirect.redirectAfterRegister}}"
+    />
     {{? it.hasCarousel }} {{#def.registerWithSlides }} {{?? true }}
     {{#def.registerNoSlides }} {{?}}
 </form>
