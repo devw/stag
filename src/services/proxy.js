@@ -19,3 +19,12 @@ exports.isRegistered = async (email) => {
     toggleLoading();
     return json.data;
 };
+
+exports.getConfig = async () => {
+    const shopName = globalThis.Shopify?.shop;
+    const endpoint = shopName
+        ? `https://${shopName}/apps/dev/s3/${shopName}`
+        : "data/config.json";
+    const result = await globalThis.fetch(endpoint);
+    return await result.json();
+};

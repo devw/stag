@@ -210,7 +210,7 @@ eval("const { $q } = __webpack_require__(/*! ../utils */ \"./src/utils/index.js\
 /*! runtime requirements: __webpack_require__ */
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const { updatePages } = __webpack_require__(/*! ../utils */ \"./src/utils/index.js\");\nconst { updateCss } = __webpack_require__(/*! ../utils */ \"./src/utils/index.js\");\nconst { loadActions } = __webpack_require__(/*! ./load */ \"./src/actions/load.js\");\nconst config = __webpack_require__(/*! ../../public/data/config.json */ \"./public/data/config.json\");\n\nsetTimeout(() => {\n    updatePages(config.text);\n    updateCss(config.style);\n    loadActions(config);\n}, 0); // TODO to fix\n\n// globalThis.addEventListener(\"load\", () => {\n//     updatePages(text);\n//     updateCss(css);\n//     loadActions();\n// });\n\n\n//# sourceURL=webpack://stag-dotjs/./src/actions/index.js?");
+eval("const { updatePages } = __webpack_require__(/*! ../utils */ \"./src/utils/index.js\");\nconst { updateCss } = __webpack_require__(/*! ../utils */ \"./src/utils/index.js\");\nconst { loadActions } = __webpack_require__(/*! ./load */ \"./src/actions/load.js\");\nconst { getConfig } = __webpack_require__(/*! ../services */ \"./src/services/index.js\");\n\n// globalThis.addEventListener(\"load\", () => { // TODO to fix\nsetTimeout(async () => {\n    const config = await getConfig();\n    updatePages(config.text);\n    updateCss(config.style);\n    loadActions(config);\n}, 0);\n\n\n//# sourceURL=webpack://stag-dotjs/./src/actions/index.js?");
 
 /***/ }),
 
@@ -302,6 +302,7 @@ eval("\n\nmodule.exports = {\n    template,\n    compile,\n    setDelimiters,\n}
   !*** ./src/services/index.js ***!
   \*******************************/
 /*! default exports */
+/*! export getConfig [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export isLogged [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export isRegistered [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export register [provided] [no usage info] [missing usage info prevents renaming] */
@@ -310,7 +311,7 @@ eval("\n\nmodule.exports = {\n    template,\n    compile,\n    setDelimiters,\n}
 /*! runtime requirements: __webpack_exports__, __webpack_require__ */
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("const { registerViaProxy, isRegistered } = __webpack_require__(/*! ./proxy */ \"./src/services/proxy.js\");\nconst { registerViaStorefront, signInViaStorefront } = __webpack_require__(/*! ./storefront */ \"./src/services/storefront.js\");\nconst { toggleLoading } = __webpack_require__(/*! ../utils/toggle-loading */ \"./src/utils/toggle-loading.js\");\nconst { sendHttpRequest } = __webpack_require__(/*! ./shopify */ \"./src/services/shopify.js\");\n\nexports.isRegistered = isRegistered;\nexports.sendHttpRequest = sendHttpRequest;\n\n// TODO this should be removed\nexports.register = async (inputs) => {\n    registerViaStorefront(inputs);\n    return registerViaProxy(inputs);\n};\n// TODO this should be removed\nexports.isLogged = async (inputs) => {\n    toggleLoading();\n    signInViaStorefront(inputs);\n    toggleLoading();\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/services/index.js?");
+eval("const { registerViaProxy, isRegistered, getConfig } = __webpack_require__(/*! ./proxy */ \"./src/services/proxy.js\");\nconst { registerViaStorefront, signInViaStorefront } = __webpack_require__(/*! ./storefront */ \"./src/services/storefront.js\");\nconst { toggleLoading } = __webpack_require__(/*! ../utils/toggle-loading */ \"./src/utils/toggle-loading.js\");\nconst { sendHttpRequest } = __webpack_require__(/*! ./shopify */ \"./src/services/shopify.js\");\n\nexports.isRegistered = isRegistered;\nexports.sendHttpRequest = sendHttpRequest;\nexports.getConfig = getConfig;\n\n// TODO this should be removed\nexports.register = async (inputs) => {\n    registerViaStorefront(inputs);\n    return registerViaProxy(inputs);\n};\n// TODO this should be removed\nexports.isLogged = async (inputs) => {\n    toggleLoading();\n    signInViaStorefront(inputs);\n    toggleLoading();\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/services/index.js?");
 
 /***/ }),
 
@@ -335,13 +336,14 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   !*** ./src/services/proxy.js ***!
   \*******************************/
 /*! default exports */
+/*! export getConfig [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export isRegistered [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export registerViaProxy [provided] [no usage info] [missing usage info prevents renaming] */
 /*! other exports [not provided] [no usage info] */
 /*! runtime requirements: __webpack_exports__, __webpack_require__ */
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("const { AWS_ENDPOINT } = __webpack_require__(/*! ../config.js */ \"./src/config.js\");\nconst { toggleLoading } = __webpack_require__(/*! ../utils/toggle-loading */ \"./src/utils/toggle-loading.js\");\n\nexports.registerViaProxy = async (inputs) => {\n    const response = await fetch(`${AWS_ENDPOINT}/user/add/`, {\n        method: \"POST\",\n        headers: {\n            \"Content-Type\": \"application/json\",\n        },\n        body: JSON.stringify(inputs),\n    });\n    return response.json();\n};\n\nexports.isRegistered = async (email) => {\n    toggleLoading();\n    const res = await fetch(`${AWS_ENDPOINT}/user/${email}`);\n    const json = await res.json();\n    toggleLoading();\n    return json.data;\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/services/proxy.js?");
+eval("const { AWS_ENDPOINT } = __webpack_require__(/*! ../config.js */ \"./src/config.js\");\nconst { toggleLoading } = __webpack_require__(/*! ../utils/toggle-loading */ \"./src/utils/toggle-loading.js\");\n\nexports.registerViaProxy = async (inputs) => {\n    const response = await fetch(`${AWS_ENDPOINT}/user/add/`, {\n        method: \"POST\",\n        headers: {\n            \"Content-Type\": \"application/json\",\n        },\n        body: JSON.stringify(inputs),\n    });\n    return response.json();\n};\n\nexports.isRegistered = async (email) => {\n    toggleLoading();\n    const res = await fetch(`${AWS_ENDPOINT}/user/${email}`);\n    const json = await res.json();\n    toggleLoading();\n    return json.data;\n};\n\nexports.getConfig = async () => {\n    const shopName = globalThis.Shopify?.shop;\n    const endpoint = shopName\n        ? `https://${shopName}/apps/dev/s3/${shopName}`\n        : \"data/config.json\";\n    const result = await globalThis.fetch(endpoint);\n    return await result.json();\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/services/proxy.js?");
 
 /***/ }),
 
