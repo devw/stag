@@ -38,10 +38,10 @@
                         x.parentNode.insertBefore(s, x);
                     }
                 }
-                if (window.attachEvent) {
-                    window.attachEvent("onload", asyncLoad);
+                if (globalThis.attachEvent) {
+                    globalThis.attachEvent("onload", asyncLoad);
                 } else {
-                    window.addEventListener("load", asyncLoad, false);
+                    globalThis.addEventListener("load", asyncLoad, false);
                 }
             })();
         </script>

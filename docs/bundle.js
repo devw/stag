@@ -279,7 +279,7 @@ eval("const { SIGNIN_ID, REGISTER_ID } = __webpack_require__(/*! ../templates/ *
 /*! CommonJS bailout: module.exports is used directly at 1:0-14 */
 /***/ ((module) => {
 
-eval("module.exports = {\n    // AWS_ENDPOINT: \"http://ec2-3-19-56-186.us-east-2.compute.amazonaws.com/\",\n    AWS_ENDPOINT: \"http://localhost:3000\",\n    STAG_ENDPOINT: \"./\",\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/config.js?");
+eval("module.exports = {\n    AWS_ENDPOINT: \"http://ec2-3-19-56-186.us-east-2.compute.amazonaws.com/\",\n    // AWS_ENDPOINT: \"http://localhost:3000\",\n    STAG_ENDPOINT: \"./\",\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/config.js?");
 
 /***/ }),
 
@@ -343,7 +343,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /*! runtime requirements: __webpack_exports__, __webpack_require__ */
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("const { AWS_ENDPOINT } = __webpack_require__(/*! ../config.js */ \"./src/config.js\");\nconst { toggleLoading } = __webpack_require__(/*! ../utils/toggle-loading */ \"./src/utils/toggle-loading.js\");\n\nexports.registerViaProxy = async (inputs) => {\n    const response = await fetch(`${AWS_ENDPOINT}/user/add/`, {\n        method: \"POST\",\n        headers: {\n            \"Content-Type\": \"application/json\",\n        },\n        body: JSON.stringify(inputs),\n    });\n    return response.json();\n};\n\nexports.isRegistered = async (email) => {\n    toggleLoading();\n    const res = await fetch(`${AWS_ENDPOINT}/user/${email}`);\n    const json = await res.json();\n    toggleLoading();\n    return json.data;\n};\n\nexports.getConfig = async () => {\n    const shopName = globalThis.Shopify?.shop;\n    const endpoint = shopName\n        ? `https://${shopName}/apps/dev/s3/${shopName}`\n        : \"data/config.json\";\n    const result = await globalThis.fetch(endpoint);\n    return await result.json();\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/services/proxy.js?");
+eval("const { AWS_ENDPOINT } = __webpack_require__(/*! ../config.js */ \"./src/config.js\");\nconst { toggleLoading } = __webpack_require__(/*! ../utils/toggle-loading */ \"./src/utils/toggle-loading.js\");\n\n// TODO remove AWS_ENDPOINT and use the proxy. See getConfig\nexports.registerViaProxy = async (inputs) => {\n    const response = await fetch(`${AWS_ENDPOINT}/user/add/`, {\n        method: \"POST\",\n        headers: {\n            \"Content-Type\": \"application/json\",\n        },\n        body: JSON.stringify(inputs),\n    });\n    return response.json();\n};\n\n// TODO remove AWS_ENDPOINT and use the proxy. See getConfig\nexports.isRegistered = async (email) => {\n    toggleLoading();\n    const res = await fetch(`${AWS_ENDPOINT}/user/${email}`);\n    const json = await res.json();\n    toggleLoading();\n    return json.data;\n};\n\nexports.getConfig = async () => {\n    const shopName = globalThis.Shopify?.shop;\n    const endpoint = shopName\n        ? `https://${shopName}/apps/dev/s3/${shopName}`\n        : \"data/config.json\";\n    const result = await globalThis.fetch(endpoint);\n    return await result.json();\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/services/proxy.js?");
 
 /***/ }),
 

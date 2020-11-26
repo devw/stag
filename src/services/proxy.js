@@ -1,6 +1,7 @@
 const { AWS_ENDPOINT } = require("../config.js");
 const { toggleLoading } = require("../utils/toggle-loading");
 
+// TODO remove AWS_ENDPOINT and use the proxy. See getConfig
 exports.registerViaProxy = async (inputs) => {
     const response = await fetch(`${AWS_ENDPOINT}/user/add/`, {
         method: "POST",
@@ -12,6 +13,7 @@ exports.registerViaProxy = async (inputs) => {
     return response.json();
 };
 
+// TODO remove AWS_ENDPOINT and use the proxy. See getConfig
 exports.isRegistered = async (email) => {
     toggleLoading();
     const res = await fetch(`${AWS_ENDPOINT}/user/${email}`);
