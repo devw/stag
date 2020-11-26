@@ -289,7 +289,7 @@ eval("const { SIGNIN_ID, REGISTER_ID } = __webpack_require__(/*! ../templates/ *
 /*! CommonJS bailout: module.exports is used directly at 1:0-14 */
 /***/ ((module) => {
 
-eval("module.exports = {\n    AWS_ENDPOINT: \"http://ec2-3-19-56-186.us-east-2.compute.amazonaws.com\",\n    // AWS_ENDPOINT: \"http://localhost:3000\",\n    STAG_ENDPOINT: \"./\",\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/config.js?");
+eval("module.exports = {\n    //AWS_ENDPOINT: \"http://ec2-3-19-56-186.us-east-2.compute.amazonaws.com\",\n    AWS_ENDPOINT: \"https://f7b45b79bb90.ngrok.io\",\n    STAG_ENDPOINT: \"./\",\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/config.js?");
 
 /***/ }),
 
