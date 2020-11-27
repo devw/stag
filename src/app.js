@@ -20,7 +20,7 @@ const $ = document.querySelector.bind(document);
 const openAccount = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    if (globalThis.__st?.cid) {
+    if (!globalThis.__st?.cid) {
         const dom = node.querySelector(".container");
         dom.style.setProperty("display", "flex");
         if (dom.classList.contains("popover")) placePopover(e, dom);
