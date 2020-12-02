@@ -24,9 +24,11 @@ exports.isRegistered = async (email) => {
 
 exports.getTheme = async () => {
     const shopName = globalThis.Shopify?.shop;
-    const endpoint = shopName
-        ? `https://${shopName}/apps/dev/s3/${shopName}`
-        : "data/config.json";
+    // TODO fix it
+    // const endpoint = shopName
+    //     ? `https://${shopName}/apps/dev/s3/${shopName}`
+    //     : "data/config.json";
+    const endpoint = "https://devw.github.io//stag/data/config.json";
     const result = await globalThis.fetch(endpoint);
     return await result.json();
 };
