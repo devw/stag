@@ -1,12 +1,10 @@
 const { updatePages } = require("../utils");
 const { updateCss } = require("../utils");
 const { loadActions } = require("./load");
-const { getConfig } = require("../services");
+const { getTheme } = require("../services");
 
-// globalThis.addEventListener("load", () => { // TODO to fix
-setTimeout(async () => {
-    const config = await getConfig();
-    updatePages(config.text);
-    updateCss(config.style);
-    loadActions(config);
-}, 0);
+getTheme().then((theme) => {
+    updatePages(theme.text);
+    updateCss(theme.style);
+    loadActions(theme);
+});
