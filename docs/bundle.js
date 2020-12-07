@@ -328,7 +328,7 @@ eval("const { registerViaProxy, isRegistered, getTheme } = __webpack_require__(/
 /*! runtime requirements: __webpack_exports__, __webpack_require__ */
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("const { updateCss } = __webpack_require__(/*! ../utils */ \"./src/utils/index.js\");\n\nconst kastorHandler = (event) => {\n    const body = event.data.data;\n    const { setting_id, value } = body;\n    console.log(\"setting_id, value: \", setting_id, value);\n    console.log(\"Event received from Customize\", setting_id, value);\n    updateCss({ [setting_id]: value });\n};\n\nexports.kastor = () => {\n    console.log(\"loading kastor handler\");\n    globalThis.addEventListener(\"message\", kastorHandler);\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/services/kastor.js?");
+eval("const { updateCss } = __webpack_require__(/*! ../utils */ \"./src/utils/index.js\");\n\nconst kastorHandler = (event) => {\n    const body = event.data.data;\n    const { setting_id, value } = body;\n    console.log(\"setting_id, value: \", setting_id, value);\n    console.log(\"Event received from Customize\", setting_id, value);\n    if (/font-size/.test(value)) updateCss({ [setting_id]: `${value}em` });\n};\n\nexports.kastor = () => {\n    console.log(\"loading kastor handler\");\n    globalThis.addEventListener(\"message\", kastorHandler);\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/services/kastor.js?");
 
 /***/ }),
 
