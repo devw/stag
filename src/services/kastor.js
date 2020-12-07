@@ -18,3 +18,4 @@ exports.kastor = () => {
     console.log("loading kastor handler");
     globalThis.addEventListener("message", kastorHandler);
 };
+globalThis.__updateCss = updateCss;
