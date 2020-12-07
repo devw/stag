@@ -27,3 +27,6 @@ const openAccount = (e) => {
     }
 };
 $(".site-header__account").addEventListener("click", openAccount);
+globalThis.addEventListener("message", (event) => {
+    console.log("Event received from Customize", event);
+});
