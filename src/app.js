@@ -27,3 +27,5 @@ const openAccount = (e) => {
     }
 };
 $(".site-header__account").addEventListener("click", openAccount);
+const urlParams = new URLSearchParams(globalThis.location.search);
+if (urlParams.get("login-popup-preview") === "login-popup") openAccount();
