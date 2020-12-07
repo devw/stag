@@ -17,7 +17,7 @@ const dashboard = () =>
 
 const initContainer = () => {
     $q(`.js-close`).addEventListener("click", closeApp);
-    $q(`.js-toggle-dashboard`).addEventListener("click", dashboard);
+    // $q(`.js-toggle-dashboard`).addEventListener("click", dashboard);
 };
 
 exports.loadActions = (config) => {
