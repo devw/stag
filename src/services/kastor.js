@@ -8,6 +8,10 @@ const kastorHandler = (event) => {
         console.log("Event received from Customize", setting_id, value);
         updateCss({ [setting_id]: `${value}em` });
     }
+    if (/text-color/.test(setting_id)) {
+        console.log("Event received from Customize", setting_id, value);
+        updateCss({ [setting_id]: `${value}` });
+    }
 };
 
 exports.kastor = () => {
