@@ -212,7 +212,7 @@ eval("const { $q } = __webpack_require__(/*! ../utils */ \"./src/utils/index.js\
 /*! runtime requirements: __webpack_require__ */
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const { updatePages } = __webpack_require__(/*! ../utils */ \"./src/utils/index.js\");\nconst { updateCss } = __webpack_require__(/*! ../utils */ \"./src/utils/index.js\");\nconst { loadActions } = __webpack_require__(/*! ./load */ \"./src/actions/load.js\");\nconst { getTheme } = __webpack_require__(/*! ../services */ \"./src/services/index.js\");\n\ngetTheme().then((theme) => {\n    updatePages(theme.text);\n    updateCss(theme.style);\n    loadActions(theme);\n});\n\n\n//# sourceURL=webpack://stag-dotjs/./src/actions/index.js?");
+eval("const { updatePages } = __webpack_require__(/*! ../utils */ \"./src/utils/index.js\");\nconst { updateCss } = __webpack_require__(/*! ../utils */ \"./src/utils/index.js\");\nconst { loadActions } = __webpack_require__(/*! ./load */ \"./src/actions/load.js\");\nconst { getTheme, kastor } = __webpack_require__(/*! ../services */ \"./src/services/index.js\");\n\ngetTheme().then((theme) => {\n    updatePages(theme.text);\n    updateCss(theme.style);\n    loadActions(theme);\n    kastor();\n});\n\n\n//# sourceURL=webpack://stag-dotjs/./src/actions/index.js?");
 
 /***/ }),
 
@@ -307,13 +307,28 @@ eval("\n\nmodule.exports = {\n    template,\n    compile,\n    setDelimiters,\n}
 /*! export getTheme [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export isLogged [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export isRegistered [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export kastor [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export register [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export sendHttpRequest [provided] [no usage info] [missing usage info prevents renaming] */
 /*! other exports [not provided] [no usage info] */
 /*! runtime requirements: __webpack_exports__, __webpack_require__ */
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("const { registerViaProxy, isRegistered, getTheme } = __webpack_require__(/*! ./proxy */ \"./src/services/proxy.js\");\nconst { registerViaStorefront, signInViaStorefront } = __webpack_require__(/*! ./storefront */ \"./src/services/storefront.js\");\nconst { toggleLoading } = __webpack_require__(/*! ../utils/toggle-loading */ \"./src/utils/toggle-loading.js\");\nconst { sendHttpRequest } = __webpack_require__(/*! ./shopify */ \"./src/services/shopify.js\");\n\nexports.isRegistered = isRegistered;\nexports.sendHttpRequest = sendHttpRequest;\nexports.getTheme = getTheme;\n\n// TODO this should be removed\nexports.register = async (inputs) => {\n    registerViaStorefront(inputs);\n    return registerViaProxy(inputs);\n};\n// TODO this should be removed\nexports.isLogged = async (inputs) => {\n    toggleLoading();\n    signInViaStorefront(inputs);\n    toggleLoading();\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/services/index.js?");
+eval("const { registerViaProxy, isRegistered, getTheme } = __webpack_require__(/*! ./proxy */ \"./src/services/proxy.js\");\nconst { registerViaStorefront, signInViaStorefront } = __webpack_require__(/*! ./storefront */ \"./src/services/storefront.js\");\nconst { toggleLoading } = __webpack_require__(/*! ../utils/toggle-loading */ \"./src/utils/toggle-loading.js\");\nconst { sendHttpRequest } = __webpack_require__(/*! ./shopify */ \"./src/services/shopify.js\");\nconst { kastor } = __webpack_require__(/*! ./kastor */ \"./src/services/kastor.js\");\n\nexports.isRegistered = isRegistered;\nexports.sendHttpRequest = sendHttpRequest;\nexports.getTheme = getTheme;\nexports.kastor = kastor;\n\n// TODO this should be removed\nexports.register = async (inputs) => {\n    registerViaStorefront(inputs);\n    return registerViaProxy(inputs);\n};\n// TODO this should be removed\nexports.isLogged = async (inputs) => {\n    toggleLoading();\n    signInViaStorefront(inputs);\n    toggleLoading();\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/services/index.js?");
+
+/***/ }),
+
+/***/ "./src/services/kastor.js":
+/*!********************************!*\
+  !*** ./src/services/kastor.js ***!
+  \********************************/
+/*! default exports */
+/*! export kastor [provided] [no usage info] [missing usage info prevents renaming] */
+/*! other exports [not provided] [no usage info] */
+/*! runtime requirements: __webpack_exports__, __webpack_require__ */
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+eval("const { updateCss } = __webpack_require__(/*! ../utils */ \"./src/utils/index.js\");\n\nconst kastorHandler = (event) => {\n    const body = event.data.data;\n    const { setting_id, value } = body;\n    console.log(\"setting_id, value: \", setting_id, value);\n    console.log(\"Event received from Customize\", setting_id, value);\n    updateCss({ [setting_id]: value });\n};\n\nexports.kastor = () => {\n    console.log(\"loading kastor handler\");\n    globalThis.addEventListener(\"message\", kastorHandler);\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/services/kastor.js?");
 
 /***/ }),
 
@@ -706,7 +721,7 @@ eval("\n\nvar isOldIE = function isOldIE() {\n  var memo;\n  return function mem
   \********************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: __webpack_require__ */
-eval("__webpack_require__(/*! ./styles/main.scss */ \"./src/styles/main.scss\");\n__webpack_require__(/*! ./styles/loader.scss */ \"./src/styles/loader.scss\");\n__webpack_require__(/*! ./styles/carousel.scss */ \"./src/styles/carousel.scss\");\n__webpack_require__(/*! ./styles/dashboard.scss */ \"./src/styles/dashboard.scss\");\n\n__webpack_require__(/*! ./actions */ \"./src/actions/index.js\");\nconst { APP_ID } = __webpack_require__(/*! ./templates/ */ \"./src/templates/index.js\");\n\nconst node = document.createElement(\"div\");\nnode.setAttribute(\"id\", APP_ID);\ndocument.body.append(node);\n\nconst placePopover = (e, dom) => {\n    const shift = parseInt(getComputedStyle(dom).getPropertyValue(\"width\"));\n    dom.style.setProperty(\"left\", `${e.clientX - shift / 2}px`);\n    dom.style.setProperty(\"top\", `${e.clientY + 20}px`);\n};\n\nconst $ = document.querySelector.bind(document);\nconst openAccount = (e) => {\n    e.preventDefault();\n    e.stopPropagation();\n    if (!globalThis.__st?.cid) {\n        const dom = node.querySelector(\".container\");\n        dom.style.setProperty(\"display\", \"flex\");\n        if (dom.classList.contains(\"popover\")) placePopover(e, dom);\n    }\n};\n$(\".site-header__account\").addEventListener(\"click\", openAccount);\nglobalThis.addEventListener(\"message\", (event) => {\n    console.log(\"Event received from Customize\", event);\n});\n\n\n//# sourceURL=webpack://stag-dotjs/./src/app.js?");
+eval("__webpack_require__(/*! ./styles/main.scss */ \"./src/styles/main.scss\");\n__webpack_require__(/*! ./styles/loader.scss */ \"./src/styles/loader.scss\");\n__webpack_require__(/*! ./styles/carousel.scss */ \"./src/styles/carousel.scss\");\n__webpack_require__(/*! ./styles/dashboard.scss */ \"./src/styles/dashboard.scss\");\n\n__webpack_require__(/*! ./actions */ \"./src/actions/index.js\");\nconst { APP_ID } = __webpack_require__(/*! ./templates/ */ \"./src/templates/index.js\");\n\nconst node = document.createElement(\"div\");\nnode.setAttribute(\"id\", APP_ID);\ndocument.body.append(node);\n\nconst placePopover = (e, dom) => {\n    const shift = parseInt(getComputedStyle(dom).getPropertyValue(\"width\"));\n    dom.style.setProperty(\"left\", `${e.clientX - shift / 2}px`);\n    dom.style.setProperty(\"top\", `${e.clientY + 20}px`);\n};\n\nconst $ = document.querySelector.bind(document);\nconst openAccount = (e) => {\n    e.preventDefault();\n    e.stopPropagation();\n    if (!globalThis.__st?.cid) {\n        const dom = node.querySelector(\".container\");\n        dom.style.setProperty(\"display\", \"flex\");\n        if (dom.classList.contains(\"popover\")) placePopover(e, dom);\n    }\n};\n$(\".site-header__account\").addEventListener(\"click\", openAccount);\n\n\n//# sourceURL=webpack://stag-dotjs/./src/app.js?");
 })();
 
 /******/ })()
