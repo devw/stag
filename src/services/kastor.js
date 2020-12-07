@@ -17,7 +17,7 @@ const generalSettings = ({ setting_id, value }) => {
 
 const kastorHandler = (event) => {
     const body = event.data.data;
-    const hasSection = body.section_type;
+    const hasSection = body.section_type_id;
 
     hasSection ? sectionSettings(body) : generalSettings(body);
 };
