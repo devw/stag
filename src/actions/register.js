@@ -59,8 +59,6 @@ exports.init = () => {
         e.addEventListener("click", changeSlide)
     );
     form.addEventListener("submit", onSubmit);
-    $q(tgt.login)?.addEventListener("click", () =>
-        toggleModules([REGISTER_ID, SIGNIN_ID])
-    );
+    $q(tgt.login)?.addEventListener("click", () => toggleModules(SIGNIN_ID));
     form.querySelector(".js-show-psw")?.addEventListener("click", toggleSecret);
 };

@@ -12,6 +12,7 @@ const closeApp = () => {
     document.body.classList.remove("remove-scrolling");
 };
 
+// TODO dashboard should be removed
 const dashboard = () =>
     $q(`.js-dashboard`).style.setProperty("display", "block");
 

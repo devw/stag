@@ -1,7 +1,7 @@
-const { updateCss } = require("../utils");
+const { updateCss, toggleModules } = require("../utils");
 
-const sectionSettings = (body) => {
-    console.log(body);
+const sectionSettings = ({ section_type_id }) => {
+    toggleModules(section_type_id.replace(/-section/, ""));
 };
 
 const generalSettings = ({ setting_id, value }) => {
