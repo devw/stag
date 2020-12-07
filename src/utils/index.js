@@ -13,3 +13,5 @@ exports.isValidPsw = isValidPsw;
 exports.isValidEmail = isValidEmail;
 exports.$q = $q;
 exports.$qq = $qq;
+
+globalThis.__updateCss = updateCss;
