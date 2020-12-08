@@ -6,6 +6,6 @@ const { getTheme, kastor } = require("../services");
 getTheme().then((theme) => {
     updatePages(theme.text);
     updateCss(theme.style);
-    loadActions(theme);
+    loadActions();
     kastor();
 });

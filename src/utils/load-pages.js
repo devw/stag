@@ -10,6 +10,8 @@ const {
 } = require("../templates/");
 const $ = document.querySelector.bind(document);
 
+let TEXT = {};
+
 const getDef = () => ({
     [CONTAINER_ID]: document.getElementById(CONTAINER_ID).text,
     [LANDING_ID]: document.getElementById(LANDING_ID).text,
@@ -33,9 +35,21 @@ const getTemplate = (data) => {
     })(data);
 };
 
-exports.updatePages = (text) => {
+const updateText = (text) => {
+    const hasManyKeys = Reflect.ownKeys(text).length > 1;
+    const firstKey = Reflect.ownKeys(text)[0];
+    if (hasManyKeys) TEXT = text;
+    else TEXT[firstKey] = text[firstKey];
+    return TEXT;
+};
+
+const updatePages = (text) => {
+    text = updateText(text);
+    console.log("asdasdasas", text);
     $(`#${APP_ID}`).innerHTML = getTemplate(text);
 };
+
+exports.updatePages = updatePages;
 
 exports.updateCss = (cssVars) => {
     (function traverse(obj, key) {

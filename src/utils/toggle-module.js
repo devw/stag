@@ -1,10 +1,9 @@
-const { APP_ID, LANDING_ID, REGISTER_ID, SIGNIN_ID } = require("../templates/");
-// TODO fix $
-const $ = document.querySelector.bind(document);
+const { LANDING_ID, REGISTER_ID, SIGNIN_ID } = require("../templates/");
+const { $q } = require("./q-selector");
 
 exports.toggleModules = (id) => {
-    $(`#${APP_ID} .${LANDING_ID}`).style.setProperty("display", "none");
-    $(`#${APP_ID} .${REGISTER_ID}`).style.setProperty("display", "none");
-    $(`#${APP_ID} .${SIGNIN_ID}`).style.setProperty("display", "none");
-    $(`#${APP_ID} .${id}`).style.setProperty("display", "block");
+    $q(`.${LANDING_ID}`).style.setProperty("display", "none");
+    $q(`.${REGISTER_ID}`).style.setProperty("display", "none");
+    $q(`.${SIGNIN_ID}`).style.setProperty("display", "none");
+    $q(`.${id}`).style.setProperty("display", "block");
 };

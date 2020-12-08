@@ -21,10 +21,30 @@ const initContainer = () => {
     // $q(`.js-toggle-dashboard`).addEventListener("click", dashboard);
 };
 
-exports.loadActions = (config) => {
-    initDashboard(config);
+exports.loadActions = () => {
+    // initDashboard(config);
     initLanding();
     initContainer();
     initSignIn();
     initRegistration();
 };
+
+const placePopover = (e, dom) => {
+    const shift = parseInt(getComputedStyle(dom).getPropertyValue("width"));
+    dom.style.setProperty("left", `${e.clientX - shift / 2}px`);
+    dom.style.setProperty("top", `${e.clientY + 20}px`);
+};
+
+const openAccount = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (!globalThis.__st?.cid) {
+        const dom = $q(".container");
+        dom.style.setProperty("display", "flex");
+        if (dom.classList.contains("popover")) placePopover(e, dom);
+    }
+};
+const $ = document.querySelector.bind(document);
+$(".site-header__account").addEventListener("click", openAccount);
+const urlParams = new URLSearchParams(globalThis.location.search);
+if (urlParams.get("login-popup-preview") === "login-popup") openAccount();
