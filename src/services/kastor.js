@@ -14,12 +14,13 @@ const debounce = (fn, delay) => {
 
 const sectionSettings = ({ section_type_id, setting_id, value }) => {
     //toggleModules(section_type_id.replace(/-section/, ""));
-    const fn = () => {
-        if (setting_id) updatePages({ [setting_id]: value });
-        toggleModules(section_type_id.replace(/-section/, ""));
-        $q(".container").style.setProperty("display", "flex");
-    };
-    return debounce(fn, 2000);
+    // const fn = () => {
+    if (setting_id) updatePages({ [setting_id]: value });
+    const section = section_type_id.replace(/-section/, "");
+    toggleModules(section);
+    $q(".container").style.setProperty("display", "flex");
+    // };
+    // return debounce(fn, 2000);
 };
 
 globalThis.__toggleModules = toggleModules;
