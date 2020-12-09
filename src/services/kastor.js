@@ -13,26 +13,18 @@ const debounce = (fn, delay) => {
 };
 
 const sectionSettings = ({ section_type_id, setting_id, value }) => {
-    //toggleModules(section_type_id.replace(/-section/, ""));
-    // const fn = () => {
     if (setting_id) updatePages({ [setting_id]: value });
     const section = section_type_id.replace(/-section/, "");
     toggleModules(section);
     $q(".container").style.setProperty("display", "flex");
-    // };
-    // return debounce(fn, 2000);
 };
 
-globalThis.__toggleModules = toggleModules;
-globalThis.__updatePages = (() => {
-    const fn = (json = { loginRegister: "Iscriviti" }) => {
-        updatePages(json);
-        const section_type_id = "landing-section";
-        toggleModules(section_type_id.replace(/-section/, ""));
-        $q(".container").style.setProperty("display", "flex");
-    };
-    return debounce(fn, 2000);
-})();
+globalThis.__updatePages = (json) => {
+    updatePages(json);
+    const section_type_id = "landing-section";
+    toggleModules(section_type_id.replace(/-section/, ""));
+    $q(".container").style.setProperty("display", "flex");
+};
 
 const generalSettings = ({ setting_id, value }) => {
     if (/font-size|text-size|border-radius/.test(setting_id)) {
