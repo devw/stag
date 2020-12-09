@@ -40,7 +40,7 @@ const generalSettings = ({ setting_id, value }) => {
 const kastorHandler = (event) => {
     console.log("sasassa:", event);
     const body = event.data.data;
-    const hasSection = body.section_type_id;
+    const hasSection = body.section_type_id || body.section_type;
 
     hasSection ? sectionSettings(body) : generalSettings(body);
 };
