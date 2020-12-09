@@ -12,9 +12,9 @@ const debounce = (fn, delay) => {
     };
 };
 
-const sectionSettings = ({ section_type_id, setting_id, value }) => {
+const sectionSettings = ({ sectionName, setting_id, value }) => {
     if (setting_id) updatePages({ [setting_id]: value });
-    const section = section_type_id.replace(/-section/, "");
+    const section = sectionName.replace(/-section/, "");
     toggleModules(section);
     $q(".container").style.setProperty("display", "flex");
 };
@@ -40,9 +40,9 @@ const generalSettings = ({ setting_id, value }) => {
 const kastorHandler = (event) => {
     console.log("sasassa:", event);
     const body = event.data.data;
-    const hasSection = body.section_type_id || body.section_type;
-
-    hasSection ? sectionSettings(body) : generalSettings(body);
+    const sectionName = body.section_type_id || body.section_type;
+    body.sectionName = sectionName;
+    sectionName ? sectionSettings(body) : generalSettings(body);
 };
 
 exports.kastor = () => {
