@@ -46,7 +46,7 @@ const kastorHandler = (event) => {
     body.sectionName = sectionName;
     if (sectionName === "change-theme")
         getTheme(body.value).then((theme) => updateCss(theme.style));
-    sectionName ? sectionSettings(body) : generalSettings(body);
+    else sectionName ? sectionSettings(body) : generalSettings(body);
 };
 
 const changeTheme = (themeName) =>
