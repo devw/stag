@@ -39,10 +39,13 @@ const generalSettings = ({ setting_id, value }) => {
 };
 
 const kastorHandler = (event) => {
-    console.log("sasassa:", event);
     const body = event.data.data;
-    const sectionName = body.section_type_id || body.section_type;
+    // TODO improve this part
+    const sectionName =
+        body.section_type_id || body.section_type || body.setting_id;
     body.sectionName = sectionName;
+    if (sectionName === "change-theme")
+        getTheme(body.value).then((theme) => updateCss(theme.style));
     sectionName ? sectionSettings(body) : generalSettings(body);
 };
 
