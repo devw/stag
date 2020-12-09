@@ -12,8 +12,14 @@ const debounce = (fn, delay) => {
     };
 };
 
-const sectionSettings = ({ section_type_id }) => {
-    toggleModules(section_type_id.replace(/-section/, ""));
+const sectionSettings = ({ section_type_id, setting_id, value }) => {
+    //toggleModules(section_type_id.replace(/-section/, ""));
+    const fn = () => {
+        updatePages({ [setting_id]: value });
+        toggleModules(section_type_id.replace(/-section/, ""));
+        $q(".container").style.setProperty("display", "flex");
+    };
+    return debounce(fn, 2000);
 };
 globalThis.__updatePages = (() => {
     const fn = (json = { loginRegister: "Iscriviti" }) => {
