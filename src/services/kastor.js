@@ -21,6 +21,8 @@ const sectionSettings = ({ section_type_id, setting_id, value }) => {
     };
     return debounce(fn, 2000);
 };
+
+globalThis.__toggleModules = toggleModules;
 globalThis.__updatePages = (() => {
     const fn = (json = { loginRegister: "Iscriviti" }) => {
         updatePages(json);
