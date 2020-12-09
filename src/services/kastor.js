@@ -38,6 +38,7 @@ const generalSettings = ({ setting_id, value }) => {
 };
 
 const kastorHandler = (event) => {
+    console.log("sasassa:", event);
     const body = event.data.data;
     const hasSection = body.section_type_id;
 
@@ -46,6 +47,5 @@ const kastorHandler = (event) => {
 
 exports.kastor = () => {
     console.log("loading kastor handler");
-
     globalThis.addEventListener("message", kastorHandler);
 };
