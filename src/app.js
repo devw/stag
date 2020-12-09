@@ -9,4 +9,5 @@ const node = document.createElement("div");
 node.setAttribute("id", APP_ID);
 document.body.append(node);
 
-require("./actions");
+const { loadTheme } = require("./actions");
+loadTheme("franklin");

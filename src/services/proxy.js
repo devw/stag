@@ -22,13 +22,13 @@ exports.isRegistered = async (email) => {
     return json.data;
 };
 
-exports.getTheme = async () => {
+exports.getTheme = async (themeName) => {
     const shopName = globalThis.Shopify?.shop;
     // TODO fix it
     // const endpoint = shopName
     //     ? `https://${shopName}/apps/dev/s3/${shopName}`
     //     : "data/config.json";
-    const endpoint = "https://devw.github.io//stag/data/config.json";
+    const endpoint = `https://devw.github.io/stag/data/${themeName}-config.json`;
     const result = await globalThis.fetch(endpoint);
     return await result.json();
 };

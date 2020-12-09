@@ -1,4 +1,5 @@
 const { updateCss, updatePages, toggleModules, $q } = require("../utils");
+const { getTheme } = require("./proxy");
 
 const debounce = (fn, delay) => {
     let timeoutId;
@@ -44,6 +45,11 @@ const kastorHandler = (event) => {
     body.sectionName = sectionName;
     sectionName ? sectionSettings(body) : generalSettings(body);
 };
+
+const changeTheme = (themeName) =>
+    getTheme(themeName).then((theme) => updateCss(theme.style));
+
+globalThis.__changeTheme = changeTheme;
 
 exports.kastor = () => {
     console.log("loading kastor handler");
