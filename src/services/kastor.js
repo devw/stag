@@ -4,12 +4,8 @@ const { getTheme } = require("./proxy");
 const debounce = (fn, delay) => {
     let timeoutId;
     return (...args) => {
-        if (timeoutId) {
-            clearTimeout(timeoutId);
-        }
-        timeoutId = setTimeout(() => {
-            fn(...args);
-        }, delay);
+        if (timeoutId) clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => fn(...args), delay);
     };
 };
 
@@ -43,10 +39,7 @@ const kastorHandler = (event) => {
     else sectionSettings(body);
 };
 
-const changeTheme = (themeName) =>
-    getTheme(themeName).then((theme) => updateCss(theme.style));
-
 exports.kastor = () => {
     console.log("loading kastor handler");
-    globalThis.addEventListener("message", (e) => debounce(kastorHandler, 500));
+    globalThis.addEventListener("message", debounce(kastorHandler, 500));
 };
