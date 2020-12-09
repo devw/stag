@@ -15,7 +15,7 @@ const debounce = (fn, delay) => {
 const sectionSettings = ({ section_type_id, setting_id, value }) => {
     //toggleModules(section_type_id.replace(/-section/, ""));
     const fn = () => {
-        updatePages({ [setting_id]: value });
+        if (setting_id) updatePages({ [setting_id]: value });
         toggleModules(section_type_id.replace(/-section/, ""));
         $q(".container").style.setProperty("display", "flex");
     };
