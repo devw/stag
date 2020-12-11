@@ -22,7 +22,8 @@ const generalSettings = ({ setting_id, value }) => {
         console.log("Event received from Customize", setting_id, value);
         updateCss({ [setting_id]: `${value}em` });
     }
-    if (/text-color/.test(setting_id)) {
+    // if (/text-color/.test(setting_id)) {
+    else {
         console.log("Event received from Customize", setting_id, value);
         updateCss({ [setting_id]: `${value}` });
     }
@@ -52,3 +53,5 @@ exports.kastor = () => {
     console.log("loading kastor handler");
     globalThis.addEventListener("message", debounce(kastorHandler, 500));
 };
+
+globalThis.__generalSettings = generalSettings;
