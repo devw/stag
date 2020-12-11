@@ -10,4 +10,4 @@ node.setAttribute("id", APP_ID);
 document.body.append(node);
 
 const { loadTheme } = require("./actions");
-loadTheme("franklin");
+loadTheme("warehouse");
