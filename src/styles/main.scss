@@ -121,12 +121,14 @@ form {
 }
 
 .input-text {
+    box-sizing: border-box;
     border: var(--input-line);
     padding: var(--input-padding);
     outline: none;
     border-bottom: 1px solid;
-    font: 400 13.3333px Arial;
-    // margin-bottom: var(--text-input-margin);
+    // font: 400 13.3333px Arial;
+    margin-bottom: var(--text-input-margin);
+
     width: 100%;
 }
 

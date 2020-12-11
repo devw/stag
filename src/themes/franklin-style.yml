@@ -27,7 +27,7 @@ theme:
     medium-font-weight: 300
   form:
     input:
-      input-padding: 2em 0
+      input-padding: 10px 0
       input-line: none
     placeholder: 
       placeholder-text-transform: uppercase
