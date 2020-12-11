@@ -23,6 +23,8 @@
 			"--large-text-transform": "none",
 			"--medium-text-size": "1.1em",
 			"--medium-font-weight": 300,
+			"--input-padding": "2em 0",
+			"--input-line": "none",
 			"--placeholder-text-transform": "uppercase",
 			"--placeholder-font-size": "inherit",
 			"--placeholder-color": "inherit",
