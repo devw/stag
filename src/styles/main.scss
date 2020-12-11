@@ -109,7 +109,7 @@
 // form
 
 form {
-    padding: 2em 0;
+    padding: var(--input-padding);
 }
 
 // Form Placeholder
@@ -118,6 +118,16 @@ form {
     font-size: var(--placeholder-font-size);
     color: var(--placeholder-color);
     text-transform: var(--placeholder-text-transform);
+}
+
+.input-text {
+    border: var(--input-line);
+    outline: none;
+    border-bottom: 1px solid;
+    font: 400 13.3333px Arial;
+    margin-bottom: var(--text-input-margin);
+    padding-left: 2px;
+    width: 100%;
 }
 
 // Buttons
@@ -205,16 +215,6 @@ form {
 // TODO to refactoring with css function
 .inputs-container {
     margin-bottom: 10px;
-}
-
-.input-text {
-    border: none;
-    outline: none;
-    border-bottom: 1px solid;
-    font: 400 13.3333px Arial;
-    margin-bottom: var(--text-input-margin);
-    padding-left: 2px;
-    width: 100%;
 }
 
 /*  ===================
