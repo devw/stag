@@ -45,7 +45,6 @@ const updateText = (text) => {
 
 const updatePages = (text) => {
     text = updateText(text);
-    console.log("asdasdasas", text);
     $(`#${APP_ID}`).innerHTML = getTemplate(text);
 };
 
