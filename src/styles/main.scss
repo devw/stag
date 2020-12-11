@@ -17,18 +17,6 @@
     overflow: hidden;
 }
 
-@keyframes fade_in_show {
-    0% {
-        opacity: var(--transform-opacity);
-        transform: scale(var(--transform-scale));
-    }
-
-    100% {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
 /*  ===================
     Theme/Typography
     =================== */
@@ -37,6 +25,28 @@
     text-align: center;
     z-index: 99;
     position: absolute;
+    animation: var(--animation) 1.5s;
+}
+
+@keyframes fade-in-show {
+    0% {
+        opacity: 0;
+        transform: 0.2;
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slide-in {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
 }
 
 .popover {
@@ -128,7 +138,6 @@ form {
     border-bottom: 1px solid;
     // font: 400 13.3333px Arial;
     margin-bottom: var(--text-input-margin);
-
     width: 100%;
 }
 
