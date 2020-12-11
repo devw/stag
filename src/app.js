@@ -9,6 +9,5 @@ const node = document.createElement("div");
 node.setAttribute("id", APP_ID);
 document.body.append(node);
 
-const { loadTheme } = require("./actions");
-loadTheme("warehouse");
-globalThis.__loadTheme = loadTheme;
+const { loadTheme, loadPopup } = require("./actions");
+loadTheme("franklin").then(() => loadPopup());

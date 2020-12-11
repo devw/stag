@@ -36,15 +36,15 @@ const placePopover = (e, dom) => {
 };
 
 const openAccount = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
+    e?.preventDefault();
+    e?.stopPropagation();
     if (!globalThis.__st?.cid) {
         const dom = $q(".container");
         dom.style.setProperty("display", "flex");
         if (dom.classList.contains("popover")) placePopover(e, dom);
     }
 };
+
+exports.openAccount = openAccount;
 const $ = document.querySelector.bind(document);
 $(".site-header__account").addEventListener("click", openAccount);
-const urlParams = new URLSearchParams(globalThis.location.search);
-if (urlParams.get("config_id") === "login-popup") openAccount();
