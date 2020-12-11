@@ -36,6 +36,7 @@ const kastorHandler = (event) => {
     body.sectionName = sectionName;
     if (sectionName === "change-theme")
         getTheme(body.value).then((theme) => updateCss(theme.style));
+    else if (sectionName === "hasSlider") console.log(body.value);
     else if (/^--/.test(sectionName)) generalSettings(body);
     else sectionSettings(body);
 };
