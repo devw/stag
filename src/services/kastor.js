@@ -1,5 +1,6 @@
 const { updateCss, updatePages, toggleModules, $q } = require("../utils");
 const { getTheme } = require("./proxy");
+const { init } = require("../actions/register");
 
 const debounce = (fn, delay) => {
     let timeoutId;
@@ -42,4 +43,17 @@ const kastorHandler = (event) => {
 exports.kastor = () => {
     console.log("loading kastor handler");
     globalThis.addEventListener("message", debounce(kastorHandler, 500));
+
+    const json = {
+        sectionName: "register-section",
+        setting_id: "hasCarousel",
+        value: "true",
+    };
+    globalThis.__sectionSettings = ({ sectionName, setting_id, value }) => {
+        if (setting_id) updatePages({ [setting_id]: value });
+        const section = sectionName.replace(/-section/, "");
+        toggleModules(section);
+        $q(".container").style.setProperty("display", "flex");
+        init();
+    };
 };
