@@ -11,3 +11,4 @@ document.body.append(node);
 
 const { loadTheme } = require("./actions");
 loadTheme("warehouse");
+globalThis.__loadTheme = loadTheme;

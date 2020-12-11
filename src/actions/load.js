@@ -47,4 +47,4 @@ const openAccount = (e) => {
 const $ = document.querySelector.bind(document);
 $(".site-header__account").addEventListener("click", openAccount);
 const urlParams = new URLSearchParams(globalThis.location.search);
-if (urlParams.get("login-popup-preview") === "login-popup") openAccount();
+if (urlParams.get("config_id") === "login-popup") openAccount();

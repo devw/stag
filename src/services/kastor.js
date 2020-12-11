@@ -5,7 +5,7 @@ const { init } = require("../actions/register");
 const debounce = (fn, delay) => {
     let timeoutId;
     return (...args) => {
-        if (timeoutId) clearTimeout(timeoutId);
+        clearTimeout(timeoutId);
         timeoutId = setTimeout(() => fn(...args), delay);
     };
 };
@@ -51,11 +51,4 @@ const kastorHandler = (event) => {
 exports.kastor = () => {
     console.log("loading kastor handler");
     globalThis.addEventListener("message", debounce(kastorHandler, 500));
-};
-
-globalThis.__showSlider = ({ setting_id, value }) => {
-    if (setting_id) updatePages({ [setting_id]: value });
-    toggleModules("register");
-    $q(".container").style.setProperty("display", "flex");
-    init();
 };

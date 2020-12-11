@@ -30,6 +30,7 @@ exports.getTheme = async (themeName) => {
     //     ? `https://${shopName}/apps/dev/s3/${shopName}`
     //     : "data/config.json";
     const endpoint = `https://devw.github.io/stag/data/${themeName}-config.json`;
+    console.log(endpoint);
     const result = await globalThis.fetch(endpoint);
     return await result.json();
 };
