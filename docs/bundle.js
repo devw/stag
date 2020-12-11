@@ -209,13 +209,13 @@ eval("const { $q } = __webpack_require__(/*! ../utils */ \"./src/utils/index.js\
   !*** ./src/actions/index.js ***!
   \******************************/
 /*! default exports */
-/*! export loadPopup [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export loadTheme [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export showTheme [provided] [no usage info] [missing usage info prevents renaming] */
 /*! other exports [not provided] [no usage info] */
 /*! runtime requirements: __webpack_exports__, __webpack_require__ */
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("const { updateCss, updatePages, toggleModules, $q } = __webpack_require__(/*! ../utils */ \"./src/utils/index.js\");\nconst { loadActions, openAccount } = __webpack_require__(/*! ./load */ \"./src/actions/load.js\");\nconst { getTheme, kastor } = __webpack_require__(/*! ../services */ \"./src/services/index.js\");\n\nconst onGetTheme = (theme) => {\n    updatePages(theme.text);\n    updateCss(theme.style);\n    loadActions();\n    kastor();\n};\nexports.loadTheme = (themeName) => getTheme(themeName).then(onGetTheme);\n\nexports.loadPopup = () => {\n    const urlParams = new URLSearchParams(globalThis.location.search);\n    if (urlParams.get(\"config_id\") === \"login-popup\") openAccount();\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/actions/index.js?");
+eval("const { updateCss, updatePages, toggleModules, $q } = __webpack_require__(/*! ../utils */ \"./src/utils/index.js\");\nconst { loadActions, openAccount } = __webpack_require__(/*! ./load */ \"./src/actions/load.js\");\nconst { getTheme, kastor } = __webpack_require__(/*! ../services */ \"./src/services/index.js\");\n\nconst onGetTheme = (theme) => {\n    updatePages(theme.text);\n    updateCss(theme.style);\n    loadActions();\n    kastor();\n};\nexports.loadTheme = (themeName) => getTheme(themeName).then(onGetTheme);\n\nexports.showTheme = () => {\n    const urlParams = new URLSearchParams(globalThis.location.search);\n    if (urlParams.get(\"config_id\") === \"login-popup\") openAccount();\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/actions/index.js?");
 
 /***/ }),
 
@@ -725,7 +725,7 @@ eval("\n\nvar isOldIE = function isOldIE() {\n  var memo;\n  return function mem
   \********************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: __webpack_require__ */
-eval("__webpack_require__(/*! ./styles/main.scss */ \"./src/styles/main.scss\");\n__webpack_require__(/*! ./styles/loader.scss */ \"./src/styles/loader.scss\");\n__webpack_require__(/*! ./styles/carousel.scss */ \"./src/styles/carousel.scss\");\n__webpack_require__(/*! ./styles/dashboard.scss */ \"./src/styles/dashboard.scss\");\n\nconst { APP_ID } = __webpack_require__(/*! ./templates/ */ \"./src/templates/index.js\");\n\nconst node = document.createElement(\"div\");\nnode.setAttribute(\"id\", APP_ID);\ndocument.body.append(node);\n\nconst { loadTheme, loadPopup } = __webpack_require__(/*! ./actions */ \"./src/actions/index.js\");\nloadTheme(\"franklin\").then(() => loadPopup());\n\n\n//# sourceURL=webpack://stag-dotjs/./src/app.js?");
+eval("__webpack_require__(/*! ./styles/main.scss */ \"./src/styles/main.scss\");\n__webpack_require__(/*! ./styles/loader.scss */ \"./src/styles/loader.scss\");\n__webpack_require__(/*! ./styles/carousel.scss */ \"./src/styles/carousel.scss\");\n__webpack_require__(/*! ./styles/dashboard.scss */ \"./src/styles/dashboard.scss\");\n\nconst { APP_ID } = __webpack_require__(/*! ./templates/ */ \"./src/templates/index.js\");\n\nconst node = document.createElement(\"div\");\nnode.setAttribute(\"id\", APP_ID);\ndocument.body.append(node);\n\nconst { loadTheme, showTheme } = __webpack_require__(/*! ./actions */ \"./src/actions/index.js\");\nloadTheme(\"warehouse\").then(() => showTheme());\n\n\n//# sourceURL=webpack://stag-dotjs/./src/app.js?");
 })();
 
 /******/ })()
