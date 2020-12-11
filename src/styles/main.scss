@@ -109,7 +109,7 @@
 // form
 
 form {
-    padding: var(--input-padding);
+    padding: 2em 0;
 }
 
 // Form Placeholder
@@ -126,7 +126,7 @@ form {
     border-bottom: 1px solid;
     font: 400 13.3333px Arial;
     margin-bottom: var(--text-input-margin);
-    padding-left: 2px;
+    padding-left: var(--input-padding);
     width: 100%;
 }
 
