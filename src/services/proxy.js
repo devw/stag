@@ -15,6 +15,7 @@ exports.registerViaProxy = async (inputs) => {
 
 // TODO remove AWS_ENDPOINT and use the proxy. See getConfig
 exports.isRegistered = async (email) => {
+    return null;
     toggleLoading();
     const res = await fetch(`${AWS_ENDPOINT}/user/${email}`);
     const json = await res.json();

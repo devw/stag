@@ -102,12 +102,17 @@
 
 // Sub-title
 .sub-title {
-    // margin: 18px 0;
     font-size: var(--medium-text-size);
     font-weight: var(--medium-font-weight);
 }
 
-// Placeholder
+// form
+
+form {
+    padding: 2em 0;
+}
+
+// Form Placeholder
 ::placeholder {
     background-color: var(--content-bg-color);
     font-size: var(--placeholder-font-size);
