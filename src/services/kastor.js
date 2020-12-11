@@ -28,6 +28,13 @@ const generalSettings = ({ setting_id, value }) => {
     }
 };
 
+const showSlider = ({ setting_id, value }) => {
+    if (setting_id) updatePages({ [setting_id]: value });
+    toggleModules("register");
+    $q(".container").style.setProperty("display", "flex");
+    init();
+};
+
 const kastorHandler = (event) => {
     const body = event.data.data;
     // TODO improve this part
@@ -36,7 +43,7 @@ const kastorHandler = (event) => {
     body.sectionName = sectionName;
     if (sectionName === "change-theme")
         getTheme(body.value).then((theme) => updateCss(theme.style));
-    else if (sectionName === "hasSlider") console.log(body.value);
+    else if (sectionName === "hasSlider") showSlider(body.value);
     else if (/^--/.test(sectionName)) generalSettings(body);
     else sectionSettings(body);
 };
@@ -44,17 +51,4 @@ const kastorHandler = (event) => {
 exports.kastor = () => {
     console.log("loading kastor handler");
     globalThis.addEventListener("message", debounce(kastorHandler, 500));
-
-    const json = {
-        sectionName: "register-section",
-        setting_id: "hasCarousel",
-        value: "true",
-    };
-    globalThis.__sectionSettings = ({ sectionName, setting_id, value }) => {
-        if (setting_id) updatePages({ [setting_id]: value });
-        const section = sectionName.replace(/-section/, "");
-        toggleModules(section);
-        $q(".container").style.setProperty("display", "flex");
-        init();
-    };
 };
