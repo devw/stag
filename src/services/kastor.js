@@ -29,7 +29,8 @@ const generalSettings = ({ setting_id, value }) => {
 };
 
 const showSlider = ({ setting_id, value }) => {
-    if (setting_id) updatePages({ [setting_id]: value === "true" });
+    const setting_value = value == "true";
+    if (setting_id) updatePages({ [setting_id]: setting_value });
     toggleModules("register");
     $q(".container").style.setProperty("display", "flex");
     init();
