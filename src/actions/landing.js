@@ -32,7 +32,7 @@ const signIn = () => {
 };
 
 exports.init = () => {
-    $q(".js-modal") ? toggleModules(LANDING_ID) : toggleModules(SIGNIN_ID);
+    toggleModules(LANDING_ID);
     form = $qq(`.${LANDING_ID}`, "form");
     form.addEventListener("input", toggleButton);
     form.addEventListener("submit", onSubmit);

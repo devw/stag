@@ -54,4 +54,25 @@ exports.kastor = () => {
     globalThis.addEventListener("message", debounce(kastorHandler, 500));
 };
 
-globalThis.__generalSettings = generalSettings;
+// ***** 4 different popup *****+
+// 1) popup-centered
+// 2) popup-floating
+// 3) popup-full
+// 4) popup-drawer
+const changePopupMode = (mode) => {
+    const $q = document.querySelector.bind(document);
+    let prevMod;
+    console.log(`// ***** 4 different popup *****+
+    // 1) popup-centered
+    // 2) popup-floating
+    // 3) popup-full
+    // 4) popup-drawer`);
+    return (mode) => {
+        globalThis.scrollTo(0, 0);
+        document.querySelector("body").classList.add("remove-scrolling");
+        $q(".container").classList.remove(prevMod);
+        $q(".container").classList.add(mode);
+        prevMod = mode;
+    };
+};
+globalThis.__changePopupMode = changePopupMode();

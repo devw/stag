@@ -2,6 +2,7 @@ require("./styles/main.scss");
 require("./styles/loader.scss");
 require("./styles/carousel.scss");
 require("./styles/dashboard.scss");
+require("./styles/popup.scss");
 
 const { APP_ID } = require("./templates/");
 
@@ -10,4 +11,4 @@ node.setAttribute("id", APP_ID);
 document.body.append(node);
 
 const { loadTheme, showTheme } = require("./actions");
-loadTheme("franklin").then(() => showTheme());
+loadTheme("warehouse").then(() => showTheme());

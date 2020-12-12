@@ -1,0 +1,50 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column;
+    gap: 4em;
+}
+form {
+    position: relative;
+}
+form div {
+    margin: 1.2em 0;
+}
+input {
+    border: none;
+    border-bottom: 2px solid #333;
+    background-color: unset;
+    outline: none;
+    font-family: "Poppins";
+    font-size: 1em;
+    color: #333;
+    min-width: 60vmin;
+}
+.label-up input:focus + label,
+.label-up input:not(:placeholder-shown) + label {
+    transform: translateY(-1em) scale(0.8);
+}
+.label-up input::placeholder {
+    color: transparent;
+}
+.label-up label {
+    position: absolute;
+    left: 0;
+    opacity: 0.5;
+    color: #333;
+    transform-origin: 0 0;
+    transition: transform 0.3s ease-in-out;
+}
+.label-fixed label {
+    display: block;
+    font-size: 0.8em;
+}
+.label-fixed input::placeholder {
+    color: transparent;
+}
+
+.label-out label {
+    display: none;
+}
