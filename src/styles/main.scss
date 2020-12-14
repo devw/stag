@@ -56,7 +56,7 @@ body.remove-scrolling {
     border-radius: var(--container-border-radius);
     padding: var(--content-padding);
     position: relative;
-    max-width: var(--content-width);
+    // max-width: var(--content-width);
 }
 
 .error {
@@ -94,31 +94,6 @@ body.remove-scrolling {
 .sub-title {
     font-size: var(--medium-text-size);
     font-weight: var(--medium-font-weight);
-}
-
-// form
-
-form {
-    padding: 2em 0;
-}
-
-// Form Placeholder
-::placeholder {
-    background-color: var(--content-bg-color);
-    font-size: var(--placeholder-font-size);
-    color: var(--placeholder-color);
-    text-transform: var(--placeholder-text-transform);
-}
-
-.input-text {
-    box-sizing: border-box;
-    border: var(--input-line);
-    padding: var(--input-padding);
-    outline: none;
-    border-bottom: 1px solid;
-    // font: 400 13.3333px Arial;
-    margin-bottom: var(--text-input-margin);
-    width: 100%;
 }
 
 // Buttons
@@ -201,11 +176,6 @@ form {
 // 4.1 input fields
 .mandatory-container {
     margin-top: 10px;
-}
-
-// TODO to refactoring with css function
-.inputs-container {
-    margin-bottom: 10px;
 }
 
 /*  ===================

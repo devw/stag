@@ -2,8 +2,8 @@
 <div class="title">{{=it.loginRegister}}</div>
 <div class="sub-title">{{=it.enterYourEmailToContinue}}</div>
 <div class="error" data-account-error=""></div>
-<form action="javascript:void(0);" class="inputs-container">
-    <div class="inputs-container">
+<div class="form-container">
+    <form action="javascript:void(0);" class="label-none">
         {{? it.hasSocialLogin }}
         <input
             type="submit"
@@ -20,30 +20,33 @@
             value="OK"
         />
         {{?? true }}{{?}}
+        <div>
+            <input
+                class="input-text {{? it.hasSocialLogin }} input-text-primary {{?? true}}{{?}}"
+                name="email"
+                placeholder="{{=it.yourEmail}}"
+                type="email"
+            />
+            <label>{{=it.yourEmail}}</label>
+        </div>
+        {{? it.hasSocialLogin }}
+        <div>
+            <div class="or-social-login">{{=it.or}}</div>
+            <a href="#" class="fb btn">
+                <i class="fa fa-facebook fa-fw"></i> Login with Facebook
+            </a>
+            <a href="#" class="google btn"
+                ><i class="fa fa-google fa-fw"></i> Login with Google+
+            </a>
+        </div>
+        {{?? true }}
         <input
-            class="input-text {{? it.hasSocialLogin }} input-text-primary {{?? true}}{{?}}"
-            name="email"
-            placeholder="{{=it.yourEmail}}"
-            type="email"
+            type="submit"
+            class="btn btn-primary"
+            name="validate"
+            disabled=""
+            value="{{=it.validate}}"
         />
-    </div>
-    {{? it.hasSocialLogin }}
-    <div>
-        <div class="or-social-login">{{=it.or}}</div>
-        <a href="#" class="fb btn">
-            <i class="fa fa-facebook fa-fw"></i> Login with Facebook
-        </a>
-        <a href="#" class="google btn"
-            ><i class="fa fa-google fa-fw"></i> Login with Google+
-        </a>
-    </div>
-    {{?? true }}
-    <input
-        type="submit"
-        class="btn btn-primary"
-        name="validate"
-        disabled=""
-        value="{{=it.validate}}"
-    />
-    {{?}}
-</form>
+        {{?}}
+    </form>
+</div>
