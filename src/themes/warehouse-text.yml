@@ -2,7 +2,6 @@ hasGender: false
 hasSocialLogin: false
 hasBirthDate: false
 hasPasswordConfirmation: false
-isPopover: true
 hasNewsLetter: false
 
 createAccount: Create your account

@@ -11,4 +11,4 @@ node.setAttribute("id", APP_ID);
 document.body.append(node);
 
 const { loadTheme, showTheme } = require("./actions");
-loadTheme("warehouse").then(() => showTheme());
+loadTheme("franklin").then(() => showTheme());

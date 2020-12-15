@@ -41,6 +41,7 @@ const kastorHandler = (event) => {
     // TODO improve this part
     const sectionName =
         body.section_type_id || body.section_type || body.setting_id;
+    if (!sectionName) return null;
     body.sectionName = sectionName;
     if (sectionName === "change-theme")
         getTheme(body.value).then((theme) => updateCss(theme.style));
@@ -61,7 +62,8 @@ exports.kastor = () => {
 // 4) popup-drawer
 const changePopupMode = (mode) => {
     const $q = document.querySelector.bind(document);
-    let prevMod;
+    // TODO fix it, remove hardcoded value
+    let prevMod = "popup-centered";
     console.log(`// ***** 4 different popup *****+
     // 1) popup-centered
     // 2) popup-floating

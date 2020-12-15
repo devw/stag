@@ -51,12 +51,6 @@
     />
 </form>
 <div class="secondary-action">
-    {{? it.isPopover }}
-    <p>
-        {{=it.isNewCustomer}}
-        <a href="#" class="link js-create-account">{{=it.createAccount}}</a>
-    </p>
-    {{?? true }}{{?}}
     <p>
         {{=it.doYouLostPsw}}
         <a href="/account#recover-password" class="link">{{=it.recoverPsw}}</a>
