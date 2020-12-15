@@ -3,6 +3,7 @@ const { isRegistered } = require("../services");
 const { toggleModules, $q, $qq } = require("../utils");
 const disableBtn = (btn) => btn.setAttribute("disabled", "true");
 let form;
+globalThis.__toggleModules = toggleModules;
 
 const activeBtn = (btn, target) => {
     btn.removeAttribute("disabled");
@@ -23,15 +24,15 @@ const onSubmit = async () => {
 };
 
 const register = () => {
-    toggleModules([LANDING_ID, REGISTER_ID]);
+    toggleModules(REGISTER_ID);
 };
 
 const signIn = () => {
-    toggleModules([LANDING_ID, SIGNIN_ID]);
+    toggleModules(SIGNIN_ID);
 };
 
 exports.init = () => {
-    $q(".js-modal") ? toggleModules([LANDING_ID]) : toggleModules([SIGNIN_ID]);
+    toggleModules(LANDING_ID);
     form = $qq(`.${LANDING_ID}`, "form");
     form.addEventListener("input", toggleButton);
     form.addEventListener("submit", onSubmit);

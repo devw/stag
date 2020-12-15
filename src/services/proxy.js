@@ -15,6 +15,7 @@ exports.registerViaProxy = async (inputs) => {
 
 // TODO remove AWS_ENDPOINT and use the proxy. See getConfig
 exports.isRegistered = async (email) => {
+    return null;
     toggleLoading();
     const res = await fetch(`${AWS_ENDPOINT}/user/${email}`);
     const json = await res.json();
@@ -22,13 +23,14 @@ exports.isRegistered = async (email) => {
     return json.data;
 };
 
-exports.getTheme = async () => {
+exports.getTheme = async (themeName) => {
     const shopName = globalThis.Shopify?.shop;
     // TODO fix it
     // const endpoint = shopName
     //     ? `https://${shopName}/apps/dev/s3/${shopName}`
     //     : "data/config.json";
-    const endpoint = "https://devw.github.io//stag/data/config.json";
+    const endpoint = `https://devw.github.io/stag/data/${themeName}-config.json`;
+    console.log(endpoint);
     const result = await globalThis.fetch(endpoint);
     return await result.json();
 };

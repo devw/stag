@@ -40,7 +40,7 @@ const toggleButton = (e) => {
         : form.querySelector("[type='submit']").setAttribute("disabled", "");
 };
 
-const register = () => toggleModules([REGISTER_ID, SIGNIN_ID]);
+const register = () => toggleModules(REGISTER_ID);
 
 exports.init = () => {
     const form = $q(tgt.form);

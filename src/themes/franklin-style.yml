@@ -25,10 +25,14 @@ theme:
   sub-title:
     medium-text-size: 1.1em
     medium-font-weight: 300
-  placeholder: 
-    placeholder-text-transform: uppercase
-    placeholder-font-size: inherit
-    placeholder-color: inherit
+  form:
+    input:
+      input-padding: 10px 0
+      input-line: none
+    placeholder: 
+      placeholder-text-transform: uppercase
+      placeholder-font-size: inherit
+      placeholder-color: inherit
   text-input:
     text-input-margin: 0.9em
   image:

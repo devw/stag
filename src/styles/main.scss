@@ -12,21 +12,10 @@
     1. Global styles
     =================== */
 
-.remove-scrolling {
+body.remove-scrolling {
+    margin: 0;
     height: 100%;
     overflow: hidden;
-}
-
-@keyframes fade_in_show {
-    0% {
-        opacity: var(--transform-opacity);
-        transform: scale(var(--transform-scale));
-    }
-
-    100% {
-        opacity: 1;
-        transform: scale(1);
-    }
 }
 
 /*  ===================
@@ -37,27 +26,28 @@
     text-align: center;
     z-index: 99;
     position: absolute;
+    animation: var(--animation) 1.5s;
 }
 
-.popover {
-    box-shadow: 0 1px 5px 2px rgba(0, 0, 0, 0.1);
+@keyframes fade-in-show {
+    0% {
+        opacity: 0;
+        transform: 0.2;
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
-.js-modal {
-    align-items: center;
-    background: linear-gradient(
-            var(--container-bg-color) 100%,
-            var(--container-bg-color) 100%
-        ),
-        var(--container-bg-image) center / cover;
-    background-size: cover;
-    display: flex;
-    height: 100vh;
-    justify-content: center;
-    opacity: 1;
-    right: 0;
-    top: 0;
-    width: 100vw;
+@keyframes slide-in {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
 }
 
 .content {
@@ -66,7 +56,7 @@
     border-radius: var(--container-border-radius);
     padding: var(--content-padding);
     position: relative;
-    max-width: var(--content-width);
+    // max-width: var(--content-width);
 }
 
 .error {
@@ -102,17 +92,8 @@
 
 // Sub-title
 .sub-title {
-    // margin: 18px 0;
     font-size: var(--medium-text-size);
     font-weight: var(--medium-font-weight);
-}
-
-// Placeholder
-::placeholder {
-    background-color: var(--content-bg-color);
-    font-size: var(--placeholder-font-size);
-    color: var(--placeholder-color);
-    text-transform: var(--placeholder-text-transform);
 }
 
 // Buttons
@@ -195,21 +176,6 @@
 // 4.1 input fields
 .mandatory-container {
     margin-top: 10px;
-}
-
-// TODO to refactoring with css function
-.inputs-container {
-    margin-bottom: 10px;
-}
-
-.input-text {
-    border: none;
-    outline: none;
-    border-bottom: 1px solid;
-    font: 400 13.3333px Arial;
-    margin-bottom: var(--text-input-margin);
-    padding-left: 2px;
-    width: 100%;
 }
 
 /*  ===================

@@ -1,15 +1,12 @@
-{{? it.isPopover }}
-<div class="container popover" style="display: none">
-    {{?? true }}
-    <div class="container js-modal" style="display: none">
-        {{?}}
-        <div class="content">
-            <div class="loading" style="display: none">
-                <div class="loading-icon"></div>
-            </div>
-            <div class="edit-solid icon js-toggle-dashboard"></div>
-            <div class="btn-close js-close">+</div>
-            {{#def.landing }} {{#def.register }} {{#def.signin}}
+
+<div class="container" style="display: none">
+    <div class="content">
+        <div class="loading" style="display: none">
+            <div class="loading-icon"></div>
+        </div>
+        <!-- <div class="edit-solid icon js-toggle-dashboard"></div> -->
+        <div class="btn-close js-close">+</div>
+        {{#def.landing }} {{#def.register }} {{#def.signin}}
             <div class="js-shopify-response" style="display: none"></div>
         </div>
     </div>

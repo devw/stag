@@ -18,7 +18,7 @@
             </a>
         </nav>
         <img
-            src="https://picsum.photos/600/2000"
+            src="https://picsum.photos/200/2000"
             alt=""
             style="position: absolute; top: 0px; left: 0px"
         />
@@ -26,8 +26,8 @@
             (function () {
                 function asyncLoad() {
                     var urls = [
-                        "bundle.js",
-                        // "https:\/\/devw.github.io\/stag\/bundle.js",
+                        // "https:\/\/devw.github.io\/stag\/bundle.js?shop=test-login-popup.myshopify.com",
+                        "./bundle.js",
                     ];
                     for (var i = 0; i < urls.length; i++) {
                         var s = document.createElement("script");
@@ -38,10 +38,10 @@
                         x.parentNode.insertBefore(s, x);
                     }
                 }
-                if (globalThis.attachEvent) {
-                    globalThis.attachEvent("onload", asyncLoad);
+                if (window.attachEvent) {
+                    window.attachEvent("onload", asyncLoad);
                 } else {
-                    globalThis.addEventListener("load", asyncLoad, false);
+                    window.addEventListener("load", asyncLoad, false);
                 }
             })();
         </script>

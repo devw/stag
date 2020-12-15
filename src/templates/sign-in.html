@@ -1,8 +1,6 @@
 <img class="image" />
 <div class="title">{{=it.login}}</div>
-<div class="subtitle">
-    <p>{{=it.enterEmailPswToConnect}}</p>
-</div>
+<div class="subtitle">{{=it.enterEmailPswToConnect}}</div>
 <div class="js-error">
     <div class="error js-psw-valid">{{=it.passwordTooShort}}</div>
     <div class="error js-psw-wrong">{{=it.incorrectEmailOrPassword}}</div>
@@ -24,21 +22,26 @@
         name="utf8"
         value="✓"
     />
-    <input
-        type="email"
-        name="customer[email]"
-        autocomplete="email"
-        class="input-text"
-        placeholder="{{=it.yourEmail}}"
-    />
-
-    <input
-        type="password"
-        value=""
-        name="customer[password]"
-        class="input-text"
-        placeholder="{{=it.yourPassword}}"
-    />
+    <div>
+        <input
+            type="email"
+            name="customer[email]"
+            autocomplete="email"
+            class="input-text"
+            placeholder="{{=it.yourEmail}}"
+        />
+        <label>{{=it.yourEmail}}</label>
+    </div>
+    <div>
+        <input
+            type="password"
+            value=""
+            name="customer[password]"
+            class="input-text"
+            placeholder="{{=it.yourPassword}}"
+        />
+        <label>{{=it.yourPassword}}</label>
+    </div>
 
     {{? it.hasPasswordRecover }}
     <div class="text-center">
