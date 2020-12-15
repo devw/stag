@@ -10,44 +10,21 @@ const debounce = (fn, delay) => {
     };
 };
 
-const sectionSettings = ({ sectionName, setting_id, value }) => {
-    if (setting_id) updatePages({ [setting_id]: value });
-    const section = sectionName.replace(/-section/, "");
-    toggleModules(section);
-    $q(".container").style.setProperty("display", "flex");
-};
-
-const generalSettings = ({ setting_id, value }) => {
-    if (/font-size|text-size|border-radius/.test(setting_id)) {
-        console.log("Event received from Customize", setting_id, value);
-        updateCss({ [setting_id]: `${value}em` });
-    }
-    // if (/text-color/.test(setting_id)) {
-    else {
-        console.log("Event received from Customize", setting_id, value);
-        updateCss({ [setting_id]: `${value}` });
-    }
-};
-
-const showSlider = ({ setting_id, value }) => {
-    updatePages({ [setting_id]: value });
-    toggleModules("register");
-    $q(".container").style.setProperty("display", "flex");
-    init();
-};
-
 const kastorHandler = (event) => {
-    const body = event.data.data;
-    // TODO improve this part
-    const sectionName =
-        body.section_type_id || body.section_type || body.setting_id;
-    if (!sectionName) return null;
-    body.sectionName = sectionName;
-    if (sectionName === "change-theme")
-        getTheme(body.value).then((theme) => updateCss(theme.style));
-    else if (sectionName === "hasCarousel") showSlider(body);
-    else if (/^--/.test(sectionName)) generalSettings(body);
-    else sectionSettings(body);
+    const body = event.data ? event.data.data : event.detail;
+    if (!body.setting_id) return null;
+
+    const [, page, key, unit] = body.setting_id.match(/^(.*?):(.*?):(.*?)$/);
+    const value = `${body.value}${unit}`;
+
+    if (/^--/.test(key)) updateCss({ [key]: value });
+    else updatePages({ [key]: value == "false" ? false : value });
+
+    if (page) {
+        toggleModules(page);
+        $q(".container").style.setProperty("display", "flex");
+        init();
+    }
 };
 
 exports.kastor = () => {
