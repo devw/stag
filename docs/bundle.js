@@ -18,7 +18,7 @@
 /*! CommonJS bailout: module.exports is used directly at 4:0-14 */
 /***/ ((module) => {
 
-eval("// Module\nvar code = \"\\n<div class=\\\"container\\\" style=\\\"display: none\\\">\\n    <div class=\\\"content\\\">\\n        <div class=\\\"loading\\\" style=\\\"display: none\\\">\\n            <div class=\\\"loading-icon\\\"></div>\\n        </div>\\n        {{? it.layout }}\\n        <!-- <div class=\\\"edit-solid icon js-toggle-dashboard\\\"></div> -->\\n        <div class=\\\"btn-close js-close\\\">+</div>\\n        {{#def.landing }} {{#def.register }} {{#def.signin}}\\n            <div class=\\\"js-shopify-response\\\" style=\\\"display: none\\\"></div>\\n        </div>\\n    </div>\\n</div>\\n\";\n// Exports\nmodule.exports = code;\n\n//# sourceURL=webpack://stag-dotjs/./src/templates/container.html?");
+eval("// Module\nvar code = \"\\n<div class=\\\"container {{=it.layout}}\\\" style=\\\"display: none\\\">\\n    <div class=\\\"content\\\">\\n        <div class=\\\"loading\\\" style=\\\"display: none\\\">\\n            <div class=\\\"loading-icon\\\"></div>\\n        </div>\\n        <!-- <div class=\\\"edit-solid icon js-toggle-dashboard\\\"></div> -->\\n        <div class=\\\"btn-close js-close\\\">+</div>\\n        {{#def.landing }} {{#def.register }} {{#def.signin}}\\n            <div class=\\\"js-shopify-response\\\" style=\\\"display: none\\\"></div>\\n        </div>\\n    </div>\\n</div>\\n\";\n// Exports\nmodule.exports = code;\n\n//# sourceURL=webpack://stag-dotjs/./src/templates/container.html?");
 
 /***/ }),
 

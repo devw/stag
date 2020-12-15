@@ -62,7 +62,7 @@ exports.kastor = () => {
 // 4) popup-drawer
 const changePopupMode = (mode) => {
     const $q = document.querySelector.bind(document);
-    // TODO fix it, remove hardcoded value
+    // TODO prevMode should be taken via GET http (config.json)
     let prevMod = "popup-centered";
     console.log(`// ***** 4 different popup *****+
     // 1) popup-centered
