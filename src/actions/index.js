@@ -1,4 +1,4 @@
-const { updateCss, updatePages, toggleModules, $q } = require("../utils");
+const { updateCss, updatePages } = require("../utils");
 const { loadActions, openAccount } = require("./load");
 const { getTheme, kastor } = require("../services");
 

@@ -41,8 +41,13 @@
         value: "label-go-right",
     };
 
+    const carousel = {
+        setting_id: "register|hasCarousel|",
+        value: true,
+    };
+
     kastorEvent = new CustomEvent("message", {
-        detail: form,
+        detail: carousel,
     });
 
     globalThis.dispatchEvent(kastorEvent);

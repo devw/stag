@@ -18,6 +18,7 @@
             placeholder="{{=it.yourLastName}}"
             autocomplete="family-name"
         />
+        <label for="">{{=it.yourLastName}}</label>
         <div class="btn btn-primary btn-small mt-1 mb-1 js-next" disabled="">
             Valider
         </div>
@@ -33,6 +34,7 @@
             placeholder="{{=it.yourFirstName}}"
             autocomplete="given-name"
         />
+        <label>{{=it.yourFirstName}}</label>
         <div class="btn btn-primary btn-small mt-1 mb-1 js-next" disabled="">
             Valider
         </div>
@@ -42,13 +44,13 @@
         </div>
     </div>
     <div style="left: 200%">
-        Date de naissance
         <input
             name="birthdate"
             type="text"
             class="input-text"
             placeholder="dd/mm/yyyy"
         />
+        <label>Date de naissance</label>
         <div class="btn btn-primary btn-small mt-1 mb-1 js-next" disabled="">
             Valider
         </div>
@@ -65,12 +67,16 @@
             aria-required="true"
             placeholder="{{=it.yourPassword}}"
         />
+        <label for="">{{=it.yourPassword}}</label>
+    </div>
+    <div>
         <input
-            class="btn btn-primary"
             disabled=""
             type="submit"
-            value="{{=it.createAccount}}"
+            class="input-text"
+            placeholder="{{=it.createAccount}}"
         />
+        <label for="">{{=it.createAccount}}</label>
         <div class="mt-2">
             <div class="cursor-prev js-prev">&#12296;</div>
             <div>4/5</div>

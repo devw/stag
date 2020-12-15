@@ -165,6 +165,7 @@ body.remove-scrolling {
 // 4.1 checkbox
 .checkbox {
     margin-right: 10px;
+    min-width: unset;
 }
 
 .checkbox-container {

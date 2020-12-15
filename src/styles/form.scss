@@ -1,11 +1,11 @@
-.form-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    flex-direction: column;
-    gap: 4em;
-}
+// .form-container {
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     height: 100vh;
+//     flex-direction: column;
+//     gap: 4em;
+// }
 
 form > div {
     margin: 1.2em 0;
@@ -19,7 +19,7 @@ input {
     font-family: "Poppins";
     font-size: 1em;
     color: #333;
-    min-width: 60vmin;
+    min-width: 100%;
 }
 
 label {
@@ -97,6 +97,7 @@ form.label-go-right input {
 .label-fixed label {
     display: block;
     font-size: 0.8em;
+    top: unset;
 }
 .label-fixed input::placeholder {
     color: transparent;

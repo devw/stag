@@ -27,41 +27,56 @@
     name="utf8"
     value="✓"
 />
-<input
-    type="text"
-    class="input-text"
-    name="customer[first_name]"
-    placeholder="{{=it.yourFirstName}}"
-/>
-<input
-    type="text"
-    class="input-text"
-    name="customer[last_name]"
-    placeholder="{{=it.yourLastName}}"
-/>
-<input
-    type="email"
-    placeholder="{{=it.yourEmail}}"
-    name="customer[email]"
-    class="input-text"
-/>
+<div>
+    <input
+        type="text"
+        class="input-text"
+        name="customer[first_name]"
+        placeholder="{{=it.yourFirstName}}"
+    />
+    <label>{{=it.yourFirstName}}</label>
+</div>
+<div>
+    <input
+        type="text"
+        class="input-text"
+        name="customer[last_name]"
+        placeholder="{{=it.yourLastName}}"
+    />
+    <label>{{=it.yourLastName}}</label>
+</div>
+<div>
+    <input
+        type="email"
+        placeholder="{{=it.yourEmail}}"
+        name="customer[email]"
+        class="input-text"
+    />
+    <label>{{=it.yourEmail}}</label>
+</div>
 <div
     class="eye icon js-show-psw"
     style="position: absolute; right: 30px; cursor: pointer"
 ></div>
-<input
-    type="password"
-    name="customer[password]"
-    class="input-text"
-    placeholder="{{=it.yourPassword}}"
-/>
+<div>
+    <input
+        type="password"
+        name="customer[password]"
+        class="input-text"
+        placeholder="{{=it.yourPassword}}"
+    />
+    <label>{{=it.yourPassword}}</label>
+</div>
 {{? it.hasPasswordConfirmation }}
-<input
-    class="input-text"
-    name="confirmPassword"
-    placeholder="{{=it.confirmYourPassword}}"
-    type="password"
-/>
+<div>
+    <input
+        class="input-text"
+        name="confirmPassword"
+        placeholder="{{=it.confirmYourPassword}}"
+        type="password"
+    />
+    <label>{{=it.confirmYourPassword}}</label>
+</div>
 {{?? true }}{{?}} {{? it.hasBirthDate }}
 <div class="birth-date">
     <div class="birth-date-text">Date de naissance</div>
