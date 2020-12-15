@@ -14,7 +14,7 @@ const kastorHandler = (event) => {
     const body = event.data ? event.data.data : event.detail;
     if (!body.setting_id) return null;
 
-    const [, page, key, unit] = body.setting_id.match(/^(.*?):(.*?):(.*?)$/);
+    const [, page, key, unit] = body.setting_id.match(/^(.*?)\|(.*?)\|(.*?)$/);
     const value = `${body.value}${unit}`;
 
     if (/^--/.test(key)) updateCss({ [key]: value });
