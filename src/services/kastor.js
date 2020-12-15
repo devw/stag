@@ -17,7 +17,9 @@ const kastorHandler = (event) => {
     const [, page, key, unit] = body.setting_id.match(/^(.*?)\|(.*?)\|(.*?)$/);
     const value = `${body.value}${unit}`;
 
-    if (/^--/.test(key)) updateCss({ [key]: value });
+    if (key === "change-theme")
+        getTheme(body.value).then((theme) => updateCss(theme.style));
+    else if (/^--/.test(key)) updateCss({ [key]: value });
     else updatePages({ [key]: value == "false" ? false : value });
 
     if (page) {
