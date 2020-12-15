@@ -3,6 +3,7 @@ require("./styles/loader.scss");
 require("./styles/carousel.scss");
 require("./styles/dashboard.scss");
 require("./styles/popup.scss");
+require("./styles/form.scss");
 
 const { APP_ID } = require("./templates/");
 

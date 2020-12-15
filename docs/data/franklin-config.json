@@ -49,6 +49,7 @@
 		"hasBirthDate": false,
 		"hasNewsLetter": true,
 		"layout": "popup-centered",
+		"formStyle": "label-go-up",
 		"createAccount": "Création de compte",
 		"loginRegister": "Connexion / Inscription",
 		"enterYourEmailToContinue": "Renseignez votre adresse email pour continuer.",

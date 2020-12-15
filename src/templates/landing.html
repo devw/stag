@@ -2,8 +2,8 @@
 <div class="title">{{=it.loginRegister}}</div>
 <div class="sub-title">{{=it.enterYourEmailToContinue}}</div>
 <div class="error" data-account-error=""></div>
-<form action="javascript:void(0);" class="inputs-container">
-    <div class="inputs-container">
+<form action="javascript:void(0);" class="{{=it.formStyle}}">
+    <div>
         {{? it.hasSocialLogin }}
         <input
             type="submit"
@@ -26,6 +26,7 @@
             placeholder="{{=it.yourEmail}}"
             type="email"
         />
+        <label for="">{{=it.yourEmail}}</label>
     </div>
     {{? it.hasSocialLogin }}
     <div>

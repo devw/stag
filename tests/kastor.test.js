@@ -36,8 +36,13 @@
         value: true,
     };
 
+    const form = {
+        setting_id: "landing|formStyle|",
+        value: "label-go-right",
+    };
+
     kastorEvent = new CustomEvent("message", {
-        detail: animation,
+        detail: form,
     });
 
     globalThis.dispatchEvent(kastorEvent);
