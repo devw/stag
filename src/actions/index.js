@@ -11,7 +11,7 @@ const onGetTheme = (theme) => {
 exports.loadTheme = (themeName) => getTheme(themeName).then(onGetTheme);
 
 exports.showTheme = () => {
-    // openAccount();
+    openAccount();
     // // TODO it should work!
     // const urlParams = new URLSearchParams(globalThis.location.search);
     // if (urlParams.get("config_id") === "login-popup") openAccount();
