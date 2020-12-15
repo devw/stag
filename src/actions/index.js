@@ -6,7 +6,7 @@ const onGetTheme = (theme) => {
     updatePages(theme.text);
     updateCss(theme.style);
     loadActions();
-    kastor();
+    //kastor();
 };
 exports.loadTheme = (themeName) => getTheme(themeName).then(onGetTheme);
 
