@@ -31,8 +31,13 @@
         value: "respire",
     };
 
+    const socialLogin = {
+        setting_id: "landing|hasSocialLogin|",
+        value: true,
+    };
+
     kastorEvent = new CustomEvent("message", {
-        detail: hasCarousel,
+        detail: animation,
     });
 
     globalThis.dispatchEvent(kastorEvent);
