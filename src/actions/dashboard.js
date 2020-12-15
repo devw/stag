@@ -17,7 +17,6 @@ const changeTheme = async (e) => {
     updateCss(config.style);
     loadActions(config);
     $q(`.container`).style.setProperty("display", "flex");
-    $q(`.js-dashboard`).style.setProperty("display", "block");
 };
 
 exports.init = (config) => {

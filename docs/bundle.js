@@ -18,20 +18,7 @@
 /*! CommonJS bailout: module.exports is used directly at 4:0-14 */
 /***/ ((module) => {
 
-eval("// Module\nvar code = \"\\n<div class=\\\"container {{=it.layout}}\\\" style=\\\"display: none\\\">\\n    <div class=\\\"content\\\">\\n        <div class=\\\"loading\\\" style=\\\"display: none\\\">\\n            <div class=\\\"loading-icon\\\"></div>\\n        </div>\\n        <!-- <div class=\\\"edit-solid icon js-toggle-dashboard\\\"></div> -->\\n        <div class=\\\"btn-close js-close\\\">+</div>\\n        {{#def.landing }} {{#def.register }} {{#def.signin}}\\n            <div class=\\\"js-shopify-response\\\" style=\\\"display: none\\\"></div>\\n        </div>\\n    </div>\\n</div>\\n\";\n// Exports\nmodule.exports = code;\n\n//# sourceURL=webpack://stag-dotjs/./src/templates/container.html?");
-
-/***/ }),
-
-/***/ "./src/templates/dashboard.html":
-/*!**************************************!*\
-  !*** ./src/templates/dashboard.html ***!
-  \**************************************/
-/*! unknown exports (runtime-defined) */
-/*! runtime requirements: module */
-/*! CommonJS bailout: module.exports is used directly at 4:0-14 */
-/***/ ((module) => {
-
-eval("// Module\nvar code = \"{{#def.container}}\\n<div class=\\\"js-dashboard\\\" style=\\\"display: none\\\">\\n    <form action=\\\"\\\">\\n        <input\\n            type=\\\"button\\\"\\n            class=\\\"btn btn-primary js-load-from-textarea\\\"\\n            value=\\\"load json from textarea\\\"\\n        />\\n        <textarea\\n            class=\\\"js-custom-style\\\"\\n            style=\\\"width: 100%; max-width: 100%; height: 60vh; margin: 1rem 0\\\"\\n        ></textarea>\\n        <div class=\\\"js-load-default-theme\\\">\\n            <input\\n                type=\\\"button\\\"\\n                class=\\\"btn btn-primary\\\"\\n                value=\\\"franklin\\\"\\n                style=\\\"margin: 10px 0\\\"\\n            />\\n            <input\\n                type=\\\"button\\\"\\n                class=\\\"btn btn-primary\\\"\\n                value=\\\"balzac\\\"\\n                style=\\\"margin: 10px 0\\\"\\n            />\\n            <input\\n                type=\\\"button\\\"\\n                class=\\\"btn btn-primary\\\"\\n                value=\\\"respire\\\"\\n                style=\\\"margin: 10px 0\\\"\\n            />\\n            <input\\n                type=\\\"button\\\"\\n                class=\\\"btn btn-primary\\\"\\n                value=\\\"warehouse\\\"\\n                style=\\\"margin: 10px 0\\\"\\n            />\\n        </div>\\n    </form>\\n</div>\\n\";\n// Exports\nmodule.exports = code;\n\n//# sourceURL=webpack://stag-dotjs/./src/templates/dashboard.html?");
+eval("// Module\nvar code = \"\\n<div class=\\\"container {{=it.layout}}\\\" style=\\\"display: none\\\">\\n    <div class=\\\"content\\\">\\n        <div class=\\\"loading\\\" style=\\\"display: none\\\">\\n            <div class=\\\"loading-icon\\\"></div>\\n        </div>\\n        <div class=\\\"btn-close js-close\\\">+</div>\\n        {{#def.landing }} {{#def.register }} {{#def.signin}}\\n            <div class=\\\"js-shopify-response\\\" style=\\\"display: none\\\"></div>\\n        </div>\\n    </div>\\n</div>\\n\";\n// Exports\nmodule.exports = code;\n\n//# sourceURL=webpack://stag-dotjs/./src/templates/container.html?");
 
 /***/ }),
 
@@ -84,6 +71,19 @@ eval("// Module\nvar code = \"<div class=\\\"carousel\\\" style=\\\"width: 100%\
 /***/ ((module) => {
 
 eval("// Module\nvar code = \"<img class=\\\"image\\\" />\\n<div class=\\\"title\\\">{{=it.createAccount}}</div>\\n<div class=\\\"subtitle text t-4\\\">{{=it.fillInfoToCreateAccount}}</div>\\n<div class=\\\"js-error error\\\">\\n    <div class=\\\"error js-psw-wrong\\\">{{=it.incorrectEmailOrPassword}}</div>\\n</div>\\n\\n<form\\n    method=\\\"post\\\"\\n    id=\\\"RegisterForm\\\"\\n    accept-charset=\\\"UTF-8\\\"\\n    novalidate=\\\"novalidate\\\"\\n>\\n    <input\\n        type=\\\"hidden\\\"\\n        name=\\\"return_to\\\"\\n        value=\\\"{{=it.redirect.redirectAfterRegister}}\\\"\\n    />\\n    {{? it.hasCarousel }} {{#def.registerWithSlides }} {{?? true }}\\n    {{#def.registerNoSlides }} {{?}}\\n</form>\\n\";\n// Exports\nmodule.exports = code;\n\n//# sourceURL=webpack://stag-dotjs/./src/templates/register.html?");
+
+/***/ }),
+
+/***/ "./src/templates/root.html":
+/*!*********************************!*\
+  !*** ./src/templates/root.html ***!
+  \*********************************/
+/*! unknown exports (runtime-defined) */
+/*! runtime requirements: module */
+/*! CommonJS bailout: module.exports is used directly at 4:0-14 */
+/***/ ((module) => {
+
+eval("// Module\nvar code = \"{{#def.container}}\\n<div style=\\\"display: none\\\"></div>\\n\";\n// Exports\nmodule.exports = code;\n\n//# sourceURL=webpack://stag-dotjs/./src/templates/root.html?");
 
 /***/ }),
 
@@ -200,20 +200,6 @@ eval("module.exports = JSON.parse(\"{\\\"style\\\":{\\\"theme\\\":{\\\"--contain
 
 /***/ }),
 
-/***/ "./src/actions/dashboard.js":
-/*!**********************************!*\
-  !*** ./src/actions/dashboard.js ***!
-  \**********************************/
-/*! default exports */
-/*! export init [provided] [no usage info] [missing usage info prevents renaming] */
-/*! other exports [not provided] [no usage info] */
-/*! runtime requirements: __webpack_exports__, __webpack_require__ */
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-eval("const { $q } = __webpack_require__(/*! ../utils */ \"./src/utils/index.js\");\n\nconst getConfig = async ({ target }) => {\n    if (/textarea/.test(target.className)) {\n        return JSON.parse($q(`.js-custom-style`).value);\n    }\n    const { STAG_ENDPOINT } = __webpack_require__(/*! ../config */ \"./src/config.js\");\n    let resp = await fetch(`${STAG_ENDPOINT}/data/${target.value}-config.json`);\n    return await resp.json();\n};\n\nconst changeTheme = async (e) => {\n    const { loadActions } = __webpack_require__(/*! ./load */ \"./src/actions/load.js\");\n    const { updatePages, updateCss } = __webpack_require__(/*! ../utils */ \"./src/utils/index.js\");\n    const config = await getConfig(e);\n    updatePages(config.text);\n    updateCss(config.style);\n    loadActions(config);\n    $q(`.container`).style.setProperty(\"display\", \"flex\");\n    $q(`.js-dashboard`).style.setProperty(\"display\", \"block\");\n};\n\nexports.init = (config) => {\n    $q(`.js-load-default-theme`).addEventListener(\"click\", changeTheme);\n    $q(`.js-load-from-textarea`).addEventListener(\"click\", changeTheme);\n    $q(`.js-custom-style`).value = JSON.stringify(config, undefined, 1);\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/actions/dashboard.js?");
-
-/***/ }),
-
 /***/ "./src/actions/index.js":
 /*!******************************!*\
   !*** ./src/actions/index.js ***!
@@ -254,7 +240,7 @@ eval("const { LANDING_ID, REGISTER_ID, SIGNIN_ID } = __webpack_require__(/*! ../
 /*! runtime requirements: __webpack_exports__, __webpack_require__ */
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("const { init: initDashboard } = __webpack_require__(/*! ./dashboard */ \"./src/actions/dashboard.js\");\nconst { init: initLanding } = __webpack_require__(/*! ./landing */ \"./src/actions/landing.js\");\nconst { init: initSignIn } = __webpack_require__(/*! ./sign-in */ \"./src/actions/sign-in.js\");\nconst { init: initRegistration } = __webpack_require__(/*! ./register */ \"./src/actions/register.js\");\nconst { $q } = __webpack_require__(/*! ../utils/ */ \"./src/utils/index.js\");\n\n//TODO refactoring too code repetition\n\nconst closeApp = () => {\n    $q(`.container`).style.setProperty(\"display\", \"none\");\n    $q(`.js-dashboard`).style.setProperty(\"display\", \"none\");\n    document.body.classList.remove(\"remove-scrolling\");\n};\n\n// TODO dashboard should be removed\nconst dashboard = () =>\n    $q(`.js-dashboard`).style.setProperty(\"display\", \"block\");\n\nconst initContainer = () => {\n    $q(`.js-close`).addEventListener(\"click\", closeApp);\n    // $q(`.js-toggle-dashboard`).addEventListener(\"click\", dashboard);\n};\n\nexports.loadActions = () => {\n    // initDashboard(config);\n    initLanding();\n    initContainer();\n    initSignIn();\n    initRegistration();\n};\n\nconst placePopover = (e, dom) => {\n    const shift = parseInt(getComputedStyle(dom).getPropertyValue(\"width\"));\n    dom.style.setProperty(\"left\", `${e.clientX - shift / 2}px`);\n    dom.style.setProperty(\"top\", `${e.clientY + 20}px`);\n};\n\nconst openAccount = (e) => {\n    e?.preventDefault();\n    e?.stopPropagation();\n    if (!globalThis.__st?.cid) {\n        const dom = $q(\".container\");\n        dom.style.setProperty(\"display\", \"flex\");\n        if (dom.classList.contains(\"popover\")) placePopover(e, dom);\n    }\n};\n\nexports.openAccount = openAccount;\nconst $ = document.querySelector.bind(document);\n$(\".site-header__account\").addEventListener(\"click\", openAccount);\n\n\n//# sourceURL=webpack://stag-dotjs/./src/actions/load.js?");
+eval("const { init: initLanding } = __webpack_require__(/*! ./landing */ \"./src/actions/landing.js\");\nconst { init: initSignIn } = __webpack_require__(/*! ./sign-in */ \"./src/actions/sign-in.js\");\nconst { init: initRegistration } = __webpack_require__(/*! ./register */ \"./src/actions/register.js\");\nconst { $q } = __webpack_require__(/*! ../utils/ */ \"./src/utils/index.js\");\n\n//TODO refactoring too code repetition\n\nconst closeApp = () => {\n    $q(`.container`).style.setProperty(\"display\", \"none\");\n    document.body.classList.remove(\"remove-scrolling\");\n};\n\nconst initContainer = () => {\n    $q(`.js-close`).addEventListener(\"click\", closeApp);\n};\n\nexports.loadActions = () => {\n    initLanding();\n    initContainer();\n    initSignIn();\n    initRegistration();\n};\n\nconst placePopover = (e, dom) => {\n    const shift = parseInt(getComputedStyle(dom).getPropertyValue(\"width\"));\n    dom.style.setProperty(\"left\", `${e.clientX - shift / 2}px`);\n    dom.style.setProperty(\"top\", `${e.clientY + 20}px`);\n};\n\nconst openAccount = (e) => {\n    e?.preventDefault();\n    e?.stopPropagation();\n    if (!globalThis.__st?.cid) {\n        const dom = $q(\".container\");\n        dom.style.setProperty(\"display\", \"flex\");\n        if (dom.classList.contains(\"popover\")) placePopover(e, dom);\n    }\n};\n\nexports.openAccount = openAccount;\nconst $ = document.querySelector.bind(document);\n$(\".site-header__account\").addEventListener(\"click\", openAccount);\n\n\n//# sourceURL=webpack://stag-dotjs/./src/actions/load.js?");
 
 /***/ }),
 
@@ -416,7 +402,7 @@ eval("const { customerCreate, customerTokenCreate } = __webpack_require__(/*! ./
 /*! CommonJS bailout: module.exports is used directly at 32:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const dashboardTmpl = __webpack_require__(/*! ./dashboard.html */ \"./src/templates/dashboard.html\");\nconst containerTmpl = __webpack_require__(/*! ./container.html */ \"./src/templates/container.html\");\nconst landingTmpl = __webpack_require__(/*! ./landing.html */ \"./src/templates/landing.html\");\nconst registerTmpl = __webpack_require__(/*! ./register.html */ \"./src/templates/register.html\");\nconst signInTmpl = __webpack_require__(/*! ./sign-in.html */ \"./src/templates/sign-in.html\");\nconst registerNoSlidesTmpl = __webpack_require__(/*! ./register-no-slides.html */ \"./src/templates/register-no-slides.html\");\nconst registerWithSlidesTmpl = __webpack_require__(/*! ./register-with-slides.html */ \"./src/templates/register-with-slides.html\");\nconst [APP_ID, ROOT_ID, CONTAINER_ID] = [\"aaa\", \"bbb\", \"container\"];\nconst [LANDING_ID, REGISTER_ID, SIGNIN_ID] = [\"landing\", \"register\", \"signin\"];\n\nconst getTemplate = ({ id, html }) =>\n    `<script id=\"${id}\" type=\"text/x-dot-template\">${html}</script>`;\n\nconst getPartialTemplate = ({ id, html }) => {\n    html = `<div class=\"${id}\" style=\"display: none\">${html}</div>`;\n    return `<script id=\"${id}\" type=\"text/x-dot-template\">${html}</script>`;\n};\nconst templates = [];\n\ntemplates.push(getTemplate({ id: ROOT_ID, html: dashboardTmpl }));\ntemplates.push(getTemplate({ id: CONTAINER_ID, html: containerTmpl }));\ntemplates.push(getPartialTemplate({ id: LANDING_ID, html: landingTmpl }));\ntemplates.push(getPartialTemplate({ id: REGISTER_ID, html: registerTmpl }));\ntemplates.push(\n    getTemplate({ id: \"registerNoSlides\", html: registerNoSlidesTmpl })\n);\ntemplates.push(\n    getTemplate({ id: \"registerWithSlides\", html: registerWithSlidesTmpl })\n);\ntemplates.push(getPartialTemplate({ id: SIGNIN_ID, html: signInTmpl }));\n\nmodule.exports = {\n    templates,\n    APP_ID,\n    ROOT_ID,\n    CONTAINER_ID,\n    LANDING_ID,\n    REGISTER_ID,\n    SIGNIN_ID,\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/templates/index.js?");
+eval("const rootTmpl = __webpack_require__(/*! ./root.html */ \"./src/templates/root.html\");\nconst containerTmpl = __webpack_require__(/*! ./container.html */ \"./src/templates/container.html\");\nconst landingTmpl = __webpack_require__(/*! ./landing.html */ \"./src/templates/landing.html\");\nconst registerTmpl = __webpack_require__(/*! ./register.html */ \"./src/templates/register.html\");\nconst signInTmpl = __webpack_require__(/*! ./sign-in.html */ \"./src/templates/sign-in.html\");\nconst registerNoSlidesTmpl = __webpack_require__(/*! ./register-no-slides.html */ \"./src/templates/register-no-slides.html\");\nconst registerWithSlidesTmpl = __webpack_require__(/*! ./register-with-slides.html */ \"./src/templates/register-with-slides.html\");\nconst [APP_ID, ROOT_ID, CONTAINER_ID] = [\"aaa\", \"bbb\", \"container\"];\nconst [LANDING_ID, REGISTER_ID, SIGNIN_ID] = [\"landing\", \"register\", \"signin\"];\n\nconst getTemplate = ({ id, html }) =>\n    `<script id=\"${id}\" type=\"text/x-dot-template\">${html}</script>`;\n\nconst getPartialTemplate = ({ id, html }) => {\n    html = `<div class=\"${id}\" style=\"display: none\">${html}</div>`;\n    return `<script id=\"${id}\" type=\"text/x-dot-template\">${html}</script>`;\n};\nconst templates = [];\n\ntemplates.push(getTemplate({ id: ROOT_ID, html: rootTmpl }));\ntemplates.push(getTemplate({ id: CONTAINER_ID, html: containerTmpl }));\ntemplates.push(getPartialTemplate({ id: LANDING_ID, html: landingTmpl }));\ntemplates.push(getPartialTemplate({ id: REGISTER_ID, html: registerTmpl }));\ntemplates.push(\n    getTemplate({ id: \"registerNoSlides\", html: registerNoSlidesTmpl })\n);\ntemplates.push(\n    getTemplate({ id: \"registerWithSlides\", html: registerWithSlidesTmpl })\n);\ntemplates.push(getPartialTemplate({ id: SIGNIN_ID, html: signInTmpl }));\n\nmodule.exports = {\n    templates,\n    APP_ID,\n    ROOT_ID,\n    CONTAINER_ID,\n    LANDING_ID,\n    REGISTER_ID,\n    SIGNIN_ID,\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/templates/index.js?");
 
 /***/ }),
 
@@ -546,22 +532,6 @@ eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../.
 
 /***/ }),
 
-/***/ "../../../../node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/dashboard.scss":
-/*!**************************************************************************************************************************!*\
-  !*** ../../../../node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/dashboard.scss ***!
-  \**************************************************************************************************************************/
-/*! unknown exports (runtime-defined) */
-/*! runtime requirements: __webpack_exports__, module, __webpack_require__, module.id */
-/*! CommonJS bailout: exports is used directly at 3:0-7 */
-/*! CommonJS bailout: exports.push(...) prevents optimization as exports is passed as call context at 5:0-12 */
-/*! CommonJS bailout: exports is used directly at 7:17-24 */
-/*! CommonJS bailout: module.exports is used directly at 7:0-14 */
-/***/ ((module, exports, __webpack_require__) => {
-
-eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../../../node_modules/css-loader/dist/runtime/api.js */ \"../../../../node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.id, \".js-dashboard {\\n  position: absolute;\\n  top: 0px;\\n  z-index: 999;\\n}\\n\\n.edit-solid.icon {\\n  color: #000;\\n  cursor: pointer;\\n  position: absolute;\\n  margin-left: 4px;\\n  margin-top: 7px;\\n  width: 14px;\\n  height: 2px;\\n  border-radius: 1px;\\n  border: solid 1px currentColor;\\n  background-color: currentColor;\\n  -webkit-transform: rotate(-45deg);\\n  transform: rotate(-45deg);\\n}\\n\\n.edit-solid.icon:before {\\n  content: \\\"\\\";\\n  position: absolute;\\n  left: -12px;\\n  top: -1px;\\n  width: 0px;\\n  height: 0px;\\n  border-left: solid 5px transparent;\\n  border-right: solid 5px currentColor;\\n  border-top: solid 2px transparent;\\n  border-bottom: solid 2px transparent;\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack://stag-dotjs/./src/styles/dashboard.scss?../../../../node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js");
-
-/***/ }),
-
 /***/ "../../../../node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/form.scss":
 /*!*********************************************************************************************************************!*\
   !*** ../../../../node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/form.scss ***!
@@ -650,19 +620,6 @@ eval("\n\n/*\n  MIT License http://www.opensource.org/licenses/mit-license.php\n
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 eval("var api = __webpack_require__(/*! !../../../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\");\n            var content = __webpack_require__(/*! !!../../../../../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./carousel.scss */ \"../../../../node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/carousel.scss\");\n\n            content = content.__esModule ? content.default : content;\n\n            if (typeof content === 'string') {\n              content = [[module.id, content, '']];\n            }\n\nvar options = {};\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = api(content, options);\n\n\n\nmodule.exports = content.locals || {};\n\n//# sourceURL=webpack://stag-dotjs/./src/styles/carousel.scss?");
-
-/***/ }),
-
-/***/ "./src/styles/dashboard.scss":
-/*!***********************************!*\
-  !*** ./src/styles/dashboard.scss ***!
-  \***********************************/
-/*! unknown exports (runtime-defined) */
-/*! runtime requirements: module, __webpack_require__, module.id */
-/*! CommonJS bailout: module.exports is used directly at 19:0-14 */
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-eval("var api = __webpack_require__(/*! !../../../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\");\n            var content = __webpack_require__(/*! !!../../../../../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./dashboard.scss */ \"../../../../node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/dashboard.scss\");\n\n            content = content.__esModule ? content.default : content;\n\n            if (typeof content === 'string') {\n              content = [[module.id, content, '']];\n            }\n\nvar options = {};\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = api(content, options);\n\n\n\nmodule.exports = content.locals || {};\n\n//# sourceURL=webpack://stag-dotjs/./src/styles/dashboard.scss?");
 
 /***/ }),
 
@@ -793,7 +750,7 @@ eval("\n\nvar isOldIE = function isOldIE() {\n  var memo;\n  return function mem
   \********************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: __webpack_require__ */
-eval("__webpack_require__(/*! ./styles/main.scss */ \"./src/styles/main.scss\");\n__webpack_require__(/*! ./styles/loader.scss */ \"./src/styles/loader.scss\");\n__webpack_require__(/*! ./styles/carousel.scss */ \"./src/styles/carousel.scss\");\n__webpack_require__(/*! ./styles/dashboard.scss */ \"./src/styles/dashboard.scss\");\n__webpack_require__(/*! ./styles/popup.scss */ \"./src/styles/popup.scss\");\n__webpack_require__(/*! ./styles/form.scss */ \"./src/styles/form.scss\");\n\nconst { APP_ID } = __webpack_require__(/*! ./templates/ */ \"./src/templates/index.js\");\n\nconst node = document.createElement(\"div\");\nnode.setAttribute(\"id\", APP_ID);\ndocument.body.append(node);\n\nconst { loadTheme, showTheme } = __webpack_require__(/*! ./actions */ \"./src/actions/index.js\");\nloadTheme(\"franklin\").then(() => showTheme());\n\n\n//# sourceURL=webpack://stag-dotjs/./src/app.js?");
+eval("__webpack_require__(/*! ./styles/main.scss */ \"./src/styles/main.scss\");\n__webpack_require__(/*! ./styles/loader.scss */ \"./src/styles/loader.scss\");\n__webpack_require__(/*! ./styles/carousel.scss */ \"./src/styles/carousel.scss\");\n__webpack_require__(/*! ./styles/popup.scss */ \"./src/styles/popup.scss\");\n__webpack_require__(/*! ./styles/form.scss */ \"./src/styles/form.scss\");\n\nconst { APP_ID } = __webpack_require__(/*! ./templates/ */ \"./src/templates/index.js\");\n\nconst node = document.createElement(\"div\");\nnode.setAttribute(\"id\", APP_ID);\ndocument.body.append(node);\n\nconst { loadTheme, showTheme } = __webpack_require__(/*! ./actions */ \"./src/actions/index.js\");\nloadTheme(\"franklin\").then(() => showTheme());\n\n\n//# sourceURL=webpack://stag-dotjs/./src/app.js?");
 })();
 
 /******/ })()
