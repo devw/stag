@@ -46,8 +46,13 @@
         value: true,
     };
 
+    const changePage = {
+        setting_id: "register",
+        value: true,
+    };
+
     kastorEvent = new CustomEvent("message", {
-        detail: style,
+        detail: changePage,
     });
 
     globalThis.dispatchEvent(kastorEvent);
