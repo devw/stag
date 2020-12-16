@@ -12,7 +12,7 @@ form > div {
     position: relative;
 }
 input {
-    border: none;
+    border: var(--input-line);
     border-bottom: 2px solid #333;
     background-color: unset;
     outline: none;

@@ -92,8 +92,8 @@ body.remove-scrolling {
 
 .btn:disabled,
 .btn[disabled] {
-    background-color: var(--btn-disabled-bg-color);
-    opacity: var(--btn-disabled-opacity);
+    // background-color: var(--btn-disabled-bg-color);
+    opacity: 0.5;
 }
 
 .btn-small {
