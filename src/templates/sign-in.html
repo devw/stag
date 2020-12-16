@@ -22,21 +22,26 @@
         name="utf8"
         value="✓"
     />
-    <input
-        type="email"
-        name="customer[email]"
-        autocomplete="email"
-        class="input-text"
-        placeholder="{{=it.yourEmail}}"
-    />
-
-    <input
-        type="password"
-        value=""
-        name="customer[password]"
-        class="input-text"
-        placeholder="{{=it.yourPassword}}"
-    />
+    <div>
+        <input
+            type="email"
+            name="customer[email]"
+            autocomplete="email"
+            class="input-text"
+            placeholder="{{=it.yourEmail}}"
+        />
+        <label>{{=it.yourEmail}}</label>
+    </div>
+    <div>
+        <input
+            type="password"
+            value=""
+            name="customer[password]"
+            class="input-text"
+            placeholder="{{=it.yourPassword}}"
+        />
+        <label>{{=it.yourPassword}}</label>
+    </div>
 
     {{? it.hasPasswordRecover }}
     <div class="text-center">

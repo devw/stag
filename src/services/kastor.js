@@ -30,8 +30,8 @@ const kastorHandler = (event) => {
 };
 
 exports.kastor = () => {
-    console.log("loading kastor handler");
-    globalThis.addEventListener("message", debounce(kastorHandler, 500));
+    // console.log("loading kastor handler");
+    // globalThis.addEventListener("message", debounce(kastorHandler, 500));
 };
 
 // ***** 4 different popup *****+
@@ -44,7 +44,7 @@ const changePopupMode = (mode) => {
     // TODO prevMode should be taken via GET http (config.json)
     let prevMod = "popup-centered";
     console.log(`// ***** 4 different popup *****+
-    // 1) popup-centered
+    // 1)   
     // 2) popup-floating
     // 3) popup-full
     // 4) popup-drawer`);
@@ -57,3 +57,21 @@ const changePopupMode = (mode) => {
     };
 };
 globalThis.__changePopupMode = changePopupMode();
+
+const changeForm = (mode) => {
+    const $q = document.querySelector.bind(document);
+    let prevMod = "label-none";
+    console.log(`// ***** 4 different form layout *****+
+        // 1) label-fixed
+        // 2) label-go-up
+        // 3) label-go-down
+        // 4) label-go-right
+        // 5) label-none`);
+    return (mode) => {
+        const selector = "form";
+        $q(selector).classList.remove(prevMod);
+        $q(selector).classList.add(mode);
+        prevMod = mode;
+    };
+};
+globalThis.__changeForm = changeForm();

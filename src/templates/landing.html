@@ -20,11 +20,32 @@
             value="OK"
         />
         {{?? true }}{{?}}
+        <div>
+            <input
+                class="input-text {{? it.hasSocialLogin }} input-text-primary {{?? true}}{{?}}"
+                name="email"
+                placeholder="{{=it.yourEmail}}"
+                type="email"
+            />
+            <label>{{=it.yourEmail}}</label>
+        </div>
+        {{? it.hasSocialLogin }}
+        <div>
+            <div class="or-social-login">{{=it.or}}</div>
+            <a href="#" class="fb btn">
+                <i class="fa fa-facebook fa-fw"></i> Login with Facebook
+            </a>
+            <a href="#" class="google btn"
+                ><i class="fa fa-google fa-fw"></i> Login with Google+
+            </a>
+        </div>
+        {{?? true }}
         <input
-            class="input-text {{? it.hasSocialLogin }} input-text-primary {{?? true}}{{?}}"
-            name="email"
-            placeholder="{{=it.yourEmail}}"
-            type="email"
+            type="submit"
+            class="btn btn-primary"
+            name="validate"
+            disabled=""
+            value="{{=it.validate}}"
         />
         <label for="">{{=it.yourEmail}}</label>
     </div>
@@ -34,8 +55,7 @@
         <a href="#" class="fb btn">
             <i class="fa fa-facebook fa-fw"></i> Login with Facebook
         </a>
-        <a href="#" class="google btn"
-            ><i class="fa fa-google fa-fw"></i> Login with Google+
+        <a href="#" class="google btn"><i class="fa fa-google fa-fw"></i> Login with Google+
         </a>
     </div>
     {{?? true }}
@@ -48,3 +68,4 @@
     />
     {{?}}
 </form>
+
