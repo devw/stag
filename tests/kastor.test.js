@@ -47,7 +47,7 @@
     };
 
     kastorEvent = new CustomEvent("message", {
-        detail: carousel,
+        detail: animation,
     });
 
     globalThis.dispatchEvent(kastorEvent);
