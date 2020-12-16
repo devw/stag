@@ -2,8 +2,8 @@
 <div class="title">{{=it.loginRegister}}</div>
 <div class="sub-title">{{=it.enterYourEmailToContinue}}</div>
 <div class="error" data-account-error=""></div>
-<div class="form-container">
-    <form action="javascript:void(0);" class="label-none">
+<form action="javascript:void(0);" class="{{=it.formStyle}}">
+    <div>
         {{? it.hasSocialLogin }}
         <input
             type="submit"
@@ -47,6 +47,25 @@
             disabled=""
             value="{{=it.validate}}"
         />
-        {{?}}
-    </form>
-</div>
+        <label for="">{{=it.yourEmail}}</label>
+    </div>
+    {{? it.hasSocialLogin }}
+    <div>
+        <div class="or-social-login">{{=it.or}}</div>
+        <a href="#" class="fb btn">
+            <i class="fa fa-facebook fa-fw"></i> Login with Facebook
+        </a>
+        <a href="#" class="google btn"><i class="fa fa-google fa-fw"></i> Login with Google+
+        </a>
+    </div>
+    {{?? true }}
+    <input
+        type="submit"
+        class="btn btn-primary"
+        name="validate"
+        disabled=""
+        value="{{=it.validate}}"
+    />
+    {{?}}
+</form>
+

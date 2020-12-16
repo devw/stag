@@ -29,27 +29,6 @@ body.remove-scrolling {
     animation: var(--animation) 1.5s;
 }
 
-@keyframes fade-in-show {
-    0% {
-        opacity: 0;
-        transform: 0.2;
-    }
-
-    100% {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-@keyframes slide-in {
-    0% {
-        transform: translateX(100%);
-    }
-    100% {
-        transform: translateX(0%);
-    }
-}
-
 .content {
     color: var(--primary-text-color);
     background-color: var(--content-bg-color);
@@ -107,14 +86,15 @@ body.remove-scrolling {
     width: 100%;
 }
 
-.btn.btn-primary {
+.btn.btn-primary,
+.btn.btn-primary:focus {
     background-color: var(--btn-bg-color);
 }
 
 .btn:disabled,
 .btn[disabled] {
-    background-color: var(--btn-disabled-bg-color);
-    opacity: var(--btn-disabled-opacity);
+    // background-color: var(--btn-disabled-bg-color);
+    opacity: 0.5;
 }
 
 .btn-small {
@@ -165,6 +145,7 @@ body.remove-scrolling {
 // 4.1 checkbox
 .checkbox {
     margin-right: 10px;
+    min-width: unset;
 }
 
 .checkbox-container {

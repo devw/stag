@@ -3,7 +3,6 @@ hasGender: true
 hasPasswordConfirmation: false
 hasBirthDate: false
 hasCarousel: true
-isPopover: false
 hasPasswordRecover: false
 
 createAccount: Inscription

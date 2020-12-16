@@ -4,20 +4,19 @@
 <div class="js-error error">
     <div class="error js-psw-wrong">{{=it.incorrectEmailOrPassword}}</div>
 </div>
-<div class="form-container">
-    <form
-        method="post"
-        id="RegisterForm"
-        accept-charset="UTF-8"
-        novalidate="novalidate"
-        class="label-none"
-    >
-        <input
-            type="hidden"
-            name="return_to"
-            value="{{=it.redirect.redirectAfterRegister}}"
-        />
-        {{? it.hasCarousel }} {{#def.registerWithSlides }} {{?? true }}
-        {{#def.registerNoSlides }} {{?}}
-    </form>
-</div>
+<form
+    method="post"
+    id="RegisterForm"
+    accept-charset="UTF-8"
+    novalidate="novalidate"
+    class="{{=it.formStyle}}"
+>
+    <input
+        type="hidden"
+        name="return_to"
+        value="{{=it.redirect.redirectAfterRegister}}"
+    />
+    {{? it.hasCarousel }} {{#def.registerWithSlides }} {{?? true }}
+    {{#def.registerNoSlides }} {{?}}
+</form>
+

@@ -1,4 +1,4 @@
-const dashboardTmpl = require("./dashboard.html");
+const rootTmpl = require("./root.html");
 const containerTmpl = require("./container.html");
 const landingTmpl = require("./landing.html");
 const registerTmpl = require("./register.html");
@@ -17,7 +17,7 @@ const getPartialTemplate = ({ id, html }) => {
 };
 const templates = [];
 
-templates.push(getTemplate({ id: ROOT_ID, html: dashboardTmpl }));
+templates.push(getTemplate({ id: ROOT_ID, html: rootTmpl }));
 templates.push(getTemplate({ id: CONTAINER_ID, html: containerTmpl }));
 templates.push(getPartialTemplate({ id: LANDING_ID, html: landingTmpl }));
 templates.push(getPartialTemplate({ id: REGISTER_ID, html: registerTmpl }));

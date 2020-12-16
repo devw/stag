@@ -11,7 +11,7 @@ const activeBtn = (btn, target) => {
 };
 const toggleButton = ({ target }) => {
     const btn = form.querySelector("input[type='submit']");
-    const isEmail = /\S+@\S+\.\S+/.test(target.value);
+    const isEmail = /[\w.]+@\w+\.[a-z]{2,}/.test(target.value);
     isEmail ? activeBtn(btn, target) : disableBtn(btn);
 };
 

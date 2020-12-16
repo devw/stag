@@ -1,11 +1,12 @@
-.form-container {
-    // display: flex;
-    // align-items: center;
-    // justify-content: center;
-    // height: 100vh;
-    // flex-direction: column;
-    // gap: 4em;
-}
+// .form-container {
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     height: 100vh;
+//     flex-direction: column;
+//     gap: 4em;
+// }
+
 
 form > div {
     margin: 1.2em 0;
@@ -13,22 +14,24 @@ form > div {
 }
 input {
     border: var(--input-line);
-    border-bottom: 2px solid #333;
+    border-bottom: 1px solid #333;
     background-color: unset;
     outline: none;
     // padding: var(--input-padding);
     font-size: 1em;
     color: #333;
-    min-width: 60vmin;
+    min-width: 100%;
+    padding: var(--input-padding);
 }
 
 label {
-    z-index: 1;
+    z-index: 0; //-1
 }
 
 label {
     position: absolute;
     left: 0;
+    top: 0;
     opacity: 0.5;
     transform-origin: 0 0;
     transition: transform 0.3s ease-in-out;
@@ -42,6 +45,12 @@ label {
 .label-go-up input::placeholder {
     color: transparent;
 }
+
+/* START - GO UP */
+.label-go-up input::placeholder {
+    color: transparent;
+}
+
 .label-go-up input:focus + label,
 .label-go-up input:not(:placeholder-shown) + label {
     transform: translateY(-1em) scale(0.8);
@@ -99,6 +108,7 @@ form.label-go-right input {
 .label-fixed label {
     display: block;
     font-size: 0.8em;
+    top: unset;
 }
 .label-fixed input::placeholder {
     color: transparent;
@@ -107,21 +117,3 @@ form.label-go-right input {
 .label-none label {
     display: none;
 }
-
-// ::placeholder {
-//     background-color: var(--content-bg-color);
-//     font-size: var(--placeholder-font-size);
-//     color: var(--placeholder-color);
-//     text-transform: var(--placeholder-text-transform);
-// }
-
-// .input-text {
-//     box-sizing: border-box;
-//     border: var(--input-line);
-//     padding: var(--input-padding);
-//     outline: none;
-//     border-bottom: 1px solid;
-//     // font: 400 13.3333px Arial;
-//     margin-bottom: var(--text-input-margin);
-//     width: 100%;
-// }

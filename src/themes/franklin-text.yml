@@ -2,8 +2,9 @@ hasGender: false
 hasSocialLogin: false
 hasPasswordConfirmation: true
 hasBirthDate: false
-isPopover: false
 hasNewsLetter: true
+layout: popup-centered
+formStyle: label-go-up
 
 createAccount: Création de compte
 loginRegister: "Connexion / Inscription"

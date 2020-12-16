@@ -12,8 +12,8 @@
     };
 
     const style = {
-        setting_id: "|--large-font-size|em",
-        value: "3.3",
+        setting_id: "|--btn-bg-color|",
+        value: "rgba(129, 183, 84, 1)",
     };
 
     const hasCarousel = {
@@ -36,8 +36,18 @@
         value: true,
     };
 
+    const form = {
+        setting_id: "landing|formStyle|",
+        value: "label-go-right",
+    };
+
+    const carousel = {
+        setting_id: "register|hasCarousel|",
+        value: true,
+    };
+
     kastorEvent = new CustomEvent("message", {
-        detail: animation,
+        detail: style,
     });
 
     globalThis.dispatchEvent(kastorEvent);
