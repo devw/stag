@@ -20,6 +20,7 @@ input {
     font-size: 1em;
     color: #333;
     min-width: 100%;
+    padding: var(--input-padding);
 }
 
 label {
