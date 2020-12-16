@@ -86,7 +86,8 @@ body.remove-scrolling {
     width: 100%;
 }
 
-.btn.btn-primary {
+.btn.btn-primary,
+.btn.btn-primary:focus {
     background-color: var(--btn-bg-color);
 }
 
