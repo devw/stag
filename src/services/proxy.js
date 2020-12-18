@@ -26,7 +26,7 @@ exports.isRegistered = async (email) => {
 exports.getTheme = async (themeName) => {
     const shopName =
         globalThis.Shopify?.shop || "test-login-popup.myshopify.com";
-
+    let endpoint;
     endpoint = `https://login-popup-dev-theme.s3.amazonaws.com/${shopName}/configuration.json`;
     // endpoint = "data/configuration.json";
     console.log(endpoint);
