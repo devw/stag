@@ -39,4 +39,4 @@ const openAccount = (e) => {
 
 exports.openAccount = openAccount;
 const $ = document.querySelector.bind(document);
-$(".site-header__account").addEventListener("click", openAccount);
+$(".site-header__account")?.addEventListener("click", openAccount);

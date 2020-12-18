@@ -12,7 +12,7 @@
     };
 
     const style = {
-        setting_id: "|--btn-bg-color|",
+        setting_id: "register|--btn-bg-color|",
         value: "rgba(129, 183, 84, 1)",
     };
 
@@ -38,7 +38,7 @@
 
     const form = {
         setting_id: "landing|formStyle|",
-        value: "label-go-right",
+        value: "label-go-down",
     };
 
     const carousel = {
@@ -47,7 +47,7 @@
     };
 
     kastorEvent = new CustomEvent("message", {
-        detail: style,
+        detail: form,
     });
 
     globalThis.dispatchEvent(kastorEvent);

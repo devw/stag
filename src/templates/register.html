@@ -14,9 +14,8 @@
     <input
         type="hidden"
         name="return_to"
-        value="{{=it.redirect.redirectAfterRegister}}"
+        value="{{=it.redirectAfterRegister}}"
     />
     {{? it.hasCarousel }} {{#def.registerWithSlides }} {{?? true }}
     {{#def.registerNoSlides }} {{?}}
 </form>
-

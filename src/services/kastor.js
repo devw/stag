@@ -30,8 +30,8 @@ const kastorHandler = (event) => {
 };
 
 exports.kastor = () => {
-    // console.log("loading kastor handler");
-    // globalThis.addEventListener("message", debounce(kastorHandler, 500));
+    console.log("loading kastor handler");
+    globalThis.addEventListener("message", debounce(kastorHandler, 500));
 };
 
 // ***** 4 different popup *****+

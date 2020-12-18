@@ -39,15 +39,7 @@
                 ><i class="fa fa-google fa-fw"></i> Login with Google+
             </a>
         </div>
-        {{?? true }}
-        <input
-            type="submit"
-            class="btn btn-primary"
-            name="validate"
-            disabled=""
-            value="{{=it.validate}}"
-        />
-        <label for="">{{=it.yourEmail}}</label>
+        {{?? true }}{{?}}
     </div>
     {{? it.hasSocialLogin }}
     <div>
@@ -55,7 +47,8 @@
         <a href="#" class="fb btn">
             <i class="fa fa-facebook fa-fw"></i> Login with Facebook
         </a>
-        <a href="#" class="google btn"><i class="fa fa-google fa-fw"></i> Login with Google+
+        <a href="#" class="google btn"
+            ><i class="fa fa-google fa-fw"></i> Login with Google+
         </a>
     </div>
     {{?? true }}
@@ -68,4 +61,3 @@
     />
     {{?}}
 </form>
-

@@ -24,13 +24,14 @@ exports.isRegistered = async (email) => {
 };
 
 exports.getTheme = async (themeName) => {
-    const shopName = globalThis.Shopify?.shop;
-    // TODO fix it
-    // const endpoint = shopName
-    //     ? `https://${shopName}/apps/dev/s3/${shopName}`
-    //     : "data/config.json";
-    const endpoint = `https://devw.github.io/stag/data/${themeName}-config.json`;
+    const shopName =
+        globalThis.Shopify?.shop || "test-login-popup.myshopify.com";
+
+    endpoint = `https://login-popup-dev-theme.s3.amazonaws.com/${shopName}/configuration.json`;
+    // endpoint = "data/configuration.json";
     console.log(endpoint);
-    const result = await globalThis.fetch(endpoint);
+    const result = await globalThis.fetch(endpoint, {
+        headers: { pragma: "no-cache" },
+    });
     return await result.json();
 };
