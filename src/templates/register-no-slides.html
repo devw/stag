@@ -105,6 +105,24 @@
         max="2020"
     />
 </div>
+{{?? true }}{{?}} {{? it.hasChoiseBlock }}
+<!-- <div class="choice-block multi-choice multi-line"> -->
+<div
+    class="choice-block {{?it.hasMultiChoice }}multi-choice{{??true}} {{?}} {{?it.hasMultiLine }}multi-line{{??true}} {{?}}"
+>
+    <div>
+        <input type="checkbox" id="scales" name="Mr" />
+        <label for="scales"> Mr </label>
+    </div>
+    <div>
+        <input type="checkbox" id="horns" name="Mrs" />
+        <label for="horns"> Mrs </label>
+    </div>
+    <div>
+        <input type="checkbox" id="horns" name="Ms" />
+        <label for="horns"> Ms</label>
+    </div>
+</div>
 {{?? true }}{{?}}
 
 <p class="text-center">

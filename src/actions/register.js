@@ -14,6 +14,17 @@ const tgt = {
     pswFormatError: `.${REGISTER_ID} .js-error .js-psw-valid`,
 };
 
+const multiChoiceSelector = "multi-choice";
+
+const handleChoiceBlock = ({ target, currentTarget }) => {
+    if (!currentTarget.classList.contains(multiChoiceSelector)) {
+        currentTarget
+            .querySelectorAll("[type='checkbox']")
+            .forEach((e) => (e.checked = false));
+        target.checked = true;
+    }
+};
+
 const toggleSecret = (e) => {
     const secret = $q("[name='customer[password]']");
     secret.type = secret.type === "password" ? "text" : "password";
@@ -61,4 +72,8 @@ exports.init = () => {
     form.addEventListener("submit", onSubmit);
     $q(tgt.login)?.addEventListener("click", () => toggleModules(SIGNIN_ID));
     form.querySelector(".js-show-psw")?.addEventListener("click", toggleSecret);
+    form.querySelector(".choice-block")?.addEventListener(
+        "click",
+        handleChoiceBlock
+    );
 };

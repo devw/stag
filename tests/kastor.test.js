@@ -52,3 +52,29 @@
 
     globalThis.dispatchEvent(kastorEvent);
 })();
+
+(() => {
+    const block = {
+        setting_id: "register|hasChoiseBlock|",
+        value: false,
+    };
+
+    const kastorEvent = new CustomEvent("message", {
+        detail: block,
+    });
+
+    globalThis.dispatchEvent(kastorEvent);
+})();
+
+(() => {
+    const block = {
+        setting_id: "register|hasMultiChoice|",
+        value: true,
+    };
+
+    const kastorEvent = new CustomEvent("message", {
+        detail: block,
+    });
+
+    globalThis.dispatchEvent(kastorEvent);
+})();
