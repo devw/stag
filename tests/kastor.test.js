@@ -55,8 +55,8 @@
 
 (() => {
     const block = {
-        setting_id: "register|hasChoiseBlock|",
-        value: false,
+        setting_id: "register|hasMultiLine|",
+        value: true,
     };
 
     const kastorEvent = new CustomEvent("message", {
@@ -74,6 +74,22 @@
 
     const kastorEvent = new CustomEvent("message", {
         detail: block,
+    });
+
+    globalThis.dispatchEvent(kastorEvent);
+})();
+
+(() => {
+    const metaChoices = {
+        setting_id: "register|metaChoices|",
+        value: [
+            { key: "1_meta_key", value: "1_meta_value" },
+            { key: "2_meta_key", value: "2_meta_value" },
+        ],
+    };
+
+    const kastorEvent = new CustomEvent("message", {
+        detail: metaChoices,
     });
 
     globalThis.dispatchEvent(kastorEvent);

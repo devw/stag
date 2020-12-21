@@ -12,15 +12,19 @@ const debounce = (fn, delay) => {
 
 const kastorHandler = (event) => {
     const body = event.data ? event.data.data : event.detail;
+    console.log("body.....\n", body);
+
     if (!body.setting_id) return null;
 
     const [, page, key, unit] = body.setting_id.match(/^(.*?)\|(.*?)\|(.*?)$/);
-    const value = `${body.value}${unit}`;
+    const value =
+        typeof body.value == "object" ? body.value : `${body.value}${unit}`;
 
     if (key === "change-theme")
         getTheme(body.value).then((theme) => updateCss(theme.style));
     else if (/^--/.test(key)) updateCss({ [key]: value });
     else updatePages({ [key]: value == "false" ? false : value });
+    console.log("aaaaaa:\n", { [key]: value == "false" ? false : value });
 
     if (page) {
         toggleModules(page);

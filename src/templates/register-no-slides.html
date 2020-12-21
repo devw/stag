@@ -105,23 +105,21 @@
         max="2020"
     />
 </div>
-{{?? true }}{{?}} {{? it.hasChoiseBlock }}
+{{?? true }}{{?}} {{? it.hasChoiseBlock || it.metaChoices }}
 <!-- <div class="choice-block multi-choice multi-line"> -->
 <div
     class="choice-block {{?it.hasMultiChoice }}multi-choice{{??true}} {{?}} {{?it.hasMultiLine }}multi-line{{??true}} {{?}}"
 >
+    {{~it.metaChoices :value:index}}
     <div>
-        <input type="checkbox" id="scales" name="Mr" />
-        <label for="scales"> Mr </label>
+        <input
+            type="checkbox"
+            id="scales"
+            name="{{=value.key}}-{{=value.value}}"
+        />
+        <label for="scales"> {{=value.value}} </label>
     </div>
-    <div>
-        <input type="checkbox" id="horns" name="Mrs" />
-        <label for="horns"> Mrs </label>
-    </div>
-    <div>
-        <input type="checkbox" id="horns" name="Ms" />
-        <label for="horns"> Ms</label>
-    </div>
+    {{~}}
 </div>
 {{?? true }}{{?}}
 
