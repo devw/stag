@@ -3,6 +3,27 @@
     name="utf8"
     value="✓"
 />
+
+<!-- Multi-Choice field -->
+{{? it.hasChoiceBlock || it.metaChoices }}
+<div
+    class="choice-block {{?it.hasMultiChoice }}multi-choice{{??true}} {{?}} {{?it.hasMultiLine }}multi-line{{??true}} {{?}}"
+>
+    {{~it.metaChoices :value:index}}
+    <div>
+        <input
+            type="checkbox"
+            id="scales"
+            name="{{=value.key}}-{{=value.value}}"
+        />
+        <label for="scales"> {{=value.value}} </label>
+    </div>
+    {{~}}
+</div>
+{{?? true }}{{?}}
+
+<!-- FirstName field -->
+{{? it.hasFirstNameBlock || it.yourFirstName }}
 <div>
     <input
         type="text"
@@ -12,6 +33,10 @@
     />
     <label>{{=it.yourFirstName}}</label>
 </div>
+{{?? true }}{{?}}
+
+<!-- LastName field -->
+{{? it.hasLastNameBlock || it.yourLastName }}
 <div>
     <input
         type="text"
@@ -21,6 +46,22 @@
     />
     <label>{{=it.yourLastName}}</label>
 </div>
+{{?? true }}{{?}}
+
+<!-- Telephone field -->
+{{? it.hasTelephone || it.yourTelephone }}
+<div>
+    <input
+        type="text"
+        class="input-text"
+        name="telephone"
+        placeholder="{{=it.yourTelephone}}"
+    />
+    <label>{{=it.yourTelephone}}</label>
+</div>
+{{?? true }}{{?}}
+
+<!-- Email field -->
 <div>
     <input
         type="email"
@@ -34,6 +75,8 @@
     class="eye icon js-show-psw"
     style="position: absolute; right: 30px; cursor: pointer"
 ></div>
+
+<!-- Password field -->
 <div>
     <input
         type="password"
@@ -43,6 +86,8 @@
     />
     <label>{{=it.yourPassword}}</label>
 </div>
+
+<!-- Password confirmation field -->
 {{? it.hasPasswordConfirmation }}
 <div>
     <input
@@ -53,7 +98,11 @@
     />
     <label>{{=it.confirmYourPassword}}</label>
 </div>
-{{?? true }}{{?}} {{? it.hasBirthDate }}
+{{?? true }}{{?}}
+
+<!-- Password confirmation field -->
+<!-- TODO to simplify -->
+{{? it.hasBirthDate }}
 <div class="birth-date">
     <div class="birth-date-text">Date de naissance</div>
     <input
@@ -81,23 +130,9 @@
         max="2020"
     />
 </div>
-{{?? true }}{{?}} {{? it.hasChoiseBlock || it.metaChoices }}
-<div
-    class="choice-block {{?it.hasMultiChoice }}multi-choice{{??true}} {{?}} {{?it.hasMultiLine }}multi-line{{??true}} {{?}}"
->
-    {{~it.metaChoices :value:index}}
-    <div>
-        <input
-            type="checkbox"
-            id="scales"
-            name="{{=value.key}}-{{=value.value}}"
-        />
-        <label for="scales"> {{=value.value}} </label>
-    </div>
-    {{~}}
-</div>
 {{?? true }}{{?}}
 
+<!-- Create account button -->
 <p class="text-center">
     <input
         class="btn btn-primary"
@@ -107,6 +142,7 @@
     />
 </p>
 
+<!-- Subscribe newsletter checkbox -->
 {{? it.hasNewsLetter }}
 <div class="checkbox-container">
     <input

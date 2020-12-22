@@ -1,5 +1,8 @@
 (() => {
-    let kastorEvent;
+    const getEvent = (json) =>
+        new CustomEvent("message", {
+            detail: json,
+        });
 
     const textEvent = {
         setting_id: "landing|loginRegister|",
@@ -46,11 +49,7 @@
         value: true,
     };
 
-    kastorEvent = new CustomEvent("message", {
-        detail: form,
-    });
-
-    globalThis.dispatchEvent(kastorEvent);
+    globalThis.dispatchEvent(getEvent(form));
 })();
 
 (() => {
@@ -59,11 +58,7 @@
         value: true,
     };
 
-    const kastorEvent = new CustomEvent("message", {
-        detail: block,
-    });
-
-    globalThis.dispatchEvent(kastorEvent);
+    globalThis.dispatchEvent(getEvent(block));
 })();
 
 (() => {
@@ -95,4 +90,69 @@
     });
 
     globalThis.dispatchEvent(kastorEvent);
+})();
+
+(() => {
+    const hasFirstNameBlock = {
+        setting_id: "register|hasFirstNameBlock|",
+        value: true,
+    };
+
+    const kastorEvent = new CustomEvent("message", {
+        detail: hasFirstNameBlock,
+    });
+
+    globalThis.dispatchEvent(kastorEvent);
+})();
+
+(() => {
+    const firstNameBlock = {
+        setting_id: "register|yourFirstName|",
+        value: "Votre Prénom",
+    };
+
+    const kastorEvent = new CustomEvent("message", {
+        detail: firstNameBlock,
+    });
+
+    globalThis.dispatchEvent(kastorEvent);
+})();
+
+(() => {
+    const json = {
+        setting_id: "register|yourLastName|",
+        value: "Votre Nom",
+    };
+
+    const event = new CustomEvent("message", {
+        detail: json,
+    });
+
+    globalThis.dispatchEvent(event);
+})();
+
+(() => {
+    const json = {
+        setting_id: "register|yourPassword|",
+        value: "Votre Mot de password",
+    };
+
+    const event = new CustomEvent("message", {
+        detail: json,
+    });
+
+    globalThis.dispatchEvent(event);
+})();
+
+(() => {
+    const json = {
+        setting_id: "register|yourTelephone|",
+        value: "Votre telephone",
+    };
+
+    const event = new CustomEvent("message", {
+        detail: json,
+    });
+
+    globalThis.dispatchEvent(event);
 })();
