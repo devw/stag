@@ -12,8 +12,4 @@ node.setAttribute("id", APP_ID);
 document.body.append(node);
 
 const { loadTheme, showTheme } = require("./actions");
-loadTheme("franklin").then(() => showTheme());
-
-// let configUrl = `https://login-popup-dev-theme.s3.amazonaws.com/test-login-popup.myshopify.com/configuration.json`;
-// configUrl = "data/config.json";
-// loadFromS3(configUrl);
+loadTheme().then(() => showTheme());

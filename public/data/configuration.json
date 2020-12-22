@@ -15,7 +15,10 @@
        "--image-padding":"1em",
        "--image-size":"40%",
        "--image-url":"url('https://cdn.shopify.com/s/files/1/2598/9270/files/Chien-Chat-1.png?v=1595510115')",
-       "--container-bg-color":"rgba(90, 91, 91, 0.4)"
+       "--container-bg-color":"rgba(90, 91, 91, 0.4)",
+       "--error-bg-color": "#bfd9cb",
+       "--error-text-color": "#0d3c32",
+       "--error-text-align": "left"
     },
     "text":{
        "loginRegister":"Connexion",

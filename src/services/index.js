@@ -2,7 +2,7 @@ const { registerViaProxy, isRegistered, getTheme } = require("./proxy");
 const { registerViaStorefront, signInViaStorefront } = require("./storefront");
 const { toggleLoading } = require("../utils/toggle-loading");
 const { sendHttpRequest } = require("./shopify");
-const { kastor } = require("./kastor");
+const { kastor } = require("./kastor-handler");
 
 exports.isRegistered = isRegistered;
 exports.sendHttpRequest = sendHttpRequest;

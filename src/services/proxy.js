@@ -15,7 +15,6 @@ exports.registerViaProxy = async (inputs) => {
 
 // TODO remove AWS_ENDPOINT and use the proxy. See getConfig
 exports.isRegistered = async (email) => {
-    return null;
     toggleLoading();
     const res = await fetch(`${AWS_ENDPOINT}/user/${email}`);
     const json = await res.json();
@@ -28,7 +27,7 @@ exports.getTheme = async (themeName) => {
         globalThis.Shopify?.shop || "test-login-popup.myshopify.com";
     let endpoint;
     //endpoint = `https://login-popup-dev-theme.s3.amazonaws.com/${shopName}/configuration.json`;
-    endpoint = "data/configuration.json";
+    endpoint = `https://login-popup-dev-theme.s3.amazonaws.com/${shopName}/configuration.json`;
     console.log(endpoint);
     const result = await globalThis.fetch(endpoint, {
         headers: { pragma: "no-cache" },

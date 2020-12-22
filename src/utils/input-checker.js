@@ -1,7 +1,14 @@
 const { $q } = require("./q-selector");
-const errorSelector = ".register .js-error";
-// const { text } = require("../../public/data/config.json");
-// const password = text.password;
+const errorSelector = ".js-psw-policy";
+// TODO read from configuration
+const pswPolicy = {
+    pswMinLength: 5,
+    pswMinLengthErr: "Password too short",
+    pswMaxLength: 18,
+    pswMaxLengthErr: "Password too long",
+    pswUppercase: true,
+    pswUppercaseErr: "Missing uppercase letter",
+};
 
 const showError = (errorMsgs) => {
     const list = document.createElement("ul");
@@ -19,31 +26,19 @@ const resetErrorMsgs = () => {
     $q(errorSelector).style.setProperty("display", "none");
 };
 
-const getPswConfirmationError = (inputs) => {
-    const { password } = JSON.parse($q(`.js-custom-style`).value).text;
-    const errorMsgs = [];
-    const areDifferent =
-        inputs.confirmPassword &&
-        inputs.confirmPassword !== inputs["customer[password]"];
-    if (areDifferent) errorMsgs.push(password.passwordConfirmationError);
-    return errorMsgs;
-};
-
 const getPasswordPolicyErrors = (inputs) => {
-    const str = inputs["customer[password]"];
-    const { password } = JSON.parse($q(`.js-custom-style`).value).text;
-    const pswPolicy = password;
+    const psw = inputs["customer[password]"];
     const errorMsgs = [];
 
-    if (str.length < pswPolicy.pswMinLength)
+    if (psw.length < pswPolicy.pswMinLength)
         errorMsgs.push(pswPolicy.pswMinLengthErr);
-    if (str.length > pswPolicy.pswMaxLength)
+    if (psw.length > pswPolicy.pswMaxLength)
         errorMsgs.push(pswPolicy.pswMaxLengthErr);
-    if (pswPolicy.pswUppercase && !/(?=.*[A-Z])/.test(str))
+    if (pswPolicy.pswUppercase && !/(?=.*[A-Z])/.test(psw))
         errorMsgs.push(pswPolicy.pswUppercaseErr);
-    if (pswPolicy.pswNumber && !/(?=.*\d)/.test(str))
+    if (pswPolicy.pswNumber && !/(?=.*\d)/.test(psw))
         errorMsgs.push(pswPolicy.pswNumberErr);
-    if (pswPolicy.pswSpecialCharacter && !/(?=.*[\W|_])/.test(str))
+    if (pswPolicy.pswSpecialCharacter && !/(?=.*[\W|_])/.test(psw))
         errorMsgs.push(pswPolicy.pswSpecialCharacterErr);
 
     return errorMsgs;
@@ -51,9 +46,7 @@ const getPasswordPolicyErrors = (inputs) => {
 
 exports.isValidPsw = (inputs) => {
     resetErrorMsgs();
-    const pswConfirmationErrs = getPswConfirmationError(inputs);
-    const pswPolicyErrs = getPasswordPolicyErrors(inputs);
-    const errorMsgs = pswConfirmationErrs.concat(pswPolicyErrs);
+    const errorMsgs = getPasswordPolicyErrors(inputs);
     return errorMsgs.length === 0 ? true : showError(errorMsgs) && false;
 };
 

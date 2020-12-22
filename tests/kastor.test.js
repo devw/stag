@@ -11,11 +11,11 @@
 
     const layout = {
         setting_id: "landing|layout|",
-        value: "popup-floating",
+        value: "popup-full",
     };
 
     const style = {
-        setting_id: "register|--btn-bg-color|",
+        setting_id: "landing|--btn-bg-color|",
         value: "rgba(129, 183, 84, 1)",
     };
 
