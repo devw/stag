@@ -83,8 +83,10 @@
     const metaChoices = {
         setting_id: "register|metaChoices|",
         value: [
-            { key: "1_meta_key", value: "1_meta_value" },
-            { key: "2_meta_key", value: "2_meta_value" },
+            { key: "gender", value: "Mr." },
+            { key: "gender", value: "Mrs." },
+            { key: "gender", value: "Ms." },
+            { key: "gender", value: "Miss." },
         ],
     };
 
