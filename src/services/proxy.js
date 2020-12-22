@@ -16,10 +16,18 @@ exports.registerViaProxy = async (inputs) => {
 // TODO remove AWS_ENDPOINT and use the proxy. See getConfig
 exports.isRegistered = async (email) => {
     toggleLoading();
-    const res = await fetch(`${AWS_ENDPOINT}/user/${email}`);
-    const json = await res.json();
-    toggleLoading();
-    return json.data;
+    const controller = new AbortController();
+    setTimeout(() => controller.abort(), 5000);
+    try {
+        const res = await fetch(`${AWS_ENDPOINT}/user/${email}`, {
+            signal: controller.signal,
+        });
+        const json = await res.json();
+        toggleLoading();
+        return json.data;
+    } catch (e) {
+        toggleLoading();
+    }
 };
 
 exports.getTheme = async (themeName) => {

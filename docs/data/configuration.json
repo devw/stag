@@ -49,6 +49,7 @@
        "formStyle":"label-go-up",
        "change-theme":"franklin",
        "layout":"popup-centered",
-       "hasCarousel":""
+       "hasCarousel":"",
+       "yourPassword": "Write your password"
     }
  }
