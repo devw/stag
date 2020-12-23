@@ -22,6 +22,24 @@
 </div>
 {{?? true }}{{?}}
 
+<!-- Choice List -->
+{{? it.hasChoiceList || it.choiceList }}
+<div
+    class="choice-block {{?it.hasMultiChoice }}multi-choice{{??true}} {{?}} {{?it.hasMultiLine }}multi-line{{??true}} {{?}}"
+>
+    {{~it.choiceList :value:index}}
+    <div>
+        <input
+            type="checkbox"
+            name="{{=value}}"
+            value="{{=it.choiceMeta}}#{{=value}}"
+        />
+        <label> {{=value}} </label>
+    </div>
+    {{~}}
+</div>
+{{?? true }}{{?}}
+
 <!-- FirstName field -->
 {{? it.hasFirstNameBlock || it.yourFirstName }}
 <div>

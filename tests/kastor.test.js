@@ -93,6 +93,31 @@
     globalThis.dispatchEvent(kastorEvent);
 })();
 
+// TESTING LIST-CHOICE BLOCK
+(() => {
+    let choiceList = {
+        setting_id: "register|choiceList|",
+        value: ["item_1", "item_2", "item_3", "item_4"],
+    };
+
+    let kastorEvent = new CustomEvent("message", {
+        detail: choiceList,
+    });
+
+    globalThis.dispatchEvent(kastorEvent);
+
+    const choiceMeta = {
+        setting_id: "register|choiceMeta|",
+        value: "gender",
+    };
+
+    kastorEvent = new CustomEvent("message", {
+        detail: choiceMeta,
+    });
+
+    globalThis.dispatchEvent(kastorEvent);
+})();
+
 (() => {
     const hasFirstNameBlock = {
         setting_id: "register|hasFirstNameBlock|",
