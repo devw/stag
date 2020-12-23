@@ -74,6 +74,7 @@
     globalThis.dispatchEvent(kastorEvent);
 })();
 
+// TESTING MULTI-CHOICE BLOCK
 (() => {
     const metaChoices = {
         setting_id: "register|metaChoices|",

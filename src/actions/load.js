@@ -14,13 +14,6 @@ const initContainer = () => {
     $q(`.js-close`).addEventListener("click", closeApp);
 };
 
-exports.loadActions = () => {
-    initLanding();
-    initContainer();
-    initSignIn();
-    initRegistration();
-};
-
 const placePopover = (e, dom) => {
     const shift = parseInt(getComputedStyle(dom).getPropertyValue("width"));
     dom.style.setProperty("left", `${e.clientX - shift / 2}px`);
@@ -40,3 +33,10 @@ const openAccount = (e) => {
 exports.openAccount = openAccount;
 const $ = document.querySelector.bind(document);
 $(".site-header__account")?.addEventListener("click", openAccount);
+
+exports.loadActions = () => {
+    initLanding();
+    initContainer();
+    initSignIn();
+    initRegistration();
+};

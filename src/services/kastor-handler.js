@@ -1,5 +1,6 @@
 const { updateCss, updatePages, toggleModules, $q } = require("../utils");
 const { getTheme } = require("./proxy");
+const { init } = require("../actions/register");
 
 const debounce = (fn, delay) => {
     let timeoutId;
@@ -25,10 +26,11 @@ const kastorHandler = (event) => {
     if (page) {
         toggleModules(page);
         $q(".container").style.setProperty("display", "flex");
+        init();
     }
 };
 
-exports.kastor = () => {
+exports.kastorHandler = () => {
     console.log("loading kastor handler");
     globalThis.addEventListener("message", debounce(kastorHandler, 500));
 };
