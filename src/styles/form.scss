@@ -7,7 +7,6 @@
 //     gap: 4em;
 // }
 
-
 form > div {
     margin: 1.2em 0;
     position: relative;
@@ -116,4 +115,45 @@ form.label-go-right input {
 
 .label-none label {
     display: none;
+}
+
+// CHOICE BLOCK
+
+.choice-block {
+    text-align: left;
+}
+.choice-block > div {
+    display: inline-block;
+}
+
+.choice-block.multi-line > div {
+    display: block;
+}
+
+.choice-block label {
+    opacity: 1;
+    position: unset;
+}
+
+.choice-block input {
+    min-width: unset;
+}
+
+.choice-block input[type="checkbox"] {
+    width: 1.1em;
+    height: 1.1em;
+    border-radius: 50%;
+    background-color: white;
+    vertical-align: middle;
+    border: 1px solid #ddd;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+}
+.choice-block input[type="checkbox"]:checked {
+    background-color: gray;
+}
+
+.choice-block.multi-choice input[type="checkbox"] {
+    border-radius: 25%;
 }

@@ -1,5 +1,8 @@
 (() => {
-    let kastorEvent;
+    const getEvent = (json) =>
+        new CustomEvent("message", {
+            detail: json,
+        });
 
     const textEvent = {
         setting_id: "landing|loginRegister|",
@@ -8,11 +11,11 @@
 
     const layout = {
         setting_id: "landing|layout|",
-        value: "popup-floating",
+        value: "popup-full",
     };
 
     const style = {
-        setting_id: "register|--btn-bg-color|",
+        setting_id: "landing|--btn-bg-color|",
         value: "rgba(129, 183, 84, 1)",
     };
 
@@ -46,9 +49,110 @@
         value: true,
     };
 
-    kastorEvent = new CustomEvent("message", {
-        detail: form,
+    globalThis.dispatchEvent(getEvent(form));
+})();
+
+(() => {
+    const block = {
+        setting_id: "register|hasMultiLine|",
+        value: true,
+    };
+
+    globalThis.dispatchEvent(getEvent(block));
+})();
+
+(() => {
+    const block = {
+        setting_id: "register|hasMultiChoice|",
+        value: true,
+    };
+
+    const kastorEvent = new CustomEvent("message", {
+        detail: block,
     });
 
     globalThis.dispatchEvent(kastorEvent);
+})();
+
+(() => {
+    const metaChoices = {
+        setting_id: "register|metaChoices|",
+        value: [
+            { key: "gender", value: "Mr." },
+            { key: "gender", value: "Mrs." },
+            { key: "gender", value: "Ms." },
+            { key: "gender", value: "Miss." },
+        ],
+    };
+
+    const kastorEvent = new CustomEvent("message", {
+        detail: metaChoices,
+    });
+
+    globalThis.dispatchEvent(kastorEvent);
+})();
+
+(() => {
+    const hasFirstNameBlock = {
+        setting_id: "register|hasFirstNameBlock|",
+        value: true,
+    };
+
+    const kastorEvent = new CustomEvent("message", {
+        detail: hasFirstNameBlock,
+    });
+
+    globalThis.dispatchEvent(kastorEvent);
+})();
+
+(() => {
+    const firstNameBlock = {
+        setting_id: "register|yourFirstName|",
+        value: "Votre Prénom",
+    };
+
+    const kastorEvent = new CustomEvent("message", {
+        detail: firstNameBlock,
+    });
+
+    globalThis.dispatchEvent(kastorEvent);
+})();
+
+(() => {
+    const json = {
+        setting_id: "register|yourLastName|",
+        value: "Votre Nom",
+    };
+
+    const event = new CustomEvent("message", {
+        detail: json,
+    });
+
+    globalThis.dispatchEvent(event);
+})();
+
+(() => {
+    const json = {
+        setting_id: "register|yourPassword|",
+        value: "Votre Mot de password",
+    };
+
+    const event = new CustomEvent("message", {
+        detail: json,
+    });
+
+    globalThis.dispatchEvent(event);
+})();
+
+(() => {
+    const json = {
+        setting_id: "register|yourTelephone|",
+        value: "Votre telephone",
+    };
+
+    const event = new CustomEvent("message", {
+        detail: json,
+    });
+
+    globalThis.dispatchEvent(event);
 })();
