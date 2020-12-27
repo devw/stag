@@ -2,12 +2,12 @@ const { registerViaProxy, isRegistered, getTheme } = require("./proxy");
 const { registerViaStorefront, signInViaStorefront } = require("./storefront");
 const { toggleLoading } = require("../utils/toggle-loading");
 const { sendHttpRequest } = require("./shopify");
-const { kastor } = require("./kastor-handler");
+const { kastorHandler } = require("./kastor-handler");
 
 exports.isRegistered = isRegistered;
 exports.sendHttpRequest = sendHttpRequest;
 exports.getTheme = getTheme;
-exports.kastor = kastor;
+exports.kastorHandler = kastorHandler;
 
 // TODO this should be removed
 exports.register = async (inputs) => {

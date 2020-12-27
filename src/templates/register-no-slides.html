@@ -13,10 +13,28 @@
     <div>
         <input
             type="checkbox"
-            id="scales"
             name="{{=value.key}}-{{=value.value}}"
+            value="{{=value.key}}-{{=value.value}}"
         />
         <label for="scales"> {{=value.value}} </label>
+    </div>
+    {{~}}
+</div>
+{{?? true }}{{?}}
+
+<!-- Choice List -->
+{{? it.hasChoiceList || it.choiceList }}
+<div
+    class="choice-block {{?it.hasMultiChoice }}multi-choice{{??true}} {{?}} {{?it.hasMultiLine }}multi-line{{??true}} {{?}}"
+>
+    {{~it.choiceList :value:index}}
+    <div>
+        <input
+            type="checkbox"
+            name="{{=value}}"
+            value="{{=it.choiceMeta}}#{{=value}}"
+        />
+        <label> {{=value}} </label>
     </div>
     {{~}}
 </div>
