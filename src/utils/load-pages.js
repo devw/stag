@@ -7,6 +7,7 @@ const {
     LANDING_ID,
     REGISTER_ID,
     SIGNIN_ID,
+    ACTIVATE_ID,
 } = require("../templates/");
 const $ = document.querySelector.bind(document);
 
@@ -16,6 +17,7 @@ const getDef = () => ({
     [CONTAINER_ID]: document.getElementById(CONTAINER_ID).text,
     [LANDING_ID]: document.getElementById(LANDING_ID).text,
     [REGISTER_ID]: document.getElementById(REGISTER_ID).text,
+    [ACTIVATE_ID]: document.getElementById(ACTIVATE_ID).text,
     [SIGNIN_ID]: document.getElementById(SIGNIN_ID).text,
     registerNoSlides: document.getElementById("registerNoSlides").text,
     registerWithSlides: document.getElementById("registerWithSlides").text,

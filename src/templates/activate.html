@@ -1,0 +1,38 @@
+<img class="image" />
+<!-- TODO remove hardcoded value -->
+<div class="title">Connexion</div>
+
+<form
+    method="post"
+    accept-charset="UTF-8"
+    novalidate="novalidate"
+    class="inputs-container"
+>
+    <input
+        type="hidden"
+        name="checkout_url"
+        value="{{=it.redirectAfterLogin}}"
+    />
+    <input type="hidden" name="form_type" value="customer_login" /><input
+        type="hidden"
+        name="utf8"
+        value="✓"
+    />
+    <div>
+        <input
+            type="email"
+            name="customer[email]"
+            autocomplete="email"
+            class="input-text"
+            placeholder="{{=it.yourEmail}}"
+        />
+        <label>{{=it.yourEmail}}</label>
+    </div>
+    <!-- TODO remove hardcoded value -->
+    <input
+        class="btn btn-primary"
+        disabled=""
+        type="submit"
+        value="Se connecter"
+    />
+</form>
