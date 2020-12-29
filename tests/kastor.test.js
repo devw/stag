@@ -172,7 +172,7 @@
 
 (() => {
     const json = {
-        setting_id: "register|yourTelephone|",
+        setting_id: "activate|yourTelephone|",
         value: "Votre telephone",
     };
 

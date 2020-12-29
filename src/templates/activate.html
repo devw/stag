@@ -1,6 +1,6 @@
 <img class="image" />
 <!-- TODO remove hardcoded value -->
-<div class="title">Connexion</div>
+<div class="title">{{=it.activateTitle}}</div>
 
 <form
     method="post"
@@ -11,7 +11,7 @@
     <input
         type="hidden"
         name="checkout_url"
-        value="{{=it.redirectAfterLogin}}"
+        value="{{=it.redirectAfterActivate}}"
     />
     <input type="hidden" name="form_type" value="customer_login" /><input
         type="hidden"
@@ -33,6 +33,6 @@
         class="btn btn-primary"
         disabled=""
         type="submit"
-        value="Se connecter"
+        value="{{=it.activateBtn}}"
     />
 </form>
