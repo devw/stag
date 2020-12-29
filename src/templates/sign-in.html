@@ -1,5 +1,5 @@
 <img class="image" />
-<div class="title">{{=it.login}}</div>
+<div class="title">{{=it.loginTitle}}</div>
 <div class="subtitle">{{=it.enterEmailPswToConnect}}</div>
 <div class="js-error">
     <div class="error js-psw-valid">{{=it.passwordTooShort}}</div>
@@ -55,9 +55,8 @@
         value="{{=it.signIn}}"
     />
 </form>
+{{? it.doYouLostPsw }}
 <div class="secondary-action">
-    <p>
-        {{=it.doYouLostPsw}}
-        <a href="/account#recover-password" class="link">{{=it.recoverPsw}}</a>
-    </p>
+    <a href="/account#recover-password" class="link">{{=it.doYouLostPsw}}</a>
 </div>
+{{?? true }}{{?}}
