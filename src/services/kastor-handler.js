@@ -11,11 +11,12 @@ const debounce = (fn, delay) => {
 };
 
 const kastorHandler = (event) => {
-    const { setting_id, value } = event.data ? event.data.data : event.detail;
+    const data = event.data ? event.data.data : event.detail;
+    const { setting_id, section_type, value } = data;
+    const id = setting_id || section_type;
+    if (!id) return null;
 
-    if (!setting_id) return null;
-
-    const [, page, key, unit] = setting_id.match(/^(.*?)\|(.*?)\|(.*?)$/);
+    const [, page, key, unit] = id.match(/^(.*?)\|(.*?)\|(.*?)$/);
     const valueAndUnit = typeof value == "object" ? value : `${value}${unit}`;
 
     if (key === "change-theme")
