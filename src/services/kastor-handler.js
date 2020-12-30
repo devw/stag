@@ -10,13 +10,17 @@ const debounce = (fn, delay) => {
     };
 };
 
-const kastorHandler = (event) => {
+const getEventData = (event) => {
     const data = event.data ? event.data.data : event.detail;
-    const { setting_id, section_type, value } = data;
-    const id = setting_id || section_type;
-    if (!id) return null;
+    const { setting_id, section_type, block_type_id, value } = data;
+    const selector = setting_id || section_type || block_type_id;
+    if (!selector) return null;
+    return [selector, value];
+};
 
-    const [, page, key, unit] = id.match(/^(.*?)\|(.*?)\|(.*?)$/);
+const kastorHandler = (event) => {
+    const [selector, value] = getEventData(event);
+    const [, page, key, unit] = selector.match(/^(.*?)\|(.*?)\|(.*?)$/);
     const valueAndUnit = typeof value == "object" ? value : `${value}${unit}`;
 
     if (key === "change-theme")
