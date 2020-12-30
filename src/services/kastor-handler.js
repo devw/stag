@@ -14,15 +14,14 @@ const getEventData = (event) => {
     const data = event.data ? event.data.data : event.detail;
     const { setting_id, section_type, block_type_id, value } = data;
     const selector = setting_id || section_type || block_type_id;
-    if (!selector) return null;
     return [selector, value];
 };
 
 const kastorHandler = (event) => {
     const [selector, value] = getEventData(event);
+    if (!selector) return null;
     const [, page, key, unit] = selector.match(/^(.*?)\|(.*?)\|(.*?)$/);
     const valueAndUnit = typeof value == "object" ? value : `${value}${unit}`;
-
     if (key === "change-theme")
         getTheme(value).then((theme) => updateCss(theme.style));
     else if (/^--/.test(key)) updateCss({ [key]: valueAndUnit });
