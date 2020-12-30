@@ -39,8 +39,8 @@ const kastorHandler = (event) => {
         init();
     }
 
-    // TODO too fragile check the password policy in this way...refactoring using objects
-    if (/^psw.*Err$/.test(key)) {
+    // TODO: too fragile check the password policy in this way, you should refactore the code using objects
+    if (/^psw.*Err$|.*Psw.*/.test(key)) {
         showError([value]);
     }
 };
