@@ -3,6 +3,7 @@ const errorSelector = ".js-psw-policy";
 const { getTheme } = require("../services/proxy");
 
 const showError = (errorMsgs) => {
+    // TODO you should use the css to hide/show!!
     const list = document.createElement("ul");
     errorMsgs.forEach((e) => {
         const item = document.createElement("li");
@@ -30,10 +31,12 @@ const getPasswordPolicyErrors = async (inputs) => {
         errorMsgs.push(pswPolicy.pswMaxLengthErr);
     if (pswPolicy.pswUppercase && !/(?=.*[A-Z])/.test(psw))
         errorMsgs.push(pswPolicy.pswUppercaseErr);
-    if (pswPolicy.pswNumber && !/(?=.*\d)/.test(psw))
+    if (pswPolicy.hasPswNumber && !/(?=.*\d)/.test(psw))
         errorMsgs.push(pswPolicy.pswNumberErr);
-    if (pswPolicy.pswSpecialCharacter && !/(?=.*[\W|_])/.test(psw))
+    if (pswPolicy.hasPswSpecialCharacter && !/(?=.*[\W|_])/.test(psw))
         errorMsgs.push(pswPolicy.pswSpecialCharacterErr);
+    if (pswPolicy.hasPswUppercase && !/[A-Z]/.test(psw))
+        errorMsgs.push(pswPolicy.pswUppercaseErr);
 
     return errorMsgs;
 };
