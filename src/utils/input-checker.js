@@ -1,6 +1,8 @@
 const { $q } = require("./q-selector");
 const errorSelector = ".js-psw-policy";
 // TODO read from configuration
+const { getTheme } = require("../services/proxy");
+
 const pswPolicy = {
     pswMinLength: 5,
     pswMinLengthErr: "Password too short",
@@ -26,9 +28,11 @@ const resetErrorMsgs = () => {
     $q(errorSelector).style.setProperty("display", "none");
 };
 
-const getPasswordPolicyErrors = (inputs) => {
+const getPasswordPolicyErrors = async (inputs) => {
     const psw = inputs["customer[password]"];
     const errorMsgs = [];
+
+    const pswPolicy = await getTheme().then((res) => res.text);
 
     if (psw.length < pswPolicy.pswMinLength)
         errorMsgs.push(pswPolicy.pswMinLengthErr);
@@ -44,9 +48,9 @@ const getPasswordPolicyErrors = (inputs) => {
     return errorMsgs;
 };
 
-exports.isValidPsw = (inputs) => {
+exports.isValidPsw = async (inputs) => {
     resetErrorMsgs();
-    const errorMsgs = getPasswordPolicyErrors(inputs);
+    const errorMsgs = await getPasswordPolicyErrors(inputs);
     return errorMsgs.length === 0 ? true : showError(errorMsgs) && false;
 };
 
