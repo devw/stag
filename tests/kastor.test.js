@@ -118,10 +118,31 @@
     globalThis.dispatchEvent(kastorEvent);
 })();
 
+// Add a block
 (() => {
     const hasFirstNameBlock = {
-        setting_id: "register|hasFirstNameBlock|",
-        value: true,
+        data: {
+            setting_id: "register|hasFirstNameBlock|",
+            value: true,
+        },
+        target: "block:add",
+    };
+
+    const kastorEvent = new CustomEvent("message", {
+        detail: hasFirstNameBlock,
+    });
+
+    globalThis.dispatchEvent(kastorEvent);
+})();
+
+// Remove a block
+(() => {
+    const hasFirstNameBlock = {
+        data: {
+            setting_id: "register|hasFirstNameBlock|",
+            value: undefined,
+        },
+        target: "block:remove",
     };
 
     const kastorEvent = new CustomEvent("message", {
@@ -172,8 +193,10 @@
 
 (() => {
     const json = {
-        setting_id: "register|pswMinLengthErr|",
-        value: "Your password is too short",
+        data: {
+            setting_id: "register|pswMinLengthErr|",
+            value: "Your password is too short",
+        },
     };
 
     const event = new CustomEvent("message", {

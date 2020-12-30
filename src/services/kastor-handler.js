@@ -17,8 +17,10 @@ const debounce = (fn, delay) => {
 };
 
 const getEventData = (event) => {
-    const data = event.data ? event.data.data : event.detail;
-    const { setting_id, section_type, block_type_id, value } = data;
+    const e = event.data ? event.data : event.detail;
+    const data = e.data;
+    const { setting_id, section_type, block_type_id } = data;
+    const value = e.target == "block:remove" ? false : data.value;
     const selector = setting_id || section_type || block_type_id;
     return [selector, value];
 };
