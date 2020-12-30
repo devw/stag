@@ -1,4 +1,10 @@
-const { updateCss, updatePages, toggleModules, $q } = require("../utils");
+const {
+    updateCss,
+    updatePages,
+    toggleModules,
+    $q,
+    showError,
+} = require("../utils");
 const { getTheme } = require("./proxy");
 const { init } = require("../actions/register");
 
@@ -31,6 +37,11 @@ const kastorHandler = (event) => {
         toggleModules(page);
         $q(".container").style.setProperty("display", "flex");
         init();
+    }
+
+    // TODO too fragile check the password policy in this way...refactoring using objects
+    if (/^psw.*Err$/.test(key)) {
+        showError([value]);
     }
 };
 

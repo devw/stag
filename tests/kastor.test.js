@@ -172,8 +172,8 @@
 
 (() => {
     const json = {
-        setting_id: "activate|activateBtn|",
-        value: "Votre telephone",
+        setting_id: "register|pswMinLengthErr|",
+        value: "Your password is too short",
     };
 
     const event = new CustomEvent("message", {

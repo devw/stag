@@ -1,16 +1,6 @@
 const { $q } = require("./q-selector");
 const errorSelector = ".js-psw-policy";
-// TODO read from configuration
 const { getTheme } = require("../services/proxy");
-
-const pswPolicy = {
-    pswMinLength: 5,
-    pswMinLengthErr: "Password too short",
-    pswMaxLength: 18,
-    pswMaxLengthErr: "Password too long",
-    pswUppercase: true,
-    pswUppercaseErr: "Missing uppercase letter",
-};
 
 const showError = (errorMsgs) => {
     const list = document.createElement("ul");
@@ -55,3 +45,5 @@ exports.isValidPsw = async (inputs) => {
 };
 
 exports.isValidEmail = (email) => /\S+@\S+\.\S+/.test(email);
+
+exports.showError = showError;
