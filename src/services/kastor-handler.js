@@ -48,11 +48,14 @@ const kastorHandler = (event) => {
 
 // shopify events
 const redirectPage = () => {
-    if (__st?.cid) window.location.href = "./products";
+    if (__st?.cid) {
+        window.location.href = "./products";
+        globalThis.removeEventListener("message", redirectPage, true);
+    }
 };
 
 exports.kastorHandler = () => {
     console.log("loading kastor handler");
     globalThis.addEventListener("message", debounce(kastorHandler, 500));
-    globalThis.addEventListener("message", redirectPage);
+    globalThis.addEventListener("message", redirectPage, true);
 };
