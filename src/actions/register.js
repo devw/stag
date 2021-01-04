@@ -26,8 +26,10 @@ const toggleSecret = (e) => {
 };
 
 const toggleButton = ({ target }) => {
-    if (target.value.length > 2)
-        target.nextElementSibling.removeAttribute("disabled");
+    if (target.value.length > 2) {
+        const btn = target.closest("form").querySelector("[type='submit']");
+        btn.removeAttribute("disabled");
+    }
 
     const btn = $q(tgt.form).querySelector("input[type='submit']");
     isFormFilled($q(tgt.form))

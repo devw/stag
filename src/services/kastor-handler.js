@@ -16,9 +16,34 @@ const debounce = (fn, delay) => {
     };
 };
 
+const changePage = (page) => {
+    toggleModules(page);
+    $q(".container").style.setProperty("display", "flex");
+    init();
+};
+
+const reorderFields = ({ blocks, order }) => {
+    const hash_block = {};
+    Object.keys(blocks).forEach((e) => {
+        hash_block[Object.keys(blocks[e])[0]] = e.split("|")[1];
+    });
+    console.log(hash_block);
+    order.forEach((e, i) => {
+        console.log(hash_block[e]);
+        const selector = `.${hash_block[e]}`;
+        $q(selector).style.setProperty("order", i);
+    });
+
+    changePage("register");
+};
+
 const getEventData = (event) => {
-    const e = event.data ? event.data : event.detail;
+    const e = event.data ? event.data : event.detail.data;
     const data = e.data;
+    if (e.target === "block:reorder") {
+        reorderFields(data);
+        return [undefined, undefined];
+    }
     if (!data) return [undefined, undefined];
     const { setting_id, section_type, block_type_id } = data;
     const value = e.target == "block:remove" ? false : data.value;
@@ -36,30 +61,12 @@ const kastorHandler = (event) => {
     else if (/^--/.test(key)) updateCss({ [key]: valueAndUnit });
     else updatePages({ [key]: valueAndUnit == "false" ? false : valueAndUnit });
 
-    if (page) {
-        toggleModules(page);
-        $q(".container").style.setProperty("display", "flex");
-        init();
-    }
-
+    if (page) changePage(page);
     // TODO: too fragile check the password policy in this way, you should refactore the code using objects
     if (/^psw.*Err$/.test(key)) showError([value]);
-};
-
-// shopify events
-const redirectPage = (event) => {
-    if (__st?.cid) {
-        if (!localStorage.getItem("isLogged")) {
-            localStorage.setItem("isLogged", true);
-            globalThis.location.href = "./products";
-        }
-    } else {
-        localStorage.removeItem("isLogged");
-    }
 };
 
 exports.kastorHandler = () => {
     console.log("loading kastor handler");
     globalThis.addEventListener("message", debounce(kastorHandler, 500));
-    globalThis.addEventListener("message", redirectPage, true);
 };

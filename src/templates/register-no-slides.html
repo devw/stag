@@ -41,8 +41,8 @@
 {{?? true }}{{?}}
 
 <!-- FirstName field -->
-{{? it.hasFirstNameBlock || it.yourFirstName }}
-<div>
+{{? it.hasFirstName || it.yourFirstName }}
+<div class="hasFirstName">
     <input
         type="text"
         class="input-text"
@@ -54,8 +54,8 @@
 {{?? true }}{{?}}
 
 <!-- LastName field -->
-{{? it.hasLastNameBlock || it.yourLastName }}
-<div>
+{{? it.hasLastName || it.yourLastName }}
+<div class="hasLastName">
     <input
         type="text"
         class="input-text"
@@ -68,7 +68,7 @@
 
 <!-- Telephone field -->
 {{? it.hasTelephone || it.yourTelephone }}
-<div>
+<div class="hasTelephone">
     <input
         type="text"
         class="input-text"
@@ -80,7 +80,7 @@
 {{?? true }}{{?}}
 
 <!-- Email field -->
-<div>
+<div class="hasEmail">
     <input
         type="email"
         placeholder="{{=it.yourEmail}}"
@@ -95,7 +95,7 @@
 ></div>
 
 <!-- Password field -->
-<div>
+<div class="hasPassword">
     <input
         type="password"
         name="customer[password]"
@@ -121,7 +121,7 @@
 <!-- Password confirmation field -->
 <!-- TODO to simplify -->
 {{? it.hasBirthDate }}
-<div class="birth-date">
+<div class="birth-date hasBirthdate">
     <div class="birth-date-text">Date de naissance</div>
     <input
         placeholder="jj"
@@ -151,7 +151,7 @@
 {{?? true }}{{?}}
 
 <!-- Create account button -->
-<p class="text-center">
+<p class="text-center hasSubmit">
     <input
         class="btn btn-primary"
         disabled=""
@@ -162,7 +162,7 @@
 
 <!-- Subscribe newsletter checkbox -->
 {{? it.hasNewsLetter }}
-<div class="checkbox-container">
+<div class="checkbox-container hasNewsletter">
     <input
         class="checkbox"
         data-register-newscheck=""
