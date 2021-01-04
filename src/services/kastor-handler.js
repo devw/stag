@@ -49,9 +49,12 @@ const kastorHandler = (event) => {
 // shopify events
 const redirectPage = (event) => {
     if (__st?.cid) {
-        console.log(window.location.href);
-        // window.location.href = "./products";
-        globalThis.removeEventListener("message", redirectPage, true);
+        if (!localStorage.getItem("isLogged")) {
+            localStorage.setItem("isLogged", true);
+            globalThis.location.href = "./products";
+        }
+    } else {
+        localStorage.removeItem("isLogged");
     }
 };
 
