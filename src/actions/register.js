@@ -1,11 +1,7 @@
 const { REGISTER_ID, SIGNIN_ID } = require("../templates");
-const {
-    toggleModules,
-    serialize,
-    isFormFilled,
-    isValidPsw,
-    $q,
-} = require("../utils");
+const { toggleModules, serialize, $q } = require("../utils");
+const { isFormFilled, isValidPsw } = require("../utils");
+
 const tgt = {
     form: `.${REGISTER_ID} form`,
     login: `.${REGISTER_ID} .js-login`,
@@ -45,11 +41,10 @@ const onSubmit = async (e) => {
 
     //TODO you do not need serialize!
     const inputs = serialize($q(tgt.form));
-    if (!isValidPsw(inputs)) return null;
+    if (!(await isValidPsw(inputs))) return null;
     $q(tgt.form).action = "/account";
     const resp = await sendHttpRequest("POST", e);
     console.log("shopify response", resp);
-    globalThis.__form = $q(tgt.form);
 };
 
 const changeSlide = (e) => {
