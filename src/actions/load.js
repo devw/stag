@@ -2,10 +2,12 @@ const { init: initLanding } = require("./landing");
 const { init: initSignIn } = require("./sign-in");
 const { init: initRegistration } = require("./register");
 const { $q } = require("../utils/");
+const { LOGIN_BTN } = require("../config");
 
 //TODO refactoring too code repetition
 
 const closeApp = () => {
+    // TODO remove container
     $q(`.container`).style.setProperty("display", "none");
     document.body.classList.remove("remove-scrolling");
 };
@@ -27,12 +29,12 @@ const openAccount = (e) => {
         const dom = $q(".container");
         dom.style.setProperty("display", "flex");
         if (dom.classList.contains("popover")) placePopover(e, dom);
-    }
+    } else window.location.href = "./account";
 };
 
 exports.openAccount = openAccount;
 const $ = document.querySelector.bind(document);
-$(".site-header__account")?.addEventListener("click", openAccount);
+$(LOGIN_BTN)?.addEventListener("click", openAccount, true);
 
 exports.loadActions = () => {
     initLanding();
