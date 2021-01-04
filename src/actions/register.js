@@ -1,5 +1,4 @@
 const { REGISTER_ID, SIGNIN_ID } = require("../templates");
-const { sendHttpRequest } = require("../services");
 const {
     toggleModules,
     serialize,
@@ -42,6 +41,7 @@ const toggleButton = ({ target }) => {
 
 const onSubmit = async (e) => {
     e.preventDefault();
+    const { sendHttpRequest } = require("../services");
 
     //TODO you do not need serialize!
     const inputs = serialize($q(tgt.form));

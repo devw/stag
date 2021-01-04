@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+    <body>
+        <form
+            method="post"
+            action="/account"
+            id="RegisterForm"
+            accept-charset="UTF-8"
+            novalidate="novalidate"
+        >
+            <div>
+                <input
+                    type="hidden"
+                    name="form_type"
+                    value="create_customer"
+                /><input type="hidden" name="utf8" value="✓" />
+            </div>
+            <div class="first">
+                <label for="RegisterForm-FirstName">First Name</label>
+                <!-- TAG -->
+                <input
+                    type="text"
+                    name="customer[first_name]"
+                    id="RegisterForm-FirstName"
+                    autocomplete="given-name"
+                    value="antonio"
+                />
+            </div>
+            <div class="second">
+                <label for="RegisterForm-LastName">Last Name</label>
+                <!-- TAG -->
+                <input
+                    type="text"
+                    name="customer[last_name]"
+                    id="RegisterForm-LastName"
+                    autocomplete="family-name"
+                    value="pierro"
+                />
+            </div>
+            <div class="third">
+                <label for="RegisterForm-email">Email</label>
+                <input
+                    type="email"
+                    name="customer[email]"
+                    id="RegisterForm-email"
+                    autocorrect="off"
+                    autocapitalize="off"
+                    autocomplete="email"
+                    aria-required="true"
+                    value="anto@gmail.com"
+                />
+            </div>
+            <div class="fourth">
+                <label for="RegisterForm-password">Password</label>
+                <input
+                    type="password"
+                    name="customer[password]"
+                    id="RegisterForm-password"
+                    aria-required="true"
+                    value="secret"
+                />
+            </div>
+            <div class="fifth">
+                <label>Metafiled-1</label>
+                <!-- TAG -->
+                <input type="text" key="key-1" value="meta-1" />
+            </div>
+            <div class="sixth">
+                <label>Metafiled-2</label>
+                <!-- TAG -->
+                <input type="text" key="key-2" value="meta-2" />
+            </div>
+            <div class="btn">
+                <p class="text-center">
+                    <input type="submit" value="Submit" class="btn" />
+                </p>
+            </div>
+        </form>
+        <hr />
+        <input type="button" value="shuffle fields" onclick="shuffleFields()" />
+        <input
+            type="button"
+            value="Post metafileds via proxy"
+            onclick="postViaProxy()"
+        />
+
+        <script>
+            const $ = document.querySelector.bind(document);
+            const shuffleFields = () => {
+                const fields = [
+                    "first",
+                    "second",
+                    "third",
+                    "fourth",
+                    "fifth",
+                    "sixth",
+                ];
+                const $ = document.querySelector.bind(document);
+                const fieldsShuffled = fields.sort(() => Math.random() - 0.5);
+                fieldsShuffled.push("btn");
+                fieldsShuffled.forEach((e, i) => {
+                    $(`.${e}`).style.setProperty("order", i);
+                });
+            };
+
+            const submitHandler = (e) => {
+                e.preventDefault();
+                const formData = new FormData(e.target);
+                console.log("submitting form");
+                console.log(Array.from(formData));
+            };
+
+            const metafieldHandler = (e) => {
+                e.preventDefault();
+                const selector = "input:not([name]):not([type='submit'])";
+                const metafields = e.target.querySelectorAll(selector);
+                const metafieldJson = {};
+                metafields.forEach((e) => {
+                    metafieldJson[e.getAttribute("key")] = e.value;
+                });
+
+                console.log(
+                    "\n\nWriting customer_metafields via localStorage... \n\n"
+                );
+                localStorage.setItem(
+                    "customer_metafields",
+                    JSON.stringify(metafieldJson)
+                );
+            };
+
+            const postViaProxy = () => {
+                console.log(localStorage.getItem("customer_metafields"));
+            };
+            $("form").addEventListener("submit", submitHandler);
+            $("form").addEventListener("submit", metafieldHandler);
+        </script>
+    </body>
+</html>
