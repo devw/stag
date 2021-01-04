@@ -47,9 +47,10 @@ const kastorHandler = (event) => {
 };
 
 // shopify events
-const redirectPage = () => {
+const redirectPage = (event) => {
     if (__st?.cid) {
-        window.location.href = "./products";
+        console.log(window.location.href);
+        // window.location.href = "./products";
         globalThis.removeEventListener("message", redirectPage, true);
     }
 };
