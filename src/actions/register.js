@@ -1,7 +1,6 @@
 const { REGISTER_ID, SIGNIN_ID } = require("../templates");
-const { toggleModules, serialize, $q } = require("../utils");
+const { toggleModules, $q } = require("../utils");
 const { isFormFilled, isValidPsw } = require("../utils");
-
 const tgt = {
     form: `.${REGISTER_ID} form`,
     login: `.${REGISTER_ID} .js-login`,
@@ -40,10 +39,7 @@ const toggleButton = ({ target }) => {
 const onSubmit = async (e) => {
     e.preventDefault();
     const { sendHttpRequest } = require("../services");
-
-    //TODO you do not need serialize!
-    const inputs = serialize($q(tgt.form));
-    if (!(await isValidPsw(inputs))) return null;
+    if (!(await isValidPsw($q(tgt.form)))) return null;
     $q(tgt.form).action = "/account";
     const resp = await sendHttpRequest("POST", e);
     console.log("shopify response", resp);

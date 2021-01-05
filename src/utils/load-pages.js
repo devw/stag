@@ -45,12 +45,10 @@ const updateText = (text) => {
     return TEXT;
 };
 
-const updatePages = (text) => {
+exports.updatePages = (text) => {
     text = updateText(text);
     $(`#${APP_ID}`).innerHTML = getTemplate(text);
 };
-
-exports.updatePages = updatePages;
 
 exports.updateCss = (cssVars) => {
     (function traverse(obj, key) {
