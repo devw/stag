@@ -192,11 +192,14 @@
     globalThis.dispatchEvent(event);
 })();
 
+// show error in register form
 (() => {
     const json = {
         data: {
-            setting_id: "register|pswMinLengthErr|",
-            value: "Your password is too short",
+            data: {
+                setting_id: "register|pswMinLengthErr|",
+                value: "Your password is too short",
+            },
         },
     };
 
@@ -225,10 +228,27 @@
     globalThis.dispatchEvent(event);
 })();
 
+// register - label style
 (() => {
     const json = {
         data: {
-            data: { setting_id: "landing|formStyle|", value: "label-go-down" },
+            data: { setting_id: "register|formStyle|", value: "label-go-down" },
+        },
+        target: null,
+    };
+
+    const event = new CustomEvent("message", {
+        detail: json,
+    });
+
+    globalThis.dispatchEvent(event);
+})();
+
+// landing
+(() => {
+    const json = {
+        data: {
+            data: { setting_id: "landing||", value: "" },
         },
         target: null,
     };

@@ -1,6 +1,5 @@
 const { updatePages, $q, showError } = require("../utils");
 const { getTheme } = require("./proxy");
-const { init } = require("../actions/register");
 
 const debounce = (fn, delay) => {
     let timeoutId;
@@ -11,10 +10,11 @@ const debounce = (fn, delay) => {
 };
 
 const changePage = (page) => {
+    const { loadActions } = require("../actions/load");
     const { toggleModules } = require("../utils");
     toggleModules(page);
     $q(".container").style.setProperty("display", "flex");
-    init();
+    // loadActions();
 };
 
 const reorderFields = ({ blocks, order }) => {
