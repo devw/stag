@@ -14,7 +14,7 @@ const changePage = (page) => {
     const { toggleModules } = require("../utils");
     toggleModules(page);
     $q(".container").style.setProperty("display", "flex");
-    // loadActions();
+    loadActions();
 };
 
 const reorderFields = ({ blocks, order }) => {
