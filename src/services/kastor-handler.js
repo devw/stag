@@ -1,10 +1,4 @@
-const {
-    updateCss,
-    updatePages,
-    toggleModules,
-    $q,
-    showError,
-} = require("../utils");
+const { updatePages, $q, showError } = require("../utils");
 const { getTheme } = require("./proxy");
 const { init } = require("../actions/register");
 
@@ -17,6 +11,7 @@ const debounce = (fn, delay) => {
 };
 
 const changePage = (page) => {
+    const { toggleModules } = require("../utils");
     toggleModules(page);
     $q(".container").style.setProperty("display", "flex");
     init();
@@ -27,7 +22,6 @@ const reorderFields = ({ blocks, order }) => {
     Object.keys(blocks).forEach((e) => {
         hash_block[Object.keys(blocks[e])[0]] = e.split("|")[1];
     });
-    console.log(hash_block);
     order.forEach((e, i) => {
         console.log(hash_block[e]);
         const selector = `.${hash_block[e]}`;
@@ -56,6 +50,7 @@ const kastorHandler = (event) => {
     if (!selector) return null;
     const [, page, key, unit] = selector.match(/^(.*?)\|(.*?)\|(.*?)$/);
     const valueAndUnit = typeof value == "object" ? value : `${value}${unit}`;
+    const { updateCss } = require("../utils");
     if (key === "change-theme")
         getTheme(value).then((theme) => updateCss(theme.style));
     else if (/^--/.test(key)) updateCss({ [key]: valueAndUnit });
