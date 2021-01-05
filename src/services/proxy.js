@@ -31,6 +31,7 @@ exports.isRegistered = async (email) => {
 };
 
 exports.getTheme = async (themeName) => {
+    //TODO implements memoization
     const shopName =
         globalThis.Shopify?.shop || "test-login-popup.myshopify.com";
     let endpoint;

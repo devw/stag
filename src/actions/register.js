@@ -1,12 +1,7 @@
 const { REGISTER_ID, SIGNIN_ID } = require("../templates");
-const { sendHttpRequest } = require("../services");
-const {
-    toggleModules,
-    serialize,
-    isFormFilled,
-    isValidPsw,
-    $q,
-} = require("../utils");
+const { toggleModules, serialize, $q } = require("../utils");
+const { isFormFilled, isValidPsw } = require("../utils");
+
 const tgt = {
     form: `.${REGISTER_ID} form`,
     login: `.${REGISTER_ID} .js-login`,
@@ -31,8 +26,10 @@ const toggleSecret = (e) => {
 };
 
 const toggleButton = ({ target }) => {
-    if (target.value.length > 2)
-        target.nextElementSibling.removeAttribute("disabled");
+    if (target.value.length > 2) {
+        const btn = target.closest("form").querySelector("[type='submit']");
+        btn.removeAttribute("disabled");
+    }
 
     const btn = $q(tgt.form).querySelector("input[type='submit']");
     isFormFilled($q(tgt.form))
@@ -42,14 +39,14 @@ const toggleButton = ({ target }) => {
 
 const onSubmit = async (e) => {
     e.preventDefault();
+    const { sendHttpRequest } = require("../services");
 
     //TODO you do not need serialize!
     const inputs = serialize($q(tgt.form));
-    if (!isValidPsw(inputs)) return null;
+    if (!(await isValidPsw(inputs))) return null;
     $q(tgt.form).action = "/account";
     const resp = await sendHttpRequest("POST", e);
     console.log("shopify response", resp);
-    globalThis.__form = $q(tgt.form);
 };
 
 const changeSlide = (e) => {

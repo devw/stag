@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            body {
+                display: flex;
+                flex-direction: column;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="first">1st</div>
+        <div class="second">2nd</div>
+        <div class="third">3rd</div>
+        <div class="fourth">4th</div>
+    </body>
+    <script>
+        const a = ["first", "second", "third", "fourth"];
+        const $ = document.querySelector.bind(document);
+        const shuffled = a.sort(() => Math.random() - 0.5);
+        shuffled.forEach((e, i) => {
+            const selector = `.${e}`;
+            $(selector).style.setProperty("order", i);
+        });
+    </script>
+</html>

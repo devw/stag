@@ -1,16 +1,9 @@
 const { $q } = require("./q-selector");
 const errorSelector = ".js-psw-policy";
-// TODO read from configuration
-const pswPolicy = {
-    pswMinLength: 5,
-    pswMinLengthErr: "Password too short",
-    pswMaxLength: 18,
-    pswMaxLengthErr: "Password too long",
-    pswUppercase: true,
-    pswUppercaseErr: "Missing uppercase letter",
-};
+const { getTheme } = require("../services/proxy");
 
 const showError = (errorMsgs) => {
+    // TODO you should use the css to hide/show!!
     const list = document.createElement("ul");
     errorMsgs.forEach((e) => {
         const item = document.createElement("li");
@@ -26,9 +19,11 @@ const resetErrorMsgs = () => {
     $q(errorSelector).style.setProperty("display", "none");
 };
 
-const getPasswordPolicyErrors = (inputs) => {
+const getPasswordPolicyErrors = async (inputs) => {
     const psw = inputs["customer[password]"];
     const errorMsgs = [];
+
+    const pswPolicy = await getTheme().then((res) => res.text);
 
     if (psw.length < pswPolicy.pswMinLength)
         errorMsgs.push(pswPolicy.pswMinLengthErr);
@@ -36,18 +31,22 @@ const getPasswordPolicyErrors = (inputs) => {
         errorMsgs.push(pswPolicy.pswMaxLengthErr);
     if (pswPolicy.pswUppercase && !/(?=.*[A-Z])/.test(psw))
         errorMsgs.push(pswPolicy.pswUppercaseErr);
-    if (pswPolicy.pswNumber && !/(?=.*\d)/.test(psw))
+    if (pswPolicy.hasPswNumber && !/(?=.*\d)/.test(psw))
         errorMsgs.push(pswPolicy.pswNumberErr);
-    if (pswPolicy.pswSpecialCharacter && !/(?=.*[\W|_])/.test(psw))
+    if (pswPolicy.hasPswSpecialCharacter && !/(?=.*[\W|_])/.test(psw))
         errorMsgs.push(pswPolicy.pswSpecialCharacterErr);
+    if (pswPolicy.hasPswUppercase && !/[A-Z]/.test(psw))
+        errorMsgs.push(pswPolicy.pswUppercaseErr);
 
     return errorMsgs;
 };
 
-exports.isValidPsw = (inputs) => {
+exports.isValidPsw = async (inputs) => {
     resetErrorMsgs();
-    const errorMsgs = getPasswordPolicyErrors(inputs);
+    const errorMsgs = await getPasswordPolicyErrors(inputs);
     return errorMsgs.length === 0 ? true : showError(errorMsgs) && false;
 };
 
 exports.isValidEmail = (email) => /\S+@\S+\.\S+/.test(email);
+
+exports.showError = showError;
