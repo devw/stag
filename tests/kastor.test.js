@@ -290,7 +290,26 @@
         data: {
             data: {
                 setting_id: "landing|--animation|",
-                value: "slide-in",
+                value: "slide-from-right",
+            },
+        },
+        target: null,
+    };
+
+    const event = new CustomEvent("message", {
+        detail: json,
+    });
+
+    globalThis.dispatchEvent(event);
+})();
+
+// social login
+(() => {
+    const json = {
+        data: {
+            data: {
+                setting_id: "landing|hasSocialLogin|",
+                value: true,
             },
         },
         target: null,
