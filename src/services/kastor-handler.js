@@ -20,12 +20,14 @@ const changePage = (page) => {
 const reorderFields = ({ blocks, order }) => {
     const hash_block = {};
     Object.keys(blocks).forEach((e) => {
-        hash_block[Object.keys(blocks[e])[0]] = e.split("|")[1];
+        if (Object.keys(blocks[e])[0])
+            hash_block[Object.keys(blocks[e])[0]] = e.split("|")[1];
     });
     order.forEach((e, i) => {
-        console.log(hash_block[e]);
-        const selector = `.${hash_block[e]}`;
-        $q(selector).style.setProperty("order", i);
+        if (hash_block[e]) {
+            const selector = `.${hash_block[e]}`;
+            $q(selector).style.setProperty("order", i);
+        }
     });
 
     changePage("register");

@@ -138,16 +138,18 @@
 
 // Remove a block
 (() => {
-    const hasFirstNameBlock = {
+    const json = {
         data: {
-            setting_id: "register|hasFirstNameBlock|",
-            value: undefined,
+            data: {
+                setting_id: "register|hasFirstName|",
+                value: undefined,
+            },
+            target: "block:remove",
         },
-        target: "block:remove",
     };
 
     const kastorEvent = new CustomEvent("message", {
-        detail: hasFirstNameBlock,
+        detail: json,
     });
 
     globalThis.dispatchEvent(kastorEvent);
@@ -220,7 +222,7 @@
     const json = {
         data: {
             data: JSON.parse(
-                '{"page_id":"popup-de-login","section_type_id":"register||","section_id":"386801cf-4b7a-4d2a-8607-2616be3002bf","blocks":{"register|hasFirstName|":{"66ae96e1-1c92-4e6d-9bff-82a912ba1c1c":{"register|yourFirstName|":"Votre Prénom"}},"register|hasEmail|":{"054255cf-07e7-401d-afb6-6ab11bc7d702":{}},"register|hasLastName|":{"0e4dc077-ed0c-4d7a-9b60-b8a6ea6bbca6":{"register|yourLastName|":"Votre Nom"}},"register|hasPassword|":{"a560aef9-edd5-428e-9ee0-a7c84bdb59a7":{}}},"order":["a560aef9-edd5-428e-9ee0-a7c84bdb59a7","054255cf-07e7-401d-afb6-6ab11bc7d702","0e4dc077-ed0c-4d7a-9b60-b8a6ea6bbca6","66ae96e1-1c92-4e6d-9bff-82a912ba1c1c"]}'
+                '{"page_id":"popup-de-login","section_type_id":"register||","section_id":"386801cf-4b7a-4d2a-8607-2616be3002bf","blocks":{"register|hasFirstName|":{"66ae96e1-1c92-4e6d-9bff-82a912ba1c1c":{"register|yourFirstName|":"Votre Prénom"}},"register|hasEmail|":{"054255cf-07e7-401d-afb6-6ab11bc7d702":{}},"register|hasLastName|":{},"register|hasPassword|":{"a560aef9-edd5-428e-9ee0-a7c84bdb59a7":{}}},"order":["a560aef9-edd5-428e-9ee0-a7c84bdb59a7","054255cf-07e7-401d-afb6-6ab11bc7d702","0e4dc077-ed0c-4d7a-9b60-b8a6ea6bbca6","66ae96e1-1c92-4e6d-9bff-82a912ba1c1c"]}'
             ),
             target: "block:reorder",
         },
