@@ -6,7 +6,7 @@
 
     const textEvent = {
         setting_id: "landing|loginRegister|",
-        value: "Creazione di login",
+        value: "Creazfione di login",
     };
 
     const layout = {
@@ -153,10 +153,15 @@
     globalThis.dispatchEvent(kastorEvent);
 })();
 
+// change placeholder
 (() => {
     const firstNameBlock = {
-        setting_id: "register|yourFirstName|",
-        value: "Votre Prénom",
+        data: {
+            data: {
+                setting_id: "register|yourFirstName|",
+                value: "Votre Prénom",
+            },
+        },
     };
 
     const kastorEvent = new CustomEvent("message", {
@@ -249,6 +254,44 @@
     const json = {
         data: {
             data: { setting_id: "landing||", value: "" },
+        },
+        target: null,
+    };
+
+    const event = new CustomEvent("message", {
+        detail: json,
+    });
+
+    globalThis.dispatchEvent(event);
+})();
+
+// change fontSize
+(() => {
+    const json = {
+        data: {
+            data: {
+                setting_id: "landing|--large-font-size|em",
+                value: "4",
+            },
+        },
+        target: null,
+    };
+
+    const event = new CustomEvent("message", {
+        detail: json,
+    });
+
+    globalThis.dispatchEvent(event);
+})();
+
+// set animation
+(() => {
+    const json = {
+        data: {
+            data: {
+                setting_id: "landing|--animation|",
+                value: "slide-in",
+            },
         },
         target: null,
     };

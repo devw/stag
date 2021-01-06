@@ -31,7 +31,7 @@ const reorderFields = ({ blocks, order }) => {
     changePage("register");
 };
 
-const getEventData = (event) => {
+const parseEventData = (event) => {
     const e = event.data ? event.data : event.detail.data;
     const data = e.data;
     if (e.target === "block:reorder") {
@@ -46,22 +46,23 @@ const getEventData = (event) => {
 };
 
 const kastorHandler = (event) => {
-    const [selector, value] = getEventData(event);
+    const [selector, value] = parseEventData(event);
     if (!selector) return null;
     const [, page, key, unit] = selector.match(/^(.*?)\|(.*?)\|(.*?)$/);
     const valueAndUnit = typeof value == "object" ? value : `${value}${unit}`;
     const { updateCss } = require("../utils");
+    if (!/--animation/.test(key)) updateCss({ "--animation": "none" });
     if (key === "change-theme")
         getTheme(value).then((theme) => updateCss(theme.style));
-    else if (/^--/.test(key)) updateCss({ [key]: valueAndUnit });
-    else updatePages({ [key]: valueAndUnit == "false" ? false : valueAndUnit });
+    else if (/^--/.test(key)) {
+        updateCss({ [key]: valueAndUnit });
+    } else
+        updatePages({ [key]: valueAndUnit == "false" ? false : valueAndUnit });
 
     if (page) changePage(page);
     // TODO: too fragile check the password policy in this way, you should refactore the code using objects
     if (/^psw.*Err$/.test(key)) showError([value]);
 };
 
-exports.kastorHandler = () => {
-    console.log("loading kastor handler");
+exports.kastorHandler = () =>
     globalThis.addEventListener("message", debounce(kastorHandler, 500));
-};
