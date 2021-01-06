@@ -1,5 +1,6 @@
 const { updatePages, $q, showError } = require("../utils");
 const { getTheme } = require("./proxy");
+const { getBlocksAttr } = require("../utils/load-pages");
 
 const debounce = (fn, delay) => {
     let timeoutId;
@@ -34,22 +35,24 @@ const showBlocks = (blocks) => {
     changePage("register");
 };
 
-const reorderFields = ({ blocks, order }) => {
-    const hash_block = {};
+const getIdsVsBlocks = (json) => {
+    const idsVsBlocks = Object.keys(json).map((e) => ({
+        [Object.keys(json[e])[0]]: e,
+    }));
+    return idsVsBlocks.filter((e) => Object.keys(e)[0] !== "undefined");
+};
 
-    blocks_name = getBlocks(blocks);
-    showBlocks(blocks_name);
+const getOrderedBlocks = ({ blocks, order }) => {
+    let idsVsBlocks = getIdsVsBlocks(blocks);
+    idsVsBlocks = idsVsBlocks.sort(
+        (a, b) =>
+            order.indexOf(Object.keys(a)[0]) - order.indexOf(Object.keys(b)[0])
+    );
 
-    Object.keys(blocks).forEach((e) => {
-        if (Object.keys(blocks[e])[0])
-            hash_block[Object.keys(blocks[e])[0]] = e.split("|")[1];
-    });
-    order.forEach((e, i) => {
-        if (hash_block[e]) {
-            const selector = `.${hash_block[e]}`;
-            $q(selector).style.setProperty("order", i);
-        }
-    });
+    return idsVsBlocks.map((e) => Object.values(e)[0].split("|")[1]);
+
+    // console.log(blocks_order);
+    // blocks_order.filter((e) => blocks);
 };
 
 const getData = (event) => {
@@ -72,18 +75,25 @@ const parseEventData = (event) => {
 };
 
 const kastorHandler = (event) => {
-    // block reorder
+    //reorder blocks
     if (getTarget(event) === "block:reorder") {
-        reorderFields(getData(event));
+        const orderBlocks = getOrderedBlocks(getData(event));
+        console.log(orderBlocks);
+        updatePages({ orderedBlock: orderBlocks });
         changePage("register");
+        // changePage("register");
         return null;
     }
-    // block remove
+    //remove block
     if (getTarget(event) === "block:remove") {
         const { block_type_id } = getData(event);
-        const name = block_type_id.split("|")[1];
-        updatePages({ [name]: false });
+        const blockToDel = block_type_id.split("|")[1];
+        const filteredBlocks = getBlocksAttr().filter((e) => e !== blockToDel);
+
+        updatePages({ orderedBlock: filteredBlocks });
+        updatePages({ [blockToDel]: false });
         changePage("register");
+
         return null;
     }
     const [selector, value] = parseEventData(event);

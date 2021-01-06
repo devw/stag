@@ -136,7 +136,7 @@
     globalThis.dispatchEvent(kastorEvent);
 })();
 
-// Remove a block
+//Remove block
 (() => {
     const json = {
         data: {

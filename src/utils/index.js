@@ -1,4 +1,4 @@
-const { updatePages, updateCss } = require("./load-pages");
+const { updatePages, updateCss, sortBlocks } = require("./load-pages");
 const { toggleModules } = require("./toggle-module");
 const { isValidPsw, isValidEmail, isFormFilled } = require("./input-checker");
 const { showError } = require("./input-checker");
@@ -13,3 +13,4 @@ exports.isValidPsw = isValidPsw;
 exports.isValidEmail = isValidEmail;
 exports.$q = $q;
 exports.$qq = $qq;
+exports.sortBlocks = sortBlocks;

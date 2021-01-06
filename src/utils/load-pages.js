@@ -30,6 +30,8 @@ const appendTemplate = (e) => {
 };
 
 const getTemplate = (data) => {
+    console.log(data.orderedBlock);
+    data.orderedBlock.forEach((e) => (data[e] = true));
     templates.forEach(appendTemplate);
     return doT.template({
         tmpl: document.getElementById(ROOT_ID).text,
@@ -38,11 +40,22 @@ const getTemplate = (data) => {
 };
 
 const updateText = (text) => {
+    console.log(text);
     const hasManyKeys = Reflect.ownKeys(text).length > 1;
     const firstKey = Reflect.ownKeys(text)[0];
     if (hasManyKeys) TEXT = text;
     else TEXT[firstKey] = text[firstKey];
     return TEXT;
+};
+
+const getBlocksAttr = () =>
+    $(`.${REGISTER_ID} form`).getAttribute("data-blocks").split(",");
+
+exports.getBlocksAttr = getBlocksAttr;
+
+exports.sortBlocks = () => {
+    const blocks = getBlocksAttr();
+    blocks.forEach((e, i) => $(`.${e}`).style.setProperty("order", i));
 };
 
 exports.updatePages = (text) => {
@@ -51,6 +64,7 @@ exports.updatePages = (text) => {
 };
 
 exports.updateCss = (cssVars) => {
+    console.log(cssVars);
     (function traverse(obj, key) {
         if (obj !== null && typeof obj == "object") {
             Object.entries(obj).forEach(([key, value]) => traverse(value, key));

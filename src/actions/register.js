@@ -1,6 +1,6 @@
 const { REGISTER_ID, SIGNIN_ID } = require("../templates");
 const { toggleModules, $q } = require("../utils");
-const { isFormFilled, isValidPsw } = require("../utils");
+const { isFormFilled, isValidPsw, sortBlocks } = require("../utils");
 const tgt = {
     form: `.${REGISTER_ID} form`,
     login: `.${REGISTER_ID} .js-login`,
@@ -57,7 +57,7 @@ const changeSlide = (e) => {
 
 exports.init = () => {
     const form = $q(tgt.form);
-
+    sortBlocks();
     form.addEventListener("input", toggleButton);
     form.querySelectorAll(".js-next, .js-prev").forEach((e) =>
         e.addEventListener("click", changeSlide)
