@@ -36,6 +36,7 @@ const showBlocks = (blocks) => {
 
 const reorderFields = ({ blocks, order }) => {
     const hash_block = {};
+
     blocks_name = getBlocks(blocks);
     showBlocks(blocks_name);
 
@@ -49,8 +50,6 @@ const reorderFields = ({ blocks, order }) => {
             $q(selector).style.setProperty("order", i);
         }
     });
-
-    changePage("register");
 };
 
 const getData = (event) => {
@@ -76,12 +75,13 @@ const kastorHandler = (event) => {
     // block reorder
     if (getTarget(event) === "block:reorder") {
         reorderFields(getData(event));
+        changePage("register");
         return null;
     }
     // block remove
     if (getTarget(event) === "block:remove") {
-        const { setting_id } = getData(event);
-        const name = setting_id.split("|")[1];
+        const { block_type_id } = getData(event);
+        const name = block_type_id.split("|")[1];
         updatePages({ [name]: false });
         changePage("register");
         return null;

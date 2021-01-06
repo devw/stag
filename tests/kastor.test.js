@@ -141,7 +141,7 @@
     const json = {
         data: {
             data: {
-                setting_id: "register|hasLastName|",
+                block_type_id: "register|hasLastName|",
                 value: undefined,
             },
             target: "block:remove",
@@ -221,9 +221,28 @@
 (() => {
     const json = {
         data: {
-            data: JSON.parse(
-                '{"page_id":"popup-de-login","section_type_id":"register||","section_id":"386801cf-4b7a-4d2a-8607-2616be3002bf","blocks":{"register|hasFirstName|":{"66ae96e1-1c92-4e6d-9bff-82a912ba1c1c":{"register|yourFirstName|":"Votre Prénom"}},"register|hasEmail|":{"054255cf-07e7-401d-afb6-6ab11bc7d702":{}},"register|hasLastName|":{},"register|hasPassword|":{"a560aef9-edd5-428e-9ee0-a7c84bdb59a7":{}}},"order":["66ae96e1-1c92-4e6d-9bff-82a912ba1c1c","054255cf-07e7-401d-afb6-6ab11bc7d702","0e4dc077-ed0c-4d7a-9b60-b8a6ea6bbca6","a560aef9-edd5-428e-9ee0-a7c84bdb59a7"]}'
-            ),
+            data: {
+                blocks: {
+                    "register|hasFirstName|": {
+                        "66ae96e1-1c92-4e6d-9bff-82a912ba1c1c": {
+                            "register|yourFirstName|": "Votre Prénom",
+                        },
+                    },
+                    "register|hasEmail|": {
+                        "054255cf-07e7-401d-afb6-6ab11bc7d702": {},
+                    },
+                    "register|hasLastName|": {},
+                    "register|hasPassword|": {
+                        "a560aef9-edd5-428e-9ee0-a7c84bdb59a7": {},
+                    },
+                },
+                order: [
+                    "a560aef9-edd5-428e-9ee0-a7c84bdb59a7",
+                    "66ae96e1-1c92-4e6d-9bff-82a912ba1c1c",
+                    "054255cf-07e7-401d-afb6-6ab11bc7d702",
+                    "0e4dc077-ed0c-4d7a-9b60-b8a6ea6bbca6",
+                ],
+            },
             target: "block:reorder",
         },
     };
