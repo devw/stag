@@ -31,7 +31,7 @@ const appendTemplate = (e) => {
 
 const getTemplate = (data) => {
     console.log(data.orderedBlock);
-    data.orderedBlock.forEach((e) => (data[e] = true));
+    data?.orderedBlock?.forEach((e) => (data[e] = true));
     templates.forEach(appendTemplate);
     return doT.template({
         tmpl: document.getElementById(ROOT_ID).text,
@@ -55,7 +55,7 @@ exports.getBlocksAttr = getBlocksAttr;
 
 exports.sortBlocks = () => {
     const blocks = getBlocksAttr();
-    blocks.forEach((e, i) => $(`.${e}`).style.setProperty("order", i));
+    blocks.forEach((e, i) => $(`.${e}`)?.style?.setProperty("order", i));
 };
 
 exports.updatePages = (text) => {
