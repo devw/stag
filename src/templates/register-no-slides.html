@@ -7,15 +7,13 @@
 <!-- Choice List by TAG -->
 {{? (it.hasTag || it.choiceList || it.choiceTag) && !it.hasMetafield }}
 <!-- loop -->
-hasTags
-<!-- loop -->
 <div class="choice-block {{?it.hasMultiLine }}multi-line{{??true}} {{?}}">
     {{~it.choiceList :value:index}}
     <div>
         <input
             type="checkbox"
             name="customer[{{=it.choiceTag}}]"
-            value="{{=value}}"
+            value="{{=it.choiceTag}}_{{=value}}"
         />
         <label>{{=value}}</label>
     </div>
@@ -25,8 +23,6 @@ hasTags
 
 <!-- Choice List by METAFIELD -->
 {{? (it.hasMetafield || it.metaChoices) && !it.hasTag}}
-<!-- loop -->
-hasMetafield
 <!-- loop -->
 {{~it.metaChoices :value:index}}
 <div>
