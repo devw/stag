@@ -29,8 +29,21 @@ const appendTemplate = (e) => {
     document.body.appendChild(elemDiv);
 };
 
+const checkTagOrMetadata = (tagOrMetadata) => {
+    const isTag = tagOrMetadata === "hasTag";
+    return {
+        hasTag: isTag,
+        hasMetafield: !isTag,
+    };
+};
+
 const getTemplate = (data) => {
     data?.orderedBlock?.forEach((e) => (data[e] = true));
+    if (data.tagOrMetadata) {
+        newObj = checkTagOrMetadata(data.tagOrMetadata);
+        data = { ...data, ...newObj };
+    }
+
     templates.forEach(appendTemplate);
     return doT.template({
         tmpl: document.getElementById(ROOT_ID).text,

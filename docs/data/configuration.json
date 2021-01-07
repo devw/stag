@@ -56,6 +56,9 @@
       "pswSpecialCharacterErr":"The password must contain at least a special character",
       "confirmatio-password-settings":"",
       "confirmatio-password-error":"The two passwords do not match",
-      "orderedBlock":["hasEmail","hasLastName","hasFirstName","hasPassword"]
+      "orderedBlock":["hasEmail","hasLastName","hasFirstName","hasPassword"],
+      "choiceList": ["Mr", "Mrs"],
+      "hasMultiLine": true,
+      "metaChoices" : [{"key": "address", "value": "write your address"},{"key": "city", "value": "write your city"} ]
    }
 }
