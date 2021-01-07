@@ -6,7 +6,7 @@ const signInTmpl = require("./sign-in.html");
 const activateTmpl = require("./activate.html");
 const registerNoSlidesTmpl = require("./register-no-slides.html");
 const registerWithSlidesTmpl = require("./register-with-slides.html");
-const [APP_ID, ROOT_ID, CONTAINER_ID] = ["aaa", "bbb", "container"];
+const [APP_ID, ROOT_ID, CONTAINER_ID] = ["login-popup", "bbb", "container"];
 const [LANDING_ID, REGISTER_ID, SIGNIN_ID] = ["landing", "register", "signin"];
 const [ACTIVATE_ID] = ["activate"];
 

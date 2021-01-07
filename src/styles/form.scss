@@ -24,11 +24,8 @@ input {
     padding: var(--input-padding);
 }
 
-label {
+#login-popup label {
     z-index: 0; //-1
-}
-
-label {
     position: absolute;
     left: 0;
     top: 0;
