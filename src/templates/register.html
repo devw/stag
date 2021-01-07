@@ -12,11 +12,7 @@
     class="{{=it.formStyle}}"
     data-blocks="{{=it.orderedBlock}}"
 >
-    <input
-        type="hidden"
-        name="return_to"
-        value="{{=it.redirectAfterRegister}}"
-    />
-    {{? it.hasCarousel }} {{#def.registerWithSlides }} {{?? true }}
+    <input type="hidden" name="return_to" value="{{=it.redirectAfterRegister ||
+    "/"}}" /> {{? it.hasCarousel }} {{#def.registerWithSlides }} {{?? true }}
     {{#def.registerNoSlides }} {{?}}
 </form>
