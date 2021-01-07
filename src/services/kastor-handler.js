@@ -80,8 +80,7 @@ const kastorHandler = (event) => {
         const orderBlocks = getOrderedBlocks(getData(event));
         console.log(orderBlocks);
         updatePages({ orderedBlock: orderBlocks });
-        changePage("register");
-        // changePage("register");
+        changePage("register"); // TODO remove magic value
         return null;
     }
     //remove block
@@ -92,14 +91,26 @@ const kastorHandler = (event) => {
 
         updatePages({ orderedBlock: filteredBlocks });
         updatePages({ [blockToDel]: false });
-        changePage("register");
+        // TODO remove magic value
+        changePage("register"); // TODO remove magic value
 
         return null;
     }
     const [selector, value] = parseEventData(event);
+
     if (!selector) return null;
     const [, page, key, unit] = selector.match(/^(.*?)\|(.*?)\|(.*?)$/);
     const valueAndUnit = typeof value == "object" ? value : `${value}${unit}`;
+
+    //tag or metadata?
+    if (selector === "register|tagOrMetadata|") {
+        const isTag = value === "hasTag";
+        updatePages({ hasTag: isTag });
+        updatePages({ hasMetafield: !isTag });
+        changePage(page);
+        return null;
+    }
+
     const { updateCss } = require("../utils");
     if (!/--animation/.test(key)) updateCss({ "--animation": "none" });
     if (key === "change-theme")

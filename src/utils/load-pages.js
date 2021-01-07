@@ -30,7 +30,6 @@ const appendTemplate = (e) => {
 };
 
 const getTemplate = (data) => {
-    console.log(data.orderedBlock);
     data?.orderedBlock?.forEach((e) => (data[e] = true));
     templates.forEach(appendTemplate);
     return doT.template({
@@ -40,7 +39,6 @@ const getTemplate = (data) => {
 };
 
 const updateText = (text) => {
-    console.log(text);
     const hasManyKeys = Reflect.ownKeys(text).length > 1;
     const firstKey = Reflect.ownKeys(text)[0];
     if (hasManyKeys) TEXT = text;
@@ -64,7 +62,6 @@ exports.updatePages = (text) => {
 };
 
 exports.updateCss = (cssVars) => {
-    console.log(cssVars);
     (function traverse(obj, key) {
         if (obj !== null && typeof obj == "object") {
             Object.entries(obj).forEach(([key, value]) => traverse(value, key));

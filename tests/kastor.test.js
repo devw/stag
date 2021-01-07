@@ -75,48 +75,56 @@
     globalThis.dispatchEvent(kastorEvent);
 })();
 
-// TESTING MULTI-CHOICE BLOCK
+// TESTING METAFIELD
 (() => {
-    const metaChoices = {
-        setting_id: "register|metaChoices|",
-        value: [
-            { key: "gender", value: "Mr." },
-            { key: "gender", value: "Mrs." },
-            { key: "gender", value: "Ms." },
-            { key: "gender", value: "Miss." },
-        ],
+    const json = {
+        data: {
+            data: {
+                setting_id: "register|metaChoices|",
+                value: [
+                    { key: "key-1", value: "meta-label-1" },
+                    { key: "key-2", value: "meta-label-2" },
+                ],
+            },
+        },
     };
 
     const kastorEvent = new CustomEvent("message", {
-        detail: metaChoices,
+        detail: json,
     });
 
     globalThis.dispatchEvent(kastorEvent);
 })();
 
-// TESTING LIST-CHOICE BLOCK
+// TESTING TAG
 (() => {
-    let choiceList = {
-        setting_id: "register|choiceList|",
-        value: ["item_1", "item_2", "item_3", "item_4"],
+    json = {
+        data: {
+            data: {
+                setting_id: "register|choiceList|",
+                value: ["item_1", "item_2", "item_3", "item_4"],
+            },
+        },
     };
-
-    let kastorEvent = new CustomEvent("message", {
-        detail: choiceList,
-    });
-
-    globalThis.dispatchEvent(kastorEvent);
-
-    const choiceMeta = {
-        setting_id: "register|choiceMeta|",
-        value: "gender",
-    };
-
     kastorEvent = new CustomEvent("message", {
-        detail: choiceMeta,
+        detail: json,
     });
-
     globalThis.dispatchEvent(kastorEvent);
+
+    json = {
+        data: {
+            data: {
+                setting_id: "register|choiceTag|",
+                value: "gender",
+            },
+        },
+    };
+    kastorEvent = new CustomEvent("message", {
+        detail: json,
+    });
+    setTimeout(() => {
+        globalThis.dispatchEvent(kastorEvent);
+    }, 1000);
 })();
 
 // Add a block
@@ -133,6 +141,22 @@
         detail: hasFirstNameBlock,
     });
 
+    globalThis.dispatchEvent(kastorEvent);
+})();
+
+//Choice Block - radio click
+(() => {
+    json = {
+        data: {
+            data: {
+                setting_id: "register|tagOrMetadata|",
+                value: "hasTag", // "hasMetafield"
+            },
+        },
+    };
+    kastorEvent = new CustomEvent("message", {
+        detail: json,
+    });
     globalThis.dispatchEvent(kastorEvent);
 })();
 
