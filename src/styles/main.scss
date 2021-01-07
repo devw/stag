@@ -73,6 +73,7 @@ body.remove-scrolling {
 .sub-title {
     font-size: var(--medium-text-size);
     font-weight: var(--medium-font-weight);
+    color: var(--secondaty-text-color, #02100a);
 }
 
 // Buttons
@@ -110,6 +111,7 @@ body.remove-scrolling {
     right: 14px;
     top: 0;
     transform: rotate(45deg);
+    color: var(--ternary-text-color, #0d3c32);
 }
 
 // links
