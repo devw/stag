@@ -46,8 +46,10 @@ const updateText = (text) => {
     return TEXT;
 };
 
-const getBlocksAttr = () =>
-    $(`.${REGISTER_ID} form`).getAttribute("data-blocks").split(",");
+const getBlocksAttr = () => {
+    const blocks = $(`.${REGISTER_ID} form`).getAttribute("data-blocks");
+    return blocks.length > 0 ? blocks.split(",") : [];
+};
 
 exports.getBlocksAttr = getBlocksAttr;
 
