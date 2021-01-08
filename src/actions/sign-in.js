@@ -1,7 +1,7 @@
 const { SIGNIN_ID, REGISTER_ID } = require("../templates/");
 const { $q, isValidEmail, isValidPsw } = require("../utils/");
 const { sendHttpRequest } = require("../services");
-const { serialize, toggleModules } = require("../utils");
+const { toggleModules } = require("../utils");
 
 const tgt = {
     form: `.${SIGNIN_ID} form`,
@@ -11,8 +11,8 @@ const tgt = {
 };
 
 // TODO refactor this part
-const areInputsValid = (inputs) => {
-    if (!isValidPsw(inputs["customer[password]"])) {
+const areInputsValid = () => {
+    if (!isValidPsw($q(tgt.form))) {
         $q(tgt.pswFormatError).style.setProperty("display", "block");
         return false;
     } else {
@@ -23,8 +23,7 @@ const areInputsValid = (inputs) => {
 
 const onSubmit = async (e) => {
     e.preventDefault();
-    const inputs = serialize($q(tgt.form));
-    if (!areInputsValid(inputs)) return null;
+    if (!areInputsValid()) return null;
     $q(tgt.form).action = "/account/login";
     const resp = await sendHttpRequest("POST", e);
     console.log("shopify response", resp);

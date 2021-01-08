@@ -1,9 +1,8 @@
 const { LANDING_ID, REGISTER_ID, SIGNIN_ID } = require("../templates/");
 const { isRegistered } = require("../services");
-const { toggleModules, $q, $qq } = require("../utils");
+const { toggleModules, $qq } = require("../utils");
 const disableBtn = (btn) => btn.setAttribute("disabled", "true");
 let form;
-globalThis.__toggleModules = toggleModules;
 
 const activeBtn = (btn, target) => {
     btn.removeAttribute("disabled");
@@ -32,7 +31,6 @@ const signIn = () => {
 };
 
 exports.init = () => {
-    toggleModules(LANDING_ID);
     form = $qq(`.${LANDING_ID}`, "form");
     form.addEventListener("input", toggleButton);
     form.addEventListener("submit", onSubmit);

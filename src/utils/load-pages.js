@@ -29,7 +29,21 @@ const appendTemplate = (e) => {
     document.body.appendChild(elemDiv);
 };
 
+const checkTagOrMetadata = (tagOrMetadata) => {
+    const isTag = tagOrMetadata === "hasTag";
+    return {
+        hasTag: isTag,
+        hasMetafield: !isTag,
+    };
+};
+
 const getTemplate = (data) => {
+    data?.orderedBlock?.forEach((e) => (data[e] = true));
+    if (data.tagOrMetadata) {
+        newObj = checkTagOrMetadata(data.tagOrMetadata);
+        data = { ...data, ...newObj };
+    }
+
     templates.forEach(appendTemplate);
     return doT.template({
         tmpl: document.getElementById(ROOT_ID).text,
@@ -45,12 +59,22 @@ const updateText = (text) => {
     return TEXT;
 };
 
-const updatePages = (text) => {
+const getBlocksAttr = () => {
+    const blocks = $(`.${REGISTER_ID} form`).getAttribute("data-blocks");
+    return blocks.length > 0 ? blocks.split(",") : [];
+};
+
+exports.getBlocksAttr = getBlocksAttr;
+
+exports.sortBlocks = () => {
+    const blocks = getBlocksAttr();
+    blocks.forEach((e, i) => $(`.${e}`)?.style?.setProperty("order", i));
+};
+
+exports.updatePages = (text) => {
     text = updateText(text);
     $(`#${APP_ID}`).innerHTML = getTemplate(text);
 };
-
-exports.updatePages = updatePages;
 
 exports.updateCss = (cssVars) => {
     (function traverse(obj, key) {

@@ -1,8 +1,6 @@
 <img class="image" />
 <div class="title">{{=it.createAccount}}</div>
-<div class="subtitle text t-4">
-    <p>{{=it.fillInfoToCreateAccount}}</p>
-</div>
+<div class="sub-title text t-4">{{=it.fillInfoToCreateAccount}}</div>
 <div class="error js-psw-policy"></div>
 <form
     method="post"
@@ -10,12 +8,9 @@
     accept-charset="UTF-8"
     novalidate="novalidate"
     class="{{=it.formStyle}}"
+    data-blocks="{{=it.orderedBlock}}"
 >
-    <input
-        type="hidden"
-        name="return_to"
-        value="{{=it.redirectAfterRegister}}"
-    />
-    {{? it.hasCarousel }} {{#def.registerWithSlides }} {{?? true }}
+    <input type="hidden" name="return_to" value="{{=it.redirectAfterRegister ||
+    "/"}}" /> {{? it.hasCarousel }} {{#def.registerWithSlides }} {{?? true }}
     {{#def.registerNoSlides }} {{?}}
 </form>

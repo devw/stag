@@ -1,8 +1,9 @@
 const { init: initLanding } = require("./landing");
 const { init: initSignIn } = require("./sign-in");
 const { init: initRegistration } = require("./register");
-const { $q } = require("../utils/");
+const { $q, toggleModules } = require("../utils/");
 const { LOGIN_BTN } = require("../config");
+const { LANDING_ID } = require("../templates/");
 
 //TODO refactoring too code repetition
 
@@ -26,6 +27,7 @@ const openAccount = (e) => {
     e?.preventDefault();
     e?.stopPropagation();
     if (!globalThis.__st?.cid) {
+        toggleModules(LANDING_ID);
         const dom = $q(".container");
         dom.style.setProperty("display", "flex");
         if (dom.classList.contains("popover")) placePopover(e, dom);
@@ -37,8 +39,8 @@ const $ = document.querySelector.bind(document);
 $(LOGIN_BTN)?.addEventListener("click", openAccount, true);
 
 exports.loadActions = () => {
-    initLanding();
     initContainer();
+    initLanding();
     initSignIn();
     initRegistration();
 };

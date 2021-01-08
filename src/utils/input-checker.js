@@ -41,8 +41,19 @@ const getPasswordPolicyErrors = async (inputs) => {
     return errorMsgs;
 };
 
-exports.isValidPsw = async (inputs) => {
+const serialize = (form) => {
+    const reducer = (acc, cur) => ({ ...acc, [cur[0]]: cur[1] });
+    return Array.from(new FormData(form)).reduce(reducer, {});
+};
+
+exports.isFormFilled = (form) => {
+    const inputs = serialize(form);
+    return Object.values(inputs).every((e) => e.length > 0);
+};
+
+exports.isValidPsw = async (form) => {
     resetErrorMsgs();
+    const inputs = serialize(form);
     const errorMsgs = await getPasswordPolicyErrors(inputs);
     return errorMsgs.length === 0 ? true : showError(errorMsgs) && false;
 };

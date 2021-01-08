@@ -1,13 +1,5 @@
-// .form-container {
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-//     height: 100vh;
-//     flex-direction: column;
-//     gap: 4em;
-// }
-
 form {
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
 }
@@ -34,9 +26,6 @@ input {
 
 label {
     z-index: 0; //-1
-}
-
-label {
     position: absolute;
     left: 0;
     top: 0;

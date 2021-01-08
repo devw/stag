@@ -4,44 +4,40 @@
     value="✓"
 />
 
-<!-- Multi-Choice field -->
-{{? it.hasChoiceBlock || it.metaChoices }}
-<div
-    class="choice-block {{?it.hasMultiChoice }}multi-choice{{??true}} {{?}} {{?it.hasMultiLine }}multi-line{{??true}} {{?}}"
->
-    {{~it.metaChoices :value:index}}
-    <div>
-        <input
-            type="checkbox"
-            name="{{=value.key}}-{{=value.value}}"
-            value="{{=value.key}}-{{=value.value}}"
-        />
-        <label for="scales"> {{=value.value}} </label>
-    </div>
-    {{~}}
-</div>
-{{?? true }}{{?}}
-
-<!-- Choice List -->
-{{? it.hasChoiceList || it.choiceList }}
-<div
-    class="choice-block {{?it.hasMultiChoice }}multi-choice{{??true}} {{?}} {{?it.hasMultiLine }}multi-line{{??true}} {{?}}"
->
+<!-- Choice List by TAG -->
+{{? (it.hasTag || it.choiceList || it.choiceTag) && !it.hasMetafield }}
+<!-- loop -->
+<div class="choice-block {{?it.hasMultiLine }}multi-line{{??true}} {{?}}">
     {{~it.choiceList :value:index}}
     <div>
         <input
             type="checkbox"
-            name="{{=value}}"
-            value="{{=it.choiceMeta}}#{{=value}}"
+            name="customer[{{=it.choiceTag}}]"
+            value="{{=it.choiceTag}}_{{=value}}"
         />
-        <label> {{=value}} </label>
+        <label>{{=value}}</label>
     </div>
     {{~}}
 </div>
 {{?? true }}{{?}}
 
+<!-- Choice List by METAFIELD -->
+{{? (it.hasMetafield || it.metaChoices) && !it.hasTag}}
+<!-- loop -->
+{{~it.metaChoices :value:index}}
+<div>
+    <input
+        type="text"
+        class="input-text"
+        key="{{=value.key}}"
+        placeholder="{{=value.value}}"
+    />
+    <label> {{=value.value}} </label>
+</div>
+{{~}} {{?? true }}{{?}}
+
 <!-- FirstName field -->
-{{? it.hasFirstName || it.yourFirstName }}
+{{? it.hasFirstName }}
 <div class="hasFirstName">
     <input
         type="text"
@@ -54,7 +50,7 @@
 {{?? true }}{{?}}
 
 <!-- LastName field -->
-{{? it.hasLastName || it.yourLastName }}
+{{? it.hasLastName }}
 <div class="hasLastName">
     <input
         type="text"
@@ -67,7 +63,7 @@
 {{?? true }}{{?}}
 
 <!-- Telephone field -->
-{{? it.hasTelephone || it.yourTelephone }}
+{{? it.hasTelephone }}
 <div class="hasTelephone">
     <input
         type="text"
@@ -115,7 +111,6 @@
 </div>
 {{?? true }}{{?}}
 
-<!-- Password confirmation field -->
 <!-- TODO to simplify -->
 {{? it.hasBirthDate }}
 <div class="birth-date hasBirthdate">
