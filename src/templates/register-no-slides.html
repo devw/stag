@@ -7,7 +7,22 @@
     name="utf8"
     value="✓"
 />
-hasMetafield:{{=it.hasMetafield}} hasTag:{{=it.hasTag}}
+
+<label>Do you prefer tea or coffee?</label><br />
+<input
+    type="radio"
+    id="CustomerFormTea"
+    name="customer[note][Tea or Coffee]"
+    value="Tea"
+/>
+Tea<br />
+<input
+    type="radio"
+    id="CustomerFormCoffee"
+    name="customer[note][Tea or Coffee]"
+    value="Coffee"
+/>
+Coffee hasMetafield:{{=it.hasMetafield}} hasTag:{{=it.hasTag}}
 <!-- Choice List by TAG -->
 {{? (it.hasTag || it.choiceList || it.choiceTag) && !it.hasMetafield }}
 <!-- loop -->
@@ -75,8 +90,10 @@ METAFIELD block
     <input
         type="text"
         class="input-text"
-        name="telephone"
+        tagOrMetadata="{{=it.telephoneTagOrMetadata}}"
+        key="{{=it.telephoneNamespace}}:{{=it.telephoneKey}}"
         placeholder="{{=it.yourTelephone}}"
+        name="customer[note][phonenumber]"
     />
     <label>{{=it.yourTelephone}}</label>
 </div>
