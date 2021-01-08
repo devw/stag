@@ -34,8 +34,8 @@ exports.getTheme = async (themeName) => {
     //TODO implements memoization
     const shopName =
         globalThis.Shopify?.shop || "test-login-popup.myshopify.com";
-    // const endpoint = `https://login-popup-dev-theme.s3.amazonaws.com/${shopName}/configuration.json`;
-    const endpoint = "data/configuration.json";
+    const endpoint = `https://login-popup-dev-theme.s3.amazonaws.com/${shopName}/configuration.json`;
+    // const endpoint = "data/configuration.json";
     console.log(endpoint);
     const result = await globalThis.fetch(endpoint, {
         headers: { pragma: "no-cache" },

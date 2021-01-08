@@ -42,8 +42,8 @@
      ],
      "metaChoices":[
         {
-           "key":"",
-           "value":""
+           "key":"k1",
+           "value":"v1"
         }
      ],
      "tagOrMetadata":"hasTag",

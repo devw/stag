@@ -43,7 +43,6 @@ const getTemplate = (data) => {
         newObj = checkTagOrMetadata(data.tagOrMetadata);
         data = { ...data, ...newObj };
     }
-
     templates.forEach(appendTemplate);
     return doT.template({
         tmpl: document.getElementById(ROOT_ID).text,
