@@ -1,4 +1,6 @@
+{{? it.hasTag}}
 <input type="hidden" name="customer[tags]" value="" />
+{{?? true }}{{?}}
 
 <input type="hidden" name="form_type" value="create_customer" /><input
     type="hidden"
@@ -30,17 +32,16 @@ TAG block
 <!-- loop -->
 METAFIELD block
 <!-- loop -->
-{{~it.metaChoices :value:index}}
 <div>
     <input
         type="text"
         class="input-text"
-        key="{{=value.key}}"
-        placeholder="{{=value.value}}"
+        metafiled-input="{{=it.choiceNamespace}}|{{=it.choiceKey}}"
+        placeholder="{{=it.choicePlaceholder}}"
     />
-    <label> {{=value.value}} </label>
+    <label>{{=it.choicePlaceholder}}</label>
 </div>
-{{~}} {{?? true }}{{?}}
+{{?? true }}{{?}}
 
 <!-- FirstName field -->
 {{? it.hasFirstName }}

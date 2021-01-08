@@ -105,6 +105,7 @@ const kastorHandler = (event) => {
     //tag or metadata?
     if (selector === "register|tagOrMetadata|") {
         const isTag = value === "hasTag";
+        updatePages({ tagOrMetadata: value });
         updatePages({ hasTag: isTag });
         updatePages({ hasMetafield: !isTag });
         changePage(page);

@@ -16,6 +16,25 @@ const addTags = ({ value }) => {
     inputTag.value = value;
 };
 
+const storeMetafield = () => {
+    const selector = $q("[metafiled-input]");
+    const [namespace, key] = selector
+        .getAttribute("metafiled-input")
+        .split("|");
+    const value = selector.value;
+    localStorage.setItem(
+        "customer_metafields",
+        JSON.stringify([
+            {
+                namespace: namespace,
+                key: key,
+                value: value,
+            },
+        ])
+    );
+    console.log("localStorage", localStorage.getItem("customer_metafields"));
+};
+
 const handleChoiceBlock = ({ target, currentTarget }) => {
     if (!currentTarget.classList.contains(multiChoiceSelector)) {
         currentTarget.querySelectorAll("[type='checkbox']").forEach((e) => {
@@ -45,6 +64,7 @@ const toggleButton = ({ target }) => {
 
 const onSubmit = async (e) => {
     e.preventDefault();
+    storeMetafield();
     const { sendHttpRequest } = require("../services");
     if (!(await isValidPsw($q(tgt.form)))) return null;
     $q(tgt.form).action = "/account";
