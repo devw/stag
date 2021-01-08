@@ -9,6 +9,8 @@
 <!-- Choice List by TAG -->
 {{? (it.hasTag || it.choiceList || it.choiceTag) && !it.hasMetafield }}
 <!-- loop -->
+TAG block
+<!-- loop -->
 <div class="choice-block {{?it.hasMultiLine }}multi-line{{??true}} {{?}}">
     {{~it.choiceList :value:index}}
     <div>
@@ -25,6 +27,8 @@
 
 <!-- Choice List by METAFIELD -->
 {{? (it.hasMetafield || it.metaChoices) && !it.hasTag}}
+<!-- loop -->
+METAFIELD block
 <!-- loop -->
 {{~it.metaChoices :value:index}}
 <div>
