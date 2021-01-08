@@ -1,4 +1,4 @@
-<input type="hidden" name="customer[tags]" value="lng:fr, usr:vip" />
+<input type="hidden" name="customer[tags]" value="" />
 
 <input type="hidden" name="form_type" value="create_customer" /><input
     type="hidden"
@@ -15,7 +15,7 @@
         <input
             type="checkbox"
             name="customer[{{=it.choiceTag}}]"
-            value="{{=it.choiceTag}}_{{=value}}"
+            value="{{=it.choiceTag}}:{{=value}}"
         />
         <label>{{=value}}</label>
     </div>

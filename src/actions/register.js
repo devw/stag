@@ -10,12 +10,19 @@ const tgt = {
 
 const multiChoiceSelector = "multi-choice";
 
+const addTags = ({ value }) => {
+    const inputTag = $q(tgt.form).querySelector("[name='customer[tags]'");
+    inputTag.value = "";
+    inputTag.value = value;
+};
+
 const handleChoiceBlock = ({ target, currentTarget }) => {
     if (!currentTarget.classList.contains(multiChoiceSelector)) {
-        currentTarget
-            .querySelectorAll("[type='checkbox']")
-            .forEach((e) => (e.checked = false));
+        currentTarget.querySelectorAll("[type='checkbox']").forEach((e) => {
+            e.checked = false;
+        });
         target.checked = true;
+        addTags(target);
     }
 };
 
