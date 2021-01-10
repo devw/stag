@@ -8,53 +8,18 @@
     value="✓"
 />
 
-<label>Do you prefer tea or coffee?</label><br />
-<input
-    type="radio"
-    id="CustomerFormTea"
-    name="customer[note][Tea or Coffee]"
-    value="Tea"
-/>
-Tea<br />
-<input
-    type="radio"
-    id="CustomerFormCoffee"
-    name="customer[note][Tea or Coffee]"
-    value="Coffee"
-/>
-Coffee hasMetafield:{{=it.hasMetafield}} hasTag:{{=it.hasTag}}
 <!-- Choice List by TAG -->
-{{? (it.hasTag || it.choiceList || it.choiceTag) && !it.hasMetafield }}
-<!-- loop -->
-TAG block
+{{? (it.hasChoice) }}
 <!-- loop -->
 <div class="choice-block {{?it.hasMultiLine }}multi-line{{??true}} {{?}}">
     {{~it.choiceList :value:index}}
     <div>
-        <input
-            type="checkbox"
-            name="customer[{{=it.choiceTag}}]"
-            value="{{=it.choiceTag}}:{{=value}}"
-        />
+        <input type="checkbox" {{? it.isChoiceTag ===
+        "hasTag"}}data-tag={{=it.choiceTag}}{{?? true
+        }}data-metafield="todo"{{?}} value="{{=value}}" />
         <label>{{=value}}</label>
     </div>
     {{~}}
-</div>
-{{?? true }}{{?}}
-
-<!-- Choice List by METAFIELD -->
-{{? (it.hasMetafield || it.metaChoices) && !it.hasTag}}
-<!-- loop -->
-METAFIELD block
-<!-- loop -->
-<div>
-    <input
-        type="text"
-        class="input-text"
-        metafiled-input="{{=it.choiceNamespace}}|{{=it.choiceKey}}"
-        placeholder="{{=it.choicePlaceholder}}"
-    />
-    <label>{{=it.choicePlaceholder}}</label>
 </div>
 {{?? true }}{{?}}
 
@@ -136,33 +101,11 @@ METAFIELD block
 {{?? true }}{{?}}
 
 <!-- TODO to simplify -->
-{{? it.hasBirthDate }}
-<div class="birth-date hasBirthdate">
-    <div class="birth-date-text">Date de naissance</div>
-    <input
-        placeholder="jj"
-        class="input-text input__birth"
-        data-register-day=""
-        type="number"
-        min="01"
-        max="31"
-    />
-    <input
-        placeholder="mm"
-        class="input-text input__birth"
-        data-register-month=""
-        type="number"
-        min="01"
-        max="12"
-    />
-    <input
-        placeholder="aaaa"
-        class="input-text input__birth"
-        data-register-year=""
-        type="number"
-        min="1900"
-        max="2020"
-    />
+{{? it.hasBirth }}
+<div class="birth-date">
+    <input class="input-text" placeholder="{{=it.birthPlaceholder}}" {{?
+    it.isBirthTag === "hasTag"}}data-tag={{=it.birthTag}}{{?? true
+    }}data-metafield="todo"{{?}} />
 </div>
 {{?? true }}{{?}}
 

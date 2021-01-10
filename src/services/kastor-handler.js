@@ -102,16 +102,6 @@ const kastorHandler = (event) => {
     const [, page, key, unit] = selector.match(/^(.*?)\|(.*?)\|(.*?)$/);
     const valueAndUnit = typeof value == "object" ? value : `${value}${unit}`;
 
-    //tag or metadata?
-    if (selector === "register|tagOrMetadata|") {
-        const isTag = value === "hasTag";
-        updatePages({ tagOrMetadata: value });
-        updatePages({ hasTag: isTag });
-        updatePages({ hasMetafield: !isTag });
-        changePage(page);
-        return null;
-    }
-
     const { updateCss } = require("../utils");
     if (!/--animation/.test(key)) updateCss({ "--animation": "none" });
     if (key === "change-theme")

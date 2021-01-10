@@ -16,10 +16,6 @@ const addTags = ({ value }) => {
     inputTag.value = value;
 };
 
-const storeTagOrMetadata = () => {
-    console.log($q("[tagormetadata='hasTag']"));
-};
-
 const storeMetafield = () => {
     const selector = $q("[metafiled-input]");
     if (!selector) return null;
@@ -70,7 +66,6 @@ const toggleButton = ({ target }) => {
 const onSubmit = async (e) => {
     e.preventDefault();
     storeMetafield();
-    storeTagOrMetadata();
     const { sendHttpRequest } = require("../services");
     if (!(await isValidPsw($q(tgt.form)))) return null;
     $q(tgt.form).action = "/account";
