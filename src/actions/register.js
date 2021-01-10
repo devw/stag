@@ -11,7 +11,8 @@ const tgt = {
 const multiChoiceSelector = "multi-choice";
 
 const storeTags = () => {
-    const sel = "[type='checkbox'][data-tag]:checked, [type='text'][data-tag]";
+    const sel =
+        "[type='checkbox'][data-tag]:checked, [type='text'][data-tag], [type='date'][data-tag]";
     const els = Array.from($q(tgt.form).querySelectorAll(sel));
     const tags = els.map((el) => `${el.getAttribute("data-tag")}:${el.value}`);
     $q('[name="customer[tags]"]').value = tags.join(", ");
