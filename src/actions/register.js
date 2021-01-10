@@ -1,5 +1,5 @@
 const { REGISTER_ID, SIGNIN_ID } = require("../templates");
-const { toggleModules, $q } = require("../utils");
+const { toggleModules, $q, formatDate } = require("../utils");
 const { isFormFilled, isValidPsw, sortBlocks } = require("../utils");
 const tgt = {
     form: `.${REGISTER_ID} form`,
@@ -98,4 +98,5 @@ exports.init = () => {
         "click",
         handleChoiceBlock
     );
+    $q(".birth-date input")?.addEventListener("focus", formatDate);
 };

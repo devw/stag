@@ -177,12 +177,8 @@ body.remove-scrolling {
     // width: var(--image-width);
 }
 // birth-date module for Respire theme
-.birth-date {
-    align-items: center;
-    display: flex;
-    .birth-date-text {
-        min-width: 40%;
-    }
+.birth-date [type="date"] {
+    font-size: 1.3em;
 }
 
 // social login module for Balzac theme

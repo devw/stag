@@ -56,6 +56,8 @@ exports.isValidPsw = async (form) => {
     return errorMsgs.length === 0 ? true : showError(errorMsgs) && false;
 };
 
+exports.formatDate = ({ target }) => (target.type = "date");
+
 exports.isValidEmail = (email) => /\S+@\S+\.\S+/.test(email);
 
 exports.showError = showError;
