@@ -10,10 +10,11 @@ const tgt = {
 
 const multiChoiceSelector = "multi-choice";
 
-const addTags = ({ value }) => {
-    const inputTag = $q(tgt.form).querySelector("[name='customer[tags]'");
-    inputTag.value = "";
-    inputTag.value = value;
+const storeTags = () => {
+    const sel = "[type='checkbox'][data-tag]:checked, [type='text'][data-tag]";
+    const els = Array.from($q(tgt.form).querySelectorAll(sel));
+    const tags = els.map((el) => `${el.getAttribute("data-tag")}:${el.value}`);
+    $q('[name="customer[tags]"]').value = tags.join(", ");
 };
 
 const storeMetafield = () => {
@@ -42,7 +43,6 @@ const handleChoiceBlock = ({ target, currentTarget }) => {
             e.checked = false;
         });
         target.checked = true;
-        addTags(target);
     }
 };
 
@@ -65,6 +65,7 @@ const toggleButton = ({ target }) => {
 
 const onSubmit = async (e) => {
     e.preventDefault();
+    storeTags();
     storeMetafield();
     const { sendHttpRequest } = require("../services");
     if (!(await isValidPsw($q(tgt.form)))) return null;

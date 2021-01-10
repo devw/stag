@@ -1,6 +1,4 @@
-{{? it.hasTag}}
 <input type="hidden" name="customer[tags]" value="" />
-{{?? true }}{{?}}
 
 <input type="hidden" name="form_type" value="create_customer" /><input
     type="hidden"
@@ -27,6 +25,7 @@
 {{? it.hasFirstName }}
 <div class="hasFirstName">
     <input
+        required
         type="text"
         class="input-text"
         name="customer[first_name]"
@@ -40,6 +39,7 @@
 {{? it.hasLastName }}
 <div class="hasLastName">
     <input
+        required
         type="text"
         class="input-text"
         name="customer[last_name]"
@@ -53,6 +53,7 @@
 {{? it.hasTelephone }}
 <div class="hasTelephone">
     <input
+        required
         type="text"
         class="input-text"
         tagOrMetadata="{{=it.telephoneTagOrMetadata}}"
@@ -67,6 +68,7 @@
 <!-- Email field -->
 <div class="hasEmail">
     <input
+        required
         type="email"
         placeholder="{{=it.yourEmail}}"
         name="customer[email]"
@@ -79,6 +81,7 @@
 <div class="hasPassword">
     <div class="eye-icon js-show-psw"></div>
     <input
+        required
         type="password"
         name="customer[password]"
         class="input-text"
@@ -91,6 +94,7 @@
 {{? it.hasPasswordConfirmation }}
 <div>
     <input
+        required
         class="input-text"
         name="confirmPassword"
         placeholder="{{=it.confirmYourPassword}}"
@@ -103,9 +107,9 @@
 <!-- TODO to simplify -->
 {{? it.hasBirth }}
 <div class="birth-date">
-    <input class="input-text" placeholder="{{=it.birthPlaceholder}}" {{?
-    it.isBirthTag === "hasTag"}}data-tag={{=it.birthTag}}{{?? true
-    }}data-metafield="todo"{{?}} />
+    <input required class="input-text" type="text"
+    placeholder="{{=it.birthPlaceholder}}" {{? it.isBirthTag ===
+    "hasTag"}}data-tag={{=it.birthTag}}{{?? true }}data-metafield="todo"{{?}} />
 </div>
 {{?? true }}{{?}}
 
@@ -123,6 +127,7 @@
 {{? it.hasNewsLetter }}
 <div class="checkbox-container hasNewsletter">
     <input
+        required
         class="checkbox"
         data-register-newscheck=""
         name="acceptsMarketing"
