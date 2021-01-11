@@ -99,5 +99,5 @@ exports.init = () => {
         "click",
         handleChoiceBlock
     );
-    $q(".birth-date input")?.addEventListener("focus", formatDate);
+    $q(".js-date input")?.addEventListener("focus", formatDate);
 };

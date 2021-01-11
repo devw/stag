@@ -96,6 +96,17 @@ const kastorHandler = (event) => {
 
         return null;
     }
+    if (getTarget(event) === "block:add") {
+        const { block_type_id, block_settings } = getData(event);
+        const [page, blockToAdd] = block_type_id.split("|");
+        const key = Object.keys(block_settings)[0].split("|")[1];
+        const value = Object.values(block_settings)[0];
+
+        updatePages({ [key]: value });
+        updatePages({ [blockToAdd]: true });
+        changePage(page);
+        return null;
+    }
     const [selector, value] = parseEventData(event);
 
     if (!selector) return null;

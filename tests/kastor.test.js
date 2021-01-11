@@ -131,10 +131,15 @@
 (() => {
     const hasFirstNameBlock = {
         data: {
-            setting_id: "register|hasFirstNameBlock|",
-            value: true,
+            data: {
+                block_settings: {
+                    "register|yourFirstName|": "Votre Prénome...",
+                },
+                block_type_id: "register|hasFirstName|",
+                value: undefined,
+            },
+            target: "block:add",
         },
-        target: "block:add",
     };
 
     const kastorEvent = new CustomEvent("message", {
