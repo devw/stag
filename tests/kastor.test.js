@@ -269,6 +269,25 @@
     globalThis.dispatchEvent(event);
 })();
 
+// adding background image
+(() => {
+    const json = {
+        data: {
+            data: {
+                setting_id: "register|--container-bg-image|",
+                value:
+                    "https://images.pexels.com/photos/1591447/pexels-photo-1591447.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+            },
+        },
+    };
+
+    const event = new CustomEvent("message", {
+        detail: json,
+    });
+
+    globalThis.dispatchEvent(event);
+})();
+
 // reorder fields
 (() => {
     const json = {
