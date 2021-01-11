@@ -149,6 +149,29 @@
     globalThis.dispatchEvent(kastorEvent);
 })();
 
+// Add a block - Newsletter
+(() => {
+    const json = {
+        data: {
+            data: {
+                block_settings: {
+                    "register|subscribeNewsletter|":
+                        "Subscribe to our newsletter",
+                },
+                block_type_id: "register|hasNewsletter|",
+                value: undefined,
+            },
+            target: "block:add",
+        },
+    };
+
+    const kastorEvent = new CustomEvent("message", {
+        detail: json,
+    });
+
+    globalThis.dispatchEvent(kastorEvent);
+})();
+
 //Choice Block - radio click
 (() => {
     json = {

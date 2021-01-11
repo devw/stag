@@ -141,7 +141,6 @@ form.label-go-right input {
 .choice-block input[type="checkbox"] {
     width: 1.1em;
     height: 1.1em;
-    border-radius: 50%;
     background-color: white;
     vertical-align: middle;
     border: 1px solid #ddd;
@@ -151,6 +150,10 @@ form.label-go-right input {
 }
 .choice-block input[type="checkbox"]:checked {
     background-color: gray;
+}
+
+.choice-block.single-choice input[type="checkbox"] {
+    border-radius: 50%;
 }
 
 .choice-block.multi-choice input[type="checkbox"] {

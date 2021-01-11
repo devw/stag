@@ -9,7 +9,9 @@
 <!-- Choice List by TAG -->
 {{? (it.hasChoice) }}
 <!-- loop -->
-<div class="choice-block {{?it.hasMultiLine }}multi-line{{??true}} {{?}}">
+<div
+    class="choice-block single-choice {{?it.hasMultiLine }}multi-line{{??true}} {{?}}"
+>
     {{~it.choiceList :value:index}}
     <div>
         <input type="checkbox" {{? it.isChoiceTag ===
@@ -113,6 +115,16 @@
 </div>
 {{?? true }}{{?}}
 
+<!-- Subscribe newsletter checkbox -->
+{{? it.hasNewsletter }}
+<div class="choice-block">
+    <div>
+        <input type="checkbox" />
+        <label>{{=it.subscribeNewsletter}}</label>
+    </div>
+</div>
+{{?? true }}{{?}}
+
 <!-- Create account button -->
 <p class="text-center hasSubmit">
     <input
@@ -122,19 +134,3 @@
         value="{{=it.createAccount}}"
     />
 </p>
-
-<!-- Subscribe newsletter checkbox -->
-{{? it.hasNewsLetter }}
-<div class="checkbox-container hasNewsletter">
-    <input
-        required
-        class="checkbox"
-        data-register-newscheck=""
-        name="acceptsMarketing"
-        type="checkbox"
-    />
-    <div class="text t-5 uppercase pointer" data-register-newstext="">
-        {{=it.subscribeNewsletter}}
-    </div>
-</div>
-{{?? true }}{{?}}
