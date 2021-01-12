@@ -101,6 +101,7 @@
     json = {
         data: {
             data: {
+                block_type_id: "register|hasChoice|",
                 setting_id: "register|choiceList|",
                 value: ["item_1", "item_2", "item_3", "item_4"],
             },

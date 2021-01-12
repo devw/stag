@@ -7,7 +7,7 @@
 />
 
 <!-- Choice List by TAG -->
-{{? (it.hasChoice) }}
+{{? (it.hasChoice || it.choiceList ) }}
 <!-- loop -->
 <div
     class="choice-block single-choice {{?it.hasMultiLine }}multi-line{{??true}} {{?}}"

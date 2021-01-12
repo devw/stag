@@ -1,161 +1,164 @@
-form {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-}
+#login-popup {
+    form {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+    }
 
-form .hasSubmit {
-    order: 10;
-}
+    form .hasSubmit {
+        order: 10;
+    }
 
-form > div {
-    margin: 0.8em 0;
-    position: relative;
-}
-input {
-    border: var(--input-line);
-    border-bottom: 1px solid #333;
-    background-color: unset;
-    outline: none;
-    // padding: var(--input-padding);
-    font-size: 1em;
-    color: #333;
-    min-width: 100%;
-    padding: var(--input-padding);
-}
+    form > div {
+        margin: 0.8em 0;
+        position: relative;
+    }
 
-label {
-    z-index: 0; //-1
-    position: absolute;
-    left: 0;
-    top: 0;
-    opacity: 0.5;
-    transform-origin: 0 0;
-    transition: transform 0.3s ease-in-out;
-    background-color: var(--content-bg-color);
-    font-size: var(--placeholder-font-size);
-    color: var(--placeholder-color);
-    text-transform: var(--placeholder-text-transform);
-}
+    .input-text {
+        border: var(--input-line);
+        border-bottom: 1px solid #333;
+        background-color: unset;
+        outline: none;
+        // padding: var(--input-padding);
+        font-size: 1em;
+        color: #333;
+        min-width: 100%;
+        padding: var(--input-padding);
+    }
 
-/* START - GO UP */
-.label-go-up input::placeholder {
-    color: transparent;
-}
+    label {
+        z-index: 0; //-1
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0.5;
+        transform-origin: 0 0;
+        transition: transform 0.3s ease-in-out;
+        background-color: var(--content-bg-color);
+        font-size: var(--placeholder-font-size);
+        color: var(--placeholder-color);
+        text-transform: var(--placeholder-text-transform);
+    }
 
-/* START - GO UP */
-.label-go-up input::placeholder {
-    color: transparent;
-}
+    /* START - GO UP */
+    .label-go-up input::placeholder {
+        color: transparent;
+    }
 
-.label-go-up input:focus + label,
-.label-go-up input:not(:placeholder-shown) + label {
-    transform: translateY(-1em) scale(0.8);
-}
-/* START - GO UP */
+    /* START - GO UP */
+    .label-go-up input::placeholder {
+        color: transparent;
+    }
 
-/* START - GO DOWN */
-.label-go-down input::placeholder {
-    color: transparent;
-}
-.label-go-down input:focus + label,
-.label-go-down input:not(:placeholder-shown) + label {
-    transform: translateY(1.2em) scale(0.8);
-}
-form.label-go-down input {
-    padding-bottom: 15px;
-}
-/* START - GO DOWN */
+    .label-go-up input:focus + label,
+    .label-go-up input:not(:placeholder-shown) + label {
+        transform: translateY(-1em) scale(0.8);
+    }
+    /* START - GO UP */
 
-/* START - GO RIGHT */
-form.label-go-right > div {
-    overflow: hidden;
-}
-form.label-go-right input {
-    padding: 8px 0;
-}
-.label-go-right input + label {
-    transition: color 0.4s, right 0.4s, left 0.4s;
-    position: absolute;
-    opacity: 0.5;
-    left: unset;
-    right: 100%;
-    width: 100%;
-    margin-right: -100%;
-}
-.label-go-right input:focus + label {
-    right: 0;
-    margin-right: 0;
-    width: 40%;
-    padding: 5px;
-    background: #111;
-    color: white;
-    font-size: 70%;
-    height: 100%;
-    z-index: 1;
-    text-transform: uppercase;
-    opacity: 0.8;
-}
+    /* START - GO DOWN */
+    .label-go-down input::placeholder {
+        color: transparent;
+    }
+    .label-go-down input:focus + label,
+    .label-go-down input:not(:placeholder-shown) + label {
+        transform: translateY(1.2em) scale(0.8);
+    }
+    .label-go-down input {
+        padding-bottom: 15px;
+    }
+    /* START - GO DOWN */
 
-.label-go-right input:valid {
-    background: white;
-}
-/* END - GO RIGHT */
+    /* START - GO RIGHT */
+    .label-go-right > div {
+        overflow: hidden;
+    }
+    .label-go-right input {
+        padding: 8px 0;
+    }
+    .label-go-right input + label {
+        transition: color 0.4s, right 0.4s, left 0.4s;
+        position: absolute;
+        opacity: 0.5;
+        left: unset;
+        right: 100%;
+        width: 100%;
+        margin-right: -100%;
+    }
+    .label-go-right input:focus + label {
+        right: 0;
+        margin-right: 0;
+        width: 40%;
+        padding: 5px;
+        background: #111;
+        color: white;
+        font-size: 70%;
+        height: 100%;
+        z-index: 1;
+        text-transform: uppercase;
+        opacity: 0.8;
+    }
 
-.label-fixed label {
-    display: block;
-    font-size: 0.8em;
-    top: unset;
-}
-.label-fixed input::placeholder {
-    color: transparent;
-}
+    .label-go-right input:valid {
+        background: white;
+    }
+    /* END - GO RIGHT */
 
-.label-none label {
-    display: none;
-}
+    .label-fixed label {
+        display: block;
+        font-size: 0.8em;
+        top: unset;
+    }
+    .label-fixed input::placeholder {
+        color: transparent;
+    }
 
-// CHOICE BLOCK
+    .label-none label {
+        display: none;
+    }
 
-.choice-block {
-    text-align: left;
-}
-.choice-block > div {
-    display: inline-block;
-}
+    // CHOICE BLOCK
 
-.choice-block.multi-line > div {
-    display: block;
-}
+    .choice-block {
+        text-align: left;
+    }
+    .choice-block > div {
+        display: inline-block;
+    }
 
-.choice-block label {
-    opacity: 1;
-    position: unset;
-    display: inline-block;
-}
+    .choice-block.multi-line > div {
+        display: block;
+    }
 
-.choice-block input {
-    min-width: unset;
-}
+    .choice-block label {
+        opacity: 1;
+        position: unset;
+        display: inline-block;
+    }
 
-.choice-block input[type="checkbox"] {
-    width: 1.1em;
-    height: 1.1em;
-    background-color: white;
-    vertical-align: middle;
-    border: 1px solid #ddd;
-    -webkit-appearance: none;
-    outline: none;
-    cursor: pointer;
-}
-.choice-block input[type="checkbox"]:checked {
-    background-color: gray;
-}
+    .choice-block input {
+        min-width: unset;
+    }
 
-.choice-block.single-choice input[type="checkbox"] {
-    border-radius: 50%;
-}
+    .choice-block input[type="checkbox"] {
+        width: 1.1em;
+        height: 1.1em;
+        background-color: white;
+        vertical-align: middle;
+        border: 1px solid #ddd;
+        -webkit-appearance: none;
+        outline: none;
+        cursor: pointer;
+    }
+    .choice-block input[type="checkbox"]:checked {
+        background-color: gray;
+    }
 
-.choice-block.multi-choice input[type="checkbox"] {
-    border-radius: 25%;
+    .choice-block.single-choice input[type="checkbox"] {
+        border-radius: 50%;
+    }
+
+    .choice-block.multi-choice input[type="checkbox"] {
+        border-radius: 25%;
+    }
 }
