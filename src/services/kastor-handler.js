@@ -114,7 +114,7 @@ const kastorHandler = (event) => {
     }
     //add a block
     if (target === "block:add") {
-        //TODO @Thomas, why two different names?
+        //TODO @Thomas, why two different names? (target: "setting:update")
         const { block_type_id, block_settings } = getData(event);
         const [page, blockToAdd] = block_type_id.split("|");
         const key = Object.keys(block_settings)[0].split("|")[1];

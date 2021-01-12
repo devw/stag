@@ -11,30 +11,34 @@ const tgt = {
 const multiChoiceSelector = "multi-choice";
 
 const storeTags = () => {
-    const sel =
-        "[type='checkbox'][data-tag]:checked, [type='text'][data-tag], [type='date'][data-tag]";
+    const sel = `
+        [type='checkbox'][data-tag]:checked,
+        [type='text'][data-tag], 
+        [type='date'][data-tag]
+    `;
+
     const els = Array.from($q(tgt.form).querySelectorAll(sel));
+
     const tags = els.map((el) => `${el.getAttribute("data-tag")}:${el.value}`);
     $q('[name="customer[tags]"]').value = tags.join(", ");
 };
 
 const storeMetafield = () => {
-    const selector = $q("[metafiled-input]");
-    if (!selector) return null;
-    const [namespace, key] = selector
-        .getAttribute("metafiled-input")
-        .split("|");
-    const value = selector.value;
-    localStorage.setItem(
-        "customer_metafields",
-        JSON.stringify([
-            {
-                namespace: namespace,
-                key: key,
-                value: value,
-            },
-        ])
-    );
+    const sel = `
+        [type='checkbox'][data-key]:checked,
+        [type='text'][data-key], 
+        [type='date'][data-key]
+    `;
+    const els = Array.from($q(tgt.form).querySelectorAll(sel));
+    const metafields = els.map((el) => {
+        return {
+            namespace: el.getAttribute("data-namespace"),
+            key: el.getAttribute("data-key"),
+            value: el.value,
+        };
+    });
+
+    localStorage.setItem("customer_metafields", JSON.stringify(metafields));
     console.log("localStorage", localStorage.getItem("customer_metafields"));
 };
 

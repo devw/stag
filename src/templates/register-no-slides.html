@@ -13,12 +13,22 @@
     class="choice-block single-choice {{?it.hasMultiLine }}multi-line{{??true}} {{?}}"
 >
     {{~it.choiceList :value:index}}
-    <div>
-        <input type="checkbox" {{? it.isChoiceTag ===
-        "hasTag"}}data-tag={{=it.choiceTag}}{{?? true
-        }}data-metafield="todo"{{?}} value="{{=value}}" />
-        <label>{{=value}}</label>
-    </div>
+
+    <!-- tag -->
+    {{? it.isChoiceTag === "hasTag"}}
+    <input type="checkbox" data-tag="{{=it.choiceTag}}" value="{{=value}}" />
+    {{?? true }}{{?}}
+    <!-- metafield -->
+    {{? it.isChoiceTag === "hasMetafield"}}
+    <input
+        type="checkbox"
+        data-namespace="{{=it.choiceNamespace}}"
+        data-key="{{=it.choiceKey}}"
+        value="{{=value}}"
+    />
+    {{?? true }}{{?}}
+
+    <label>{{=value}}</label>
     {{~}}
 </div>
 {{?? true }}{{?}}
@@ -107,9 +117,11 @@
 <!-- TODO to simplify -->
 {{? it.hasBirth }}
 <div class="js-date">
-    <input required class="input-text" type="text"
-    placeholder="{{=it.birthPlaceholder}}" {{? it.isBirthTag ===
-    "hasTag"}}data-tag={{=it.birthTag}}{{?? true }}data-metafield="todo"{{?}} />
+    <!-- tag -->
+    <input class="input-text" required type="input-text"
+    placeholder="{{=it.birthPlaceholder}}" {{? it.isBirthTag === "hasTag"}}
+    data-tag="{{=it.birthTag}}" {{?? true }}
+    data-namespace="{{=it.birthNamespace}}" data-key="{{=it.birthKey}}" {{?}} />
 </div>
 {{?? true }}{{?}}
 
@@ -117,7 +129,7 @@
 {{? it.hasNewsletter }}
 <div class="choice-block">
     <div>
-        <input type="checkbox" />
+        <input type="checkbox" class="input-text" />
         <label>{{=it.subscribeNewsletter}}</label>
     </div>
 </div>
