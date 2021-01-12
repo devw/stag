@@ -113,7 +113,7 @@ const kastorHandler = (event) => {
         return null;
     }
     //add a block
-    if (target === "block:add" || target === "setting:update") {
+    if (target === "block:add") {
         //TODO @Thomas, why two different names?
         const { block_type_id, block_settings } = getData(event);
         const [page, blockToAdd] = block_type_id.split("|");

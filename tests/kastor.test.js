@@ -105,6 +105,7 @@
                 setting_id: "register|choiceList|",
                 value: ["item_1", "item_2", "item_3", "item_4"],
             },
+            target: "setting:update",
         },
     };
     kastorEvent = new CustomEvent("message", {
