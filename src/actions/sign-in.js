@@ -27,7 +27,8 @@ const onSubmit = async (e) => {
     $q(tgt.form).action = "/account/login";
     const resp = await sendHttpRequest("POST", e);
     console.log("shopify response", resp);
-
+    const { shop } = globalThis?.Shopify;
+    globalThis.location.href = `https://${shop}/products`;
     // globalThis.__form = $q(tgt.form);
 };
 

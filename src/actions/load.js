@@ -31,7 +31,10 @@ const openAccount = (e) => {
         const dom = $q(".container");
         dom.style.setProperty("display", "flex");
         if (dom.classList.contains("popover")) placePopover(e, dom);
-    } else window.location.href = "./account";
+    } else {
+        const shop = globalThis?.Shopify?.shop;
+        window.location.href = `https://${shop}./account`;
+    }
 };
 
 exports.openAccount = openAccount;
