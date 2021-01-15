@@ -50,11 +50,11 @@ exports.storeMetafieldIntoShopify = async () => {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: {
+            body: JSON.stringify({
                 shop: shop,
                 cid: cid,
                 metafields: JSON.parse(metafieldStorage),
-            },
+            }),
         };
 
         console.log("There is metafieldStorage: ", metafieldStorage);
