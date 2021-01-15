@@ -94,7 +94,7 @@
         data: {
             data: {
                 setting_id: "register|choiceNamespace|",
-                value: "mf-namespace",
+                value: "choice-namespace",
             },
         },
     };
@@ -107,7 +107,7 @@
         data: {
             data: {
                 setting_id: "register|choiceKey|",
-                value: "mf-key",
+                value: "choice-key",
             },
         },
     };
