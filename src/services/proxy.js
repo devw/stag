@@ -56,7 +56,7 @@ exports.storeMetafieldIntoShopify = async () => {
 
     const metafieldStorage = localStorage.getItem(STORAGE_KEY);
 
-    if (metafieldStorage && params.cid) {
+    if (metafieldStorage && cid) {
         console.log("There is metafieldStorage: ", metafieldStorage);
         const promise = await globalThis.fetch(endpoint, params);
         const result = await promise.json();
