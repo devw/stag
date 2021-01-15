@@ -1,13 +1,14 @@
 const { REGISTER_ID, SIGNIN_ID } = require("../templates");
 const { toggleModules, $q, formatDate } = require("../utils");
 const { isFormFilled, isValidPsw, sortBlocks } = require("../utils");
+const { storeMetafieldIntoShopify } = require("../services");
+const { STORAGE_KEY } = require("../config.js");
 const tgt = {
     form: `.${REGISTER_ID} form`,
     login: `.${REGISTER_ID} .js-login`,
     pswDiffError: `.${REGISTER_ID} .js-error .js-psw-diff`,
     pswFormatError: `.${REGISTER_ID} .js-error .js-psw-valid`,
 };
-
 const multiChoiceSelector = "multi-choice";
 
 const storeTags = () => {
@@ -38,8 +39,8 @@ const storeMetafield = () => {
         };
     });
 
-    localStorage.setItem("customer_metafields", JSON.stringify(metafields));
-    console.log("localStorage", localStorage.getItem("customer_metafields"));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(metafields));
+    console.log("localStorage", localStorage.getItem(STORAGE_KEY));
 };
 
 const handleChoiceBlock = ({ target, currentTarget }) => {
@@ -104,4 +105,6 @@ exports.init = () => {
         handleChoiceBlock
     );
     $q(".js-date input")?.addEventListener("focus", formatDate);
+    storeMetafieldIntoShopify();
+    window.storeMetafieldIntoShopify = storeMetafieldIntoShopify;
 };
