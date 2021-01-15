@@ -41,9 +41,15 @@ exports.storeMetafieldIntoShopify = async () => {
     const endpoint = `https://${shop}/${PROXY_PATH}/set-metafield-in-shopify`;
 
     const params = {
-        shop: shop,
-        cid: cid,
-        metafields: localStorage.getItem(STORAGE_KEY),
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: {
+            shop: shop,
+            cid: cid,
+            metafields: localStorage.getItem(STORAGE_KEY),
+        },
     };
 
     console.log("storeMetafieldIntoShopify endpoint:", endpoint);
