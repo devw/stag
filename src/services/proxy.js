@@ -40,23 +40,23 @@ exports.storeMetafieldIntoShopify = async () => {
     const cid = globalThis?.__st?.cid;
     const endpoint = `https://${shop}/${PROXY_PATH}/set-metafield-in-shopify`;
 
-    const params = {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: {
-            shop: shop,
-            cid: cid,
-            metafields: localStorage.getItem(STORAGE_KEY),
-        },
-    };
-
     console.log("storeMetafieldIntoShopify endpoint:", endpoint);
 
     const metafieldStorage = localStorage.getItem(STORAGE_KEY);
 
     if (metafieldStorage && cid) {
+        const params = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: {
+                shop: shop,
+                cid: cid,
+                metafields: JSON.parse(metafieldStorage),
+            },
+        };
+
         console.log("There is metafieldStorage: ", metafieldStorage);
         const promise = await globalThis.fetch(endpoint, params);
         const result = await promise.json();
