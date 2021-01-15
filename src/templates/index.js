@@ -4,8 +4,7 @@ const landingTmpl = require("./landing.html");
 const registerTmpl = require("./register.html");
 const signInTmpl = require("./sign-in.html");
 const activateTmpl = require("./activate.html");
-const registerNoSlidesTmpl = require("./register-no-slides.html");
-const registerWithSlidesTmpl = require("./register-with-slides.html");
+const registerInputsTmpl = require("./register-inputs.html");
 const [APP_ID, ROOT_ID, CONTAINER_ID] = ["login-popup", "bbb", "container"];
 const [LANDING_ID, REGISTER_ID, SIGNIN_ID] = ["landing", "register", "signin"];
 const [ACTIVATE_ID] = ["activate"];
@@ -24,12 +23,8 @@ templates.push(getTemplate({ id: CONTAINER_ID, html: containerTmpl }));
 templates.push(getPartialTemplate({ id: LANDING_ID, html: landingTmpl }));
 templates.push(getPartialTemplate({ id: REGISTER_ID, html: registerTmpl }));
 templates.push(getPartialTemplate({ id: ACTIVATE_ID, html: activateTmpl }));
-templates.push(
-    getTemplate({ id: "registerNoSlides", html: registerNoSlidesTmpl })
-);
-templates.push(
-    getTemplate({ id: "registerWithSlides", html: registerWithSlidesTmpl })
-);
+templates.push(getTemplate({ id: "registerInputs", html: registerInputsTmpl }));
+
 templates.push(getPartialTemplate({ id: SIGNIN_ID, html: signInTmpl }));
 
 module.exports = {

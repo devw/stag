@@ -19,8 +19,7 @@ const getDef = () => ({
     [REGISTER_ID]: document.getElementById(REGISTER_ID).text,
     [ACTIVATE_ID]: document.getElementById(ACTIVATE_ID).text,
     [SIGNIN_ID]: document.getElementById(SIGNIN_ID).text,
-    registerNoSlides: document.getElementById("registerNoSlides").text,
-    registerWithSlides: document.getElementById("registerWithSlides").text,
+    registerInputs: document.getElementById("registerInputs").text,
 });
 
 const appendTemplate = (e) => {
