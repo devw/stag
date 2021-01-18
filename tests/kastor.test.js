@@ -54,9 +54,18 @@
 })();
 
 (() => {
+    const getEvent = (json) =>
+        new CustomEvent("message", {
+            detail: json,
+        });
+
     const block = {
-        setting_id: "register|hasMultiLine|",
-        value: true,
+        data: {
+            data: {
+                setting_id: "register|hasMultiLine|",
+                value: true,
+            },
+        },
     };
 
     globalThis.dispatchEvent(getEvent(block));

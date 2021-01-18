@@ -5,22 +5,27 @@
     class="choice-block single-choice {{?it.hasMultiLine }}multi-line{{??true}} {{?}}"
 >
     {{~it.choiceList :value:index}}
+    <div>
+        <!-- tag -->
+        {{? it.isChoiceTag === "hasTag"}}
+        <input
+            type="checkbox"
+            data-tag="{{=it.choiceTag}}"
+            value="{{=value}}"
+        />
+        {{?? true }}{{?}}
+        <!-- metafield -->
+        {{? it.isChoiceTag === "hasMetafield"}}
+        <input
+            type="checkbox"
+            data-namespace="{{=it.choiceNamespace}}"
+            data-key="{{=it.choiceKey}}"
+            value="{{=value}}"
+        />
+        {{?? true }}{{?}}
 
-    <!-- tag -->
-    {{? it.isChoiceTag === "hasTag"}}
-    <input type="checkbox" data-tag="{{=it.choiceTag}}" value="{{=value}}" />
-    {{?? true }}{{?}}
-    <!-- metafield -->
-    {{? it.isChoiceTag === "hasMetafield"}}
-    <input
-        type="checkbox"
-        data-namespace="{{=it.choiceNamespace}}"
-        data-key="{{=it.choiceKey}}"
-        value="{{=value}}"
-    />
-    {{?? true }}{{?}}
-
-    <label>{{=value}}</label>
+        <label>{{=value}}</label>
+    </div>
     {{~}}
 </div>
 {{?? true }}{{?}}
