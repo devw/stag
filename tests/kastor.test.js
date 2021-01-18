@@ -530,3 +530,22 @@
 
     globalThis.dispatchEvent(kastorEvent);
 })();
+
+//test popup full
+(() => {
+    const json = {
+        data: {
+            data: {
+                setting_id: "landing|layout|",
+                value: "popup-full",
+            },
+            target: "",
+        },
+    };
+
+    const kastorEvent = new CustomEvent("message", {
+        detail: json,
+    });
+
+    globalThis.dispatchEvent(kastorEvent);
+})();
