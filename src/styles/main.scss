@@ -53,8 +53,8 @@ body.remove-scrolling {
     =================== */
 
 // Header Image
-.image {
-    content: var(--image-url);
+.form-image {
+    content: var(--form-header-image);
     padding: var(--image-padding);
     width: var(--image-size);
 }
@@ -170,11 +170,6 @@ body.remove-scrolling {
 
 .or-social-login {
     margin: 15px 0;
-}
-
-.landing_image {
-    // content: var(--image);
-    // width: var(--image-width);
 }
 
 // social login module for Balzac theme

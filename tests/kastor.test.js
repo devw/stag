@@ -492,3 +492,22 @@
     });
     globalThis.dispatchEvent(event);
 })();
+
+//Activate block
+(() => {
+    const json = {
+        data: {
+            data: {
+                block_type_id: "activate||",
+                value: undefined,
+            },
+            target: "",
+        },
+    };
+
+    const kastorEvent = new CustomEvent("message", {
+        detail: json,
+    });
+
+    globalThis.dispatchEvent(kastorEvent);
+})();

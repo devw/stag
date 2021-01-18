@@ -1,4 +1,5 @@
-const { LANDING_ID, REGISTER_ID, SIGNIN_ID } = require("../templates/");
+const { SIGNIN_ID, ACTIVATE_ID } = require("../templates/");
+const { LANDING_ID, REGISTER_ID } = require("../templates/");
 const { isRegistered } = require("../services");
 const { toggleModules, $qq } = require("../utils");
 const disableBtn = (btn) => btn.setAttribute("disabled", "true");
@@ -20,18 +21,12 @@ const onSubmit = async () => {
     $qq(`.${SIGNIN_ID}`, "form [type='email']").value = email;
     const result = await isRegistered(email);
     if (!result?.state) register();
-    else if (result?.state === "enabled") signIn();
-    else if (result?.disabled === "enabled") {
-        /*todo load disable page*/
-    }
+    else if (result?.state === "enabled") toggleModules(SIGNIN_ID);
+    else if (result?.disabled === "enabled") toggleModules(ACTIVATE_ID);
 };
 
 const register = () => {
     toggleModules(REGISTER_ID);
-};
-
-const signIn = () => {
-    toggleModules(SIGNIN_ID);
 };
 
 exports.init = () => {
