@@ -319,6 +319,25 @@
     globalThis.dispatchEvent(event);
 })();
 
+// adding fomr image
+(() => {
+    const json = {
+        data: {
+            data: {
+                setting_id: "register|--form-header-image|",
+                value:
+                    "https://www.imedias.pro/wp-content/themes/bootstrap-basic4-child/images/cours/images_web/tux_png_24.png",
+            },
+        },
+    };
+
+    const event = new CustomEvent("message", {
+        detail: json,
+    });
+
+    globalThis.dispatchEvent(event);
+})();
+
 // reorder fields
 (() => {
     const json = {
