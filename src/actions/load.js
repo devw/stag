@@ -24,14 +24,14 @@ const placePopover = (e, dom) => {
 };
 
 const openAccount = (e) => {
-    e?.preventDefault();
-    e?.stopPropagation();
     if (!globalThis.__st?.cid) {
+        e?.preventDefault();
+        e?.stopPropagation();
         toggleModules(LANDING_ID);
         const dom = $q(".container");
         dom.style.setProperty("display", "flex");
         if (dom.classList.contains("popover")) placePopover(e, dom);
-    } else window.location.href = "./account";
+    }
 };
 
 exports.openAccount = openAccount;
