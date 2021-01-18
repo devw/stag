@@ -19,7 +19,11 @@ const onSubmit = async () => {
     $qq(`.${REGISTER_ID}`, "form [type='email']").value = email;
     $qq(`.${SIGNIN_ID}`, "form [type='email']").value = email;
     const result = await isRegistered(email);
-    result ? signIn() : register();
+    if (!result?.state) register();
+    else if (result?.state === "enabled") signIn();
+    else if (result?.disabled === "enabled") {
+        /*todo load disable page*/
+    }
 };
 
 const register = () => {

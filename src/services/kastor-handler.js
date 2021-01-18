@@ -74,48 +74,16 @@ const parseEventData = (event) => {
     return [selector, value];
 };
 
-const kastorHandler = (event) => {
-    //reorder blocks
-    if (getTarget(event) === "block:reorder") {
-        const orderBlocks = getOrderedBlocks(getData(event));
-        console.log(orderBlocks);
-        updatePages({ orderedBlock: orderBlocks });
-        changePage("register"); // TODO remove magic value
-        return null;
-    }
-    //remove block
-    if (getTarget(event) === "block:remove") {
-        const { block_type_id } = getData(event);
-        const blockToDel = block_type_id.split("|")[1];
-        const filteredBlocks = getBlocksAttr().filter((e) => e !== blockToDel);
-
-        updatePages({ orderedBlock: filteredBlocks });
-        updatePages({ [blockToDel]: false });
-        // TODO remove magic value
-        changePage("register"); // TODO remove magic value
-
-        return null;
-    }
+const updateNoBlock = (event) => {
     const [selector, value] = parseEventData(event);
 
     if (!selector) return null;
     const [, page, key, unit] = selector.match(/^(.*?)\|(.*?)\|(.*?)$/);
     const valueAndUnit = typeof value == "object" ? value : `${value}${unit}`;
 
-    //tag or metadata?
-    if (selector === "register|tagOrMetadata|") {
-        const isTag = value === "hasTag";
-        updatePages({ hasTag: isTag });
-        updatePages({ hasMetafield: !isTag });
-        changePage(page);
-        return null;
-    }
-
     const { updateCss } = require("../utils");
     if (!/--animation/.test(key)) updateCss({ "--animation": "none" });
-    if (key === "change-theme")
-        getTheme(value).then((theme) => updateCss(theme.style));
-    else if (/^--/.test(key)) {
+    if (/^--/.test(key)) {
         updateCss({ [key]: valueAndUnit });
     } else
         updatePages({ [key]: valueAndUnit == "false" ? false : valueAndUnit });
@@ -123,6 +91,41 @@ const kastorHandler = (event) => {
     if (page) changePage(page);
     // TODO: too fragile check the password policy in this way, you should refactore the code using objects
     if (/^psw.*Err$/.test(key)) showError([value]);
+};
+
+const kastorHandler = (event) => {
+    //reorder blocks
+    const target = getTarget(event);
+    if (target === "block:reorder") {
+        const orderBlocks = getOrderedBlocks(getData(event));
+        updatePages({ orderedBlock: orderBlocks });
+        changePage("register"); // TODO remove magic number
+        return null;
+    }
+    //remove block
+    if (target === "block:remove") {
+        const { block_type_id } = getData(event);
+        const blockToDel = block_type_id.split("|")[1];
+        const filteredBlocks = getBlocksAttr().filter((e) => e !== blockToDel);
+        updatePages({ orderedBlock: filteredBlocks });
+        updatePages({ [blockToDel]: false });
+        changePage("register"); // TODO remove magic number
+        return null;
+    }
+    //add a block
+    if (target === "block:add") {
+        //TODO @Thomas, why two different names? (target: "setting:update")
+        const { block_type_id, block_settings } = getData(event);
+        const [page, blockToAdd] = block_type_id.split("|");
+        const key = Object.keys(block_settings)[0].split("|")[1];
+        const value = Object.values(block_settings)[0];
+        updatePages({ [key]: value });
+        updatePages({ [blockToAdd]: true });
+        changePage(page);
+        return null;
+    }
+
+    updateNoBlock(event);
 };
 
 exports.kastorHandler = () =>

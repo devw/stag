@@ -1,45 +1,35 @@
-<input type="hidden" name="form_type" value="create_customer" /><input
-    type="hidden"
-    name="utf8"
-    value="✓"
-/>
-
 <!-- Choice List by TAG -->
-{{? (it.hasTag || it.choiceList || it.choiceTag) && !it.hasMetafield }}
+{{? (it.hasChoice || it.choiceList ) }}
 <!-- loop -->
-<div class="choice-block {{?it.hasMultiLine }}multi-line{{??true}} {{?}}">
+<div
+    class="choice-block single-choice {{?it.hasMultiLine }}multi-line{{??true}} {{?}}"
+>
     {{~it.choiceList :value:index}}
-    <div>
-        <input
-            type="checkbox"
-            name="customer[{{=it.choiceTag}}]"
-            value="{{=it.choiceTag}}_{{=value}}"
-        />
-        <label>{{=value}}</label>
-    </div>
+
+    <!-- tag -->
+    {{? it.isChoiceTag === "hasTag"}}
+    <input type="checkbox" data-tag="{{=it.choiceTag}}" value="{{=value}}" />
+    {{?? true }}{{?}}
+    <!-- metafield -->
+    {{? it.isChoiceTag === "hasMetafield"}}
+    <input
+        type="checkbox"
+        data-namespace="{{=it.choiceNamespace}}"
+        data-key="{{=it.choiceKey}}"
+        value="{{=value}}"
+    />
+    {{?? true }}{{?}}
+
+    <label>{{=value}}</label>
     {{~}}
 </div>
 {{?? true }}{{?}}
-
-<!-- Choice List by METAFIELD -->
-{{? (it.hasMetafield || it.metaChoices) && !it.hasTag}}
-<!-- loop -->
-{{~it.metaChoices :value:index}}
-<div>
-    <input
-        type="text"
-        class="input-text"
-        key="{{=value.key}}"
-        placeholder="{{=value.value}}"
-    />
-    <label> {{=value.value}} </label>
-</div>
-{{~}} {{?? true }}{{?}}
 
 <!-- FirstName field -->
 {{? it.hasFirstName }}
 <div class="hasFirstName">
     <input
+        required
         type="text"
         class="input-text"
         name="customer[first_name]"
@@ -53,6 +43,7 @@
 {{? it.hasLastName }}
 <div class="hasLastName">
     <input
+        required
         type="text"
         class="input-text"
         name="customer[last_name]"
@@ -66,10 +57,11 @@
 {{? it.hasTelephone }}
 <div class="hasTelephone">
     <input
+        required
         type="text"
         class="input-text"
-        name="telephone"
         placeholder="{{=it.yourTelephone}}"
+        name="address[phone]"
     />
     <label>{{=it.yourTelephone}}</label>
 </div>
@@ -78,6 +70,7 @@
 <!-- Email field -->
 <div class="hasEmail">
     <input
+        required
         type="email"
         placeholder="{{=it.yourEmail}}"
         name="customer[email]"
@@ -90,6 +83,7 @@
 <div class="hasPassword">
     <div class="eye-icon js-show-psw"></div>
     <input
+        required
         type="password"
         name="customer[password]"
         class="input-text"
@@ -102,6 +96,7 @@
 {{? it.hasPasswordConfirmation }}
 <div>
     <input
+        required
         class="input-text"
         name="confirmPassword"
         placeholder="{{=it.confirmYourPassword}}"
@@ -112,33 +107,24 @@
 {{?? true }}{{?}}
 
 <!-- TODO to simplify -->
-{{? it.hasBirthDate }}
-<div class="birth-date hasBirthdate">
-    <div class="birth-date-text">Date de naissance</div>
-    <input
-        placeholder="jj"
-        class="input-text input__birth"
-        data-register-day=""
-        type="number"
-        min="01"
-        max="31"
-    />
-    <input
-        placeholder="mm"
-        class="input-text input__birth"
-        data-register-month=""
-        type="number"
-        min="01"
-        max="12"
-    />
-    <input
-        placeholder="aaaa"
-        class="input-text input__birth"
-        data-register-year=""
-        type="number"
-        min="1900"
-        max="2020"
-    />
+{{? it.hasBirth }}
+<div class="js-date">
+    <!-- tag -->
+    <input class="input-text" required type="text"
+    placeholder="{{=it.birthPlaceholder}}" {{? it.isBirthTag === "hasTag"}}
+    data-tag="{{=it.birthTag}}" {{?? true }}
+    data-namespace="{{=it.birthNamespace}}" data-key="{{=it.birthKey}}" {{?}} />
+    <label>{{=it.birthPlaceholder}}</label>
+</div>
+{{?? true }}{{?}}
+
+<!-- Subscribe newsletter checkbox -->
+{{? it.hasNewsletter }}
+<div class="choice-block">
+    <div>
+        <input type="checkbox" class="input-text" />
+        <label>{{=it.subscribeNewsletter}}</label>
+    </div>
 </div>
 {{?? true }}{{?}}
 
@@ -148,21 +134,6 @@
         class="btn btn-primary"
         disabled=""
         type="submit"
-        value="{{=it.createAccount}}"
+        value="{{=it.registerAccount}}"
     />
 </p>
-
-<!-- Subscribe newsletter checkbox -->
-{{? it.hasNewsLetter }}
-<div class="checkbox-container hasNewsletter">
-    <input
-        class="checkbox"
-        data-register-newscheck=""
-        name="acceptsMarketing"
-        type="checkbox"
-    />
-    <div class="text t-5 uppercase pointer" data-register-newstext="">
-        {{=it.subscribeNewsletter}}
-    </div>
-</div>
-{{?? true }}{{?}}

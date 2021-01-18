@@ -77,23 +77,46 @@
 
 // TESTING METAFIELD
 (() => {
-    const json = {
+    json = {
         data: {
             data: {
-                setting_id: "register|metaChoices|",
-                value: [
-                    { key: "key-1", value: "meta-label-1" },
-                    { key: "key-2", value: "meta-label-2" },
-                ],
+                setting_id: "register|isChoiceTag|",
+                value: "hasMetafield",
+            },
+        },
+    };
+    kastorEvent = new CustomEvent("message", {
+        detail: json,
+    });
+    globalThis.dispatchEvent(kastorEvent);
+
+    json1 = {
+        data: {
+            data: {
+                setting_id: "register|choiceNamespace|",
+                value: "choice-namespace",
+            },
+        },
+    };
+    event1 = new CustomEvent("message", {
+        detail: json1,
+    });
+    globalThis.dispatchEvent(event1);
+
+    json2 = {
+        data: {
+            data: {
+                setting_id: "register|choiceKey|",
+                value: "choice-key",
             },
         },
     };
 
-    const kastorEvent = new CustomEvent("message", {
-        detail: json,
+    event2 = new CustomEvent("message", {
+        detail: json2,
     });
 
-    globalThis.dispatchEvent(kastorEvent);
+    globalThis.dispatchEvent(event2);
 })();
 
 // TESTING TAG
@@ -101,9 +124,24 @@
     json = {
         data: {
             data: {
+                setting_id: "register|isChoiceTag|",
+                value: "hasTag",
+            },
+        },
+    };
+    kastorEvent = new CustomEvent("message", {
+        detail: json,
+    });
+    globalThis.dispatchEvent(kastorEvent);
+
+    json = {
+        data: {
+            data: {
+                block_type_id: "register|hasChoice|",
                 setting_id: "register|choiceList|",
                 value: ["item_1", "item_2", "item_3", "item_4"],
             },
+            target: "setting:update",
         },
     };
     kastorEvent = new CustomEvent("message", {
@@ -131,10 +169,15 @@
 (() => {
     const hasFirstNameBlock = {
         data: {
-            setting_id: "register|hasFirstNameBlock|",
-            value: true,
+            data: {
+                block_settings: {
+                    "register|yourFirstName|": "Votre Prénome...",
+                },
+                block_type_id: "register|hasFirstName|",
+                value: undefined,
+            },
+            target: "block:add",
         },
-        target: "block:add",
     };
 
     const kastorEvent = new CustomEvent("message", {
@@ -144,19 +187,26 @@
     globalThis.dispatchEvent(kastorEvent);
 })();
 
-//Choice Block - radio click
+// Add a block - Newsletter
 (() => {
-    json = {
+    const json = {
         data: {
             data: {
-                setting_id: "register|tagOrMetadata|",
-                value: "hasTag", // "hasMetafield"
+                block_settings: {
+                    "register|subscribeNewsletter|":
+                        "Subscribe to our newsletter",
+                },
+                block_type_id: "register|hasNewsletter|",
+                value: undefined,
             },
+            target: "block:add",
         },
     };
-    kastorEvent = new CustomEvent("message", {
+
+    const kastorEvent = new CustomEvent("message", {
         detail: json,
     });
+
     globalThis.dispatchEvent(kastorEvent);
 })();
 
@@ -230,6 +280,25 @@
             data: {
                 setting_id: "register|pswMinLengthErr|",
                 value: "Your password is too short",
+            },
+        },
+    };
+
+    const event = new CustomEvent("message", {
+        detail: json,
+    });
+
+    globalThis.dispatchEvent(event);
+})();
+
+// adding background image
+(() => {
+    const json = {
+        data: {
+            data: {
+                setting_id: "register|--container-bg-image|",
+                value:
+                    "https://images.pexels.com/photos/1591447/pexels-photo-1591447.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
             },
         },
     };
@@ -364,5 +433,53 @@
         detail: json,
     });
 
+    globalThis.dispatchEvent(event);
+})();
+// Birthdate
+(() => {
+    json = {
+        data: {
+            data: {
+                block_type_id: "register|hasBirth|",
+                block_settings: {
+                    "register|birthPlaceholder|": "Your date of birth",
+                    "register|isBirthTag|": "notHasTag",
+                    "register|birthTag|": "",
+                    "register|birthNamespace|": "",
+                    "register|birthKey|": "",
+                },
+            },
+            target: "block:add",
+        },
+    };
+    event = new CustomEvent("message", {
+        detail: json,
+    });
+    globalThis.dispatchEvent(event);
+
+    json = {
+        data: {
+            data: {
+                setting_id: "register|birthNamespace|",
+                value: "birth-namespace",
+            },
+        },
+    };
+    event = new CustomEvent("message", {
+        detail: json,
+    });
+    globalThis.dispatchEvent(event);
+
+    json = {
+        data: {
+            data: {
+                setting_id: "register|birthKey|",
+                value: "birth-key",
+            },
+        },
+    };
+    event = new CustomEvent("message", {
+        detail: json,
+    });
     globalThis.dispatchEvent(event);
 })();

@@ -9,9 +9,6 @@ const tgt = {
 };
 
 exports.sendHttpRequest = (method, e) => {
-    // const wrongEmailFixture = require("../fixtures/wrong-email-psw.html");
-    // const isLoggedHtml = `<div id="customer_logout_link">link</div>`;
-
     return new Promise((res, rej) => {
         const xhr = new XMLHttpRequest();
         xhr.open(method, e.target.action);

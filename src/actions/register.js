@@ -1,20 +1,53 @@
 const { REGISTER_ID, SIGNIN_ID } = require("../templates");
-const { toggleModules, $q } = require("../utils");
+const { toggleModules, $q, formatDate } = require("../utils");
 const { isFormFilled, isValidPsw, sortBlocks } = require("../utils");
+const { storeMetafieldIntoShopify } = require("../services");
+const { STORAGE_KEY } = require("../config.js");
 const tgt = {
     form: `.${REGISTER_ID} form`,
     login: `.${REGISTER_ID} .js-login`,
     pswDiffError: `.${REGISTER_ID} .js-error .js-psw-diff`,
     pswFormatError: `.${REGISTER_ID} .js-error .js-psw-valid`,
 };
-
 const multiChoiceSelector = "multi-choice";
+
+const storeTags = () => {
+    const sel = `
+        [type='checkbox'][data-tag]:checked,
+        [type='text'][data-tag], 
+        [type='date'][data-tag]
+    `;
+
+    const els = Array.from($q(tgt.form).querySelectorAll(sel));
+
+    const tags = els.map((el) => `${el.getAttribute("data-tag")}:${el.value}`);
+    $q('[name="customer[tags]"]').value = tags.join(", ");
+};
+
+const storeMetafield = () => {
+    const sel = `
+        [type='checkbox'][data-key]:checked,
+        [type='text'][data-key], 
+        [type='date'][data-key]
+    `;
+    const els = Array.from($q(tgt.form).querySelectorAll(sel));
+    const metafields = els.map((el) => {
+        return {
+            namespace: el.getAttribute("data-namespace"),
+            key: el.getAttribute("data-key"),
+            value: el.value,
+        };
+    });
+
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(metafields));
+    console.log("localStorage", localStorage.getItem(STORAGE_KEY));
+};
 
 const handleChoiceBlock = ({ target, currentTarget }) => {
     if (!currentTarget.classList.contains(multiChoiceSelector)) {
-        currentTarget
-            .querySelectorAll("[type='checkbox']")
-            .forEach((e) => (e.checked = false));
+        currentTarget.querySelectorAll("[type='checkbox']").forEach((e) => {
+            e.checked = false;
+        });
         target.checked = true;
     }
 };
@@ -38,6 +71,8 @@ const toggleButton = ({ target }) => {
 
 const onSubmit = async (e) => {
     e.preventDefault();
+    storeTags();
+    storeMetafield();
     const { sendHttpRequest } = require("../services");
     if (!(await isValidPsw($q(tgt.form)))) return null;
     $q(tgt.form).action = "/account";
@@ -69,4 +104,7 @@ exports.init = () => {
         "click",
         handleChoiceBlock
     );
+    $q(".js-date input")?.addEventListener("focus", formatDate);
+    storeMetafieldIntoShopify();
+    window.storeMetafieldIntoShopify = storeMetafieldIntoShopify;
 };

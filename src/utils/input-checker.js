@@ -46,10 +46,8 @@ const serialize = (form) => {
     return Array.from(new FormData(form)).reduce(reducer, {});
 };
 
-exports.isFormFilled = (form) => {
-    const inputs = serialize(form);
-    return Object.values(inputs).every((e) => e.length > 0);
-};
+exports.isFormFilled = (form) =>
+    Array.from(form.querySelectorAll("input[required]")).every((e) => e.value);
 
 exports.isValidPsw = async (form) => {
     resetErrorMsgs();
@@ -57,6 +55,8 @@ exports.isValidPsw = async (form) => {
     const errorMsgs = await getPasswordPolicyErrors(inputs);
     return errorMsgs.length === 0 ? true : showError(errorMsgs) && false;
 };
+
+exports.formatDate = ({ target }) => (target.type = "date");
 
 exports.isValidEmail = (email) => /\S+@\S+\.\S+/.test(email);
 

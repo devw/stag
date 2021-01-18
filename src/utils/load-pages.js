@@ -19,8 +19,7 @@ const getDef = () => ({
     [REGISTER_ID]: document.getElementById(REGISTER_ID).text,
     [ACTIVATE_ID]: document.getElementById(ACTIVATE_ID).text,
     [SIGNIN_ID]: document.getElementById(SIGNIN_ID).text,
-    registerNoSlides: document.getElementById("registerNoSlides").text,
-    registerWithSlides: document.getElementById("registerWithSlides").text,
+    registerInputs: document.getElementById("registerInputs").text,
 });
 
 const appendTemplate = (e) => {
@@ -29,21 +28,8 @@ const appendTemplate = (e) => {
     document.body.appendChild(elemDiv);
 };
 
-const checkTagOrMetadata = (tagOrMetadata) => {
-    const isTag = tagOrMetadata === "hasTag";
-    return {
-        hasTag: isTag,
-        hasMetafield: !isTag,
-    };
-};
-
 const getTemplate = (data) => {
     data?.orderedBlock?.forEach((e) => (data[e] = true));
-    if (data.tagOrMetadata) {
-        newObj = checkTagOrMetadata(data.tagOrMetadata);
-        data = { ...data, ...newObj };
-    }
-
     templates.forEach(appendTemplate);
     return doT.template({
         tmpl: document.getElementById(ROOT_ID).text,
@@ -64,6 +50,12 @@ const getBlocksAttr = () => {
     return blocks.length > 0 ? blocks.split(",") : [];
 };
 
+const filterCss = (data) => {
+    const imgUrl = data["--container-bg-image"];
+    if (imgUrl) data["--container-bg-image"] = `url(${imgUrl})`;
+    return data;
+};
+
 exports.getBlocksAttr = getBlocksAttr;
 
 exports.sortBlocks = () => {
@@ -77,6 +69,10 @@ exports.updatePages = (text) => {
 };
 
 exports.updateCss = (cssVars) => {
+    // cssVars["--image-url"] = `url(${cssVars["--image-url"]})`;
+
+    cssVars = filterCss(cssVars);
+    console.log(cssVars["--container-bg-image"]);
     (function traverse(obj, key) {
         if (obj !== null && typeof obj == "object") {
             Object.entries(obj).forEach(([key, value]) => traverse(value, key));

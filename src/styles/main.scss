@@ -133,7 +133,7 @@ body.remove-scrolling {
     border: solid 1px currentColor;
     -webkit-transform: rotate(45deg);
     transform: rotate(45deg);
-    right: 10px;
+    right: 4px;
 }
 
 .eye-icon:before {
@@ -175,14 +175,6 @@ body.remove-scrolling {
 .landing_image {
     // content: var(--image);
     // width: var(--image-width);
-}
-// birth-date module for Respire theme
-.birth-date {
-    align-items: center;
-    display: flex;
-    .birth-date-text {
-        min-width: 40%;
-    }
 }
 
 // social login module for Balzac theme

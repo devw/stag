@@ -11,12 +11,8 @@
     accept-charset="UTF-8"
     novalidate="novalidate"
     class="{{=it.formStyle}}"
+    data-login-redirect="{{=it.loginRedirect || "products"}}"
 >
-    <input
-        type="hidden"
-        name="checkout_url"
-        value="{{=it.redirectAfterLogin}}"
-    />
     <input type="hidden" name="form_type" value="customer_login" /><input
         type="hidden"
         name="utf8"
