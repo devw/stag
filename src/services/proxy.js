@@ -35,13 +35,9 @@ exports.getTheme = async (themeName) => {
 };
 
 exports.storeMetafieldIntoShopify = async () => {
-    const controller = new AbortController();
-    const shop = globalThis?.Shopify?.shop || "test-login-popup.myshopify.com";
+    const shop = globalThis?.Shopify?.shop;
     const cid = globalThis?.__st?.cid;
     const endpoint = `https://${shop}/${PROXY_PATH}/set-metafield-in-shopify`;
-
-    console.log("storeMetafieldIntoShopify endpoint:", endpoint);
-
     const metafieldStorage = localStorage.getItem(STORAGE_KEY);
 
     if (metafieldStorage && cid) {
@@ -56,7 +52,6 @@ exports.storeMetafieldIntoShopify = async () => {
                 metafields: JSON.parse(metafieldStorage),
             }),
         };
-
         console.log("There is metafieldStorage: ", metafieldStorage);
         const promise = await globalThis.fetch(endpoint, params);
         const result = await promise.json();
