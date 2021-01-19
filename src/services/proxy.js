@@ -1,4 +1,8 @@
-const { PROXY_PATH, STORAGE_KEY } = require("../config.js");
+const {
+    PROXY_PATH,
+    STORAGE_METAFIELD,
+    STORAGE_CONFIG,
+} = require("../config.js");
 const { toggleLoading } = require("../utils/toggle-loading");
 
 exports.isRegistered = async (email) => {
@@ -28,17 +32,19 @@ exports.getTheme = async (themeName) => {
     const endpoint = `https://login-popup-dev-theme.s3.amazonaws.com/${shopName}/configuration.json`;
     // const endpoint = "data/configuration.json";
     console.log(endpoint);
-    const result = await globalThis.fetch(endpoint, {
+    const promise = await globalThis.fetch(endpoint, {
         headers: { pragma: "no-cache" },
     });
-    return await result.json();
+    const result = await promise.json();
+    localStorage.setItem(STORAGE_CONFIG, JSON.stringify(result));
+    return result;
 };
 
 exports.storeMetafieldIntoShopify = async () => {
     const shop = globalThis?.Shopify?.shop;
     const cid = globalThis?.__st?.cid;
     const endpoint = `https://${shop}/${PROXY_PATH}/set-metafield-in-shopify`;
-    const metafieldStorage = localStorage.getItem(STORAGE_KEY);
+    const metafieldStorage = localStorage.getItem(STORAGE_METAFIELD);
 
     if (metafieldStorage && cid) {
         const params = {
@@ -56,9 +62,9 @@ exports.storeMetafieldIntoShopify = async () => {
         const promise = await globalThis.fetch(endpoint, params);
         const result = await promise.json();
         console.log("storeMetafieldIntoShopify result: ", result);
-        if (result) localStorage.removeItem(STORAGE_KEY);
+        if (result) localStorage.removeItem(STORAGE_METAFIELD);
     } else {
-        console.log("there are not ", STORAGE_KEY);
+        console.log("there are not ", STORAGE_METAFIELD);
     }
 
     return 0;

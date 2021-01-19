@@ -115,7 +115,8 @@
 {{? it.hasBirth }}
 <div class="js-date">
     <!-- tag -->
-    <input class="input-text" required type="text"
+    <input class="input-text" required type="text" date-min={{=it.birthMin}}
+    date-max={{=it.birthMax}} date-error="{{=it.birthError}}"
     placeholder="{{=it.birthPlaceholder}}" {{? it.isBirthTag === "hasTag"}}
     data-tag="{{=it.birthTag}}" {{?? true }}
     data-namespace="{{=it.birthNamespace}}" data-key="{{=it.birthKey}}" {{?}} />

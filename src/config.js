@@ -4,5 +4,6 @@ module.exports = {
     STAG_ENDPOINT: "./",
     LOGIN_BTN: ".site-header__account",
     PROXY_PATH: "apps/dev",
-    STORAGE_KEY: "shopify_customer_metafields",
+    STORAGE_METAFIELD: "shopify_customer_metafields",
+    STORAGE_CONFIG: "shopify_popup_customer_config",
 };

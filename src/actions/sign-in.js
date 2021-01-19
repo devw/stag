@@ -1,5 +1,5 @@
 const { SIGNIN_ID, REGISTER_ID } = require("../templates/");
-const { $q, isValidEmail, isValidPsw } = require("../utils/");
+const { $q, isValidEmail } = require("../utils/");
 const { sendHttpRequest } = require("../services");
 const { toggleModules } = require("../utils");
 
@@ -10,20 +10,8 @@ const tgt = {
     wrongPsw: `.js-psw-wrong`,
 };
 
-// TODO refactor this part
-const areInputsValid = () => {
-    if (!isValidPsw($q(tgt.form))) {
-        $q(tgt.pswFormatError).style.setProperty("display", "block");
-        return false;
-    } else {
-        $q(tgt.pswFormatError).style.setProperty("display", "none");
-    }
-    return true;
-};
-
 const onSubmit = async (e) => {
     e.preventDefault();
-    if (!areInputsValid()) return null;
     $q(tgt.form).action = "/account/login";
     const resp = await sendHttpRequest("POST", e);
     console.log("shopify response", resp);

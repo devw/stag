@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <form action="">
+            <input
+                type="date"
+                date-min="18"
+                date-max="99"
+                date-error="you are too young or too old"
+            />
+            <input type="submit" value="submit" />
+        </form>
+        <script>
+            const $ = document.querySelector.bind(document);
+            const onSubmit = (e) => {
+                e.preventDefault();
+                console.log(checkDate());
+            };
+            $("form").addEventListener("submit", onSubmit);
+
+            const checkDate = () => {
+                const { minDate, maxDate, error, customerAge } = getDateAttr();
+                if (minDate > customerAge) return `${error},  ...too young`;
+                if (maxDate < customerAge) return `${error},  ...too old`;
+                return `it is ok`;
+            };
+            const getCustomerAge = () => {
+                const DAY_IN_YEAR = 365;
+                const SEC_IN_DAY = 3600 * 24;
+                const MSEC_IN_DAY = 1000 * SEC_IN_DAY;
+                const userSec = new Date($("[type='date']").value).getTime();
+                const nowSec = new Date().getTime();
+                const days = parseInt((nowSec - userSec) / MSEC_IN_DAY);
+                return days / DAY_IN_YEAR;
+            };
+            const getDateAttr = () => {
+                const dateElem = $("[type='date']");
+                return {
+                    minDate: dateElem.getAttribute("date-min"),
+                    maxDate: dateElem.getAttribute("date-max"),
+                    error: dateElem.getAttribute("date-error"),
+                    customerAge: getCustomerAge(),
+                };
+            };
+        </script>
+    </body>
+</html>
