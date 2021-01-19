@@ -342,36 +342,45 @@
 (() => {
     const json = {
         data: {
+            target: "block:reorder",
             data: {
+                page_id: "popup-de-login",
+                section_type_id: "register|section|",
+                section_id: "a0458c8f-1b4b-4a5c-ac03-843d6ee9c20e",
                 blocks: {
-                    "register|hasFirstName|": {
-                        "66ae96e1-1c92-4e6d-9bff-82a912ba1c1c": {
-                            "register|yourFirstName|": "Votre Prénom",
+                    "register|hasBirth|": {
+                        "c10ff336-7690-4619-85fb-fe25f0f033da": {
+                            "register|birthPlaceholder|": "Your date of birth",
+                        },
+                    },
+                    "register|hasPassword|": {
+                        "f34e332e-03e1-4669-98a0-86728b9b4e4a": {},
+                    },
+                    "register|hasTelephone|": {},
+                    "register|hasChoice|": {
+                        "bfda6265-66eb-4bfc-b373-1b3d8507da52": {
+                            "register|choiceList|": ["Mr.", "Mrs.", "Miss"],
+                            "register|hasMultiChoice|": 0,
+                            "register|hasMultiLine|": 0,
                         },
                     },
                     "register|hasEmail|": {
-                        "054255cf-07e7-401d-afb6-6ab11bc7d702": {},
-                    },
-                    "register|hasLastName|": {},
-                    "register|hasPassword|": {
-                        "a560aef9-edd5-428e-9ee0-a7c84bdb59a7": {},
+                        "f6a834fa-6d59-48d7-93e4-5f2d9426aaac": {},
                     },
                 },
                 order: [
-                    "a560aef9-edd5-428e-9ee0-a7c84bdb59a7",
-                    "66ae96e1-1c92-4e6d-9bff-82a912ba1c1c",
-                    "054255cf-07e7-401d-afb6-6ab11bc7d702",
-                    "0e4dc077-ed0c-4d7a-9b60-b8a6ea6bbca6",
+                    "f6a834fa-6d59-48d7-93e4-5f2d9426aaac",
+                    "c10ff336-7690-4619-85fb-fe25f0f033da",
+                    "8c570af9-282b-4169-aea1-c17d1e30be0b",
+                    "f34e332e-03e1-4669-98a0-86728b9b4e4a",
+                    "bfda6265-66eb-4bfc-b373-1b3d8507da52",
                 ],
             },
-            target: "block:reorder",
         },
     };
-
     const event = new CustomEvent("message", {
         detail: json,
     });
-
     globalThis.dispatchEvent(event);
 })();
 

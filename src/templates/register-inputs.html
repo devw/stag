@@ -2,7 +2,7 @@
 {{? (it.hasChoice || it.choiceList ) }}
 <!-- loop -->
 <div
-    class="choice-block single-choice {{?it.hasMultiLine }}multi-line{{??true}} {{?}}"
+    class="hasChoice choice-block single-choice {{?it.hasMultiLine }}multi-line{{??true}} {{?}}"
 >
     {{~it.choiceList :value:index}}
     <div>
@@ -97,23 +97,9 @@
     <label>{{=it.yourPassword}}</label>
 </div>
 
-<!-- Password confirmation field -->
-{{? it.hasPasswordConfirmation }}
-<div>
-    <input
-        required
-        class="input-text"
-        name="confirmPassword"
-        placeholder="{{=it.confirmYourPassword}}"
-        type="password"
-    />
-    <label>{{=it.confirmYourPassword}}</label>
-</div>
-{{?? true }}{{?}}
-
 <!-- TODO to simplify -->
 {{? it.hasBirth }}
-<div class="js-date">
+<div class="hasBirth js-date">
     <!-- tag -->
     <input class="input-text" required type="text" date-min={{=it.birthMin}}
     date-max={{=it.birthMax}} date-error="{{=it.birthError}}"
@@ -126,7 +112,7 @@
 
 <!-- Subscribe newsletter checkbox -->
 {{? it.hasNewsletter }}
-<div class="choice-block">
+<div class="hasNewsletter choice-block">
     <div>
         <input type="checkbox" class="input-text" />
         <label>{{=it.subscribeNewsletter}}</label>

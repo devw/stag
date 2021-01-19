@@ -2,6 +2,7 @@ const {
     PROXY_PATH,
     STORAGE_METAFIELD,
     STORAGE_CONFIG,
+    CONFIG_ENDPOINT,
 } = require("../config.js");
 const { toggleLoading } = require("../utils/toggle-loading");
 
@@ -10,7 +11,7 @@ exports.isRegistered = async (email) => {
     toggleLoading();
     const controller = new AbortController();
     const shop = globalThis?.Shopify?.shop || "test-login-popup.myshopify.com";
-    const endpoint = `https://${shop}/${PROXY_PATH}/get-customer-status?email=${email}&shop=${shop}`;
+    const endpoint = `https://${shop}/${PROXY_PATH}/get-customer-status/${email}`;
     console.log("isRegistered endpoint:", endpoint);
     setTimeout(() => controller.abort(), 5000);
     try {
@@ -29,7 +30,7 @@ exports.getTheme = async (themeName) => {
     //TODO implements memoization
     const shopName =
         globalThis.Shopify?.shop || "test-login-popup.myshopify.com";
-    const endpoint = `https://login-popup-dev-theme.s3.amazonaws.com/${shopName}/configuration.json`;
+    const endpoint = `${CONFIG_ENDPOINT}/${shopName}/configuration.json`;
     // const endpoint = "data/configuration.json";
     console.log(endpoint);
     const promise = await globalThis.fetch(endpoint, {
