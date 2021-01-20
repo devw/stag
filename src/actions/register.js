@@ -1,4 +1,4 @@
-const { REGISTER_ID, SIGNIN_ID } = require("../templates");
+const { REGISTER_ID, SIGNIN_ID, LANDING_ID } = require("../templates");
 const { toggleModules, $q } = require("../utils");
 const { isFormFilled, checkInputs, sortBlocks } = require("../utils");
 const { storeMetafieldIntoShopify } = require("../services");
@@ -108,5 +108,5 @@ exports.init = () => {
     );
     $q(".js-date input")?.addEventListener("focus", formatDate);
     storeMetafieldIntoShopify();
-    window.storeMetafieldIntoShopify = storeMetafieldIntoShopify;
+    $q(".js-back")?.addEventListener("click", () => toggleModules(LANDING_ID));
 };

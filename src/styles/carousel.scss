@@ -1,22 +1,16 @@
-.carousel {
-    height: 170px;
-    position: relative;
-    overflow-x: hidden;
-    padding-top: 10px;
-}
-.carousel > div {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    padding-top: 10px;
-}
-.carousel label {
-    top: 5px;
-}
-.cursor-prev {
+.arrow-container {
+    color: var(--ternary-text-color, #0d3c32);
     cursor: pointer;
-    position: absolute;
-    text-align: left;
-    padding: 0 10px;
-    line-height: 10px;
+}
+
+.arrow {
+    border: solid var(--ternary-text-color, #0d3c32);
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+}
+
+.left {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
 }

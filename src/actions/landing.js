@@ -8,6 +8,7 @@ let form, customerStatusPromise;
 
 const activeBtn = (btn, email) => {
     btn.removeAttribute("disabled");
+    // TODO should I store the result in localStorage?
     customerStatusPromise = getCustomerStatus(email);
 };
 
