@@ -9,20 +9,22 @@ const { toggleLoading } = require("../utils/toggle-loading");
 exports.isRegistered = async (email) => {
     // return { state: "enabled", properties: {} };
     toggleLoading();
-    const controller = new AbortController();
-    const shop = globalThis?.Shopify?.shop || "test-login-popup.myshopify.com";
-    const endpoint = `https://${shop}/${PROXY_PATH}/get-customer-status/${email}`;
-    console.log("isRegistered endpoint:", endpoint);
-    setTimeout(() => controller.abort(), 5000);
+    const shop = globalThis?.Shopify?.shop;
+
+    const endpoint = shop
+        ? `https://${shop}/${PROXY_PATH}/get-customer-status/${email}`
+        : "https://api.mocki.io/v1/ce5f60e2";
+
     try {
-        const promise = await fetch(endpoint, {
-            signal: controller.signal,
-        });
+        const promise = await fetch(endpoint);
         const result = await promise.json();
         toggleLoading();
         return result;
-    } catch (e) {
+    } catch (err) {
         toggleLoading();
+        console.log("error in proxy.js: ", err);
+        //TODO what should I do if the proxy does not work?
+        return {};
     }
 };
 

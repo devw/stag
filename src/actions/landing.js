@@ -22,7 +22,7 @@ const onSubmit = async () => {
     const result = await isRegistered(email);
     if (!result?.state) register();
     else if (result?.state === "enabled") toggleModules(SIGNIN_ID);
-    else if (result?.disabled === "enabled") toggleModules(ACTIVATE_ID);
+    else if (result?.state === "disabled") toggleModules(ACTIVATE_ID);
 };
 
 const register = () => {
