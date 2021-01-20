@@ -1,6 +1,5 @@
 const { $q } = require("./q-selector");
 const errorSelector = ".js-psw-policy";
-const { getTheme } = require("../services/proxy");
 const { STORAGE_CONFIG } = require("../config");
 
 const checkDate = () => {
