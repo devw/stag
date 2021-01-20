@@ -10,7 +10,7 @@ exports.getCustomerStatus = async (email) => {
     const shop = globalThis?.Shopify?.shop;
 
     const endpoint = shop
-        ? `https://${shop}/${PROXY_PATH}/get-customer-status/${shop}/${email}`
+        ? `https://${shop}/${PROXY_PATH}/get-customer-status/${email}`
         : "https://api.mocki.io/v1/ce5f60e2";
 
     try {
@@ -52,7 +52,6 @@ exports.storeMetafieldIntoShopify = async () => {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                shop: shop,
                 cid: cid + "",
                 metafields: JSON.parse(metafieldStorage),
             }),
