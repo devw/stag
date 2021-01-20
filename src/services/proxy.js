@@ -4,11 +4,9 @@ const {
     STORAGE_CONFIG,
     CONFIG_ENDPOINT,
 } = require("../config.js");
-const { toggleLoading } = require("../utils/toggle-loading");
 
-exports.isRegistered = async (email) => {
+exports.getCustomerStatus = async (email) => {
     // return { state: "enabled", properties: {} };
-    toggleLoading();
     const shop = globalThis?.Shopify?.shop;
 
     const endpoint = shop
@@ -18,10 +16,8 @@ exports.isRegistered = async (email) => {
     try {
         const promise = await fetch(endpoint);
         const result = await promise.json();
-        toggleLoading();
         return result;
     } catch (err) {
-        toggleLoading();
         console.log("error in proxy.js: ", err);
         //TODO what should I do if the proxy does not work?
         return {};
