@@ -281,7 +281,7 @@ eval("const { SIGNIN_ID, REGISTER_ID } = __webpack_require__(/*! ../templates/ *
 /*! CommonJS bailout: module.exports is used directly at 1:0-14 */
 /***/ ((module) => {
 
-eval("module.exports = {\n    CONFIG_ENDPOINT: \"https://login-popup-dev-theme.s3.amazonaws.com\",\n    LOGIN_BTN: \".site-header__account\",\n    PROXY_PATH: \"apps/dev\",\n    STORAGE_METAFIELD: \"shopify_customer_metafields\",\n    STORAGE_CONFIG: \"shopify_popup_customer_config\",\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/config.js?");
+eval("module.exports = {\n    LOGIN_BTN: \".site-header__account\",\n    PROXY_PATH: \"apps/dev\",\n    STORAGE_KEY: \"shopify_customer_metafields\",\n    // TODO get it from the PROXY\n    CONFIG_ENDPOINT: \"https://login-popup-dev-theme.s3.amazonaws.com\",\n    IDs: {\n        APP_ID: \"login-popup\",\n        ROOT_ID: \"bbb\",\n        CONTAINER_ID: \"container\",\n        LANDING_ID: \"landing\",\n        REGISTER_ID: \"register\",\n        SIGNIN_ID: \"signin\",\n        ACTIVATE_ID: \"activate\",\n    },\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/config.js?");
 
 /***/ }),
 

@@ -54,18 +54,9 @@
 })();
 
 (() => {
-    const getEvent = (json) =>
-        new CustomEvent("message", {
-            detail: json,
-        });
-
     const block = {
-        data: {
-            data: {
-                setting_id: "register|hasMultiLine|",
-                value: true,
-            },
-        },
+        setting_id: "register|hasMultiLine|",
+        value: true,
     };
 
     globalThis.dispatchEvent(getEvent(block));
@@ -319,68 +310,40 @@
     globalThis.dispatchEvent(event);
 })();
 
-// adding fomr image
-(() => {
-    const json = {
-        data: {
-            data: {
-                setting_id: "register|--form-header-image|",
-                value:
-                    "https://www.imedias.pro/wp-content/themes/bootstrap-basic4-child/images/cours/images_web/tux_png_24.png",
-            },
-        },
-    };
-
-    const event = new CustomEvent("message", {
-        detail: json,
-    });
-
-    globalThis.dispatchEvent(event);
-})();
-
 // reorder fields
 (() => {
     const json = {
         data: {
-            target: "block:reorder",
             data: {
-                page_id: "popup-de-login",
-                section_type_id: "register|section|",
-                section_id: "a0458c8f-1b4b-4a5c-ac03-843d6ee9c20e",
                 blocks: {
-                    "register|hasBirth|": {
-                        "c10ff336-7690-4619-85fb-fe25f0f033da": {
-                            "register|birthPlaceholder|": "Your date of birth",
-                        },
-                    },
-                    "register|hasPassword|": {
-                        "f34e332e-03e1-4669-98a0-86728b9b4e4a": {},
-                    },
-                    "register|hasTelephone|": {},
-                    "register|hasChoice|": {
-                        "bfda6265-66eb-4bfc-b373-1b3d8507da52": {
-                            "register|choiceList|": ["Mr.", "Mrs.", "Miss"],
-                            "register|hasMultiChoice|": 0,
-                            "register|hasMultiLine|": 0,
+                    "register|hasFirstName|": {
+                        "66ae96e1-1c92-4e6d-9bff-82a912ba1c1c": {
+                            "register|yourFirstName|": "Votre Prénom",
                         },
                     },
                     "register|hasEmail|": {
-                        "f6a834fa-6d59-48d7-93e4-5f2d9426aaac": {},
+                        "054255cf-07e7-401d-afb6-6ab11bc7d702": {},
+                    },
+                    "register|hasLastName|": {},
+                    "register|hasPassword|": {
+                        "a560aef9-edd5-428e-9ee0-a7c84bdb59a7": {},
                     },
                 },
                 order: [
-                    "f6a834fa-6d59-48d7-93e4-5f2d9426aaac",
-                    "c10ff336-7690-4619-85fb-fe25f0f033da",
-                    "8c570af9-282b-4169-aea1-c17d1e30be0b",
-                    "f34e332e-03e1-4669-98a0-86728b9b4e4a",
-                    "bfda6265-66eb-4bfc-b373-1b3d8507da52",
+                    "a560aef9-edd5-428e-9ee0-a7c84bdb59a7",
+                    "66ae96e1-1c92-4e6d-9bff-82a912ba1c1c",
+                    "054255cf-07e7-401d-afb6-6ab11bc7d702",
+                    "0e4dc077-ed0c-4d7a-9b60-b8a6ea6bbca6",
                 ],
             },
+            target: "block:reorder",
         },
     };
+
     const event = new CustomEvent("message", {
         detail: json,
     });
+
     globalThis.dispatchEvent(event);
 })();
 
@@ -519,42 +482,4 @@
         detail: json,
     });
     globalThis.dispatchEvent(event);
-})();
-
-//Activate block
-(() => {
-    const json = {
-        data: {
-            data: {
-                block_type_id: "activate||",
-                value: undefined,
-            },
-            target: "",
-        },
-    };
-
-    const kastorEvent = new CustomEvent("message", {
-        detail: json,
-    });
-
-    globalThis.dispatchEvent(kastorEvent);
-})();
-
-//test popup full
-(() => {
-    const json = {
-        data: {
-            data: {
-                setting_id: "landing|layout|",
-                value: "popup-full",
-            },
-            target: "",
-        },
-    };
-
-    const kastorEvent = new CustomEvent("message", {
-        detail: json,
-    });
-
-    globalThis.dispatchEvent(kastorEvent);
 })();
