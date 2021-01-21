@@ -73,10 +73,7 @@ exports.updatePages = (text) => {
 };
 
 exports.updateCss = (cssVars) => {
-    // cssVars["--image-url"] = `url(${cssVars["--image-url"]})`;
-
     cssVars = filterCss(cssVars);
-    console.log(cssVars["--container-bg-image"]);
     (function traverse(obj, key) {
         if (obj !== null && typeof obj == "object") {
             Object.entries(obj).forEach(([key, value]) => traverse(value, key));

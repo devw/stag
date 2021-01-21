@@ -39,30 +39,25 @@ exports.getConfiguration = async () => {
 };
 
 exports.storeMetafieldIntoShopify = async () => {
-    const shop = globalThis?.Shopify?.shop;
     const cid = globalThis?.__st?.cid;
-    const endpoint = `https://${shop}/${PROXY_PATH}/set-metafield-in-shopify`;
     const metafieldStorage = localStorage.getItem(STORAGE_METAFIELD);
+    const areThereMetafields = metafieldStorage && cid;
 
-    if (metafieldStorage && cid) {
-        const params = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                cid: cid + "",
-                metafields: JSON.parse(metafieldStorage),
-            }),
-        };
-        console.log("There is metafieldStorage: ", metafieldStorage);
-        const promise = await globalThis.fetch(endpoint, params);
-        const result = await promise.json();
-        console.log("storeMetafieldIntoShopify result: ", result);
-        if (result) localStorage.removeItem(STORAGE_METAFIELD);
-    } else {
-        console.log("there are not ", STORAGE_METAFIELD);
-    }
+    if (!areThereMetafields) return null;
 
-    return 0;
+    const shop = globalThis?.Shopify?.shop;
+    const endpoint = `https://${shop}/${PROXY_PATH}/set-metafield-in-shopify`;
+    const params = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            cid: cid + "",
+            metafields: JSON.parse(metafieldStorage),
+        }),
+    };
+    const promise = await globalThis.fetch(endpoint, params);
+    const result = await promise.json();
+    if (result) localStorage.removeItem(STORAGE_METAFIELD);
 };

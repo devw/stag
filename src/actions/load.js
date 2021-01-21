@@ -2,7 +2,7 @@ const { init: initLanding } = require("./landing");
 const { init: initSignIn } = require("./sign-in");
 const { init: initRegistration } = require("./register");
 const { $q, toggleModules } = require("../utils/");
-const { LOGIN_BTN } = require("../config");
+const { LOGIN_BTN, STORAGE_CONFIG } = require("../config");
 const { LANDING_ID } = require("../templates/");
 
 //TODO refactoring too code repetition
@@ -36,7 +36,9 @@ const openAccount = (e) => {
 
 exports.openAccount = openAccount;
 const $ = document.querySelector.bind(document);
-$(LOGIN_BTN)?.addEventListener("click", openAccount, true);
+
+if (JSON.parse(localStorage.getItem(STORAGE_CONFIG)).isActive)
+    $(LOGIN_BTN)?.addEventListener("click", openAccount, true);
 
 exports.loadActions = () => {
     initContainer();

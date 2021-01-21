@@ -1,7 +1,8 @@
 module.exports = {
     LOGIN_BTN: ".site-header__account",
     PROXY_PATH: "apps/dev",
-    STORAGE_KEY: "shopify_customer_metafields",
+    STORAGE_KEY: "shopify-loginpopup-metafields",
+    STORAGE_CONFIG: "shopify-loginpopup-configuration",
     // TODO get it from the PROXY
     CONFIG_ENDPOINT: "https://login-popup-dev-theme.s3.amazonaws.com",
     IDs: {
