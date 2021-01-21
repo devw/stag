@@ -1,5 +1,4 @@
 const { updatePages, $q, showError } = require("../utils");
-const { getTheme } = require("./proxy");
 const { getBlocksAttr } = require("../utils/load-pages");
 
 const debounce = (fn, delay) => {

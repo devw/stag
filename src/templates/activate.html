@@ -1,4 +1,4 @@
-<img class="image" />
+<img class="form-image" />
 <!-- TODO remove hardcoded value -->
 <div class="title">{{=it.activateTitle}}</div>
 <div class="sub-title">{{=it.activateSubTitle}}</div>
@@ -9,31 +9,9 @@
     novalidate="novalidate"
     class="{{=it.formStyle}}"
 >
-    <input
-        type="hidden"
-        name="checkout_url"
-        value="{{=it.redirectAfterActivate}}"
-    />
     <input type="hidden" name="form_type" value="customer_login" /><input
         type="hidden"
         name="utf8"
         value="✓"
-    />
-    <div>
-        <input
-            type="email"
-            name="customer[email]"
-            autocomplete="email"
-            class="input-text"
-            placeholder="{{=it.yourEmail}}"
-        />
-        <label>{{=it.yourEmail}}</label>
-    </div>
-    <!-- TODO remove hardcoded value -->
-    <input
-        class="btn btn-primary"
-        disabled=""
-        type="submit"
-        value="{{=it.activateBtn}}"
     />
 </form>

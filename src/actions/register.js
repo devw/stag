@@ -1,8 +1,8 @@
-const { REGISTER_ID, SIGNIN_ID } = require("../templates");
-const { toggleModules, $q, formatDate } = require("../utils");
-const { isFormFilled, isValidPsw, sortBlocks } = require("../utils");
+const { REGISTER_ID, SIGNIN_ID, LANDING_ID } = require("../templates");
+const { toggleModules, $q } = require("../utils");
+const { isFormFilled, checkInputs, sortBlocks } = require("../utils");
 const { storeMetafieldIntoShopify } = require("../services");
-const { STORAGE_KEY } = require("../config.js");
+const { STORAGE_METAFIELD } = require("../config.js");
 const tgt = {
     form: `.${REGISTER_ID} form`,
     login: `.${REGISTER_ID} .js-login`,
@@ -39,8 +39,8 @@ const storeMetafield = () => {
         };
     });
 
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(metafields));
-    console.log("localStorage", localStorage.getItem(STORAGE_KEY));
+    localStorage.setItem(STORAGE_METAFIELD, JSON.stringify(metafields));
+    console.log("localStorage", localStorage.getItem(STORAGE_METAFIELD));
 };
 
 const handleChoiceBlock = ({ target, currentTarget }) => {
@@ -74,7 +74,7 @@ const onSubmit = async (e) => {
     storeTags();
     storeMetafield();
     const { sendHttpRequest } = require("../services");
-    if (!(await isValidPsw($q(tgt.form)))) return null;
+    if (!(await checkInputs($q(tgt.form)))) return null;
     $q(tgt.form).action = "/account";
     const resp = await sendHttpRequest("POST", e);
     console.log("shopify response", resp);
@@ -89,6 +89,8 @@ const changeSlide = (e) => {
         behavior: "smooth",
     });
 };
+
+const formatDate = ({ target }) => (target.type = "date");
 
 exports.init = () => {
     const form = $q(tgt.form);
@@ -106,5 +108,5 @@ exports.init = () => {
     );
     $q(".js-date input")?.addEventListener("focus", formatDate);
     storeMetafieldIntoShopify();
-    window.storeMetafieldIntoShopify = storeMetafieldIntoShopify;
+    $q(".js-back")?.addEventListener("click", () => toggleModules(LANDING_ID));
 };

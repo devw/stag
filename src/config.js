@@ -1,8 +1,7 @@
 module.exports = {
-    //AWS_ENDPOINT: "http://ec2-3-19-56-186.us-east-2.compute.amazonaws.com",
-    AWS_ENDPOINT: "https://f7b45b79bb90.ngrok.io",
-    STAG_ENDPOINT: "./",
+    CONFIG_ENDPOINT: "https://login-popup-dev-theme.s3.amazonaws.com",
     LOGIN_BTN: ".site-header__account",
     PROXY_PATH: "apps/dev",
-    STORAGE_KEY: "shopify_customer_metafields",
+    STORAGE_METAFIELD: "shopify_customer_metafields",
+    STORAGE_CONFIG: "shopify_popup_customer_config",
 };

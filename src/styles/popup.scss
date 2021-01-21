@@ -8,65 +8,83 @@
 /* 
     POPUP-FLOATING
 */
-.popup-floating {
-    box-shadow: 0 1px 5px 2px rgba(0, 0, 0, 0.1);
-    top: 40px;
-    right: 40px;
-}
+#login-popup {
+    .content {
+        z-index: 2;
+    }
+    .popup-floating {
+        box-shadow: 0 1px 5px 2px rgba(0, 0, 0, 0.1);
+        top: 40px;
+        right: 40px;
+    }
 
-/* 
+    /* 
     POPUP-FULL
 */
-.popup-full {
-    width: 100vw;
-    height: 100vh;
-    background: linear-gradient(
-            var(--container-bg-color) 100%,
-            var(--container-bg-color) 100%
-        ),
-        var(--container-bg-image) center / cover;
-    top: 0;
-}
-.popup-full > .content {
-    height: inherit;
-    display: flex;
-    align-items: center;
-}
+    .popup-full {
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+    }
+    .popup-full > .content {
+        height: inherit;
+        display: flex;
+        align-items: center;
+    }
 
-/* 
+    .popup-full:before {
+        content: " ";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 1;
+        opacity: var(--bg-opacity-image, 1);
+        background-image: var(--container-bg-image);
+        background-size: cover;
+    }
+
+    /* 
     POPUP-DRAWER
 */
-.popup-drawer {
-    box-shadow: 0 1px 5px 2px rgba(0, 0, 0, 0.1);
-    height: 100vh;
-    min-width: var(--popup-min-width);
-    right: 0;
-    top: 0;
-}
-.popup-drawer > .content {
-    height: inherit;
-    right: 0;
-    /* position: absolute; */
-    display: flex;
-    align-items: center;
-}
+    .popup-drawer {
+        box-shadow: 0 1px 5px 2px rgba(0, 0, 0, 0.1);
+        height: 100vh;
+        min-width: var(--popup-min-width);
+        right: 0;
+        top: 0;
+    }
+    .popup-drawer > .content {
+        height: inherit;
+        right: 0;
+        /* position: absolute; */
+        display: flex;
+        align-items: center;
+    }
 
-/* 
-    POPUP-CENTERED
-*/
-.popup-centered {
-    align-items: center;
-    background: linear-gradient(
-            var(--container-bg-color) 100%,
-            var(--container-bg-color) 100%
-        ),
-        var(--container-bg-image) center / cover;
-    background-size: cover;
-    display: flex;
-    height: 100vh;
-    justify-content: center;
-    opacity: 1;
-    right: 0;
-    top: 0;
-    width: 100vw;
+    /* 
+        POPUP-CENTERED
+    */
+    .popup-centered {
+        align-items: center;
+        height: 100vh;
+        justify-content: center;
+        opacity: 1;
+        right: 0;
+        top: 0;
+        width: 100vw;
+    }
+    .popup-centered:before {
+        content: " ";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 1;
+        opacity: var(--bg-opacity-image, 1);
+        background-image: var(--container-bg-image);
+        background-size: cover;
+    }
 }

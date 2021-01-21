@@ -51,8 +51,12 @@ const getBlocksAttr = () => {
 };
 
 const filterCss = (data) => {
-    const imgUrl = data["--container-bg-image"];
+    // TODO refactoring
+    let imgUrl;
+    imgUrl = data["--container-bg-image"];
     if (imgUrl) data["--container-bg-image"] = `url(${imgUrl})`;
+    imgUrl = data["--form-header-image"];
+    if (imgUrl) data["--form-header-image"] = `url(${imgUrl})`;
     return data;
 };
 

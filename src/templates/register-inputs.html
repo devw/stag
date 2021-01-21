@@ -2,25 +2,30 @@
 {{? (it.hasChoice || it.choiceList ) }}
 <!-- loop -->
 <div
-    class="choice-block single-choice {{?it.hasMultiLine }}multi-line{{??true}} {{?}}"
+    class="hasChoice choice-block single-choice {{?it.hasMultiLine }}multi-line{{??true}} {{?}}"
 >
     {{~it.choiceList :value:index}}
+    <div>
+        <!-- tag -->
+        {{? it.isChoiceTag === "hasTag"}}
+        <input
+            type="checkbox"
+            data-tag="{{=it.choiceTag}}"
+            value="{{=value}}"
+        />
+        {{?? true }}{{?}}
+        <!-- metafield -->
+        {{? it.isChoiceTag === "hasMetafield"}}
+        <input
+            type="checkbox"
+            data-namespace="{{=it.choiceNamespace}}"
+            data-key="{{=it.choiceKey}}"
+            value="{{=value}}"
+        />
+        {{?? true }}{{?}}
 
-    <!-- tag -->
-    {{? it.isChoiceTag === "hasTag"}}
-    <input type="checkbox" data-tag="{{=it.choiceTag}}" value="{{=value}}" />
-    {{?? true }}{{?}}
-    <!-- metafield -->
-    {{? it.isChoiceTag === "hasMetafield"}}
-    <input
-        type="checkbox"
-        data-namespace="{{=it.choiceNamespace}}"
-        data-key="{{=it.choiceKey}}"
-        value="{{=value}}"
-    />
-    {{?? true }}{{?}}
-
-    <label>{{=value}}</label>
+        <label>{{=value}}</label>
+    </div>
     {{~}}
 </div>
 {{?? true }}{{?}}
@@ -92,25 +97,12 @@
     <label>{{=it.yourPassword}}</label>
 </div>
 
-<!-- Password confirmation field -->
-{{? it.hasPasswordConfirmation }}
-<div>
-    <input
-        required
-        class="input-text"
-        name="confirmPassword"
-        placeholder="{{=it.confirmYourPassword}}"
-        type="password"
-    />
-    <label>{{=it.confirmYourPassword}}</label>
-</div>
-{{?? true }}{{?}}
-
 <!-- TODO to simplify -->
 {{? it.hasBirth }}
-<div class="js-date">
+<div class="hasBirth js-date">
     <!-- tag -->
-    <input class="input-text" required type="text"
+    <input class="input-text" required type="text" date-min={{=it.birthMin}}
+    date-max={{=it.birthMax}} date-error="{{=it.birthError}}"
     placeholder="{{=it.birthPlaceholder}}" {{? it.isBirthTag === "hasTag"}}
     data-tag="{{=it.birthTag}}" {{?? true }}
     data-namespace="{{=it.birthNamespace}}" data-key="{{=it.birthKey}}" {{?}} />
@@ -120,7 +112,7 @@
 
 <!-- Subscribe newsletter checkbox -->
 {{? it.hasNewsletter }}
-<div class="choice-block">
+<div class="hasNewsletter choice-block">
     <div>
         <input type="checkbox" class="input-text" />
         <label>{{=it.subscribeNewsletter}}</label>

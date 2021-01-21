@@ -1,41 +1,47 @@
-const { LANDING_ID, REGISTER_ID, SIGNIN_ID } = require("../templates/");
-const { isRegistered } = require("../services");
+const { SIGNIN_ID, ACTIVATE_ID } = require("../templates/");
+const { LANDING_ID, REGISTER_ID } = require("../templates/");
+const { getCustomerStatus } = require("../services");
 const { toggleModules, $qq } = require("../utils");
 const disableBtn = (btn) => btn.setAttribute("disabled", "true");
-let form;
+const { toggleLoading } = require("../utils/toggle-loading");
+let form, customerStatusPromise;
 
-const activeBtn = (btn, target) => {
+const activeBtn = (btn, email) => {
     btn.removeAttribute("disabled");
-    sessionStorage.setItem("email", target.value); //TODO fix it
-};
-const toggleButton = ({ target }) => {
-    const btn = form.querySelector("input[type='submit']");
-    const isEmail = /[\w.]+@\w+\.[a-z]{2,}/.test(target.value);
-    isEmail ? activeBtn(btn, target) : disableBtn(btn);
+    // TODO should I store the result in localStorage?
+    customerStatusPromise = getCustomerStatus(email);
 };
 
 const onSubmit = async () => {
-    const email = form.querySelector("[type='email']").value;
-    $qq(`.${REGISTER_ID}`, "form [type='email']").value = email;
-    $qq(`.${SIGNIN_ID}`, "form [type='email']").value = email;
-    const result = await isRegistered(email);
+    toggleLoading();
+    const result = await customerStatusPromise;
+    toggleLoading();
     if (!result?.state) register();
-    else if (result?.state === "enabled") signIn();
-    else if (result?.disabled === "enabled") {
-        /*todo load disable page*/
-    }
+    else if (result.state === "enabled") toggleModules(SIGNIN_ID);
+    else if (result.state === "disabled") toggleModules(ACTIVATE_ID);
+};
+
+const emailAutofill = () => {
+    const emailSelector = "[type='email']";
+    const email = form.querySelector(emailSelector).value;
+    $qq(`.${REGISTER_ID}`, `form ${emailSelector}`).value = email;
+    $qq(`.${SIGNIN_ID}`, `form ${emailSelector}`).value = email;
+};
+
+const toggleButton = ({ target }) => {
+    const btn = form.querySelector("input[type='submit']");
+    const email = target.value;
+    const isEmail = /[\w.]+@\w+\.[a-z]{2,}/.test(email);
+    isEmail ? activeBtn(btn, email) : disableBtn(btn);
 };
 
 const register = () => {
     toggleModules(REGISTER_ID);
 };
 
-const signIn = () => {
-    toggleModules(SIGNIN_ID);
-};
-
 exports.init = () => {
     form = $qq(`.${LANDING_ID}`, "form");
     form.addEventListener("input", toggleButton);
     form.addEventListener("submit", onSubmit);
+    form.addEventListener("submit", emailAutofill);
 };
