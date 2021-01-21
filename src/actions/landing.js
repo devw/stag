@@ -1,7 +1,7 @@
 const { SIGNIN_ID, ACTIVATE_ID } = require("../templates/");
 const { LANDING_ID, REGISTER_ID } = require("../templates/");
 const { getCustomerStatus } = require("../services");
-const { toggleModules, $qq } = require("../utils");
+const { toggleModules, $qq, debounce } = require("../utils");
 const disableBtn = (btn) => btn.setAttribute("disabled", "true");
 const { toggleLoading } = require("../utils/toggle-loading");
 let form, customerStatusPromise;
@@ -41,7 +41,7 @@ const register = () => {
 
 exports.init = () => {
     form = $qq(`.${LANDING_ID}`, "form");
-    form.addEventListener("input", toggleButton);
+    form.addEventListener("input", debounce(toggleButton, 200));
     form.addEventListener("submit", onSubmit);
     form.addEventListener("submit", emailAutofill);
 };

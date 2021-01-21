@@ -1,13 +1,5 @@
-const { updatePages, $q, showError } = require("../utils");
+const { updatePages, $q, showError, debounce } = require("../utils");
 const { getBlocksAttr } = require("../utils/load-pages");
-
-const debounce = (fn, delay) => {
-    let timeoutId;
-    return (...args) => {
-        clearTimeout(timeoutId);
-        timeoutId = setTimeout(() => fn(...args), delay);
-    };
-};
 
 const changePage = (page) => {
     const { loadActions } = require("../actions/load");
@@ -15,23 +7,6 @@ const changePage = (page) => {
     toggleModules(page);
     $q(".container").style.setProperty("display", "flex");
     loadActions();
-};
-
-const getBlocks = (json) => {
-    const blocks = [];
-    Object.keys(json).forEach((e) => {
-        blocks.push(`${e}${Object.keys(json[e]).length > 0}`);
-    });
-    return blocks;
-};
-
-const showBlocks = (blocks) => {
-    blocks.forEach((block) => {
-        const [, name, display] = block.split("|");
-        console.log(name, display, typeof display);
-        updatePages({ [name]: display === "false" ? false : true });
-    });
-    changePage("register");
 };
 
 const getIdsVsBlocks = (json) => {
