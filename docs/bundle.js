@@ -211,7 +211,7 @@ eval("module.exports = JSON.parse(\"{\\\"style\\\":{\\\"theme\\\":{\\\"--contain
 /*! runtime requirements: __webpack_exports__, __webpack_require__ */
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("const { updateCss, updatePages } = __webpack_require__(/*! ../utils */ \"./src/utils/index.js\");\nconst { loadActions, openAccount } = __webpack_require__(/*! ./load */ \"./src/actions/load.js\");\nconst { getConfiguration, kastorHandler } = __webpack_require__(/*! ../services */ \"./src/services/index.js\");\n\nexports.loadTheme = (themeName) => getConfiguration(themeName).then(onGetConf);\n\nexports.showTheme = () => {\n    if (globalThis.self !== globalThis.top) openAccount();\n    kastorHandler();\n};\n\nconst onGetConf = (theme) => {\n    updatePages(theme.text);\n    updateCss(theme.style);\n    loadActions();\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/actions/index.js?");
+eval("const { updateCss, updatePages } = __webpack_require__(/*! ../utils */ \"./src/utils/index.js\");\nconst { loadActions, openAccount } = __webpack_require__(/*! ./load */ \"./src/actions/load.js\");\nconst { getConfiguration, kastorHandler } = __webpack_require__(/*! ../services */ \"./src/services/index.js\");\n\nexports.loadTheme = async () => {\n    const config = await getConfiguration();\n    updatePages(config.text);\n    updateCss(config.style);\n    loadActions();\n};\n\nexports.showTheme = () => {\n    if (globalThis.self !== globalThis.top) openAccount();\n    kastorHandler();\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/actions/index.js?");
 
 /***/ }),
 
