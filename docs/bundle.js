@@ -100,106 +100,6 @@ eval("// Module\nvar code = \"<img class=\\\"form-image\\\" />\\n<div class=\\\"
 
 /***/ }),
 
-/***/ "./public/data/config.json":
-/*!*********************************!*\
-  !*** ./public/data/config.json ***!
-  \*********************************/
-/*! default exports */
-/*! export style [provided] [no usage info] [missing usage info prevents renaming] */
-/*!   export page-landing [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     export --image [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     export --image-width [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     other exports [not provided] [no usage info] */
-/*!   export page-register [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     export --image [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     export --image-width [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     other exports [not provided] [no usage info] */
-/*!   export theme [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     export --btn-bg-color [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     export --btn-disabled-bg-color [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     export --btn-disabled-opacity [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     export --container-bg-color [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     export --container-bg-image [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     export --container-border-radius [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     export --content-bg-color [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     export --content-padding [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     export --content-width [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     export --error-bg-color [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     export --error-text-align [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     export --error-text-color [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     export --hint-text-color [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     export --image-padding [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     export --image-size [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     export --image-url [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     export --input-line [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     export --input-padding [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     export --large-font-family [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     export --large-font-size [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     export --large-font-weight [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     export --large-letter-spacing [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     export --large-line-height [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     export --large-text-transform [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     export --medium-font-weight [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     export --medium-text-size [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     export --placeholder-color [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     export --placeholder-font-size [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     export --placeholder-text-transform [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     export --primary-text-color [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     export --text-input-margin [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     other exports [not provided] [no usage info] */
-/*!   other exports [not provided] [no usage info] */
-/*! export text [provided] [no usage info] [missing usage info prevents renaming] */
-/*!   export confirmYourPassword [provided] [no usage info] [missing usage info prevents renaming] */
-/*!   export createAccount [provided] [no usage info] [missing usage info prevents renaming] */
-/*!   export enterEmailPswToConnect [provided] [no usage info] [missing usage info prevents renaming] */
-/*!   export enterYourEmailToContinue [provided] [no usage info] [missing usage info prevents renaming] */
-/*!   export fillInfoToCreateAccount [provided] [no usage info] [missing usage info prevents renaming] */
-/*!   export formStyle [provided] [no usage info] [missing usage info prevents renaming] */
-/*!   export hasBirthDate [provided] [no usage info] [missing usage info prevents renaming] */
-/*!   export hasGender [provided] [no usage info] [missing usage info prevents renaming] */
-/*!   export hasNewsLetter [provided] [no usage info] [missing usage info prevents renaming] */
-/*!   export hasPasswordConfirmation [provided] [no usage info] [missing usage info prevents renaming] */
-/*!   export hasSocialLogin [provided] [no usage info] [missing usage info prevents renaming] */
-/*!   export incorrectEmailOrPassword [provided] [no usage info] [missing usage info prevents renaming] */
-/*!   export layout [provided] [no usage info] [missing usage info prevents renaming] */
-/*!   export login [provided] [no usage info] [missing usage info prevents renaming] */
-/*!   export loginRegister [provided] [no usage info] [missing usage info prevents renaming] */
-/*!   export passwordTooShort [provided] [no usage info] [missing usage info prevents renaming] */
-/*!   export pswPolicy [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     export passwordConfirmationError [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     export pswMaxLength [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     export pswMaxLengthErr [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     export pswMinLength [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     export pswMinLengthErr [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     export pswNumber [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     export pswNumberErr [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     export pswSpecialCharacter [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     export pswSpecialCharacterErr [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     export pswUppercase [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     export pswUppercaseErr [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     other exports [not provided] [no usage info] */
-/*!   export redirect [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     export redirectAfterLogin [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     export redirectAfterRegister [provided] [no usage info] [missing usage info prevents renaming] */
-/*!     other exports [not provided] [no usage info] */
-/*!   export signIn [provided] [no usage info] [missing usage info prevents renaming] */
-/*!   export signUp [provided] [no usage info] [missing usage info prevents renaming] */
-/*!   export subscribeNewsletter [provided] [no usage info] [missing usage info prevents renaming] */
-/*!   export validate [provided] [no usage info] [missing usage info prevents renaming] */
-/*!   export yourEmail [provided] [no usage info] [missing usage info prevents renaming] */
-/*!   export yourFirstName [provided] [no usage info] [missing usage info prevents renaming] */
-/*!   export yourLastName [provided] [no usage info] [missing usage info prevents renaming] */
-/*!   export yourPassword [provided] [no usage info] [missing usage info prevents renaming] */
-/*!   other exports [not provided] [no usage info] */
-/*! other exports [not provided] [no usage info] */
-/*! runtime requirements: module */
-/***/ ((module) => {
-
-"use strict";
-eval("module.exports = JSON.parse(\"{\\\"style\\\":{\\\"theme\\\":{\\\"--container-border-radius\\\":\\\"0em\\\",\\\"--container-bg-color\\\":\\\"rgba(90, 91, 91, 0.4)\\\",\\\"--container-bg-image\\\":\\\"url('https://cdn.shopify.com/s/files/1/2598/9270/products/Packshotfriandiseschatvolaille_600x.jpg?v=1599487575')\\\",\\\"--content-width\\\":\\\"530px\\\",\\\"--content-padding\\\":\\\"1.5em\\\",\\\"--content-bg-color\\\":\\\"#fff\\\",\\\"--primary-text-color\\\":\\\"#0d3c32\\\",\\\"--error-bg-color\\\":\\\"#bfd9cb\\\",\\\"--error-text-color\\\":\\\"#0d3c32\\\",\\\"--error-text-align\\\":\\\"left\\\",\\\"--hint-text-color\\\":\\\"#333\\\",\\\"--btn-bg-color\\\":\\\"#de7154\\\",\\\"--btn-disabled-bg-color\\\":\\\"#c6c1be\\\",\\\"--btn-disabled-opacity\\\":1,\\\"--large-font-family\\\":\\\"Helvetica Neue\\\",\\\"--large-font-size\\\":\\\"1.875rem\\\",\\\"--large-font-weight\\\":700,\\\"--large-line-height\\\":\\\"2em\\\",\\\"--large-letter-spacing\\\":\\\"0.05em\\\",\\\"--large-text-transform\\\":\\\"none\\\",\\\"--medium-text-size\\\":\\\"1.1em\\\",\\\"--medium-font-weight\\\":300,\\\"--input-padding\\\":\\\"10px 0\\\",\\\"--input-line\\\":\\\"none\\\",\\\"--placeholder-text-transform\\\":\\\"uppercase\\\",\\\"--placeholder-font-size\\\":\\\"inherit\\\",\\\"--placeholder-color\\\":\\\"inherit\\\",\\\"--text-input-margin\\\":\\\"0.9em\\\",\\\"--image-padding\\\":\\\"1em\\\",\\\"--image-size\\\":\\\"40%\\\",\\\"--image-url\\\":\\\"url('https://cdn.shopify.com/s/files/1/2598/9270/files/Chien-Chat-1.png?v=1595510115')\\\"},\\\"page-landing\\\":{\\\"--image\\\":\\\"url(\\\\\\\"https://cdn.shopify.com/s/files/1/2598/9270/files/Chien-Chat-1.png?v=1595510115\\\\\\\")\\\",\\\"--image-width\\\":\\\"40%\\\"},\\\"page-register\\\":{\\\"--image\\\":\\\"url(\\\\\\\"https://cdn.shopify.com/s/files/1/2598/9270/files/Chien-16.png?v=1595509535\\\\\\\")\\\",\\\"--image-width\\\":\\\"40%\\\"}},\\\"text\\\":{\\\"hasGender\\\":false,\\\"hasSocialLogin\\\":false,\\\"hasPasswordConfirmation\\\":true,\\\"hasBirthDate\\\":false,\\\"hasNewsLetter\\\":true,\\\"layout\\\":\\\"popup-centered\\\",\\\"formStyle\\\":\\\"label-go-up\\\",\\\"createAccount\\\":\\\"Création de compte\\\",\\\"loginRegister\\\":\\\"Connexion / Inscription\\\",\\\"enterYourEmailToContinue\\\":\\\"Renseignez votre adresse email pour continuer.\\\",\\\"yourEmail\\\":\\\"Votre email\\\",\\\"signIn\\\":\\\"Se Connecter\\\",\\\"signUp\\\":\\\"S'inscrire\\\",\\\"fillInfoToCreateAccount\\\":\\\"Renseignez vos informations pour créer votre compte Franklin.\\\",\\\"login\\\":\\\"Connexion\\\",\\\"enterEmailPswToConnect\\\":\\\"Renseignez votre adresse email et votre mot de passe pour vous connecter.\\\",\\\"validate\\\":\\\"Valider\\\",\\\"yourFirstName\\\":\\\"Votre nom\\\",\\\"yourLastName\\\":\\\"Your last name\\\",\\\"yourPassword\\\":\\\"Votre mot de passe\\\",\\\"confirmYourPassword\\\":\\\"Confirmez votre mot de passe\\\",\\\"subscribeNewsletter\\\":\\\"Je m'inscris à la newsletter Franklin\\\",\\\"passwordTooShort\\\":\\\"Le mot de passe doit comporter au moins 5 caractères.\\\",\\\"incorrectEmailOrPassword\\\":\\\"Adresse email ou mot de passe incorrect.\\\",\\\"pswPolicy\\\":{\\\"passwordConfirmationError\\\":\\\"Les mots de passes ne correspondent pas\\\",\\\"pswMinLength\\\":6,\\\"pswMinLengthErr\\\":\\\"Le mot de passe doit comporter au moins 6 caractères\\\",\\\"pswMaxLength\\\":18,\\\"pswMaxLengthErr\\\":\\\"Password too long\\\",\\\"pswUppercase\\\":true,\\\"pswUppercaseErr\\\":\\\"Missing uppercase letters on your password\\\",\\\"pswNumber\\\":true,\\\"pswNumberErr\\\":\\\"Missing numbers on your password\\\",\\\"pswSpecialCharacter\\\":true,\\\"pswSpecialCharacterErr\\\":\\\"Missing special characters on your password\\\"},\\\"redirect\\\":{\\\"redirectAfterLogin\\\":\\\"/collections/all\\\",\\\"redirectAfterRegister\\\":\\\"/collections/all\\\"}}}\");\n\n//# sourceURL=webpack://stag-dotjs/./public/data/config.json?");
-
-/***/ }),
-
 /***/ "./src/actions/index.js":
 /*!******************************!*\
   !*** ./src/actions/index.js ***!
@@ -268,7 +168,7 @@ eval("const { REGISTER_ID, SIGNIN_ID, LANDING_ID } = __webpack_require__(/*! ../
 /*! runtime requirements: __webpack_exports__, __webpack_require__ */
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("const { SIGNIN_ID, REGISTER_ID } = __webpack_require__(/*! ../templates/ */ \"./src/templates/index.js\");\nconst { $q, isValidEmail, toggleSecret } = __webpack_require__(/*! ../utils/ */ \"./src/utils/index.js\");\nconst { sendHttpRequest } = __webpack_require__(/*! ../services */ \"./src/services/index.js\");\nconst { toggleModules, showError } = __webpack_require__(/*! ../utils */ \"./src/utils/index.js\");\n\nconst tgt = {\n    form: `.${SIGNIN_ID} form`,\n    pswFormatError: `.${SIGNIN_ID} .js-error .js-psw-valid`,\n    register: `.js-create-account`,\n    wrongPsw: `.js-psw-wrong`,\n};\n\nconst onSubmit = async (e) => {\n    e.preventDefault();\n    $q(tgt.form).action = \"/account/login\";\n    const resp = await sendHttpRequest(\"POST\", e);\n    console.log(\"shopify response\", resp);\n    if (resp.isLogged) {\n        const { shop } = globalThis?.Shopify;\n        const redirect = $q(tgt.form).getAttribute(\"data-login-redirect\");\n        globalThis.location.href = `https://${shop}/${redirect}`;\n    }\n    if (res.hasWrongPsw) {\n        // TODO take it from connfiguration;\n        showError([\"Wrong password. try again!\"]);\n    }\n};\n\nconst toggleButton = (e) => {\n    const form = $q(tgt.form);\n    const email = form.querySelector('[name=\"customer[email]\"]').value;\n    isValidEmail(email)\n        ? form.querySelector(\"[type='submit']\").removeAttribute(\"disabled\")\n        : form.querySelector(\"[type='submit']\").setAttribute(\"disabled\", \"\");\n};\n\nconst register = () => toggleModules(REGISTER_ID);\n\nexports.init = () => {\n    const form = $q(tgt.form);\n    form.addEventListener(\"input\", toggleButton);\n    form.addEventListener(\"submit\", onSubmit);\n    form.querySelector(\".js-show-psw\")?.addEventListener(\"click\", toggleSecret);\n    $q(tgt.register)?.addEventListener(\"click\", register);\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/actions/sign-in.js?");
+eval("const { SIGNIN_ID, REGISTER_ID } = __webpack_require__(/*! ../templates/ */ \"./src/templates/index.js\");\nconst { $q, isValidEmail, toggleSecret } = __webpack_require__(/*! ../utils/ */ \"./src/utils/index.js\");\nconst { sendHttpRequest } = __webpack_require__(/*! ../services */ \"./src/services/index.js\");\nconst { toggleModules } = __webpack_require__(/*! ../utils */ \"./src/utils/index.js\");\n\nconst tgt = {\n    form: `.${SIGNIN_ID} form`,\n    pswFormatError: `.${SIGNIN_ID} .js-error .js-psw-valid`,\n    register: `.js-create-account`,\n    wrongPsw: `.js-psw-wrong`,\n};\n\nconst onSubmit = async (e) => {\n    e.preventDefault();\n    $q(tgt.form).action = \"/account/login\";\n    const resp = await sendHttpRequest(\"POST\", e);\n    if (resp.isLogged) {\n        const { shop } = globalThis?.Shopify;\n        const redirect = $q(tgt.form).getAttribute(\"data-login-redirect\");\n        globalThis.location.href = `https://${shop}/${redirect}`;\n    }\n};\n\nconst toggleButton = (e) => {\n    const form = $q(tgt.form);\n    const email = form.querySelector('[name=\"customer[email]\"]').value;\n    isValidEmail(email)\n        ? form.querySelector(\"[type='submit']\").removeAttribute(\"disabled\")\n        : form.querySelector(\"[type='submit']\").setAttribute(\"disabled\", \"\");\n};\n\nconst register = () => toggleModules(REGISTER_ID);\n\nexports.init = () => {\n    const form = $q(tgt.form);\n    form.addEventListener(\"input\", toggleButton);\n    form.addEventListener(\"submit\", onSubmit);\n    form.querySelector(\".js-show-psw\")?.addEventListener(\"click\", toggleSecret);\n    $q(tgt.register)?.addEventListener(\"click\", register);\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/actions/sign-in.js?");
 
 /***/ }),
 
@@ -357,7 +257,7 @@ eval("const {\n    PROXY_PATH,\n    STORAGE_METAFIELD,\n    STORAGE_CONFIG,\n   
 /*! runtime requirements: __webpack_exports__, __webpack_require__ */
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("const { $q } = __webpack_require__(/*! ../utils */ \"./src/utils/index.js\");\nconst tgt = {\n    errorMsg: \".js-error\",\n    close: \".js-close\",\n    shopifyRes: \".js-shopify-response\",\n    isLogged: \"#customer_logout_link\",\n    wrongPsw: \"#customer_login\",\n    captha: \".shopify-challenge__button.btn\",\n};\n\nexports.sendHttpRequest = (method, e) => {\n    return new Promise((res, rej) => {\n        const xhr = new XMLHttpRequest();\n        xhr.open(method, e.target.action);\n        xhr.send(new FormData(e.target));\n        xhr.onload = () => {\n            if (xhr.status >= 400) rej(xhr.response);\n            else res(parseShopifyResponse(e, xhr.response));\n        };\n        xhr.onerror = (err) => rej(`Server error: ${err}`); //triggered if there is no connection\n    });\n};\n\nconst shopifyResult = (html) => ({\n    isLogged: html.querySelector(tgt.isLogged) != null,\n    hasWrongPsw: html.querySelector(tgt.wrongPsw) != null,\n    hasChallenge: html.querySelector(tgt.captha) != null,\n    // TODO adding other checks (unique email, ....)\n});\n\nconst parseShopifyResponse = ({ target }, response) => {\n    const htmlResponse = new DOMParser().parseFromString(response, \"text/html\");\n    const resp = shopifyResult(htmlResponse);\n    console.log(resp);\n    if (resp.isLogged) $q(tgt.close).click();\n    else if (resp.hasWrongPsw) onWrongPsw(target);\n    else if (resp.hasChallenge) target.submit();\n    return resp;\n};\n\nconst onWrongPsw = (target) => {\n    const { text } = __webpack_require__(/*! ../../public/data/config.json */ \"./public/data/config.json\");\n    const error = target.previousSibling;\n    error.innerHTML = text.incorrectEmailOrPassword;\n    error.style.setProperty(\"display\", \"block\");\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/services/shopify.js?");
+eval("const { $q, showError } = __webpack_require__(/*! ../utils */ \"./src/utils/index.js\");\n\nconst tgt = {\n    errorMsg: \".js-error\",\n    close: \".js-close\",\n    shopifyRes: \".js-shopify-response\",\n    isLogged: \"#customer_logout_link\",\n    wrongPsw: \"#customer_login\",\n    captha: \".shopify-challenge__button.btn\",\n};\n\nexports.sendHttpRequest = (method, e) => {\n    return new Promise((res, rej) => {\n        const xhr = new XMLHttpRequest();\n        xhr.open(method, e.target.action);\n        xhr.send(new FormData(e.target));\n        xhr.onload = () => {\n            if (xhr.status >= 400) rej(xhr.response);\n            else res(parseShopifyResponse(e, xhr.response));\n        };\n        xhr.onerror = (err) => rej(`Server error: ${err}`); //triggered if there is no connection\n    });\n};\n\nconst shopifyResult = (html) => ({\n    isLogged: html.querySelector(tgt.isLogged) != null,\n    hasWrongPsw: html.querySelector(tgt.wrongPsw) != null,\n    hasChallenge: html.querySelector(tgt.captha) != null,\n    // TODO adding other checks (unique email, ....)\n});\n\nconst parseShopifyResponse = ({ target }, response) => {\n    const htmlResponse = new DOMParser().parseFromString(response, \"text/html\");\n    const resp = shopifyResult(htmlResponse);\n    console.log(resp);\n    if (resp.isLogged) $q(tgt.close).click();\n    else if (resp.hasWrongPsw) showError([\"Wrong password or email\"]);\n    //TODO take the message from configuration\n    else if (resp.hasChallenge) target.submit();\n    return resp;\n};\n\n\n//# sourceURL=webpack://stag-dotjs/./src/services/shopify.js?");
 
 /***/ }),
 

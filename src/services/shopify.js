@@ -1,4 +1,5 @@
-const { $q } = require("../utils");
+const { $q, showError } = require("../utils");
+
 const tgt = {
     errorMsg: ".js-error",
     close: ".js-close",
@@ -33,14 +34,8 @@ const parseShopifyResponse = ({ target }, response) => {
     const resp = shopifyResult(htmlResponse);
     console.log(resp);
     if (resp.isLogged) $q(tgt.close).click();
-    else if (resp.hasWrongPsw) onWrongPsw(target);
+    else if (resp.hasWrongPsw) showError(["Wrong password or email"]);
+    //TODO take the message from configuration
     else if (resp.hasChallenge) target.submit();
     return resp;
-};
-
-const onWrongPsw = (target) => {
-    const { text } = require("../../public/data/config.json");
-    const error = target.previousSibling;
-    error.innerHTML = text.incorrectEmailOrPassword;
-    error.style.setProperty("display", "block");
 };
