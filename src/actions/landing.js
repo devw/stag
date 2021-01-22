@@ -41,7 +41,7 @@ const register = () => {
 
 exports.init = () => {
     form = $qq(`.${LANDING_ID}`, "form");
-    form.addEventListener("input", debounce(toggleButton, 300));
+    form.addEventListener("input", debounce(toggleButton, 150));
     form.addEventListener("submit", onSubmit);
     form.addEventListener("submit", emailAutofill);
 };
