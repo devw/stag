@@ -16,7 +16,7 @@ const onSubmit = async (e) => {
     const resp = await sendHttpRequest("POST", e);
     console.log("shopify response", resp);
     const { shop } = globalThis?.Shopify;
-    const redirect = $q("[data-login-redirect]");
+    const redirect = $q(tgt.form).getAttribute("data-login-redirect");
     globalThis.location.href = `https://${shop}/${redirect}`;
     // globalThis.__form = $q(tgt.form);
 };
