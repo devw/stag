@@ -1,7 +1,7 @@
 const { SIGNIN_ID, REGISTER_ID } = require("../templates/");
-const { $q, isValidEmail } = require("../utils/");
+const { $q, isValidEmail, toggleSecret } = require("../utils/");
 const { sendHttpRequest } = require("../services");
-const { toggleModules } = require("../utils");
+const { toggleModules, showError } = require("../utils");
 
 const tgt = {
     form: `.${SIGNIN_ID} form`,
@@ -15,10 +15,15 @@ const onSubmit = async (e) => {
     $q(tgt.form).action = "/account/login";
     const resp = await sendHttpRequest("POST", e);
     console.log("shopify response", resp);
-    const { shop } = globalThis?.Shopify;
-    const redirect = $q(tgt.form).getAttribute("data-login-redirect");
-    globalThis.location.href = `https://${shop}/${redirect}`;
-    // globalThis.__form = $q(tgt.form);
+    if (resp.isLogged) {
+        const { shop } = globalThis?.Shopify;
+        const redirect = $q(tgt.form).getAttribute("data-login-redirect");
+        globalThis.location.href = `https://${shop}/${redirect}`;
+    }
+    if (res.hasWrongPsw) {
+        // TODO take it from connfiguration;
+        showError(["Wrong password. try again!"]);
+    }
 };
 
 const toggleButton = (e) => {
@@ -35,5 +40,6 @@ exports.init = () => {
     const form = $q(tgt.form);
     form.addEventListener("input", toggleButton);
     form.addEventListener("submit", onSubmit);
+    form.querySelector(".js-show-psw")?.addEventListener("click", toggleSecret);
     $q(tgt.register)?.addEventListener("click", register);
 };

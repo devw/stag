@@ -1,10 +1,7 @@
 <img class="form-image" />
 <div class="title">{{=it.loginTitle}}</div>
 <div class="sub-title">{{=it.enterEmailPswToConnect}}</div>
-<div class="js-error">
-    <div class="error js-psw-valid">{{=it.passwordTooShort}}</div>
-    <div class="error js-psw-wrong">{{=it.incorrectEmailOrPassword}}</div>
-</div>
+<div class="error js-psw-policy"></div>
 
 <form
     method="post"
@@ -29,6 +26,7 @@
         <label>{{=it.yourEmail}}</label>
     </div>
     <div>
+        <div class="eye-icon js-show-psw"></div>
         <input
             type="password"
             value=""
