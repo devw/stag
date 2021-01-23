@@ -93,6 +93,7 @@
         name="customer[password]"
         class="input-text"
         placeholder="{{=it.yourPassword}}"
+        autocomplete="on"
     />
     <label>{{=it.yourPassword}}</label>
 </div>
@@ -101,11 +102,32 @@
 {{? it.hasBirth }}
 <div class="hasBirth js-date">
     <!-- tag -->
-    <input class="input-text" required type="text" date-min={{=it.birthMin}}
-    date-max={{=it.birthMax}} date-error="{{=it.birthError}}"
-    placeholder="{{=it.birthPlaceholder}}" {{? it.isBirthTag === "hasTag"}}
-    data-tag="{{=it.birthTag}}" {{?? true }}
-    data-namespace="{{=it.birthNamespace}}" data-key="{{=it.birthKey}}" {{?}} />
+    {{? it.isBirthTag === 'hasTag'}}
+    <input
+        class="input-text"
+        required
+        type="text"
+        date-min="{{=it.birthMin}}"
+        date-max="{{=it.birthMax}}"
+        date-error="{{=it.birthError}}"
+        placeholder="{{=it.birthPlaceholder}}"
+        data-tag="{{=it.birthTag}}"
+    />
+    {{?? true }}{{?}}
+    <!-- metafield -->
+    {{? it.isBirthTag === 'hasMetafield'}}
+    <input
+        class="input-text"
+        required
+        type="text"
+        date-min="{{=it.birthMin}}"
+        date-max="{{=it.birthMax}}"
+        date-error="{{=it.birthError}}"
+        placeholder="{{=it.birthPlaceholder}}"
+        data-namespace="{{=it.birthNamespace}}"
+        data-key="{{=it.birthKey}}"
+    />
+    {{?? true }}{{?}}
     <label>{{=it.birthPlaceholder}}</label>
 </div>
 {{?? true }}{{?}}

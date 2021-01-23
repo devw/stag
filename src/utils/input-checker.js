@@ -34,8 +34,9 @@ const showError = (errorMsgs) => {
         item.appendChild(document.createTextNode(e));
         list.appendChild(item);
     });
-    $q(errorSelector).appendChild(list);
-    $q(errorSelector).style.setProperty("display", "block");
+    const errorElm = $q(`div[style*="display: block"] ${errorSelector}`);
+    errorElm.appendChild(list);
+    errorElm.style.setProperty("display", "block");
     return false;
 };
 const resetErrorMsgs = () => {
@@ -67,6 +68,11 @@ const getPasswordPolicyErrors = async (inputs) => {
 const serialize = (form) => {
     const reducer = (acc, cur) => ({ ...acc, [cur[0]]: cur[1] });
     return Array.from(new FormData(form)).reduce(reducer, {});
+};
+
+exports.toggleSecret = ({ target }) => {
+    const secret = target.nextElementSibling;
+    secret.type = secret.type === "password" ? "text" : "password";
 };
 
 exports.isFormFilled = (form) =>

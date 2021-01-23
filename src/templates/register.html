@@ -2,6 +2,7 @@
 <div class="title">{{=it.createAccount}}</div>
 <div class="sub-title text t-4">{{=it.fillInfoToCreateAccount}}</div>
 <div class="error js-psw-policy"></div>
+
 <form
     method="post"
     id="RegisterForm"
@@ -10,8 +11,12 @@
     class="{{=it.formStyle}}"
     data-blocks="{{=it.orderedBlock}}"
 >
-    <input type="hidden" name="return_to" value="{{=it.redirectAfterRegister ||
-    "/"}}" />
+    <input
+        type="hidden"
+        name="return_to"
+        value="{{=it.redirectAfterRegister ||
+    '/'}}"
+    />
     <input type="hidden" name="customer[tags]" value="" />
 
     <input type="hidden" name="form_type" value="create_customer" /><input

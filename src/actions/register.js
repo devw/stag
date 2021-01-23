@@ -1,5 +1,5 @@
 const { REGISTER_ID, SIGNIN_ID, LANDING_ID } = require("../templates");
-const { toggleModules, $q } = require("../utils");
+const { toggleModules, $q, toggleSecret } = require("../utils");
 const { isFormFilled, checkInputs, sortBlocks } = require("../utils");
 const { storeMetafieldIntoShopify } = require("../services");
 const { STORAGE_METAFIELD } = require("../config.js");
@@ -50,11 +50,6 @@ const handleChoiceBlock = ({ target, currentTarget }) => {
         });
         target.checked = true;
     }
-};
-
-const toggleSecret = (e) => {
-    const secret = $q("[name='customer[password]']");
-    secret.type = secret.type === "password" ? "text" : "password";
 };
 
 const toggleButton = ({ target }) => {
