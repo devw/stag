@@ -3,11 +3,10 @@ const { templates } = require("../templates/");
 const { IDs } = require("../config");
 const $ = document.querySelector.bind(document);
 const { CONTAINER_ID, LANDING_ID, REGISTER_ID } = IDs;
-const { ACTIVATE_ID, SIGNIN_ID, APP_ID, ROOT_ID } = IDs;
+const { ACTIVATE_ID, SIGNIN_ID, APP_ID } = IDs;
 let TEXT = {};
 
 const getDef = () => ({
-    [CONTAINER_ID]: document.getElementById(CONTAINER_ID).text,
     [LANDING_ID]: document.getElementById(LANDING_ID).text,
     [REGISTER_ID]: document.getElementById(REGISTER_ID).text,
     [ACTIVATE_ID]: document.getElementById(ACTIVATE_ID).text,
@@ -25,7 +24,7 @@ const getTemplate = (data) => {
     data?.orderedBlock?.forEach((e) => (data[e] = true));
     templates.forEach(appendTemplate);
     return doT.template({
-        tmpl: document.getElementById(ROOT_ID).text,
+        tmpl: document.getElementById(CONTAINER_ID).text,
         def: getDef(),
     })(data);
 };
