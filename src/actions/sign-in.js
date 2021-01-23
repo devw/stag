@@ -1,4 +1,5 @@
-const { SIGNIN_ID, REGISTER_ID } = require("../templates/");
+const { IDs } = require("../config");
+const { SIGNIN_ID, REGISTER_ID } = IDs;
 const { $q, isValidEmail, toggleSecret } = require("../utils/");
 const { sendHttpRequest } = require("../services");
 const { toggleModules } = require("../utils");

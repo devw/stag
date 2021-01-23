@@ -1,16 +1,9 @@
 const doT = require("../doT");
-const {
-    templates,
-    APP_ID,
-    ROOT_ID,
-    CONTAINER_ID,
-    LANDING_ID,
-    REGISTER_ID,
-    SIGNIN_ID,
-    ACTIVATE_ID,
-} = require("../templates/");
+const { templates } = require("../templates/");
+const { IDs } = require("../config");
 const $ = document.querySelector.bind(document);
-
+const { CONTAINER_ID, LANDING_ID, REGISTER_ID } = IDs;
+const { ACTIVATE_ID, SIGNIN_ID, APP_ID, ROOT_ID } = IDs;
 let TEXT = {};
 
 const getDef = () => ({

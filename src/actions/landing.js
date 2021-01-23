@@ -1,5 +1,6 @@
-const { SIGNIN_ID, ACTIVATE_ID } = require("../templates/");
-const { LANDING_ID, REGISTER_ID } = require("../templates/");
+const { IDs } = require("../config");
+const { SIGNIN_ID, ACTIVATE_ID } = IDs;
+const { LANDING_ID, REGISTER_ID } = IDs;
 const { getCustomerStatus } = require("../services");
 const { toggleModules, $qq, debounce } = require("../utils");
 const disableBtn = (btn) => btn.setAttribute("disabled", "true");

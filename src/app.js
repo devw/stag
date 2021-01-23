@@ -5,10 +5,10 @@ require("./styles/popup.scss");
 require("./styles/form.scss");
 require("./styles/animations.scss");
 
-const { APP_ID } = require("./templates/");
+const { IDs } = require("./config");
 
 const node = document.createElement("div");
-node.setAttribute("id", APP_ID);
+node.setAttribute("id", IDs.APP_ID);
 document.body.append(node);
 
 const { loadTheme, showTheme } = require("./actions");

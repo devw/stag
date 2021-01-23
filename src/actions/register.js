@@ -1,4 +1,5 @@
-const { REGISTER_ID, SIGNIN_ID, LANDING_ID } = require("../templates");
+const { IDs } = require("../config");
+const { REGISTER_ID, SIGNIN_ID, LANDING_ID } = IDs;
 const { toggleModules, $q, toggleSecret } = require("../utils");
 const { isFormFilled, checkInputs, sortBlocks } = require("../utils");
 const { storeMetafieldIntoShopify } = require("../services");

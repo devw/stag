@@ -1,4 +1,5 @@
-const { APP_ID, CONTAINER_ID } = require("../templates/");
+const { IDs } = require("../config");
+const { APP_ID, CONTAINER_ID } = IDs;
 
 const $ = document.querySelector.bind(document);
 

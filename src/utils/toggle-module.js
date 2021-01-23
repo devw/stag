@@ -1,9 +1,5 @@
-const {
-    LANDING_ID,
-    REGISTER_ID,
-    SIGNIN_ID,
-    ACTIVATE_ID,
-} = require("../templates/");
+const { IDs } = require("../config");
+const { LANDING_ID, REGISTER_ID, SIGNIN_ID, ACTIVATE_ID } = IDs;
 const { $q } = require("./q-selector");
 
 exports.toggleModules = (id) => {

@@ -19,6 +19,7 @@
     "jest-fetch-mock": "^3.0.3",
     "js-yaml": "^3.14.0",
     "json-loader": "^0.5.7",
+    "mustache": "^4.1.0",
     "sass": "^1.29.0",
     "sass-loader": "^10.0.5",
     "ss-loader": "^1.0.1",
