@@ -11,8 +11,12 @@
     class="{{=it.formStyle}}"
     data-blocks="{{=it.orderedBlock}}"
 >
-    <input type="hidden" name="return_to" value="{{=it.redirectAfterRegister ||
-    "/"}}" />
+    <input
+        type="hidden"
+        name="return_to"
+        value="{{=it.redirectAfterRegister ||
+    '/'}}"
+    />
     <input type="hidden" name="customer[tags]" value="" />
 
     <input type="hidden" name="form_type" value="create_customer" /><input
