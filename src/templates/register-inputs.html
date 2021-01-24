@@ -5,10 +5,19 @@
 >
     {{#choiceList}}
     <div>
-        <input type="checkbox" value="{{.}}" {{#isChoiceTag}}
-        data-tag="{{choiceTag}}" {{/isChoiceTag}} {{^isChoiceTag}}
-        data-namespace="{{choiceNamespace}}" data-key="{{choiceKey}}"
-        {{/isChoiceTag}} />
+        <!--choice tag-->
+        {{#isChoiceTag}}
+        <input type="checkbox" value="{{.}}" data-tag="{{choiceTag}}" />
+        {{/isChoiceTag}}
+        <!--metafield -->
+        {{^isChoiceTag}}
+        <input
+            type="checkbox"
+            value="{{.}}"
+            data-namespace="{{choiceNamespace}}"
+            data-key="{{choiceKey}}"
+        />
+        {{/isChoiceTag}}
         <label>{{.}}</label>
     </div>
     {{/choiceList}}
@@ -86,11 +95,31 @@
 <!-- TODO to simplify -->
 {{#hasBirth}}
 <div class="hasBirth js-date">
-    <input class="input-text" required type="text" date-min="{{birthMin}}"
-    date-max="{{birthMax}}" date-error="{{birthError}}"
-    placeholder="{{birthPlaceholder}}" {{#isBirthTag}} data-tag="{{birthTag}}"
-    {{/isBirthTag}} {{^isBirthTag}} data-namespace="{{birthNamespace}}"
-    data-key="{{birthKey}}" {{/isBirthTag}} />
+    <!--tag-->
+    {{#isBirthTag}}
+    <input
+        class="input-text"
+        required
+        type="text"
+        date-min="{{birthMin}}"
+        date-max="{{birthMax}}"
+        date-error="{{birthError}}"
+        placeholder="{{birthPlaceholder}}"
+        data-tag="{{birthTag}}"
+    />
+    {{/isBirthTag}}
+    <!--metafield-->
+    <input
+        class="input-text"
+        required
+        type="text"
+        date-min="{{birthMin}}"
+        date-max="{{birthMax}}"
+        date-error="{{birthError}}"
+        placeholder="{{birthPlaceholder}}"
+        data-namespace="{{birthNamespace}}"
+        data-key="{{birthKey}}"
+    />
     <label>{{birthPlaceholder}}</label>
 </div>
 {{/hasBirth}}
