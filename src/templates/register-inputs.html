@@ -1,3 +1,30 @@
+{{#hasChoiceList}}
+<!-- loop -->
+<div
+    class="hasChoice choice-block single-choice {{#hasMultiLine }}multi-line{{/hasMultiLine }}"
+>
+    {{#choiceList}}
+    <div>
+        <!-- tag -->
+        {{#isChoiceTag}}
+        <input type="checkbox" data-tag="{{choiceTag}}" value="{{.}}" />
+        {{/isChoiceTag}}
+        <!-- metafield -->
+        {{^isChoiceTag}}
+        <input
+            type="checkbox"
+            data-namespace="{{choiceNamespace}}"
+            data-key="{{choiceKey}}"
+            value="{{.}}"
+        />
+        {{/isChoiceTag}}
+
+        <label>{{.}}</label>
+    </div>
+    {{/choiceList}}
+</div>
+{{/hasChoiceList}}
+
 <!-- FirstName field -->
 {{#hasFirstName }}
 <div class="hasFirstName">

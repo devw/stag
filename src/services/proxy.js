@@ -5,6 +5,13 @@ const {
     CONFIG_ENDPOINT,
 } = require("../config.js");
 
+const parseConfiguration = (config) => {
+    const { text } = config;
+    config.text.hasChoiceList = text.choiceList ? true : false;
+    config.text.isChoiceTag = text.isChoiceTag === "hasTag" ? true : false;
+    return config;
+};
+
 exports.getCustomerStatus = async (email) => {
     // return { state: "enabled", properties: {} };
     const shop = globalThis?.Shopify?.shop;
@@ -28,12 +35,12 @@ exports.getConfiguration = async () => {
     //TODO implements memoization
     const shopName =
         globalThis.Shopify?.shop || "test-login-popup.myshopify.com";
-    const endpoint = `${CONFIG_ENDPOINT}/${shopName}/configuration.json`;
-    // const endpoint = "data/configuration.json";
+    // const endpoint = `${CONFIG_ENDPOINT}/${shopName}/configuration.json`;
+    const endpoint = "data/configuration.json";
     const promise = await globalThis.fetch(endpoint, {
         headers: { pragma: "no-cache" },
     });
-    const result = await promise.json();
+    const result = parseConfiguration(await promise.json());
     localStorage.setItem(STORAGE_CONFIG, JSON.stringify(result));
     return result;
 };
