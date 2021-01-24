@@ -61,7 +61,7 @@ exports.sortBlocks = () => {
 
 exports.updatePages = (text) => {
     text = updateText(text);
-    $(`#${APP_ID}`).innerHTML = getTemplate(text);
+    // $(`#${APP_ID}`).innerHTML = getTemplate(text);
 };
 
 exports.updateCss = (cssVars) => {

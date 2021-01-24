@@ -39,7 +39,7 @@ const $ = document.querySelector.bind(document);
 
 exports.loadActions = () => {
     initContainer();
-    initLanding();
-    initSignIn();
-    initRegistration();
+    // initLanding();
+    // initSignIn();
+    // initRegistration();
 };

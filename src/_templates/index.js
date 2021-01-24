@@ -17,19 +17,17 @@ const getPartialTemplate = ({ id, html }) => {
 const templates = [];
 
 templates.push(getTemplate({ id: IDs.CONTAINER_ID, html: containerTmpl }));
-// templates.push(getPartialTemplate({ id: IDs.LANDING_ID, html: landingTmpl }));
-// templates.push(getPartialTemplate({ id: IDs.REGISTER_ID, html: registerTmpl }));
-// templates.push(getPartialTemplate({ id: IDs.ACTIVATE_ID, html: activateTmpl }));
-// templates.push(getTemplate({ id: "registerInputs", html: registerInputsTmpl }));
+templates.push(getPartialTemplate({ id: IDs.LANDING_ID, html: landingTmpl }));
+templates.push(getPartialTemplate({ id: IDs.REGISTER_ID, html: registerTmpl }));
+templates.push(getPartialTemplate({ id: IDs.ACTIVATE_ID, html: activateTmpl }));
+templates.push(getTemplate({ id: "registerInputs", html: registerInputsTmpl }));
 
-// templates.push(getPartialTemplate({ id: IDs.SIGNIN_ID, html: signInTmpl }));
+templates.push(getPartialTemplate({ id: IDs.SIGNIN_ID, html: signInTmpl }));
 
-const rendereTemplate = (node, { text }) => {
-    node.innerHTML = Mustache.render(containerTmpl, text, {
+const rendereTemplate = (data) => {
+    document.body.innerHTML = Mustache.render(containerTmpl, data, {
         landing: landingTmpl,
         register: registerTmpl,
-        activate: activateTmpl,
-        signin: signInTmpl,
     });
 };
 
