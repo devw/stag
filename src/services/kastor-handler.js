@@ -105,4 +105,4 @@ const kastorHandler = (event) => {
 };
 
 exports.kastorHandler = () =>
-    globalThis.addEventListener("message", debounce(kastorHandler, 500));
+    globalThis.addEventListener("message", debounce(kastorHandler, 99));

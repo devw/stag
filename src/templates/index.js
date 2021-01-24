@@ -1,6 +1,7 @@
 const container = require("./container.html");
 const landing = require("./landing.html");
 const register = require("./register.html");
+const registerInputs = require("./register-inputs.html");
 const signIn = require("./sign-in.html");
 const activate = require("./activate.html");
 
@@ -11,5 +12,6 @@ module.exports = {
         register,
         signIn,
         activate,
+        registerInputs,
     },
 };

@@ -1,6 +1,6 @@
 <img class="form-image" />
-<div class="title">{{=it.createAccount}}</div>
-<div class="sub-title text t-4">{{=it.fillInfoToCreateAccount}}</div>
+<div class="title">{{createAccount}}</div>
+<div class="sub-title text t-4">{{fillInfoToCreateAccount}}</div>
 <div class="error js-psw-policy"></div>
 
 <form
@@ -8,13 +8,13 @@
     id="RegisterForm"
     accept-charset="UTF-8"
     novalidate="novalidate"
-    class="{{=it.formStyle}}"
-    data-blocks="{{=it.orderedBlock}}"
+    class="{{formStyle}}"
+    data-blocks="{{orderedBlock}}"
 >
     <input
         type="hidden"
         name="return_to"
-        value="{{=it.redirectAfterRegister ||
+        value="{{redirectAfterRegister ||
     '/'}}"
     />
     <input type="hidden" name="customer[tags]" value="" />
@@ -25,6 +25,6 @@
         value="✓"
     />
 
-    {{#def.registerInputs }}
+    {{ >registerInputs }}
 </form>
 <p class="arrow-container js-back"><i class="arrow left"></i> Back</p>

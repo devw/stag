@@ -1,87 +1,55 @@
-<!-- Choice List by TAG -->
-{{? (it.hasChoice || it.choiceList ) }}
-<!-- loop -->
-<div
-    class="hasChoice choice-block single-choice {{?it.hasMultiLine }}multi-line{{??true}} {{?}}"
->
-    {{~it.choiceList :value:index}}
-    <div>
-        <!-- tag -->
-        {{? it.isChoiceTag === "hasTag"}}
-        <input
-            type="checkbox"
-            data-tag="{{=it.choiceTag}}"
-            value="{{=value}}"
-        />
-        {{?? true }}{{?}}
-        <!-- metafield -->
-        {{? it.isChoiceTag === "hasMetafield"}}
-        <input
-            type="checkbox"
-            data-namespace="{{=it.choiceNamespace}}"
-            data-key="{{=it.choiceKey}}"
-            value="{{=value}}"
-        />
-        {{?? true }}{{?}}
-
-        <label>{{=value}}</label>
-    </div>
-    {{~}}
-</div>
-{{?? true }}{{?}}
-
 <!-- FirstName field -->
-{{? it.hasFirstName }}
+{{#hasFirstName }}
 <div class="hasFirstName">
     <input
         required
         type="text"
         class="input-text"
         name="customer[first_name]"
-        placeholder="{{=it.yourFirstName}}"
+        placeholder="{{yourFirstName}}"
     />
-    <label>{{=it.yourFirstName}}</label>
+    <label>{{yourFirstName}}</label>
 </div>
-{{?? true }}{{?}}
+{{/hasFirstName }}
 
 <!-- LastName field -->
-{{? it.hasLastName }}
+{{#hasLastName }}
 <div class="hasLastName">
     <input
         required
         type="text"
         class="input-text"
         name="customer[last_name]"
-        placeholder="{{=it.yourLastName}}"
+        placeholder="{{yourLastName}}"
     />
-    <label>{{=it.yourLastName}}</label>
+    <label>{{yourLastName}}</label>
 </div>
-{{?? true }}{{?}}
+{{/hasLastName }}
 
 <!-- Telephone field -->
-{{? it.hasTelephone }}
+{{#hasTelephone }}
 <div class="hasTelephone">
     <input
         required
         type="text"
         class="input-text"
-        placeholder="{{=it.yourTelephone}}"
+        placeholder="{{yourTelephone}}"
         name="address[phone]"
     />
-    <label>{{=it.yourTelephone}}</label>
+    <label>{{yourTelephone}}</label>
 </div>
-{{?? true }}{{?}}
+{{/hasTelephone }}
 
 <!-- Email field -->
 <div class="hasEmail">
     <input
         required
         type="email"
-        placeholder="{{=it.yourEmail}}"
+        placeholder="{{yourEmail}}"
         name="customer[email]"
         class="input-text"
     />
-    <label>{{=it.yourEmail}}</label>
+    <label>{{yourEmail}}</label>
 </div>
 
 <!-- Password field -->
@@ -92,55 +60,21 @@
         type="password"
         name="customer[password]"
         class="input-text"
-        placeholder="{{=it.yourPassword}}"
+        placeholder="{{yourPassword}}"
         autocomplete="on"
     />
-    <label>{{=it.yourPassword}}</label>
+    <label>{{yourPassword}}</label>
 </div>
-
-<!-- TODO to simplify -->
-{{? it.hasBirth }}
-<div class="hasBirth js-date">
-    <!-- tag -->
-    {{? it.isBirthTag === 'hasTag'}}
-    <input
-        class="input-text"
-        required
-        type="text"
-        date-min="{{=it.birthMin}}"
-        date-max="{{=it.birthMax}}"
-        date-error="{{=it.birthError}}"
-        placeholder="{{=it.birthPlaceholder}}"
-        data-tag="{{=it.birthTag}}"
-    />
-    {{?? true }}{{?}}
-    <!-- metafield -->
-    {{? it.isBirthTag === 'hasMetafield'}}
-    <input
-        class="input-text"
-        required
-        type="text"
-        date-min="{{=it.birthMin}}"
-        date-max="{{=it.birthMax}}"
-        date-error="{{=it.birthError}}"
-        placeholder="{{=it.birthPlaceholder}}"
-        data-namespace="{{=it.birthNamespace}}"
-        data-key="{{=it.birthKey}}"
-    />
-    {{?? true }}{{?}}
-    <label>{{=it.birthPlaceholder}}</label>
-</div>
-{{?? true }}{{?}}
 
 <!-- Subscribe newsletter checkbox -->
-{{? it.hasNewsletter }}
+{{#hasNewsletter }}
 <div class="hasNewsletter choice-block">
     <div>
         <input type="checkbox" class="input-text" />
-        <label>{{=it.subscribeNewsletter}}</label>
+        <label>{{subscribeNewsletter}}</label>
     </div>
 </div>
-{{?? true }}{{?}}
+{{/hasNewsletter }}
 
 <!-- Create account button -->
 <p class="text-center hasSubmit">
@@ -148,6 +82,6 @@
         class="btn btn-primary"
         disabled=""
         type="submit"
-        value="{{=it.registerAccount}}"
+        value="{{registerAccount}}"
     />
 </p>

@@ -7,4 +7,4 @@ exports.getRootNode = getRootNode;
 exports.$q = (leaf) => getRootNode().querySelector(leaf);
 
 exports.$qq = (parent, leaf) =>
-    rgetRootNodeoot().querySelector(parent).querySelector(leaf);
+    getRootNode().querySelector(parent).querySelector(leaf);
