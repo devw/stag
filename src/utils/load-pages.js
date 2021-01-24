@@ -1,33 +1,8 @@
-const doT = require("../doT");
-const { templates } = require("../templates/");
 const { IDs } = require("../config");
 const $ = document.querySelector.bind(document);
-const { CONTAINER_ID, LANDING_ID, REGISTER_ID } = IDs;
+const { LANDING_ID, REGISTER_ID } = IDs;
 const { ACTIVATE_ID, SIGNIN_ID, APP_ID } = IDs;
 let TEXT = {};
-
-const getDef = () => ({
-    [LANDING_ID]: document.getElementById(LANDING_ID).text,
-    [REGISTER_ID]: document.getElementById(REGISTER_ID).text,
-    [ACTIVATE_ID]: document.getElementById(ACTIVATE_ID).text,
-    [SIGNIN_ID]: document.getElementById(SIGNIN_ID).text,
-    registerInputs: document.getElementById("registerInputs").text,
-});
-
-const appendTemplate = (e) => {
-    const elemDiv = document.createElement("div");
-    elemDiv.innerHTML = e.trim();
-    document.body.appendChild(elemDiv);
-};
-
-const getTemplate = (data) => {
-    data?.orderedBlock?.forEach((e) => (data[e] = true));
-    templates.forEach(appendTemplate);
-    return doT.template({
-        tmpl: document.getElementById(CONTAINER_ID).text,
-        def: getDef(),
-    })(data);
-};
 
 const updateText = (text) => {
     const hasManyKeys = Reflect.ownKeys(text).length > 1;

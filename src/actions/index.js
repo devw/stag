@@ -12,7 +12,7 @@ exports.loadTheme = async (node) => {
     loadActions();
 };
 
-exports.showTheme = () => {
-    if (globalThis.self !== globalThis.top) openAccount();
-    kastorHandler();
-};
+// exports.showTheme = () => {
+//     if (globalThis.self !== globalThis.top) openAccount();
+//     kastorHandler();
+// };
