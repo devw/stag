@@ -1,4 +1,4 @@
-const { updatePages, $q, showError, debounce } = require("../utils");
+const { rendereTemplate, $q, showError, debounce } = require("../utils");
 const { getBlocksAttr } = require("../utils/load-pages");
 
 const changePage = (page) => {
@@ -60,7 +60,9 @@ const updateNoBlock = (event) => {
     if (/^--/.test(key)) {
         updateCss({ [key]: valueAndUnit });
     } else
-        updatePages({ [key]: valueAndUnit == "false" ? false : valueAndUnit });
+        rendereTemplate({
+            [key]: valueAndUnit == "false" ? false : valueAndUnit,
+        });
 
     if (page) changePage(page);
     // TODO: too fragile check the password policy in this way, you should refactore the code using objects
@@ -72,7 +74,7 @@ const kastorHandler = (event) => {
     const target = getTarget(event);
     if (target === "block:reorder") {
         const orderBlocks = getOrderedBlocks(getData(event));
-        updatePages({ orderedBlock: orderBlocks });
+        rendereTemplate({ orderedBlock: orderBlocks });
         changePage("register"); // TODO remove magic number
         return null;
     }
@@ -81,8 +83,8 @@ const kastorHandler = (event) => {
         const { block_type_id } = getData(event);
         const blockToDel = block_type_id.split("|")[1];
         const filteredBlocks = getBlocksAttr().filter((e) => e !== blockToDel);
-        updatePages({ orderedBlock: filteredBlocks });
-        updatePages({ [blockToDel]: false });
+        rendereTemplate({ orderedBlock: filteredBlocks });
+        rendereTemplate({ [blockToDel]: false });
         changePage("register"); // TODO remove magic number
         return null;
     }
@@ -93,8 +95,8 @@ const kastorHandler = (event) => {
         const [page, blockToAdd] = block_type_id.split("|");
         const key = Object.keys(block_settings)[0].split("|")[1];
         const value = Object.values(block_settings)[0];
-        updatePages({ [key]: value });
-        updatePages({ [blockToAdd]: true });
+        rendereTemplate({ [key]: value });
+        rendereTemplate({ [blockToAdd]: true });
         changePage(page);
         return null;
     }

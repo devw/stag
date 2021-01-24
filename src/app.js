@@ -12,4 +12,4 @@ node.setAttribute("id", IDs.APP_ID);
 document.body.append(node);
 
 const { loadTheme } = require("./actions");
-loadTheme(node);
+loadTheme();

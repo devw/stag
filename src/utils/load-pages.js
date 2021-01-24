@@ -1,7 +1,9 @@
 const { IDs } = require("../config");
 const $ = document.querySelector.bind(document);
-const { LANDING_ID, REGISTER_ID } = IDs;
-const { ACTIVATE_ID, SIGNIN_ID, APP_ID } = IDs;
+const { REGISTER_ID } = IDs;
+const { APP_ID } = IDs;
+const Mustache = require("mustache");
+const { pages } = require("../templates");
 let TEXT = {};
 
 const updateText = (text) => {
@@ -34,11 +36,6 @@ exports.sortBlocks = () => {
     blocks.forEach((e, i) => $(`.${e}`)?.style?.setProperty("order", i));
 };
 
-exports.updatePages = (text) => {
-    text = updateText(text);
-    // $(`#${APP_ID}`).innerHTML = getTemplate(text);
-};
-
 exports.updateCss = (cssVars) => {
     cssVars = filterCss(cssVars);
     (function traverse(obj, key) {
@@ -46,4 +43,15 @@ exports.updateCss = (cssVars) => {
             Object.entries(obj).forEach(([key, value]) => traverse(value, key));
         } else $(`#${APP_ID}`).style.setProperty(key, obj);
     })(cssVars);
+};
+
+exports.rendereTemplate = (text) => {
+    const { getRootNode } = require("../utils");
+    text = updateText(text);
+    getRootNode().innerHTML = Mustache.render(pages.container, text, {
+        landing: pages.landing,
+        register: pages.register,
+        activate: pages.activate,
+        signin: pages.signIn,
+    });
 };

@@ -1,19 +1,15 @@
-const containerTmpl = require("./container.html");
-const landingTmpl = require("./landing.html");
-const registerTmpl = require("./register.html");
-const signInTmpl = require("./sign-in.html");
-const activateTmpl = require("./activate.html");
-const Mustache = require("mustache");
-
-const rendereTemplate = (node, { text }) => {
-    node.innerHTML = Mustache.render(containerTmpl, text, {
-        landing: landingTmpl,
-        register: registerTmpl,
-        activate: activateTmpl,
-        signin: signInTmpl,
-    });
-};
+const container = require("./container.html");
+const landing = require("./landing.html");
+const register = require("./register.html");
+const signIn = require("./sign-in.html");
+const activate = require("./activate.html");
 
 module.exports = {
-    rendereTemplate,
+    pages: {
+        container,
+        landing,
+        register,
+        signIn,
+        activate,
+    },
 };

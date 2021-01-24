@@ -367,7 +367,10 @@
 (() => {
     const json = {
         data: {
-            data: { setting_id: "landing||", value: "" },
+            data: {
+                setting_id: "landing|loginRegister|",
+                value: "Creazfione di login",
+            },
         },
         target: null,
     };
