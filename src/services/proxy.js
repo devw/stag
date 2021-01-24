@@ -7,8 +7,9 @@ const {
 
 const parseConfiguration = (config) => {
     const { text } = config;
-    config.text.hasChoiceList = text.choiceList ? true : false;
     config.text.isChoiceTag = text.isChoiceTag === "hasTag" ? true : false;
+    config.text.isBirthTag = text.isBirthTag === "hasTag" ? true : false;
+    text.orderedBlock.forEach((e) => (config.text[e] = true));
     return config;
 };
 

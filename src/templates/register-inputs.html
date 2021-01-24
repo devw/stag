@@ -1,29 +1,19 @@
-{{#hasChoiceList}}
+{{#hasChoice}}
 <!-- loop -->
 <div
-    class="hasChoice choice-block single-choice {{#hasMultiLine }}multi-line{{/hasMultiLine }}"
+    class="hasChoice choice-block single-choice {{#hasMultiLine}}multi-line{{/hasMultiLine }}"
 >
     {{#choiceList}}
     <div>
-        <!-- tag -->
-        {{#isChoiceTag}}
-        <input type="checkbox" data-tag="{{choiceTag}}" value="{{.}}" />
-        {{/isChoiceTag}}
-        <!-- metafield -->
-        {{^isChoiceTag}}
-        <input
-            type="checkbox"
-            data-namespace="{{choiceNamespace}}"
-            data-key="{{choiceKey}}"
-            value="{{.}}"
-        />
-        {{/isChoiceTag}}
-
+        <input type="checkbox" value="{{.}}" {{#isChoiceTag}}
+        data-tag="{{choiceTag}}" {{/isChoiceTag}} {{^isChoiceTag}}
+        data-namespace="{{choiceNamespace}}" data-key="{{choiceKey}}"
+        {{/isChoiceTag}} />
         <label>{{.}}</label>
     </div>
     {{/choiceList}}
 </div>
-{{/hasChoiceList}}
+{{/hasChoice}}
 
 <!-- FirstName field -->
 {{#hasFirstName }}
@@ -92,6 +82,18 @@
     />
     <label>{{yourPassword}}</label>
 </div>
+
+<!-- TODO to simplify -->
+{{#hasBirth}}
+<div class="hasBirth js-date">
+    <input class="input-text" required type="text" date-min="{{birthMin}}"
+    date-max="{{birthMax}}" date-error="{{birthError}}"
+    placeholder="{{birthPlaceholder}}" {{#isBirthTag}} data-tag="{{birthTag}}"
+    {{/isBirthTag}} {{^isBirthTag}} data-namespace="{{birthNamespace}}"
+    data-key="{{birthKey}}" {{/isBirthTag}} />
+    <label>{{birthPlaceholder}}</label>
+</div>
+{{/hasBirth}}
 
 <!-- Subscribe newsletter checkbox -->
 {{#hasNewsletter }}
