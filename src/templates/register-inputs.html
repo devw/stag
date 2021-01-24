@@ -109,6 +109,7 @@
     />
     {{/isBirthTag}}
     <!--metafield-->
+    {{^isBirthTag}}
     <input
         class="input-text"
         required
@@ -120,6 +121,7 @@
         data-namespace="{{birthNamespace}}"
         data-key="{{birthKey}}"
     />
+    {{/isBirthTag}}
     <label>{{birthPlaceholder}}</label>
 </div>
 {{/hasBirth}}

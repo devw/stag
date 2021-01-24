@@ -5,6 +5,7 @@ module.exports = {
     STORAGE_CONFIG: "shopify-loginpopup-configuration",
     // TODO get it from the PROXY
     CONFIG_ENDPOINT: "https://login-popup-dev-theme.s3.amazonaws.com",
+    CSS: "http://localhost:8081/main.css",
     IDs: {
         APP_ID: "login-popup",
         CONTAINER_ID: "container",
