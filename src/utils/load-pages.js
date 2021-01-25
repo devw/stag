@@ -53,6 +53,7 @@ exports.rendereTemplate = (text) => {
         register: pages.register,
         activate: pages.activate,
         signin: pages.signIn,
+        recovery: pages.recovery,
         registerInputs: pages.registerInputs,
     });
 };

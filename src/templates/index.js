@@ -4,6 +4,7 @@ const register = require("./register.html");
 const registerInputs = require("./register-inputs.html");
 const signIn = require("./sign-in.html");
 const activate = require("./activate.html");
+const recovery = require("./recovery.html");
 
 module.exports = {
     pages: {
@@ -12,6 +13,7 @@ module.exports = {
         register,
         signIn,
         activate,
+        recovery,
         registerInputs,
     },
 };

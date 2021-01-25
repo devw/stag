@@ -13,5 +13,6 @@ module.exports = {
         REGISTER_ID: "register",
         SIGNIN_ID: "signin",
         ACTIVATE_ID: "activate",
+        RECOVERY_ID: "recovery",
     },
 };

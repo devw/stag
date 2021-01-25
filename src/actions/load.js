@@ -1,6 +1,7 @@
 const { init: initLanding } = require("./landing");
 const { init: initSignIn } = require("./sign-in");
 const { init: initRegistration } = require("./register");
+const { init: initRecovery } = require("./recovery");
 const { $q, toggleModules } = require("../utils/");
 const { LOGIN_BTN, STORAGE_CONFIG, IDs } = require("../config");
 const { LANDING_ID } = IDs;
@@ -43,4 +44,5 @@ exports.loadActions = () => {
     initLanding();
     initSignIn();
     initRegistration();
+    initRecovery();
 };

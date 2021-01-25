@@ -1,0 +1,32 @@
+<img class="form-image" />
+<!-- TODO remove hardcoded value -->
+<div class="title">{{recoveryTitle}}</div>
+<div class="sub-title">{{recoverySubTitle}}</div>
+<form
+    method="post"
+    accept-charset="UTF-8"
+    novalidate="novalidate"
+    class="{{formStyle}}"
+>
+    <input type="hidden" name="form_type" value="customer_login" /><input
+        type="hidden"
+        name="utf8"
+        value="✓"
+    />
+    <div>
+        <input
+            class="input-text"
+            name="email"
+            placeholder="{{yourEmail}}"
+            type="email"
+        />
+        <label>{{yourEmail}}</label>
+    </div>
+    <input
+        class="btn btn-primary"
+        disabled=""
+        type="submit"
+        value="{{recoveryBtn}}"
+    />
+    <div class="action js-back"><i class="arrow left"></i> Back</div>
+</form>
