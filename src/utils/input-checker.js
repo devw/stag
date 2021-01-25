@@ -3,9 +3,10 @@ const errorSelector = ".js-psw-policy";
 const { STORAGE_CONFIG } = require("../config");
 
 const checkDate = () => {
-    const { minDate, maxDate, error, customerAge } = getDateAttr();
-    if (minDate > customerAge || maxDate < customerAge) return [error];
-    return [];
+    const dateElem = $q("[type='date']");
+    if (!dateElem) return [];
+    const { minDate, maxDate, error, customerAge } = getDateAttr(dateElem);
+    return minDate > customerAge || maxDate < customerAge ? [error] : [];
 };
 const getCustomerAge = (dateElem) => {
     const DAY_IN_YEAR = 365;
@@ -16,15 +17,12 @@ const getCustomerAge = (dateElem) => {
     const days = parseInt((nowSec - userSec) / MSEC_IN_DAY);
     return days / DAY_IN_YEAR;
 };
-const getDateAttr = () => {
-    const dateElem = $q("[type='date']");
-    return {
-        minDate: dateElem.getAttribute("date-min"),
-        maxDate: dateElem.getAttribute("date-max"),
-        error: dateElem.getAttribute("date-error"),
-        customerAge: getCustomerAge(dateElem),
-    };
-};
+const getDateAttr = (dateElem) => ({
+    minDate: dateElem.getAttribute("date-min"),
+    maxDate: dateElem.getAttribute("date-max"),
+    error: dateElem.getAttribute("date-error"),
+    customerAge: getCustomerAge(dateElem),
+});
 
 const showError = (errorMsgs) => {
     // TODO you should use the css to hide/show!!

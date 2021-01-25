@@ -1,14 +1,14 @@
 <img class="form-image" />
-<div class="title">{{=it.loginTitle}}</div>
-<div class="sub-title">{{=it.enterEmailPswToConnect}}</div>
+<div class="title">{{loginTitle}}</div>
+<div class="sub-title">{{enterEmailPswToConnect}}</div>
 <div class="error js-psw-policy"></div>
 
 <form
     method="post"
     accept-charset="UTF-8"
     novalidate="novalidate"
-    class="{{=it.formStyle}}"
-    data-login-redirect="{{=it.loginRedirect || 'products'}}"
+    class="{{formStyle}}"
+    data-login-redirect="{{loginRedirect}}"
 >
     <input type="hidden" name="form_type" value="customer_login" /><input
         type="hidden"
@@ -21,38 +21,31 @@
             name="customer[email]"
             autocomplete="email"
             class="input-text"
-            placeholder="{{=it.yourEmail}}"
+            placeholder="{{yourEmail}}"
         />
-        <label>{{=it.yourEmail}}</label>
+        <label>{{yourEmail}}</label>
     </div>
     <div>
         <div class="eye-icon js-show-psw"></div>
         <input
             type="password"
-            value=""
             name="customer[password]"
             class="input-text"
-            placeholder="{{=it.yourPassword}}"
+            placeholder="{{yourPassword}}"
             autofocus
             autocomplete="on"
         />
-        <label>{{=it.yourPassword}}</label>
+        <label>{{yourPassword}}</label>
     </div>
-
-    {{? it.hasPasswordRecover }}
-    <div class="text-center">
-        <p><a href="#recover" id="RecoverPassword">Forgot your password?</a></p>
-    </div>
-    {{?? true }}{{?}}
     <input
         class="btn btn-primary"
         disabled=""
         type="submit"
-        value="{{=it.signIn}}"
+        value="{{signIn}}"
     />
 </form>
-{{? it.doYouLostPsw }}
+{{#doYouLostPsw }}
 <div class="secondary-action">
-    <a href="/account#recover-password" class="link">{{=it.doYouLostPsw}}</a>
+    <a href="/account#recover-password" class="link">{{doYouLostPsw}}</a>
 </div>
-{{?? true }}{{?}}
+{{/doYouLostPsw}}

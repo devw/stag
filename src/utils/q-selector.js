@@ -1,8 +1,10 @@
-const { APP_ID } = require("../templates");
+const { IDs } = require("../config");
 
-const root = () => document.querySelector(`#${APP_ID}`);
+const getRootNode = () => document.querySelector(`#${IDs.APP_ID}`);
 
-exports.$q = (leaf) => root().querySelector(leaf);
+exports.getRootNode = getRootNode;
+
+exports.$q = (leaf) => getRootNode().querySelector(leaf);
 
 exports.$qq = (parent, leaf) =>
-    root().querySelector(parent).querySelector(leaf);
+    getRootNode().querySelector(parent).querySelector(leaf);

@@ -1,12 +1,14 @@
-
-<div class="container {{=it.layout}}" style="display: none">
+<div class="container {{layout}}" style="display: none">
     <div class="content">
         <div class="loading" style="display: none">
             <div class="loading-icon"></div>
         </div>
         <div class="btn-close js-close">+</div>
-        {{#def.landing }} {{#def.register }} {{#def.activate }} {{#def.signin}}
-            <div class="js-shopify-response" style="display: none"></div>
+        <div class="landing" style="display: none">{{> landing}} </div>
+        <div class="register" style="display: none">{{> register}} </div>
+        <div class="activate" style="display: none">{{> activate}} </div>
+        <div class="signin" style="display: none">{{> signin}} </div>
+        <div class="js-shopify-response" style="display: none"></div>
         </div>
     </div>
 </div>

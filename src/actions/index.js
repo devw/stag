@@ -1,15 +1,10 @@
-const { updateCss, updatePages } = require("../utils");
-const { loadActions, openAccount } = require("./load");
-const { getConfiguration, kastorHandler } = require("../services");
+const { updateCss, rendereTemplate } = require("../utils");
+const { loadActions } = require("./load");
+const { getConfiguration } = require("../services");
 
 exports.loadTheme = async () => {
     const config = await getConfiguration();
-    updatePages(config.text);
+    rendereTemplate(config.text);
     updateCss(config.style);
     loadActions();
-};
-
-exports.showTheme = () => {
-    if (globalThis.self !== globalThis.top) openAccount();
-    kastorHandler();
 };

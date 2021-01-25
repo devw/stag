@@ -1,8 +1,9 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-    mode: "development",
+    mode: "production",
     entry: "./src/app.js",
     output: {
         filename: "bundle.js",
@@ -16,16 +17,12 @@ module.exports = {
             },
             {
                 test: /\.s[ac]ss$/i,
-                use: ["style-loader", "css-loader", "sass-loader"],
-            },
-            {
-                test: /\.ya?ml$/,
-                type: "json", // Required by Webpack v4
-                use: "yaml-loader",
+                use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
             },
         ],
     },
     plugins: [
+        new MiniCssExtractPlugin(),
         new HtmlWebpackPlugin({
             title: "Output Management",
         }),

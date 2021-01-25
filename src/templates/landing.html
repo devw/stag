@@ -1,10 +1,10 @@
 <img class="form-image" />
-<div class="title">{{=it.loginRegister}}</div>
-<div class="sub-title">{{=it.enterYourEmailToContinue}}</div>
+<div class="title">{{loginRegister}}</div>
+<div class="sub-title">{{enterYourEmailToContinue}}</div>
 <div class="error" data-account-error=""></div>
-<form action="javascript:void(0);" class="{{=it.formStyle}}">
+<form action="javascript:void(0);" class="{{formStyle}}">
     <div>
-        {{? it.hasSocialLogin }}
+        {{#hasSocialLogin }}
         <input
             type="submit"
             style="
@@ -17,18 +17,18 @@
             disabled=""
             value="OK"
         />
-        {{?? true }}{{?}}
+        {{/hasSocialLogin }}
         <div>
             <input
                 class="input-text"
                 name="email"
-                placeholder="{{=it.yourEmail}}"
+                placeholder="{{yourEmail}}"
                 type="email"
             />
-            <label>{{=it.yourEmail}}</label>
+            <label>{{yourEmail}}</label>
         </div>
     </div>
-    {{? it.hasSocialLogin }}
+    {{#hasSocialLogin }}
     <div>
         <div class="or-social-login">Or</div>
         <a href="#" class="fb btn">
@@ -38,13 +38,13 @@
             ><i class="fa fa-google fa-fw"></i> Login with Google+
         </a>
     </div>
-    {{?? true }}
+    {{/hasSocialLogin }} {{^hasSocialLogin }}
     <input
         type="submit"
         class="btn btn-primary"
         name="validate"
         disabled=""
-        value="{{=it.validate}}"
+        value="{{validate}}"
     />
-    {{?}}
+    {{/hasSocialLogin }}
 </form>

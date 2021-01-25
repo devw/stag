@@ -3,7 +3,7 @@ const { init: initSignIn } = require("./sign-in");
 const { init: initRegistration } = require("./register");
 const { $q, toggleModules } = require("../utils/");
 const { LOGIN_BTN, STORAGE_CONFIG, IDs } = require("../config");
-const { LANDING_ID } = require("../templates/");
+const { LANDING_ID } = IDs;
 
 //TODO refactoring too code repetition
 
@@ -25,7 +25,8 @@ const placePopover = (e, dom) => {
 
 const openAccount = (e) => {
     const { isActive } = JSON.parse(localStorage.getItem(STORAGE_CONFIG));
-    if (!globalThis.__st?.cid && isActive) {
+    //TODO isActive to fix
+    if (!globalThis.__st?.cid) {
         e?.preventDefault();
         e?.stopPropagation();
         toggleModules(LANDING_ID);

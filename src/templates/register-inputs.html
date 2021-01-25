@@ -1,87 +1,81 @@
-<!-- Choice List by TAG -->
-{{? (it.hasChoice || it.choiceList ) }}
+{{#hasChoice}}
 <!-- loop -->
 <div
-    class="hasChoice choice-block single-choice {{?it.hasMultiLine }}multi-line{{??true}} {{?}}"
+    class="hasChoice choice-block single-choice {{#hasMultiLine}}multi-line{{/hasMultiLine }}"
 >
-    {{~it.choiceList :value:index}}
+    {{#choiceList}}
     <div>
-        <!-- tag -->
-        {{? it.isChoiceTag === "hasTag"}}
+        <!--choice tag-->
+        {{#isChoiceTag}}
+        <input type="checkbox" value="{{.}}" data-tag="{{choiceTag}}" />
+        {{/isChoiceTag}}
+        <!--metafield -->
+        {{^isChoiceTag}}
         <input
             type="checkbox"
-            data-tag="{{=it.choiceTag}}"
-            value="{{=value}}"
+            value="{{.}}"
+            data-namespace="{{choiceNamespace}}"
+            data-key="{{choiceKey}}"
         />
-        {{?? true }}{{?}}
-        <!-- metafield -->
-        {{? it.isChoiceTag === "hasMetafield"}}
-        <input
-            type="checkbox"
-            data-namespace="{{=it.choiceNamespace}}"
-            data-key="{{=it.choiceKey}}"
-            value="{{=value}}"
-        />
-        {{?? true }}{{?}}
-
-        <label>{{=value}}</label>
+        {{/isChoiceTag}}
+        <label>{{.}}</label>
     </div>
-    {{~}}
+    {{/choiceList}}
 </div>
-{{?? true }}{{?}}
+{{/hasChoice}}
 
 <!-- FirstName field -->
-{{? it.hasFirstName }}
+{{#hasFirstName }}
 <div class="hasFirstName">
     <input
         required
         type="text"
         class="input-text"
         name="customer[first_name]"
-        placeholder="{{=it.yourFirstName}}"
+        placeholder="{{yourFirstName}}"
     />
-    <label>{{=it.yourFirstName}}</label>
+    <label>{{yourFirstName}}</label>
 </div>
-{{?? true }}{{?}}
+{{/hasFirstName }}
 
 <!-- LastName field -->
-{{? it.hasLastName }}
+{{#hasLastName }}
 <div class="hasLastName">
     <input
         required
         type="text"
         class="input-text"
         name="customer[last_name]"
-        placeholder="{{=it.yourLastName}}"
+        placeholder="{{yourLastName}}"
     />
-    <label>{{=it.yourLastName}}</label>
+    <label>{{yourLastName}}</label>
 </div>
-{{?? true }}{{?}}
+{{/hasLastName }}
 
 <!-- Telephone field -->
-{{? it.hasTelephone }}
+{{#hasTelephone }}
 <div class="hasTelephone">
     <input
         required
         type="text"
         class="input-text"
-        placeholder="{{=it.yourTelephone}}"
+        placeholder="{{yourTelephone}}"
         name="address[phone]"
     />
-    <label>{{=it.yourTelephone}}</label>
+    <label>{{yourTelephone}}</label>
 </div>
-{{?? true }}{{?}}
+{{/hasTelephone }}
 
 <!-- Email field -->
 <div class="hasEmail">
     <input
         required
         type="email"
-        placeholder="{{=it.yourEmail}}"
+        placeholder="{{yourEmail}}"
         name="customer[email]"
         class="input-text"
     />
-    <label>{{=it.yourEmail}}</label>
+    <label>{{yourEmail}}</label>
 </div>
 
 <!-- Password field -->
@@ -92,55 +86,55 @@
         type="password"
         name="customer[password]"
         class="input-text"
-        placeholder="{{=it.yourPassword}}"
+        placeholder="{{yourPassword}}"
         autocomplete="on"
     />
-    <label>{{=it.yourPassword}}</label>
+    <label>{{yourPassword}}</label>
 </div>
 
 <!-- TODO to simplify -->
-{{? it.hasBirth }}
+{{#hasBirth}}
 <div class="hasBirth js-date">
-    <!-- tag -->
-    {{? it.isBirthTag === 'hasTag'}}
+    <!--tag-->
+    {{#isBirthTag}}
     <input
         class="input-text"
         required
         type="text"
-        date-min="{{=it.birthMin}}"
-        date-max="{{=it.birthMax}}"
-        date-error="{{=it.birthError}}"
-        placeholder="{{=it.birthPlaceholder}}"
-        data-tag="{{=it.birthTag}}"
+        date-min="{{birthMin}}"
+        date-max="{{birthMax}}"
+        date-error="{{birthError}}"
+        placeholder="{{birthPlaceholder}}"
+        data-tag="{{birthTag}}"
     />
-    {{?? true }}{{?}}
-    <!-- metafield -->
-    {{? it.isBirthTag === 'hasMetafield'}}
+    {{/isBirthTag}}
+    <!--metafield-->
+    {{^isBirthTag}}
     <input
         class="input-text"
         required
         type="text"
-        date-min="{{=it.birthMin}}"
-        date-max="{{=it.birthMax}}"
-        date-error="{{=it.birthError}}"
-        placeholder="{{=it.birthPlaceholder}}"
-        data-namespace="{{=it.birthNamespace}}"
-        data-key="{{=it.birthKey}}"
+        date-min="{{birthMin}}"
+        date-max="{{birthMax}}"
+        date-error="{{birthError}}"
+        placeholder="{{birthPlaceholder}}"
+        data-namespace="{{birthNamespace}}"
+        data-key="{{birthKey}}"
     />
-    {{?? true }}{{?}}
-    <label>{{=it.birthPlaceholder}}</label>
+    {{/isBirthTag}}
+    <label>{{birthPlaceholder}}</label>
 </div>
-{{?? true }}{{?}}
+{{/hasBirth}}
 
 <!-- Subscribe newsletter checkbox -->
-{{? it.hasNewsletter }}
+{{#hasNewsletter }}
 <div class="hasNewsletter choice-block">
     <div>
         <input type="checkbox" class="input-text" />
-        <label>{{=it.subscribeNewsletter}}</label>
+        <label>{{subscribeNewsletter}}</label>
     </div>
 </div>
-{{?? true }}{{?}}
+{{/hasNewsletter }}
 
 <!-- Create account button -->
 <p class="text-center hasSubmit">
@@ -148,6 +142,6 @@
         class="btn btn-primary"
         disabled=""
         type="submit"
-        value="{{=it.registerAccount}}"
+        value="{{registerAccount}}"
     />
 </p>
