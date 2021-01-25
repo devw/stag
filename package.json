@@ -7,9 +7,7 @@
     "dev": "node src/index.js",
     "test": "jest --config ./jest-config.json",
     "clear": "jest --clearCache",
-    "load": "node src/yaml2json ${0}",
-    "prebuild": "rm -rf docs",
-    "build": "rm -rf dist; webpack; cp -r public/* dist; mv dist docs",
+    "build": "rm -rf dist; webpack; cp -r public/* dist",
     "start": "cd docs; python3.8  -m http.server 8081 &"
   },
   "devDependencies": {
