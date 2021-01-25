@@ -2,7 +2,7 @@ const { IDs } = require("../config");
 const { SIGNIN_ID, ACTIVATE_ID } = IDs;
 const { LANDING_ID, REGISTER_ID } = IDs;
 const { getCustomerStatus } = require("../services");
-const { toggleModules, $qq, debounce } = require("../utils");
+const { togglePage, $q, debounce } = require("../utils");
 const disableBtn = (btn) => btn.setAttribute("disabled", "true");
 const { toggleLoading } = require("../utils/toggle-loading");
 let form, customerStatusPromise;
@@ -17,9 +17,9 @@ const onSubmit = async () => {
     toggleLoading();
     const result = await customerStatusPromise;
     toggleLoading();
-    if (!result?.state) register();
-    else if (result.state === "enabled") toggleModules(SIGNIN_ID);
-    else if (result.state === "disabled") toggleModules(ACTIVATE_ID);
+    if (!result?.state) togglePage(REGISTER_ID);
+    else if (result.state === "enabled") togglePage(SIGNIN_ID);
+    else if (result.state === "disabled") togglePage(ACTIVATE_ID);
 };
 
 const emailAutofill = () => {
@@ -36,12 +36,8 @@ const toggleButton = ({ target }) => {
     isEmail ? activeBtn(btn, email) : disableBtn(btn);
 };
 
-const register = () => {
-    toggleModules(REGISTER_ID);
-};
-
 exports.init = () => {
-    form = $qq(`.${LANDING_ID}`, "form");
+    form = $q(`.${LANDING_ID} form`);
     form.addEventListener("input", debounce(toggleButton, 100));
     form.addEventListener("submit", onSubmit);
     form.addEventListener("submit", emailAutofill);

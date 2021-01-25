@@ -1,10 +1,11 @@
 const { rendereTemplate, $q, showError, debounce } = require("../utils");
 const { getBlocksAttr } = require("../utils/load-pages");
+const { IDs } = require("../config");
 
 const changePage = (page) => {
     const { loadActions } = require("../actions/load");
-    const { toggleModules } = require("../utils");
-    toggleModules(page);
+    const { togglePage } = require("../utils");
+    togglePage(page);
     $q(".container").style.setProperty("display", "flex");
     loadActions();
 };
@@ -75,7 +76,7 @@ const kastorHandler = (event) => {
     if (target === "block:reorder") {
         const orderBlocks = getOrderedBlocks(getData(event));
         rendereTemplate({ orderedBlock: orderBlocks });
-        changePage("register"); // TODO remove magic number
+        changePage(IDs.REGISTER_ID);
         return null;
     }
     //remove block
@@ -85,12 +86,11 @@ const kastorHandler = (event) => {
         const filteredBlocks = getBlocksAttr().filter((e) => e !== blockToDel);
         rendereTemplate({ orderedBlock: filteredBlocks });
         rendereTemplate({ [blockToDel]: false });
-        changePage("register"); // TODO remove magic number
+        changePage(IDs.REGISTER_ID);
         return null;
     }
     //add a block
     if (target === "block:add") {
-        //TODO @Thomas, why two different names? (target: "setting:update")
         const { block_type_id, block_settings } = getData(event);
         const [page, blockToAdd] = block_type_id.split("|");
         const key = Object.keys(block_settings)[0].split("|")[1];

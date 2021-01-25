@@ -2,7 +2,7 @@ const { IDs } = require("../config");
 const { SIGNIN_ID, REGISTER_ID, RECOVERY_ID } = IDs;
 const { $q, isValidEmail, toggleSecret } = require("../utils/");
 const { sendHttpRequest } = require("../services");
-const { toggleModules } = require("../utils");
+const { togglePage } = require("../utils");
 
 const tgt = {
     form: `.${SIGNIN_ID} form`,
@@ -30,9 +30,9 @@ const toggleButton = (e) => {
         : form.querySelector("[type='submit']").setAttribute("disabled", "");
 };
 
-const recovery = () => toggleModules(RECOVERY_ID);
+const recovery = () => togglePage(RECOVERY_ID);
 
-const register = () => toggleModules(REGISTER_ID);
+const register = () => togglePage(REGISTER_ID);
 
 exports.init = () => {
     const form = $q(tgt.form);

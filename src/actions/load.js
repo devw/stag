@@ -2,7 +2,7 @@ const { init: initLanding } = require("./landing");
 const { init: initSignIn } = require("./sign-in");
 const { init: initRegistration } = require("./register");
 const { init: initRecovery } = require("./recovery");
-const { $q, toggleModules } = require("../utils/");
+const { $q, togglePage } = require("../utils/");
 const { LOGIN_BTN, STORAGE_CONFIG, IDs } = require("../config");
 const { LANDING_ID } = IDs;
 
@@ -31,7 +31,7 @@ const openAccount = (e) => {
         e?.preventDefault();
         e?.stopPropagation();
         document.body.classList.add("remove-scrolling");
-        toggleModules(LANDING_ID);
+        togglePage(LANDING_ID);
         const dom = $q(`.${IDs.CONTAINER_ID}`);
         dom.style.setProperty("display", "flex");
         if (dom.classList.contains("popover")) placePopover(e, dom);

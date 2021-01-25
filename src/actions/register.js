@@ -1,6 +1,6 @@
 const { IDs } = require("../config");
 const { REGISTER_ID, SIGNIN_ID, LANDING_ID } = IDs;
-const { toggleModules, $q, toggleSecret } = require("../utils");
+const { togglePage, $q, toggleSecret } = require("../utils");
 const { isFormFilled, checkInputs, sortBlocks } = require("../utils");
 const { storeMetafieldIntoShopify } = require("../services");
 const { STORAGE_METAFIELD } = require("../config.js");
@@ -93,7 +93,7 @@ exports.init = () => {
         e.addEventListener("click", changeSlide)
     );
     form.addEventListener("submit", onSubmit);
-    $q(tgt.login)?.addEventListener("click", () => toggleModules(SIGNIN_ID));
+    $q(tgt.login)?.addEventListener("click", () => togglePage(SIGNIN_ID));
     form.querySelector(".js-show-psw")?.addEventListener("click", toggleSecret);
     form.querySelector(".choice-block")?.addEventListener(
         "click",
@@ -102,6 +102,6 @@ exports.init = () => {
     $q(".js-date input")?.addEventListener("focus", formatDate);
     storeMetafieldIntoShopify();
     $q(`.${REGISTER_ID} .js-back`)?.addEventListener("click", () =>
-        toggleModules(LANDING_ID)
+        togglePage(LANDING_ID)
     );
 };

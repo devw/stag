@@ -14,17 +14,12 @@ const parseConfiguration = (config) => {
 };
 
 exports.getCustomerStatus = async (email) => {
-    // return { state: "enabled", properties: {} };
     const shop = globalThis?.Shopify?.shop;
-
-    const endpoint = shop
-        ? `https://${shop}/${PROXY_PATH}/get-customer-status/${email}`
-        : "https://api.mocki.io/v1/ce5f60e2";
+    const endpoint = `https://${shop}/${PROXY_PATH}/get-customer-status/${email}`;
 
     try {
         const promise = await fetch(endpoint);
-        const result = await promise.json();
-        return result;
+        return await promise.json();
     } catch (err) {
         console.log("error in proxy.js: ", err);
         //TODO what should I do if the proxy does not work?

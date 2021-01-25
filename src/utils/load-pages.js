@@ -20,12 +20,8 @@ const getBlocksAttr = () => {
 };
 
 const filterCss = (data) => {
-    // TODO refactoring
-    let imgUrl;
-    imgUrl = data["--container-bg-image"];
-    if (imgUrl) data["--container-bg-image"] = `url(${imgUrl})`;
-    imgUrl = data["--form-header-image"];
-    if (imgUrl) data["--form-header-image"] = `url(${imgUrl})`;
+    const imgs = ["--container-bg-image", "--form-header-image"];
+    imgs.forEach((e) => (data[e] = `url(${data[e]})`));
     return data;
 };
 
