@@ -25,7 +25,8 @@ const placePopover = (e, dom) => {
 
 const openAccount = (e) => {
     const { isActive } = JSON.parse(localStorage.getItem(STORAGE_CONFIG));
-    if (!globalThis.__st?.cid && isActive) {
+    //TODO isActive to fix
+    if (!globalThis.__st?.cid) {
         e?.preventDefault();
         e?.stopPropagation();
         toggleModules(LANDING_ID);

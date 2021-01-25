@@ -36,8 +36,9 @@ exports.getConfiguration = async () => {
     //TODO implements memoization
     const shopName =
         globalThis.Shopify?.shop || "test-login-popup.myshopify.com";
-    // const endpoint = `${CONFIG_ENDPOINT}/${shopName}/configuration.json`;
-    const endpoint = "data/configuration.json";
+    const endpoint = /localhost/.test(location.href)
+        ? "data/configuration.json"
+        : `${CONFIG_ENDPOINT}/${shopName}/configuration.json`;
     const promise = await globalThis.fetch(endpoint, {
         headers: { pragma: "no-cache" },
     });
