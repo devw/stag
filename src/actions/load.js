@@ -30,6 +30,7 @@ const openAccount = (e) => {
     if (!globalThis.__st?.cid) {
         e?.preventDefault();
         e?.stopPropagation();
+        document.body.classList.add("remove-scrolling");
         toggleModules(LANDING_ID);
         const dom = $q(`.${IDs.CONTAINER_ID}`);
         dom.style.setProperty("display", "flex");

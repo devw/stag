@@ -21,7 +21,7 @@ const addCSS = (CSS) => {
 
 loadTheme().then(() => {
     if (globalThis.self !== globalThis.top || /localhost/.test(location.href)) {
-        //TODO when I edit theme from sjopify it opens the popup!
+        //TODO when I edit theme from Shopify it opens the popup!
         const { openAccount } = require("./actions/load");
         const { kastorHandler } = require("./services");
         openAccount();
