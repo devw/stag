@@ -12,13 +12,14 @@ const tgt = {
 };
 const multiChoiceSelector = "multi-choice";
 
-const storeTags = () => {
-    const sel = `
-        [type='checkbox'][data-tag]:checked,
-        [type='text'][data-tag], 
-        [type='date'][data-tag]
-    `;
+const getSelector = (tag) => `
+    [data-is-tag='${tag === "tag"}']:checked,
+    [type='text'][data-is-tag='${tag === "tag"}'],
+    [type='date'][data-is-tag='${tag === "tag"}']
+`;
 
+const storeTags = () => {
+    const sel = getSelector("tag");
     const els = Array.from($q(tgt.form).querySelectorAll(sel));
 
     const tags = els.map((el) => `${el.getAttribute("data-tag")}:${el.value}`);
@@ -26,11 +27,7 @@ const storeTags = () => {
 };
 
 const storeMetafield = () => {
-    const sel = `
-        [type='checkbox'][data-key]:checked,
-        [type='text'][data-key], 
-        [type='date'][data-key]
-    `;
+    const sel = getSelector("metafield");
     const els = Array.from($q(tgt.form).querySelectorAll(sel));
     const metafields = els.map((el) => {
         return {

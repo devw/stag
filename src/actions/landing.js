@@ -25,8 +25,8 @@ const onSubmit = async () => {
 const emailAutofill = () => {
     const emailSelector = "[type='email']";
     const email = form.querySelector(emailSelector).value;
-    $qq(`.${REGISTER_ID}`, `form ${emailSelector}`).value = email;
-    $qq(`.${SIGNIN_ID}`, `form ${emailSelector}`).value = email;
+    const fields = document.querySelectorAll(`#${IDs.APP_ID} ${emailSelector}`);
+    fields.forEach((e) => (e.value = email));
 };
 
 const toggleButton = ({ target }) => {
