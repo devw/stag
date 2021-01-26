@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <input type="email" />
+        <script>
+            const $ = document.querySelector.bind(document);
+            const emailMap = new Map();
+            const toggleButton = ({ target }) => {
+                const email = target.value;
+                if (/\S+@\S+\.\S{2,}/.test(email)) setEmail(email);
+            };
+            const setEmail = (email) => {
+                const emails = Array.from(emailMap.keys());
+                if (emails.every((e) => !RegExp(`^${e}`, "i").test(email))) {
+                    const result = { state: "active" }; //make the proxy request
+                    emailMap.set(email, result);
+                }
+            };
+            const getEmail = () => {
+                const emails = Array.from(emailMap.keys());
+                const lastEmail = $("[type='email']").value;
+                const email = emails.find((e) =>
+                    RegExp(`^${e}`, "i").test(lastEmail)
+                );
+                return emailMap.get(email);
+            };
+            window.getEmail = getEmail;
+            window.emailMap = emailMap;
+            document
+                .querySelector("input")
+                .addEventListener("input", toggleButton);
+        </script>
+    </body>
+</html>

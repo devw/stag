@@ -1,4 +1,4 @@
-const { $q } = require("./");
+const { $q } = require("./toggle");
 const errorSelector = ".js-psw-policy";
 const { STORAGE_CONFIG } = require("../config");
 
@@ -68,11 +68,6 @@ const serialize = (form) => {
     return Array.from(new FormData(form)).reduce(reducer, {});
 };
 
-exports.toggleSecret = ({ target }) => {
-    const secret = target.nextElementSibling;
-    secret.type = secret.type === "password" ? "text" : "password";
-};
-
 exports.isFormFilled = (form) =>
     Array.from(form.querySelectorAll("input[required]")).every((e) => e.value);
 
@@ -85,6 +80,6 @@ exports.checkInputs = async (form) => {
     return errors.length === 0 ? true : showError(errors) && false;
 };
 
-exports.isValidEmail = (email) => /\S+@\S+\.\S+/.test(email);
+exports.isValidEmail = (email) => /\S+@\S+\.\S{2,}/.test(email);
 
 exports.showError = showError;

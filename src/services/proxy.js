@@ -16,6 +16,7 @@ const parseConfiguration = (config) => {
 exports.getCustomerStatus = async (email) => {
     const shop = globalThis?.Shopify?.shop;
     const endpoint = `https://${shop}/${PROXY_PATH}/get-customer-status/${email}`;
+    // const endpoint = `http://localhost:3003/dev/get-customer-status/${email}?shop=popup-login.myshopify.com`;
     console.log("getCustomerStatus: ", email);
     try {
         const promise = await fetch(endpoint);

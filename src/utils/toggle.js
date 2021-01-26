@@ -15,6 +15,11 @@ exports.togglePage = (id) => {
     $q(`.${id}`).style.setProperty("display", "block");
 };
 
+exports.toggleSecret = ({ target }) => {
+    const secret = target.nextElementSibling;
+    secret.type = secret.type === "password" ? "text" : "password";
+};
+
 exports.toggleLoading = () => {
     const loading = $(`#${APP_ID} .loading`);
     if (loading.style.getPropertyValue("display") == "none") {
