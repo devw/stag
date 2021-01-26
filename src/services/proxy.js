@@ -16,24 +16,20 @@ const parseConfiguration = (config) => {
 exports.getCustomerStatus = async (email) => {
     const shop = globalThis?.Shopify?.shop;
     const endpoint = `https://${shop}/${PROXY_PATH}/get-customer-status/${email}`;
-
+    console.log("getCustomerStatus: ", email);
     try {
         const promise = await fetch(endpoint);
         return await promise.json();
     } catch (err) {
-        console.log("error in proxy.js: ", err);
-        //TODO what should I do if the proxy does not work?
-        return {};
+        throw ("error in proxy.js: ", err);
     }
 };
 
 exports.getConfiguration = async (fName) => {
     //TODO implements memoization
-    const shopName =
-        globalThis.Shopify?.shop || "test-login-popup.myshopify.com";
     const endpoint = /localhost/.test(location.href)
         ? `data/${fName}`
-        : `${CONFIG}/${shopName}/${fName}`;
+        : `${CONFIG}/${Shopify.shop}/${fName}`;
     const promise = await globalThis.fetch(endpoint, {
         headers: { pragma: "no-cache" },
     });

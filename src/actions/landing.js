@@ -9,8 +9,8 @@ let form, customerStatusPromise;
 
 const activeBtn = async (btn, email) => {
     btn.removeAttribute("disabled");
-    if (!(await customerStatusPromise?.state))
-        customerStatusPromise = getCustomerStatus(email);
+    const promise = await customerStatusPromise;
+    if (!promise?.state) customerStatusPromise = getCustomerStatus(email);
 };
 
 const onSubmit = async () => {
@@ -38,7 +38,8 @@ const toggleButton = ({ target }) => {
 
 exports.init = () => {
     form = $q(`.${LANDING_ID} form`);
-    form.addEventListener("input", debounce(toggleButton, 100));
+    // form.addEventListener("input", debounce(toggleButton, 100));
+    form.addEventListener("input", toggleButton);
     form.addEventListener("submit", onSubmit);
     form.addEventListener("submit", emailAutofill);
 };
