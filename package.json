@@ -7,7 +7,8 @@
     "dev": "node src/index.js",
     "test": "jest --config ./jest-config.json",
     "clear": "jest --clearCache",
-    "build": "rm -rf dist; webpack; cp -r public/* dist",
+    "bd": "rm -rf dist; webpack --mode=development; cp -r public/* dist",
+    "bp": "rm -rf dist; webpack --mode=production; cp -r public/* dist",
     "start": "cd dist; python3.8  -m http.server 8081 &"
   },
   "devDependencies": {

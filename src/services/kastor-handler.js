@@ -72,6 +72,7 @@ const updateNoBlock = (event) => {
 
 const kastorHandler = (event) => {
     //reorder blocks
+    console.log("kastorHandler: ", event);
     const target = getTarget(event);
     if (target === "block:reorder") {
         const orderBlocks = getOrderedBlocks(getData(event));

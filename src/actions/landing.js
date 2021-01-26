@@ -4,13 +4,13 @@ const { LANDING_ID, REGISTER_ID } = IDs;
 const { getCustomerStatus } = require("../services");
 const { togglePage, $q, debounce } = require("../utils");
 const disableBtn = (btn) => btn.setAttribute("disabled", "true");
-const { toggleLoading } = require("../utils/toggle-loading");
+const { toggleLoading } = require("../utils/");
 let form, customerStatusPromise;
 
-const activeBtn = (btn, email) => {
+const activeBtn = async (btn, email) => {
     btn.removeAttribute("disabled");
-    // TODO should I store the result in localStorage?
-    customerStatusPromise = getCustomerStatus(email);
+    if (!(await customerStatusPromise?.state))
+        customerStatusPromise = getCustomerStatus(email);
 };
 
 const onSubmit = async () => {

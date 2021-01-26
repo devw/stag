@@ -2,7 +2,7 @@ const {
     PROXY_PATH,
     STORAGE_METAFIELD,
     STORAGE_CONFIG,
-    CONFIG_ENDPOINT,
+    CONFIG,
 } = require("../config.js");
 
 const parseConfiguration = (config) => {
@@ -27,13 +27,13 @@ exports.getCustomerStatus = async (email) => {
     }
 };
 
-exports.getConfiguration = async () => {
+exports.getConfiguration = async (fName) => {
     //TODO implements memoization
     const shopName =
         globalThis.Shopify?.shop || "test-login-popup.myshopify.com";
     const endpoint = /localhost/.test(location.href)
-        ? "data/configuration.json"
-        : `${CONFIG_ENDPOINT}/${shopName}/configuration.json`;
+        ? `data/${fName}`
+        : `${CONFIG}/${shopName}/${fName}`;
     const promise = await globalThis.fetch(endpoint, {
         headers: { pragma: "no-cache" },
     });

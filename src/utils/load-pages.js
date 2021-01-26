@@ -21,7 +21,9 @@ const getBlocksAttr = () => {
 
 const filterCss = (data) => {
     const imgs = ["--container-bg-image", "--form-header-image"];
-    imgs.forEach((e) => (data[e] = `url(${data[e]})`));
+    imgs.forEach((e) => {
+        if (data[e]) data[e] = `url(${data[e]})`;
+    });
     return data;
 };
 

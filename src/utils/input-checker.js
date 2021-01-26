@@ -1,4 +1,4 @@
-const { $q } = require("./q-selector");
+const { $q } = require("./");
 const errorSelector = ".js-psw-policy";
 const { STORAGE_CONFIG } = require("../config");
 
