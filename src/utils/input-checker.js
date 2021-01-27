@@ -42,7 +42,7 @@ const resetErrorMsgs = () => {
     $q(errorSelector).style.setProperty("display", "none");
 };
 
-const getPasswordPolicyErrors = async (inputs) => {
+const getPasswordPolicyErrors = (inputs) => {
     const psw = inputs["customer[password]"];
     const errorMsgs = [];
     const pswPolicy = JSON.parse(localStorage.getItem(STORAGE_CONFIG))["text"];
@@ -71,11 +71,11 @@ const serialize = (form) => {
 exports.isFormFilled = (form) =>
     Array.from(form.querySelectorAll("input[required]")).every((e) => e.value);
 
-exports.checkInputs = async (form) => {
+exports.checkInputs = (form) => {
     resetErrorMsgs();
     const errors = [];
     const inputs = serialize(form);
-    errors.push(...(await getPasswordPolicyErrors(inputs)));
+    errors.push(...getPasswordPolicyErrors(inputs));
     errors.push(...checkDate());
     return errors.length === 0 ? true : showError(errors) && false;
 };
