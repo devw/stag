@@ -5,14 +5,15 @@ const { getCustomerStatus } = require("../services");
 const { togglePage, $q, debounce } = require("../utils");
 const disableBtn = (btn) => btn.setAttribute("disabled", "true");
 const { toggleLoading } = require("../utils/");
-let form;
+let form, promise;
 const emailMap = new Map();
 
 const setEmail = async (email) => {
     const emails = Array.from(emailMap.keys());
+    await promise;
     if (emails.every((e) => !RegExp(`^${e}`, "i").test(email))) {
-        const result = await getCustomerStatus(email);
-        emailMap.set(email, result);
+        promise = getCustomerStatus(email);
+        emailMap.set(email, promise);
     }
 };
 
@@ -30,7 +31,7 @@ const activeBtn = async (btn, email) => {
 
 const onSubmit = async () => {
     toggleLoading();
-    const result = getEmail();
+    const result = await getEmail();
     toggleLoading();
     if (!result?.state) togglePage(REGISTER_ID);
     else if (result.state === "enabled") togglePage(SIGNIN_ID);
