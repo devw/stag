@@ -5,7 +5,7 @@ require("./styles/popup.scss");
 require("./styles/form.scss");
 require("./styles/animations.scss");
 const { loadTheme } = require("./actions");
-const { IDs, CONFIG } = require("./config");
+const { IDs, ENDPOINT } = require("./config");
 
 const node = globalThis.document.createElement("div");
 node.setAttribute("id", IDs.APP_ID);
@@ -13,7 +13,7 @@ globalThis.document.body.append(node);
 
 const addCSS = (fName) => {
     const head = document.getElementsByTagName("head")[0];
-    const url = /localhost/.test(location.href) ? fName : `${CONFIG}${fName}`;
+    const url = /localhost/.test(location.href) ? fName : `${ENDPOINT}${fName}`;
     const link = `<link rel="stylesheet" href="${url}" />`;
     head.insertAdjacentHTML("afterbegin", link);
 };

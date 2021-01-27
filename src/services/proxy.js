@@ -1,19 +1,9 @@
 const {
     PROXY_PATH,
     STORAGE_METAFIELD,
-    STORAGE_CONFIG,
-    CONFIG,
+    ENDPOINT,
+    CONFIG_FNAME,
 } = require("../config.js");
-
-const parseConfiguration = (config) => {
-    const { text } = config;
-    // TODO too code repetition
-    config.text.isChoiceTag = text.isChoiceTag === "hasTag" ? true : false;
-    config.text.isBirthTag = text.isBirthTag === "hasTag" ? true : false;
-    config.text.isDateTag = text.isDateTag === "hasTag" ? true : false;
-    text.orderedBlock.forEach((e) => (config.text[e] = true));
-    return config;
-};
 
 exports.getCustomerStatus = async (email) => {
     const endpoint = /localhost/.test(location.href)
@@ -27,17 +17,18 @@ exports.getCustomerStatus = async (email) => {
     }
 };
 
-exports.getConfiguration = async (fName) => {
+exports.getConfiguration = async () => {
     //TODO implements memoization
-    const endpoint = /localhost/.test(location.href)
-        ? `data/${fName}`
-        : `${CONFIG}/${Shopify.shop}/${fName}`;
-    const promise = await globalThis.fetch(endpoint, {
-        headers: { pragma: "no-cache" },
-    });
-    const result = parseConfiguration(await promise.json());
-    localStorage.setItem(STORAGE_CONFIG, JSON.stringify(result));
-    return result;
+    console.log(
+        "getConfiguration",
+        `${ENDPOINT}/${window?.Shopify?.shop}/${CONFIG_FNAME}`
+    );
+    console.log("###### location.href: ", location.href);
+    const endpoint = /\/localhost:/.test(location.href)
+        ? `data/${CONFIG_FNAME}`
+        : `${ENDPOINT}/${Shopify.shop}/${CONFIG_FNAME}`;
+    const promise = await globalThis.fetch(endpoint);
+    return promise;
 };
 
 exports.storeMetafieldIntoShopify = async () => {

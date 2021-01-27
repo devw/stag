@@ -1,4 +1,9 @@
-const { rendereTemplate, updateCss, sortBlocks } = require("./load-pages");
+const {
+    rendereTemplate,
+    updateCss,
+    sortBlocks,
+    parseConfiguration,
+} = require("./load-pages");
 const { togglePage, toggleSecret, toggleLoading } = require("./toggle");
 const {
     isValidEmail,
@@ -23,4 +28,5 @@ module.exports = {
     getRootNode,
     toggleLoading,
     debounce,
+    parseConfiguration,
 };
