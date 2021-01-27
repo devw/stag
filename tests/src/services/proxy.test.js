@@ -1,8 +1,11 @@
-const { getConfiguration } = require("../../../src/services/proxy");
-const { CONFIG_ENDPOINT } = require("../config");
+const {
+    getConfiguration,
+    getCustomerStatus,
+} = require("../../../src/services/proxy");
+const { ENDPOINT, PROXY_PATH } = require("../config");
 require("jest-fetch-mock").enableMocks();
 
-describe("Proxy-test: getting json configuration", () => {
+describe("Proxy Test", () => {
     beforeEach(() => {
         fetch.resetMocks();
         globalThis.Shopify = { shop: "test.shopify.com" };
@@ -12,9 +15,20 @@ describe("Proxy-test: getting json configuration", () => {
         const data = { style: {}, text: {} };
         fetch.mockResponseOnce(JSON.stringify(data));
         const res = await getConfiguration();
-        const endpoint = `${CONFIG_ENDPOINT}/${globalThis.Shopify.shop}/configuration.json`;
+        const endpoint = `${ENDPOINT}/${globalThis.Shopify.shop}/configuration.json`;
         expect(await res.json()).toEqual(data);
         console.log(fetch.mock.calls[0][0]);
+        expect(fetch.mock.calls.length).toEqual(1);
+        expect(fetch.mock.calls[0][0]).toEqual(endpoint);
+    });
+
+    it("gets the customer status", async () => {
+        const email = "anto@gmail.com";
+        const data = { state: "enabled", properties: {} };
+        fetch.mockResponseOnce(JSON.stringify(data));
+        const cust = await getCustomerStatus(email);
+        const endpoint = `https://${Shopify.shop}/${PROXY_PATH}/get-customer-status/${email}`;
+        expect(cust).toEqual(data);
         expect(fetch.mock.calls.length).toEqual(1);
         expect(fetch.mock.calls[0][0]).toEqual(endpoint);
     });
