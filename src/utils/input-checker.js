@@ -20,7 +20,7 @@ const getCustomerAge = (dateElem) => {
 const getDateAttr = (dateElem) => ({
     minDate: dateElem.getAttribute("date-min"),
     maxDate: dateElem.getAttribute("date-max"),
-    error: dateElem.getAttribute("date-error"),
+    error: dateElem.getAttribute("date-birthError"),
     customerAge: getCustomerAge(dateElem),
 });
 
@@ -81,5 +81,13 @@ exports.checkInputs = async (form) => {
 };
 
 exports.isValidEmail = (email) => /\S+@\S+\.\S{2,}/.test(email);
+
+exports.debounce = (fn, delay) => {
+    let timeoutId;
+    return (...args) => {
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => fn(...args), delay);
+    };
+};
 
 exports.showError = showError;

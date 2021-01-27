@@ -96,7 +96,7 @@
         data-is-tag="{{isBirthTag}}"
         date-min="{{birthMin}}"
         date-max="{{birthMax}}"
-        date-error="{{birthError}}"
+        date-birthError="{{birthError}}"
         placeholder="{{birthPlaceholder}}"
         data-tag="{{birthTag}}"
         data-namespace="{{birthNamespace}}"
@@ -115,6 +115,24 @@
     </div>
 </div>
 {{/hasNewsletter }}
+
+<!-- FirstName field -->
+{{#hasDate }}
+<div class="hasFirstName">
+    <input
+        required
+        type="text"
+        class="input-text"
+        placeholder="{{datePlaceholder}}"
+        data-is-tag="{{isDateTag}}"
+        data-dateError="{{dateError}}"
+        data-tag="{{dateTag}}"
+        data-namespace="{{dateNamespace}}"
+        data-key="{{dateKey}}"
+    />
+    <label>{{datePlaceholder}}</label>
+</div>
+{{/hasDate }}
 
 <!-- Create account button -->
 <input

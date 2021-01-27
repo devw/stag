@@ -7,15 +7,18 @@ const {
 
 const parseConfiguration = (config) => {
     const { text } = config;
+    // TODO too code repetition
     config.text.isChoiceTag = text.isChoiceTag === "hasTag" ? true : false;
     config.text.isBirthTag = text.isBirthTag === "hasTag" ? true : false;
+    config.text.isDateTag = text.isDateTag === "hasTag" ? true : false;
     text.orderedBlock.forEach((e) => (config.text[e] = true));
     return config;
 };
 
 exports.getCustomerStatus = async (email) => {
-    const endpoint = `https://${Shopify.shop}/${PROXY_PATH}/get-customer-status/${email}`;
-    // const endpoint = `http://localhost:3003/dev/get-customer-status/${email}?shop=popup-login.myshopify.com`;
+    const endpoint = /localhost/.test(location.href)
+        ? `http://localhost:3003/dev/get-customer-status/${email}?shop=popup-login.myshopify.com`
+        : `https://${Shopify.shop}/${PROXY_PATH}/get-customer-status/${email}`;
     try {
         const promise = await fetch(endpoint);
         return await promise.json();

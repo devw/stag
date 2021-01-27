@@ -8,7 +8,6 @@
     <body>
         <input type="email" />
         <script>
-            const endpoint = "https://jsonplaceholder.typicode.com/todos/1";
             const $ = document.querySelector.bind(document);
             const emailMap = new Map();
             let promise;
@@ -17,9 +16,25 @@
                 if (/\S+@\S+\.\S{2,}/.test(email)) setEmail(email);
             };
 
+            const debounce = (fn, delay) => {
+                let timeoutId;
+                return (...args) => {
+                    clearTimeout(timeoutId);
+                    timeoutId = setTimeout(() => fn(...args), delay);
+                };
+            };
+
             const setEmail = async (email) => {
                 const emails = Array.from(emailMap.keys());
                 await promise;
+                if (!emails.length) {
+                    document
+                        .querySelector("input")
+                        .removeEventListener("input", toggleButton, true);
+                    document
+                        .querySelector("input")
+                        .addEventListener("input", debounce(toggleButton, 500));
+                }
                 if (emails.every((e) => !RegExp(`^${e}`, "i").test(email))) {
                     const enpoint = `http://localhost:3003/dev/get-customer-status/${email}?shop=popup-login.myshopify.com`;
                     promise = fetch(enpoint); //make the proxy request
@@ -38,7 +53,7 @@
             window.emailMap = emailMap;
             document
                 .querySelector("input")
-                .addEventListener("input", toggleButton);
+                .addEventListener("input", toggleButton, true);
         </script>
     </body>
 </html>

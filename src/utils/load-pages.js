@@ -11,6 +11,7 @@ const updateText = (text) => {
     const firstKey = Reflect.ownKeys(text)[0];
     if (hasManyKeys) TEXT = text;
     else TEXT[firstKey] = text[firstKey];
+
     return TEXT;
 };
 

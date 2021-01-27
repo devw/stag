@@ -446,7 +446,7 @@
                 block_type_id: "register|hasBirth|",
                 block_settings: {
                     "register|birthPlaceholder|": "Your date of birth",
-                    "register|isBirthTag|": "notHasTag",
+                    "register|isBirthTag|": "hasTag",
                     "register|birthTag|": "",
                     "register|birthNamespace|": "",
                     "register|birthKey|": "",
@@ -485,4 +485,110 @@
         detail: json,
     });
     globalThis.dispatchEvent(event);
+})();
+
+// TESTING TAG
+(() => {
+    json = {
+        data: {
+            data: {
+                setting_id: "register|choiceList|",
+                value: ["item_1", "item_2", "item_3", "item_4"],
+            },
+            target: "setting:update",
+        },
+    };
+    event = new CustomEvent("message", {
+        detail: json,
+    });
+    globalThis.dispatchEvent(event);
+})();
+// Remove choice
+(() => {
+    json = {
+        data: {
+            data: {
+                setting_id: "dd0d42f8-55ff-46c9-8137-3d9c860d184e",
+                block_type_id: "register|hasChoice|",
+                value: undefined,
+            },
+            target: "block:remove",
+        },
+    };
+    event = new CustomEvent("message", {
+        detail: json,
+    });
+    globalThis.dispatchEvent(event);
+})();
+
+// Date block
+(() => {
+    json = {
+        data: {
+            data: {
+                block_settings: {
+                    "register|datePlaceholder|": "Your Date",
+                },
+                block_type_id: "register|hasDate|",
+                value: undefined,
+            },
+            target: "block:add",
+        },
+    };
+    event = new CustomEvent("message", {
+        detail: json,
+    });
+    globalThis.dispatchEvent(event);
+})();
+
+// TESTING METAFIELD
+(() => {
+    json = {
+        data: {
+            data: {
+                setting_id: "register|isDateTag|",
+                value: "hasMetafield",
+            },
+        },
+    };
+    kastorEvent = new CustomEvent("message", {
+        detail: json,
+    });
+    globalThis.dispatchEvent(kastorEvent);
+})();
+
+// Date block
+(() => {
+    json = {
+        data: {
+            data: {
+                block_settings: {
+                    "register|birthPlaceholder|": "Your Date birthasds",
+                },
+                block_type_id: "register|hasBirth|",
+                value: undefined,
+            },
+            target: "block:add",
+        },
+    };
+    event = new CustomEvent("message", {
+        detail: json,
+    });
+    globalThis.dispatchEvent(event);
+})();
+
+// TESTING METAFIELD
+(() => {
+    json = {
+        data: {
+            data: {
+                setting_id: "register|isBirthTag|",
+                value: "hasTag",
+            },
+        },
+    };
+    kastorEvent = new CustomEvent("message", {
+        detail: json,
+    });
+    globalThis.dispatchEvent(kastorEvent);
 })();

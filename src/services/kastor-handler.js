@@ -1,4 +1,4 @@
-const { rendereTemplate, $q, showError, debounce } = require("../utils");
+const { rendereTemplate, $q, showError } = require("../utils");
 const { getBlocksAttr } = require("../utils/load-pages");
 const { IDs } = require("../config");
 
@@ -106,4 +106,4 @@ const kastorHandler = (event) => {
 };
 
 exports.kastorHandler = () =>
-    globalThis.addEventListener("message", debounce(kastorHandler, 99));
+    globalThis.addEventListener("message", kastorHandler);

@@ -2,15 +2,18 @@ const { IDs } = require("../config");
 const { SIGNIN_ID, ACTIVATE_ID } = IDs;
 const { LANDING_ID, REGISTER_ID } = IDs;
 const { getCustomerStatus } = require("../services");
-const { togglePage, $q, debounce } = require("../utils");
+const { togglePage, $q, debounce, toggleLoading } = require("../utils");
 const disableBtn = (btn) => btn.setAttribute("disabled", "true");
-const { toggleLoading } = require("../utils/");
 let form, promise;
 const emailMap = new Map();
 
 const setEmail = async (email) => {
     const emails = Array.from(emailMap.keys());
     await promise;
+    if (!emails.length) {
+        form.removeEventListener("input", toggleButton, true);
+        form.addEventListener("input", debounce(toggleButton, 500), true);
+    }
     if (emails.every((e) => !RegExp(`^${e}`, "i").test(email))) {
         promise = getCustomerStatus(email);
         emailMap.set(email, promise);
@@ -54,8 +57,7 @@ const toggleButton = ({ target }) => {
 
 exports.init = () => {
     form = $q(`.${LANDING_ID} form`);
-    // form.addEventListener("input", debounce(toggleButton, 100));
-    form.addEventListener("input", toggleButton);
+    form.addEventListener("input", toggleButton, true);
     form.addEventListener("submit", onSubmit);
     form.addEventListener("submit", emailAutofill);
 };
