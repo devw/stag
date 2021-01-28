@@ -1,3 +1,1 @@
-const $q = () => document.body;
-
-exports.$q = $q;
+exports.$q = () => document.body;
