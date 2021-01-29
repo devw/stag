@@ -56,7 +56,7 @@ body.remove-scrolling {
     .form-image {
         content: var(--form-header-image);
         padding: var(--image-padding, "1em");
-        width: var(--image-size, "40%");
+        width: 25vw; //var(--image-size, "40%");
     }
 
     // Title
