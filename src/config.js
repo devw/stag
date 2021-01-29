@@ -4,8 +4,8 @@ module.exports = {
     STORAGE_KEY: "shopify-loginpopup-metafields",
     STORAGE_CONFIG: "shopify-loginpopup-configuration",
     // TODO get it from the PROXY
-    CONFIG_ENDPOINT: "https://login-popup-dev-theme.s3.amazonaws.com",
-    CSS: "https://login-popup-dev-theme.s3.amazonaws.com/main.css",
+    ENDPOINT: "https://login-popup-dev-theme.s3.amazonaws.com",
+    CONFIG_FNAME: "configuration.json",
     IDs: {
         APP_ID: "login-popup",
         CONTAINER_ID: "container",
@@ -13,5 +13,6 @@ module.exports = {
         REGISTER_ID: "register",
         SIGNIN_ID: "signin",
         ACTIVATE_ID: "activate",
+        RECOVERY_ID: "recovery",
     },
 };

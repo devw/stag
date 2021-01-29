@@ -21,182 +21,182 @@ body.remove-scrolling {
 /*  ===================
     Theme/Typography
     =================== */
+#login-popup {
+    .container {
+        text-align: center;
+        z-index: 99;
+        position: absolute;
+        animation: var(--animation) 1.5s;
+    }
 
-.container {
-    text-align: center;
-    z-index: 99;
-    position: absolute;
-    animation: var(--animation) 1.5s;
-}
+    .content {
+        color: var(--primary-text-color);
+        background-color: var(--content-bg-color, #fff);
+        border-radius: var(--container-border-radius);
+        padding: var(--content-padding, 1.5em);
+        position: relative;
+        max-width: 500px;
+        width: 100%;
+    }
 
-.content {
-    color: var(--primary-text-color);
-    background-color: var(--content-bg-color, #fff);
-    border-radius: var(--container-border-radius);
-    padding: var(--content-padding, 1.5em);
-    position: relative;
-}
+    .error {
+        background-color: var(--error-bg-color, #bfd9cb);
+        border-radius: 3px;
+        color: var(--error-text-color, #0d3c32);
+        display: none;
+        margin: 10px 0;
+        padding: 5px;
+        text-align: var(--error-text-align, left);
+    }
 
-.error {
-    background-color: var(--error-bg-color, #bfd9cb);
-    border-radius: 3px;
-    color: var(--error-text-color, #0d3c32);
-    display: none;
-    margin: 10px 0;
-    padding: 5px;
-    text-align: var(--error-text-align, left);
-}
-
-/*  ===================
+    /*  ===================
     Components
     =================== */
 
-// Header Image
-.form-image {
-    content: var(--form-header-image);
-    padding: var(--image-padding, "1em");
-    width: var(--image-size, "40%");
-}
+    // Header Image
+    .form-image {
+        content: var(--form-header-image);
+        padding: var(--image-padding, "1em");
+        width: 25vw; //var(--image-size, "40%");
+    }
 
-// Title
-.title {
-    font-family: var(--large-font-family);
-    font-size: var(--large-font-size);
-    font-weight: var(--large-font-weight);
-    letter-spacing: var(--large-letter-spacing);
-    line-height: var(--large-line-height);
-    text-transform: var(--large-text-transform);
-}
+    // Title
+    .title {
+        font-family: var(--large-font-family);
+        font-size: var(--large-font-size);
+        font-weight: var(--large-font-weight);
+        letter-spacing: var(--large-letter-spacing);
+        line-height: var(--large-line-height);
+        text-transform: var(--large-text-transform);
+    }
 
-// Sub-title
-.sub-title {
-    font-size: var(--medium-text-size);
-    font-weight: var(--medium-font-weight);
-    color: var(--secondary-text-color, #02100a);
-}
+    // Sub-title
+    .sub-title {
+        font-size: var(--medium-text-size);
+        font-weight: var(--medium-font-weight);
+        color: var(--secondary-text-color, #02100a);
+    }
 
-// Buttons
-// I need to refactor it
-.btn {
-    border: none;
-    color: #fff;
-    cursor: pointer;
-    padding: 10px;
-    text-transform: uppercase;
-    width: 100%;
-    margin-top: 15px;
-}
+    // Buttons
+    // I need to refactor it
+    .btn {
+        border: none;
+        color: #fff;
+        cursor: pointer;
+        padding: 10px;
+        text-transform: uppercase;
+        width: 100%;
+        margin-top: 15px;
+    }
 
-.btn.btn-primary,
-.btn.btn-primary:focus {
-    background-color: var(--btn-bg-color);
-}
+    .btn.btn-primary,
+    .btn.btn-primary:focus {
+        background-color: var(--btn-bg-color);
+    }
+    .btn.btn-primary:hover {
+        background-color: var(--btn-bg-color);
+    }
 
-.btn:disabled,
-.btn[disabled] {
-    // background-color: var(--btn-disabled-bg-color);
-    opacity: 0.5;
-}
+    .btn:disabled,
+    .btn[disabled] {
+        // background-color: var(--btn-disabled-bg-color);
+        opacity: 0.5;
+    }
 
-.btn-small {
-    width: 40%;
-    margin: 20px auto;
-}
+    .btn-small {
+        width: 40%;
+        margin: 20px auto;
+    }
 
-.btn-close {
-    cursor: pointer;
-    font-size: 40px;
-    position: absolute;
-    right: 14px;
-    top: 0;
-    transform: rotate(45deg);
-    color: var(--ternary-text-color, #0d3c32);
-}
+    .btn-close {
+        cursor: pointer;
+        font-size: 40px;
+        position: absolute;
+        right: 14px;
+        top: 0;
+        transform: rotate(45deg);
+        color: var(--ternary-text-color, #0d3c32);
+    }
 
-// links
+    // show password icon
+    .eye-icon {
+        color: #000;
+        cursor: pointer;
+        position: absolute;
+        margin-left: 3px;
+        margin-top: 3px;
+        width: 12px;
+        height: 12px;
+        border-radius: 70% 15%;
+        border: solid 1px currentColor;
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+        right: 4px;
+    }
 
-.link {
-    color: var(--link-color);
-}
+    .eye-icon:before {
+        content: "";
+        position: absolute;
+        left: 2px;
+        top: 2px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        border: solid 1px currentColor;
+    }
 
-// show password icon
-.eye-icon {
-    color: #000;
-    cursor: pointer;
-    position: absolute;
-    margin-left: 3px;
-    margin-top: 3px;
-    width: 12px;
-    height: 12px;
-    border-radius: 70% 15%;
-    border: solid 1px currentColor;
-    -webkit-transform: rotate(45deg);
-    transform: rotate(45deg);
-    right: 4px;
-}
+    // 4.1 checkbox
+    .checkbox {
+        margin-right: 10px;
+        min-width: unset;
+    }
 
-.eye-icon:before {
-    content: "";
-    position: absolute;
-    left: 2px;
-    top: 2px;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    border: solid 1px currentColor;
-}
+    .checkbox-container {
+        align-items: center;
+        display: flex;
+        margin-top: 14px;
+    }
 
-// 4.1 checkbox
-.checkbox {
-    margin-right: 10px;
-    min-width: unset;
-}
+    // 4.1 input fields
+    .mandatory-container {
+        margin-top: 10px;
+    }
 
-.checkbox-container {
-    align-items: center;
-    display: flex;
-    margin-top: 14px;
-}
-
-// 4.1 input fields
-.mandatory-container {
-    margin-top: 10px;
-}
-
-/*  ===================
+    /*  ===================
     Partials
     =================== */
 
-.or-social-login {
-    margin: 15px 0;
-}
+    .or-social-login {
+        margin: 15px 0;
+    }
 
-// social login module for Balzac theme
-.fb {
-    background-color: #3b5998;
-    color: white;
-}
+    // social login module for Balzac theme
+    .fb {
+        background-color: #3b5998;
+        color: white;
+    }
 
-.google {
-    background-color: #dd4b39;
-    color: white;
-}
+    .google {
+        background-color: #dd4b39;
+        color: white;
+    }
 
-.mt-1 {
-    margin-top: 10px;
-}
+    .mt-1 {
+        margin-top: 10px;
+    }
 
-.mt-2 {
-    margin-top: 20px;
-}
+    .mt-2 {
+        margin-top: 20px;
+    }
 
-.mb-1 {
-    margin-bottom: 5px;
-}
-/*  ===================
+    .mb-1 {
+        margin-bottom: 5px;
+    }
+    /*  ===================
     3. Pages
     =================== */
 
-/*  ===================
+    /*  ===================
     3. Modules
     =================== */
+}

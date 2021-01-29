@@ -1,8 +1,8 @@
 const { IDs } = require("../config");
-const { SIGNIN_ID, REGISTER_ID } = IDs;
+const { SIGNIN_ID, REGISTER_ID, RECOVERY_ID } = IDs;
 const { $q, isValidEmail, toggleSecret } = require("../utils/");
 const { sendHttpRequest } = require("../services");
-const { toggleModules } = require("../utils");
+const { togglePage } = require("../utils");
 
 const tgt = {
     form: `.${SIGNIN_ID} form`,
@@ -30,12 +30,15 @@ const toggleButton = (e) => {
         : form.querySelector("[type='submit']").setAttribute("disabled", "");
 };
 
-const register = () => toggleModules(REGISTER_ID);
+const recovery = () => togglePage(RECOVERY_ID);
+
+const register = () => togglePage(REGISTER_ID);
 
 exports.init = () => {
     const form = $q(tgt.form);
     form.addEventListener("input", toggleButton);
     form.addEventListener("submit", onSubmit);
-    form.querySelector(".js-show-psw")?.addEventListener("click", toggleSecret);
+    form.querySelector(".js-show-psw").addEventListener("click", toggleSecret);
+    form.querySelector(".js-recovery").addEventListener("click", recovery);
     $q(tgt.register)?.addEventListener("click", register);
 };

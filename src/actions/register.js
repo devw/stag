@@ -1,6 +1,6 @@
 const { IDs } = require("../config");
 const { REGISTER_ID, SIGNIN_ID, LANDING_ID } = IDs;
-const { toggleModules, $q, toggleSecret } = require("../utils");
+const { togglePage, $q, toggleSecret } = require("../utils");
 const { isFormFilled, checkInputs, sortBlocks } = require("../utils");
 const { storeMetafieldIntoShopify } = require("../services");
 const { STORAGE_METAFIELD } = require("../config.js");
@@ -12,13 +12,14 @@ const tgt = {
 };
 const multiChoiceSelector = "multi-choice";
 
-const storeTags = () => {
-    const sel = `
-        [type='checkbox'][data-tag]:checked,
-        [type='text'][data-tag], 
-        [type='date'][data-tag]
-    `;
+const getSelector = (tag) => `
+    [data-is-tag='${tag === "tag"}']:checked,
+    [type='text'][data-is-tag='${tag === "tag"}'],
+    [type='date'][data-is-tag='${tag === "tag"}']
+`;
 
+const storeTags = () => {
+    const sel = getSelector("tag");
     const els = Array.from($q(tgt.form).querySelectorAll(sel));
 
     const tags = els.map((el) => `${el.getAttribute("data-tag")}:${el.value}`);
@@ -26,11 +27,7 @@ const storeTags = () => {
 };
 
 const storeMetafield = () => {
-    const sel = `
-        [type='checkbox'][data-key]:checked,
-        [type='text'][data-key], 
-        [type='date'][data-key]
-    `;
+    const sel = getSelector("metafield");
     const els = Array.from($q(tgt.form).querySelectorAll(sel));
     const metafields = els.map((el) => {
         return {
@@ -96,7 +93,7 @@ exports.init = () => {
         e.addEventListener("click", changeSlide)
     );
     form.addEventListener("submit", onSubmit);
-    $q(tgt.login)?.addEventListener("click", () => toggleModules(SIGNIN_ID));
+    $q(tgt.login)?.addEventListener("click", () => togglePage(SIGNIN_ID));
     form.querySelector(".js-show-psw")?.addEventListener("click", toggleSecret);
     form.querySelector(".choice-block")?.addEventListener(
         "click",
@@ -104,5 +101,7 @@ exports.init = () => {
     );
     $q(".js-date input")?.addEventListener("focus", formatDate);
     storeMetafieldIntoShopify();
-    $q(".js-back")?.addEventListener("click", () => toggleModules(LANDING_ID));
+    $q(`.${REGISTER_ID} .js-back`)?.addEventListener("click", () =>
+        togglePage(LANDING_ID)
+    );
 };

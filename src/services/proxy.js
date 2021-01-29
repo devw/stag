@@ -1,50 +1,30 @@
 const {
     PROXY_PATH,
     STORAGE_METAFIELD,
-    STORAGE_CONFIG,
-    CONFIG_ENDPOINT,
+    ENDPOINT,
+    CONFIG_FNAME,
 } = require("../config.js");
 
-const parseConfiguration = (config) => {
-    const { text } = config;
-    config.text.isChoiceTag = text.isChoiceTag === "hasTag" ? true : false;
-    config.text.isBirthTag = text.isBirthTag === "hasTag" ? true : false;
-    text.orderedBlock.forEach((e) => (config.text[e] = true));
-    return config;
-};
-
 exports.getCustomerStatus = async (email) => {
-    // return { state: "enabled", properties: {} };
-    const shop = globalThis?.Shopify?.shop;
-
-    const endpoint = shop
-        ? `https://${shop}/${PROXY_PATH}/get-customer-status/${email}`
-        : "https://api.mocki.io/v1/ce5f60e2";
-
+    const endpoint = /\/localhost:|ngrok/.test(location.href)
+        ? `http://localhost:3003/dev/get-customer-status/${email}?shop=popup-login.myshopify.com`
+        : `https://${Shopify.shop}/${PROXY_PATH}/get-customer-status/${email}`;
     try {
         const promise = await fetch(endpoint);
-        const result = await promise.json();
-        return result;
+        return await promise.json();
     } catch (err) {
-        console.log("error in proxy.js: ", err);
-        //TODO what should I do if the proxy does not work?
-        return {};
+        throw ("error in proxy.js: ", err);
     }
 };
 
 exports.getConfiguration = async () => {
     //TODO implements memoization
-    const shopName =
-        globalThis.Shopify?.shop || "test-login-popup.myshopify.com";
-    const endpoint = /localhost/.test(location.href)
-        ? "data/configuration.json"
-        : `${CONFIG_ENDPOINT}/${shopName}/configuration.json`;
-    const promise = await globalThis.fetch(endpoint, {
-        headers: { pragma: "no-cache" },
-    });
-    const result = parseConfiguration(await promise.json());
-    localStorage.setItem(STORAGE_CONFIG, JSON.stringify(result));
-    return result;
+    console.log("###### location.href: ", location.href);
+    const endpoint = /\/localhost:|ngrok/.test(location.href)
+        ? `data/${CONFIG_FNAME}`
+        : `${ENDPOINT}/${Shopify.shop}/${CONFIG_FNAME}`;
+    const promise = await globalThis.fetch(endpoint);
+    return promise;
 };
 
 exports.storeMetafieldIntoShopify = async () => {

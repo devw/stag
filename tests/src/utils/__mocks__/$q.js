@@ -1,0 +1,1 @@
+exports.$q = () => document.body;

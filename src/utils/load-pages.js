@@ -11,6 +11,7 @@ const updateText = (text) => {
     const firstKey = Reflect.ownKeys(text)[0];
     if (hasManyKeys) TEXT = text;
     else TEXT[firstKey] = text[firstKey];
+
     return TEXT;
 };
 
@@ -20,12 +21,10 @@ const getBlocksAttr = () => {
 };
 
 const filterCss = (data) => {
-    // TODO refactoring
-    let imgUrl;
-    imgUrl = data["--container-bg-image"];
-    if (imgUrl) data["--container-bg-image"] = `url(${imgUrl})`;
-    imgUrl = data["--form-header-image"];
-    if (imgUrl) data["--form-header-image"] = `url(${imgUrl})`;
+    const imgs = ["--container-bg-image", "--form-header-image"];
+    imgs.forEach((e) => {
+        if (data[e]) data[e] = `url(${data[e]})`;
+    });
     return data;
 };
 
@@ -53,6 +52,18 @@ exports.rendereTemplate = (text) => {
         register: pages.register,
         activate: pages.activate,
         signin: pages.signIn,
+        recovery: pages.recovery,
         registerInputs: pages.registerInputs,
     });
+};
+
+exports.parseConfiguration = (config) => {
+    const { text } = config;
+    // TODO too code repetition
+    console.log("parseConfiguration....", config);
+    config.text.isChoiceTag = text.isChoiceTag === "hasTag" ? true : false;
+    config.text.isBirthTag = text.isBirthTag === "hasTag" ? true : false;
+    config.text.isDateTag = text.isDateTag === "hasTag" ? true : false;
+    text?.orderedBlock?.forEach((e) => (config.text[e] = true));
+    return config;
 };

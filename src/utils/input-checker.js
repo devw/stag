@@ -1,4 +1,4 @@
-const { $q } = require("./q-selector");
+const { $q } = require("./toggle");
 const errorSelector = ".js-psw-policy";
 const { STORAGE_CONFIG } = require("../config");
 
@@ -20,7 +20,7 @@ const getCustomerAge = (dateElem) => {
 const getDateAttr = (dateElem) => ({
     minDate: dateElem.getAttribute("date-min"),
     maxDate: dateElem.getAttribute("date-max"),
-    error: dateElem.getAttribute("date-error"),
+    error: dateElem.getAttribute("date-birthError"),
     customerAge: getCustomerAge(dateElem),
 });
 
@@ -42,7 +42,7 @@ const resetErrorMsgs = () => {
     $q(errorSelector).style.setProperty("display", "none");
 };
 
-const getPasswordPolicyErrors = async (inputs) => {
+const getPasswordPolicyErrors = (inputs) => {
     const psw = inputs["customer[password]"];
     const errorMsgs = [];
     const pswPolicy = JSON.parse(localStorage.getItem(STORAGE_CONFIG))["text"];
@@ -68,23 +68,29 @@ const serialize = (form) => {
     return Array.from(new FormData(form)).reduce(reducer, {});
 };
 
-exports.toggleSecret = ({ target }) => {
-    const secret = target.nextElementSibling;
-    secret.type = secret.type === "password" ? "text" : "password";
-};
-
 exports.isFormFilled = (form) =>
     Array.from(form.querySelectorAll("input[required]")).every((e) => e.value);
 
-exports.checkInputs = async (form) => {
+exports.checkInputs = (form) => {
     resetErrorMsgs();
     const errors = [];
     const inputs = serialize(form);
-    errors.push(...(await getPasswordPolicyErrors(inputs)));
+    errors.push(...getPasswordPolicyErrors(inputs));
     errors.push(...checkDate());
     return errors.length === 0 ? true : showError(errors) && false;
 };
 
-exports.isValidEmail = (email) => /\S+@\S+\.\S+/.test(email);
+exports.isValidEmail = (email) => /\S+@\S+\.\S{2,}/.test(email);
+
+exports.hash = function (str) {
+    var hash = 0;
+    if (str.length == 0) return hash;
+    for (i = 0; i < str.length; i++) {
+        char = str.charCodeAt(i);
+        hash = (hash << 5) - hash + char;
+        hash = hash & hash; // Convert to 32bit integer
+    }
+    return hash;
+};
 
 exports.showError = showError;

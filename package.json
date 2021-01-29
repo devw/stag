@@ -7,10 +7,9 @@
     "dev": "node src/index.js",
     "test": "jest --config ./jest-config.json",
     "clear": "jest --clearCache",
-    "load": "node src/yaml2json ${0}",
-    "prebuild": "rm -rf docs",
-    "build": "rm -rf dist; webpack; cp -r public/* dist; mv dist docs",
-    "start": "cd docs; python3.8  -m http.server 8081 &"
+    "bd": "rm -rf dist; webpack --mode=development; cp -r public/* dist",
+    "bp": "rm -rf dist; webpack --mode=production; cp -r public/* dist",
+    "start": "cd dist; python3.8  -m http.server 8081 &"
   },
   "devDependencies": {
     "html-loader": "^1.3.2",

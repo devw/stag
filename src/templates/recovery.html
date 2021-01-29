@@ -1,0 +1,20 @@
+<div class="title">{{recoveryTitle}}</div>
+<div class="sub-title">{{recoverySubTitle}}</div>
+<form method="post" accept-charset="UTF-8" class="{{formStyle}}">
+    <input
+        type="hidden"
+        name="form_type"
+        value="recover_customer_password"
+    /><input type="hidden" name="utf8" value="✓" />
+    <div>
+        <input
+            class="input-text"
+            name="email"
+            placeholder="{{yourEmail}}"
+            type="email"
+        />
+        <label>{{yourEmail}}</label>
+    </div>
+    <input class="btn btn-primary" type="submit" value="{{recoveryBtn}}" />
+    <div class="action js-back"><i class="arrow left"></i> Back</div>
+</form>

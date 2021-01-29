@@ -1,8 +1,13 @@
-const { rendereTemplate, updateCss, sortBlocks } = require("./load-pages");
-const { toggleModules } = require("./toggle-module");
+const {
+    rendereTemplate,
+    updateCss,
+    sortBlocks,
+    parseConfiguration,
+} = require("./load-pages");
+const { togglePage, toggleSecret, toggleLoading } = require("./toggle");
 const { isValidEmail, isFormFilled, checkInputs } = require("./input-checker");
-const { showError, toggleSecret } = require("./input-checker");
-const { $q, $qq, getRootNode } = require("./q-selector");
+const { showError } = require("./input-checker");
+const { $q, getRootNode } = require("./toggle");
 
 const debounce = (fn, delay) => {
     let timeoutId;
@@ -12,16 +17,19 @@ const debounce = (fn, delay) => {
     };
 };
 
-exports.updateCss = updateCss;
-exports.rendereTemplate = rendereTemplate;
-exports.toggleModules = toggleModules;
-exports.isFormFilled = isFormFilled;
-exports.showError = showError;
-exports.isValidEmail = isValidEmail;
-exports.$q = $q;
-exports.$qq = $qq;
-exports.sortBlocks = sortBlocks;
-exports.checkInputs = checkInputs;
-exports.debounce = debounce;
-exports.toggleSecret = toggleSecret;
-exports.getRootNode = getRootNode;
+module.exports = {
+    updateCss,
+    rendereTemplate,
+    togglePage,
+    isFormFilled,
+    debounce,
+    showError,
+    isValidEmail,
+    $q,
+    sortBlocks,
+    checkInputs,
+    toggleSecret,
+    getRootNode,
+    toggleLoading,
+    parseConfiguration,
+};
