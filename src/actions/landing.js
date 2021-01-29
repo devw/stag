@@ -4,7 +4,7 @@ const { LANDING_ID, REGISTER_ID } = IDs;
 const { getCustomerStatus } = require("../services");
 const { togglePage, $q, toggleLoading, debounce } = require("../utils");
 const { hash } = require("../utils/input-checker");
-let form, promise;
+let form, PROMISE;
 const emailMap = new Map();
 const emailSelector = "[type='email']";
 globalThis.emailMap = emailMap;
@@ -23,11 +23,11 @@ const getEmail = () => form.querySelector(emailSelector).value;
 const disableBtn = (btn) => btn.setAttribute("disabled", "true");
 
 const checkCustomerStatus = async () => {
-    await promise;
+    await PROMISE;
     const email = getEmail();
     if (!isCustomerChecked(email)) {
-        promise = getCustomerStatus(email);
-        customers = await promise;
+        PROMISE = getCustomerStatus(email);
+        customers = await PROMISE;
         customers.forEach(setCustomerStatus);
     }
 };
@@ -46,9 +46,10 @@ const firstCheck = async ({ target }) => {
     }
 };
 
-const getEmailState = () => {
+const getEmailState = async () => {
+    await PROMISE;
     const emails = Array.from(emailMap.keys());
-    const lastEmail = $q(`.${LANDING_ID} [type='email']`).value;
+    const lastEmail = getEmail();
     const email = emails.find((e) => RegExp(`^${e}`, "i").test(lastEmail));
     return emailMap.get(hash(lastEmail || email));
 };
@@ -83,7 +84,7 @@ const toggleButton = ({ target }) => {
 exports.init = () => {
     form = $q(`.${LANDING_ID} form`);
     form.addEventListener("input", firstCheck, true);
-    form.addEventListener("input", debounce(toggleButton, 300));
+    form.addEventListener("input", debounce(toggleButton, 100));
     form.addEventListener("submit", onSubmit);
     form.addEventListener("submit", emailAutofill);
 };
