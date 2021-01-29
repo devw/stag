@@ -7,7 +7,7 @@ const {
 const { togglePage, toggleSecret, toggleLoading } = require("./toggle");
 const { isValidEmail, isFormFilled, checkInputs } = require("./input-checker");
 const { showError } = require("./input-checker");
-const { $q, getRootNode } = require("./toggle");
+const { $q, $qq, getRootNode } = require("./toggle");
 
 const debounce = (fn, delay) => {
     let timeoutId;
@@ -26,6 +26,7 @@ module.exports = {
     showError,
     isValidEmail,
     $q,
+    $qq,
     sortBlocks,
     checkInputs,
     toggleSecret,

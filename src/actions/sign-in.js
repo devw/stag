@@ -6,7 +6,6 @@ const { togglePage } = require("../utils");
 
 const tgt = {
     form: `.${SIGNIN_ID} form`,
-    pswFormatError: `.${SIGNIN_ID} .js-error .js-psw-valid`,
     register: `.js-create-account`,
     wrongPsw: `.js-psw-wrong`,
 };

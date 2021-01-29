@@ -1,7 +1,6 @@
 const { $q, showError } = require("../utils");
 
 const tgt = {
-    errorMsg: ".js-error",
     close: ".js-close",
     shopifyRes: ".js-shopify-response",
     isLogged: "#customer_logout_link",

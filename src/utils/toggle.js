@@ -7,6 +7,7 @@ const $ = document.querySelector.bind(document);
 exports.getRootNode = getRootNode;
 
 const $q = (leaf) => getRootNode().querySelector(leaf);
+const $qq = (leaf) => getRootNode().querySelectorAll(leaf);
 
 exports.togglePage = (id) => {
     //TODO refactor because it is error prone!
@@ -31,3 +32,4 @@ exports.toggleLoading = () => {
     }
 };
 exports.$q = $q;
+exports.$qq = $qq;

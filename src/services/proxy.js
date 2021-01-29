@@ -7,10 +7,10 @@ const {
 
 exports.getCustomerStatus = async (email) => {
     const endpoint = /\/localhost:|ngrok/.test(location.href)
-        ? `http://localhost:3003/dev/get-customer-status/${email}?shop=popup-login.myshopify.com`
-        : `https://${Shopify.shop}/${PROXY_PATH}/get-customer-status/${email}`;
+        ? `http://localhost:3003/dev/get-customer-status/${email}?shop=popup-login.myshopify.com&`
+        : `https://${Shopify.shop}/${PROXY_PATH}/get-customer-status/${email}}?`;
     try {
-        const promise = await fetch(endpoint);
+        const promise = await fetch(`${endpoint}t=${Date.now()}`);
         return await promise.json();
     } catch (err) {
         throw ("error in proxy.js: ", err);
