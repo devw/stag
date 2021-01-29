@@ -36,6 +36,7 @@ body.remove-scrolling {
         padding: var(--content-padding, 1.5em);
         position: relative;
         max-width: 500px;
+        width: 100%;
     }
 
     .error {

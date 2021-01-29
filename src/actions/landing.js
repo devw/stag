@@ -84,7 +84,7 @@ const toggleButton = ({ target }) => {
 exports.init = () => {
     form = $q(`.${LANDING_ID} form`);
     form.addEventListener("input", firstCheck, true);
-    form.addEventListener("input", debounce(toggleButton, 100));
+    form.addEventListener("input", debounce(toggleButton, 200));
     form.addEventListener("submit", onSubmit);
     form.addEventListener("submit", emailAutofill);
 };

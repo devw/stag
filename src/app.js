@@ -33,4 +33,4 @@ loadTheme().then(() => {
     }
 });
 
-addCSS("/main.css?v=1");
+addCSS("/main.css?v=3");
