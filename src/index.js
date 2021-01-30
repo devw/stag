@@ -1,6 +1,6 @@
 document.body
     .querySelector('[href="/account/login"]')
-    .addEventListener("click", (e) => e.preventDefault());
+    ?.addEventListener("click", (e) => e.preventDefault());
 
 const ENDPOINT = "https://login-popup-dev-theme.s3.amazonaws.com/";
 var script = document.createElement("script");

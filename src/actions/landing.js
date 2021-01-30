@@ -7,6 +7,7 @@ const { hash } = require("../utils/input-checker");
 
 let FORM, PROMISE;
 const EMAIL_MAP = new Map();
+globalThis.EMAIL_MAP = EMAIL_MAP;
 
 const isCustomerChecked = (email) => {
     const emails = Array.from(EMAIL_MAP.keys());
@@ -61,6 +62,7 @@ const activeBtn = async (btn) => {
 
 const onSubmit = async () => {
     toggleLoading();
+    checkCustomerStatus();
     const result = await getEmailState();
     toggleLoading();
     if (!result?.state) togglePage(REGISTER_ID);
@@ -84,7 +86,7 @@ const toggleButton = ({ target }) => {
 exports.init = () => {
     FORM = $q(`.${LANDING_ID} form`);
     FORM.addEventListener("input", firstCheck, true);
-    FORM.addEventListener("input", debounce(toggleButton, 200));
+    FORM.addEventListener("input", debounce(toggleButton, 150));
     FORM.addEventListener("submit", onSubmit);
     FORM.addEventListener("submit", emailAutofill);
 };
