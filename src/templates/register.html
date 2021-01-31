@@ -23,6 +23,148 @@
         value="✓"
     />
 
-    {{ >registerInputs }}
+    {{#hasChoice}}
+    <!-- loop -->
+    <div
+        class="hasChoice choice-block single-choice {{#hasMultiLine}}multi-line{{/hasMultiLine }}"
+    >
+        {{#choiceList }}
+        <div>
+            <input
+                type="checkbox"
+                value="{{.}}"
+                data-is-tag="{{isChoiceTag}}"
+                data-tag="{{choiceTag}}"
+                data-namespace="{{choiceNamespace}}"
+                data-key="{{choiceKey}}"
+            />
+            <label>{{.}}</label>
+        </div>
+        {{/choiceList}}
+    </div>
+    {{/hasChoice}}
+
+    <!-- FirstName field -->
+    {{#hasFirstName }}
+    <div class="hasFirstName">
+        <input
+            required
+            type="text"
+            class="input-text"
+            name="customer[first_name]"
+            placeholder="{{yourFirstName}}"
+        />
+        <label>{{yourFirstName}}</label>
+    </div>
+    {{/hasFirstName }}
+
+    <!-- LastName field -->
+    {{#hasLastName }}
+    <div class="hasLastName">
+        <input
+            required
+            type="text"
+            class="input-text"
+            name="customer[last_name]"
+            placeholder="{{yourLastName}}"
+        />
+        <label>{{yourLastName}}</label>
+    </div>
+    {{/hasLastName }}
+
+    <!-- Telephone field -->
+    {{#hasTelephone }}
+    <div class="hasTelephone">
+        <input
+            required
+            type="text"
+            class="input-text"
+            placeholder="{{yourTelephone}}"
+            name="address[phone]"
+        />
+        <label>{{yourTelephone}}</label>
+    </div>
+    {{/hasTelephone }}
+
+    <!-- Email field -->
+    <div class="hasEmail">
+        <input
+            required
+            type="email"
+            placeholder="{{yourEmail}}"
+            name="customer[email]"
+            class="input-text"
+        />
+        <label>{{yourEmail}}</label>
+    </div>
+
+    <!-- Password field -->
+    <div class="hasPassword">
+        <div class="eye-icon js-show-psw"></div>
+        <input
+            required
+            type="password"
+            name="customer[password]"
+            class="input-text"
+            placeholder="{{yourPassword}}"
+            autocomplete="on"
+        />
+        <label>{{yourPassword}}</label>
+    </div>
+
+    {{#hasBirth}}
+    <div class="hasBirth js-date">
+        <input
+            class="input-text"
+            required
+            type="text"
+            data-is-tag="{{isBirthTag}}"
+            date-min="{{birthMin}}"
+            date-max="{{birthMax}}"
+            date-birthError="{{birthError}}"
+            placeholder="{{birthPlaceholder}}"
+            data-tag="{{birthTag}}"
+            data-namespace="{{birthNamespace}}"
+            data-key="{{birthKey}}"
+        />
+        <label>{{birthPlaceholder}}</label>
+    </div>
+    {{/hasBirth}}
+
+    <!-- Subscribe newsletter checkbox -->
+    {{#hasNewsletter }}
+    <div class="hasNewsletter choice-block">
+        <div>
+            <input type="checkbox" class="input-text" />
+            <label>{{subscribeNewsletter}}</label>
+        </div>
+    </div>
+    {{/hasNewsletter }}
+
+    <!-- FirstName field -->
+    {{#hasDate }}
+    <div class="hasFirstName">
+        <input
+            required
+            type="text"
+            class="input-text"
+            placeholder="{{datePlaceholder}}"
+            data-is-tag="{{isDateTag}}"
+            data-dateError="{{dateError}}"
+            data-tag="{{dateTag}}"
+            data-namespace="{{dateNamespace}}"
+            data-key="{{dateKey}}"
+        />
+        <label>{{datePlaceholder}}</label>
+    </div>
+    {{/hasDate }}
+
+    <!-- Create account button -->
+    <input
+        class="btn btn-primary register-btn"
+        disabled=""
+        type="submit"
+        value="{{registerAccount}}"
+    />
 </form>
 <div class="action js-back"><i class="arrow left"></i> Back</div>

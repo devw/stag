@@ -4,6 +4,7 @@ const { LANDING_ID, REGISTER_ID } = IDs;
 const { getCustomerStatus } = require("../services");
 const { togglePage, $q, $qq, toggleLoading, debounce } = require("../utils");
 const { hash } = require("../utils/input-checker");
+const { pages } = require("../templates");
 
 let FORM, PROMISE;
 const EMAIL_MAP = new Map();
@@ -84,7 +85,7 @@ const toggleButton = ({ target }) => {
 };
 
 exports.init = () => {
-    FORM = $q(`.${LANDING_ID} form`);
+    FORM = $q(`#${LANDING_ID} form`);
     FORM.addEventListener("input", firstCheck, true);
     FORM.addEventListener("input", debounce(toggleButton, 150));
     FORM.addEventListener("submit", onSubmit);

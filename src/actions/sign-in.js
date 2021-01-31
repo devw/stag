@@ -1,43 +1,34 @@
 const { IDs } = require("../config");
-const { SIGNIN_ID, REGISTER_ID, RECOVERY_ID } = IDs;
+const { SIGNIN_ID, RECOVERY_ID } = IDs;
 const { $q, isValidEmail, toggleSecret } = require("../utils/");
 const { sendHttpRequest } = require("../services");
 const { togglePage } = require("../utils");
-
-const tgt = {
-    form: `.${SIGNIN_ID} form`,
-    register: `.js-create-account`,
-    wrongPsw: `.js-psw-wrong`,
-};
+let FORM;
 
 const onSubmit = async (e) => {
     e.preventDefault();
-    $q(tgt.form).action = "/account/login";
+    FORM.action = "/account/login";
     const resp = await sendHttpRequest("POST", e);
     if (resp.isLogged) {
         const { shop } = globalThis?.Shopify;
-        const redirect = $q(tgt.form).getAttribute("data-login-redirect");
+        const redirect = FORM.getAttribute("data-login-redirect");
         globalThis.location.href = `https://${shop}/${redirect}`;
     }
 };
 
-const toggleButton = (e) => {
-    const form = $q(tgt.form);
-    const email = form.querySelector('[name="customer[email]"]').value;
+const toggleButton = (_) => {
+    const email = FORM.querySelector('[name="customer[email]"]').value;
     isValidEmail(email)
-        ? form.querySelector("[type='submit']").removeAttribute("disabled")
-        : form.querySelector("[type='submit']").setAttribute("disabled", "");
+        ? FORM.querySelector("[type='submit']").removeAttribute("disabled")
+        : FORM.querySelector("[type='submit']").setAttribute("disabled", "");
 };
 
 const recovery = () => togglePage(RECOVERY_ID);
 
-const register = () => togglePage(REGISTER_ID);
-
 exports.init = () => {
-    const form = $q(tgt.form);
-    form.addEventListener("input", toggleButton);
-    form.addEventListener("submit", onSubmit);
-    form.querySelector(".js-show-psw").addEventListener("click", toggleSecret);
-    form.querySelector(".js-recovery").addEventListener("click", recovery);
-    $q(tgt.register)?.addEventListener("click", register);
+    const FORM = $q(`#${SIGNIN_ID} form`);
+    FORM.addEventListener("input", toggleButton);
+    FORM.addEventListener("submit", onSubmit);
+    FORM.querySelector(".js-show-psw").addEventListener("click", toggleSecret);
+    FORM.querySelector(".js-recovery").addEventListener("click", recovery);
 };

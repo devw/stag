@@ -72,7 +72,7 @@ const onSubmit = async (e) => {
 const formatDate = ({ target }) => (target.type = "date");
 
 exports.init = () => {
-    FORM = $q(`.${REGISTER_ID} form`);
+    FORM = $q(`#${REGISTER_ID} form`);
     sortBlocks();
     FORM.addEventListener("input", toggleButton);
     FORM.addEventListener("submit", onSubmit);

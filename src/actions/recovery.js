@@ -6,7 +6,7 @@ const { sendHttpRequest } = require("../services");
 let FORM;
 
 exports.init = () => {
-    FORM = $q(`.${RECOVERY_ID} form`);
+    FORM = $q(`#${RECOVERY_ID} form`);
 
     FORM.querySelector(".js-back").addEventListener("click", () =>
         togglePage(SIGNIN_ID)

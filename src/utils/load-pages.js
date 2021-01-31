@@ -1,9 +1,7 @@
 const { IDs } = require("../config");
-const $ = document.querySelector.bind(document);
-const { REGISTER_ID } = IDs;
-const { APP_ID } = IDs;
 const Mustache = require("mustache");
-const { pages } = require("../templates");
+const { pages, container } = require("../templates");
+const { $q, getRootNode } = require("./toggle");
 let TEXT = {};
 
 const updateText = (text) => {
@@ -14,9 +12,9 @@ const updateText = (text) => {
 
     return TEXT;
 };
-
+// TODO you should move this function elsewhere
 const getBlocksAttr = () => {
-    const blocks = $(`.${REGISTER_ID} form`).getAttribute("data-blocks");
+    const blocks = $q(`#${IDs.REGISTER_ID} form`).getAttribute("data-blocks");
     return blocks.length > 0 ? blocks.split(",") : [];
 };
 
@@ -32,7 +30,7 @@ exports.getBlocksAttr = getBlocksAttr;
 
 exports.sortBlocks = () => {
     const blocks = getBlocksAttr();
-    blocks.forEach((e, i) => $(`.${e}`)?.style?.setProperty("order", i));
+    blocks.forEach((e, i) => $q(`.${e}`)?.style?.setProperty("order", i));
 };
 
 exports.updateCss = (cssVars) => {
@@ -40,21 +38,19 @@ exports.updateCss = (cssVars) => {
     (function traverse(obj, key) {
         if (obj !== null && typeof obj == "object") {
             Object.entries(obj).forEach(([key, value]) => traverse(value, key));
-        } else $(`#${APP_ID}`).style.setProperty(key, obj);
+        } else getRootNode().style.setProperty(key, obj);
     })(cssVars);
 };
 
 exports.rendereTemplate = (text) => {
     const { getRootNode } = require("../utils");
     text = updateText(text);
-    getRootNode().innerHTML = Mustache.render(pages.container, text, {
-        landing: pages.landing,
-        register: pages.register,
-        activate: pages.activate,
-        signin: pages.signIn,
-        recovery: pages.recovery,
-        registerInputs: pages.registerInputs,
-    });
+    const partials = Object.keys(pages).map((id) => ({
+        id: id,
+        html: Mustache.render(pages[id], text),
+    }));
+    text.partials = partials;
+    getRootNode().innerHTML = Mustache.render(container, text);
 };
 
 exports.parseConfiguration = (config) => {
