@@ -27,7 +27,7 @@
     }
 
     label {
-        z-index: 0; //-1
+        z-index: -1;
         position: absolute;
         left: 0;
         top: 0;
@@ -50,8 +50,8 @@
         color: transparent;
     }
 
-    .label-go-up input:focus + label,
-    .label-go-up input:not(:placeholder-shown) + label {
+    .label-go-up input:focus:not([type="checkbox"]) + label,
+    .label-go-up input:not(:placeholder-shown):not([type="checkbox"]) + label {
         transform: translateY(-1em) scale(0.8);
     }
     /* START - GO UP */
@@ -60,8 +60,10 @@
     .label-go-down input::placeholder {
         color: transparent;
     }
-    .label-go-down input:focus + label,
-    .label-go-down input:not(:placeholder-shown) + label {
+    .label-go-down input:focus:not([type="checkbox"]) + label,
+    .label-go-down
+        input:not(:placeholder-shown):not([type="checkbox"])
+        + label {
         transform: translateY(1.2em) scale(0.8);
     }
     .label-go-down input {
@@ -69,42 +71,7 @@
     }
     /* START - GO DOWN */
 
-    /* START - GO RIGHT */
-    .label-go-right > div {
-        overflow: hidden;
-    }
-    .label-go-right input {
-        padding: 8px 0;
-    }
-    .label-go-right input + label {
-        transition: color 0.4s, right 0.4s, left 0.4s;
-        position: absolute;
-        opacity: 0.5;
-        left: unset;
-        right: 100%;
-        width: 100%;
-        margin-right: -100%;
-    }
-    .label-go-right input:focus + label {
-        right: 0;
-        margin-right: 0;
-        width: 40%;
-        padding: 5px;
-        background: #111;
-        color: white;
-        font-size: 70%;
-        height: 100%;
-        z-index: 1;
-        text-transform: uppercase;
-        opacity: 0.8;
-    }
-
-    .label-go-right input:valid {
-        background: white;
-    }
-    /* END - GO RIGHT */
-
-    .label-fixed label {
+    .label-fixed :not([type="checkbox"]) + label {
         display: block;
         font-size: 0.8em;
         top: unset;

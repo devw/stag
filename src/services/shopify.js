@@ -1,4 +1,4 @@
-const { $q, showError } = require("../utils");
+const { $q, showError, toggleLoading } = require("../utils");
 
 const tgt = {
     close: ".js-close",
@@ -9,11 +9,13 @@ const tgt = {
 };
 
 exports.sendHttpRequest = (method, e) => {
+    toggleLoading();
     return new Promise((res, rej) => {
         const xhr = new XMLHttpRequest();
         xhr.open(method, e.target.action);
         xhr.send(new FormData(e.target));
         xhr.onload = () => {
+            toggleLoading();
             if (xhr.status >= 400) rej(xhr.response);
             else res(parseShopifyResponse(e, xhr.response));
         };

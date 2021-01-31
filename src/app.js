@@ -19,18 +19,17 @@ const addCSS = (fName) => {
     const link = `<link rel="stylesheet" href="${url}" />`;
     head.insertAdjacentHTML("afterbegin", link);
 };
-
 loadTheme().then(() => {
+    const { openAccount } = require("./actions/load");
     if (
         globalThis.self !== globalThis.top ||
         /localhost|ngrok/.test(location.href)
     ) {
         //TODO when I edit theme from Shopify it opens the popup!
-        const { openAccount } = require("./actions/load");
         const { kastorHandler } = require("./services");
         openAccount();
         kastorHandler();
     }
 });
-
-addCSS("/main.css?v=3");
+// TODO the date should be update according to the building
+addCSS("/main.css?v=7");

@@ -4,9 +4,9 @@ const { LANDING_ID, REGISTER_ID } = IDs;
 const { getCustomerStatus } = require("../services");
 const { togglePage, $q, $qq, toggleLoading, debounce } = require("../utils");
 const { hash } = require("../utils/input-checker");
-const { pages } = require("../templates");
 
 let FORM, PROMISE;
+let BTN;
 const EMAIL_MAP = new Map();
 globalThis.EMAIL_MAP = EMAIL_MAP;
 
@@ -21,8 +21,6 @@ const isCustomerChecked = (email) => {
 
 const getEmail = () => FORM.querySelector("[type='email']").value;
 const getEmailFields = () => $qq("[type='email']");
-
-const disableBtn = (btn) => btn.setAttribute("disabled", "true");
 
 const checkCustomerStatus = async () => {
     await PROMISE;
@@ -56,14 +54,16 @@ const getEmailState = async () => {
     return EMAIL_MAP.get(hash(lastEmail || email));
 };
 
-const activeBtn = async (btn) => {
-    btn.removeAttribute("disabled");
-    checkCustomerStatus();
+const activeBtn = async () => {
+    await checkCustomerStatus();
+    BTN.removeAttribute("disabled");
 };
+
+const disableBtn = () => BTN.setAttribute("disabled", "true");
 
 const onSubmit = async () => {
     toggleLoading();
-    checkCustomerStatus();
+    await checkCustomerStatus();
     const result = await getEmailState();
     toggleLoading();
     if (!result?.state) togglePage(REGISTER_ID);
@@ -78,16 +78,16 @@ const emailAutofill = () => {
 };
 
 const toggleButton = ({ target }) => {
-    const btn = FORM.querySelector("input[type='submit']");
     const email = target.value;
     const isEmail = /[\w.]+@\w+\.[a-z]{2,}/.test(email);
-    isEmail ? activeBtn(btn) : disableBtn(btn);
+    isEmail ? activeBtn() : disableBtn();
 };
 
 exports.init = () => {
     FORM = $q(`#${LANDING_ID} form`);
+    BTN = FORM.querySelector("input[type='submit']");
     FORM.addEventListener("input", firstCheck, true);
-    FORM.addEventListener("input", debounce(toggleButton, 150));
+    FORM.addEventListener("input", debounce(toggleButton, 300));
     FORM.addEventListener("submit", onSubmit);
     FORM.addEventListener("submit", emailAutofill);
 };

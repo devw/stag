@@ -57,7 +57,7 @@
        "recoveryTitle":"Recover password",
        "recoverySubTitle":"Enter your email to receive a reset password link.",
        "recoveryBtn":"Recover",
-       "formStyle":"label-none",
+       "formStyle":"label-fixed",
        "layout":"popup-centered",
        "hasPswMinLength":"",
        "pswMinLength":5,

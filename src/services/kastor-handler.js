@@ -6,7 +6,7 @@ const changePage = (page) => {
     const { loadActions } = require("../actions/load");
     const { togglePage } = require("../utils");
     togglePage(page);
-    $q(".container").style.setProperty("display", "flex");
+    $q(`#${IDs.CONTAINER_ID}`).style.setProperty("display", "flex");
     loadActions();
 };
 

@@ -26,7 +26,7 @@ const toggleButton = (_) => {
 const recovery = () => togglePage(RECOVERY_ID);
 
 exports.init = () => {
-    const FORM = $q(`#${SIGNIN_ID} form`);
+    FORM = $q(`#${SIGNIN_ID} form`);
     FORM.addEventListener("input", toggleButton);
     FORM.addEventListener("submit", onSubmit);
     FORM.querySelector(".js-show-psw").addEventListener("click", toggleSecret);
