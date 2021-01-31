@@ -30,7 +30,7 @@ exports.getBlocksAttr = getBlocksAttr;
 
 exports.sortBlocks = () => {
     const blocks = getBlocksAttr();
-    blocks.forEach((e, i) => $q(`.${e}`)?.style?.setProperty("order", i));
+    blocks.forEach((e, i) => $q(`#${e}`)?.style?.setProperty("order", i));
 };
 
 exports.updateCss = (cssVars) => {
@@ -50,6 +50,7 @@ exports.rendereTemplate = (text) => {
         html: Mustache.render(pages[id], text),
     }));
     text.partials = partials;
+    text.CONTAINER_ID = IDs.CONTAINER_ID;
     getRootNode().innerHTML = Mustache.render(container, text);
 };
 

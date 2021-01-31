@@ -83,7 +83,7 @@ exports.init = () => {
     );
     $q(".js-date input")?.addEventListener("focus", formatDate);
     storeMetafieldIntoShopify();
-    $q(`.${REGISTER_ID} .js-back`)?.addEventListener("click", () =>
+    $q(`#${REGISTER_ID} .js-back`).addEventListener("click", () =>
         togglePage(LANDING_ID)
     );
 };

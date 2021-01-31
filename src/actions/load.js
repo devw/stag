@@ -3,18 +3,18 @@ const { init: initSignIn } = require("./sign-in");
 const { init: initRegistration } = require("./register");
 const { init: initRecovery } = require("./recovery");
 const { $q, togglePage } = require("../utils/");
-const { LOGIN_BTN, STORAGE_CONFIG, IDs } = require("../config");
-const { LANDING_ID } = IDs;
+const { STORAGE_CONFIG, IDs } = require("../config");
 
 //TODO refactoring too code repetition
 
 const closeApp = () => {
-    $q(`.${IDs.CONTAINER_ID}`).style.setProperty("display", "none");
+    $q(`#${IDs.CONTAINER_ID}`).style.setProperty("display", "none");
     document.body.classList.remove("remove-scrolling");
 };
 
 const initContainer = () => {
-    $(LOGIN_BTN)?.addEventListener("click", openAccount, true);
+    const LINK_BTN = document.body.querySelector('[href="/account/login"]');
+    LINK_BTN?.addEventListener("click", openAccount, true);
     $q(`.js-close`).addEventListener("click", closeApp);
 };
 
@@ -31,8 +31,8 @@ const openAccount = (e) => {
         e?.preventDefault();
         e?.stopPropagation();
         document.body.classList.add("remove-scrolling");
-        togglePage(LANDING_ID);
-        const dom = $q(`.${IDs.CONTAINER_ID}`);
+        togglePage(IDs.LANDING_ID);
+        const dom = $q(`#${IDs.CONTAINER_ID}`);
         dom.style.setProperty("display", "flex");
         if (dom.classList.contains("popover")) placePopover(e, dom);
     }

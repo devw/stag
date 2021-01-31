@@ -22,7 +22,7 @@ body.remove-scrolling {
     Theme/Typography
     =================== */
 #login-popup {
-    .container {
+    > div {
         text-align: center;
         z-index: 99;
         position: absolute;
