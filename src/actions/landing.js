@@ -5,10 +5,8 @@ const { getCustomerStatus } = require("../services");
 const { togglePage, $q, $qq, toggleLoading, debounce } = require("../utils");
 const { hash } = require("../utils/input-checker");
 
-let FORM, PROMISE;
-let BTN;
+var FORM, PROMISE, BTN;
 const EMAIL_MAP = new Map();
-globalThis.EMAIL_MAP = EMAIL_MAP;
 
 const isCustomerChecked = (email) => {
     const emails = Array.from(EMAIL_MAP.keys());
@@ -54,10 +52,7 @@ const getEmailState = async () => {
     return EMAIL_MAP.get(hash(lastEmail || email));
 };
 
-const activeBtn = async () => {
-    await checkCustomerStatus();
-    BTN.removeAttribute("disabled");
-};
+const activeBtn = () => BTN.removeAttribute("disabled");
 
 const disableBtn = () => BTN.setAttribute("disabled", "true");
 
@@ -77,7 +72,7 @@ const emailAutofill = () => {
     fields.forEach((e) => (e.value = email));
 };
 
-const toggleButton = ({ target }) => {
+const toggleButton = async ({ target }) => {
     const email = target.value;
     const isEmail = /[\w.]+@\w+\.[a-z]{2,}/.test(email);
     isEmail ? activeBtn() : disableBtn();
