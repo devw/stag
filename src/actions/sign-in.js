@@ -1,12 +1,13 @@
 const { IDs } = require("../config");
 const { SIGNIN_ID, RECOVERY_ID } = IDs;
-const { $q, isValidEmail, toggleSecret } = require("../utils/");
+const { $q, isValidEmail, toggleSecret, toggleLoading } = require("../utils/");
 const { sendHttpRequest } = require("../services");
 const { togglePage } = require("../utils");
-let FORM;
+var FORM, BTN;
 
 const onSubmit = async (e) => {
     e.preventDefault();
+    toggleLoading(BTN);
     FORM.action = "/account/login";
     const resp = await sendHttpRequest("POST", e);
     if (resp.isLogged) {
@@ -14,19 +15,21 @@ const onSubmit = async (e) => {
         const redirect = FORM.getAttribute("data-login-redirect");
         globalThis.location.href = `https://${shop}/${redirect}`;
     }
+    toggleLoading(BTN);
 };
 
 const toggleButton = (_) => {
-    const email = FORM.querySelector('[name="customer[email]"]').value;
+    const email = FORM.querySelector("[type='email']").value;
     isValidEmail(email)
-        ? FORM.querySelector("[type='submit']").removeAttribute("disabled")
-        : FORM.querySelector("[type='submit']").setAttribute("disabled", "");
+        ? BTN.removeAttribute("disabled")
+        : BTN.setAttribute("disabled", "");
 };
 
 const recovery = () => togglePage(RECOVERY_ID);
 
 exports.init = () => {
     FORM = $q(`#${SIGNIN_ID} form`);
+    BTN = FORM.querySelector("button");
     FORM.addEventListener("input", toggleButton);
     FORM.addEventListener("submit", onSubmit);
     FORM.querySelector(".js-show-psw").addEventListener("click", toggleSecret);

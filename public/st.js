@@ -7,5 +7,5 @@ const ENDPOINT =
     "https://login-popup-dev-theme.s3.amazonaws.com/";
 var script = document.createElement("script");
 script.type = "text/javascript";
-script.src = `${ENDPOINT}/bundle.js?t=2`;
+script.src = `${ENDPOINT}/bundle.js?t=3`;
 document.getElementsByTagName("head")[0].appendChild(script);

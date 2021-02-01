@@ -1,10 +1,10 @@
 const { IDs } = require("../config");
-const { REGISTER_ID, SIGNIN_ID, LANDING_ID } = IDs;
-const { togglePage, $q, toggleSecret } = require("../utils");
+const { REGISTER_ID, LANDING_ID } = IDs;
+const { togglePage, $q, toggleSecret, toggleLoading } = require("../utils");
 const { isFormFilled, checkInputs, sortBlocks } = require("../utils");
 const { storeMetafieldIntoShopify } = require("../services");
 const { STORAGE_METAFIELD } = require("../config.js");
-let FORM;
+let FORM, BTN;
 
 const multiChoiceSelector = "multi-choice";
 
@@ -45,27 +45,22 @@ const handleChoiceBlock = ({ target, currentTarget }) => {
         target.checked = true;
     }
 };
-//TODO rrefactor
-const toggleButton = ({ target }) => {
-    if (target.value.length > 2) {
-        const btn = target.closest("form").querySelector("[type='submit']");
-        btn.removeAttribute("disabled");
-    }
-
-    const btn = FORM.querySelector("input[type='submit']");
+const toggleButton = () => {
     isFormFilled(FORM)
-        ? btn.removeAttribute("disabled")
-        : btn.setAttribute("disabled", "true");
+        ? BTN.removeAttribute("disabled")
+        : BTN.setAttribute("disabled", "true");
 };
 
 const onSubmit = async (e) => {
     e.preventDefault();
+    if (!(await checkInputs(FORM))) return null;
+    toggleLoading(BTN);
     storeTags();
     storeMetafield();
     const { sendHttpRequest } = require("../services");
-    if (!(await checkInputs(FORM))) return null;
     FORM.action = "/account";
     const resp = await sendHttpRequest("POST", e);
+    toggleLoading(BTN);
     console.log("shopify response", resp);
 };
 
@@ -73,6 +68,7 @@ const formatDate = ({ target }) => (target.type = "date");
 
 exports.init = () => {
     FORM = $q(`#${REGISTER_ID} form`);
+    BTN = FORM.querySelector("button");
     sortBlocks();
     FORM.addEventListener("input", toggleButton);
     FORM.addEventListener("submit", onSubmit);

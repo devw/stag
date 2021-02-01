@@ -1,5 +1,4 @@
 require("./styles/main.scss");
-require("./styles/loader.scss");
 require("./styles/carousel.scss");
 require("./styles/popup.scss");
 require("./styles/form.scss");
@@ -11,11 +10,8 @@ const node = globalThis.document.createElement("div");
 node.setAttribute("id", IDs.APP_ID);
 globalThis.document.body.append(node);
 
-const addCSS = (fName) => {
+const addCSS = (url) => {
     const head = document.getElementsByTagName("head")[0];
-    const url = /localhost|ngrok/.test(location.href)
-        ? fName
-        : `${ENDPOINT}${fName}`;
     const link = `<link rel="stylesheet" href="${url}" />`;
     head.insertAdjacentHTML("afterbegin", link);
 };
@@ -31,5 +27,11 @@ loadTheme().then(() => {
         kastorHandler();
     }
 });
-// TODO the date should be update according to the building
-addCSS("/main.css?v=7");
+addCSS(
+    /localhost|ngrok/.test(location.href)
+        ? "/main.css?v=9"
+        : `${ENDPOINT}/main.css?v=8`
+);
+addCSS(
+    "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+);

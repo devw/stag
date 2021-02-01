@@ -2,7 +2,7 @@ const { IDs } = require("../config");
 const { SIGNIN_ID, ACTIVATE_ID } = IDs;
 const { LANDING_ID, REGISTER_ID } = IDs;
 const { getCustomerStatus } = require("../services");
-const { togglePage, $q, $qq, toggleLoading, debounce } = require("../utils");
+const { togglePage, $q, $qq, debounce, toggleLoading } = require("../utils");
 const { hash } = require("../utils/input-checker");
 
 var FORM, PROMISE, BTN;
@@ -57,10 +57,10 @@ const activeBtn = () => BTN.removeAttribute("disabled");
 const disableBtn = () => BTN.setAttribute("disabled", "true");
 
 const onSubmit = async () => {
-    toggleLoading();
+    toggleLoading(BTN);
     await checkCustomerStatus();
     const result = await getEmailState();
-    toggleLoading();
+    toggleLoading(BTN);
     if (!result?.state) togglePage(REGISTER_ID);
     else if (result.state === "enabled") togglePage(SIGNIN_ID);
     else if (result.state === "disabled") togglePage(ACTIVATE_ID);
@@ -80,9 +80,9 @@ const toggleButton = async ({ target }) => {
 
 exports.init = () => {
     FORM = $q(`#${LANDING_ID} form`);
-    BTN = FORM.querySelector("input[type='submit']");
+    BTN = FORM.querySelector("button");
     FORM.addEventListener("input", firstCheck, true);
-    FORM.addEventListener("input", debounce(toggleButton, 300));
+    FORM.addEventListener("input", debounce(toggleButton, 200));
     FORM.addEventListener("submit", onSubmit);
     FORM.addEventListener("submit", emailAutofill);
 };
