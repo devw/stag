@@ -592,3 +592,19 @@
     });
     globalThis.dispatchEvent(kastorEvent);
 })();
+
+// TESTING METAFIELD
+(() => {
+    json = {
+        data: {
+            data: {
+                setting_id: "landing|layout|",
+                value: "popup-full",
+            },
+        },
+    };
+    kastorEvent = new CustomEvent("message", {
+        detail: json,
+    });
+    globalThis.dispatchEvent(kastorEvent);
+})();

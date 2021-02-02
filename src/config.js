@@ -4,7 +4,7 @@ module.exports = {
     STORAGE_CONFIG: "login-popup-config",
     // TODO get it from the PROXY
     ENDPOINT: "https://login-popup-dev-theme.s3.amazonaws.com",
-    CONFIG_FNAME: "configuration.json",
+    CONFIG_FNAME: `configuration.json?t=${Math.random()}`,
     IDs: {
         APP_ID: "login-popup", // TODO you should not use this in CSS
         CONTAINER_ID: "container",

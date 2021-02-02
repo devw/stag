@@ -2,10 +2,26 @@ document.body
     .querySelector('[href="/account/login"]')
     ?.addEventListener("click", (e) => e.preventDefault());
 
-const ENDPOINT =
-    "http://localhost:8081/" ||
-    "https://login-popup-dev-theme.s3.amazonaws.com/";
-var script = document.createElement("script");
-script.type = "text/javascript";
-script.src = `${ENDPOINT}/bundle.js?t=3`;
-document.getElementsByTagName("head")[0].appendChild(script);
+const HEAD = document.getElementsByTagName("head")[0];
+
+// TODO fix with Shopify.shop
+const ENDPOINT = globalThis?.Shopify
+    ? "https://login-popup-dev-theme.s3.amazonaws.com"
+    : "http://localhost:8081/";
+
+const addCSS = (url) => {
+    const link = `<link rel="stylesheet" href="${url}" />`;
+    HEAD.insertAdjacentHTML("afterbegin", link);
+};
+
+const addJS = (url) => {
+    const script = document.createElement("script");
+    script.src = url;
+    HEAD.appendChild(script);
+};
+
+addJS(`${ENDPOINT}/bundle.js?t=03`);
+addCSS(`${ENDPOINT}/main.css?v=03`);
+addCSS(
+    "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+);

@@ -19,7 +19,8 @@ const getBlocksAttr = () => {
 };
 
 const filterCss = (data) => {
-    const imgs = ["--container-bg-image", "--form-header-image"];
+    // TODO you should wrap the value based on the regexp /^http/
+    const imgs = ["--container-bg-image", "--header-img"];
     imgs.forEach((e) => {
         if (data[e]) data[e] = `url(${data[e]})`;
     });
