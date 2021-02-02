@@ -9,9 +9,8 @@ const tgt = {
 };
 
 exports.sendHttpRequest = (method, e) => {
-    return /\/localhost:|ngrok/.test(location.href)
-        ? new Promise((res, _j) => setTimeout(() => res({}), 2000))
-        : new Promise((res, rej) => {
+    return globalThis?.Shopify
+        ? new Promise((res, rej) => {
               const xhr = new XMLHttpRequest();
               xhr.open(method, e.target.action);
               xhr.send(new FormData(e.target));
@@ -20,7 +19,8 @@ exports.sendHttpRequest = (method, e) => {
                   else res(parseShopifyResponse(e, xhr.response));
               };
               xhr.onerror = (err) => rej(`Server error: ${err}`); //triggered if there is no connection
-          });
+          })
+        : new Promise((res, _j) => setTimeout(() => res({}), 2000));
 };
 
 const shopifyResult = (html) => ({

@@ -71,12 +71,12 @@ exports.isFormFilled = (form) =>
     Array.from(form.querySelectorAll("input[required]")).every((e) => e.value);
 
 exports.checkInputs = (form) => {
-    showError([]);
     const errors = [];
     const inputs = serialize(form);
     errors.push(...getPasswordPolicyErrors(inputs));
     errors.push(...checkDate());
-    return errors.length === 0 ? true : showError(errors) && false;
+    showError(errors);
+    return errors.length === 0;
 };
 
 exports.isValidEmail = (email) => /\S+@\S+\.\S{2,}/.test(email);
