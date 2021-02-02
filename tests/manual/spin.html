@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <style>
+            .btn {
+                background-color: #4caf50; /* Green background */
+                border: none; /* Remove borders */
+                color: white; /* White text */
+                padding: 12px 24px; /* Some padding */
+                font-size: 16px; /* Set a font-size */
+                cursor: pointer;
+                width: 300px;
+            }
+            .btn[disabled] {
+                opacity: 0.8;
+            }
+
+            /* Add a right margin to each icon */
+            .fa {
+                margin-left: -12px;
+                margin-right: 8px;
+                color: white;
+                font-size: 1.5em;
+            }
+            .btn[disabled] + .fa {
+                display: inline-block;
+                position: absolute;
+            }
+            .form-image {
+                content: url("https://miro.medium.com/max/256/1*d69DKqFDwBZn_23mizMWcQ.png");
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Loading Buttons</h2>
+        <span class="form-image"></span>
+        <hr />
+        <div style="position: relative; width: 300px">
+            <input class="btn" type="submit" value="Loading" /><i
+                class="fa fa-spinner fa-spin"
+            ></i>
+        </div>
+
+        <hr />
+
+        <button class="btn">
+            <i class="fa fa-spinner fa-spin"></i>Loading
+        </button>
+
+        <button class="btn">
+            <i class="fa fa-circle-o-notch fa-spin"></i>Loading
+        </button>
+
+        <button class="btn">
+            <i class="fa fa-refresh fa-spin active off"></i>Loading
+        </button>
+        <script>
+            const toggleBtn = ({ target }) => {
+                target.disabled = true;
+                // const loading = target.querySelector("i");
+                // loading.classList.contains("off")
+                //     ? loading.classList.remove("off")
+                //     : loading.classList.add("off");
+            };
+            document.body.addEventListener("click", toggleBtn);
+        </script>
+    </body>
+</html>

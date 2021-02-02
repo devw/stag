@@ -36,7 +36,6 @@
     }
     .popup-full > .content {
         height: inherit;
-        display: flex;
         align-items: center;
     }
 
@@ -59,16 +58,12 @@
     .popup-drawer {
         box-shadow: 0 1px 5px 2px rgba(0, 0, 0, 0.1);
         height: 100vh;
-        min-width: var(--popup-min-width);
         right: 0;
         top: 0;
     }
     .popup-drawer > .content {
         height: inherit;
         right: 0;
-        /* position: absolute; */
-        display: flex;
-        align-items: center;
     }
 
     /* 

@@ -22,7 +22,7 @@ body.remove-scrolling {
     Theme/Typography
     =================== */
 #login-popup {
-    .container {
+    > div {
         text-align: center;
         z-index: 99;
         position: absolute;
@@ -35,8 +35,7 @@ body.remove-scrolling {
         border-radius: var(--container-border-radius);
         padding: var(--content-padding, 1.5em);
         position: relative;
-        max-width: 500px;
-        width: 100%;
+        width: 400px;
     }
 
     .error {
@@ -54,10 +53,10 @@ body.remove-scrolling {
     =================== */
 
     // Header Image
-    .form-image {
-        content: var(--form-header-image);
-        padding: var(--image-padding, "1em");
-        width: 25vw; //var(--image-size, "40%");
+    .header-img {
+        content: var(--header-img);
+        max-width: var(--img-max-width, 200px);
+        margin: 0 auto;
     }
 
     // Title
@@ -88,6 +87,13 @@ body.remove-scrolling {
         width: 100%;
         margin-top: 15px;
     }
+    .btn .fa {
+        font-size: 1.4em;
+    }
+
+    .btn .fa.off {
+        display: none;
+    }
 
     .btn.btn-primary,
     .btn.btn-primary:focus {
@@ -100,7 +106,7 @@ body.remove-scrolling {
     .btn:disabled,
     .btn[disabled] {
         // background-color: var(--btn-disabled-bg-color);
-        opacity: 0.5;
+        opacity: 0.9;
     }
 
     .btn-small {

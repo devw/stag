@@ -26,6 +26,9 @@ const getDateAttr = (dateElem) => ({
 
 const showError = (errorMsgs) => {
     // TODO you should use the css to hide/show!!
+    $q(errorSelector).style.setProperty("display", "none");
+    if (errorMsgs.length === 0) return null;
+    $q(errorSelector).innerText = "";
     const list = document.createElement("ul");
     errorMsgs.forEach((e) => {
         const item = document.createElement("li");
@@ -36,10 +39,6 @@ const showError = (errorMsgs) => {
     errorElm.appendChild(list);
     errorElm.style.setProperty("display", "block");
     return false;
-};
-const resetErrorMsgs = () => {
-    $q(errorSelector).innerText = "";
-    $q(errorSelector).style.setProperty("display", "none");
 };
 
 const getPasswordPolicyErrors = (inputs) => {
@@ -72,12 +71,12 @@ exports.isFormFilled = (form) =>
     Array.from(form.querySelectorAll("input[required]")).every((e) => e.value);
 
 exports.checkInputs = (form) => {
-    resetErrorMsgs();
     const errors = [];
     const inputs = serialize(form);
     errors.push(...getPasswordPolicyErrors(inputs));
     errors.push(...checkDate());
-    return errors.length === 0 ? true : showError(errors) && false;
+    showError(errors);
+    return errors.length === 0;
 };
 
 exports.isValidEmail = (email) => /\S+@\S+\.\S{2,}/.test(email);

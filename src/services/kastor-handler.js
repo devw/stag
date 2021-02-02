@@ -6,7 +6,7 @@ const changePage = (page) => {
     const { loadActions } = require("../actions/load");
     const { togglePage } = require("../utils");
     togglePage(page);
-    $q(".container").style.setProperty("display", "flex");
+    $q(`#${IDs.CONTAINER_ID}`).style.setProperty("display", "flex");
     loadActions();
 };
 
@@ -23,11 +23,7 @@ const getOrderedBlocks = ({ blocks, order }) => {
         (a, b) =>
             order.indexOf(Object.keys(a)[0]) - order.indexOf(Object.keys(b)[0])
     );
-
     return idsVsBlocks.map((e) => Object.values(e)[0].split("|")[1]);
-
-    // console.log(blocks_order);
-    // blocks_order.filter((e) => blocks);
 };
 
 const getData = (event) => {
@@ -105,5 +101,4 @@ const kastorHandler = (event) => {
     updateNoBlock(event);
 };
 
-exports.kastorHandler = () =>
-    globalThis.addEventListener("message", kastorHandler);
+globalThis.addEventListener("message", kastorHandler);

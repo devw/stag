@@ -1,7 +1,6 @@
 const { $q, showError } = require("../utils");
 
 const tgt = {
-    errorMsg: ".js-error",
     close: ".js-close",
     shopifyRes: ".js-shopify-response",
     isLogged: "#customer_logout_link",
@@ -10,16 +9,18 @@ const tgt = {
 };
 
 exports.sendHttpRequest = (method, e) => {
-    return new Promise((res, rej) => {
-        const xhr = new XMLHttpRequest();
-        xhr.open(method, e.target.action);
-        xhr.send(new FormData(e.target));
-        xhr.onload = () => {
-            if (xhr.status >= 400) rej(xhr.response);
-            else res(parseShopifyResponse(e, xhr.response));
-        };
-        xhr.onerror = (err) => rej(`Server error: ${err}`); //triggered if there is no connection
-    });
+    return globalThis?.Shopify
+        ? new Promise((res, rej) => {
+              const xhr = new XMLHttpRequest();
+              xhr.open(method, e.target.action);
+              xhr.send(new FormData(e.target));
+              xhr.onload = () => {
+                  if (xhr.status >= 400) rej(xhr.response);
+                  else res(parseShopifyResponse(e, xhr.response));
+              };
+              xhr.onerror = (err) => rej(`Server error: ${err}`); //triggered if there is no connection
+          })
+        : new Promise((res, _j) => setTimeout(() => res({}), 2000));
 };
 
 const shopifyResult = (html) => ({

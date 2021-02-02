@@ -6,23 +6,20 @@ const {
 } = require("../config.js");
 
 exports.getCustomerStatus = async (email) => {
-    const endpoint = /\/localhost:|ngrok/.test(location.href)
-        ? `http://localhost:3003/dev/get-customer-status/${email}?shop=popup-login.myshopify.com`
-        : `https://${Shopify.shop}/${PROXY_PATH}/get-customer-status/${email}`;
-    try {
-        const promise = await fetch(endpoint);
-        return await promise.json();
-    } catch (err) {
-        throw ("error in proxy.js: ", err);
-    }
+    const endpoint = globalThis?.Shopify
+        ? `https://${Shopify.shop}/${PROXY_PATH}/get-customer-status/${email}?`
+        : `http://localhost:3003/dev/get-customer-status/${email}?shop=popup-login.myshopify.com&`;
+    const promise = await fetch(`${endpoint}t=${Date.now()}`).catch((err) => {
+        throw ("error getCustomerStatus: ", err);
+    });
+    return await promise.json();
 };
 
 exports.getConfiguration = async () => {
     //TODO implements memoization
-    console.log("###### location.href: ", location.href);
-    const endpoint = /\/localhost:|ngrok/.test(location.href)
-        ? `data/${CONFIG_FNAME}`
-        : `${ENDPOINT}/${Shopify.shop}/${CONFIG_FNAME}`;
+    const endpoint = globalThis?.Shopify
+        ? `${ENDPOINT}/${Shopify.shop}/${CONFIG_FNAME}`
+        : `data/${CONFIG_FNAME}`;
     const promise = await globalThis.fetch(endpoint);
     return promise;
 };
@@ -34,7 +31,7 @@ exports.storeMetafieldIntoShopify = async () => {
 
     if (!areThereMetafields) return null;
 
-    const shop = globalThis?.Shopify?.shop;
+    const { shop } = globalThis?.Shopify;
     const endpoint = `https://${shop}/${PROXY_PATH}/set-metafield-in-shopify`;
     const params = {
         method: "POST",
