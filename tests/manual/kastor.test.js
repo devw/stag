@@ -292,6 +292,42 @@
     globalThis.dispatchEvent(event);
 })();
 
+// show error icon
+(() => {
+    const json = {
+        data: {
+            data: {
+                setting_id: "register|errorIcon|",
+                value: "fa-bug",
+            },
+        },
+    };
+
+    const event = new CustomEvent("message", {
+        detail: json,
+    });
+
+    globalThis.dispatchEvent(event);
+})();
+
+// show error color
+(() => {
+    const json = {
+        data: {
+            data: {
+                setting_id: "register|--error-bg-color|",
+                value: "rgba(100,75,75,1)",
+            },
+        },
+    };
+
+    const event = new CustomEvent("message", {
+        detail: json,
+    });
+
+    globalThis.dispatchEvent(event);
+})();
+
 // adding background image
 (() => {
     const json = {
@@ -352,7 +388,7 @@
 (() => {
     const json = {
         data: {
-            data: { setting_id: "register|formStyle|", value: "label-go-down" },
+            data: { setting_id: "register|formStyle|", value: "label-go-up" },
         },
         target: null,
     };
@@ -599,8 +635,8 @@
     json = {
         data: {
             data: {
-                setting_id: "landing|layout|",
-                value: "popup-full",
+                setting_id: "signin|wrongPsw|",
+                value: "Incorrect password. Please, try again! ",
             },
         },
     };

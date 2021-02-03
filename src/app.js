@@ -12,9 +12,9 @@ globalThis.document.body.append(node);
 
 loadTheme().then(() => {
     const { openAccount } = require("./actions/load");
-    if (globalThis.self !== globalThis.top) {
+    if (globalThis.self !== globalThis.top || !globalThis?.Shopify) {
         //TODO when I edit theme from Shopify it opens the popup!
-        require("./services");
+        require("./services/kastor-handler");
         openAccount();
     }
 });

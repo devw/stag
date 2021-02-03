@@ -110,9 +110,7 @@
             autocomplete="on"
         />
         <label>{{yourPassword}}</label>
-        <label class="exclamation"
-            ><i class="fa fa-exclamation-triangle"></i>
-        </label>
+        <label class="label-error"><i class="fa {{errorIcon}}"></i> </label>
     </div>
 
     {{#hasBirth}}
@@ -130,8 +128,8 @@
             data-key="{{birthKey}}"
         />
         <label>{{birthPlaceholder}}</label>
-        <label class="label-fixed exclamation"
-            ><i class="fa fa-exclamation-triangle"></i>{{birthError}}</label
+        <label class="label-error"
+            ><i class="fa {{errorIcon}}"></i>{{birthError}}</label
         >
     </div>
     {{/hasBirth}}

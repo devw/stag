@@ -79,13 +79,19 @@
         display: none;
     }
 
-    :not([type="checkbox"]) label.exclamation {
-        color: rgb(208, 26, 26);
-        background-color: rgb(240, 207, 207);
+    :not([type="checkbox"]) label.label-error {
+        color: var(--error-color, rgb(208, 26, 26));
+        background-color: var(--error-bg-color, rgb(240, 207, 207));
         text-align: left;
         padding: 2px;
         display: none;
+        width: 100%;
         top: unset;
+        font-size: 0.8em;
+    }
+
+    label.label-error i {
+        margin-right: 3px;
     }
 
     // CHOICE BLOCK

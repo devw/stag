@@ -1,5 +1,5 @@
 const {
-    rendereTemplate,
+    render,
     updateCss,
     sortBlocks,
     parseConfiguration,
@@ -18,7 +18,7 @@ const debounce = (fn, delay) => {
 
 module.exports = {
     updateCss,
-    rendereTemplate,
+    render,
     togglePage,
     isFormFilled,
     debounce,

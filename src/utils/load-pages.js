@@ -43,7 +43,7 @@ exports.updateCss = (cssVars) => {
     })(cssVars);
 };
 
-exports.rendereTemplate = (text) => {
+exports.render = (text) => {
     const { getRootNode } = require("../utils");
     text = updateText(text);
     const partials = Object.keys(pages).map((id) => ({

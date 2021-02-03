@@ -35,10 +35,7 @@ const parseShopifyResponse = ({ target }, response) => {
     const resp = shopifyResult(htmlResponse);
     console.log(resp);
     if (resp.isLogged) $q(tgt.close).click();
-    else if (resp.hasWrongPsw) {
-        // TODO show error in login page...wrong password!
-        console.log("wornf passwod");
-    }
+    else if (resp.hasWrongPsw) $q(".js-signin-err").style.display = "block";
     //TODO take the message from configuration
     else if (resp.hasChallenge) target.submit();
     return resp;

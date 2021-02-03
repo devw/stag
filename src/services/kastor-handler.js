@@ -1,4 +1,4 @@
-const { rendereTemplate, $q, $qq } = require("../utils");
+const { render, $q } = require("../utils");
 const { getBlocksAttr } = require("../utils/load-pages");
 const { IDs } = require("../config");
 
@@ -57,15 +57,19 @@ const updateNoBlock = (event) => {
     if (/^--/.test(key)) {
         updateCss({ [key]: valueAndUnit });
     } else
-        rendereTemplate({
+        render({
             [key]: valueAndUnit == "false" ? false : valueAndUnit,
         });
 
     if (page) changePage(page);
-    // TODO: too fragile check the password policy in this way, you should refactore the code using objects
 
+    // TODO: too fragile check the password policy in this way, you should refactore the code using objects
     if (/^psw.*Err$/.test(key)) showPswError(value);
+    if (/^errorIcon$|^--error-/.test(key)) showErrors();
+    if (/^wrongPsw$/.test(key)) showWrongPsw();
 };
+
+const showWrongPsw = () => ($q(".js-signin-err").style.display = "block");
 
 const showPswError = (message) => {
     const exclamationLabel = $q(".hasPassword input + label + label");
@@ -74,13 +78,21 @@ const showPswError = (message) => {
     exclamationLabel.append(message);
 };
 
+const showErrors = () => {
+    // TODO to refactor
+    document.body
+        .querySelectorAll("label.label-error")
+        .forEach((e) => (e.style.display = "block"));
+    showPswError("Password should have at least 5 characters!");
+};
+
 const kastorHandler = (event) => {
     //reorder blocks
     console.log("kastorHandler: ", event);
     const target = getTarget(event);
     if (target === "block:reorder") {
         const orderBlocks = getOrderedBlocks(getData(event));
-        rendereTemplate({ orderedBlock: orderBlocks });
+        render({ orderedBlock: orderBlocks });
         changePage(IDs.REGISTER_ID);
         return null;
     }
@@ -89,8 +101,8 @@ const kastorHandler = (event) => {
         const { block_type_id } = getData(event);
         const blockToDel = block_type_id.split("|")[1];
         const filteredBlocks = getBlocksAttr().filter((e) => e !== blockToDel);
-        rendereTemplate({ orderedBlock: filteredBlocks });
-        rendereTemplate({ [blockToDel]: false });
+        render({ orderedBlock: filteredBlocks });
+        render({ [blockToDel]: false });
         changePage(IDs.REGISTER_ID);
         return null;
     }
@@ -100,8 +112,8 @@ const kastorHandler = (event) => {
         const [page, blockToAdd] = block_type_id.split("|");
         const key = Object.keys(block_settings)[0].split("|")[1];
         const value = Object.values(block_settings)[0];
-        rendereTemplate({ [key]: value });
-        rendereTemplate({ [blockToAdd]: true });
+        render({ [key]: value });
+        render({ [blockToAdd]: true });
         changePage(page);
         return null;
     }
