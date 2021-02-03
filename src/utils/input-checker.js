@@ -1,13 +1,16 @@
-const { $q } = require("./toggle");
+const { $q, $qq } = require("./toggle");
 const errorSelector = ".js-psw-policy";
 const { STORAGE_CONFIG } = require("../config");
 
-const checkDate = () => {
-    const dateElem = $q("[type='date']");
-    if (!dateElem) return [];
-    const { minDate, maxDate, error, customerAge } = getDateAttr(dateElem);
-    return minDate > customerAge || maxDate < customerAge ? [error] : [];
+const getErrorLabel = (elem) => elem.nextElementSibling.nextElementSibling;
+
+const checkDate = (dateElem) => {
+    const { minDate, maxDate, customerAge } = getDateAttr(dateElem);
+    // TODO refactoring
+    if (minDate > customerAge || maxDate < customerAge)
+        getErrorLabel(dateElem).style.display = "block";
 };
+
 const getCustomerAge = (dateElem) => {
     const DAY_IN_YEAR = 365;
     const SEC_IN_DAY = 3600 * 24;
@@ -20,30 +23,12 @@ const getCustomerAge = (dateElem) => {
 const getDateAttr = (dateElem) => ({
     minDate: dateElem.getAttribute("date-min"),
     maxDate: dateElem.getAttribute("date-max"),
-    error: dateElem.getAttribute("date-birthError"),
     customerAge: getCustomerAge(dateElem),
 });
 
-const showError = (errorMsgs) => {
-    // TODO you should use the css to hide/show!!
-    $q(errorSelector).style.setProperty("display", "none");
-    if (errorMsgs.length === 0) return null;
-    $q(errorSelector).innerText = "";
-    const list = document.createElement("ul");
-    errorMsgs.forEach((e) => {
-        const item = document.createElement("li");
-        item.appendChild(document.createTextNode(e));
-        list.appendChild(item);
-    });
-    const errorElm = $q(`div[style*="display: block"] ${errorSelector}`);
-    errorElm.appendChild(list);
-    errorElm.style.setProperty("display", "block");
-    return false;
-};
-
-const getPasswordPolicyErrors = (inputs) => {
-    const psw = inputs["customer[password]"];
+const getPasswordPolicyErrors = (pswElem) => {
     const errorMsgs = [];
+    const psw = pswElem.value;
     const pswPolicy = JSON.parse(localStorage.getItem(STORAGE_CONFIG))["text"];
     // TODO refactor!!
     if (psw.length < pswPolicy.pswMinLength)
@@ -58,25 +43,38 @@ const getPasswordPolicyErrors = (inputs) => {
         errorMsgs.push(pswPolicy.pswSpecialCharacterErr);
     if (pswPolicy.hasPswUppercase && !/[A-Z]/.test(psw))
         errorMsgs.push(pswPolicy.pswUppercaseErr);
-
-    return errorMsgs;
-};
-
-const serialize = (form) => {
-    const reducer = (acc, cur) => ({ ...acc, [cur[0]]: cur[1] });
-    return Array.from(new FormData(form)).reduce(reducer, {});
+    const exclamationLabel = getErrorLabel(pswElem);
+    if (errorMsgs.length === 0) {
+        exclamationLabel.style.display = "none";
+        return null;
+    }
+    exclamationLabel.innerHTML = exclamationLabel.innerHTML.split("</i>")[0];
+    exclamationLabel.style.display = "block";
+    exclamationLabel.append(errorMsgs[0]);
 };
 
 exports.isFormFilled = (form) =>
     Array.from(form.querySelectorAll("input[required]")).every((e) => e.value);
 
-exports.checkInputs = (form) => {
-    const errors = [];
-    const inputs = serialize(form);
-    errors.push(...getPasswordPolicyErrors(inputs));
-    errors.push(...checkDate());
-    showError(errors);
-    return errors.length === 0;
+const hideErrorMsgs = () => {
+    // TODO refactor
+    document.body
+        .querySelectorAll("label + label")
+        .forEach((e) => (e.style.display = "none"));
+};
+
+const areErrors = () => {
+    errElems = Array.from(document.body.querySelectorAll("label + label"));
+    return errElems.some((e) => e.style.display === "block");
+};
+
+exports.checkInputs = () => {
+    hideErrorMsgs();
+    const dateElem = $q(".hasBirth input");
+    const pswElem = $q(".hasPassword input");
+    if (dateElem) checkDate(dateElem);
+    if (pswElem) getPasswordPolicyErrors(pswElem);
+    return areErrors();
 };
 
 exports.isValidEmail = (email) => /\S+@\S+\.\S{2,}/.test(email);
@@ -91,5 +89,3 @@ exports.hash = function (str) {
     }
     return hash;
 };
-
-exports.showError = showError;

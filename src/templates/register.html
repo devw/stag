@@ -110,6 +110,9 @@
             autocomplete="on"
         />
         <label>{{yourPassword}}</label>
+        <label class="exclamation"
+            ><i class="fa fa-exclamation-triangle"></i>
+        </label>
     </div>
 
     {{#hasBirth}}
@@ -121,13 +124,15 @@
             data-is-tag="{{isBirthTag}}"
             date-min="{{birthMin}}"
             date-max="{{birthMax}}"
-            date-birthError="{{birthError}}"
             placeholder="{{birthPlaceholder}}"
             data-tag="{{birthTag}}"
             data-namespace="{{birthNamespace}}"
             data-key="{{birthKey}}"
         />
         <label>{{birthPlaceholder}}</label>
+        <label class="label-fixed exclamation"
+            ><i class="fa fa-exclamation-triangle"></i>{{birthError}}</label
+        >
     </div>
     {{/hasBirth}}
 
@@ -141,9 +146,9 @@
     </div>
     {{/hasNewsletter }}
 
-    <!-- FirstName field -->
+    <!-- hasDate field -->
     {{#hasDate }}
-    <div class="hasFirstName">
+    <div class="hasDate">
         <input
             required
             type="text"

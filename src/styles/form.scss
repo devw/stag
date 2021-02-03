@@ -27,7 +27,6 @@
         position: absolute;
         left: 0;
         top: 0;
-        opacity: 0.5;
         transform-origin: 0 0;
         transition: transform 0.3s ease-in-out;
         background-color: var(--content-bg-color, #fff);
@@ -78,6 +77,15 @@
 
     .label-none label {
         display: none;
+    }
+
+    :not([type="checkbox"]) label.exclamation {
+        color: rgb(208, 26, 26);
+        background-color: rgb(240, 207, 207);
+        text-align: left;
+        padding: 2px;
+        display: none;
+        top: unset;
     }
 
     // CHOICE BLOCK

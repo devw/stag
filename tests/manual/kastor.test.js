@@ -279,7 +279,8 @@
         data: {
             data: {
                 setting_id: "register|pswMinLengthErr|",
-                value: "Your password is too short",
+                value: "The password must contain at least 6 charactersas",
+                global_section_id: "register|passwordPolicy|",
             },
         },
     };

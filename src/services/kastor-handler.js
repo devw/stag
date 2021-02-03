@@ -1,4 +1,4 @@
-const { rendereTemplate, $q, showError } = require("../utils");
+const { rendereTemplate, $q, $qq } = require("../utils");
 const { getBlocksAttr } = require("../utils/load-pages");
 const { IDs } = require("../config");
 
@@ -63,7 +63,15 @@ const updateNoBlock = (event) => {
 
     if (page) changePage(page);
     // TODO: too fragile check the password policy in this way, you should refactore the code using objects
-    if (/^psw.*Err$/.test(key)) showError([value]);
+
+    if (/^psw.*Err$/.test(key)) showPswError(value);
+};
+
+const showPswError = (message) => {
+    const exclamationLabel = $q(".hasPassword input + label + label");
+    exclamationLabel.innerHTML = exclamationLabel.innerHTML.split("</i>")[0];
+    exclamationLabel.style.display = "block";
+    exclamationLabel.append(message);
 };
 
 const kastorHandler = (event) => {

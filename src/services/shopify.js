@@ -1,4 +1,4 @@
-const { $q, showError } = require("../utils");
+const { $q } = require("../utils");
 
 const tgt = {
     close: ".js-close",
@@ -35,7 +35,10 @@ const parseShopifyResponse = ({ target }, response) => {
     const resp = shopifyResult(htmlResponse);
     console.log(resp);
     if (resp.isLogged) $q(tgt.close).click();
-    else if (resp.hasWrongPsw) showError(["Wrong password or email"]);
+    else if (resp.hasWrongPsw) {
+        // TODO show error in login page...wrong password!
+        console.log("wornf passwod");
+    }
     //TODO take the message from configuration
     else if (resp.hasChallenge) target.submit();
     return resp;

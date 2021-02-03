@@ -53,7 +53,7 @@ const toggleButton = () => {
 
 const onSubmit = async (e) => {
     e.preventDefault();
-    if (!(await checkInputs(FORM))) return null;
+    if (await checkInputs(FORM)) return null;
     toggleLoading(BTN);
     storeTags();
     storeMetafield();
