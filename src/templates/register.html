@@ -135,10 +135,15 @@
 
     <!-- Subscribe newsletter checkbox -->
     {{#hasNewsletter }}
-    <div class="hasNewsletter choice-block">
+    <div class="hasNewsletter">
         <div>
-            <input type="checkbox" class="input-text" />
-            <label>{{subscribeNewsletter}}</label>
+            <input type="hidden" name="customer[accepts_marketing]" value="" />
+            <input
+                type="checkbox"
+                name="customer[accepts_marketing]"
+                checked="checked"
+            />
+            {{subscribeNewsletter}}
         </div>
     </div>
     {{/hasNewsletter }}
