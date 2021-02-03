@@ -1,5 +1,4 @@
-const { $q, $qq } = require("./toggle");
-const errorSelector = ".js-psw-policy";
+const { $q } = require("./toggle");
 const { STORAGE_CONFIG } = require("../config");
 
 const getErrorLabel = (elem) => elem.nextElementSibling.nextElementSibling;

@@ -38,16 +38,6 @@ body.remove-scrolling {
         width: 400px;
     }
 
-    .error {
-        background-color: var(--error-bg-color, #bfd9cb);
-        border-radius: 3px;
-        color: var(--error-text-color, #0d3c32);
-        display: none;
-        margin: 10px 0;
-        padding: 5px;
-        text-align: var(--error-text-align, left);
-    }
-
     /*  ===================
     Components
     =================== */
