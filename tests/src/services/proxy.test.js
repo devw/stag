@@ -4,6 +4,7 @@ const {
 } = require("../../../src/services/proxy");
 const { ENDPOINT, PROXY_PATH } = require("../config");
 require("jest-fetch-mock").enableMocks();
+jest.mock("../../../src/services/proxy", () => require("./__mocks__/"));
 
 describe("Proxy Test", () => {
     beforeEach(() => {
@@ -19,7 +20,9 @@ describe("Proxy Test", () => {
         expect(await res.json()).toEqual(data);
         console.log(fetch.mock.calls[0][0]);
         expect(fetch.mock.calls.length).toEqual(1);
-        expect(fetch.mock.calls[0][0]).toEqual(endpoint);
+        expect(fetch.mock.calls[0][0].replace(/\?\w=\d{1,}$/, "")).toEqual(
+            endpoint
+        );
     });
 
     it("gets the customer status", async () => {
@@ -30,6 +33,8 @@ describe("Proxy Test", () => {
         const endpoint = `https://${Shopify.shop}/${PROXY_PATH}/get-customer-status/${email}`;
         expect(cust).toEqual(data);
         expect(fetch.mock.calls.length).toEqual(1);
-        expect(fetch.mock.calls[0][0]).toEqual(endpoint);
+        expect(fetch.mock.calls[0][0].replace(/\?\w=\d{1,}$/, "")).toEqual(
+            endpoint
+        );
     });
 });

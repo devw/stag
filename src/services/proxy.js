@@ -11,7 +11,7 @@ exports.getCustomerStatus = async (email) => {
         ? `https://${SHOP}/${PROXY_PATH}/get-customer-status/${email}?`
         : `http://localhost:3003/dev/get-customer-status/${email}?shop=popup-login.myshopify.com&`;
     const promise = await fetch(`${endpoint}t=${Date.now()}`).catch((err) => {
-        throw ("error getCustomerStatus: ", err);
+        throw `error getCustomerStatus: , ${err}`;
     });
     return await promise.json();
 };
