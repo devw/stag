@@ -63,7 +63,7 @@ const areErrors = () => {
     return errElems.some((e) => e.style.display === "block");
 };
 
-exports.checkInputs = () => {
+exports.areInvalidInputs = () => {
     hideErrorMsgs();
     const dateElem = $q(".hasBirth input");
     const pswElem = $q(".hasPassword input");

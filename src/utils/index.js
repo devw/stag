@@ -5,7 +5,11 @@ const {
     parseConfiguration,
 } = require("./load-pages");
 const { togglePage, toggleSecret, toggleLoading } = require("./toggle");
-const { isValidEmail, isFormFilled, checkInputs } = require("./input-checker");
+const {
+    isValidEmail,
+    isFormFilled,
+    areInvalidInputs,
+} = require("./input-checker");
 const { $q, $qq, getRootNode } = require("./toggle");
 
 const debounce = (fn, delay) => {
@@ -26,7 +30,7 @@ module.exports = {
     $q,
     $qq,
     sortBlocks,
-    checkInputs,
+    areInvalidInputs,
     toggleSecret,
     getRootNode,
     toggleLoading,

@@ -1,6 +1,6 @@
 module.exports = {
     PROXY_PATH: "apps/dev",
-    STORAGE_KEY: "login-popup-metafields",
+    STORAGE_METAFIELD: "login-popup-metafields",
     STORAGE_CONFIG: "login-popup-config",
     // TODO get it from the PROXY
     ENDPOINT: "https://login-popup-dev-theme.s3.amazonaws.com",

@@ -1,4 +1,4 @@
-const { checkInputs } = require("../../../src/utils/input-checker");
+const { areInvalidInputs } = require("../../../src/utils/input-checker");
 const { IDs } = require("../config");
 jest.mock("../../../src/utils/toggle", () => require("./__mocks__/$q"));
 
@@ -17,7 +17,7 @@ describe("Proxy Test", () => {
             })
         );
         const resetErrorMsgs = jest.fn(() => 1);
-        const result = checkInputs(this.form);
+        const result = areInvalidInputs(this.form);
         expect(result).toBe(true);
     });
 
@@ -29,7 +29,7 @@ describe("Proxy Test", () => {
             })
         );
         const resetErrorMsgs = jest.fn(() => 1);
-        const result = checkInputs(this.form);
+        const result = areInvalidInputs(this.form);
         expect(result).toBe(false);
     });
 });
