@@ -4,10 +4,11 @@ const {
     ENDPOINT,
     CONFIG_FNAME,
 } = require("../config");
+const SHOP = globalThis?.Shopify?.shop;
 
 exports.getCustomerStatus = async (email) => {
-    const endpoint = globalThis?.Shopify
-        ? `https://${Shopify.shop}/${PROXY_PATH}/get-customer-status/${email}?`
+    const endpoint = SHOP
+        ? `https://${SHOP}/${PROXY_PATH}/get-customer-status/${email}?`
         : `http://localhost:3003/dev/get-customer-status/${email}?shop=popup-login.myshopify.com&`;
     const promise = await fetch(`${endpoint}t=${Date.now()}`).catch((err) => {
         throw ("error getCustomerStatus: ", err);
@@ -17,8 +18,8 @@ exports.getCustomerStatus = async (email) => {
 
 exports.getConfiguration = async () => {
     //TODO implements memoization
-    const endpoint = globalThis?.Shopify
-        ? `${ENDPOINT}/${Shopify.shop}/${CONFIG_FNAME}`
+    const endpoint = SHOP
+        ? `${ENDPOINT}/${SHOP}/${CONFIG_FNAME}`
         : `data/${CONFIG_FNAME}`;
     const promise = await globalThis.fetch(endpoint);
     return promise;
@@ -31,8 +32,7 @@ exports.storeMetafieldIntoShopify = async () => {
 
     if (!areThereMetafields) return null;
 
-    const { shop } = globalThis?.Shopify;
-    const endpoint = `https://${shop}/${PROXY_PATH}/set-metafield-in-shopify`;
+    const endpoint = `https://${SHOP}/${PROXY_PATH}/set-metafield-in-shopify`;
     const params = {
         method: "POST",
         headers: {

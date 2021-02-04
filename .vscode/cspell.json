@@ -1,0 +1,15 @@
+{
+    "version": "0.1",
+    "language": "en",
+    "words": [
+        "myshopify",
+        "shopify"
+    ],
+    "flagWords": [
+        "hte"
+    ],
+    "ignoreWords": [
+        "metafield",
+        "shopify"
+    ]
+}

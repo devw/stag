@@ -3,13 +3,14 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "config" : { "port" : "8081" },
   "scripts": {
     "dev": "node src/index.js",
     "test": "jest --config ./jest-config.json",
     "clear": "jest --clearCache",
     "bd": "rm -rf dist; webpack --mode=development; cp -r public/* dist",
     "bp": "rm -rf dist; webpack --mode=production; cp -r public/* dist",
-    "start": "cd dist; python3.8  -m http.server 8081 &",
+    "start": "cd dist; lsof -ti tcp:$npm_package_config_port | xargs kill; python3.8  -m http.server $npm_package_config_port &",
     "lint": "eslint ./"
   },
   "devDependencies": {
