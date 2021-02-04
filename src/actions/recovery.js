@@ -7,10 +7,8 @@ let FORM;
 
 exports.init = () => {
     FORM = $q(`#${RECOVERY_ID} form`);
-
-    FORM.querySelector(".js-back").addEventListener("click", () =>
-        togglePage(SIGNIN_ID)
-    );
+    const BACK_BTN = $q(`#${RECOVERY_ID}`).querySelector(".js-back");
+    BACK_BTN.addEventListener("click", () => togglePage(SIGNIN_ID));
     FORM.addEventListener("submit", onSubmit);
 };
 

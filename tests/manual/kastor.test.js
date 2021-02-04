@@ -663,3 +663,7 @@ const kastor = (setting_id, value = "") => {
 
 /// ### PAGES
 // "register||", "login||"
+kastor("register||");
+
+// ### WRONG PASSWORD
+// kastor()
