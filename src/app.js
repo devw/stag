@@ -1,5 +1,4 @@
 require("./styles/main.scss");
-require("./styles/carousel.scss");
 require("./styles/popup.scss");
 require("./styles/form.scss");
 require("./styles/animations.scss");

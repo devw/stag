@@ -140,20 +140,15 @@ body.remove-scrolling {
         margin: 15px 0;
     }
 
-    // social login module for Balzac theme
-    .fb {
-        background-color: #3b5998;
-        color: white;
-    }
-
-    .google {
-        background-color: #dd4b39;
-        color: white;
-    }
-
     .fa-eye {
         cursor: pointer;
         position: absolute;
         right: 0px;
+    }
+
+    .action {
+        color: var(--ternary-text-color, #0d3c32);
+        margin-top: 15px;
+        cursor: pointer;
     }
 }

@@ -41,13 +41,14 @@
                 }
             })();
 
-            globalThis.kastor = (setting_id, value = "") => {
+            globalThis.kastor = (setting_id, value) => {
                 const json = {
                     data: {
                         data: {
                             setting_id: setting_id,
-                            value: setting_id,
+                            value: value,
                         },
+                        target: null,
                     },
                 };
                 const kastorEvent = new CustomEvent("message", {

@@ -1,59 +1,4 @@
 (() => {
-    const getEvent = (json) =>
-        new CustomEvent("message", {
-            detail: json,
-        });
-
-    const textEvent = {
-        setting_id: "landing|loginRegister|",
-        value: "Creation login",
-    };
-
-    const layout = {
-        setting_id: "landing|layout|",
-        value: "popup-full",
-    };
-
-    const style = {
-        setting_id: "landing|--btn-bg-color|",
-        value: "rgba(129, 183, 84, 1)",
-    };
-
-    const hasCarousel = {
-        setting_id: "register|hasCarousel|",
-        value: true,
-    };
-
-    const animation = {
-        setting_id: "landing|--animation|",
-        value: "slide-in",
-    };
-
-    const changeTheme = {
-        setting_id: "|change-theme|",
-        value: "respire",
-    };
-
-    const socialLogin = {
-        setting_id: "landing|hasSocialLogin|",
-        value: true,
-    };
-
-    const form = {
-        data: {
-            data: { setting_id: "landing|formStyle|", value: "label-go-down" },
-        },
-    };
-
-    const carousel = {
-        setting_id: "register|hasCarousel|",
-        value: true,
-    };
-
-    globalThis.dispatchEvent(getEvent(form));
-})();
-
-(() => {
     const block = {
         setting_id: "register|hasMultiLine|",
         value: true,
@@ -400,25 +345,6 @@
     globalThis.dispatchEvent(event);
 })();
 
-// landing
-(() => {
-    const json = {
-        data: {
-            data: {
-                setting_id: "landing|loginRegister|",
-                value: "Creazfione di login",
-            },
-        },
-        target: null,
-    };
-
-    const event = new CustomEvent("message", {
-        detail: json,
-    });
-
-    globalThis.dispatchEvent(event);
-})();
-
 // change fontSize
 (() => {
     const json = {
@@ -457,24 +383,6 @@
     globalThis.dispatchEvent(event);
 })();
 
-// social login
-(() => {
-    const json = {
-        data: {
-            data: {
-                setting_id: "landing|hasSocialLogin|",
-                value: true,
-            },
-        },
-        target: null,
-    };
-
-    const event = new CustomEvent("message", {
-        detail: json,
-    });
-
-    globalThis.dispatchEvent(event);
-})();
 // Birthdate
 (() => {
     json = {
@@ -541,22 +449,6 @@
     globalThis.dispatchEvent(event);
 })();
 // Remove choice
-(() => {
-    json = {
-        data: {
-            data: {
-                setting_id: "dd0d42f8-55ff-46c9-8137-3d9c860d184e",
-                block_type_id: "register|hasChoice|",
-                value: undefined,
-            },
-            target: "block:remove",
-        },
-    };
-    event = new CustomEvent("message", {
-        detail: json,
-    });
-    globalThis.dispatchEvent(event);
-})();
 
 // Date block
 (() => {
@@ -646,24 +538,28 @@
     globalThis.dispatchEvent(kastorEvent);
 })();
 
-const kastor = (setting_id, value = "") => {
-    const json = {
+(() => {
+    json = {
         data: {
             data: {
-                setting_id: setting_id,
-                value: setting_id,
+                setting_id: "dd0d42f8-55ff-46c9-8137-3d9c860d184e",
+                block_type_id: "register|hasChoice|",
+                value: undefined,
             },
+            target: "block:remove",
         },
     };
-    const kastorEvent = new CustomEvent("message", {
+    event = new CustomEvent("message", {
         detail: json,
     });
-    globalThis.dispatchEvent(kastorEvent);
-};
-
-/// ### PAGES
-// "register||", "login||"
+    globalThis.dispatchEvent(event);
+})();
+const kastor = () => {};
 kastor("register||");
-
-// ### WRONG PASSWORD
-// kastor()
+kastor("landing|hasSocialLogin|", true);
+kastor("landing|loginRegister|", "Creation login");
+kastor("signin|wrongPsw|", "Incorrect password. Please, try again! ");
+kastor("landing|layout|", "popup-full");
+kastor("landing|--btn-bg-color|", "rgba(129, 183, 84, 1)");
+kastor("landing|--animation|", "slide-from-right");
+kastor("landing|formStyle|", "label-go-down");
