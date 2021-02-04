@@ -1,9 +1,11 @@
 const { $q, $qq } = require("./toggle");
 const { STORAGE_CONFIG } = require("../config");
 
-const getErrorLabel = (elem) => elem.nextElementSibling.nextElementSibling;
+const getErrorLabel = (e) => e.parentElement.querySelector(".label-error");
 
-const checkDate = (dateElem) => {
+const showDateError = () => {
+    const dateElem = $q(".hasBirth input");
+    if (!dateElem) return null;
     const { minDate, maxDate, customerAge } = getDateAttr(dateElem);
     // TODO refactoring
     if (minDate > customerAge || maxDate < customerAge)
@@ -16,7 +18,7 @@ const getCustomerAge = (dateElem) => {
     const MSEC_IN_DAY = 1000 * SEC_IN_DAY;
     const userSec = new Date(dateElem.value).getTime();
     const nowSec = new Date().getTime();
-    const days = parseInt((nowSec - userSec) / MSEC_IN_DAY);
+    const days = Math.trunc((nowSec - userSec) / MSEC_IN_DAY);
     return days / DAY_IN_YEAR;
 };
 const getDateAttr = (dateElem) => ({
@@ -25,10 +27,11 @@ const getDateAttr = (dateElem) => ({
     customerAge: getCustomerAge(dateElem),
 });
 
-const getPasswordPolicyErrors = (pswElem) => {
-    const errorMsgs = [];
+const showPasswordErrors = () => {
+    const pswElem = $q(".hasPassword input");
     const psw = pswElem.value;
     const pswPolicy = JSON.parse(localStorage.getItem(STORAGE_CONFIG))["text"];
+    const errorMsgs = [];
     // TODO refactor!!
     if (psw.length < pswPolicy.pswMinLength)
         errorMsgs.push(pswPolicy.pswMinLengthErr);
@@ -65,10 +68,8 @@ const areErrors = () => {
 
 exports.areInvalidInputs = () => {
     hideErrorMsgs();
-    const dateElem = $q(".hasBirth input");
-    const pswElem = $q(".hasPassword input");
-    if (dateElem) checkDate(dateElem);
-    if (pswElem) getPasswordPolicyErrors(pswElem);
+    showPasswordErrors();
+    showDateError();
     return areErrors();
 };
 

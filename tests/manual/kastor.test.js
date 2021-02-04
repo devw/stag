@@ -645,3 +645,21 @@
     });
     globalThis.dispatchEvent(kastorEvent);
 })();
+
+const kastor = (setting_id, value = "") => {
+    const json = {
+        data: {
+            data: {
+                setting_id: setting_id,
+                value: setting_id,
+            },
+        },
+    };
+    const kastorEvent = new CustomEvent("message", {
+        detail: json,
+    });
+    globalThis.dispatchEvent(kastorEvent);
+};
+
+/// ### PAGES
+// "register||", "login||"

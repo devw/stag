@@ -40,6 +40,21 @@
                     window.addEventListener("load", asyncLoad, false);
                 }
             })();
+
+            globalThis.kastor = (setting_id, value = "") => {
+                const json = {
+                    data: {
+                        data: {
+                            setting_id: setting_id,
+                            value: setting_id,
+                        },
+                    },
+                };
+                const kastorEvent = new CustomEvent("message", {
+                    detail: json,
+                });
+                globalThis.dispatchEvent(kastorEvent);
+            };
         </script>
     </body>
 </html>

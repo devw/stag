@@ -115,33 +115,6 @@ body.remove-scrolling {
         color: var(--ternary-text-color, #0d3c32);
     }
 
-    // show password icon
-    .eye-icon {
-        color: #000;
-        cursor: pointer;
-        position: absolute;
-        margin-left: 3px;
-        margin-top: 3px;
-        width: 12px;
-        height: 12px;
-        border-radius: 70% 15%;
-        border: solid 1px currentColor;
-        -webkit-transform: rotate(45deg);
-        transform: rotate(45deg);
-        right: 4px;
-    }
-
-    .eye-icon:before {
-        content: "";
-        position: absolute;
-        left: 2px;
-        top: 2px;
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        border: solid 1px currentColor;
-    }
-
     // 4.1 checkbox
     .checkbox {
         margin-right: 10px;
@@ -178,22 +151,9 @@ body.remove-scrolling {
         color: white;
     }
 
-    .mt-1 {
-        margin-top: 10px;
+    .fa-eye {
+        cursor: pointer;
+        position: absolute;
+        right: 0px;
     }
-
-    .mt-2 {
-        margin-top: 20px;
-    }
-
-    .mb-1 {
-        margin-bottom: 5px;
-    }
-    /*  ===================
-    3. Pages
-    =================== */
-
-    /*  ===================
-    3. Modules
-    =================== */
 }
