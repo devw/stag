@@ -1,6 +1,5 @@
 <div class="title">{{loginTitle}}</div>
 <div class="sub-title">{{enterEmailPswToConnect}}</div>
-<div class="error js-psw-policy"></div>
 
 <form
     method="post"
@@ -25,7 +24,7 @@
         <label>{{yourEmail}}</label>
     </div>
     <div>
-        <div class="eye-icon js-show-psw"></div>
+        <i class="fa fa-eye js-show-psw"></i>
         <input
             type="password"
             name="customer[password]"
@@ -34,9 +33,12 @@
             autocomplete="on"
         />
         <label>{{yourPassword}}</label>
+        <label class="label-error js-signin-err"
+            ><i class="fa {{errorIcon}}"></i>{{wrongPsw}}</label
+        >
     </div>
     <button class="btn btn-primary" disabled="">
         {{signIn}} &nbsp;<i class="fa fa-spinner fa-spin off"></i>
     </button>
-    <div class="action js-recovery">Recover password{{recoverPsw}}</div>
 </form>
+<div class="action js-recovery">Recover password{{recoverPsw}}</div>

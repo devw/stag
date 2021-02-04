@@ -1,9 +1,9 @@
 const { IDs } = require("../config");
 const { REGISTER_ID, LANDING_ID } = IDs;
 const { togglePage, $q, toggleSecret, toggleLoading } = require("../utils");
-const { isFormFilled, checkInputs, sortBlocks } = require("../utils");
+const { isFormFilled, areInvalidInputs, sortBlocks } = require("../utils");
 const { storeMetafieldIntoShopify } = require("../services");
-const { STORAGE_METAFIELD } = require("../config.js");
+const { STORAGE_METAFIELD } = require("../config");
 let FORM, BTN;
 
 const multiChoiceSelector = "multi-choice";
@@ -53,7 +53,7 @@ const toggleButton = () => {
 
 const onSubmit = async (e) => {
     e.preventDefault();
-    if (!(await checkInputs(FORM))) return null;
+    if (await areInvalidInputs()) return null;
     toggleLoading(BTN);
     storeTags();
     storeMetafield();

@@ -1,4 +1,4 @@
-const { $q, showError } = require("../utils");
+const { $q } = require("../utils");
 
 const tgt = {
     close: ".js-close",
@@ -20,7 +20,7 @@ exports.sendHttpRequest = (method, e) => {
               };
               xhr.onerror = (err) => rej(`Server error: ${err}`); //triggered if there is no connection
           })
-        : new Promise((res, _j) => setTimeout(() => res({}), 2000));
+        : new Promise((res) => setTimeout(() => res({}), 2000));
 };
 
 const shopifyResult = (html) => ({
@@ -35,7 +35,7 @@ const parseShopifyResponse = ({ target }, response) => {
     const resp = shopifyResult(htmlResponse);
     console.log(resp);
     if (resp.isLogged) $q(tgt.close).click();
-    else if (resp.hasWrongPsw) showError(["Wrong password or email"]);
+    else if (resp.hasWrongPsw) $q(".js-signin-err").style.display = "block";
     //TODO take the message from configuration
     else if (resp.hasChallenge) target.submit();
     return resp;

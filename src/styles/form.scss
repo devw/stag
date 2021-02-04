@@ -8,6 +8,7 @@
     form > div {
         margin: 0.8em 0;
         position: relative;
+        text-align: left;
     }
 
     .input-text {
@@ -27,7 +28,6 @@
         position: absolute;
         left: 0;
         top: 0;
-        opacity: 0.5;
         transform-origin: 0 0;
         transition: transform 0.3s ease-in-out;
         background-color: var(--content-bg-color, #fff);
@@ -80,11 +80,21 @@
         display: none;
     }
 
-    // CHOICE BLOCK
-
-    .choice-block {
-        text-align: left;
+    :not([type="checkbox"]) label.label-error {
+        color: var(--error-color, rgb(208, 26, 26));
+        background-color: var(--error-bg-color, rgb(240, 207, 207));
+        padding: 2px;
+        display: none;
+        width: 100%;
+        top: unset;
+        font-size: 0.8em;
     }
+
+    label.label-error i {
+        margin-right: 3px;
+    }
+
+    // CHOICE BLOCK
     .choice-block > div {
         display: inline-block;
     }

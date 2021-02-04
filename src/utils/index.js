@@ -1,12 +1,15 @@
 const {
-    rendereTemplate,
+    render,
     updateCss,
     sortBlocks,
     parseConfiguration,
 } = require("./load-pages");
 const { togglePage, toggleSecret, toggleLoading } = require("./toggle");
-const { isValidEmail, isFormFilled, checkInputs } = require("./input-checker");
-const { showError } = require("./input-checker");
+const {
+    isValidEmail,
+    isFormFilled,
+    areInvalidInputs,
+} = require("./input-checker");
 const { $q, $qq, getRootNode } = require("./toggle");
 
 const debounce = (fn, delay) => {
@@ -19,16 +22,15 @@ const debounce = (fn, delay) => {
 
 module.exports = {
     updateCss,
-    rendereTemplate,
+    render,
     togglePage,
     isFormFilled,
     debounce,
-    showError,
     isValidEmail,
     $q,
     $qq,
     sortBlocks,
-    checkInputs,
+    areInvalidInputs,
     toggleSecret,
     getRootNode,
     toggleLoading,

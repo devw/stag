@@ -18,7 +18,7 @@ const onSubmit = async (e) => {
     toggleLoading(BTN);
 };
 
-const toggleButton = (_) => {
+const toggleButton = () => {
     const email = FORM.querySelector("[type='email']").value;
     isValidEmail(email)
         ? BTN.removeAttribute("disabled")
@@ -28,10 +28,11 @@ const toggleButton = (_) => {
 const recovery = () => togglePage(RECOVERY_ID);
 
 exports.init = () => {
+    const RECOVERY_BTN = $q(`#${SIGNIN_ID}`).querySelector(".js-recovery");
     FORM = $q(`#${SIGNIN_ID} form`);
     BTN = FORM.querySelector("button");
     FORM.addEventListener("input", toggleButton);
     FORM.addEventListener("submit", onSubmit);
     FORM.querySelector(".js-show-psw").addEventListener("click", toggleSecret);
-    FORM.querySelector(".js-recovery").addEventListener("click", recovery);
+    RECOVERY_BTN.addEventListener("click", recovery);
 };

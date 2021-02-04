@@ -1,59 +1,4 @@
 (() => {
-    const getEvent = (json) =>
-        new CustomEvent("message", {
-            detail: json,
-        });
-
-    const textEvent = {
-        setting_id: "landing|loginRegister|",
-        value: "Creazfione di login",
-    };
-
-    const layout = {
-        setting_id: "landing|layout|",
-        value: "popup-full",
-    };
-
-    const style = {
-        setting_id: "landing|--btn-bg-color|",
-        value: "rgba(129, 183, 84, 1)",
-    };
-
-    const hasCarousel = {
-        setting_id: "register|hasCarousel|",
-        value: true,
-    };
-
-    const animation = {
-        setting_id: "landing|--animation|",
-        value: "slide-in",
-    };
-
-    const changeTheme = {
-        setting_id: "|change-theme|",
-        value: "respire",
-    };
-
-    const socialLogin = {
-        setting_id: "landing|hasSocialLogin|",
-        value: true,
-    };
-
-    const form = {
-        data: {
-            data: { setting_id: "landing|formStyle|", value: "label-go-down" },
-        },
-    };
-
-    const carousel = {
-        setting_id: "register|hasCarousel|",
-        value: true,
-    };
-
-    globalThis.dispatchEvent(getEvent(form));
-})();
-
-(() => {
     const block = {
         setting_id: "register|hasMultiLine|",
         value: true,
@@ -279,7 +224,44 @@
         data: {
             data: {
                 setting_id: "register|pswMinLengthErr|",
-                value: "Your password is too short",
+                value: "The password must contain at least 6 charactersas",
+                global_section_id: "register|passwordPolicy|",
+            },
+        },
+    };
+
+    const event = new CustomEvent("message", {
+        detail: json,
+    });
+
+    globalThis.dispatchEvent(event);
+})();
+
+// show error icon
+(() => {
+    const json = {
+        data: {
+            data: {
+                setting_id: "register|errorIcon|",
+                value: "fa-bug",
+            },
+        },
+    };
+
+    const event = new CustomEvent("message", {
+        detail: json,
+    });
+
+    globalThis.dispatchEvent(event);
+})();
+
+// show error color
+(() => {
+    const json = {
+        data: {
+            data: {
+                setting_id: "register|--error-bg-color|",
+                value: "rgba(100,75,75,1)",
             },
         },
     };
@@ -351,26 +333,7 @@
 (() => {
     const json = {
         data: {
-            data: { setting_id: "register|formStyle|", value: "label-go-down" },
-        },
-        target: null,
-    };
-
-    const event = new CustomEvent("message", {
-        detail: json,
-    });
-
-    globalThis.dispatchEvent(event);
-})();
-
-// landing
-(() => {
-    const json = {
-        data: {
-            data: {
-                setting_id: "landing|loginRegister|",
-                value: "Creazfione di login",
-            },
+            data: { setting_id: "register|formStyle|", value: "label-go-up" },
         },
         target: null,
     };
@@ -420,24 +383,6 @@
     globalThis.dispatchEvent(event);
 })();
 
-// social login
-(() => {
-    const json = {
-        data: {
-            data: {
-                setting_id: "landing|hasSocialLogin|",
-                value: true,
-            },
-        },
-        target: null,
-    };
-
-    const event = new CustomEvent("message", {
-        detail: json,
-    });
-
-    globalThis.dispatchEvent(event);
-})();
 // Birthdate
 (() => {
     json = {
@@ -504,22 +449,6 @@
     globalThis.dispatchEvent(event);
 })();
 // Remove choice
-(() => {
-    json = {
-        data: {
-            data: {
-                setting_id: "dd0d42f8-55ff-46c9-8137-3d9c860d184e",
-                block_type_id: "register|hasChoice|",
-                value: undefined,
-            },
-            target: "block:remove",
-        },
-    };
-    event = new CustomEvent("message", {
-        detail: json,
-    });
-    globalThis.dispatchEvent(event);
-})();
 
 // Date block
 (() => {
@@ -598,8 +527,8 @@
     json = {
         data: {
             data: {
-                setting_id: "landing|layout|",
-                value: "popup-full",
+                setting_id: "signin|wrongPsw|",
+                value: "Incorrect password. Please, try again! ",
             },
         },
     };
@@ -608,3 +537,29 @@
     });
     globalThis.dispatchEvent(kastorEvent);
 })();
+
+(() => {
+    json = {
+        data: {
+            data: {
+                setting_id: "dd0d42f8-55ff-46c9-8137-3d9c860d184e",
+                block_type_id: "register|hasChoice|",
+                value: undefined,
+            },
+            target: "block:remove",
+        },
+    };
+    event = new CustomEvent("message", {
+        detail: json,
+    });
+    globalThis.dispatchEvent(event);
+})();
+const kastor = () => {};
+kastor("register||");
+kastor("landing|hasSocialLogin|", true);
+kastor("landing|loginRegister|", "Creation login");
+kastor("signin|wrongPsw|", "Incorrect password. Please, try again! ");
+kastor("landing|layout|", "popup-full");
+kastor("landing|--btn-bg-color|", "rgba(129, 183, 84, 1)");
+kastor("landing|--animation|", "slide-from-right");
+kastor("landing|formStyle|", "label-go-down");

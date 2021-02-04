@@ -1,6 +1,5 @@
 <div class="title">{{createAccount}}</div>
 <div class="sub-title text t-4">{{fillInfoToCreateAccount}}</div>
-<div class="error js-psw-policy"></div>
 
 <form
     method="post"
@@ -100,7 +99,7 @@
 
     <!-- Password field -->
     <div class="hasPassword">
-        <div class="eye-icon js-show-psw"></div>
+        <i class="fa fa-eye js-show-psw"></i>
         <input
             required
             type="password"
@@ -110,6 +109,7 @@
             autocomplete="on"
         />
         <label>{{yourPassword}}</label>
+        <label class="label-error"><i class="fa {{errorIcon}}"></i> </label>
     </div>
 
     {{#hasBirth}}
@@ -121,29 +121,32 @@
             data-is-tag="{{isBirthTag}}"
             date-min="{{birthMin}}"
             date-max="{{birthMax}}"
-            date-birthError="{{birthError}}"
             placeholder="{{birthPlaceholder}}"
             data-tag="{{birthTag}}"
             data-namespace="{{birthNamespace}}"
             data-key="{{birthKey}}"
         />
         <label>{{birthPlaceholder}}</label>
+        <label class="label-error"
+            ><i class="fa {{errorIcon}}"></i>{{birthError}}</label
+        >
     </div>
     {{/hasBirth}}
 
     <!-- Subscribe newsletter checkbox -->
     {{#hasNewsletter }}
-    <div class="hasNewsletter choice-block">
+    <div class="hasNewsletter">
         <div>
-            <input type="checkbox" class="input-text" />
-            <label>{{subscribeNewsletter}}</label>
+            <input type="hidden" name="customer[accepts_marketing]" value="" />
+            <input type="checkbox" name="customer[accepts_marketing]" />
+            {{subscribeNewsletter}}
         </div>
     </div>
     {{/hasNewsletter }}
 
-    <!-- FirstName field -->
+    <!-- hasDate field -->
     {{#hasDate }}
-    <div class="hasFirstName">
+    <div class="hasDate">
         <input
             required
             type="text"
@@ -162,4 +165,4 @@
         {{registerAccount}} &nbsp;<i class="fa fa-spinner fa-spin off"></i>
     </button>
 </form>
-<div class="action js-back"><i class="arrow left"></i> Back</div>
+<div class="action js-back"><i class="fa fa-arrow-left"></i> Back</div>
