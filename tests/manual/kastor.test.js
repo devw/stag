@@ -6,7 +6,7 @@
 
     const textEvent = {
         setting_id: "landing|loginRegister|",
-        value: "Creazfione di login",
+        value: "Creation login",
     };
 
     const layout = {

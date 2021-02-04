@@ -18,7 +18,7 @@ const onSubmit = async (e) => {
     toggleLoading(BTN);
 };
 
-const toggleButton = (_) => {
+const toggleButton = () => {
     const email = FORM.querySelector("[type='email']").value;
     isValidEmail(email)
         ? BTN.removeAttribute("disabled")

@@ -83,7 +83,6 @@
     :not([type="checkbox"]) label.label-error {
         color: var(--error-color, rgb(208, 26, 26));
         background-color: var(--error-bg-color, rgb(240, 207, 207));
-        // text-align: left;
         padding: 2px;
         display: none;
         width: 100%;

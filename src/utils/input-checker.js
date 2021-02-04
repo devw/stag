@@ -1,4 +1,4 @@
-const { $q } = require("./toggle");
+const { $q, $qq } = require("./toggle");
 const { STORAGE_CONFIG } = require("../config");
 
 const getErrorLabel = (elem) => elem.nextElementSibling.nextElementSibling;
@@ -55,15 +55,11 @@ const getPasswordPolicyErrors = (pswElem) => {
 exports.isFormFilled = (form) =>
     Array.from(form.querySelectorAll("input[required]")).every((e) => e.value);
 
-const hideErrorMsgs = () => {
-    // TODO refactor
-    document.body
-        .querySelectorAll("label + label")
-        .forEach((e) => (e.style.display = "none"));
-};
+const hideErrorMsgs = () =>
+    $qq(".label-error").forEach((e) => (e.style.display = "none"));
 
 const areErrors = () => {
-    errElems = Array.from(document.body.querySelectorAll("label + label"));
+    const errElems = Array.from($qq(".label-error"));
     return errElems.some((e) => e.style.display === "block");
 };
 
@@ -78,13 +74,8 @@ exports.checkInputs = () => {
 
 exports.isValidEmail = (email) => /\S+@\S+\.\S{2,}/.test(email);
 
-exports.hash = function (str) {
-    var hash = 0;
-    if (str.length == 0) return hash;
-    for (i = 0; i < str.length; i++) {
-        char = str.charCodeAt(i);
-        hash = (hash << 5) - hash + char;
-        hash = hash & hash; // Convert to 32bit integer
-    }
-    return hash;
-};
+exports.hash = (str) =>
+    str.split("").reduce((a, c) => {
+        a = (a << 5) - a + c.charCodeAt(0);
+        return a & a;
+    }, 0);

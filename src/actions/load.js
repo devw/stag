@@ -3,7 +3,7 @@ const { init: initSignIn } = require("./sign-in");
 const { init: initRegistration } = require("./register");
 const { init: initRecovery } = require("./recovery");
 const { $q, togglePage } = require("../utils/");
-const { STORAGE_CONFIG, IDs } = require("../config");
+const { IDs } = require("../config");
 
 //TODO refactoring too code repetition
 
@@ -25,8 +25,8 @@ const placePopover = (e, dom) => {
 };
 
 const openAccount = (e) => {
-    const { isActive } = JSON.parse(localStorage.getItem(STORAGE_CONFIG));
     //TODO isActive to fix
+    // const { isActive } = JSON.parse(localStorage.getItem(STORAGE_CONFIG));
     if (!globalThis.__st?.cid) {
         e?.preventDefault();
         e?.stopPropagation();
@@ -38,7 +38,6 @@ const openAccount = (e) => {
     }
 };
 exports.openAccount = openAccount;
-const $ = document.querySelector.bind(document);
 
 exports.loadActions = () => {
     initContainer();

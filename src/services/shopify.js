@@ -20,7 +20,7 @@ exports.sendHttpRequest = (method, e) => {
               };
               xhr.onerror = (err) => rej(`Server error: ${err}`); //triggered if there is no connection
           })
-        : new Promise((res, _j) => setTimeout(() => res({}), 2000));
+        : new Promise((res) => setTimeout(() => res({}), 2000));
 };
 
 const shopifyResult = (html) => ({

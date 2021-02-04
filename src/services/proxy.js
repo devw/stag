@@ -3,7 +3,7 @@ const {
     STORAGE_METAFIELD,
     ENDPOINT,
     CONFIG_FNAME,
-} = require("../config.js");
+} = require("../config");
 
 exports.getCustomerStatus = async (email) => {
     const endpoint = globalThis?.Shopify

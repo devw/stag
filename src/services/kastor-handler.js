@@ -1,4 +1,4 @@
-const { render, $q } = require("../utils");
+const { render, $q, $qq } = require("../utils");
 const { getBlocksAttr } = require("../utils/load-pages");
 const { IDs } = require("../config");
 
@@ -72,17 +72,15 @@ const updateNoBlock = (event) => {
 const showWrongPsw = () => ($q(".js-signin-err").style.display = "block");
 
 const showPswError = (message) => {
-    const exclamationLabel = $q(".hasPassword input + label + label");
+    const exclamationLabel = $q(".hasPassword .label-error");
     exclamationLabel.innerHTML = exclamationLabel.innerHTML.split("</i>")[0];
     exclamationLabel.style.display = "block";
     exclamationLabel.append(message);
 };
 
 const showErrors = () => {
-    // TODO to refactor
-    document.body
-        .querySelectorAll("label.label-error")
-        .forEach((e) => (e.style.display = "block"));
+    $qq("label.label-error").forEach((e) => (e.style.display = "block"));
+    // TODO refactor
     showPswError("Password should have at least 5 characters!");
 };
 

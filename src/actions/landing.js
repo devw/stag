@@ -25,7 +25,7 @@ const checkCustomerStatus = async () => {
     const email = getEmail();
     if (!isCustomerChecked(email)) {
         PROMISE = getCustomerStatus(email);
-        customers = await PROMISE;
+        const customers = await PROMISE;
         customers.forEach(setCustomerStatus);
     }
 };

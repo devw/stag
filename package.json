@@ -10,7 +10,7 @@
     "bd": "rm -rf dist; webpack --mode=development; cp -r public/* dist",
     "bp": "rm -rf dist; webpack --mode=production; cp -r public/* dist",
     "start": "cd dist; python3.8  -m http.server 8081 &",
-    "lint": "eslint ./src"
+    "lint": "eslint ./"
   },
   "devDependencies": {
     "eslint": "^7.19.0",
