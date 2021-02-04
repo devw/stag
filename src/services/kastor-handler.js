@@ -63,7 +63,7 @@ const updateNoBlock = (event) => {
 
     if (page) changePage(page);
 
-    // TODO: too fragile check the password policy in this way, you should refactore the code using objects
+    // TODO: too fragile check the password policy in this way, you should refactor the code using objects
     if (/^psw.*Err$/.test(key)) showPswError(value);
     if (/^errorIcon$|^--error-/.test(key)) showErrors();
     if (/^wrongPsw$/.test(key)) showWrongPsw();
