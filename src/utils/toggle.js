@@ -1,8 +1,5 @@
 const { IDs } = require("../config");
 const getRootNode = () => document.querySelector(`#${IDs.APP_ID}`);
-const { APP_ID, CONTAINER_ID } = IDs;
-
-const $ = document.querySelector.bind(document);
 
 exports.getRootNode = getRootNode;
 
