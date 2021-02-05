@@ -1,16 +1,34 @@
 const { IDs } = require("../config");
+
 const getRootNode = () => document.querySelector(`#${IDs.APP_ID}`);
-
-exports.getRootNode = getRootNode;
-
 const $q = (leaf) => getRootNode().querySelector(leaf);
-const $qq = (leaf) => getRootNode().querySelectorAll(leaf);
 
-exports.togglePage = (id) => {
-    //TODO refactor because it is error prone!
-    const ids = Object.values(IDs).slice(2);
-    ids.forEach((e) => $q(`#${e}`).style.setProperty("display", "none"));
-    $q(`#${id}`).style.setProperty("display", "block");
+const getBlocksAttr = () => {
+    const blocks = $q(`#${IDs.REGISTER_ID} form`).getAttribute("data-blocks");
+    return blocks.length > 0 ? blocks.split(",") : [];
+};
+
+const filterCss = (view) => {
+    // TODO you should wrap the value based on the regexp /^http/
+    const pics = ["--container-bg-image", "--header-img"];
+    pics.forEach((e) => {
+        if (view[e]) view[e] = `url(${view[e]})`;
+    });
+    return view;
+};
+
+exports.sortBlocks = () => {
+    const blocks = getBlocksAttr();
+    blocks.forEach((e, i) => $q(`#${e}`)?.style?.setProperty("order", i));
+};
+
+exports.updateCss = (cssVars) => {
+    cssVars = filterCss(cssVars);
+    (function traverse(obj, key) {
+        if (obj !== null && typeof obj == "object") {
+            Object.entries(obj).forEach(([key, value]) => traverse(value, key));
+        } else getRootNode().style.setProperty(key, obj);
+    })(cssVars);
 };
 
 exports.toggleSecret = ({ target }) => {
@@ -29,5 +47,15 @@ exports.toggleLoading = (BTN) => {
     }
 };
 
+exports.togglePage = (id) => {
+    //TODO refactor because it is error prone!
+    const ids = Object.values(IDs).slice(2);
+    ids.forEach((e) => $q(`#${e}`).style.setProperty("display", "none"));
+    $q(`#${id}`).style.setProperty("display", "block");
+};
+
+exports.$qq = (leaf) => getRootNode().querySelectorAll(leaf);
+
 exports.$q = $q;
-exports.$qq = $qq;
+exports.getBlocksAttr = getBlocksAttr;
+exports.getRootNode = getRootNode;

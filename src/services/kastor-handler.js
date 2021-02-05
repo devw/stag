@@ -1,13 +1,21 @@
-const { render, $q, $qq } = require("../utils");
-const { getBlocksAttr } = require("../utils/load-pages");
+// const { updateCss, } = require("../utils");
+const {
+    togglePage,
+    $q,
+    $qq,
+    getBlocksAttr,
+    updateCss,
+} = require("../utils/toggle");
+
+// TODO remove globalThis
 const { IDs } = require("../config");
 
 const changePage = (page) => {
-    const { loadActions } = require("../actions/load");
-    const { togglePage } = require("../utils");
+    // const { loadActions } = require("../actions/load");
+
     togglePage(page);
     $q(`#${IDs.CONTAINER_ID}`).style.setProperty("display", "flex");
-    loadActions();
+    // loadActions();
 };
 
 const getIdsVsBlocks = (json) => {
@@ -52,12 +60,11 @@ const updateNoBlock = (event) => {
     const [, page, key, unit] = selector.match(/^(.*?)\|(.*?)\|(.*?)$/);
     const valueAndUnit = typeof value == "object" ? value : `${value}${unit}`;
 
-    const { updateCss } = require("../utils");
     if (!/--animation/.test(key)) updateCss({ "--animation": "none" });
     if (/^--/.test(key)) {
         updateCss({ [key]: valueAndUnit });
     } else
-        render({
+        globalThis.render({
             [key]: valueAndUnit == "false" ? false : valueAndUnit,
         });
 
@@ -90,7 +97,7 @@ const kastorHandler = (event) => {
     const target = getTarget(event);
     if (target === "block:reorder") {
         const orderBlocks = getOrderedBlocks(getData(event));
-        render({ orderedBlock: orderBlocks });
+        globalThis.render({ orderedBlock: orderBlocks });
         changePage(IDs.REGISTER_ID);
         return null;
     }
@@ -99,8 +106,8 @@ const kastorHandler = (event) => {
         const { block_type_id } = getData(event);
         const blockToDel = block_type_id.split("|")[1];
         const filteredBlocks = getBlocksAttr().filter((e) => e !== blockToDel);
-        render({ orderedBlock: filteredBlocks });
-        render({ [blockToDel]: false });
+        globalThis.render({ orderedBlock: filteredBlocks });
+        globalThis.render({ [blockToDel]: false });
         changePage(IDs.REGISTER_ID);
         return null;
     }
@@ -110,8 +117,8 @@ const kastorHandler = (event) => {
         const [page, blockToAdd] = block_type_id.split("|");
         const key = Object.keys(block_settings)[0].split("|")[1];
         const value = Object.values(block_settings)[0];
-        render({ [key]: value });
-        render({ [blockToAdd]: true });
+        globalThis.render({ [key]: value });
+        globalThis.render({ [blockToAdd]: true });
         changePage(page);
         return null;
     }
