@@ -35,5 +35,5 @@ exports.parseConfiguration = (config) => {
     return config;
 };
 
-//TODO
+// TODO you should find a more robust solution the globalThis.render
 globalThis.render = render;

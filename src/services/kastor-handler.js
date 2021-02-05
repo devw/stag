@@ -1,4 +1,3 @@
-// const { updateCss, } = require("../utils");
 const {
     togglePage,
     $q,
@@ -7,12 +6,12 @@ const {
     updateCss,
 } = require("../utils/toggle");
 
-// TODO remove globalThis
 const { IDs } = require("../config");
+// TODO you should find a more robust solution the globalThis.render
 
 const changePage = (page) => {
+    // this disables the logic of popup
     // const { loadActions } = require("../actions/load");
-
     togglePage(page);
     $q(`#${IDs.CONTAINER_ID}`).style.setProperty("display", "flex");
     // loadActions();
