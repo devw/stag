@@ -28,7 +28,6 @@ exports.render = render;
 exports.parseConfiguration = (config) => {
     const { text } = config;
     // TODO too code repetition
-    console.log("parseConfiguration....", config);
     config.text.isChoiceTag = text.isChoiceTag === "hasTag" ? true : false;
     config.text.isBirthTag = text.isBirthTag === "hasTag" ? true : false;
     config.text.isDateTag = text.isDateTag === "hasTag" ? true : false;
