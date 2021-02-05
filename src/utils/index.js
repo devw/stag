@@ -1,10 +1,11 @@
+const { render, parseConfiguration } = require("./load-pages");
 const {
-    render,
+    togglePage,
+    toggleSecret,
+    toggleLoading,
     updateCss,
     sortBlocks,
-    parseConfiguration,
-} = require("./load-pages");
-const { togglePage, toggleSecret, toggleLoading } = require("./toggle");
+} = require("./toggle");
 const {
     isValidEmail,
     isFormFilled,

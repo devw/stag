@@ -4,6 +4,9 @@
         "dist",
         "tests"
     ],
+    "plugins": [
+        "spellcheck"
+    ],
     "env": {
         "browser": true,
         "commonjs": true,
@@ -16,6 +19,48 @@
         "ecmaVersion": 12
     },
     "rules": {
-        "no-unused-vars": "warn"
+        "no-unused-vars": "error",
+        "for-direction": "error",
+        "spellcheck/spell-checker": [
+            "warn",
+            {
+                "comments": true,
+                "strings": true,
+                "identifiers": true,
+                "lang": "en_US",
+                "skipWords": [
+                    "autoFill",
+                    "afterbegin",
+                    "bg",
+                    "captcha",
+                    "checkbox",
+                    "cid",
+                    "debounce",
+                    "href",
+                    "img",
+                    "memoization",
+                    "metafield",
+                    "metafields",
+                    "myshopify",
+                    "namespace",
+                    "psw",
+                    "rej",
+                    "str",
+                    "xhr",
+                    "kastor",
+                    "signin",
+                    "shopify",
+                    "js"
+                ],
+                "skipIfMatch": [
+                    "http://[^s]*",
+                    "^[-\\w]+\/[-\\w\\.]+$" //For MIME Types
+                ],
+                "skipWordIfMatch": [
+                    "^foobar.*$" // words that begin with foobar will not be checked
+                ],
+                "minLength": 3
+            }
+        ]
     }
 }

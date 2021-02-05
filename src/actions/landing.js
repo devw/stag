@@ -10,8 +10,8 @@ const EMAIL_MAP = new Map();
 
 const isCustomerChecked = (email) => {
     const emails = Array.from(EMAIL_MAP.keys());
-    const isRegisted = emails.some((e) => e === hash(email));
-    if (isRegisted) return true;
+    const isRegistered = emails.some((e) => e === hash(email));
+    if (isRegistered) return true;
     const isChecked = emails.some((e) => RegExp(`^${e}`, "i").test(email));
     if (isChecked) return isChecked;
     return false;
@@ -30,11 +30,11 @@ const checkCustomerStatus = async () => {
     }
 };
 
-const setCustomerStatus = (cust) => {
+const setCustomerStatus = (customer) => {
     const email = getEmail();
-    const key = cust.state ? cust.hash : email;
-    EMAIL_MAP.set(key, cust);
-    if (hash(email) !== cust.hash) EMAIL_MAP.set(email, {});
+    const key = customer.state ? customer.hash : email;
+    EMAIL_MAP.set(key, customer);
+    if (hash(email) !== customer.hash) EMAIL_MAP.set(email, {});
 };
 
 const firstCheck = async ({ target }) => {

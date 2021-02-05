@@ -1,11 +1,11 @@
 const { $q } = require("../utils");
 
-const tgt = {
+const selectors = {
     close: ".js-close",
     shopifyRes: ".js-shopify-response",
     isLogged: "#customer_logout_link",
     wrongPsw: "#customer_login",
-    captha: ".shopify-challenge__button.btn",
+    captcha: ".shopify-challenge__button.btn",
 };
 
 exports.sendHttpRequest = (method, e) => {
@@ -24,9 +24,9 @@ exports.sendHttpRequest = (method, e) => {
 };
 
 const shopifyResult = (html) => ({
-    isLogged: html.querySelector(tgt.isLogged) != null,
-    hasWrongPsw: html.querySelector(tgt.wrongPsw) != null,
-    hasChallenge: html.querySelector(tgt.captha) != null,
+    isLogged: html.querySelector(selectors.isLogged) != null,
+    hasWrongPsw: html.querySelector(selectors.wrongPsw) != null,
+    hasChallenge: html.querySelector(selectors.captcha) != null,
     // TODO adding other checks (unique email, ....)
 });
 
@@ -34,7 +34,7 @@ const parseShopifyResponse = ({ target }, response) => {
     const htmlResponse = new DOMParser().parseFromString(response, "text/html");
     const resp = shopifyResult(htmlResponse);
     console.log(resp);
-    if (resp.isLogged) $q(tgt.close).click();
+    if (resp.isLogged) $q(selectors.close).click();
     else if (resp.hasWrongPsw) $q(".js-signin-err").style.display = "block";
     //TODO take the message from configuration
     else if (resp.hasChallenge) target.submit();

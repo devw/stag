@@ -179,8 +179,8 @@
     const firstNameBlock = {
         data: {
             data: {
-                setting_id: "register|yourFirstName|",
-                value: "Votre Prénom",
+                setting_id: "register||",
+                value: "",
             },
         },
     };

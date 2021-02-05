@@ -13,7 +13,7 @@ const onSubmit = async (e) => {
     if (resp.isLogged) {
         const { shop } = globalThis?.Shopify;
         const redirect = FORM.getAttribute("data-login-redirect");
-        globalThis.location.href = `https://${shop}/${redirect}`;
+        location.href = `https://${shop}/${redirect}`;
     }
     toggleLoading(BTN);
 };

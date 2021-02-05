@@ -1,11 +1,10 @@
 const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-module.exports = {
-    entry: "./src/app.js",
+module.exports = (env) => ({
+    entry: env?.in || "./src/app.js",
     output: {
-        filename: "bundle.js",
+        filename: env?.out || "bundle.js",
         path: path.resolve(path.resolve(), "dist"),
     },
     module: {
@@ -20,10 +19,5 @@ module.exports = {
             },
         ],
     },
-    plugins: [
-        new MiniCssExtractPlugin(),
-        new HtmlWebpackPlugin({
-            title: "login-popup",
-        }),
-    ],
-};
+    plugins: [new MiniCssExtractPlugin()],
+});
