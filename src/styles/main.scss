@@ -30,7 +30,6 @@ body.remove-scrolling {
     .header-img {
         content: var(--header-img);
         max-width: var(--img-max-width, 200px);
-        margin: 0 auto;
     }
 
     // Title
@@ -92,12 +91,16 @@ body.remove-scrolling {
 
     .btn-close {
         cursor: pointer;
-        font-size: 40px;
         position: absolute;
-        right: 14px;
-        top: 0;
-        transform: rotate(45deg);
+        top: 0px;
+        right: 0px;
+        padding: var(--content-padding, 1.5em);
         color: var(--ternary-text-color, #0d3c32);
+    }
+
+    .btn-close .fa {
+        -webkit-text-stroke: 5px white;
+        font-size: 1.8em;
     }
 
     // 4.1 checkbox
