@@ -36,6 +36,8 @@ body.remove-scrolling {
         padding: var(--content-padding, 1.5em);
         position: relative;
         width: 400px;
+        max-height: 86vh;
+        overflow-y: auto;
     }
 
     /*  ===================

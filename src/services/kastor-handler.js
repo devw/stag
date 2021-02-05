@@ -40,7 +40,7 @@ const getData = (event) => {
 
 const getTarget = (event) => {
     const e = event.data ? event.data : event.detail.data;
-    return e.target;
+    return e?.target;
 };
 
 const parseEventData = (event) => {

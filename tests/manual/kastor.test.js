@@ -1,25 +1,3 @@
-(() => {
-    const block = {
-        setting_id: "register|hasMultiLine|",
-        value: true,
-    };
-
-    globalThis.dispatchEvent(getEvent(block));
-})();
-
-(() => {
-    const block = {
-        setting_id: "register|hasMultiChoice|",
-        value: true,
-    };
-
-    const kastorEvent = new CustomEvent("message", {
-        detail: block,
-    });
-
-    globalThis.dispatchEvent(kastorEvent);
-})();
-
 // TESTING METAFIELD
 (() => {
     json = {
@@ -554,7 +532,9 @@
     });
     globalThis.dispatchEvent(event);
 })();
-const kastor = () => {};
+const kastor = () => {
+    /* see public/index.html */
+};
 kastor("register||");
 kastor("landing|hasSocialLogin|", true);
 kastor("landing|loginRegister|", "Creation login");
@@ -563,3 +543,6 @@ kastor("landing|layout|", "popup-full");
 kastor("landing|--btn-bg-color|", "rgba(129, 183, 84, 1)");
 kastor("landing|--animation|", "slide-from-right");
 kastor("landing|formStyle|", "label-go-down");
+const arr = [...Array(10).keys()].map((e) => `item_${e}`);
+kastor("register|choiceList|", arr, "register|hasChoice|", "setting:update");
+kastor("register|hasMultiLine|", true);
