@@ -8,24 +8,23 @@ let FORM, BTN;
 
 const multiChoiceSelector = "multi-choice";
 
-const getSelector = (tag) => `
+const getTagOrMetafield = (tag) => `
     [data-is-tag='${tag === "tag"}']:checked,
     [type='text'][data-is-tag='${tag === "tag"}'],
     [type='date'][data-is-tag='${tag === "tag"}']
 `;
 
 const storeTags = () => {
-    const sel = getSelector("tag");
-    const els = Array.from(FORM.querySelectorAll(sel));
-
-    const tags = els.map((el) => `${el.getAttribute("data-tag")}:${el.value}`);
+    const tag = getTagOrMetafield("tag");
+    const arr = Array.from(FORM.querySelectorAll(tag));
+    const tags = arr.map((el) => `${el.getAttribute("data-tag")}:${el.value}`);
     $q('[name="customer[tags]"]').value = tags.join(", ");
 };
 
 const storeMetafield = () => {
-    const sel = getSelector("metafield");
-    const els = Array.from(FORM.querySelectorAll(sel));
-    const metafields = els.map((el) => {
+    const meta = getTagOrMetafield("metafield");
+    const arr = Array.from(FORM.querySelectorAll(meta));
+    const metafields = arr.map((el) => {
         return {
             namespace: el.getAttribute("data-namespace"),
             key: el.getAttribute("data-key"),

@@ -31,34 +31,34 @@ const showPasswordErrors = () => {
     const pswElem = $q(".hasPassword input");
     const psw = pswElem.value;
     const pswPolicy = JSON.parse(localStorage.getItem(STORAGE_CONFIG))["text"];
-    const errorMsgs = [];
+    const errorNotes = [];
     // TODO refactor!!
     if (psw.length < pswPolicy.pswMinLength)
-        errorMsgs.push(pswPolicy.pswMinLengthErr);
+        errorNotes.push(pswPolicy.pswMinLengthErr);
     if (psw.length > pswPolicy.pswMaxLength)
-        errorMsgs.push(pswPolicy.pswMaxLengthErr);
+        errorNotes.push(pswPolicy.pswMaxLengthErr);
     if (pswPolicy.pswUppercase && !/(?=.*[A-Z])/.test(psw))
-        errorMsgs.push(pswPolicy.pswUppercaseErr);
+        errorNotes.push(pswPolicy.pswUppercaseErr);
     if (pswPolicy.hasPswNumber && !/(?=.*\d)/.test(psw))
-        errorMsgs.push(pswPolicy.pswNumberErr);
+        errorNotes.push(pswPolicy.pswNumberErr);
     if (pswPolicy.hasPswSpecialCharacter && !/(?=.*[\W|_])/.test(psw))
-        errorMsgs.push(pswPolicy.pswSpecialCharacterErr);
+        errorNotes.push(pswPolicy.pswSpecialCharacterErr);
     if (pswPolicy.hasPswUppercase && !/[A-Z]/.test(psw))
-        errorMsgs.push(pswPolicy.pswUppercaseErr);
+        errorNotes.push(pswPolicy.pswUppercaseErr);
     const exclamationLabel = getErrorLabel(pswElem);
-    if (errorMsgs.length === 0) {
+    if (errorNotes.length === 0) {
         exclamationLabel.style.display = "none";
         return null;
     }
     exclamationLabel.innerHTML = exclamationLabel.innerHTML.split("</i>")[0];
     exclamationLabel.style.display = "block";
-    exclamationLabel.append(errorMsgs[0]);
+    exclamationLabel.append(errorNotes[0]);
 };
 
 exports.isFormFilled = (form) =>
     Array.from(form.querySelectorAll("input[required]")).every((e) => e.value);
 
-const hideErrorMsgs = () =>
+const hideErrors = () =>
     $qq(".label-error").forEach((e) => (e.style.display = "none"));
 
 const areErrors = () => {
@@ -67,7 +67,7 @@ const areErrors = () => {
 };
 
 exports.areInvalidInputs = () => {
-    hideErrorMsgs();
+    hideErrors();
     showPasswordErrors();
     showDateError();
     return areErrors();

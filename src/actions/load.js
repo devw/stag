@@ -18,10 +18,10 @@ const initContainer = () => {
     $q(`.js-close`).addEventListener("click", closeApp);
 };
 
-const placePopover = (e, dom) => {
-    const shift = parseInt(getComputedStyle(dom).getPropertyValue("width"));
-    dom.style.setProperty("left", `${e.clientX - shift / 2}px`);
-    dom.style.setProperty("top", `${e.clientY + 20}px`);
+const placePopover = (e, el) => {
+    const shift = parseInt(getComputedStyle(el).getPropertyValue("width"));
+    el.style.setProperty("left", `${e.clientX - shift / 2}px`);
+    el.style.setProperty("top", `${e.clientY + 20}px`);
 };
 
 const openAccount = (e) => {
@@ -32,9 +32,9 @@ const openAccount = (e) => {
         e?.stopPropagation();
         document.body.classList.add("remove-scrolling");
         togglePage(IDs.LANDING_ID);
-        const dom = $q(`#${IDs.CONTAINER_ID}`);
-        dom.style.setProperty("display", "flex");
-        if (dom.classList.contains("popover")) placePopover(e, dom);
+        const el = $q(`#${IDs.CONTAINER_ID}`);
+        el.style.setProperty("display", "flex");
+        if (el.classList.contains("popover")) placePopover(e, el);
     }
 };
 exports.openAccount = openAccount;
