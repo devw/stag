@@ -30,14 +30,13 @@ exports.render = render;
 
 exports.parseConfiguration = (config) => {
     const { text } = config;
-    // TODO too code repetition
-    // config.text.isChoiceTag = text.isChoiceTag === "hasTag" ? true : false;
 
     config.text?.choiceBlocks?.forEach(
-        (e) => (e.isChoiceTag = e.isChoiceTag === "hasTag" ? true : false)
+        (e) => (e.isTag = e.isTag === "hasTag" ? true : false)
     );
-    config.text.isBirthTag = text.isBirthTag === "hasTag" ? true : false;
-    config.text.isDateTag = text.isDateTag === "hasTag" ? true : false;
+    config.text?.dateBlocks?.forEach(
+        (e) => (e.isTag = e.isTag === "hasTag" ? true : false)
+    );
     text?.orderedBlock?.forEach((e) => (config.text[e] = true));
     return config;
 };

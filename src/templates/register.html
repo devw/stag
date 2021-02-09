@@ -2,18 +2,13 @@
 <div class="sub-title text t-4">{{fillInfoToCreateAccount}}</div>
 
 <form
-    method="post"
+    method="POST"
     accept-charset="UTF-8"
     novalidate="novalidate"
     class="{{formStyle}}"
     blocks_order="{{blocks_order}}"
 >
-    <input
-        type="hidden"
-        name="return_to"
-        value="{{redirectAfterRegister ||
-    '/'}}"
-    />
+    <input type="hidden" name="return_to" value="{{redirectAfterRegister}}" />
     <input type="hidden" name="customer[tags]" value="" />
 
     <input type="hidden" name="form_type" value="create_customer" /><input
@@ -40,31 +35,6 @@
     </div>
     {{/inputBlocks}}
 
-    <!--date blocks-->
-
-    {{#dateBlocks}}
-    <div block-id="{{id}}">
-        <input
-            class="input-text js-date"
-            required
-            type="text"
-            data-is-tag="{{isBirthTag}}"
-            date-min="{{birthMin}}"
-            date-max="{{birthMax}}"
-            placeholder="{{placeholder}}"
-            data-tag="{{birthTag}}"
-            data-namespace="{{birthNamespace}}"
-            data-key="{{birthKey}}"
-        />
-        <label>{{placeholder}}</label>
-        {{#error}}
-        <label class="label-error"
-            ><i class="fa {{errorIcon}}"></i>{{error}}
-        </label>
-        {{/error}}
-    </div>
-    {{/dateBlocks}}
-
     <!-- loop TODO remove hasChoice or choice-block -->
     {{#choiceBlocks}}
     <div
@@ -76,10 +46,10 @@
             <input
                 type="checkbox"
                 value="{{.}}"
-                data-is-tag="{{isChoiceTag}}"
-                data-tag="{{choiceTag}}"
-                data-namespace="{{choiceNamespace}}"
-                data-key="{{choiceKey}}"
+                data-is-tag="{{isTag}}"
+                data-tag="{{tag}}"
+                data-namespace="{{namespace}}"
+                data-key="{{key}}"
             />
             <label>{{.}}</label>
         </div>
@@ -87,28 +57,32 @@
     </div>
     {{/choiceBlocks}}
 
-    <!-- !loop -->
+    <!--date blocks-->
 
-    <!-- {{#hasBirth}}
-    <div class="hasBirth js-date">
+    {{#dateBlocks}}
+    <div block-id="{{id}}">
         <input
-            class="input-text"
+            class="input-text js-date"
             required
             type="text"
-            data-is-tag="{{isBirthTag}}"
-            date-min="{{birthMin}}"
-            date-max="{{birthMax}}"
-            placeholder="{{birthPlaceholder}}"
-            data-tag="{{birthTag}}"
-            data-namespace="{{birthNamespace}}"
-            data-key="{{birthKey}}"
+            data-is-tag="{{isTag}}"
+            date-min="{{dateMin}}"
+            date-max="{{dateMax}}"
+            placeholder="{{placeholder}}"
+            data-tag="{{tag}}"
+            data-namespace="{{namespace}}"
+            data-key="{{key}}"
         />
-        <label>{{birthPlaceholder}}</label>
+        <label>{{placeholder}}</label>
+        {{#error}}
         <label class="label-error"
-            ><i class="fa {{errorIcon}}"></i>{{birthError}}</label
-        >
+            ><i class="fa {{errorIcon}}"></i>{{error}}
+        </label>
+        {{/error}}
     </div>
-    {{/hasBirth}} -->
+    {{/dateBlocks}}
+
+    <!-- !loop -->
 
     <!-- Subscribe newsletter checkbox -->
     {{#hasNewsletter }}
@@ -121,23 +95,6 @@
     </div>
     {{/hasNewsletter }}
 
-    <!-- hasDate field -->
-    {{#hasDate }}
-    <div class="hasDate">
-        <input
-            required
-            type="text"
-            class="input-text"
-            placeholder="{{datePlaceholder}}"
-            data-is-tag="{{isDateTag}}"
-            data-dateError="{{dateError}}"
-            data-tag="{{dateTag}}"
-            data-namespace="{{dateNamespace}}"
-            data-key="{{dateKey}}"
-        />
-        <label>{{datePlaceholder}}</label>
-    </div>
-    {{/hasDate }}
     <button class="btn btn-primary" disabled="">
         {{registerAccount}} &nbsp;<i class="fa fa-spinner fa-spin off"></i>
     </button>

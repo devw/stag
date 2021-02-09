@@ -554,7 +554,7 @@ kastor(
     "setting:update",
     id
 );
-
+let json;
 //remove a block -> YES
 kastor(undefined, undefined, "register|hasFirstName|", "block:remove");
 
@@ -596,3 +596,10 @@ kastor({
         "4901918c-aadc-45fe-8996-32d27ac72436",
     ],
 });
+
+json = {
+    block_id: "910facc5-6891-4924-9c1f-4f0766b2a993",
+    setting_id: "register|error|",
+    value: "Your age should be between 0 and 99.,m",
+};
+kastor(json);
