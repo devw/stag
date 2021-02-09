@@ -94,6 +94,10 @@
     }
 
     // CHOICE BLOCK
+    .choice-block {
+        margin: 0.4em;
+    }
+
     .choice-block > div {
         display: inline-block;
     }
@@ -113,15 +117,12 @@
     }
 
     .choice-block input[type="checkbox"] {
-        width: 1.1em;
-        height: 1.1em;
         background-color: white;
         vertical-align: middle;
         border: 1px solid #ddd;
         -webkit-appearance: none;
         outline: none;
         cursor: pointer;
-        padding: 10px;
     }
     .choice-block input[type="checkbox"]:checked {
         background-color: gray;
@@ -129,6 +130,7 @@
 
     .choice-block.single-choice input[type="checkbox"] {
         border-radius: 50%;
+        padding: 0.7em;
     }
 
     .choice-block.multi-choice input[type="checkbox"] {

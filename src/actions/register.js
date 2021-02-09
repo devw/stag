@@ -1,6 +1,12 @@
 const { IDs } = require("../config");
 const { REGISTER_ID, LANDING_ID } = IDs;
-const { togglePage, $q, toggleSecret, toggleLoading } = require("../utils");
+const {
+    togglePage,
+    $q,
+    $qq,
+    toggleSecret,
+    toggleLoading,
+} = require("../utils");
 const { isFormFilled, areInvalidInputs, sortBlocks } = require("../utils");
 const { storeMetafieldIntoShopify } = require("../services");
 const { STORAGE_METAFIELD } = require("../config");
@@ -67,16 +73,16 @@ const formatDate = ({ target }) => (target.type = "date");
 
 exports.init = () => {
     FORM = $q(`#${REGISTER_ID} form`);
+    console.log(FORM);
     BTN = FORM.querySelector("button");
     sortBlocks();
     FORM.addEventListener("input", toggleButton);
     FORM.addEventListener("submit", onSubmit);
     FORM.querySelector(".js-show-psw")?.addEventListener("click", toggleSecret);
-    FORM.querySelector(".choice-block")?.addEventListener(
-        "click",
-        handleChoiceBlock
+    $qq(".choice-block")?.forEach((e) =>
+        e.addEventListener("click", handleChoiceBlock)
     );
-    $q(".js-date input")?.addEventListener("focus", formatDate);
+    $q(".js-date")?.addEventListener("focus", formatDate);
     storeMetafieldIntoShopify();
     $q(`#${REGISTER_ID} .js-back`).addEventListener("click", () =>
         togglePage(LANDING_ID)

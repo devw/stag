@@ -23,7 +23,7 @@
                 function asyncLoad() {
                     var urls = [
                         // "https://login-popup-dev-theme.s3.amazonaws.com/bundle.js?t=1",
-                        "./st.js",
+                        "./st.js?a=2",
                     ];
                     for (var i = 0; i < urls.length; i++) {
                         var s = document.createElement("script");
@@ -41,18 +41,22 @@
                 }
             })();
 
-            globalThis.kastor = (
+            globalThis.kastor = ({
                 setting_id,
                 value,
                 block_type_id,
-                target = null
-            ) => {
+                target,
+                block_id,
+                order,
+            }) => {
                 const json = {
                     data: {
                         data: {
+                            block_id,
                             block_type_id,
                             setting_id,
                             value,
+                            order,
                         },
                         target,
                     },

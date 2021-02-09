@@ -9,21 +9,43 @@
                 display: flex;
                 flex-direction: column;
             }
+            form {
+                display: flex;
+                flex-direction: column;
+            }
         </style>
     </head>
     <body>
+        <form action="">
+            <div block-id="a1">a1</div>
+            <div block-id="a2">a2</div>
+            <div block-id="a3">a3</div>
+            <div block-id="a4">a4</div>
+        </form>
+        <hr />
         <div class="first">1st</div>
         <div class="second">2nd</div>
         <div class="third">3rd</div>
         <div class="fourth">4th</div>
     </body>
     <script>
-        const a = ["first", "second", "third", "fourth"];
         const $ = document.querySelector.bind(document);
-        const shuffled = a.sort(() => Math.random() - 0.5);
-        shuffled.forEach((e, i) => {
-            const selector = `.${e}`;
+
+        // ordering based on data-id attribute
+        const ids = ["a1", "a2", "a3", "a4"];
+        const newIds = ids.sort(() => Math.random() - 0.5);
+
+        newIds.forEach((e, i) => {
+            const selector = `[block-id='${e}']`;
             $(selector).style.setProperty("order", i);
         });
+
+        // fordering based on class name
+        // const a = ["first", "second", "third", "fourth"];
+        // const shuffled = a.sort(() => Math.random() - 0.5);
+        // shuffled.forEach((e, i) => {
+        //     const selector = `.${e}`;
+        //     $(selector).style.setProperty("order", i);
+        // });
     </script>
 </html>

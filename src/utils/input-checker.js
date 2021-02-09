@@ -1,10 +1,12 @@
 const { $q, $qq } = require("./toggle");
 const { STORAGE_CONFIG } = require("../config");
 
-const getErrorLabel = (e) => e.parentElement.querySelector(".label-error");
+const getErrorLabel = (e) => {
+    return e.parentElement.querySelector(".label-error");
+};
 
 const showDateError = () => {
-    const dateElem = $q(".hasBirth input");
+    const dateElem = $q(".js-date");
     if (!dateElem) return null;
     const { minDate, maxDate, customerAge } = getDateAttr(dateElem);
     // TODO refactoring
@@ -28,7 +30,7 @@ const getDateAttr = (dateElem) => ({
 });
 
 const showPasswordErrors = () => {
-    const pswElem = $q(".hasPassword input");
+    const pswElem = $q("[name='customer[password]']");
     const psw = pswElem.value;
     const pswPolicy = JSON.parse(localStorage.getItem(STORAGE_CONFIG))["text"];
     const errorNotes = [];

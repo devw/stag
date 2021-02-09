@@ -2,35 +2,18 @@ const {
     togglePage,
     $q,
     $qq,
-    getBlocksAttr,
     updateCss,
+    sortBlocks,
 } = require("../utils/toggle");
 
-const { IDs } = require("../config");
+const { IDs, STORAGE_CONFIG } = require("../config");
 // TODO you should find a more robust solution the globalThis.render
+let TEXT;
 
 const changePage = (page) => {
-    // this disables the logic of popup
-    // const { loadActions } = require("../actions/load");
     togglePage(page);
+    sortBlocks();
     $q(`#${IDs.CONTAINER_ID}`).style.setProperty("display", "flex");
-    // loadActions();
-};
-
-const getIdsVsBlocks = (json) => {
-    const idsVsBlocks = Object.keys(json).map((e) => ({
-        [Object.keys(json[e])[0]]: e,
-    }));
-    return idsVsBlocks.filter((e) => Object.keys(e)[0] !== "undefined");
-};
-
-const getOrderedBlocks = ({ blocks, order }) => {
-    let idsVsBlocks = getIdsVsBlocks(blocks);
-    idsVsBlocks = idsVsBlocks.sort(
-        (a, b) =>
-            order.indexOf(Object.keys(a)[0]) - order.indexOf(Object.keys(b)[0])
-    );
-    return idsVsBlocks.map((e) => Object.values(e)[0].split("|")[1]);
 };
 
 const getData = (event) => {
@@ -63,7 +46,7 @@ const updateNoBlock = (event) => {
     if (/^--/.test(key)) {
         updateCss({ [key]: valueAndUnit });
     } else
-        globalThis.render({
+        render({
             [key]: valueAndUnit == "false" ? false : valueAndUnit,
         });
 
@@ -78,10 +61,16 @@ const updateNoBlock = (event) => {
 const showWrongPsw = () => ($q(".js-signin-err").style.display = "block");
 
 const showPswError = (message) => {
-    const exclamationLabel = $q(".hasPassword .label-error");
+    const e = "[name='customer[email]']";
+    const exclamationLabel = $q(e).parentNode.querySelector(".label-error");
     exclamationLabel.innerHTML = exclamationLabel.innerHTML.split("</i>")[0];
     exclamationLabel.style.display = "block";
     exclamationLabel.append(message);
+};
+
+const render = (newText) => {
+    const text = updateText(newText);
+    globalThis.render(text);
 };
 
 const showErrors = () => {
@@ -90,39 +79,84 @@ const showErrors = () => {
     showPswError("Password should have at least 5 characters!");
 };
 
+const updateText = (newText) => {
+    const key = Reflect.ownKeys(newText)[0];
+    TEXT[key] = newText[key];
+    return TEXT;
+};
+
 const kastorHandler = (event) => {
+    if (!TEXT) TEXT = JSON.parse(localStorage.getItem(STORAGE_CONFIG))["text"];
     //reorder blocks
     console.log("kastorHandler: ", event);
     const target = getTarget(event);
+    const data = getData(event);
+    const { block_type_id, block_settings, block_id } = data;
+
     if (target === "block:reorder") {
-        const orderBlocks = getOrderedBlocks(getData(event));
-        globalThis.render({ orderedBlock: orderBlocks });
-        changePage(IDs.REGISTER_ID);
+        const { order } = data;
+        order.forEach((e, i) => {
+            const selector = `[block-id='${e}']`;
+            $q(selector)?.style?.setProperty("order", i);
+        });
+        $q(`#${IDs.REGISTER_ID} form button`).style.order = 99;
         return null;
     }
-    //remove block
-    if (target === "block:remove") {
-        const { block_type_id } = getData(event);
-        const blockToDel = block_type_id.split("|")[1];
-        const filteredBlocks = getBlocksAttr().filter((e) => e !== blockToDel);
-        globalThis.render({ orderedBlock: filteredBlocks });
-        globalThis.render({ [blockToDel]: false });
-        changePage(IDs.REGISTER_ID);
+
+    //add a input Blocks
+    if (/inputBlocks/.test(block_type_id)) {
+        const { value, setting_id } = data;
+
+        if (target === "block:add") {
+            if (!TEXT.inputBlocks) TEXT.inputBlocks = [];
+            TEXT.inputBlocks.push({
+                id: block_id,
+                placeholder: "",
+            });
+        } else if (target === "setting:update") {
+            const key = setting_id.split("|")[1];
+            const block = TEXT.inputBlocks.find((e) => e.id === block_id);
+            block[key] = value;
+        } else if (target === "block:remove") {
+            TEXT.inputBlocks = TEXT.inputBlocks.filter(
+                (e) => e.id !== block_id
+            );
+        }
+        globalThis.render(TEXT);
+
+        //TODO do you need changePage?
+        changePage("register");
         return null;
     }
-    //add a block
-    if (target === "block:add") {
-        const { block_type_id, block_settings } = getData(event);
-        const [page, blockToAdd] = block_type_id.split("|");
-        const key = Object.keys(block_settings)[0].split("|")[1];
-        const value = Object.values(block_settings)[0];
-        globalThis.render({ [key]: value });
-        globalThis.render({ [blockToAdd]: true });
-        changePage(page);
-        return null;
+    // adding or updating the block
+    if (/hasChoice/.test(block_type_id)) {
+        //TODO implement this logic for all blocks
+        const { value, setting_id } = data;
+        if (target === "block:remove") {
+            TEXT.choiceBlocks = TEXT.choiceBlocks.filter(
+                (e) => e.id !== block_id
+            );
+        } else if (target === "setting:update") {
+            const key = setting_id.split("|")[1];
+            const block = TEXT.choiceBlocks.find((e) => e.id === block_id);
+            block[key] = value;
+        } else {
+            if (!TEXT.choiceBlocks) TEXT.choiceBlocks = [];
+            TEXT.choiceBlocks.push({ id: block_id });
+        }
+
+        globalThis.render(TEXT);
     }
 
     updateNoBlock(event);
 };
-
+// cursor: not-allowed; pointer-events:none;
 globalThis.addEventListener("message", kastorHandler);
+setTimeout(() => {
+    const container = $q(`.content`);
+    changePage("landing");
+    if (!/http:\/\/localhost/.test(location.origin)) {
+        container.style.setProperty("pointer-events", "none");
+        container.parentNode.style.setProperty("cursor", "not-allowed");
+    }
+}, 0);

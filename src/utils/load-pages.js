@@ -1,20 +1,22 @@
 const { IDs } = require("../config");
 const Mustache = require("mustache");
 const { pages, container } = require("../templates");
-let TEXT = {};
+const { $q } = require("../utils/toggle");
 
-const updateText = (text) => {
-    const hasManyKeys = Reflect.ownKeys(text).length > 1;
-    const firstKey = Reflect.ownKeys(text)[0];
-    if (hasManyKeys) TEXT = text;
-    else TEXT[firstKey] = text[firstKey];
-
-    return TEXT;
+const updateInputFields = () => {
+    // you should moce this piece of code in render method otherwise it will be not visible on kastor
+    const pswElem = $q("[name='customer[password]']");
+    let newNode = document.createElement("i");
+    newNode.classList.add("fa", "fa-eye", "js-show-psw");
+    pswElem.type = "password";
+    pswElem.parentNode.insertBefore(newNode, pswElem);
+    const emailElem = $q("[name='customer[email]']");
+    emailElem.type = "email";
+    console.log(pswElem);
 };
 
 const render = (text) => {
     const { getRootNode } = require("../utils");
-    text = updateText(text);
     const partials = Object.keys(pages).map((id) => ({
         id: id,
         html: Mustache.render(pages[id], text),
@@ -22,13 +24,18 @@ const render = (text) => {
     text.partials = partials;
     text.CONTAINER_ID = IDs.CONTAINER_ID;
     getRootNode().innerHTML = Mustache.render(container, text);
+    updateInputFields();
 };
 exports.render = render;
 
 exports.parseConfiguration = (config) => {
     const { text } = config;
     // TODO too code repetition
-    config.text.isChoiceTag = text.isChoiceTag === "hasTag" ? true : false;
+    // config.text.isChoiceTag = text.isChoiceTag === "hasTag" ? true : false;
+
+    config.text?.choiceBlocks?.forEach(
+        (e) => (e.isChoiceTag = e.isChoiceTag === "hasTag" ? true : false)
+    );
     config.text.isBirthTag = text.isBirthTag === "hasTag" ? true : false;
     config.text.isDateTag = text.isDateTag === "hasTag" ? true : false;
     text?.orderedBlock?.forEach((e) => (config.text[e] = true));

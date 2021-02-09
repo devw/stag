@@ -6,7 +6,7 @@
     accept-charset="UTF-8"
     novalidate="novalidate"
     class="{{formStyle}}"
-    data-blocks="{{orderedBlock}}"
+    blocks_order="{{blocks_order}}"
 >
     <input
         type="hidden"
@@ -22,10 +22,54 @@
         value="✓"
     />
 
-    {{#hasChoice}}
-    <!-- loop -->
+    {{#inputBlocks}}
+    <div block-id="{{id}}">
+        <input
+            required
+            type="text"
+            class="input-text"
+            name="{{name}}"
+            placeholder="{{placeholder}}"
+        />
+        <label>{{placeholder}}</label>
+        {{#error}}
+        <label class="label-error"
+            ><i class="fa {{errorIcon}}"></i>{{error}}
+        </label>
+        {{/error}}
+    </div>
+    {{/inputBlocks}}
+
+    <!--date blocks-->
+
+    {{#dateBlocks}}
+    <div block-id="{{id}}">
+        <input
+            class="input-text js-date"
+            required
+            type="text"
+            data-is-tag="{{isBirthTag}}"
+            date-min="{{birthMin}}"
+            date-max="{{birthMax}}"
+            placeholder="{{placeholder}}"
+            data-tag="{{birthTag}}"
+            data-namespace="{{birthNamespace}}"
+            data-key="{{birthKey}}"
+        />
+        <label>{{placeholder}}</label>
+        {{#error}}
+        <label class="label-error"
+            ><i class="fa {{errorIcon}}"></i>{{error}}
+        </label>
+        {{/error}}
+    </div>
+    {{/dateBlocks}}
+
+    <!-- loop TODO remove hasChoice or choice-block -->
+    {{#choiceBlocks}}
     <div
-        class="hasChoice choice-block single-choice {{#hasMultiLine}}multi-line{{/hasMultiLine }}"
+        block-id="{{id}}"
+        class="choice-block single-choice {{#hasMultiLine}}multi-line{{/hasMultiLine }}"
     >
         {{#choiceList }}
         <div>
@@ -41,78 +85,11 @@
         </div>
         {{/choiceList}}
     </div>
-    {{/hasChoice}}
+    {{/choiceBlocks}}
 
-    <!-- FirstName field -->
-    {{#hasFirstName }}
-    <div class="hasFirstName">
-        <input
-            required
-            type="text"
-            class="input-text"
-            name="customer[first_name]"
-            placeholder="{{yourFirstName}}"
-        />
-        <label>{{yourFirstName}}</label>
-    </div>
-    {{/hasFirstName }}
+    <!-- !loop -->
 
-    <!-- LastName field -->
-    {{#hasLastName }}
-    <div class="hasLastName">
-        <input
-            required
-            type="text"
-            class="input-text"
-            name="customer[last_name]"
-            placeholder="{{yourLastName}}"
-        />
-        <label>{{yourLastName}}</label>
-    </div>
-    {{/hasLastName }}
-
-    <!-- Telephone field -->
-    {{#hasTelephone }}
-    <div class="hasTelephone">
-        <input
-            required
-            type="text"
-            class="input-text"
-            placeholder="{{yourTelephone}}"
-            name="address[phone]"
-        />
-        <label>{{yourTelephone}}</label>
-    </div>
-    {{/hasTelephone }}
-
-    <!-- Email field -->
-    <div class="hasEmail">
-        <input
-            required
-            type="email"
-            placeholder="{{yourEmail}}"
-            name="customer[email]"
-            class="input-text"
-        />
-        <label>{{yourEmail}}</label>
-    </div>
-
-    <!-- Password field -->
-    <div class="hasPassword">
-        <i class="fa fa-eye js-show-psw"></i>
-        <input
-            required
-            type="password"
-            name="customer[password]"
-            class="input-text"
-            placeholder="{{yourPassword}}"
-            autocomplete="on"
-        />
-        <label>{{yourPassword}}</label>
-        <label class="label-error"><i class="fa {{errorIcon}}"></i> </label>
-    </div>
-
-    {{#hasBirth}}
+    <!-- {{#hasBirth}}
     <div class="hasBirth js-date">
         <input
             class="input-text"
@@ -131,7 +108,7 @@
             ><i class="fa {{errorIcon}}"></i>{{birthError}}</label
         >
     </div>
-    {{/hasBirth}}
+    {{/hasBirth}} -->
 
     <!-- Subscribe newsletter checkbox -->
     {{#hasNewsletter }}

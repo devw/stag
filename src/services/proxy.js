@@ -8,8 +8,8 @@ const SHOP = globalThis?.Shopify?.shop;
 
 exports.getCustomerStatus = async (email) => {
     const endpoint = SHOP
-        ? `https://${SHOP}/${PROXY_PATH}/get-customer-status/${email}?`
-        : `http://localhost:3003/dev/get-customer-status/${email}?shop=popup-login.myshopify.com&`;
+        ? `${location.origin}/${PROXY_PATH}/customer-status/${email}?`
+        : `http://localhost:3003/dev/customer-status/${email}?shop=popup-login.myshopify.com&`;
     const promise = await fetch(`${endpoint}t=${Date.now()}`).catch((err) => {
         throw `error getCustomerStatus: , ${err}`;
     });
@@ -32,7 +32,7 @@ exports.storeMetafieldIntoShopify = async () => {
 
     if (!areThereMetafields) return null;
 
-    const endpoint = `https://${SHOP}/${PROXY_PATH}/set-metafield-in-shopify`;
+    const endpoint = `${location.origin}/${PROXY_PATH}/metafield`;
     const params = {
         method: "POST",
         headers: {

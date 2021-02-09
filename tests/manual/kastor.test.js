@@ -532,10 +532,37 @@
     });
     globalThis.dispatchEvent(event);
 })();
-const kastor = () => {
-    /* see public/index.html */
+const kastor = (setting_id, value, block_type_id, target, block_id) => {
+    // param: setting_id, value, block_type_id, (target = null), block_id
 };
-kastor("register||");
+
+let id = "ef187c8e-cd76-4c60-a8ea-a1925723a57f";
+// adding the choice list block
+kastor(undefined, null, "register|hasChoice|", "block:add", id);
+// updating the choice list block
+kastor(
+    "register|choiceList|",
+    ["o1", "o2"],
+    "register|hasChoice|",
+    "setting:update",
+    id
+);
+kastor(
+    "register|hasMultiLine|",
+    true,
+    "register|hasChoice|",
+    "setting:update",
+    id
+);
+
+//remove a block -> YES
+kastor(undefined, undefined, "register|hasFirstName|", "block:remove");
+
+//TODO remove choice block
+id = "ef187c8e-cd76-4c60-a8ea-a1925723a57f";
+kastor(undefined, undefined, "register|hasChoice|", "block:remove", id);
+
+kastor({ setting_id: "register||" });
 kastor("landing|hasSocialLogin|", true);
 kastor("landing|loginRegister|", "Creation login");
 kastor("signin|wrongPsw|", "Incorrect password. Please, try again! ");
@@ -548,3 +575,24 @@ kastor("register|choiceList|", arr, "register|hasChoice|", "setting:update");
 kastor("register|hasMultiLine|", true);
 kastor("register|--img-position|", "row");
 kastor("register|--img-position|", "row-reverse");
+
+// adding an input field
+id = "3d0d01d9-5359-42d9-83e3-f555191922a6";
+kastor(undefined, undefined, "register|inputBlocks|", "block:add", id);
+kastor(
+    "register|placeholder|",
+    "Votre Nomaas",
+    "register|inputBlocks|",
+    "setting:update",
+    id
+);
+
+kastor(undefined, undefined, "register|inputBlocks|", "block:remove", id);
+
+kastor({
+    target: "block:reorder",
+    order: [
+        "b29ba912-60e2-47d1-aace-7dbe3a1877a4",
+        "4901918c-aadc-45fe-8996-32d27ac72436",
+    ],
+});

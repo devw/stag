@@ -4,7 +4,7 @@ const getRootNode = () => document.querySelector(`#${IDs.APP_ID}`);
 const $q = (leaf) => getRootNode().querySelector(leaf);
 
 const getBlocksAttr = () => {
-    const blocks = $q(`#${IDs.REGISTER_ID} form`).getAttribute("data-blocks");
+    const blocks = $q(`#${IDs.REGISTER_ID} form`).getAttribute("blocks_order");
     return blocks.length > 0 ? blocks.split(",") : [];
 };
 
@@ -19,7 +19,11 @@ const filterCss = (view) => {
 
 exports.sortBlocks = () => {
     const blocks = getBlocksAttr();
-    blocks.forEach((e, i) => $q(`#${e}`)?.style?.setProperty("order", i));
+    blocks.forEach((e, i) => {
+        const selector = `[block-id='${e}']`;
+        $q(selector)?.style?.setProperty("order", i);
+    });
+    $q(`#${IDs.REGISTER_ID} form button`).style.order = 99;
 };
 
 exports.updateCss = (cssVars) => {
