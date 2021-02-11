@@ -7,6 +7,8 @@ const {
 } = require("../utils/toggle");
 
 const { IDs, STORAGE_CONFIG } = require("../config");
+const { loadActions } = require("../actions/load");
+
 // TODO you should find a more robust solution the globalThis.render
 let TEXT;
 
@@ -14,6 +16,17 @@ const changePage = (page) => {
     togglePage(page);
     sortBlocks();
     $q(`#${IDs.CONTAINER_ID}`).style.setProperty("display", "flex");
+    loadActions();
+    disableBtn();
+};
+
+const disableBtn = () => {
+    $qq("form button").forEach((e) => {
+        e.style.setProperty("pointer-events", "none");
+        e.parentNode.style.setProperty("cursor", "not-allowed");
+    });
+    const closeBtn = $q(".js-close");
+    closeBtn.style.setProperty("pointer-events", "none");
 };
 
 const getData = (event) => {
@@ -54,14 +67,14 @@ const updateNoBlock = (event) => {
 
     // TODO: too fragile check the password policy in this way, you should refactor the code using objects
     if (/^psw.*Err$/.test(key)) showPswError(value);
-    if (/^error$|^--error-/.test(key)) showErrors();
+    if (/^error|^--error-/.test(key)) showErrors();
     if (/^wrongPsw$/.test(key)) showWrongPsw();
 };
 
 const showWrongPsw = () => ($q(".js-signin-err").style.display = "block");
 
 const showPswError = (message) => {
-    const e = "[name='customer[email]']";
+    const e = "[name='customer[password]']";
     const exclamationLabel = $q(e).parentNode.querySelector(".label-error");
     exclamationLabel.innerHTML = exclamationLabel.innerHTML.split("</i>")[0];
     exclamationLabel.style.display = "block";
@@ -91,7 +104,7 @@ const kastorHandler = (event) => {
     console.log("kastorHandler: ", event);
     const target = getTarget(event);
     const data = getData(event);
-    const { block_type_id, block_settings, block_id } = data;
+    const { block_type_id, block_id } = data;
 
     if (target === "block:reorder") {
         const { order } = data;
@@ -99,7 +112,31 @@ const kastorHandler = (event) => {
             const selector = `[block-id='${e}']`;
             $q(selector)?.style?.setProperty("order", i);
         });
-        $q(`#${IDs.REGISTER_ID} form button`).style.order = 99;
+        $q(`#${IDs.REGISTER_ID} form button`).parentNode.style.order = 99;
+        return null;
+    }
+    //TODO refactor
+    if (/dateBlocks/.test(block_type_id)) {
+        const { value, setting_id } = data;
+
+        if (target === "block:add") {
+            if (!TEXT.dateBlocks) TEXT.dateBlocks = [];
+            TEXT.dateBlocks.push({
+                id: block_id,
+                placeholder: "",
+            });
+        } else if (target === "setting:update") {
+            const key = setting_id.split("|")[1];
+            const block = TEXT.dateBlocks.find((e) => e.id === block_id);
+            block[key] = value;
+            if (/^error|^--error-/.test(key)) showErrors();
+        } else if (target === "block:remove") {
+            TEXT.dateBlocks = TEXT.dateBlocks.filter((e) => e.id !== block_id);
+        }
+        globalThis.render(TEXT);
+
+        //TODO do you need changePage?
+        changePage("register");
         return null;
     }
 
@@ -117,6 +154,7 @@ const kastorHandler = (event) => {
             const key = setting_id.split("|")[1];
             const block = TEXT.inputBlocks.find((e) => e.id === block_id);
             block[key] = value;
+            if (/^error|^--error-/.test(key)) showErrors();
         } else if (target === "block:remove") {
             TEXT.inputBlocks = TEXT.inputBlocks.filter(
                 (e) => e.id !== block_id
@@ -129,10 +167,13 @@ const kastorHandler = (event) => {
         return null;
     }
     // adding or updating the block
-    if (/hasChoice/.test(block_type_id)) {
+    if (/choiceBlocks/.test(block_type_id)) {
         //TODO implement this logic for all blocks
         const { value, setting_id } = data;
-        if (target === "block:remove") {
+        if (target === "block:add") {
+            if (!TEXT.choiceBlocks) TEXT.choiceBlocks = [];
+            TEXT.choiceBlocks.push({ id: block_id });
+        } else if (target === "block:remove") {
             TEXT.choiceBlocks = TEXT.choiceBlocks.filter(
                 (e) => e.id !== block_id
             );
@@ -140,23 +181,17 @@ const kastorHandler = (event) => {
             const key = setting_id.split("|")[1];
             const block = TEXT.choiceBlocks.find((e) => e.id === block_id);
             block[key] = value;
-        } else {
-            if (!TEXT.choiceBlocks) TEXT.choiceBlocks = [];
-            TEXT.choiceBlocks.push({ id: block_id });
+            console.log(value);
         }
 
         globalThis.render(TEXT);
+        changePage("register");
+        return null;
     }
 
     updateNoBlock(event);
 };
-// cursor: not-allowed; pointer-events:none;
-globalThis.addEventListener("message", kastorHandler);
-setTimeout(() => {
-    const container = $q(`.content`);
-    changePage("landing");
-    if (!/http:\/\/localhost/.test(location.origin)) {
-        container.style.setProperty("pointer-events", "none");
-        container.parentNode.style.setProperty("cursor", "not-allowed");
-    }
-}, 0);
+if (/config_id/.test(location.href)) {
+    globalThis.addEventListener("message", kastorHandler);
+    setTimeout(() => changePage("landing"), 0);
+}

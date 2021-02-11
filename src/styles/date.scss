@@ -1,0 +1,26 @@
+#login-popup {
+    .no-calendar {
+        .input-text {
+            display: none;
+        }
+    }
+    .calendar {
+        .dropdown-date {
+            display: none;
+        }
+    }
+    .dropdown-date {
+        display: inline-flex;
+        width: 100%;
+        gap: 12px;
+    }
+
+    .dropdown-date select {
+        flex: 1;
+        padding: 0 5px;
+        font-size: 1.1em;
+    }
+    .dropdown-date select:nth-child(odd) {
+        flex: 0.5;
+    }
+}

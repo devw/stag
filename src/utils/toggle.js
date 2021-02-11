@@ -23,7 +23,7 @@ exports.sortBlocks = () => {
         const selector = `[block-id='${e}']`;
         $q(selector)?.style?.setProperty("order", i);
     });
-    $q(`#${IDs.REGISTER_ID} form button`).style.order = 99;
+    $q(`#${IDs.REGISTER_ID} form button`).parentNode.style.order = 99;
 };
 
 exports.updateCss = (cssVars) => {

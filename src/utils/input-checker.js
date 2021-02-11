@@ -5,11 +5,16 @@ const getErrorLabel = (e) => {
     return e.parentElement.querySelector(".label-error");
 };
 
-const showDateError = () => {
-    const dateElem = $q(".js-date");
-    if (!dateElem) return null;
-    const { minDate, maxDate, customerAge } = getDateAttr(dateElem);
-    // TODO refactoring
+const showDateErrors = () => {
+    $qq(".js-date").forEach((e) => {
+        showDateError(e);
+    });
+};
+
+const showDateError = (e) => {
+    console.log(getDateAttr(e));
+    const { minDate, maxDate, customerAge, error } = getDateAttr(e);
+    if (!error) return null;
     if (minDate > customerAge || maxDate < customerAge)
         getErrorLabel(dateElem).style.display = "block";
 };
@@ -23,9 +28,12 @@ const getCustomerAge = (dateElem) => {
     const days = Math.trunc((nowSec - userSec) / MSEC_IN_DAY);
     return days / DAY_IN_YEAR;
 };
+
+//TODO to refactor
 const getDateAttr = (dateElem) => ({
-    minDate: dateElem.getAttribute("date-min"),
-    maxDate: dateElem.getAttribute("date-max"),
+    minDate: dateElem.getAttribute("start"),
+    maxDate: dateElem.getAttribute("end"),
+    error: dateElem.getAttribute("error"),
     customerAge: getCustomerAge(dateElem),
 });
 
@@ -71,7 +79,7 @@ const areErrors = () => {
 exports.areInvalidInputs = () => {
     hideErrors();
     showPasswordErrors();
-    showDateError();
+    showDateErrors();
     return areErrors();
 };
 

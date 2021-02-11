@@ -8,6 +8,7 @@ const {
     toggleLoading,
 } = require("../utils");
 const { isFormFilled, areInvalidInputs, sortBlocks } = require("../utils");
+const { init: setDatePicker } = require("../utils/date");
 const { storeMetafieldIntoShopify } = require("../services");
 const { STORAGE_METAFIELD } = require("../config");
 let FORM, BTN;
@@ -19,6 +20,28 @@ const getTagOrMetafield = (tag) => `
     [type='text'][data-is-tag='${tag === "tag"}'],
     [type='date'][data-is-tag='${tag === "tag"}']
 `;
+
+const onChoiceClick = ({ target, currentTarget }) => {
+    if (!currentTarget.classList.contains(multiChoiceSelector)) {
+        currentTarget.querySelectorAll("[type='checkbox']").forEach((e) => {
+            e.checked = false;
+        });
+        target.checked = true;
+    }
+};
+
+const onSubmit = async (e) => {
+    e.preventDefault();
+    if (await areInvalidInputs()) return null;
+    toggleLoading(BTN);
+    storeTags();
+    storeMetafield();
+    const { sendHttpRequest } = require("../services");
+    FORM.action = "/account";
+    const resp = await sendHttpRequest("POST", e);
+    toggleLoading(BTN);
+    console.log("shopify response", resp);
+};
 
 const storeTags = () => {
     const tag = getTagOrMetafield("tag");
@@ -42,49 +65,24 @@ const storeMetafield = () => {
     console.log("localStorage", localStorage.getItem(STORAGE_METAFIELD));
 };
 
-const handleChoiceBlock = ({ target, currentTarget }) => {
-    if (!currentTarget.classList.contains(multiChoiceSelector)) {
-        currentTarget.querySelectorAll("[type='checkbox']").forEach((e) => {
-            e.checked = false;
-        });
-        target.checked = true;
-    }
-};
 const toggleButton = () => {
     isFormFilled(FORM)
         ? BTN.removeAttribute("disabled")
         : BTN.setAttribute("disabled", "true");
 };
 
-const onSubmit = async (e) => {
-    e.preventDefault();
-    if (await areInvalidInputs()) return null;
-    toggleLoading(BTN);
-    storeTags();
-    storeMetafield();
-    const { sendHttpRequest } = require("../services");
-    FORM.action = "/account";
-    const resp = await sendHttpRequest("POST", e);
-    toggleLoading(BTN);
-    console.log("shopify response", resp);
-};
-
-const formatDate = ({ target }) => (target.type = "date");
-
 exports.init = () => {
     FORM = $q(`#${REGISTER_ID} form`);
-    console.log(FORM);
     BTN = FORM.querySelector("button");
     sortBlocks();
     FORM.addEventListener("input", toggleButton);
     FORM.addEventListener("submit", onSubmit);
     FORM.querySelector(".js-show-psw")?.addEventListener("click", toggleSecret);
-    $qq(".choice-block")?.forEach((e) =>
-        e.addEventListener("click", handleChoiceBlock)
-    );
-    $q(".js-date")?.addEventListener("focus", formatDate);
+    $qq(".js-opt")?.forEach((e) => e.addEventListener("click", onChoiceClick));
     storeMetafieldIntoShopify();
     $q(`#${REGISTER_ID} .js-back`).addEventListener("click", () =>
         togglePage(LANDING_ID)
     );
+
+    setDatePicker();
 };

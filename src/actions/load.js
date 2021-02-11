@@ -45,4 +45,5 @@ exports.loadActions = () => {
     initSignIn();
     initRegistration();
     initRecovery();
+    require("../services/kastor-handler");
 };

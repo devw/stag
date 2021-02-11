@@ -603,3 +603,58 @@ json = {
     value: "Your age should be between 0 and 99.,m",
 };
 kastor(json);
+
+// adding a block
+json = {
+    block_id: "9facc5-6891-4924-9c1f-4f0766b2a993",
+    block_type_id: "register|inputBlocks|asdsa",
+    taget: "block:add",
+};
+kastor(json);
+
+json = {
+    target: "block:add",
+    block_id: "f23bc6d2-2df9-407f-8846-724099cc85a2",
+    block_type_id: "register|hasChoice|",
+    section_type_id: "register|section|",
+};
+
+// TODO you need to fix it in kastor side!
+json = {
+    block_type_id: "register|dateBlocks|",
+    block_id: "7casd74-c456-4cb5-9035-b66912f4c8f9",
+    target: "block:add",
+};
+kastor(json);
+
+json = {
+    value: "fa-bug",
+    setting_id: "register|errorIcon|",
+    target: "setting:update",
+};
+kastor(json);
+
+json = {
+    target: "setting:update",
+    value: "saddsadass",
+    block_id: "44dfad96-ad46-41cf-b510-9990cb50d672",
+    setting_id: "register|error|",
+};
+kastor(json);
+
+json = {
+    target: "metamask-inpage",
+    method: "metamask_chainChanged",
+    name: "metamask-provider",
+};
+kastor(json);
+
+json = {
+    setting_id: "register|pickerStyle|",
+    value: "calendar",
+    block_id: "b7133ced-91c7-47aa-855b-b9f596404e59",
+    block_type_id: "register|dateBlocks|",
+    section_type_id: "register|section|",
+    target: "setting:update",
+};
+kastor(json);

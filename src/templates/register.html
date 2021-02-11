@@ -35,11 +35,11 @@
     </div>
     {{/inputBlocks}}
 
-    <!-- loop TODO remove hasChoice or choice-block -->
+    <!-- choiceBlocks -->
     {{#choiceBlocks}}
     <div
         block-id="{{id}}"
-        class="choice-block single-choice {{#hasMultiLine}}multi-line{{/hasMultiLine }}"
+        class="choice-block js-opt single-choice {{#hasMultiLine}}multi-line{{/hasMultiLine }}"
     >
         {{#choiceList }}
         <div>
@@ -60,18 +60,23 @@
     <!--date blocks-->
 
     {{#dateBlocks}}
-    <div block-id="{{id}}">
+    <div block-id="{{id}}" class="{{pickerStyle}}">
+        <div class="dropdown-date"></div>
         <input
-            class="input-text js-date"
+            class="input-text picker-date js-date"
             required
             type="text"
             data-is-tag="{{isTag}}"
-            date-min="{{dateMin}}"
-            date-max="{{dateMax}}"
+            start="{{dateMin}}"
+            end="{{dateMax}}"
             placeholder="{{placeholder}}"
             data-tag="{{tag}}"
             data-namespace="{{namespace}}"
             data-key="{{key}}"
+            dateFormat="{{dateFormat}}"
+            enableTime="{{enableTime}}"
+            mode="{{mode}}"
+            time_24hr="{{time_24hr}}"
         />
         <label>{{placeholder}}</label>
         {{#error}}
@@ -95,8 +100,10 @@
     </div>
     {{/hasNewsletter }}
 
-    <button class="btn btn-primary" disabled="">
-        {{registerAccount}} &nbsp;<i class="fa fa-spinner fa-spin off"></i>
-    </button>
+    <div>
+        <button class="btn btn-primary" disabled="">
+            {{registerAccount}} &nbsp;<i class="fa fa-spinner fa-spin off"></i>
+        </button>
+    </div>
 </form>
 <div class="action js-back"><i class="fa fa-arrow-left"></i> Back</div>
