@@ -31,7 +31,6 @@ const setCalendar = () => {
     $qq(".js-date")?.forEach((target) => {
         const arr = ["dateFormat", "enableTime", "mode"];
         const attrs = getDateAttrs(target, arr);
-        console.log("attrs", attrs);
         globalThis.flatpickr(target, attrs);
     });
 };
@@ -39,39 +38,58 @@ const setCalendar = () => {
 const setMonths = (target) => {
     const months = moment.months();
     const mElem = target.querySelector(`#${ids.m}`);
-    mElem.innerHTML = "";
-    months.forEach((e, i) => {
-        const html = `<option value=${i + 1}>${e}</option>`;
-        mElem.innerHTML += html;
-    });
+    let html;
+    months.forEach((e, i) => (html += `<option value=${i + 1}>${e}</option>`));
+    mElem.innerHTML = html;
 };
 
 const setDays = ({ target }) => {
     const pNode = target.parentNode;
-    const y = pNode.querySelector(`#${ids.y} option:checked`).value;
-    const m = pNode.querySelector(`#${ids.m} option:checked`).value;
+    console.log(pNode);
+    const y = pNode.querySelector(`#${ids.y} option:checked`)?.value;
+    const m = pNode.querySelector(`#${ids.m} option:checked`)?.value;
+    if (!y && !m) return null;
     const daysCount = moment(`${y}-${m}`, "YYYY-MM").daysInMonth();
     const d = pNode.querySelector(`#${ids.d}`);
-    d.innerHTML = "";
+    let html;
+    Array.from(new Array(daysCount)).forEach(
+        (_, i) => (html += `<option value=${i + 1}>${i + 1}</option>`)
+    );
+    d.innerHTML = html;
+};
 
-    Array.from(new Array(daysCount)).forEach((e, i) => {
-        const html = `<option value=${i + 1}>${i + 1}</option>`;
-        d.innerHTML += html;
-    });
+const getStartEnd = (el) => {
+    let { start, end } = getDateAttrs(el, ["start", "end"]);
+
+    start = parseInt(start);
+    end = parseInt(end);
+
+    console.log("####", start);
+
+    // TOOD add an hidden field in config.yml to distinguish birthdate from date
+    if (/^\d{4}$/.test(start)) {
+        if (!start || start < 1900) start = 1900;
+        if (!end || end > 2100) end = 2100;
+    }
+    if (/^\d{1,3}$/.test(start)) {
+        const currYear = new Date().getFullYear();
+        const _end = end;
+        end = currYear - start;
+        start = currYear - _end;
+    }
+
+    return { start, end };
 };
 
 const setYears = (target) => {
     const cal = target.parentNode.querySelector(ids.cal);
-    let { start, end } = getDateAttrs(cal, ["start", "end"]);
-    if (!start || start < 1900) start = 1900;
-    if (!end || end > 2100) end = 2100;
-    const length = end - start;
-    const ys = Array.from({ length }, (v, k) => k + parseInt(start));
+    const { start, end } = getStartEnd(cal);
+    const length = end - start + 1;
+    const ys = Array.from({ length }, (_, k) => k + parseInt(start));
     const yElem = target.querySelector(`#${ids.y}`);
-    ys.forEach((e) => {
-        const html = `<option value=${e}>${e}</option>`;
-        yElem.innerHTML += html;
-    });
+    let html;
+    ys.forEach((e) => (html += `<option value=${e}>${e}</option>`));
+    yElem.innerHTML = html;
     yElem.dispatchEvent(new Event("change"));
 };
 
@@ -87,6 +105,7 @@ const setDatePickers = () => {
 
 const setDatePicker = (target) => {
     target.innerHTML = html;
+    window._target = target;
     target.querySelector(`#${ids.m}`).addEventListener("change", setDays);
     target.querySelector(`#${ids.y}`).addEventListener("change", setDays);
     target.querySelectorAll("select").forEach((e) => {

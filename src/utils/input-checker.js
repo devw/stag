@@ -2,21 +2,26 @@ const { $q, $qq } = require("./toggle");
 const { STORAGE_CONFIG } = require("../config");
 
 const getErrorLabel = (e) => {
-    return e.parentElement.querySelector(".label-error");
+    return e.parentNode.querySelector(".label-error");
 };
-
 const showDateErrors = () => {
     $qq(".js-date").forEach((e) => {
         showDateError(e);
     });
 };
+globalThis.showDateErrors = showDateErrors;
 
 const showDateError = (e) => {
     console.log(getDateAttr(e));
-    const { minDate, maxDate, customerAge, error } = getDateAttr(e);
-    if (!error) return null;
-    if (minDate > customerAge || maxDate < customerAge)
-        getErrorLabel(dateElem).style.display = "block";
+    const { minDate, maxDate, customerAge } = getDateAttr(e);
+    console.log("getDateAttr: ", getDateAttr(e));
+    if (minDate > customerAge || maxDate < customerAge) {
+        globalThis._e = e;
+        const errorEl = getErrorLabel(e);
+        if (errorEl) {
+            getErrorLabel(errorEl).style.display = "block";
+        }
+    }
 };
 
 const getCustomerAge = (dateElem) => {
@@ -33,7 +38,6 @@ const getCustomerAge = (dateElem) => {
 const getDateAttr = (dateElem) => ({
     minDate: dateElem.getAttribute("start"),
     maxDate: dateElem.getAttribute("end"),
-    error: dateElem.getAttribute("error"),
     customerAge: getCustomerAge(dateElem),
 });
 

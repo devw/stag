@@ -4,7 +4,9 @@ const {
     $qq,
     updateCss,
     sortBlocks,
-} = require("../utils/toggle");
+    render,
+    parseConfiguration,
+} = require("../utils/");
 
 const { IDs, STORAGE_CONFIG } = require("../config");
 const { loadActions } = require("../actions/load");
@@ -48,29 +50,6 @@ const parseEventData = (event) => {
     return [selector, value];
 };
 
-const updateNoBlock = (event) => {
-    const [selector, value] = parseEventData(event);
-
-    if (!selector) return null;
-    const [, page, key, unit] = selector.match(/^(.*?)\|(.*?)\|(.*?)$/);
-    const valueAndUnit = typeof value == "object" ? value : `${value}${unit}`;
-
-    if (!/--animation/.test(key)) updateCss({ "--animation": "none" });
-    if (/^--/.test(key)) {
-        updateCss({ [key]: valueAndUnit });
-    } else
-        render({
-            [key]: valueAndUnit == "false" ? false : valueAndUnit,
-        });
-
-    if (page) changePage(page);
-
-    // TODO: too fragile check the password policy in this way, you should refactor the code using objects
-    if (/^psw.*Err$/.test(key)) showPswError(value);
-    if (/^error|^--error-/.test(key)) showErrors();
-    if (/^wrongPsw$/.test(key)) showWrongPsw();
-};
-
 const showWrongPsw = () => ($q(".js-signin-err").style.display = "block");
 
 const showPswError = (message) => {
@@ -81,9 +60,11 @@ const showPswError = (message) => {
     exclamationLabel.append(message);
 };
 
-const render = (newText) => {
-    const text = updateText(newText);
-    globalThis.render(text);
+const renderCustomize = (newText) => {
+    const config = getConfig();
+    config.text = updateText(newText);
+    parseConfiguration(config);
+    render(config.text);
 };
 
 const showErrors = () => {
@@ -98,100 +79,98 @@ const updateText = (newText) => {
     return TEXT;
 };
 
+const updateNoBlock = (event) => {
+    const [selector, value] = parseEventData(event);
+
+    if (!selector) return null;
+    const [, page, key, unit] = selector.match(/^(.*?)\|(.*?)\|(.*?)$/);
+    const valueAndUnit = typeof value == "object" ? value : `${value}${unit}`;
+
+    if (!/--animation/.test(key)) updateCss({ "--animation": "none" });
+    if (/^--/.test(key)) {
+        updateCss({ [key]: valueAndUnit });
+    } else
+        renderCustomize({
+            [key]: valueAndUnit == "false" ? false : valueAndUnit,
+        });
+
+    if (page) changePage(page);
+
+    // TODO: too fragile check the password policy in this way, you should refactor the code using objects
+    if (/^psw.*Err$/.test(key)) showPswError(value);
+    if (/^error|^--error-/.test(key)) showErrors();
+    if (/^wrongPsw$/.test(key)) showWrongPsw();
+};
+
+//TODO you should refactor the config.yml to avoid this dirty code
+const cleanObject = (block_settings) => {
+    const keys = Reflect.ownKeys(block_settings);
+    const getNewKey = (k) => k.split("|")[1];
+    return keys.reduce((a, c) => {
+        return { ...a, [getNewKey(c)]: block_settings[c] };
+    }, {});
+};
+
+const getConfig = () => JSON.parse(localStorage.getItem(STORAGE_CONFIG));
+
 const kastorHandler = (event) => {
-    if (!TEXT) TEXT = JSON.parse(localStorage.getItem(STORAGE_CONFIG))["text"];
+    if (!TEXT) TEXT = getConfig()["text"];
     //reorder blocks
     console.log("kastorHandler: ", event);
     const target = getTarget(event);
     const data = getData(event);
-    const { block_type_id, block_id } = data;
+    const { block_type_id, block_id, state } = data;
+
+    // TODO refactor
+    if (state && /customer\[email|password\]/.test(state.name)) {
+        const { block_id, name } = state;
+        $q(`[name='${name}']`).parentNode.setAttribute("block-id", block_id);
+        return null;
+    }
 
     if (target === "block:reorder") {
         const { order } = data;
-        order.forEach((e, i) => {
-            const selector = `[block-id='${e}']`;
-            $q(selector)?.style?.setProperty("order", i);
-        });
-        $q(`#${IDs.REGISTER_ID} form button`).parentNode.style.order = 99;
+        // TODO sometimes you use renderCustomize and other render!!
+        renderCustomize({ blocks_order: order });
+        changePage("register");
         return null;
     }
     //TODO refactor
-    if (/dateBlocks/.test(block_type_id)) {
+    const isBlock = /dateBlocks|inputBlocks|choiceBlocks/.test(block_type_id);
+    if (isBlock) {
+        const { block_settings } = data;
+        const blocks = block_type_id.split("|")[1];
         const { value, setting_id } = data;
-
         if (target === "block:add") {
-            if (!TEXT.dateBlocks) TEXT.dateBlocks = [];
-            TEXT.dateBlocks.push({
+            if (!TEXT[blocks]) TEXT[blocks] = [];
+            TEXT[blocks].push({
                 id: block_id,
-                placeholder: "",
+                ...cleanObject(block_settings),
             });
+            if (TEXT.blocks_order) {
+                TEXT.blocks_order.push(block_id);
+            } else {
+                TEXT.blocks_order = [block_id];
+            }
         } else if (target === "setting:update") {
             const key = setting_id.split("|")[1];
-            const block = TEXT.dateBlocks.find((e) => e.id === block_id);
+            const block = TEXT[blocks].find((e) => e.id === block_id);
             block[key] = value;
             if (/^error|^--error-/.test(key)) showErrors();
         } else if (target === "block:remove") {
-            TEXT.dateBlocks = TEXT.dateBlocks.filter((e) => e.id !== block_id);
+            TEXT[blocks] = TEXT[blocks].filter((e) => e.id !== block_id);
         }
-        globalThis.render(TEXT);
-
-        //TODO do you need changePage?
-        changePage("register");
-        return null;
-    }
-
-    //add a input Blocks
-    if (/inputBlocks/.test(block_type_id)) {
-        const { value, setting_id } = data;
-
-        if (target === "block:add") {
-            if (!TEXT.inputBlocks) TEXT.inputBlocks = [];
-            TEXT.inputBlocks.push({
-                id: block_id,
-                placeholder: "",
-            });
-        } else if (target === "setting:update") {
-            const key = setting_id.split("|")[1];
-            const block = TEXT.inputBlocks.find((e) => e.id === block_id);
-            block[key] = value;
-            if (/^error|^--error-/.test(key)) showErrors();
-        } else if (target === "block:remove") {
-            TEXT.inputBlocks = TEXT.inputBlocks.filter(
-                (e) => e.id !== block_id
-            );
-        }
-        globalThis.render(TEXT);
-
-        //TODO do you need changePage?
-        changePage("register");
-        return null;
-    }
-    // adding or updating the block
-    if (/choiceBlocks/.test(block_type_id)) {
-        //TODO implement this logic for all blocks
-        const { value, setting_id } = data;
-        if (target === "block:add") {
-            if (!TEXT.choiceBlocks) TEXT.choiceBlocks = [];
-            TEXT.choiceBlocks.push({ id: block_id });
-        } else if (target === "block:remove") {
-            TEXT.choiceBlocks = TEXT.choiceBlocks.filter(
-                (e) => e.id !== block_id
-            );
-        } else if (target === "setting:update") {
-            const key = setting_id.split("|")[1];
-            const block = TEXT.choiceBlocks.find((e) => e.id === block_id);
-            block[key] = value;
-            console.log(value);
-        }
-
-        globalThis.render(TEXT);
+        render(TEXT);
         changePage("register");
         return null;
     }
 
     updateNoBlock(event);
 };
-if (/config_id/.test(location.href)) {
+if (
+    /config_id/.test(location.href) ||
+    window.location !== window.parent.location
+) {
     globalThis.addEventListener("message", kastorHandler);
     setTimeout(() => changePage("landing"), 0);
 }

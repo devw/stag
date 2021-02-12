@@ -19,7 +19,14 @@
         flex: 1;
         padding: 0 5px;
         font-size: 1.1em;
+        border: 0;
+        border-bottom: 1px solid #333;
+        // text-align: center;
+        // text-align-last: center;
     }
+    // .dropdown-date option {
+    //     text-align: left;
+    // }
     .dropdown-date select:nth-child(odd) {
         flex: 0.5;
     }

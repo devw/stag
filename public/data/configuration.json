@@ -24,10 +24,9 @@
         "yourEmail": "Write your email",
         "validate": "Valider",
         "hasSocialLogin": 0,
-        "blocks_order": ["33b57fde-9af1-45a6-8fcd-b068744057a8"],
+        "blocks_order": ["4a9aec48-e721-405e-847a-500cfe1bfaed"],
         "createAccount": "CrÃ©ation de compte",
         "fillInfoToCreateAccount": "Renseignez vos informations pour crÃ©er votre compte Franklin.",
-        "yourPassword": "Write your password",
         "registerAccount": "CrÃ©er un compte",
         "redirectAfterRegister": "",
         "choiceBlocks": [],
@@ -39,28 +38,9 @@
                 "name": "customer[password]"
             }
         ],
-        "dateBlocks": [
-            {
-                "placeholder": "Select a date ",
-                "pickerStyle": "no-calendar",
-                "dateMin": "2015",
-                "dateMax": "2025",
-                "isTag": "hasMetafield",
-                "tag": "",
-                "namespace": "",
-                "key": "",
-                "id": "33b57fde-9af1-45a6-8fcd-b068744057a8"
-            }
-        ],
-        "placeholder": "Select a date ",
-        "pickerStyle": "no-calendar",
-        "dateMin": "2015",
-        "dateMax": "2025",
-        "isTag": "hasMetafield",
-        "tag": "",
-        "namespace": "",
-        "key": "",
-        "undefined": "33b57fde-9af1-45a6-8fcd-b068744057a8",
+        "dateBlocks": [],
+        "undefined": "4a9aec48-e721-405e-847a-500cfe1bfaed",
+        "yourPassword": "Write your password",
         "wrongPsw": "Incorrect password. Please, try again!",
         "signIn": "Submit",
         "loginRedirect": "products",

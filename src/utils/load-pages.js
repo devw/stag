@@ -16,7 +16,7 @@ const updateInputFields = () => {
     emailElem.type = "email";
 };
 
-const render = (text) => {
+exports.render = (text) => {
     const { getRootNode } = require("../utils");
     const partials = Object.keys(pages).map((id) => ({
         id: id,
@@ -27,7 +27,6 @@ const render = (text) => {
     getRootNode().innerHTML = Mustache.render(container, text);
     updateInputFields();
 };
-exports.render = render;
 
 exports.parseConfiguration = (config) => {
     const { text } = config;
@@ -38,6 +37,14 @@ exports.parseConfiguration = (config) => {
     config.text?.dateBlocks?.forEach(
         (e) => (e.isTag = e.isTag === "hasTag" ? true : false)
     );
+    config.text?.inputBlocks?.forEach((e) => {
+        if (e.name === "customer[email]") {
+            e.placeholder = config.text?.yourEmail;
+        }
+        if (e.name === "customer[password]") {
+            e.placeholder = config.text?.yourPassword;
+        }
+    });
     text?.orderedBlock?.forEach((e) => (config.text[e] = true));
     return config;
 };
@@ -57,6 +64,3 @@ exports.addCSS = (url) => {
     const link = `<link rel="stylesheet" href="${url}" />`;
     HEAD.insertAdjacentHTML("afterbegin", link);
 };
-
-// TODO you should find a more robust solution the globalThis.render
-globalThis.render = render;
