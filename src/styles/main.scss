@@ -22,6 +22,10 @@ body.remove-scrolling {
         overflow-y: auto;
     }
 
+    .content div {
+        width: 400px;
+    }
+
     /*  ===================
     Components
     =================== */
@@ -47,7 +51,6 @@ body.remove-scrolling {
         font-size: var(--medium-text-size);
         font-weight: var(--medium-font-weight);
         color: var(--secondary-text-color, #02100a);
-        width: 400px;
     }
 
     // Buttons
