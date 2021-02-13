@@ -123,8 +123,15 @@ const kastorHandler = (event) => {
 
     // TODO refactor
     if (state && /customer\[email|password\]/.test(state.name)) {
+        console.log("TEXT ###########", TEXT["inputBlocks"]);
         const { block_id, name } = state;
         $q(`[name='${name}']`).parentNode.setAttribute("block-id", block_id);
+
+        const block = TEXT["inputBlocks"].find((e) => e.name === name);
+        block.id = block_id;
+
+        renderCustomize({ inputBlocks: TEXT["inputBlocks"] });
+        changePage("register");
         return null;
     }
 

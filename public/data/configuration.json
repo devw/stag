@@ -24,22 +24,100 @@
         "yourEmail": "Write your email",
         "validate": "Valider",
         "hasSocialLogin": 0,
-        "blocks_order": ["4a9aec48-e721-405e-847a-500cfe1bfaed"],
+        "blocks_order": [
+            "64da8187-f9d4-4322-8653-987ba74563d4",
+            "6952a2ea-9c36-4898-a195-1163e396b8a0",
+            "393b8425-5e2b-4dee-93eb-dc2f56798111",
+            "30a529f9-45c5-4309-b8fd-85947c55f392",
+            "8066a9d6-e61c-4683-874a-8e2c9b8bf9c9",
+            "1d9932b3-0926-4693-9412-93d4a77c1c0d",
+            "706b16b9-913e-4201-bca8-c650f5e33041",
+            "484bf089-71c3-4ca6-a3eb-54efb8378d7c"
+        ],
         "createAccount": "CrÃ©ation de compte",
         "fillInfoToCreateAccount": "Renseignez vos informations pour crÃ©er votre compte Franklin.",
         "registerAccount": "CrÃ©er un compte",
         "redirectAfterRegister": "",
-        "choiceBlocks": [],
-        "inputBlocks": [
-            { "placeholder": "Write your email", "name": "customer[email]" },
+        "choiceBlocks": [
             {
-                "placeholder": "Write your password",
-                "error": true,
-                "name": "customer[password]"
+                "choiceList": ["Golf", "Tennis"],
+                "hasMultiChoice": 0,
+                "hasMultiLine": 0,
+                "isTag": "hasTag",
+                "tag": "sport",
+                "namespace": "",
+                "key": "",
+                "id": "393b8425-5e2b-4dee-93eb-dc2f56798111"
+            },
+            {
+                "choiceList": ["Mr.", "Mrs."],
+                "hasMultiChoice": 0,
+                "hasMultiLine": 0,
+                "isTag": "hasTag",
+                "tag": "gender",
+                "namespace": "",
+                "key": "",
+                "id": "1d9932b3-0926-4693-9412-93d4a77c1c0d"
             }
         ],
-        "dateBlocks": [],
-        "undefined": "4a9aec48-e721-405e-847a-500cfe1bfaed",
+        "inputBlocks": [
+            {
+                "name": "customer[email]",
+                "message": "This block can be used to sort the input fields present in the register form",
+                "id": "30a529f9-45c5-4309-b8fd-85947c55f392",
+                "placeholder": "Write your email"
+            },
+            {
+                "name": "customer[password]",
+                "error": "true",
+                "message": "This block can be used to sort the input fields present in the register form",
+                "id": "6952a2ea-9c36-4898-a195-1163e396b8a0",
+                "placeholder": "Write your password"
+            },
+            {
+                "placeholder": "Your first name",
+                "name": "customer[first_name]",
+                "id": "8066a9d6-e61c-4683-874a-8e2c9b8bf9c9"
+            }
+        ],
+        "dateBlocks": [
+            {
+                "placeholder": "Select a s dddsadsdsadsate .....",
+                "pickerStyle": "no-calendar",
+                "dateMin": "2020",
+                "dateMax": 2025,
+                "isTag": "hasTag",
+                "tag": "date",
+                "namespace": "",
+                "key": "",
+                "id": "706b16b9-913e-4201-bca8-c650f5e33041"
+            },
+            {
+                "placeholder": "Select a 2nd date ...........",
+                "pickerStyle": "no-calendar",
+                "dateMin": 2015,
+                "dateMax": 2025,
+                "isTag": "hasMetafield",
+                "tag": "",
+                "namespace": "",
+                "key": "",
+                "id": "484bf089-71c3-4ca6-a3eb-54efb8378d7c"
+            }
+        ],
+        "name": "customer[first_name]",
+        "message": "This block can be used to sort the input fields present in the register form",
+        "error": "true",
+        "placeholder": "Select a 2nd date ...........",
+        "undefined": "484bf089-71c3-4ca6-a3eb-54efb8378d7c",
+        "hasMultiChoice": 0,
+        "hasMultiLine": 0,
+        "isTag": "hasMetafield",
+        "tag": "",
+        "namespace": "",
+        "key": "",
+        "pickerStyle": "no-calendar",
+        "dateMin": 2015,
+        "dateMax": 2025,
         "yourPassword": "Write your password",
         "wrongPsw": "Incorrect password. Please, try again!",
         "signIn": "Submit",

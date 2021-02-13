@@ -244,9 +244,20 @@ json = {
 };
 kastor(json);
 
+// adding phoneBlock
+
+// adding a emailBlock
 json = {
+    block_id: "eb8cc3f3-d795-4c6d-8a4b-3162bb457896",
+    block_type_id: "register|emailBlock|",
+    block_settings: {
+        "register|message|":
+            "This block can be used to sort the input fields present in the register form",
+        "register|name|": "customer[email]",
+    },
+    target: "block:add",
     state: {
-        block_id: "dce26437-0f04-4a88-8a8b-f32b83d2c793",
+        block_id: "9c424af4-361b-4fb2-9b92-59c31b8cf387",
         name: "customer[email]",
     },
 };

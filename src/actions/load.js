@@ -37,7 +37,6 @@ const openAccount = (e) => {
         if (el.classList.contains("popover")) placePopover(e, el);
     }
 };
-exports.openAccount = openAccount;
 
 exports.loadActions = () => {
     initContainer();
