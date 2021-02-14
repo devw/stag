@@ -36,10 +36,11 @@
     {{/inputBlocks}}
 
     <!-- choiceBlocks -->
+    <!-- lineStyle can be multi-line-->
     {{#choiceBlocks}}
     <div
         block-id="{{id}}"
-        class="choice-block js-opt single-choice {{#hasMultiLine}}multi-line{{/hasMultiLine }}"
+        class="choice-block js-opt  {{choiceStyle}} {{lineStyle}}"
     >
         {{#choiceList }}
         <div>
@@ -54,6 +55,12 @@
             <label>{{.}}</label>
         </div>
         {{/choiceList}}
+        <!-- if not choice list-->
+        {{#name}}
+        <div>
+            <input type="checkbox" name="{{name}}" />&nbsp;{{placeholder}}
+        </div>
+        {{/name}}
     </div>
     {{/choiceBlocks}}
 
@@ -87,8 +94,9 @@
     </div>
     {{/dateBlocks}}
 
-    <!-- Subscribe newsletter checkbox -->
-    {{#hasNewsletter }}
+    <!-- Subscribe newsletter checkbox The news letter is like choiceList -->
+
+    {{#hasNewsletter }} Subscribe newsletter
     <div class="hasNewsletter">
         <div>
             <input type="hidden" name="customer[accepts_marketing]" value="" />

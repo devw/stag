@@ -15,5 +15,7 @@ exports.loadTheme = async () => {
 //TODO you should clean the file in AWS
 const cleanConfig = (config) => {
     delete config.text.error;
+    delete config.text.name;
+    delete config.text.placeholder;
     return config;
 };

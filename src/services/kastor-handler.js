@@ -7,6 +7,7 @@ const {
     render,
     parseConfiguration,
 } = require("../utils/");
+const { cleanChoiceBlock } = require("../utils/cleanConfig");
 
 const { IDs, STORAGE_CONFIG } = require("../config");
 const { loadActions } = require("../actions/load");
@@ -167,6 +168,7 @@ const kastorHandler = (event) => {
         } else if (target === "block:remove") {
             TEXT[blocks] = TEXT[blocks].filter((e) => e.id !== block_id);
         }
+        TEXT = cleanChoiceBlock(TEXT);
         render(TEXT);
         changePage("register");
         return null;

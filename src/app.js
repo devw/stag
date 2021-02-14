@@ -10,4 +10,4 @@ const node = document.createElement("div");
 node.setAttribute("id", IDs.APP_ID);
 document.body.append(node);
 
-loadTheme().then(require("./actions/load"));
+loadTheme();

@@ -95,7 +95,7 @@
 
     // CHOICE BLOCK
     .choice-block {
-        margin-top: 1.1em;
+        margin: 1.1em 0 0 0;
     }
 
     .choice-block > div {
@@ -135,5 +135,6 @@
 
     .choice-block.multi-choice input[type="checkbox"] {
         border-radius: 25%;
+        padding: 0.5em;
     }
 }

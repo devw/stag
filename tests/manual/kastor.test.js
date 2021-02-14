@@ -262,3 +262,36 @@ json = {
     },
 };
 kastor(json);
+
+// add a newsletter
+
+json = {
+    target: "block:add",
+    block_id: "ww9d004f-f9b6-426d-8d45-d6f2aa351654",
+    block_type_id: "register|choiceBlocks|block",
+
+    block_settings: {
+        "register|placeholder|":
+            "Subscribe to our newslasdasd  asdsdadasd asdsadas asdasdsa asdasdsa sadasda asdads",
+        "register|name": "customer[accepts_marketing]",
+        "register|hasMultiChoice|": 1,
+    },
+};
+kastor(json);
+
+json = {
+    block_id: "e29d004f-f9b6-426d-8d45-d6f2aa351654",
+    block_type_id: "register|choiceBlocks|block",
+    setting_id: "register|choiceList|",
+    value: ["Mrs."],
+    target: "setting:update",
+};
+kastor(json);
+
+// remove a newsletter
+json = {
+    block_id: "e29d004f-f9b6-426d-8d45-d6f2aa351654",
+    block_type_id: "register|hasNewsletter|",
+    section_type_id: "register|section|",
+    target: "block:remove",
+};
