@@ -12,33 +12,22 @@ const showDateErrors = () => {
 globalThis.showDateErrors = showDateErrors;
 
 const showDateError = (e) => {
-    console.log(getDateAttr(e));
     const { minDate, maxDate, customerAge } = getDateAttr(e);
-    console.log("getDateAttr: ", getDateAttr(e));
-    if (minDate > customerAge || maxDate < customerAge) {
-        globalThis._e = e;
-        const errorEl = getErrorLabel(e);
-        if (errorEl) {
-            getErrorLabel(errorEl).style.display = "block";
-        }
-    }
-};
+    const dateFormat = "DD-MM-YYYY";
+    const minD = moment(minDate, dateFormat);
+    const maxD = moment(maxDate, dateFormat);
+    const customerD = moment(customerAge, dateFormat);
+    const errorLabel = getErrorLabel(e);
 
-const getCustomerAge = (dateElem) => {
-    const DAY_IN_YEAR = 365;
-    const SEC_IN_DAY = 3600 * 24;
-    const MSEC_IN_DAY = 1000 * SEC_IN_DAY;
-    const userSec = new Date(dateElem.value).getTime();
-    const nowSec = new Date().getTime();
-    const days = Math.trunc((nowSec - userSec) / MSEC_IN_DAY);
-    return days / DAY_IN_YEAR;
+    if (!customerD.isBetween(minD, maxD) && errorLabel)
+        errorLabel.style.display = "block";
 };
 
 //TODO to refactor
 const getDateAttr = (dateElem) => ({
-    minDate: dateElem.getAttribute("start"),
-    maxDate: dateElem.getAttribute("end"),
-    customerAge: getCustomerAge(dateElem),
+    minDate: dateElem.getAttribute("minDate"),
+    maxDate: dateElem.getAttribute("maxDate"),
+    customerAge: dateElem.value,
 });
 
 const showPasswordErrors = () => {

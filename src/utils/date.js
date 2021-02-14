@@ -29,8 +29,8 @@ const setCalendarPicker = () => addDatePicker(setCalendar);
 
 const setCalendar = () => {
     $qq(".js-date")?.forEach((target) => {
-        const arr = ["dateFormat", "enableTime", "mode"];
-        const attrs = getDateAttrs(target, arr);
+        const arr = ["dateFormat", "enableTime", "minDate", "maxDate"];
+        let attrs = getDateAttrs(target, arr);
         globalThis.flatpickr(target, attrs);
     });
 };
@@ -59,33 +59,17 @@ const setDays = ({ target }) => {
 };
 
 const getStartEnd = (el) => {
-    let { start, end } = getDateAttrs(el, ["start", "end"]);
-
-    start = parseInt(start);
-    end = parseInt(end);
-
-    console.log("####", start);
-
-    // TOOD add an hidden field in config.yml to distinguish birthdate from date
-    if (/^\d{4}$/.test(start)) {
-        if (!start || start < 1900) start = 1900;
-        if (!end || end > 2100) end = 2100;
-    }
-    if (/^\d{1,3}$/.test(start)) {
-        const currYear = new Date().getFullYear();
-        const _end = end;
-        end = currYear - start;
-        start = currYear - _end;
-    }
-
-    return { start, end };
+    let { minDate, maxDate } = getDateAttrs(el, ["minDate", "maxDate"]);
+    minDate = minDate.slice(-4);
+    maxDate = maxDate.slice(-4);
+    return { minDate, maxDate };
 };
 
 const setYears = (target) => {
     const cal = target.parentNode.querySelector(ids.cal);
-    const { start, end } = getStartEnd(cal);
-    const length = end - start + 1;
-    const ys = Array.from({ length }, (_, k) => k + parseInt(start));
+    const { maxDate, minDate } = getStartEnd(cal);
+    const length = maxDate - minDate + 1;
+    const ys = Array.from({ length }, (_, k) => k + parseInt(minDate));
     const yElem = target.querySelector(`#${ids.y}`);
     let html;
     ys.forEach((e) => (html += `<option value=${e}>${e}</option>`));
@@ -105,7 +89,6 @@ const setDatePickers = () => {
 
 const setDatePicker = (target) => {
     target.innerHTML = html;
-    window._target = target;
     target.querySelector(`#${ids.m}`).addEventListener("change", setDays);
     target.querySelector(`#${ids.y}`).addEventListener("change", setDays);
     target.querySelectorAll("select").forEach((e) => {

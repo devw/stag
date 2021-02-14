@@ -2,7 +2,11 @@ const { IDs } = require("../config");
 const Mustache = require("mustache");
 const { pages, container } = require("../templates");
 const { $q } = require("../utils/toggle");
-const { cleanChoiceBlock } = require("./cleanConfig");
+const {
+    cleanChoiceBlock,
+    cleanInputBlocks,
+    cleanDateBlocks,
+} = require("./cleanConfig");
 
 const HEAD = document.getElementsByTagName("head")[0];
 
@@ -31,25 +35,11 @@ exports.render = (text) => {
 
 exports.parseConfiguration = (config) => {
     const { text } = config;
-    //TODO this part should be made in kastor
-    config.text?.choiceBlocks?.forEach(
-        (e) => (e.isTag = e.isTag === "hasTag" ? true : false)
-    );
-    config.text?.dateBlocks?.forEach(
-        (e) => (e.isTag = e.isTag === "hasTag" ? true : false)
-    );
-    config.text?.inputBlocks?.forEach((e) => {
-        if (e.name === "customer[email]") {
-            e.placeholder = config.text?.yourEmail;
-        }
-        if (e.name === "customer[password]") {
-            e.placeholder = config.text?.yourPassword;
-        }
-    });
 
+    config.text = cleanInputBlocks(text);
+    config.text = cleanDateBlocks(text);
     config.text = cleanChoiceBlock(text);
 
-    text?.orderedBlock?.forEach((e) => (config.text[e] = true));
     return config;
 };
 
