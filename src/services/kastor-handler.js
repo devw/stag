@@ -7,7 +7,7 @@ const {
     render,
     parseConfiguration,
 } = require("../utils/");
-const { cleanChoiceBlock } = require("../utils/cleanConfig");
+const { cleanChoiceBlock, cleanDateBlocks } = require("../utils/cleanConfig");
 
 const { IDs, STORAGE_CONFIG } = require("../config");
 const { loadActions } = require("../actions/load");
@@ -169,6 +169,7 @@ const kastorHandler = (event) => {
             TEXT[blocks] = TEXT[blocks].filter((e) => e.id !== block_id);
         }
         TEXT = cleanChoiceBlock(TEXT);
+        TEXT = cleanDateBlocks(TEXT);
         render(TEXT);
         changePage("register");
         return null;

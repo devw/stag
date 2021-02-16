@@ -1,6 +1,4 @@
-const { $q, $qq } = require("./toggle");
-globalThis.$q = $q;
-globalThis.$qq = $qq;
+const { $qq } = require("./toggle");
 const { addJS, addCSS } = require("./load-pages");
 
 const ids = {
@@ -11,47 +9,82 @@ const ids = {
     noCal: ".dropdown-date",
 };
 
-const addDatePicker = (callback) => {
+const getValidity = () => ({
+    day: (v) => v > 0 && v < 32 && /^\d{1,2}$/.test(v),
+    month: (v) => v > 0 && v < 13 && /^\d{1,2}$/.test(v),
+    year: (v) => v > 0 && /^\d{4}$/.test(v),
+});
+
+const checkFreeInput = ({ target }) => {
+    checkDaysCount(target);
+    const { id, value } = target;
+    target.nextElementSibling.style.display = "none";
+    const isValid = getValidity()[id](value);
+    target.nextElementSibling.style.display = isValid ? "none" : "block";
+};
+
+const setCalendarPicker = () => {
+    if (globalThis.flatpickr) {
+        setCalendar();
+        return null;
+    }
     const baseUrl = "https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.9";
-    addJS(`${baseUrl}/flatpickr.min.js`, callback);
+    addJS(`${baseUrl}/flatpickr.min.js`, setCalendar);
     addCSS(`${baseUrl}/flatpickr.min.css`);
 };
 
-const getDateAttrs = (el, arr) => {
-    return arr.reduce((a, c) => {
+const checkDaysCount = (target) => {
+    const pNode = target.closest(".dropdown-date");
+    const y = pNode.querySelector(`#${ids.y}`)?.value;
+    const m = pNode.querySelector(`#${ids.m}`)?.value;
+    const d = pNode.querySelector(`#${ids.d}`)?.value;
+    if (!y && !m && !d) return null;
+    const daysCount = moment(`${y}-${m}`, "YYYY-MM").daysInMonth();
+    const dayLabel = pNode.querySelector(`#${ids.d}`).nextElementSibling;
+    dayLabel.style.display = d > daysCount ? "block" : "none";
+};
+
+const getDateAttrs = (el) => {
+    const a = [
+        "dateFormat",
+        "enableTime",
+        "minDate",
+        "maxDate",
+        "altInput",
+        "altFormat",
+    ];
+    return a.reduce((a, c) => {
         const attr = el.getAttribute(c);
         if (!attr) return a;
         return { ...a, [c]: attr };
     }, {});
 };
 
-const setCalendarPicker = () => addDatePicker(setCalendar);
-
 const setCalendar = () => {
     $qq(".js-date")?.forEach((target) => {
-        const arr = ["dateFormat", "enableTime", "minDate", "maxDate"];
-        let attrs = getDateAttrs(target, arr);
+        let attrs = getDateAttrs(target);
         globalThis.flatpickr(target, attrs);
     });
 };
 
-const setMonths = (target) => {
+const setMonths = async (target) => {
     const months = moment.months();
     const mElem = target.querySelector(`#${ids.m}`);
-    let html;
+    let html = ``;
+    await new Promise((resolve) => setTimeout(resolve, 2000));
     months.forEach((e, i) => (html += `<option value=${i + 1}>${e}</option>`));
     mElem.innerHTML = html;
 };
 
 const setDays = ({ target }) => {
+    //TODO code repetition
     const pNode = target.parentNode;
-    console.log(pNode);
     const y = pNode.querySelector(`#${ids.y} option:checked`)?.value;
     const m = pNode.querySelector(`#${ids.m} option:checked`)?.value;
     if (!y && !m) return null;
     const daysCount = moment(`${y}-${m}`, "YYYY-MM").daysInMonth();
     const d = pNode.querySelector(`#${ids.d}`);
-    let html;
+    let html = "";
     Array.from(new Array(daysCount)).forEach(
         (_, i) => (html += `<option value=${i + 1}>${i + 1}</option>`)
     );
@@ -59,7 +92,7 @@ const setDays = ({ target }) => {
 };
 
 const getStartEnd = (el) => {
-    let { minDate, maxDate } = getDateAttrs(el, ["minDate", "maxDate"]);
+    let { minDate, maxDate } = getDateAttrs(el);
     minDate = minDate.slice(-4);
     maxDate = maxDate.slice(-4);
     return { minDate, maxDate };
@@ -71,29 +104,52 @@ const setYears = (target) => {
     const length = maxDate - minDate + 1;
     const ys = Array.from({ length }, (_, k) => k + parseInt(minDate));
     const yElem = target.querySelector(`#${ids.y}`);
-    let html;
+    let html = "";
     ys.forEach((e) => (html += `<option value=${e}>${e}</option>`));
     yElem.innerHTML = html;
     yElem.dispatchEvent(new Event("change"));
 };
 
-const html = `
-    <select id="${ids.d}"></select>
-    <select id="${ids.m}"></select>
-    <select id="${ids.y}"></select>
- `;
+const getHtml = (target) => {
+    const inputStyle = target.parentNode
+        .querySelector(".js-date")
+        .getAttribute("inputStyle");
+
+    const selectHtml = `
+        <select id="${ids.d}"><option>1</option></select>
+        <select id="${ids.m}"><option>January</option></select>
+        <select id="${ids.y}">2000</select>
+    `;
+    const inputHtml = `
+        <div>
+            <input id="${ids.d}" placeholder="day (dd)">
+            <label class="label-error"><i class="fa"></i>Wrong ${ids.d}</label>
+        </div>
+        <div>
+            <input id="${ids.m}" placeholder="month (mm)">
+            <label class="label-error"><i class="fa"></i>Wrong ${ids.m}</label>
+        </div>
+        <div>
+            <input id="${ids.y}" placeholder="year (yyyy)">
+            <label class="label-error"><i class="fa"></i>Wrong ${ids.y}</label>
+        </div>
+    `;
+
+    return inputStyle === "three-input-fields" ? inputHtml : selectHtml;
+};
 
 const setDatePickers = () => {
     $qq(ids.noCal).forEach(setDatePicker);
 };
 
 const setDatePicker = (target) => {
-    target.innerHTML = html;
+    target.innerHTML = getHtml(target);
+    const freeInput = target.querySelectorAll(".dropdown-date>div input");
+    const selectInput = target.querySelectorAll("select");
+    freeInput.forEach((e) => e.addEventListener("input", checkFreeInput));
+    selectInput.forEach((e) => e.addEventListener("change", updateCalendar));
     target.querySelector(`#${ids.m}`).addEventListener("change", setDays);
     target.querySelector(`#${ids.y}`).addEventListener("change", setDays);
-    target.querySelectorAll("select").forEach((e) => {
-        e.addEventListener("change", updateCalendar);
-    });
     setMonths(target);
     setYears(target);
 };
@@ -107,11 +163,15 @@ const updateCalendar = ({ target }) => {
 };
 
 const setDropDownPicker = () => {
+    if (globalThis.moment) {
+        setDatePickers();
+        return null;
+    }
     const baseUrl = "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1";
     addJS(`${baseUrl}/moment.min.js`, setDatePickers);
 };
 
 exports.init = () => {
-    setCalendarPicker();
     setDropDownPicker();
+    setCalendarPicker();
 };

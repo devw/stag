@@ -74,18 +74,6 @@
                 "namespace": "",
                 "key": "",
                 "id": "ff0d9b2f-1375-4f16-bac3-17b957179033"
-            },
-            {
-                "placeholder": "Write your birthdate",
-                "pickerStyle": "no-calendar",
-                "minDate": 15,
-                "maxDate": 0,
-                "error": "Your birthdate should be between 1 and 99",
-                "tagVsMeta": "hasTag",
-                "tag": "birth",
-                "namespace": "",
-                "key": "",
-                "id": "89c03145-68cb-4f82-a565-c1f68d4e67fc"
             }
         ],
         "undefined": "89c03145-68cb-4f82-a565-c1f68d4e67fc",

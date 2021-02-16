@@ -4,15 +4,38 @@
             display: none;
         }
     }
+
     .calendar {
         .dropdown-date {
             display: none;
         }
     }
     .dropdown-date {
-        display: inline-flex;
-        width: 100%;
+        display: flex;
         gap: 12px;
+    }
+
+    .dropdown-date > div {
+        > input {
+            border: var(--input-line);
+            border-bottom: 1px solid #333;
+            background-color: unset;
+            outline: none;
+            font-size: 1em;
+            color: #333;
+            width: 100%;
+            padding: 0px;
+        }
+        > input::placeholder {
+            color: #777;
+        }
+
+        > label.label-error {
+            position: relative;
+            top: 0;
+            z-index: 2;
+            width: unset;
+        }
     }
 
     .dropdown-date select {
@@ -21,12 +44,9 @@
         font-size: 1.1em;
         border: 0;
         border-bottom: 1px solid #333;
-        // text-align: center;
-        // text-align-last: center;
+        outline: none;
     }
-    // .dropdown-date option {
-    //     text-align: left;
-    // }
+
     .dropdown-date select:nth-child(odd) {
         flex: 0.5;
     }

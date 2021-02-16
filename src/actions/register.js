@@ -71,6 +71,8 @@ const toggleButton = () => {
         : BTN.setAttribute("disabled", "true");
 };
 
+//TODO
+
 exports.init = () => {
     FORM = $q(`#${REGISTER_ID} form`);
     BTN = FORM.querySelector("button");
@@ -83,6 +85,5 @@ exports.init = () => {
     $q(`#${REGISTER_ID} .js-back`).addEventListener("click", () =>
         togglePage(LANDING_ID)
     );
-
     setDatePicker();
 };

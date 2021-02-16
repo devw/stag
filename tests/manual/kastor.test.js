@@ -9,8 +9,8 @@ json = {
     block_id: "8b9c1691-69fc-45fb-939f-14b4ccb47707",
     block_type_id: "register|dateBlocks|hasBirth",
     block_settings: {
-        "register|dateMax|": 90,
-        "register|dateMin|": 0,
+        "register|minDate|": 5,
+        "register|maxDate|": 0,
         "register|error|": "Your bithdate should be between 0 and 99",
         "register|key|": "",
         "register|namespace|": "",
@@ -42,12 +42,13 @@ json = {
 };
 //birthDate TODO you should fix the age as a number
 json = {
+    block_type_id: "register|dateBlocks|",
+    block_id: "ff0d9b2f-1375-4f16-bac3-17b957179033",
+    setting_id: "register|pickerStyle|",
+    value: "calendar",
     target: "setting:update",
-    block_id: "e448ed8b-fb61-4df0-bfea-534ebe0067e4",
-    block_type_id: "register|dateBlocks|hasBirth",
-    setting_id: "register|dateMin|",
-    value: "12",
 };
+kastor(json);
 
 json = {
     setting_id: "register||",
@@ -129,48 +130,6 @@ kastor(
     "setting:update",
     id
 );
-
-//remove a block -> YES
-kastor(undefined, undefined, "register|hasFirstName|", "block:remove");
-
-//TODO remove choice block
-block_id = "ef187c8e-cd76-4c60-a8ea-a1925723a57f";
-kastor(undefined, undefined, "register|hasChoice|", "block:remove", block_id);
-
-kastor({ setting_id: "register||" });
-kastor("landing|hasSocialLogin|", true);
-kastor("landing|loginRegister|", "Creation login");
-kastor("signin|wrongPsw|", "Incorrect password. Please, try again! ");
-kastor("landing|layout|", "popup-full");
-kastor("landing|--btn-bg-color|", "rgba(129, 183, 84, 1)");
-kastor("landing|--animation|", "slide-from-right");
-kastor("landing|formStyle|", "label-go-down");
-const arr = [...Array(99).keys()].map((e) => `item_${e}`);
-kastor("register|choiceList|", arr, "register|hasChoice|", "setting:update");
-kastor("register|hasMultiLine|", true);
-kastor("register|--img-position|", "row");
-kastor("register|--img-position|", "row-reverse");
-
-// adding an input field
-block_id = "3d0d01d9-5359-42d9-83e3-f555191922a6";
-kastor(undefined, undefined, "register|inputBlocks|", "block:add", block_id);
-kastor(
-    "register|placeholder|",
-    "Votre Nomaas",
-    "register|inputBlocks|",
-    "setting:update",
-    id
-);
-
-kastor(undefined, undefined, "register|inputBlocks|", "block:remove", id);
-
-kastor({
-    target: "block:reorder",
-    order: [
-        "b29ba912-60e2-47d1-aace-7dbe3a1877a4",
-        "4901918c-aadc-45fe-8996-32d27ac72436",
-    ],
-});
 
 json = {
     block_id: "910facc5-6891-4924-9c1f-4f0766b2a993",
@@ -295,3 +254,9 @@ json = {
     section_type_id: "register|section|",
     target: "block:remove",
 };
+
+json = {
+    setting_id: "register|--btn-bg-color|",
+    value: "rgba(0,80,42,1)",
+};
+kastor(json);

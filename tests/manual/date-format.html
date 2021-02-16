@@ -32,8 +32,18 @@
                 width: 100%;
             }
 
+            .container > .no-calendar > input::placeholder {
+                color: #666;
+            }
+
             .container div select {
                 flex: 1;
+            }
+            .container div input {
+                width: 33%;
+            }
+            input[type="date"] {
+                width: 100%;
             }
         </style>
     </head>
@@ -41,6 +51,15 @@
         <!-- https://codepen.io/cheryllaird/pen/IarGc -->
         <form action="">
             <div class="container">
+                <input
+                    name="birthdate"
+                    type="date"
+                    min="1922-12-31"
+                    max="2022-12-31"
+                    placeholder="Date de naissance"
+                />
+                <hr />
+
                 <div class="no-calendar"></div>
                 <label for="">No calendar</label>
                 <hr />
@@ -121,10 +140,15 @@
                 yElem.dispatchEvent(new Event("change"));
             };
 
-            const html = `
+            let html = `
                 <select id="${ids.d}"></select>
                 <select id="${ids.m}"></select>
                 <select id="${ids.y}"></select>
+             `;
+            html = `
+                <input id="${ids.d}" placeholder="dd">
+                <input id="${ids.m}" placeholder="mm">
+                <input id="${ids.y}" placeholder="yyyy">
              `;
 
             $(".no-calendar").innerHTML = html;
