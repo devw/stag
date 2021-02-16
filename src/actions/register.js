@@ -18,7 +18,8 @@ const multiChoiceSelector = "multi-choice";
 const getTagOrMetafield = (tag) => `
     [data-is-tag='${tag === "tag"}']:checked,
     [type='text'][data-is-tag='${tag === "tag"}'],
-    [type='date'][data-is-tag='${tag === "tag"}']
+    [type='date'][data-is-tag='${tag === "tag"}'],
+    [type='hidden'][data-is-tag='${tag === "tag"}']
 `;
 
 const onChoiceClick = ({ target, currentTarget }) => {
@@ -66,12 +67,11 @@ const storeMetafield = () => {
 };
 
 const toggleButton = () => {
+    window.FORM = FORM;
     isFormFilled(FORM)
         ? BTN.removeAttribute("disabled")
         : BTN.setAttribute("disabled", "true");
 };
-
-//TODO
 
 exports.init = () => {
     FORM = $q(`#${REGISTER_ID} form`);

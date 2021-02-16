@@ -93,6 +93,7 @@ const setDays = ({ target }) => {
 
 const getStartEnd = (el) => {
     let { minDate, maxDate } = getDateAttrs(el);
+    window._el = el;
     minDate = minDate.slice(-4);
     maxDate = maxDate.slice(-4);
     return { minDate, maxDate };
@@ -115,6 +116,7 @@ const getHtml = (target) => {
         .querySelector(".js-date")
         .getAttribute("inputStyle");
 
+    //TODO move these parts in templates/
     const selectHtml = `
         <select id="${ids.d}"><option>1</option></select>
         <select id="${ids.m}"><option>January</option></select>
@@ -123,15 +125,15 @@ const getHtml = (target) => {
     const inputHtml = `
         <div>
             <input id="${ids.d}" placeholder="day (dd)">
-            <label class="label-error"><i class="fa"></i>Wrong ${ids.d}</label>
+            <label class="label-error" readonly><i class="fa"></i>Wrong ${ids.d}</label>
         </div>
         <div>
             <input id="${ids.m}" placeholder="month (mm)">
-            <label class="label-error"><i class="fa"></i>Wrong ${ids.m}</label>
+            <label class="label-error" readonly><i class="fa"></i>Wrong ${ids.m}</label>
         </div>
         <div>
             <input id="${ids.y}" placeholder="year (yyyy)">
-            <label class="label-error"><i class="fa"></i>Wrong ${ids.y}</label>
+            <label class="label-error" readonly><i class="fa"></i>Wrong ${ids.y}</label>
         </div>
     `;
 
@@ -144,10 +146,12 @@ const setDatePickers = () => {
 
 const setDatePicker = (target) => {
     target.innerHTML = getHtml(target);
+
     const freeInput = target.querySelectorAll(".dropdown-date>div input");
     const selectInput = target.querySelectorAll("select");
     freeInput.forEach((e) => e.addEventListener("input", checkFreeInput));
     selectInput.forEach((e) => e.addEventListener("change", updateCalendar));
+    freeInput.forEach((e) => e.addEventListener("input", updateCalendar));
     target.querySelector(`#${ids.m}`).addEventListener("change", setDays);
     target.querySelector(`#${ids.y}`).addEventListener("change", setDays);
     setMonths(target);
@@ -155,11 +159,10 @@ const setDatePicker = (target) => {
 };
 
 const updateCalendar = ({ target }) => {
-    const noCal = target.parentNode;
-    const nums = Array.from(
-        noCal.querySelectorAll("select option:checked")
-    ).map((e) => e.value);
-    noCal.parentNode.querySelector(`${ids.cal}`).value = nums.join("-");
+    const root = target.closest("[block-id]");
+    const s = `${ids.noCal} select option:checked, ${ids.noCal} input`;
+    const nums = Array.from(root.querySelectorAll(s)).map((e) => e.value);
+    root.querySelector(`${ids.cal}`).value = nums.join("-");
 };
 
 const setDropDownPicker = () => {

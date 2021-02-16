@@ -2,10 +2,10 @@ const { $q, $qq } = require("./toggle");
 const { STORAGE_CONFIG } = require("../config");
 
 const getErrorLabel = (e) => {
-    return e.parentNode.querySelector(".label-error");
+    return e.parentNode.querySelector(".label-error:not([readonly]");
 };
 const showDateErrors = () => {
-    $qq(".js-date").forEach((e) => {
+    $qq(".js-date:not([readonly]").forEach((e) => {
         showDateError(e);
     });
 };
@@ -18,7 +18,6 @@ const showDateError = (e) => {
     const maxD = moment(maxDate, dateFormat);
     const customerD = moment(customerAge, dateFormat);
     const errorLabel = getErrorLabel(e);
-
     if (!customerD.isBetween(minD, maxD) && errorLabel)
         errorLabel.style.display = "block";
 };
@@ -58,8 +57,10 @@ const showPasswordErrors = () => {
     exclamationLabel.append(errorNotes[0]);
 };
 
-exports.isFormFilled = (form) =>
-    Array.from(form.querySelectorAll("input[required]")).every((e) => e.value);
+exports.isFormFilled = (form) => {
+    const s = "input[required]:not([readonly]";
+    return Array.from(form.querySelectorAll(s)).every((e) => e.value);
+};
 
 const hideErrors = () =>
     $qq(".label-error").forEach((e) => (e.style.display = "none"));

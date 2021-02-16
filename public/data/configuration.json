@@ -25,72 +25,46 @@
         "validate": "Valider",
         "hasSocialLogin": 0,
         "blocks_order": [
-            "c66de7be-024c-4467-a9fd-78abd72e70f2",
-            "4c3dbd05-5bf9-4139-95ee-6241fb722d77",
-            "b09b2ada-dfd8-4d93-92ad-04d7b8c0f800",
-            "ff0d9b2f-1375-4f16-bac3-17b957179033",
-            "be65bb81-966c-4d0f-aeb1-485bc3d85293",
-            "89c03145-68cb-4f82-a565-c1f68d4e67fc"
+            "14d3cfdf-4c9c-4287-873d-50cb66b31f4c",
+            "118e435a-7249-4ec4-8c8f-7b2b4c6008e7"
         ],
         "createAccount": "CrÃ©ation de compte",
         "fillInfoToCreateAccount": "Renseignez vos informations pour crÃ©er votre compte Franklin.",
         "registerAccount": "CrÃ©er un compte",
         "redirectAfterRegister": "",
-        "choiceBlocks": [
-            {
-                "choiceList": ["Mr.", "Mrs."],
-                "hasMultiChoice": 0,
-                "hasMultiLine": 0,
-                "isTag": "hasTag",
-                "tag": "gender",
-                "namespace": "",
-                "key": "",
-                "id": "c66de7be-024c-4467-a9fd-78abd72e70f2"
-            }
-        ],
+        "choiceBlocks": [],
         "inputBlocks": [
+            { "placeholder": "Write your email", "name": "customer[email]" },
             {
-                "name": "customer[email]",
-                "message": "This block can be used to sort the input fields present in the register form",
-                "id": "4c3dbd05-5bf9-4139-95ee-6241fb722d77",
-                "placeholder": "Write your email"
-            },
-            {
-                "name": "customer[password]",
+                "placeholder": "Write your password",
                 "error": true,
-                "message": "This block can be used to sort the input fields present in the register form",
-                "id": "be65bb81-966c-4d0f-aeb1-485bc3d85293",
-                "placeholder": "Write your password"
+                "name": "customer[password]"
             }
         ],
         "dateBlocks": [
             {
                 "placeholder": "Select a date",
-                "pickerStyle": "no-calendar",
+                "pickerStyle": "text",
                 "minDate": 2015,
                 "maxDate": 2025,
+                "error": "This date is out of range.",
                 "isTag": "hasTag",
-                "tag": "date_1",
+                "tag": "date",
                 "namespace": "",
                 "key": "",
-                "id": "ff0d9b2f-1375-4f16-bac3-17b957179033"
+                "id": "118e435a-7249-4ec4-8c8f-7b2b4c6008e7"
             }
         ],
-        "undefined": "89c03145-68cb-4f82-a565-c1f68d4e67fc",
-        "hasMultiChoice": 0,
-        "hasMultiLine": 0,
+        "placeholder": "Select a date",
+        "pickerStyle": "text",
+        "minDate": 2015,
+        "maxDate": 2025,
+        "error": "This date is out of range.",
         "isTag": "hasTag",
-        "tag": "birth",
+        "tag": "date",
         "namespace": "",
         "key": "",
-        "placeholder": "Write your birthdate",
-        "pickerStyle": "calendar",
-        "dateMin": 1,
-        "dateMax": 99,
-        "name": "customer[password]",
-        "message": "This block can be used to sort the input fields present in the register form",
-        "error": "Your birthdate should be between 1 and 99",
-        "tagVsMeta": "hasTag",
+        "undefined": "118e435a-7249-4ec4-8c8f-7b2b4c6008e7",
         "yourPassword": "Write your password",
         "wrongPsw": "Incorrect password. Please, try again!",
         "signIn": "Submit",
