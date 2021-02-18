@@ -1,4 +1,4 @@
-const { $qq } = require("./toggle");
+const { $qq, $q } = require("./toggle");
 const { addJS, addCSS } = require("./load-pages");
 
 const ids = {
@@ -18,9 +18,9 @@ const getValidity = () => ({
 const checkFreeInput = ({ target }) => {
     checkDaysCount(target);
     const { id, value } = target;
-    target.nextElementSibling.style.display = "none";
+    $qq(`.free-date label`).forEach((e) => (e.style.visibility = "hidden"));
     const isValid = getValidity()[id](value);
-    target.nextElementSibling.style.display = isValid ? "none" : "block";
+    $q(`.free-date #${id}`).style.visibility = isValid ? "hidden" : "visible";
 };
 
 const setCalendarPicker = () => {
@@ -40,8 +40,8 @@ const checkDaysCount = (target) => {
     const d = pNode.querySelector(`#${ids.d}`)?.value;
     if (!y && !m && !d) return null;
     const daysCount = moment(`${y}-${m}`, "YYYY-MM").daysInMonth();
-    const dayLabel = pNode.querySelector(`#${ids.d}`).nextElementSibling;
-    dayLabel.style.display = d > daysCount ? "block" : "none";
+    $q(`.free-date #${ids.d}`).style.visibility =
+        d > daysCount ? "hidden" : "visible";
 };
 
 const getDateAttrs = (el) => {
@@ -93,7 +93,6 @@ const setDays = ({ target }) => {
 
 const getStartEnd = (el) => {
     let { minDate, maxDate } = getDateAttrs(el);
-    window._el = el;
     minDate = minDate.slice(-4);
     maxDate = maxDate.slice(-4);
     return { minDate, maxDate };
@@ -112,9 +111,7 @@ const setYears = (target) => {
 };
 
 const getHtml = (target) => {
-    const inputStyle = target.parentNode
-        .querySelector(".js-date")
-        .getAttribute("inputStyle");
+    const pickerStyle = target.closest("[block-id]").className;
 
     //TODO move these parts in templates/
     const selectHtml = `
@@ -123,21 +120,12 @@ const getHtml = (target) => {
         <select id="${ids.y}">2000</select>
     `;
     const inputHtml = `
-        <div>
-            <input id="${ids.d}" placeholder="day (dd)">
-            <label class="label-error" readonly><i class="fa"></i>Wrong ${ids.d}</label>
-        </div>
-        <div>
-            <input id="${ids.m}" placeholder="month (mm)">
-            <label class="label-error" readonly><i class="fa"></i>Wrong ${ids.m}</label>
-        </div>
-        <div>
-            <input id="${ids.y}" placeholder="year (yyyy)">
-            <label class="label-error" readonly><i class="fa"></i>Wrong ${ids.y}</label>
-        </div>
+        <input id="${ids.d}" placeholder="day (dd)">
+        <input id="${ids.m}" placeholder="month (mm)">
+        <input id="${ids.y}" placeholder="year (yyyy)">
     `;
 
-    return inputStyle === "three-input-fields" ? inputHtml : selectHtml;
+    return pickerStyle === "date-text" ? inputHtml : selectHtml;
 };
 
 const setDatePickers = () => {
@@ -147,7 +135,7 @@ const setDatePickers = () => {
 const setDatePicker = (target) => {
     target.innerHTML = getHtml(target);
 
-    const freeInput = target.querySelectorAll(".dropdown-date>div input");
+    const freeInput = target.querySelectorAll(".dropdown-date>input");
     const selectInput = target.querySelectorAll("select");
     freeInput.forEach((e) => e.addEventListener("input", checkFreeInput));
     selectInput.forEach((e) => e.addEventListener("change", updateCalendar));

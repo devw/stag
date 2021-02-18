@@ -37,13 +37,8 @@ exports.cleanDateBlocks = (text) => {
     //TODO this part should be made in kastor
     text?.dateBlocks?.forEach((e) => {
         e.isTag = e.isTag === "hasTag" ? true : false;
-        console.log("cleanDateBlocks\n", e);
         e.minDate = cleanDate(e.minDate);
         e.maxDate = cleanDate(e.maxDate);
-        if (e.pickerStyle === "text") {
-            e.pickerStyle = "no-calendar";
-            e.inputStyle = "three-input-fields";
-        } else e.inputStyle = "";
     });
 
     return text;

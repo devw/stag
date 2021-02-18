@@ -1,5 +1,6 @@
 #login-popup {
-    .no-calendar {
+    .no-calendar,
+    .date-text {
         .input-text {
             display: none;
         }
@@ -15,11 +16,25 @@
         gap: 12px;
     }
 
-    .dropdown-date > div {
+    div > .free-date {
+        position: absolute;
+        width: 100%;
+        display: flex;
+        gap: 12px;
+    }
+    div > .free-date label {
+        flex: 1;
+        position: relative;
+        visibility: hidden;
+        font-size: 0.8em;
+        color: var(--error-color, rgb(208, 26, 26));
+        background-color: var(--error-bg-color, rgb(240, 207, 207));
+    }
+
+    .dropdown-date {
         > input {
             border: var(--input-line);
             border-bottom: 1px solid #333;
-            background-color: unset;
             outline: none;
             font-size: 1em;
             color: #333;
@@ -28,13 +43,6 @@
         }
         > input::placeholder {
             color: #777;
-        }
-
-        > label.label-error {
-            position: relative;
-            top: 0;
-            z-index: 2;
-            width: unset;
         }
     }
 

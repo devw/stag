@@ -5,48 +5,30 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
         <style>
-            body {
-                background: ivory;
+            .container {
+                width: 900px;
+                background-color: lightblue;
             }
-            input {
-                box-sizing: border-box;
-            }
-            .main {
-                width: 600px;
+            .container .date {
+                position: absolute;
+                width: inherit;
                 display: flex;
                 gap: 12px;
-                background-color: lawngreen;
             }
-            .main div {
+            .container .date tre {
                 flex: 1;
-            }
-            .main div > input {
-                width: 100%;
-                border: 0;
-                outline: none;
-                border-bottom: 1px solid #333;
-            }
-            .main div > label {
-                display: block;
-                background-color: pink;
+                background-color: lightcoral;
+                position: relative;
             }
         </style>
     </head>
     <body>
-        <div class="main">
-            <div>
-                <input type="text" />
-                <label for="">231</label>
+        <div class="container">
+            <div class="date">
+                <tre>asd</tre>
+                <tre>sad</tre>
+                <tre>asd</tre>
             </div>
-            <div>
-                <input type="text" />
-                <label for="">123</label>
-            </div>
-            <div>
-                <input type="text" />
-                <label for="">32132</label>
-            </div>
-            <label for="">asdaddsasd</label>
         </div>
     </body>
 </html>
