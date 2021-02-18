@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            block_settings = {
+                "register|dateMax|": 2025,
+                "register|dateMin|": 2015,
+                "register|isTag|": "hasMetafield",
+                "register|key|": "",
+                "register|namespace|": "",
+                "register|pickerStyle|": "calendar",
+                "register|placeholder|": "Select a date",
+                "register|tag|": "",
+            };
+            const keys = Reflect.ownKeys(block_settings);
+            const getNewKey = (k) => k.split("|")[1];
+            return (res = keys.reduce((a, c) => {
+                return { ...a, [getNewKey(c)]: block_settings[c] };
+            }, {}));
+
+            // delete Object.assign(newObject, o, { [newKey]: o[oldKey] })[oldKey];
+        </script>
+    </body>
+</html>

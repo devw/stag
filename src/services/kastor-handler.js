@@ -1,36 +1,28 @@
-const {
-    togglePage,
-    $q,
-    $qq,
-    getBlocksAttr,
-    updateCss,
-} = require("../utils/toggle");
+const { updateCss, render, parseConfiguration } = require("../utils/");
+const { $q, $qq, togglePage, sortBlocks } = require("../utils/toggle");
+const { cleanChoiceBlock, cleanDateBlocks } = require("../utils/cleanConfig");
+const { IDs, STORAGE_CONFIG } = require("../config");
+const { loadActions } = require("../actions/load");
 
-const { IDs } = require("../config");
-// TODO you should find a more robust solution the globalThis.render
+let TEXT;
 
 const changePage = (page) => {
-    // this disables the logic of popup
-    // const { loadActions } = require("../actions/load");
     togglePage(page);
+    sortBlocks();
     $q(`#${IDs.CONTAINER_ID}`).style.setProperty("display", "flex");
-    // loadActions();
+    loadActions();
+    disableBtns();
 };
 
-const getIdsVsBlocks = (json) => {
-    const idsVsBlocks = Object.keys(json).map((e) => ({
-        [Object.keys(json[e])[0]]: e,
-    }));
-    return idsVsBlocks.filter((e) => Object.keys(e)[0] !== "undefined");
+const disableBtn = (e) => {
+    e.style.setProperty("pointer-events", "none");
+    e.parentNode.style.setProperty("cursor", "not-allowed");
 };
 
-const getOrderedBlocks = ({ blocks, order }) => {
-    let idsVsBlocks = getIdsVsBlocks(blocks);
-    idsVsBlocks = idsVsBlocks.sort(
-        (a, b) =>
-            order.indexOf(Object.keys(a)[0]) - order.indexOf(Object.keys(b)[0])
-    );
-    return idsVsBlocks.map((e) => Object.values(e)[0].split("|")[1]);
+const disableBtns = () => {
+    $qq("form button").forEach(disableBtn);
+    const closeBtn = $q(".js-close");
+    closeBtn.style.setProperty("pointer-events", "none");
 };
 
 const getData = (event) => {
@@ -40,7 +32,7 @@ const getData = (event) => {
 
 const getTarget = (event) => {
     const e = event.data ? event.data : event.detail.data;
-    return e.target;
+    return e?.target;
 };
 
 const parseEventData = (event) => {
@@ -50,6 +42,35 @@ const parseEventData = (event) => {
     const value = getData(event) == "block:remove" ? false : data.value;
     const selector = setting_id || section_type || block_type_id;
     return [selector, value];
+};
+
+const showWrongPsw = () => ($q(".js-signin-err").style.display = "block");
+
+const showPswError = (message) => {
+    const e = "[name='customer[password]']";
+    const exclamationLabel = $q(e).parentNode.querySelector(".label-error");
+    exclamationLabel.innerHTML = exclamationLabel.innerHTML.split("</i>")[0];
+    exclamationLabel.style.display = "block";
+    exclamationLabel.append(message);
+};
+
+const renderCustomize = (newText) => {
+    const config = getConfig();
+    config.text = updateText(newText);
+    parseConfiguration(config);
+    render(config.text);
+};
+
+const showErrors = () => {
+    $qq("label.label-error").forEach((e) => (e.style.display = "block"));
+    // TODO refactor
+    showPswError("Password should have at least 5 characters!");
+};
+
+const updateText = (newText) => {
+    const key = Reflect.ownKeys(newText)[0];
+    TEXT[key] = newText[key];
+    return TEXT;
 };
 
 const updateNoBlock = (event) => {
@@ -63,7 +84,7 @@ const updateNoBlock = (event) => {
     if (/^--/.test(key)) {
         updateCss({ [key]: valueAndUnit });
     } else
-        globalThis.render({
+        renderCustomize({
             [key]: valueAndUnit == "false" ? false : valueAndUnit,
         });
 
@@ -71,58 +92,88 @@ const updateNoBlock = (event) => {
 
     // TODO: too fragile check the password policy in this way, you should refactor the code using objects
     if (/^psw.*Err$/.test(key)) showPswError(value);
-    if (/^errorIcon$|^--error-/.test(key)) showErrors();
+    if (/^error|^--error-/.test(key)) showErrors();
     if (/^wrongPsw$/.test(key)) showWrongPsw();
 };
 
-const showWrongPsw = () => ($q(".js-signin-err").style.display = "block");
-
-const showPswError = (message) => {
-    const exclamationLabel = $q(".hasPassword .label-error");
-    exclamationLabel.innerHTML = exclamationLabel.innerHTML.split("</i>")[0];
-    exclamationLabel.style.display = "block";
-    exclamationLabel.append(message);
+//TODO you should refactor the config.yml to avoid this dirty code
+const cleanObject = (block_settings) => {
+    const keys = Reflect.ownKeys(block_settings);
+    const getNewKey = (k) => k.split("|")[1];
+    return keys.reduce((a, c) => {
+        return { ...a, [getNewKey(c)]: block_settings[c] };
+    }, {});
 };
 
-const showErrors = () => {
-    $qq("label.label-error").forEach((e) => (e.style.display = "block"));
-    // TODO refactor
-    showPswError("Password should have at least 5 characters!");
-};
+const getConfig = () => JSON.parse(localStorage.getItem(STORAGE_CONFIG));
 
 const kastorHandler = (event) => {
+    if (!TEXT) TEXT = getConfig()["text"];
     //reorder blocks
     console.log("kastorHandler: ", event);
     const target = getTarget(event);
+    const data = getData(event);
+    const { block_type_id, block_id, state } = data;
+
+    // TODO refactor
+    if (state && /customer\[email|password\]/.test(state.name)) {
+        console.log("TEXT ###########", TEXT["inputBlocks"]);
+        const { block_id, name } = state;
+        $q(`[name='${name}']`).parentNode.setAttribute("block-id", block_id);
+
+        const block = TEXT["inputBlocks"].find((e) => e.name === name);
+        block.id = block_id;
+
+        renderCustomize({ inputBlocks: TEXT["inputBlocks"] });
+        changePage("register");
+        return null;
+    }
+
     if (target === "block:reorder") {
-        const orderBlocks = getOrderedBlocks(getData(event));
-        globalThis.render({ orderedBlock: orderBlocks });
-        changePage(IDs.REGISTER_ID);
+        const { order } = data;
+        // TODO sometimes you use renderCustomize and other render!!
+        renderCustomize({ blocks_order: order });
+        changePage("register");
         return null;
     }
-    //remove block
-    if (target === "block:remove") {
-        const { block_type_id } = getData(event);
-        const blockToDel = block_type_id.split("|")[1];
-        const filteredBlocks = getBlocksAttr().filter((e) => e !== blockToDel);
-        globalThis.render({ orderedBlock: filteredBlocks });
-        globalThis.render({ [blockToDel]: false });
-        changePage(IDs.REGISTER_ID);
-        return null;
-    }
-    //add a block
-    if (target === "block:add") {
-        const { block_type_id, block_settings } = getData(event);
-        const [page, blockToAdd] = block_type_id.split("|");
-        const key = Object.keys(block_settings)[0].split("|")[1];
-        const value = Object.values(block_settings)[0];
-        globalThis.render({ [key]: value });
-        globalThis.render({ [blockToAdd]: true });
-        changePage(page);
+    //TODO refactor
+    const isBlock = /dateBlocks|inputBlocks|choiceBlocks/.test(block_type_id);
+    if (isBlock) {
+        const { block_settings } = data;
+        const blocks = block_type_id.split("|")[1];
+        const { value, setting_id } = data;
+        if (target === "block:add") {
+            if (!TEXT[blocks]) TEXT[blocks] = [];
+            TEXT[blocks].push({
+                id: block_id,
+                ...cleanObject(block_settings),
+            });
+            if (TEXT.blocks_order) {
+                TEXT.blocks_order.push(block_id);
+            } else {
+                TEXT.blocks_order = [block_id];
+            }
+        } else if (target === "setting:update") {
+            const key = setting_id.split("|")[1];
+            const block = TEXT[blocks].find((e) => e.id === block_id);
+            block[key] = value;
+            if (/^error|^--error-/.test(key)) showErrors();
+        } else if (target === "block:remove") {
+            TEXT[blocks] = TEXT[blocks].filter((e) => e.id !== block_id);
+        }
+        TEXT = cleanChoiceBlock(TEXT);
+        TEXT = cleanDateBlocks(TEXT);
+        render(TEXT);
+        changePage("register");
         return null;
     }
 
     updateNoBlock(event);
 };
-
-globalThis.addEventListener("message", kastorHandler);
+if (
+    /config_id/.test(location.href) ||
+    window.location !== window.parent.location
+) {
+    globalThis.addEventListener("message", kastorHandler);
+    setTimeout(() => changePage("landing"), 0);
+}

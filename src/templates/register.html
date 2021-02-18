@@ -2,18 +2,13 @@
 <div class="sub-title text t-4">{{fillInfoToCreateAccount}}</div>
 
 <form
-    method="post"
+    method="POST"
     accept-charset="UTF-8"
     novalidate="novalidate"
     class="{{formStyle}}"
-    data-blocks="{{orderedBlock}}"
+    blocks_order="{{blocks_order}}"
 >
-    <input
-        type="hidden"
-        name="return_to"
-        value="{{redirectAfterRegister ||
-    '/'}}"
-    />
+    <input type="hidden" name="return_to" value="{{redirectAfterRegister}}" />
     <input type="hidden" name="customer[tags]" value="" />
 
     <input type="hidden" name="form_type" value="create_customer" /><input
@@ -22,119 +17,92 @@
         value="✓"
     />
 
-    {{#hasChoice}}
-    <!-- loop -->
+    {{#inputBlocks}}
+    <div block-id="{{id}}">
+        <input
+            required
+            type="text"
+            class="input-text"
+            name="{{name}}"
+            placeholder="{{placeholder}}"
+        />
+        <label>{{placeholder}}</label>
+        {{#error}}
+        <label class="label-error"
+            ><i class="fa {{errorIcon}}"></i>{{error}}
+        </label>
+        {{/error}}
+    </div>
+    {{/inputBlocks}}
+
+    <!-- choiceBlocks -->
+    <!-- lineStyle can be multi-line-->
+    {{#choiceBlocks}}
     <div
-        class="hasChoice choice-block single-choice {{#hasMultiLine}}multi-line{{/hasMultiLine }}"
+        block-id="{{id}}"
+        class="choice-block js-opt  {{choiceStyle}} {{lineStyle}}"
     >
         {{#choiceList }}
         <div>
             <input
                 type="checkbox"
                 value="{{.}}"
-                data-is-tag="{{isChoiceTag}}"
-                data-tag="{{choiceTag}}"
-                data-namespace="{{choiceNamespace}}"
-                data-key="{{choiceKey}}"
+                data-is-tag="{{isTag}}"
+                data-tag="{{tag}}"
+                data-namespace="{{namespace}}"
+                data-key="{{key}}"
             />
             <label>{{.}}</label>
         </div>
         {{/choiceList}}
+        <!-- if not choice list-->
+        {{#name}}
+        <div>
+            <input type="checkbox" name="{{name}}" />&nbsp;{{placeholder}}
+        </div>
+        {{/name}}
     </div>
-    {{/hasChoice}}
+    {{/choiceBlocks}}
 
-    <!-- FirstName field -->
-    {{#hasFirstName }}
-    <div class="hasFirstName">
+    <!--date blocks-->
+
+    {{#dateBlocks}}
+    <div block-id="{{id}}" class="{{pickerStyle}}">
+        <div class="dropdown-date"></div>
         <input
+            class="input-text picker-date js-date"
             required
             type="text"
-            class="input-text"
-            name="customer[first_name]"
-            placeholder="{{yourFirstName}}"
+            data-is-tag="{{isTag}}"
+            minDate="{{minDate}}"
+            maxDate="{{maxDate}}"
+            placeholder="{{placeholder}}"
+            data-tag="{{tag}}"
+            data-namespace="{{namespace}}"
+            data-key="{{key}}"
+            altFormat="j-F-Y"
+            dateFormat="d-m-Y"
+            altInput="true"
+            enableTime="{{enableTime}}"
+            mode="{{mode}}"
+            inputStyle="{{inputStyle}}"
+            time_24hr="{{time_24hr}}"
         />
-        <label>{{yourFirstName}}</label>
-    </div>
-    {{/hasFirstName }}
-
-    <!-- LastName field -->
-    {{#hasLastName }}
-    <div class="hasLastName">
-        <input
-            required
-            type="text"
-            class="input-text"
-            name="customer[last_name]"
-            placeholder="{{yourLastName}}"
-        />
-        <label>{{yourLastName}}</label>
-    </div>
-    {{/hasLastName }}
-
-    <!-- Telephone field -->
-    {{#hasTelephone }}
-    <div class="hasTelephone">
-        <input
-            required
-            type="text"
-            class="input-text"
-            placeholder="{{yourTelephone}}"
-            name="address[phone]"
-        />
-        <label>{{yourTelephone}}</label>
-    </div>
-    {{/hasTelephone }}
-
-    <!-- Email field -->
-    <div class="hasEmail">
-        <input
-            required
-            type="email"
-            placeholder="{{yourEmail}}"
-            name="customer[email]"
-            class="input-text"
-        />
-        <label>{{yourEmail}}</label>
-    </div>
-
-    <!-- Password field -->
-    <div class="hasPassword">
-        <i class="fa fa-eye js-show-psw"></i>
-        <input
-            required
-            type="password"
-            name="customer[password]"
-            class="input-text"
-            placeholder="{{yourPassword}}"
-            autocomplete="on"
-        />
-        <label>{{yourPassword}}</label>
-        <label class="label-error"><i class="fa {{errorIcon}}"></i> </label>
-    </div>
-
-    {{#hasBirth}}
-    <div class="hasBirth js-date">
-        <input
-            class="input-text"
-            required
-            type="text"
-            data-is-tag="{{isBirthTag}}"
-            date-min="{{birthMin}}"
-            date-max="{{birthMax}}"
-            placeholder="{{birthPlaceholder}}"
-            data-tag="{{birthTag}}"
-            data-namespace="{{birthNamespace}}"
-            data-key="{{birthKey}}"
-        />
-        <label>{{birthPlaceholder}}</label>
+        <label>{{placeholder}}</label>
         <label class="label-error"
-            ><i class="fa {{errorIcon}}"></i>{{birthError}}</label
-        >
+            ><i class="fa {{errorIcon}}"></i>{{error}}
+        </label>
+        <div class="free-date">
+            <label id="day">Wrong day format</label>
+            <label id="month">Wrong month format</label>
+            <label id="year">Wrong year format</label>
+        </div>
     </div>
-    {{/hasBirth}}
+    {{/dateBlocks}}
 
-    <!-- Subscribe newsletter checkbox -->
-    {{#hasNewsletter }}
+    <!-- Subscribe newsletter checkbox The news letter is like choiceList -->
+
+    {{#hasNewsletter }} Subscribe newsletter
     <div class="hasNewsletter">
         <div>
             <input type="hidden" name="customer[accepts_marketing]" value="" />
@@ -144,25 +112,10 @@
     </div>
     {{/hasNewsletter }}
 
-    <!-- hasDate field -->
-    {{#hasDate }}
-    <div class="hasDate">
-        <input
-            required
-            type="text"
-            class="input-text"
-            placeholder="{{datePlaceholder}}"
-            data-is-tag="{{isDateTag}}"
-            data-dateError="{{dateError}}"
-            data-tag="{{dateTag}}"
-            data-namespace="{{dateNamespace}}"
-            data-key="{{dateKey}}"
-        />
-        <label>{{datePlaceholder}}</label>
+    <div>
+        <button class="btn btn-primary" disabled="">
+            {{registerAccount}} &nbsp;<i class="fa fa-spinner fa-spin off"></i>
+        </button>
     </div>
-    {{/hasDate }}
-    <button class="btn btn-primary" disabled="">
-        {{registerAccount}} &nbsp;<i class="fa fa-spinner fa-spin off"></i>
-    </button>
 </form>
 <div class="action js-back"><i class="fa fa-arrow-left"></i> Back</div>

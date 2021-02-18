@@ -14,7 +14,8 @@
         "bp": "rm -rf dist; webpack --mode=production; cp -r public/* dist",
         "bk": "webpack --mode=development --env=in=./src/services/kastor-handler.js --env=out=kastorHandler.js;",
         "start": "cd dist; lsof -ti tcp:$npm_package_config_port | xargs kill; python3.8  -m http.server $npm_package_config_port &",
-        "lint": "eslint ./"
+        "lint": "eslint ./",
+        "ngrok": "ngrok http $npm_package_config_port -subdomain=antoniooo"
     },
     "devDependencies": {
         "eslint": "^7.19.0",

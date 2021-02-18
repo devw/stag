@@ -16,7 +16,6 @@
         border-bottom: 1px solid #333;
         background-color: unset;
         outline: none;
-        // padding: var(--input-padding);
         font-size: 1em;
         color: #333;
         min-width: 100%;
@@ -95,6 +94,10 @@
     }
 
     // CHOICE BLOCK
+    .choice-block {
+        margin: 1.1em 0 0 0;
+    }
+
     .choice-block > div {
         display: inline-block;
     }
@@ -114,15 +117,12 @@
     }
 
     .choice-block input[type="checkbox"] {
-        width: 1.1em;
-        height: 1.1em;
         background-color: white;
         vertical-align: middle;
         border: 1px solid #ddd;
         -webkit-appearance: none;
         outline: none;
         cursor: pointer;
-        padding: 10px;
     }
     .choice-block input[type="checkbox"]:checked {
         background-color: gray;
@@ -130,9 +130,11 @@
 
     .choice-block.single-choice input[type="checkbox"] {
         border-radius: 50%;
+        padding: 0.5em;
     }
 
     .choice-block.multi-choice input[type="checkbox"] {
         border-radius: 25%;
+        padding: 0.5em;
     }
 }

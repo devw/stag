@@ -4,31 +4,39 @@
     3) popup-full
     4) popup-drawer
 */
-
-/* 
-    POPUP-FLOATING
-*/
 #login-popup {
     .content {
         z-index: 2;
+        display: flex;
+        align-items: center;
+        flex-direction: var(--img-position, column);
+        gap: 18px;
     }
-
+    /* 
+    POPUP-FLOATING
+    */
     .popup-floating {
         box-shadow: 0 1px 5px 2px rgba(0, 0, 0, 0.1);
         top: 40px;
         right: 40px;
     }
     @media (pointer: coarse) {
-        .popup-floating {
+        #container {
             top: 0px;
             right: 0px;
             width: 100vw;
+        }
+        .content {
+            flex-direction: column;
+            .partials {
+                width: 100%;
+            }
         }
     }
 
     /* 
     POPUP-FULL
-*/
+    */
     .popup-full {
         width: 100vw;
         height: 100vh;

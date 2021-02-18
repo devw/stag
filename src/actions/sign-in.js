@@ -11,9 +11,8 @@ const onSubmit = async (e) => {
     FORM.action = "/account/login";
     const resp = await sendHttpRequest("POST", e);
     if (resp.isLogged) {
-        const { shop } = globalThis?.Shopify;
         const redirect = FORM.getAttribute("data-login-redirect");
-        location.href = `https://${shop}/${redirect}`;
+        location.href = `${location.origin}/${redirect}`;
     }
     toggleLoading(BTN);
 };

@@ -1,34 +1,36 @@
 const { $q, $qq } = require("./toggle");
 const { STORAGE_CONFIG } = require("../config");
 
-const getErrorLabel = (e) => e.parentElement.querySelector(".label-error");
+const getErrorLabel = (e) => {
+    return e.parentNode.querySelector(".label-error:not([readonly]");
+};
+const showDateErrors = () => {
+    $qq(".js-date:not([readonly]").forEach((e) => {
+        showDateError(e);
+    });
+};
+globalThis.showDateErrors = showDateErrors;
 
-const showDateError = () => {
-    const dateElem = $q(".hasBirth input");
-    if (!dateElem) return null;
-    const { minDate, maxDate, customerAge } = getDateAttr(dateElem);
-    // TODO refactoring
-    if (minDate > customerAge || maxDate < customerAge)
-        getErrorLabel(dateElem).style.display = "block";
+const showDateError = (e) => {
+    const { minDate, maxDate, customerAge } = getDateAttr(e);
+    const dateFormat = "DD-MM-YYYY";
+    const minD = moment(minDate, dateFormat);
+    const maxD = moment(maxDate, dateFormat);
+    const customerD = moment(customerAge, dateFormat);
+    const errorLabel = getErrorLabel(e);
+    if (!customerD.isBetween(minD, maxD) && errorLabel)
+        errorLabel.style.display = "block";
 };
 
-const getCustomerAge = (dateElem) => {
-    const DAY_IN_YEAR = 365;
-    const SEC_IN_DAY = 3600 * 24;
-    const MSEC_IN_DAY = 1000 * SEC_IN_DAY;
-    const userSec = new Date(dateElem.value).getTime();
-    const nowSec = new Date().getTime();
-    const days = Math.trunc((nowSec - userSec) / MSEC_IN_DAY);
-    return days / DAY_IN_YEAR;
-};
+//TODO to refactor
 const getDateAttr = (dateElem) => ({
-    minDate: dateElem.getAttribute("date-min"),
-    maxDate: dateElem.getAttribute("date-max"),
-    customerAge: getCustomerAge(dateElem),
+    minDate: dateElem.getAttribute("minDate"),
+    maxDate: dateElem.getAttribute("maxDate"),
+    customerAge: dateElem.value,
 });
 
 const showPasswordErrors = () => {
-    const pswElem = $q(".hasPassword input");
+    const pswElem = $q("[name='customer[password]']");
     const psw = pswElem.value;
     const pswPolicy = JSON.parse(localStorage.getItem(STORAGE_CONFIG))["text"];
     const errorNotes = [];
@@ -55,8 +57,10 @@ const showPasswordErrors = () => {
     exclamationLabel.append(errorNotes[0]);
 };
 
-exports.isFormFilled = (form) =>
-    Array.from(form.querySelectorAll("input[required]")).every((e) => e.value);
+exports.isFormFilled = (form) => {
+    const s = "input[required]:not([readonly]";
+    return Array.from(form.querySelectorAll(s)).every((e) => e.value);
+};
 
 const hideErrors = () =>
     $qq(".label-error").forEach((e) => (e.style.display = "none"));
@@ -69,7 +73,7 @@ const areErrors = () => {
 exports.areInvalidInputs = () => {
     hideErrors();
     showPasswordErrors();
-    showDateError();
+    showDateErrors();
     return areErrors();
 };
 
