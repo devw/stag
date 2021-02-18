@@ -20,7 +20,6 @@ exports.cleanInputBlocks = (text) => {
 };
 
 const pastDate = (year) => {
-    console.log("year......\n", year);
     const mSecYear = 31_536_000_000;
     const seconds = Date.now() - year * mSecYear;
     const d = new Date(seconds);

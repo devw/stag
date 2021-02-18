@@ -1,18 +1,9 @@
-const {
-    togglePage,
-    $q,
-    $qq,
-    updateCss,
-    sortBlocks,
-    render,
-    parseConfiguration,
-} = require("../utils/");
+const { updateCss, render, parseConfiguration } = require("../utils/");
+const { $q, $qq, togglePage, sortBlocks } = require("../utils/toggle");
 const { cleanChoiceBlock, cleanDateBlocks } = require("../utils/cleanConfig");
-
 const { IDs, STORAGE_CONFIG } = require("../config");
 const { loadActions } = require("../actions/load");
 
-// TODO you should find a more robust solution the globalThis.render
 let TEXT;
 
 const changePage = (page) => {
@@ -20,14 +11,16 @@ const changePage = (page) => {
     sortBlocks();
     $q(`#${IDs.CONTAINER_ID}`).style.setProperty("display", "flex");
     loadActions();
-    disableBtn();
+    disableBtns();
 };
 
-const disableBtn = () => {
-    $qq("form button").forEach((e) => {
-        e.style.setProperty("pointer-events", "none");
-        e.parentNode.style.setProperty("cursor", "not-allowed");
-    });
+const disableBtn = (e) => {
+    e.style.setProperty("pointer-events", "none");
+    e.parentNode.style.setProperty("cursor", "not-allowed");
+};
+
+const disableBtns = () => {
+    $qq("form button").forEach(disableBtn);
     const closeBtn = $q(".js-close");
     closeBtn.style.setProperty("pointer-events", "none");
 };

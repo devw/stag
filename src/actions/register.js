@@ -1,16 +1,12 @@
 const { IDs } = require("../config");
-const { REGISTER_ID, LANDING_ID } = IDs;
-const {
-    togglePage,
-    $q,
-    $qq,
-    toggleSecret,
-    toggleLoading,
-} = require("../utils");
-const { isFormFilled, areInvalidInputs, sortBlocks } = require("../utils");
+const { togglePage, toggleSecret, toggleLoading, $qq } = require("../utils");
+const { isFormFilled, areInvalidInputs, sortBlocks, $q } = require("../utils");
 const { init: setDatePicker } = require("../utils/date");
 const { storeMetafieldIntoShopify } = require("../services");
 const { STORAGE_METAFIELD } = require("../config");
+
+const { REGISTER_ID, LANDING_ID } = IDs;
+
 let FORM, BTN;
 
 const multiChoiceSelector = "multi-choice";
@@ -74,6 +70,8 @@ const toggleButton = () => {
         : BTN.setAttribute("disabled", "true");
 };
 
+const goToLanding = () => togglePage(LANDING_ID);
+
 exports.init = () => {
     FORM = $q(`#${REGISTER_ID} form`);
     BTN = FORM.querySelector("button");
@@ -82,9 +80,7 @@ exports.init = () => {
     FORM.addEventListener("submit", onSubmit);
     FORM.querySelector(".js-show-psw")?.addEventListener("click", toggleSecret);
     $qq(".js-opt")?.forEach((e) => e.addEventListener("click", onChoiceClick));
+    $q(`#${REGISTER_ID} .js-back`).addEventListener("click", goToLanding);
     storeMetafieldIntoShopify();
-    $q(`#${REGISTER_ID} .js-back`).addEventListener("click", () =>
-        togglePage(LANDING_ID)
-    );
     setDatePicker();
 };
