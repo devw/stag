@@ -43,7 +43,7 @@ const onSubmit = async (e) => {
 const storeTags = () => {
     const tag = getTagOrMetafield("tag");
     const arr = Array.from(FORM.querySelectorAll(tag));
-    const tags = arr.map((el) => `${el.getAttribute("data-tag")}:${el.value}`);
+    const tags = arr.map((el) => `${el.getAttribute("data-tag")}${el.value}`);
     //TODO get a delimiter from the customize
     $q('[name="customer[tags]"]').value = tags.join(", ");
 };

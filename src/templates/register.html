@@ -42,6 +42,10 @@
         block-id="{{id}}"
         class="choice-block js-opt  {{choiceStyle}} {{lineStyle}}"
     >
+        {{#hasLabel}}
+        <label style="display:{{labelPosition}}">{{label}}</label>
+        {{/hasLabel}}
+        <!-- choice-list -->
         {{#choiceList }}
         <div>
             <input
