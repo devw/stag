@@ -42,3 +42,10 @@ exports.cleanDateBlocks = (text) => {
 
     return text;
 };
+
+exports.cleanStyle = (style) => {
+    console.log(style);
+    const left = style["--input-padding"].trim().split(" ").slice(-1);
+    style["--label-left"] = left[0];
+    return style;
+};
