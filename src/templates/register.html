@@ -43,7 +43,7 @@
         class="choice-block js-opt  {{choiceStyle}} {{lineStyle}}"
     >
         {{#hasLabel}}
-        <label style="display:{{labelPosition}}">{{label}}</label>
+        <label class="{{labelPosition}}">{{label}}</label>
         {{/hasLabel}}
         <!-- choice-list -->
         {{#choiceList }}
@@ -96,11 +96,6 @@
         <label class="label-error"
             ><i class="fa {{errorIcon}}"></i>{{error}}
         </label>
-        <div class="free-date">
-            <label id="day">Wrong day format</label>
-            <label id="month">Wrong month format</label>
-            <label id="year">Wrong year format</label>
-        </div>
     </div>
     {{/dateBlocks}}
 
