@@ -82,6 +82,10 @@ const updateNoBlock = (event) => {
 
     if (!/--animation/.test(key)) updateCss({ "--animation": "none" });
     if (/^--/.test(key)) {
+        if (key == "--input-padding") {
+            const left = valueAndUnit.trim().split(" ").slice(-1)[0];
+            updateCss({ "--label-left": left });
+        }
         updateCss({ [key]: valueAndUnit });
     } else
         renderCustomize({

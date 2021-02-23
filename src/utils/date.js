@@ -1,6 +1,8 @@
 const { $qq, $q } = require("./toggle");
 const { addJS, addCSS } = require("./load-pages");
 
+globalThis.$qq = $qq;
+
 const ids = {
     d: "day",
     m: "month",
@@ -61,14 +63,13 @@ const getDateAttrs = (el) => {
 };
 
 const setCalendar = () => {
-    $qq(".js-date")?.forEach((target) => {
-        let attrs = getDateAttrs(target);
-        globalThis.flatpickr(target, attrs);
-    });
+    document.querySelectorAll(".flatpickr-calendar").forEach((e) => e.remove());
+    const selector = "[block-id].calendar > .js-date";
+    $qq(selector).forEach((e) => globalThis.flatpickr(e, getDateAttrs(e)));
 };
 
 const setMonths = async (target) => {
-    const months = moment.months();
+    const months = globalThis.moment.months();
     const mElem = target.querySelector(`#${ids.m}`);
     let html = ``;
     await new Promise((resolve) => setTimeout(resolve, 2000));
@@ -82,7 +83,7 @@ const setDays = ({ target }) => {
     const y = pNode.querySelector(`#${ids.y} option:checked`)?.value;
     const m = pNode.querySelector(`#${ids.m} option:checked`)?.value;
     if (!y && !m) return null;
-    const daysCount = moment(`${y}-${m}`, "YYYY-MM").daysInMonth();
+    const daysCount = globalThis.moment(`${y}-${m}`, "YYYY-MM").daysInMonth();
     const d = pNode.querySelector(`#${ids.d}`);
     let html = "";
     Array.from(new Array(daysCount)).forEach(
