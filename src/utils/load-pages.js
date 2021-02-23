@@ -6,6 +6,7 @@ const {
     cleanChoiceBlock,
     cleanInputBlocks,
     cleanDateBlocks,
+    cleanStyle,
 } = require("./cleanConfig");
 
 const HEAD = document.getElementsByTagName("head")[0];
@@ -34,11 +35,12 @@ exports.render = (text) => {
 };
 
 exports.parseConfiguration = (config) => {
-    const { text } = config;
+    const { text, style } = config;
 
     config.text = cleanInputBlocks(text);
     config.text = cleanDateBlocks(text);
     config.text = cleanChoiceBlock(text);
+    config.style = cleanStyle(style);
 
     return config;
 };
