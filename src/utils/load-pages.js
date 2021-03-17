@@ -40,7 +40,7 @@ exports.parseConfiguration = (config) => {
     config.text = cleanInputBlocks(text);
     config.text = cleanDateBlocks(text);
     config.text = cleanChoiceBlock(text);
-    config.style = cleanStyle(style);
+    config.style = cleanStyle(style, text);
 
     return config;
 };

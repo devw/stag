@@ -6,33 +6,48 @@
     }
 
     form > div {
-        margin: 0.8em 0;
+        margin: var(--input-margin, 0.8em) 0 0 0;
         position: relative;
         text-align: left;
     }
 
     .input-text {
         border: var(--input-line);
-        border-bottom: 1px solid #333;
+        border-bottom: var(--input-line-bottom, 1px solid #666);
         background-color: unset;
         outline: none;
         font-size: 1em;
         color: #333;
         min-width: 100%;
         padding: var(--input-padding);
+        border-radius: var(--input-radius, 8px);
     }
 
     label {
         z-index: -1;
         position: absolute;
-        left: 0;
-        top: 0;
+        bottom: 0;
         transform-origin: 0 0;
         transition: transform 0.3s ease-in-out;
         background-color: var(--content-bg-color, #fff);
         font-size: var(--placeholder-font-size);
         color: var(--placeholder-color);
         text-transform: var(--placeholder-text-transform);
+        margin: unset;
+        padding: var(--input-padding);
+        padding-top: 0;
+        padding-left: 0;
+        left: var(--label-left, 10px);
+    }
+
+    div.choice-block {
+        padding: var(--input-padding);
+        padding-top: 0;
+        padding-bottom: 0;
+        label,
+        input {
+            padding: unset;
+        }
     }
 
     /* START - GO UP */
@@ -59,20 +74,41 @@
     .label-go-down
         input:not(:placeholder-shown):not([type="checkbox"])
         + label {
-        transform: translateY(1.2em) scale(0.8);
+        transform: translateY(1em) scale(0.8);
     }
     .label-go-down input {
-        padding-bottom: 15px;
+        // padding-bottom: 15px;
     }
     /* START - GO DOWN */
 
-    .label-fixed :not([type="checkbox"]) + label {
+    .label-fixed-top :not([type="checkbox"]) + label,
+    .label-fixed-bottom :not([type="checkbox"]) + label {
         display: block;
         font-size: 0.8em;
         top: unset;
+        bottom: unset;
+        position: unset;
+        padding-top: 0;
+        padding-bottom: 0;
+        padding-left: var(--label-left);
     }
-    .label-fixed input::placeholder {
+    .label-fixed-top > div {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .label-fixed-bottom > div {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .label-fixed-top input::placeholder,
+    .label-fixed-bottom input::placeholder {
         color: transparent;
+    }
+
+    .label-fixed-top label:not(.label-error).hidden,
+    .label-fixed-bottom label:not(.label-error).hidden {
+        display: none;
     }
 
     .label-none label {
@@ -82,11 +118,12 @@
     :not([type="checkbox"]) label.label-error {
         color: var(--error-color, rgb(208, 26, 26));
         background-color: var(--error-bg-color, rgb(240, 207, 207));
-        padding: 2px;
         display: none;
         width: 100%;
         top: unset;
         font-size: 0.8em;
+        left: unset;
+        bottom: unset;
     }
 
     label.label-error i {
@@ -94,8 +131,9 @@
     }
 
     // CHOICE BLOCK
-    .choice-block {
+    div.choice-block {
         margin: 1.1em 0 0 0;
+        display: block;
     }
 
     .choice-block > div {
@@ -136,5 +174,11 @@
     .choice-block.multi-choice input[type="checkbox"] {
         border-radius: 25%;
         padding: 0.5em;
+    }
+    .choice-block .inline {
+        display: inline;
+    }
+    .choice-block .block {
+        display: block;
     }
 }

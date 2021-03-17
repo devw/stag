@@ -27,17 +27,18 @@
             font-size: 1em;
             color: #333;
             width: 100%;
-            padding: 0px;
             padding: var(--input-padding);
+            padding-bottom: 0;
         }
         > input::placeholder {
-            color: #777;
+            color: #777 !important;
         }
     }
 
     .dropdown-date select {
         flex: 1;
-        padding: 0 5px;
+        padding: var(--input-padding);
+        padding-bottom: 0;
         font-size: 1.1em;
         border: 0;
         border-bottom: var(--input-line-bottom, 1px solid #666);

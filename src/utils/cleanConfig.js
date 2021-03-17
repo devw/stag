@@ -27,7 +27,6 @@ const pastDate = (year) => {
 };
 
 const cleanDate = (date) => {
-    if (/^\d{4}$/.test(date)) return `01-01-${date}`;
     if (/^\d{1,3}$/.test(date)) return pastDate(date);
     return date;
 };
@@ -43,9 +42,25 @@ exports.cleanDateBlocks = (text) => {
     return text;
 };
 
-exports.cleanStyle = (style) => {
-    console.log(style);
-    const left = style["--input-padding"].trim().split(" ").slice(-1);
-    style["--label-left"] = left[0];
+const mendInputPadding = (padding, { formStyle }) => {
+    const ps = padding.split(" ");
+    if (formStyle === "label-go-up") {
+        ps.splice(0, 1, "18px");
+        ps.splice(2, 1, "7px");
+        return ps.join(" ");
+    }
+    if (formStyle === "label-go-down") {
+        ps.splice(0, 1, "8px");
+        ps.splice(2, 1, "12px");
+        return ps.join(" ");
+    }
+    return ps.join(" ");
+};
+
+exports.cleanStyle = (style, text) => {
+    const inputPadding = style["--input-padding"].trim();
+    const left = inputPadding.split(" ").slice(-1)[0];
+    style["--label-left"] = left;
+    style["--input-padding"] = mendInputPadding(inputPadding, text);
     return style;
 };

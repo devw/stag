@@ -1,8 +1,6 @@
 const { $qq } = require("./toggle");
 const { addJS, addCSS } = require("./load-pages");
 
-globalThis.$qq = $qq;
-
 const ids = {
     d: "day",
     m: "month",
@@ -43,6 +41,44 @@ const getDateAttrs = (el) => {
     }, {});
 };
 
+const getHtml = (target) => {
+    const pickerStyle = target.closest("[block-id]").className;
+
+    //TODO move these parts in templates/
+    const selectHtml = `
+        <select id="${ids.d}"><option>1</option></select>
+        <select id="${ids.m}"><option>January</option></select>
+        <select id="${ids.y}">2000</select>
+    `;
+    const inputHtml = `
+        <input id="${ids.d}" placeholder="dd" maxlength="2">
+        <input id="${ids.m}" placeholder="mm" maxlength="2">
+        <input id="${ids.y}" placeholder="yyyy" maxlength="4">
+    `;
+    // return inputHtml;
+    return pickerStyle === "date-text" ? inputHtml : selectHtml;
+};
+
+const getStartEnd = (el) => {
+    let { minDate, maxDate } = getDateAttrs(el);
+    minDate = moment(minDate).year();
+    maxDate = moment(maxDate).year();
+    return { minDate, maxDate };
+};
+
+const setYears = (target) => {
+    const cal = target.parentNode.querySelector(ids.cal);
+    const { maxDate, minDate } = getStartEnd(cal);
+    const length = maxDate - minDate + 1;
+    const ys = Array.from({ length }, (_, k) => k + parseInt(minDate));
+    const yElem = target.querySelector(`select#${ids.y}`);
+    if (!yElem) return null;
+    let html = "";
+    ys.forEach((e) => (html += `<option value=${e}>${e}</option>`));
+    yElem.innerHTML = html;
+    yElem.dispatchEvent(new Event("change"));
+};
+
 const setCalendar = () => {
     document.querySelectorAll(".flatpickr-calendar").forEach((e) => e.remove());
     const selector = "[block-id].calendar > .js-date";
@@ -64,7 +100,7 @@ const setDays = ({ target }) => {
     const pNode = target.parentNode;
     const y = pNode.querySelector(`#${ids.y} option:checked`)?.value;
     const m = pNode.querySelector(`#${ids.m} option:checked`)?.value;
-    if (!y && !m) return null;
+    if (!y || !m) return null;
     const daysCount = globalThis.moment(`${y}-${m}`, "YYYY-MM").daysInMonth();
     const d = pNode.querySelector(`select#${ids.d}`);
     if (!d) return null;
@@ -75,47 +111,7 @@ const setDays = ({ target }) => {
     d.innerHTML = html;
 };
 
-const getStartEnd = (el) => {
-    let { minDate, maxDate } = getDateAttrs(el);
-    minDate = minDate.slice(-4);
-    maxDate = maxDate.slice(-4);
-    return { minDate, maxDate };
-};
-
-const setYears = (target) => {
-    const cal = target.parentNode.querySelector(ids.cal);
-    const { maxDate, minDate } = getStartEnd(cal);
-    const length = maxDate - minDate + 1;
-    const ys = Array.from({ length }, (_, k) => k + parseInt(minDate));
-    const yElem = target.querySelector(`select#${ids.y}`);
-    if (!yElem) return null;
-    let html = "";
-    ys.forEach((e) => (html += `<option value=${e}>${e}</option>`));
-    yElem.innerHTML = html;
-    yElem.dispatchEvent(new Event("change"));
-};
-
-const getHtml = (target) => {
-    const pickerStyle = target.closest("[block-id]").className;
-
-    //TODO move these parts in templates/
-    const selectHtml = `
-        <select id="${ids.d}"><option>1</option></select>
-        <select id="${ids.m}"><option>January</option></select>
-        <select id="${ids.y}">2000</select>
-    `;
-    const inputHtml = `
-        <input id="${ids.d}" placeholder="day (dd)" maxlength="2">
-        <input id="${ids.m}" placeholder="month (mm)" maxlength="2">
-        <input id="${ids.y}" placeholder="year (yyyy)" maxlength="4">
-    `;
-    // return inputHtml;
-    return pickerStyle === "date-text" ? inputHtml : selectHtml;
-};
-
-const setDatePickers = () => {
-    $qq(ids.noCal).forEach(setDatePicker);
-};
+const setDatePickers = () => $qq(ids.noCal).forEach(setDatePicker);
 
 const setDatePicker = (target) => {
     target.innerHTML = getHtml(target);
@@ -133,13 +129,6 @@ const setDatePicker = (target) => {
     setYears(target);
 };
 
-const updateCalendar = ({ target }) => {
-    const root = target.closest("[block-id]");
-    const s = `${ids.noCal} select option:checked, ${ids.noCal} input`;
-    const nums = Array.from(root.querySelectorAll(s)).map((e) => e.value);
-    root.querySelector(`${ids.cal}`).value = nums.join("-");
-};
-
 const setDropDownPicker = () => {
     if (globalThis.moment) {
         setDatePickers();
@@ -147,6 +136,13 @@ const setDropDownPicker = () => {
     }
     const baseUrl = "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1";
     addJS(`${baseUrl}/moment.min.js`, setDatePickers);
+};
+
+const updateCalendar = ({ target }) => {
+    const root = target.closest("[block-id]");
+    const s = `${ids.noCal} select option:checked, ${ids.noCal} input`;
+    const nums = Array.from(root.querySelectorAll(s)).map((e) => e.value);
+    root.querySelector(`${ids.cal}`).value = nums.join("-");
 };
 
 exports.init = () => {

@@ -76,12 +76,27 @@ const updateText = (newText) => {
     return TEXT;
 };
 
+const mendInputPadding = (padding, formStyle) => {
+    const ps = padding.split(" ");
+    if (formStyle === "label-go-up") {
+        ps.splice(0, 1, "18px");
+        ps.splice(2, 1, "7px");
+        return ps.join(" ");
+    }
+    if (formStyle === "label-go-down") {
+        ps.splice(0, 1, "8px");
+        ps.splice(2, 1, "12px");
+        return ps.join(" ");
+    }
+    return ps.join(" ");
+};
+
 const updateNoBlock = (event) => {
     const [selector, value] = parseEventData(event);
 
     if (!selector) return null;
     const [, page, key, unit] = selector.match(/^(.*?)\|(.*?)\|(.*?)$/);
-    const valueAndUnit = typeof value == "object" ? value : `${value}${unit}`;
+    let valueAndUnit = typeof value == "object" ? value : `${value}${unit}`;
 
     if (!/--animation/.test(key)) updateCss({ "--animation": "none" });
     if (/^--/.test(key)) {
@@ -90,10 +105,20 @@ const updateNoBlock = (event) => {
             updateCss({ "--label-left": left });
         }
         updateCss({ [key]: valueAndUnit });
-    } else
+    } else {
+        if (key == "formStyle") {
+            const padding = getComputedStyle(
+                document.querySelector("#login-popup")
+            ).getPropertyValue("--input-padding");
+            const p = mendInputPadding(padding, valueAndUnit);
+            console.log("#########à\n", p, { [key]: valueAndUnit });
+            updateCss({ "--input-padding": p });
+        }
+
         renderCustomize({
             [key]: valueAndUnit == "false" ? false : valueAndUnit,
         });
+    }
 
     if (page) changePage(page);
 
@@ -184,3 +209,5 @@ if (
     globalThis.addEventListener("message", kastorHandler);
     setTimeout(() => changePage("landing"), 0);
 }
+
+globalThis.addEventListener("addonMessage", kastorHandler);

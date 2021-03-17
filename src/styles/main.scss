@@ -135,7 +135,8 @@ body.remove-scrolling {
     .fa-eye {
         cursor: pointer;
         position: absolute;
-        right: 0px;
+        right: 5px;
+        padding: var(--input-padding);
     }
 
     .action {
