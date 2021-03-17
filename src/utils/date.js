@@ -105,6 +105,7 @@ const setDays = ({ target }) => {
     const d = pNode.querySelector(`select#${ids.d}`);
     if (!d) return null;
     let html = "";
+    //TODO refactor needed
     Array.from(new Array(daysCount)).forEach(
         (_, i) => (html += `<option value=${i + 1}>${i + 1}</option>`)
     );
