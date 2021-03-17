@@ -1,4 +1,4 @@
-const { $qq, $q } = require("./toggle");
+const { $qq } = require("./toggle");
 const { addJS, addCSS } = require("./load-pages");
 
 globalThis.$qq = $qq;
@@ -11,20 +11,6 @@ const ids = {
     noCal: ".dropdown-date",
 };
 
-const getValidity = () => ({
-    day: (v) => v > 0 && v < 32 && /^\d{1,2}$/.test(v),
-    month: (v) => v > 0 && v < 13 && /^\d{1,2}$/.test(v),
-    year: (v) => v > 0 && /^\d{4}$/.test(v),
-});
-
-const checkFreeInput = ({ target }) => {
-    checkDaysCount(target);
-    const { id, value } = target;
-    $qq(`.free-date label`).forEach((e) => (e.style.visibility = "hidden"));
-    const isValid = getValidity()[id](value);
-    $q(`.free-date #${id}`).style.visibility = isValid ? "hidden" : "visible";
-};
-
 const setCalendarPicker = () => {
     if (globalThis.flatpickr) {
         setCalendar();
@@ -35,15 +21,10 @@ const setCalendarPicker = () => {
     addCSS(`${baseUrl}/flatpickr.min.css`);
 };
 
-const checkDaysCount = (target) => {
-    const pNode = target.closest(".dropdown-date");
-    const y = pNode.querySelector(`#${ids.y}`)?.value;
-    const m = pNode.querySelector(`#${ids.m}`)?.value;
-    const d = pNode.querySelector(`#${ids.d}`)?.value;
-    if (!y && !m && !d) return null;
-    const daysCount = moment(`${y}-${m}`, "YYYY-MM").daysInMonth();
-    $q(`.free-date #${ids.d}`).style.visibility =
-        d > daysCount ? "hidden" : "visible";
+const checkDate = ({ target }) => {
+    var input = target.value;
+    input = input.replace(/[^\d]/, "");
+    target.value = input;
 };
 
 const getDateAttrs = (el) => {
@@ -70,7 +51,8 @@ const setCalendar = () => {
 
 const setMonths = async (target) => {
     const months = globalThis.moment.months();
-    const mElem = target.querySelector(`#${ids.m}`);
+    const mElem = target.querySelector(`select#${ids.m}`);
+    if (!mElem) return null;
     let html = ``;
     await new Promise((resolve) => setTimeout(resolve, 2000));
     months.forEach((e, i) => (html += `<option value=${i + 1}>${e}</option>`));
@@ -84,7 +66,8 @@ const setDays = ({ target }) => {
     const m = pNode.querySelector(`#${ids.m} option:checked`)?.value;
     if (!y && !m) return null;
     const daysCount = globalThis.moment(`${y}-${m}`, "YYYY-MM").daysInMonth();
-    const d = pNode.querySelector(`#${ids.d}`);
+    const d = pNode.querySelector(`select#${ids.d}`);
+    if (!d) return null;
     let html = "";
     Array.from(new Array(daysCount)).forEach(
         (_, i) => (html += `<option value=${i + 1}>${i + 1}</option>`)
@@ -104,7 +87,8 @@ const setYears = (target) => {
     const { maxDate, minDate } = getStartEnd(cal);
     const length = maxDate - minDate + 1;
     const ys = Array.from({ length }, (_, k) => k + parseInt(minDate));
-    const yElem = target.querySelector(`#${ids.y}`);
+    const yElem = target.querySelector(`select#${ids.y}`);
+    if (!yElem) return null;
     let html = "";
     ys.forEach((e) => (html += `<option value=${e}>${e}</option>`));
     yElem.innerHTML = html;
@@ -121,11 +105,11 @@ const getHtml = (target) => {
         <select id="${ids.y}">2000</select>
     `;
     const inputHtml = `
-        <input id="${ids.d}" placeholder="day (dd)">
-        <input id="${ids.m}" placeholder="month (mm)">
-        <input id="${ids.y}" placeholder="year (yyyy)">
+        <input id="${ids.d}" placeholder="day (dd)" maxlength="2">
+        <input id="${ids.m}" placeholder="month (mm)" maxlength="2">
+        <input id="${ids.y}" placeholder="year (yyyy)" maxlength="4">
     `;
-
+    // return inputHtml;
     return pickerStyle === "date-text" ? inputHtml : selectHtml;
 };
 
@@ -138,11 +122,13 @@ const setDatePicker = (target) => {
 
     const freeInput = target.querySelectorAll(".dropdown-date>input");
     const selectInput = target.querySelectorAll("select");
-    freeInput.forEach((e) => e.addEventListener("input", checkFreeInput));
+    // freeInput.forEach((e) => e.addEventListener("input", checkFreeInput));
     selectInput.forEach((e) => e.addEventListener("change", updateCalendar));
     freeInput.forEach((e) => e.addEventListener("input", updateCalendar));
+    freeInput.forEach((e) => e.addEventListener("keyup", checkDate));
     target.querySelector(`#${ids.m}`).addEventListener("change", setDays);
     target.querySelector(`#${ids.y}`).addEventListener("change", setDays);
+
     setMonths(target);
     setYears(target);
 };

@@ -4,6 +4,10 @@
         .input-text {
             display: none;
         }
+        label {
+            position: unset;
+            transform: unset !important;
+        }
     }
 
     .calendar {
@@ -11,35 +15,20 @@
             display: none;
         }
     }
-    .dropdown-date {
-        display: flex;
-        gap: 12px;
-    }
-
-    div > .free-date {
-        position: absolute;
-        width: 100%;
-        display: flex;
-        gap: 12px;
-    }
-    div > .free-date label {
-        flex: 1;
-        position: relative;
-        visibility: hidden;
-        font-size: 0.8em;
-        color: var(--error-color, rgb(208, 26, 26));
-        background-color: var(--error-bg-color, rgb(240, 207, 207));
-    }
 
     .dropdown-date {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        column-gap: 40px;
         > input {
             border: var(--input-line);
-            border-bottom: 1px solid #333;
+            border-bottom: var(--input-line-bottom, 1px solid #666);
             outline: none;
             font-size: 1em;
             color: #333;
             width: 100%;
             padding: 0px;
+            padding: var(--input-padding);
         }
         > input::placeholder {
             color: #777;
@@ -51,7 +40,7 @@
         padding: 0 5px;
         font-size: 1.1em;
         border: 0;
-        border-bottom: 1px solid #333;
+        border-bottom: var(--input-line-bottom, 1px solid #666);
         outline: none;
     }
 

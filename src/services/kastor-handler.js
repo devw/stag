@@ -64,6 +64,9 @@ const renderCustomize = (newText) => {
 const showErrors = () => {
     $qq("label.label-error").forEach((e) => (e.style.display = "block"));
     // TODO refactor
+    const s =
+        "form.label-fixed-bottom label+label, form.label-fixed-top label+label";
+    $qq(s).forEach((e) => (e.previousElementSibling.style.display = "none"));
     showPswError("Password should have at least 5 characters!");
 };
 
