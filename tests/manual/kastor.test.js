@@ -260,3 +260,10 @@ json = {
     value: "rgba(0,80,42,1)",
 };
 kastor(json);
+
+json = {
+    setting_id: "register|--container-bg-image|",
+    value: "https://picsum.photos/id/1/200/300",
+    target: "setting:update",
+};
+kastor(json);

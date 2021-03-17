@@ -19,7 +19,7 @@
             </a>
         </nav>
         <script>
-            (function () {
+            (function() {
                 function asyncLoad() {
                     var urls = [
                         // "https://login-popup-dev-theme.s3.amazonaws.com/bundle.js?t=1",
@@ -51,7 +51,7 @@
                 state,
                 block_settings,
             }) => {
-                const json = {
+                const detail = {
                     data: {
                         data: {
                             block_id,
@@ -65,9 +65,7 @@
                         target,
                     },
                 };
-                const kastorEvent = new CustomEvent("message", {
-                    detail: json,
-                });
+                const kastorEvent = new CustomEvent("message", { detail });
                 globalThis.dispatchEvent(kastorEvent);
             };
         </script>

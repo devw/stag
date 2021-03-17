@@ -54,7 +54,13 @@ const showPasswordErrors = () => {
     }
     exclamationLabel.innerHTML = exclamationLabel.innerHTML.split("</i>")[0];
     exclamationLabel.style.display = "block";
+    hideLabel(pswElem);
     exclamationLabel.append(errorNotes[0]);
+};
+
+const hideLabel = (el) => {
+    const block = el.closest("[block-id]");
+    block.querySelector("label:not(.label-error)").classList.add("hidden");
 };
 
 exports.isFormFilled = (form) => {
@@ -62,8 +68,10 @@ exports.isFormFilled = (form) => {
     return Array.from(form.querySelectorAll(s)).every((e) => e.value);
 };
 
-const hideErrors = () =>
+const hideErrors = () => {
     $qq(".label-error").forEach((e) => (e.style.display = "none"));
+    $qq("label:not(.label-error)").forEach((e) => e.classList.remove("hidden"));
+};
 
 const areErrors = () => {
     const errElems = Array.from($qq(".label-error"));

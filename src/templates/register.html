@@ -42,6 +42,10 @@
         block-id="{{id}}"
         class="choice-block js-opt  {{choiceStyle}} {{lineStyle}}"
     >
+        {{#hasLabel}}
+        <label class="{{labelPosition}}">{{label}}</label>
+        {{/hasLabel}}
+        <!-- choice-list -->
         {{#choiceList }}
         <div>
             <input
@@ -81,7 +85,6 @@
             data-namespace="{{namespace}}"
             data-key="{{key}}"
             altFormat="j-F-Y"
-            dateFormat="d-m-Y"
             altInput="true"
             enableTime="{{enableTime}}"
             mode="{{mode}}"
@@ -92,11 +95,6 @@
         <label class="label-error"
             ><i class="fa {{errorIcon}}"></i>{{error}}
         </label>
-        <div class="free-date">
-            <label id="day">Wrong day format</label>
-            <label id="month">Wrong month format</label>
-            <label id="year">Wrong year format</label>
-        </div>
     </div>
     {{/dateBlocks}}
 
