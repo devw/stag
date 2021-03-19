@@ -7,7 +7,7 @@ const {
     cleanInputBlocks,
     cleanDateBlocks,
     cleanStyle,
-} = require("./cleanConfig");
+} = require("./clean-config");
 
 const HEAD = document.getElementsByTagName("head")[0];
 

@@ -9,6 +9,7 @@
     "scripts": {
         "dev": "node src/index.js",
         "test": "jest --config ./jest-config.json",
+        "coverage": "jest --collect-coverage --config ./jest-config.json",
         "clear": "jest --clearCache",
         "b": "rm -rf dist; webpack --mode=development; cp -r public/* dist",
         "bp": "rm -rf dist; webpack --mode=production; cp -r public/* dist",

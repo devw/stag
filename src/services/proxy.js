@@ -4,9 +4,9 @@ const {
     ENDPOINT,
     CONFIG_FNAME,
 } = require("../config");
-const SHOP = globalThis?.Shopify?.shop;
 
 exports.getCustomerStatus = async (email) => {
+    const SHOP = globalThis?.Shopify?.shop;
     const endpoint = SHOP
         ? `${location.origin}/${PROXY_PATH}/customer-status/${email}?`
         : `http://localhost:3003/dev/customer-status/${email}?shop=popup-login.myshopify.com&`;
@@ -18,6 +18,7 @@ exports.getCustomerStatus = async (email) => {
 
 exports.getConfiguration = async () => {
     //TODO implements memoization
+    const SHOP = globalThis?.Shopify?.shop;
     const endpoint = SHOP
         ? `${ENDPOINT}/${SHOP}/${CONFIG_FNAME}`
         : `data/${CONFIG_FNAME}`;
