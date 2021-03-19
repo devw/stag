@@ -61,8 +61,8 @@ const getHtml = (target) => {
 
 const getStartEnd = (el) => {
     let { minDate, maxDate } = getDateAttrs(el);
-    minDate = moment(minDate).year();
-    maxDate = moment(maxDate).year();
+    minDate = globalThis.moment(minDate).year();
+    maxDate = globalThis.moment(maxDate).year();
     return { minDate, maxDate };
 };
 

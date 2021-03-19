@@ -1,4 +1,8 @@
 {
     "verbose": true,
-    "roots": ["./tests/src/"]
+    "roots": ["./tests/src/"],
+    "transform": {
+        "^.+\\.js$": "babel-jest",
+        "^.+\\.html?$": "html-loader-jest"
+    }
 }

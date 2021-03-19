@@ -1,6 +1,6 @@
 const { updateCss, render, parseConfiguration } = require("../utils/");
 const { $q, $qq, togglePage, sortBlocks } = require("../utils/toggle");
-const { cleanChoiceBlock, cleanDateBlocks } = require("../utils/cleanConfig");
+const { cleanChoiceBlock, cleanDateBlocks } = require("../utils/clean-config");
 const { IDs, STORAGE_CONFIG } = require("../config");
 const { loadActions } = require("../actions/load");
 
@@ -101,7 +101,10 @@ const updateNoBlock = (event) => {
     if (!/--animation/.test(key)) updateCss({ "--animation": "none" });
     if (/^--/.test(key)) {
         if (key == "--input-padding") {
-            const left = valueAndUnit.trim().split(" ").slice(-1)[0];
+            const left = valueAndUnit
+                .trim()
+                .split(" ")
+                .slice(-1)[0];
             updateCss({ "--label-left": left });
         }
         updateCss({ [key]: valueAndUnit });

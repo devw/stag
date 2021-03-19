@@ -14,9 +14,9 @@ globalThis.showDateErrors = showDateErrors;
 const showDateError = (e) => {
     const { minDate, maxDate, customerAge } = getDateAttr(e);
     const dateFormat = "DD-MM-YYYY";
-    const minD = moment(minDate, dateFormat);
-    const maxD = moment(maxDate, dateFormat);
-    const customerD = moment(customerAge, dateFormat);
+    const minD = globalThis.moment(minDate, dateFormat);
+    const maxD = globalThis.moment(maxDate, dateFormat);
+    const customerD = globalThis.moment(customerAge, dateFormat);
     const errorLabel = getErrorLabel(e);
     if (!customerD.isBetween(minD, maxD) && errorLabel)
         errorLabel.style.display = "block";
