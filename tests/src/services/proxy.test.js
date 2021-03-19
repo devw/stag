@@ -23,7 +23,6 @@ describe("Proxy Test", () => {
         const res = await getConfiguration();
         const endpoint = `${ENDPOINT}/${window.Shopify.shop}/configuration.json`;
         expect(await res.json()).toEqual(data);
-        console.log("fetch.mock.calls:   ", fetch.mock.calls[0][0]);
         expect(fetch.mock.calls.length).toEqual(1);
         expect(fetch.mock.calls[0][0].replace(/\?\w=\d{1,}$/, "")).toEqual(
             endpoint
