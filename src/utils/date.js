@@ -1,5 +1,5 @@
 const { $qq } = require("./toggle");
-const { addJS, addCSS } = require("./load-pages");
+const { addJS, addCSS } = require("./embed-code");
 
 const ids = {
     d: "day",

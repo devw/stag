@@ -9,8 +9,6 @@ const {
     cleanStyle,
 } = require("./clean-config");
 
-const HEAD = document.getElementsByTagName("head")[0];
-
 const updateInputFields = () => {
     // you should move this piece of code in render method otherwise it will be not visible on kastor
     const pswElem = $q("[name='customer[password]']");
@@ -43,20 +41,4 @@ exports.parseConfiguration = (config) => {
     config.style = cleanStyle(style, text);
 
     return config;
-};
-
-exports.addJS = (url, callback) => {
-    const head = document.head;
-    const script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src = url;
-
-    script.onreadystatechange = callback;
-    script.onload = callback;
-    head.appendChild(script);
-};
-
-exports.addCSS = (url) => {
-    const link = `<link rel="stylesheet" href="${url}" />`;
-    HEAD.insertAdjacentHTML("afterbegin", link);
 };
