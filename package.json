@@ -19,6 +19,7 @@
         "ngrok": "ngrok http $npm_package_config_port -subdomain=antoniooo"
     },
     "devDependencies": {
+        "@types/jest": "^26.0.21",
         "eslint": "^7.19.0",
         "eslint-plugin-spellcheck": "^0.0.17",
         "html-loader": "^1.3.2",
