@@ -1,5 +1,5 @@
 const { $qq } = require("./toggle");
-const { addJS, addCSS } = require("./load-pages");
+const { addJS, addCSS } = require("./embed-code");
 
 const ids = {
     d: "day",
@@ -61,8 +61,8 @@ const getHtml = (target) => {
 
 const getStartEnd = (el) => {
     let { minDate, maxDate } = getDateAttrs(el);
-    minDate = globalThis.moment(minDate).year();
-    maxDate = globalThis.moment(maxDate).year();
+    minDate = moment(minDate).year();
+    maxDate = moment(maxDate).year();
     return { minDate, maxDate };
 };
 

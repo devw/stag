@@ -2,44 +2,18 @@ const {
     getConfiguration,
     getCustomerStatus,
 } = require("../../../src/services/proxy");
-const { ENDPOINT, PROXY_PATH } = require("../config");
-
-require("jest-fetch-mock").enableMocks();
-//jest.mock("../../../src/services/proxy", () => require("./__mocks__/"));
+const { init: initMock } = require("./__mocks__/");
 
 describe("Proxy Test", () => {
-    global.window = Object.create(window);
-    const origin = "https://test.shopify.com";
-    const shop = "test.shopify.com";
-    Object.defineProperty(window, "location", { value: { origin } });
-    Object.defineProperty(window, "Shopify", { value: { shop } });
-    beforeEach(() => {
-        fetch.resetMocks();
-    });
+    initMock();
 
-    it("calls S3 and returns data to me", async () => {
-        const data = { style: {}, text: {} };
-        fetch.mockResponseOnce(JSON.stringify(data));
+    it("gets the configuration from S3 bucket", async () => {
         const res = await getConfiguration();
-        const endpoint = `${ENDPOINT}/${window.Shopify.shop}/configuration.json`;
-        expect(await res.json()).toEqual(data);
-        expect(fetch.mock.calls.length).toEqual(1);
-        expect(fetch.mock.calls[0][0].replace(/\?\w=\d{1,}$/, "")).toEqual(
-            endpoint
-        );
-        expect(true).toBe(true);
+        expect(await res.json()).toEqual({ style: {}, text: {} });
     });
 
     it("gets the customer status", async () => {
-        const email = "anto@gmail.com";
-        const data = { state: "enabled", properties: {} };
-        fetch.mockResponseOnce(JSON.stringify(data));
-        const customer = await getCustomerStatus(email);
-        const endpoint = `https://${Shopify.shop}/${PROXY_PATH}/customer-status/${email}`;
-        expect(customer).toEqual(data);
-        expect(fetch.mock.calls.length).toEqual(1);
-        expect(fetch.mock.calls[0][0].replace(/\?\w=\d{1,}$/, "")).toEqual(
-            endpoint
-        );
+        const customer = await getCustomerStatus("anto@gmail.com");
+        expect(customer).toEqual({ state: "enabled", properties: {} });
     });
 });
