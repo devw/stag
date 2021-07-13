@@ -56,6 +56,9 @@ exports.togglePage = (id) => {
     const ids = Object.values(IDs).slice(2);
     ids.forEach((e) => $q(`#${e}`).style.setProperty("display", "none"));
     $q(`#${id}`).style.setProperty("display", "block");
+    $q(`#${id}`)
+        ?.querySelector("[type='password']")
+        ?.focus();
 };
 
 exports.$qq = (leaf) => getRootNode().querySelectorAll(leaf);

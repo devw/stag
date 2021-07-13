@@ -14,7 +14,7 @@
         "--input-line-bottom": "1px solid black",
         "--input-margin": "0.8em",
         "--input-radius": "0.8px",
-        "--animation": "none",
+        "--animation": "fade-in-show",
         "--container-bg-image": "https://customize-dev-saves.s3.eu-west-1.amazonaws.com/popup-login.myshopify.com/background.png",
         "--bg-opacity-image": "0.55",
         "--header-img": "https://heritageah.com/wp-content/uploads/2020/06/iconfinder_pets-vet-pet_5413418.png",

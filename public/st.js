@@ -7,7 +7,7 @@ const HEAD = document.getElementsByTagName("head")[0];
 // TODO fix with Shopify.shop
 const ENDPOINT = globalThis?.Shopify
     ? "https://login-popup-dev-theme.s3.amazonaws.com"
-    : "http://localhost:8081/";
+    : "http://localhost:8082/";
 
 const addCSS = (url) => {
     const link = `<link rel="stylesheet" href="${url}" />`;
