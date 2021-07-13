@@ -25,6 +25,7 @@ body.remove-scrolling {
     //TODO
     .content .partials {
         width: 400px;
+        animation: var(--animation) 1s;
     }
 
     /*  ===================

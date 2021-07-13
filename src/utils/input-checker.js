@@ -86,9 +86,3 @@ exports.areInvalidInputs = () => {
 };
 
 exports.isValidEmail = (email) => /\S+@\S+\.\S{2,}/.test(email);
-
-exports.hash = (str) =>
-    str.split("").reduce((a, c) => {
-        a = (a << 5) - a + c.charCodeAt(0);
-        return a & a;
-    }, 0);
