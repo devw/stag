@@ -3,21 +3,31 @@ const { SIGNIN_ID, ACTIVATE_ID } = IDs;
 const { LANDING_ID, REGISTER_ID } = IDs;
 const { getCustomerStatus } = require("../services");
 const { togglePage, $q, $qq, debounce, toggleLoading } = require("../utils");
-var FORM, PROMISE, BTN;
-const CUSTOMERS = [];
+var BTN, EMAIL, QUERY, CUSTOMERS = [];
 
-const getEmail = () => FORM.querySelector("[type='email']").value;
-const setEmail = (email) =>
-    (FORM.querySelector("[type='email']").value = email);
+const getEmail = () => EMAIL.value;
+const setEmail = (email) => EMAIL.value = email;
 const getEmailFields = () => $qq("[type='email']");
 
-const firstCheck = async ({ target }) => {
-    const email = target.value;
-    if (!/[\w.]+@/.test(email)) return null;
-    FORM.removeEventListener("input", firstCheck, true);
-    PROMISE = getCustomerStatus(email);
-    const result = await PROMISE;
+const setCustomers = async (email) => {
+    QUERY = email;
+    const promise = getCustomerStatus(QUERY);
+    const result = await promise;
     result.forEach((e) => CUSTOMERS.push(e));
+}
+
+const getUniqCustomer = (email) => {
+    const customers = CUSTOMERS.filter((e) => new RegExp(`^${email}`).test(e.email));
+    if (customers.length !== 1) return null;
+    return customers[0];
+}
+
+const firstCheck = async (event) => {
+    const email = getEmail();
+    if (!/[\w.]+@/.test(email)) return null;
+    EMAIL.removeEventListener("input", firstCheck, true);
+    await setCustomers(email);
+    autocomplete(event);
 };
 
 const activeBtn = () => BTN.removeAttribute("disabled");
@@ -25,8 +35,12 @@ const activeBtn = () => BTN.removeAttribute("disabled");
 const disableBtn = () => BTN.setAttribute("disabled", "true");
 
 const onSubmit = async () => {
+    const email = getEmail();
     toggleLoading(BTN);
-    togglePage(REGISTER_ID);
+    if (!new RegExp(`^${QUERY}`).test(email)) await setCustomers(email);
+    const customer = getUniqCustomer(email);
+    checkStatusAndTogglePage(customer);
+    setTimeout(() => toggleLoading(BTN), 0);
 };
 
 const emailAutofill = () => {
@@ -35,18 +49,21 @@ const emailAutofill = () => {
     fields.forEach((e) => (e.value = email));
 };
 
-const autocomplete = ({ target }) => {
-    const email = target.value;
-    if (!/[\w.]+@\w{1,}\./.test(email)) return null;
-    const customers = CUSTOMERS.filter((e) => new RegExp(email).test(e.email));
-    if (customers.length !== 1) return null;
-    const customer = customers[0];
-    console.log("....customer....", customer);
-    setEmail(customer.email);
-    if (!customer.state) togglePage(REGISTER_ID);
-    else if (customer.state === "enabled") togglePage(SIGNIN_ID);
-    else if (customer.state === "disabled") togglePage(ACTIVATE_ID);
+const checkStatusAndTogglePage = (customer) => {
+    const state = customer?.state;
+    if (!state) togglePage(REGISTER_ID);
+    if (state === "enabled") togglePage(SIGNIN_ID);
+    else if (state === "disabled") togglePage(ACTIVATE_ID);
     emailAutofill();
+}
+
+const autocomplete = ({ inputType }) => {
+    const email = getEmail();
+    if (!/[\w.]+@\w{1,}\./.test(email) || inputType === "deleteContentBackward") return null;
+    const customer = getUniqCustomer(email);
+    if (!customer) return null;
+    setEmail(customer.email);
+    checkStatusAndTogglePage(customer);
 };
 
 const toggleButton = async ({ target }) => {
@@ -56,11 +73,13 @@ const toggleButton = async ({ target }) => {
 };
 
 exports.init = () => {
-    FORM = $q(`#${LANDING_ID} form`);
-    BTN = FORM.querySelector("button");
-    FORM.addEventListener("input", firstCheck, true);
-    FORM.addEventListener("input", autocomplete);
-    FORM.addEventListener("input", debounce(toggleButton, 200));
-    FORM.addEventListener("submit", onSubmit);
-    FORM.addEventListener("submit", emailAutofill);
+    const form = $q(`#${LANDING_ID} form`);
+    BTN = form.querySelector("button");
+    EMAIL = form.querySelector("[type='email']");
+
+    form.addEventListener("input", debounce(toggleButton, 200));
+    form.addEventListener("submit", onSubmit);
+    EMAIL.addEventListener("input", firstCheck, true);
+    EMAIL.addEventListener("change", autocomplete);
+    EMAIL.addEventListener("input", autocomplete);
 };
