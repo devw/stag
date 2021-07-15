@@ -14,17 +14,20 @@
         "--input-line-bottom": "1px solid black",
         "--input-margin": "0.8em",
         "--input-radius": "0.8px",
-        "--animation": "fade-in-show",
-        "--container-bg-image": "https://customize-dev-saves.s3.eu-west-1.amazonaws.com/popup-login.myshopify.com/background.png",
-        "--bg-opacity-image": "0.55",
+        "--animation": "none",
+        "--container-bg-image": "https://cdn.shopify.com/s/files/1/2598/9270/products/Packshotfriandiseschatvolaille_600x.jpg?v=159948757",
+        "--bg-opacity-image": "1",
         "--header-img": "https://heritageah.com/wp-content/uploads/2020/06/iconfinder_pets-vet-pet_5413418.png",
-        "--img-max-width": "260px",
-        "--img-position": "row"
+        "--img-max-width": "200px",
+        "--img-position": "column"
     },
     "text": {
         "choiceBlocks": [],
         "inputBlocks": [
-            { "placeholder": "Write your email", "name": "customer[email]" },
+            {
+                "placeholder": "Write your email",
+                "name": "customer[email]"
+            },
             {
                 "placeholder": "Write your password",
                 "error": true,
@@ -32,10 +35,26 @@
             }
         ],
         "dateBlocks": [],
+        "activateBlocks": [
+            {
+                "tag": "vip",
+                "activateTagTitle": "Activate vip",
+                "activateTagSubTitle": "Fill in your email to activate your account vip.",
+                "activateTagBtn": "Resend the email vip",
+                "id": "622b4e3d-d6c5-4ffe-85b1-8e3c4b9b2f95"
+            },
+            {
+                "tag": "csv",
+                "activateTagTitle": "Activate csv",
+                "activateTagSubTitle": "Fill in your email to activate your account csv.",
+                "activateTagBtn": "Resend the email csv",
+                "id": "d0ad8b82-4888-4296-8192-4c41cace899d"
+            }
+        ],
         "loginRegister": "Connexion / Inscription",
         "enterYourEmailToContinue": "Renseignez votre adresse email pour continuer.",
         "yourEmail": "Write your email",
-        "validate": "Valider!",
+        "validate": "Valider",
         "hasSocialLogin": 0,
         "blocks_order": [],
         "createAccount": "CrÃ©ation de compte",
@@ -49,6 +68,11 @@
         "activateTitle": "Activate",
         "activateSubTitle": "Fill in your email to activate your account.",
         "activateBtn": "Resend the email",
+        "tag": "csv",
+        "activateTagTitle": "Activate csv",
+        "activateTagSubTitle": "Fill in your email to activate your account csv.",
+        "activateTagBtn": "Resend the email csv",
+        "undefined": "d0ad8b82-4888-4296-8192-4c41cace899d",
         "recoveryTitle": "Recover password",
         "recoverySubTitle": "Enter your email to receive a reset password link.",
         "recoveryBtn": "Recover",
