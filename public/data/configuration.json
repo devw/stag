@@ -38,17 +38,17 @@
         "activateBlocks": [
             {
                 "tag": "vip",
-                "activateTitle": "Activate vip",
-                "activateSubTitle": "Fill in your email to activate your account.",
-                "activateBtn": "Resend the email vip",
-                "id": "a1a8227b-aa7c-4efe-8dca-c695cae155f9"
+                "activateTagTitle": "Activate vip",
+                "activateTagSubTitle": "Fill in your email to activate your account vip.",
+                "activateTagBtn": "Resend the email vip",
+                "id": "622b4e3d-d6c5-4ffe-85b1-8e3c4b9b2f95"
             },
             {
                 "tag": "csv",
-                "activateTitle": "Activate_2",
-                "activateSubTitle": "Fill in your email to activate your account.",
-                "activateBtn": "Resend the email",
-                "id": "bc8f2bf9-0c68-47d6-95ce-18a7bd523b4d"
+                "activateTagTitle": "Activate csv",
+                "activateTagSubTitle": "Fill in your email to activate your account csv.",
+                "activateTagBtn": "Resend the email csv",
+                "id": "d0ad8b82-4888-4296-8192-4c41cace899d"
             }
         ],
         "loginRegister": "Connexion / Inscription",
@@ -65,11 +65,14 @@
         "wrongPsw": "Incorrect password. Please, try again!",
         "signIn": "Submit",
         "loginRedirect": "products",
-        "activateTitle": "Activate_2",
+        "activateTitle": "Activate",
         "activateSubTitle": "Fill in your email to activate your account.",
         "activateBtn": "Resend the email",
         "tag": "csv",
-        "undefined": "bc8f2bf9-0c68-47d6-95ce-18a7bd523b4d",
+        "activateTagTitle": "Activate csv",
+        "activateTagSubTitle": "Fill in your email to activate your account csv.",
+        "activateTagBtn": "Resend the email csv",
+        "undefined": "d0ad8b82-4888-4296-8192-4c41cace899d",
         "recoveryTitle": "Recover password",
         "recoverySubTitle": "Enter your email to receive a reset password link.",
         "recoveryBtn": "Recover",
