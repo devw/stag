@@ -1,8 +1,8 @@
-const { updateCss, render, parseConfiguration } = require("./src/utils/index.js");
-const { $q, $qq, togglePage, sortBlocks } = require("./src/utils/toggle.js");
-const { cleanChoiceBlock, cleanDateBlocks } = require("./src/utils/clean-config.js");
-const { IDs, STORAGE_CONFIG } = require("./src/config.js");
-const { loadActions } = require("./src/actions/load.js");
+const { updateCss, render, parseConfiguration } = require("../utils/index.js");
+const { $q, $qq, togglePage, sortBlocks } = require("../utils/toggle.js");
+const { cleanChoiceBlock, cleanDateBlocks } = require("../utils/clean-config.js");
+const { IDs, STORAGE_CONFIG } = require("../config.js");
+const { loadActions } = require("../actions/load.js");
 
 let TEXT;
 

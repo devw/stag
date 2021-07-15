@@ -14,7 +14,7 @@
         "clear": "jest --clearCache",
         "build:dev": "rm -rf dist; webpack --mode=development; cp -r public/* dist",
         "build:prod": "rm -rf dist; webpack --mode=production; cp -r public/* dist",
-        "bk": "webpack --mode=development --env=in=./src/services/kastor-handler.js --env=out=kastorHandler.js;",
+        "bk": "webpack --mode=development --env=in=./src/services/customize-handler.js --env=out=customizeHandler.js;",
         "start": "cd dist; lsof -ti tcp:$npm_package_config_port | xargs kill; python3  -m http.server $npm_package_config_port &",
         "lint": "eslint ./",
         "ngrok": "ngrok http $npm_package_config_port -subdomain=antoniooo"
