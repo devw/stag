@@ -3,6 +3,8 @@ const { SIGNIN_ID, ACTIVATE_ID } = IDs;
 const { LANDING_ID, REGISTER_ID } = IDs;
 const { getCustomerStatus } = require("../services");
 const { togglePage, $q, $qq, debounce, toggleLoading } = require("../utils");
+const { showProperActivate } = require("../utils/activate.utils");
+
 var BTN, EMAIL, QUERY, CUSTOMERS = [];
 
 const getEmail = () => EMAIL.value;
@@ -53,7 +55,10 @@ const checkStatusAndTogglePage = (customer) => {
     const state = customer?.state;
     if (!state) togglePage(REGISTER_ID);
     if (state === "enabled") togglePage(SIGNIN_ID);
-    else if (state === "disabled") togglePage(ACTIVATE_ID);
+    else if (state === "disabled") {
+        togglePage(ACTIVATE_ID);
+        showProperActivate(customer);
+    }
     emailAutofill();
 }
 

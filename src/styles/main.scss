@@ -23,9 +23,14 @@ body.remove-scrolling {
     }
 
     //TODO
-    .content .partials {
+    .content #signin.partials,
+    .content #activate.partials {
         width: 400px;
-        animation: var(--animation) 1s;
+        animation: fade-in-show 1.5s;
+    }
+
+    .content #activate .activate {
+        display: none;
     }
 
     /*  ===================

@@ -1,17 +1,22 @@
-<div class="title">{{activateTitle}}</div>
-<div class="sub-title">{{activateSubTitle}}</div>
-<form
-    method="post"
-    accept-charset="UTF-8"
-    novalidate="novalidate"
-    class="{{formStyle}}"
->
-    <input type="hidden" name="form_type" value="customer_login" /><input
-        type="hidden"
-        name="utf8"
-        value="✓"
-    />
-    <button class="btn btn-primary">
-        {{activateBtn}} &nbsp;<i class="fa fa-spinner fa-spin off"></i>
-    </button>
-</form>
+<div class="activate activate-no-tag">
+    <div class="title">{{activateTitle}}</div>
+    <div class="sub-title">{{activateSubTitle}}</div>
+    <form method="post" accept-charset="UTF-8" novalidate="novalidate" class="{{formStyle}}">
+        <input type="hidden" name="form_type" value="customer_login" /><input type="hidden" name="utf8" value="✓" />
+        <button class="btn btn-primary">
+            {{activateBtn}} &nbsp;<i class="fa fa-spinner fa-spin off"></i>
+        </button>
+    </form>
+</div>
+{{#activateBlocks}}
+<div class="activate activate-{{tag}}">
+    <div class="title">{{activateTitle}}</div>
+    <div class="sub-title">{{activateSubTitle}}</div>
+    <form method="post" accept-charset="UTF-8" novalidate="novalidate" class="{{formStyle}}">
+        <input type="hidden" name="form_type" value="customer_login" /><input type="hidden" name="utf8" value="✓" />
+        <button class="btn btn-primary">
+            {{activateBtn}} &nbsp;<i class="fa fa-spinner fa-spin off"></i>
+        </button>
+    </form>
+</div>
+{{/activateBlocks}}
