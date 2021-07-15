@@ -15,6 +15,7 @@ const setCustomers = async (email) => {
     QUERY = email;
     const promise = getCustomerStatus(QUERY);
     const result = await promise;
+    CUSTOMERS = [];
     result.forEach((e) => CUSTOMERS.push(e));
 }
 
@@ -24,11 +25,10 @@ const getUniqCustomer = (email) => {
     return customers[0];
 }
 
-const firstCheck = async (event) => {
+const updateCustomers = async (event) => {
     const email = getEmail();
-    if (!/[\w.]+@/.test(email)) return null;
-    EMAIL.removeEventListener("input", firstCheck, true);
-    await setCustomers(email);
+    if (email.length < 6 || event.inputType === "deleteContentBackward") return null;
+    if (!new RegExp(`^${QUERY}`).test(email)) await setCustomers(email);
     autocomplete(event);
 };
 
@@ -84,7 +84,7 @@ exports.init = () => {
 
     form.addEventListener("input", debounce(toggleButton, 200));
     form.addEventListener("submit", onSubmit);
-    EMAIL.addEventListener("input", firstCheck, true);
+    EMAIL.addEventListener("input", updateCustomers);
     EMAIL.addEventListener("change", autocomplete);
     EMAIL.addEventListener("input", autocomplete);
 };
