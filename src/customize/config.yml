@@ -481,7 +481,7 @@ pages:
     #        LANDING SECTION / HEADER GROUP
     # ===============================================
     - id: landing||
-      label: Header
+      label: Landing page
       settings:
       ### TODO how shoul I add a group to configure an image for each section?
       - id: "landing|loginRegister|"
@@ -557,7 +557,7 @@ pages:
     #        REGISTER  SECTION / HEDER GROUP
     # ===============================================
     - id: register-section-header-group
-      label: Header
+      label: Register page
       settings:
       - id: 'register|createAccount|'
         type: text-input
@@ -1218,7 +1218,7 @@ pages:
 
     # register section / header group
     - id: signin||
-      label: Header
+      label: Sign-in page
       settings:
       - id: signin|loginTitle|
         type: text-input
@@ -1303,7 +1303,7 @@ pages:
     max: 1
     groups:
     - id: activate|activate-section-header-group|
-      label: Header
+      label: Activate Page
       settings:
       - id: activate|activateTitle|
         type: text-input
@@ -1347,8 +1347,8 @@ pages:
         type: text-input
         label: TAG Name
         icon: ''
-        default: 'yyy'
-        hint: 'xxx'
+        default: 'tag_name'
+        hint: 'Customers with disabled status and who have this tag name will see this page.'
         required: true
         config: {}
       - id: activate|activateTagTitle|
@@ -1387,7 +1387,7 @@ pages:
     max: 1
     groups:
     - id: recovery|recovery-section-header-group|
-      label: Header
+      label: Recovery page
       settings:
       - id: recovery|recoveryTitle|
         type: text-input
