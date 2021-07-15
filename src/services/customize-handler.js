@@ -1,10 +1,19 @@
-const { updateCss, render, parseConfiguration } = require("../utils/");
-const { $q, $qq, togglePage, sortBlocks } = require("../utils/toggle");
-const { cleanChoiceBlock, cleanDateBlocks } = require("../utils/clean-config");
-const { IDs, STORAGE_CONFIG } = require("../config");
-const { loadActions } = require("../actions/load");
+const { updateCss, render, parseConfiguration } = require("../utils/index.js");
+const { $q, $qq, togglePage, sortBlocks } = require("../utils/toggle.js");
+const { cleanChoiceBlock, cleanDateBlocks } = require("../utils/clean-config.js");
+const { IDs, STORAGE_CONFIG } = require("../config.js");
+const { loadActions } = require("../actions/load.js");
 
 let TEXT;
+
+const activatePatch = ({ event, page }) => {
+    const data = getData(event);
+    if (page !== "activate") return null;
+    const { block_id } = data;
+    $q(".content #activate.partials").style.animation = "none";
+    const selector = block_id ? `[block-id="${block_id}"]` : ".activate-no-tag";
+    $q(selector).style.display = "block";
+}
 
 const changePage = (page) => {
     togglePage(page);
@@ -64,8 +73,7 @@ const renderCustomize = (newText) => {
 const showErrors = () => {
     $qq("label.label-error").forEach((e) => (e.style.display = "block"));
     // TODO refactor
-    const s =
-        "form.label-fixed-bottom label+label, form.label-fixed-top label+label";
+    const s = "form.label-fixed-bottom label+label, form.label-fixed-top label+label";
     $qq(s).forEach((e) => (e.previousElementSibling.style.display = "none"));
     showPswError("Password should have at least 5 characters!");
 };
@@ -123,6 +131,7 @@ const updateNoBlock = (event) => {
         });
     }
 
+    activatePatch({ event, page });
     if (page) changePage(page);
 
     // TODO: too fragile check the password policy in this way, you should refactor the code using objects
@@ -141,7 +150,6 @@ const cleanObject = (block_settings) => {
 };
 
 const getConfig = () => JSON.parse(localStorage.getItem(STORAGE_CONFIG));
-
 const kastorHandler = (event) => {
     if (!TEXT) TEXT = getConfig()["text"];
     //reorder blocks
@@ -149,6 +157,10 @@ const kastorHandler = (event) => {
     const target = getTarget(event);
     const data = getData(event);
     const { block_type_id, block_id, state } = data;
+
+    const [selector,] = parseEventData(event);
+    if (!selector) return null;
+    const [, page] = selector.match(/^(.*?)\|(.*?)\|(.*?)$/);
 
     // TODO refactor
     if (state && /customer\[email|password\]/.test(state.name)) {
@@ -172,7 +184,7 @@ const kastorHandler = (event) => {
         return null;
     }
     //TODO refactor
-    const isBlock = /dateBlocks|inputBlocks|choiceBlocks/.test(block_type_id);
+    const isBlock = /dateBlocks|inputBlocks|choiceBlocks|activateBlocks/.test(block_type_id);
     if (isBlock) {
         const { block_settings } = data;
         const blocks = block_type_id.split("|")[1];
@@ -199,7 +211,8 @@ const kastorHandler = (event) => {
         TEXT = cleanChoiceBlock(TEXT);
         TEXT = cleanDateBlocks(TEXT);
         render(TEXT);
-        changePage("register");
+        changePage(page);
+        activatePatch({ event, page });
         return null;
     }
 
@@ -214,3 +227,4 @@ if (
 }
 
 globalThis.addEventListener("addonMessage", kastorHandler);
+

@@ -202,7 +202,6 @@ json = {
     target: "setting:update",
 };
 kastor(json);
-
 // adding phoneBlock
 
 // adding a emailBlock
@@ -223,7 +222,6 @@ json = {
 kastor(json);
 
 // add a newsletter
-
 json = {
     target: "block:add",
     block_id: "ww9d004f-f9b6-426d-8d45-d6f2aa351654",
@@ -267,3 +265,29 @@ json = {
     target: "setting:update",
 };
 kastor(json);
+
+json = {
+    setting_id: "register|--container-bg-image|",
+    value: "https://picsum.photos/id/1/200/300",
+    target: "setting:update",
+};
+kastor(json);
+
+json = {
+    //group_id: "activate||",
+    page_id: "popup-de-login",
+    section_id: "676a0df2-7463-4a12-baf4-cba89b5b07ce",
+    section_type: "activate||",
+    // section_type_id: "activate||",
+    setting_id: "activate|loginTitle|",
+    // target: "section_id:change",
+}
+kastor(json)
+
+json = {
+    page_id: "popup-de-login",
+    section_id: "fb1d966c-877e-40d0-ab1a-50e6424b06a5",
+    section_type: "activate||",
+
+}
+kastor(json)
