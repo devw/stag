@@ -42,7 +42,6 @@ const goToLanding = () => togglePage(IDs.LANDING_ID);
 
 const setBackBtn = () => $qq(`.js-back`).forEach(e => e.addEventListener("click", goToLanding));
 
-
 exports.loadActions = () => {
     initContainer();
     initLanding();
