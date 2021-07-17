@@ -60,7 +60,6 @@ exports.togglePage = (id) => {
         ?.focus();
 };
 
-
 exports.$q = $q;
 exports.$qq = $qq;
 exports.getBlocksAttr = getBlocksAttr;
