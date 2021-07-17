@@ -1,13 +1,9 @@
 {
-    "spellright.language": [
-        "en"
-    ],
-    "spellright.documentTypes": [
-        "markdown",
-        "latex",
-        "plaintext",
-        "javascript"
-    ],
+    "files.exclude": {
+        "**/node_modules/": true,
+        "**/dist/": true,
+        "**/.DS_Store": true
+    },
     "editor.wordWrap": "wordWrapColumn",
     "editor.wordWrapColumn": 120
 }
