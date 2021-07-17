@@ -2,7 +2,7 @@ const { init: initLanding } = require("./landing");
 const { init: initSignIn } = require("./sign-in");
 const { init: initRegistration } = require("./register");
 const { init: initRecovery } = require("./recovery");
-const { $q, togglePage } = require("../utils/");
+const { $q, $qq, togglePage } = require("../utils/");
 const { IDs } = require("../config");
 
 //TODO refactoring too code repetition
@@ -38,6 +38,10 @@ const openAccount = (e) => {
     }
 };
 
+const goToLanding = () => togglePage(IDs.LANDING_ID);
+
+const setBackBtn = () => $qq(`.js-back`).forEach(e => e.addEventListener("click", goToLanding));
+
 exports.loadActions = () => {
     initContainer();
     initLanding();
@@ -45,4 +49,5 @@ exports.loadActions = () => {
     initRegistration();
     initRecovery();
     require("../services/customize-handler");
+    setBackBtn();
 };

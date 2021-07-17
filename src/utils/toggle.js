@@ -2,6 +2,7 @@ const { IDs } = require("../config");
 
 const getRootNode = () => document.querySelector(`#${IDs.APP_ID}`);
 const $q = (leaf) => getRootNode().querySelector(leaf);
+const $qq = (leaf) => getRootNode().querySelectorAll(leaf);
 
 const getBlocksAttr = () => {
     const blocks = $q(`#${IDs.REGISTER_ID} form`).getAttribute("blocks_order");
@@ -52,17 +53,14 @@ exports.toggleLoading = (BTN) => {
 };
 
 exports.togglePage = (id) => {
-    //TODO refactor because it is error prone!
-    const ids = Object.values(IDs).slice(2);
-    ids.forEach((e) => $q(`#${e}`).style.setProperty("display", "none"));
-    $q(`#${id}`).style.setProperty("display", "block");
+    $qq(".partials").forEach(e => e.classList.remove("partials-show"));
+    $q(`#${id}`).classList.add("partials-show");
     $q(`#${id}`)
         ?.querySelector("[type='password']")
         ?.focus();
 };
 
-exports.$qq = (leaf) => getRootNode().querySelectorAll(leaf);
-
 exports.$q = $q;
+exports.$qq = $qq;
 exports.getBlocksAttr = getBlocksAttr;
 exports.getRootNode = getRootNode;

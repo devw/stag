@@ -36,18 +36,18 @@
         "dateBlocks": [],
         "activateBlocks": [
             {
-                "tag": "vip",
-                "activateTagTitle": "Activate vip account ",
+                "tag": "vip ",
+                "activateTagTitle": "Activate ur vip account",
                 "activateTagSubTitle": "Fill in your email to activate your account.",
                 "activateTagBtn": "Resend the email",
-                "id": "756d460b-9ab6-4e26-831a-45d026a935f8"
+                "id": "44ee66c7-3661-4ca6-b467-571126649e0d"
             },
             {
                 "tag": "csv",
-                "activateTagTitle": "Activate your csv account",
+                "activateTagTitle": "Activate ur csv ",
                 "activateTagSubTitle": "Fill in your email to activate your account.",
                 "activateTagBtn": "Resend the email",
-                "id": "1b9a9491-810f-435d-9759-d1c967671161"
+                "id": "929d3ef1-0fd8-469c-9f6f-a612a232d356"
             }
         ],
         "loginRegister": "Connexion / Inscription",
@@ -65,14 +65,14 @@
         "signIn": "Submit",
         "loginRedirect": "products",
         "loginTitle": "Login ",
-        "activateTitle": "Active your default accout",
+        "activateTitle": "Active your default account ",
         "activateSubTitle": "Fill in your email to activate your account.",
         "activateBtn": "Resend the email",
         "tag": "csv",
-        "activateTagTitle": "Activate your csv account",
+        "activateTagTitle": "Activate ur csv ",
         "activateTagSubTitle": "Fill in your email to activate your account.",
         "activateTagBtn": "Resend the email",
-        "undefined": "1b9a9491-810f-435d-9759-d1c967671161",
+        "undefined": "929d3ef1-0fd8-469c-9f6f-a612a232d356",
         "recoveryTitle": "Recover password",
         "recoverySubTitle": "Enter your email to receive a reset password link.",
         "recoveryBtn": "Recover",
@@ -91,5 +91,6 @@
         "pswNumberErr": "The password must contain at least a number",
         "hasPswSpecialCharacter": "",
         "pswSpecialCharacterErr": "The password must contain at least a special character"
-    }
+    },
+    "isActive": true
 }
