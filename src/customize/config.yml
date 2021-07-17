@@ -461,7 +461,7 @@ global_sections:
 pages:
 - id: popup-de-login
   label: Popup de Login
-  iframeUrl: 'https://api.dev-kastorstudio.com/customize/reverse-proxy?url=https://{{shop}}&storefront_digest=cf10fa7ad10d22a1ad017417c84d7144a16a285a3d4e5d3a30400ad76c448627'
+  iframeUrl: 'https://api.dev-kastorstudio.com/customize/reverse-proxy?url=https://{{shop}}&storefront_digest={{storefront_digest}}'
   onSave: ''
   maxSections: 10
   sections:
