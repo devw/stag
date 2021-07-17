@@ -23,11 +23,10 @@ body.remove-scrolling {
         overflow-y: auto;
     }
 
-    //TODO
     .content .partials {
         max-height: 0;
         overflow: hidden;
-        width: 400px;
+        min-width: 400px;
     }
     .content .partials.partials-show {
         max-height: 900px;
