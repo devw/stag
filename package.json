@@ -17,7 +17,8 @@
         "bk": "webpack --mode=development --env=in=./src/services/customize-handler.js --env=out=customizeHandler.js;",
         "start": "cd dist; lsof -ti tcp:$npm_package_config_port | xargs kill; python3  -m http.server $npm_package_config_port &",
         "lint": "eslint ./",
-        "ngrok": "ngrok http $npm_package_config_port -subdomain=antoniooo"
+        "ngrok": "ngrok http $npm_package_config_port -subdomain=antoniooo",
+        "update:s3": "rm /tmp/bundle.js /tmp/main.css; cp dist/bundle.js dist/main.css /tmp/"
     },
     "devDependencies": {
         "@types/jest": "^26.0.21",

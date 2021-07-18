@@ -1,4 +1,62 @@
+const $q = (leaf) => document.querySelector(leaf);
+
+const setReactInputValue = (input, value) => {
+    const previousValue = input.value;
+    input.value = value;
+    const tracker = input._valueTracker;
+    if (tracker) tracker.setValue(previousValue);
+    // 'change' instead of 'input', see https://github.com/facebook/react/issues/11488#issuecomment-381590324
+    input.dispatchEvent(new Event('change', { bubbles: true }));
+}
+
+const init = () => {
+    const backBtn = $q("._2Ijyv");
+    if (backBtn) backBtn.style.display = "none";
+}
+
+const _setDirectionValue = (target, value) => {
+    const el = target.closest("[kc-panel-setting]").parentElement.nextElementSibling
+        .querySelector("input")
+    setReactInputValue(el, value);
+}
+
+const _onCheckboxClick = (event) => {
+    const { target } = event;
+    const checkedElems = target.parentElement.querySelectorAll("input");
+    const checkedList = Array.from(checkedElems).filter(e => e.checked);
+    const values = checkedList.map(e => e.name).join(",");
+    _resetRadio(event);
+    _setDirectionValue(target, values);
+};
+
+const _resetRadio = ({ target }) => {
+    const els = target.parentElement.nextElementSibling.querySelectorAll("input");
+    els.forEach(e => e.checked = false);
+}
+
+const _onRadioClick = (event) => {
+    const { target } = event;
+    const inputs = target.parentElement.previousElementSibling.querySelectorAll("input");
+    inputs.forEach(e => e.checked = target.value === "All");
+    _setDirectionValue(target, target.value);
+}
+
+const _addEventListiner = (current) => {
+    const checkboxes = current.querySelectorAll(".checkboxes input[type='checkbox']");
+    const radios = current.querySelectorAll(".checkboxes input[type='radio']");
+    checkboxes.forEach(e => e.addEventListener("click", _onCheckboxClick));
+    radios.forEach(e => e.addEventListener("click", _onRadioClick));
+}
+
+
+
+setTimeout(() => {
+    init();
+}, 0);
+
 ({
+    $q: (leaf) => document.querySelector(leaf),
+
     _addJS: (url, callback) => {
         const head = document.head;
         const script = document.createElement("script");
@@ -110,6 +168,7 @@
     },
     toggleTag(value, { current }) {
         // TODO the value is the id ... i cannot set true/false!
+        _TEST.target.current.parentElement.nextElementSibling.querySelector("input").value
         const _1st = current.parentElement.nextElementSibling;
         const _2nd = _1st.nextElementSibling;
         const _3rd = _2nd.nextElementSibling;
@@ -143,6 +202,7 @@
         console.log("##########################", current);
     },
     uploadImage(value, { current }) {
+        console.log("---------------------", { value, current })
         globalThis.value = value;
         globalThis.current = current;
 
@@ -191,7 +251,7 @@
     setDateFormat(value, { current }) {
         current.querySelector("input").type = "date";
     },
-    setPaddingLabels(value, { current }) {},
+    setPaddingLabels(value, { current }) { },
 
     sanitizeInput(_, { current }) {
         const node = current.querySelector("[type='text']");
@@ -210,5 +270,20 @@
                 this._showError(target, message);
             }
         });
+    },
+    addInputLineCheckbox: (_, { current }) => {
+        window.current = current;
+        const htmlObjName = "checkboxes";
+        const childName = current.querySelector(`.${htmlObjName}`);
+        if (!current || childName) return null;
+        const getCheckbox = (name) => `<input type="checkbox" name="${name}" id="">${name} `;
+        const getRadio = (name) => `&nbsp;<input type="radio" name="input-line-radio" value="${name}">${name} `;
+        const checkboxList = ["Top", "Right", "Left", "Bottom"].map(e => getCheckbox(e));
+        const radioList = ["All", "None"].map(e => getRadio(e));
+        const htmlObj = document.createElement('div');
+        htmlObj.className = htmlObjName;
+        htmlObj.innerHTML = `<div>${checkboxList}</div><div style="margin-top: 5px">${radioList}</div>`.replace(/,/g, "");
+        current.querySelector("div").insertAdjacentElement("afterend", htmlObj);
+        _addEventListiner(current);
     },
 });

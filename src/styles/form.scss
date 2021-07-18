@@ -3,6 +3,7 @@
         margin-top: 20px;
         display: flex;
         flex-direction: column;
+        padding: 0 10px;
     }
 
     form > div {
@@ -12,8 +13,10 @@
     }
 
     .input-text {
-        border: var(--input-line);
-        border-bottom: var(--input-line-bottom, 1px solid #666);
+        border-top: var(--input-line-top, var(--input-line));
+        border-right: var(--input-line-right, var(--input-line));
+        border-left: var(--input-line-left, var(--input-line));
+        border-bottom: var(--input-line-bottom, var(--input-line));
         background-color: unset;
         outline: none;
         font-size: 1em;

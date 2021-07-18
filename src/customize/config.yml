@@ -168,13 +168,25 @@ global_sections:
       hint: You can set the input line
       default: 0px solid black
       required: true
-    - id: "register|--input-line-bottom|"
-      type: cssline
-      label: Input Line Bottom
-      icon: EditMinor
-      hint: You can set the input line button
-      default: 1px solid black
-      required: true
+      hooks: 
+        afterSettingUpdate: addInputLineCheckbox
+
+    - id: "register|--input-line-direction|"
+      type: text-input
+      label: Title
+      icon: ''
+      default: 'Bottom'
+      hint: ''
+      required: false
+      config: {}
+
+    # - id: "register|--input-line-bottom|"
+    #   type: cssline
+    #   label: Input Line Bottom
+    #   icon: EditMinor
+    #   hint: You can set the input line button
+    #   default: 1px solid black
+    #   required: true
     - id: "register|--input-margin|em"
       type: range-slider
       label: Input Field Vertical Spacing 
@@ -264,9 +276,9 @@ global_sections:
       hint: 'Specify the image URL'
       config:
         placeholder: Drag and Drop a file
-      # fileName: background
-      # hooks: 
-      #   afterSettingUpdate: uploadImage
+      fileName: background
+      hooks: 
+        afterSettingUpdate: uploadImage
     - id: "register|--bg-opacity-image|"
       type: range-slider
       label: Background Image Opacity 

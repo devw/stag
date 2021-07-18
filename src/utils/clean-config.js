@@ -57,10 +57,24 @@ const mendInputPadding = (padding, { formStyle }) => {
     return ps.join(" ");
 };
 
+const mendInputLineDirection = (style) => {
+    const dirVal = style["--input-line-direction"]
+    if (/all/i.test(dirVal)) return null;
+    if (/none/i.test(dirVal)) {
+        style["--input-line"] = "none";
+        return null;
+    }
+    let directions = ["left", "right", "top", "bottom"];
+    directions = directions.filter(e => !new RegExp(e, "i").test(dirVal));
+    directions.forEach(e => style[`--input-line-${e}`] = "none");
+};
+
 exports.cleanStyle = (style, text) => {
+    console.log("----cleanStyle-----", style)
     const inputPadding = style["--input-padding"].trim();
     const left = inputPadding.split(" ").slice(-1)[0];
     style["--label-left"] = left;
     style["--input-padding"] = mendInputPadding(inputPadding, text);
+    mendInputLineDirection(style);
     return style;
 };
