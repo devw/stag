@@ -291,3 +291,15 @@ json = {
 
 }
 kastor(json)
+
+json = {
+    global_section_id: "form",
+    setting_id: "register|--input-line-direction|",
+    value: "Left,Bottom"
+}
+
+json = {
+    global_section_id: "form",
+    setting_id: "register|--input-line|",
+    value: "2px solid #e9d40a"
+}

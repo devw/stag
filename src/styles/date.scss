@@ -22,7 +22,6 @@
         column-gap: 40px;
         > input {
             border: var(--input-line);
-            border-bottom: var(--input-line-bottom, 1px solid #666);
             outline: none;
             font-size: 1em;
             color: #333;
@@ -41,7 +40,6 @@
         padding-bottom: 0;
         font-size: 1.1em;
         border: 0;
-        border-bottom: var(--input-line-bottom, 1px solid #666);
         outline: none;
     }
 
