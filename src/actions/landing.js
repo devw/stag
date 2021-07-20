@@ -20,9 +20,13 @@ const setCustomers = async (email) => {
 }
 
 const getUniqCustomer = (email) => {
+    const customers = CUSTOMERS.filter((e) => e.email === email);
+    if (customers[0]) return customers[0];
+}
+
+const getMatchCustomer = (email) => {
     const customers = CUSTOMERS.filter((e) => new RegExp(`^${email}`).test(e.email));
-    if (customers.length !== 1) return null;
-    return customers[0];
+    if (customers.length === 1) return customers[0];
 }
 
 const updateCustomers = async (event) => {
@@ -65,7 +69,7 @@ const checkStatusAndTogglePage = (customer) => {
 const autocomplete = ({ inputType }) => {
     const email = getEmail();
     if (!/[\w.]+@\w{1,}\./.test(email) || inputType === "deleteContentBackward") return null;
-    const customer = getUniqCustomer(email);
+    const customer = getMatchCustomer(email);
     if (!customer) return null;
     setEmail(customer.email);
     checkStatusAndTogglePage(customer);

@@ -168,17 +168,20 @@ global_sections:
       hint: You can set the input line
       default: 0px solid black
       required: true
+      config: {}
       hooks: 
         afterSettingUpdate: addInputLineCheckbox
 
     - id: "register|--input-line-direction|"
       type: text-input
-      label: Title
+      label: input-line-direction
       icon: ''
-      default: 'Bottom'
+      default: ''
       hint: ''
       required: false
       config: {}
+      hooks: 
+        afterSettingUpdate: updateLineDirectionCheckboxes
 
     # - id: "register|--input-line-bottom|"
     #   type: cssline
