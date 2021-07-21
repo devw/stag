@@ -46,9 +46,15 @@ const getUrlParameter = (name) => {
     return url.searchParams.get(name);
 }
 
+const activeDefaultLogin = () =>
+    window.el__loginPopup?.removeEventListener("click", window.onClick_loginPopup, true);
+
 exports.loadActions = () => {
     const { isActive } = JSON.parse(localStorage.getItem(STORAGE_CONFIG));
-    if (!isActive && getUrlParameter("preview_login_popup") !== "true") return null;
+    if (!isActive && getUrlParameter("preview_login_popup") !== "true") {
+        activeDefaultLogin();
+        return null;
+    }
     initContainer();
     initLanding();
     initSignIn();
