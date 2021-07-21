@@ -3,7 +3,7 @@ const { init: initSignIn } = require("./sign-in");
 const { init: initRegistration } = require("./register");
 const { init: initRecovery } = require("./recovery");
 const { $q, $qq, togglePage } = require("../utils/");
-const { IDs } = require("../config");
+const { IDs, STORAGE_CONFIG } = require("../config");
 
 //TODO refactoring too code repetition
 
@@ -25,8 +25,6 @@ const placePopover = (e, el) => {
 };
 
 const openAccount = (e) => {
-    //TODO isActive to fix
-    // const { isActive } = JSON.parse(localStorage.getItem(STORAGE_CONFIG));
     if (!globalThis.__st?.cid) {
         e?.preventDefault();
         e?.stopPropagation();
@@ -43,6 +41,9 @@ const goToLanding = () => togglePage(IDs.LANDING_ID);
 const setBackBtn = () => $qq(`.js-back`).forEach(e => e.addEventListener("click", goToLanding));
 
 exports.loadActions = () => {
+    const { isActive } = JSON.parse(localStorage.getItem(STORAGE_CONFIG));
+    console.log("----- Is PopUp Active? -----", isActive)
+    if (!isActive) return null;
     initContainer();
     initLanding();
     initSignIn();
