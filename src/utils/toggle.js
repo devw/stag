@@ -51,6 +51,8 @@ exports.updateCss = (cssVars) => {
 };
 
 exports.toggleSecret = ({ target }) => {
+    target.classList.toggle("fa-eye-slash");
+    target.classList.toggle("fa-eye");
     const secret = target.nextElementSibling;
     secret.type = secret.type === "password" ? "text" : "password";
 };
@@ -69,9 +71,9 @@ exports.toggleLoading = (BTN) => {
 exports.togglePage = (id) => {
     $qq(".partials").forEach(e => e.classList.remove("partials-show"));
     $q(`#${id}`).classList.add("partials-show");
-    $q(`#${id}`)
-        ?.querySelector("[type='password']")
-        ?.focus();
+    // $q(`#${id}`)
+    //     ?.querySelector("[type='password']")
+    //     ?.focus();
 };
 
 exports.$q = $q;
