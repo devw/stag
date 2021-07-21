@@ -9,13 +9,24 @@ const getBlocksAttr = () => {
     return blocks.length > 0 ? blocks.split(",") : [];
 };
 
-const filterCss = (view) => {
+const filterCss = (cssVars) => {
     // TODO you should wrap the value based on the regexp /^http/
+    if (!cssVars) return null;
     const pics = ["--container-bg-image", "--header-img"];
     pics.forEach((e) => {
-        if (view[e]) view[e] = `url(${view[e]})`;
+        if (cssVars[e]) cssVars[e] = `url(${cssVars[e]})`;
     });
-    return view;
+    // return view;
+};
+
+const mendInputLineDirection = (style) => {
+    const dirVal = style["--input-line-direction"];
+    if (!dirVal) return null;
+    let directions = ["left", "right", "top", "bottom"];
+    directions.forEach(e => style[`--input-line-${e}`] = "var(--input-line)");
+    if (/all/i.test(dirVal)) return null;
+    directions = directions.filter(e => !new RegExp(e, "i").test(dirVal));
+    directions.forEach(e => style[`--input-line-${e}`] = "none");
 };
 
 exports.sortBlocks = () => {
@@ -28,7 +39,10 @@ exports.sortBlocks = () => {
 };
 
 exports.updateCss = (cssVars) => {
-    cssVars = filterCss(cssVars);
+    if (!cssVars) return null;
+    console.log("----updateCss2-----", cssVars)
+    mendInputLineDirection(cssVars);
+    filterCss(cssVars);
     (function traverse(obj, key) {
         if (obj !== null && typeof obj == "object") {
             Object.entries(obj).forEach(([key, value]) => traverse(value, key));
@@ -37,6 +51,8 @@ exports.updateCss = (cssVars) => {
 };
 
 exports.toggleSecret = ({ target }) => {
+    target.classList.toggle("fa-eye-slash");
+    target.classList.toggle("fa-eye");
     const secret = target.nextElementSibling;
     secret.type = secret.type === "password" ? "text" : "password";
 };
@@ -55,9 +71,9 @@ exports.toggleLoading = (BTN) => {
 exports.togglePage = (id) => {
     $qq(".partials").forEach(e => e.classList.remove("partials-show"));
     $q(`#${id}`).classList.add("partials-show");
-    $q(`#${id}`)
-        ?.querySelector("[type='password']")
-        ?.focus();
+    // $q(`#${id}`)
+    //     ?.querySelector("[type='password']")
+    //     ?.focus();
 };
 
 exports.$q = $q;

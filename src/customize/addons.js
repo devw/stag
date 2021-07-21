@@ -1,4 +1,119 @@
+const $q = (leaf) => document.querySelector(leaf);
+
+const setReactInputValue = (input, value) => {
+    const previousValue = input.value;
+    input.value = value;
+    const tracker = input._valueTracker;
+    if (tracker) tracker.setValue(previousValue);
+    // 'change' instead of 'input', see https://github.com/facebook/react/issues/11488#issuecomment-381590324
+    input.dispatchEvent(new Event('change', { bubbles: true }));
+}
+
+
+const InputLineComponent = () => {
+    const _getCheckbox = (name) => `<span>
+    <label class="Polaris-Choice" for="${name}">
+        <span class="Polaris-Choice__Control">
+            <span class="Polaris-Checkbox"><input id="${name}" name="${name}" type="checkbox" class="Polaris-Checkbox__Input"
+                    aria-invalid="false" role="checkbox" aria-checked="false" value="">
+                <span class="Polaris-Checkbox__Backdrop"></span>
+                <span class="Polaris-Checkbox__Icon"><span class="Polaris-Icon"><svg viewBox="0 0 20 20"
+                            class="Polaris-Icon__Svg" focusable="false" aria-hidden="true">
+                            <path
+                                d="m8.315 13.859-3.182-3.417a.506.506 0 0 1 0-.684l.643-.683a.437.437 0 0 1 .642 0l2.22 2.393 4.942-5.327a.436.436 0 0 1 .643 0l.643.684a.504.504 0 0 1 0 .683l-5.91 6.35a.437.437 0 0 1-.642 0">
+                            </path>
+                        </svg></span></span>
+            </span>
+        </span>
+        <span class="Polaris-Choice__Label">${name}</span></label>
+    </span>`;
+
+
+    const _getRadio = (name) => `<div class="Polaris-Stack__Item">
+        <label class="Polaris-Choice" for="${name}"><span class="Polaris-Choice__Control"><span
+                    class="Polaris-RadioButton"><input id="${name}" name="accounts" type="radio"
+                        class="Polaris-RadioButton__Input" aria-describedby="disabledHelpText" value="${name}"
+                        checked=""><span class="Polaris-RadioButton__Backdrop"></span></span></span><span
+                class="Polaris-Choice__Label">${name}</span></label>
+    </div>`;
+
+
+    const _onCheckboxClick = (event) => {
+        const { target } = event;
+        window.target = target;
+        const checkedElems = target.closest(".checkboxes").querySelectorAll("[type='checkbox']");
+        const checkedList = Array.from(checkedElems).filter(e => e.checked);
+        const values = checkedList.map(e => e.name).join(",");
+        _resetRadio(event);
+        _setDirectionValue(target, values);
+    };
+
+    const _onRadioClick = (event) => {
+        const { target } = event;
+        const inputs = target.closest(".checkboxes").querySelectorAll("[type='checkbox']");
+        inputs.forEach(e => e.checked = target.value === "All");
+        _setDirectionValue(target, target.value);
+    }
+
+    const _addEventListiner = (current) => {
+        const checkboxes = current.querySelectorAll(".checkboxes input[type='checkbox']");
+        const radios = current.querySelectorAll(".checkboxes input[type='radio']");
+        checkboxes.forEach(e => e.addEventListener("click", _onCheckboxClick));
+        radios.forEach(e => e.addEventListener("click", _onRadioClick));
+    }
+
+
+    const _setDirectionValue = (target, value) => {
+        const el = target.closest("[kc-panel-setting]").parentElement.nextElementSibling
+            .querySelector("input")
+        setReactInputValue(el, value);
+    }
+
+    const _resetRadio = ({ target }) => {
+        const els = target.closest(".checkboxes").querySelectorAll("[type='radio']");
+        els.forEach(e => e.checked = false);
+    }
+
+    const _updateDirection = (current) => {
+        window.current = current;
+        const { value } = current.parentElement.nextElementSibling.querySelector("input");
+        const checkboxes = current.querySelectorAll("input[type='checkbox']");
+        checkboxes.forEach(e => e.checked = new RegExp(e.name, "i").test(value));
+        current.closest("[kc-panel-setting]").parentElement.nextElementSibling.style.display = "none";
+    }
+
+    const init = (current) => {
+        const htmlObjName = "checkboxes";
+        const childName = current?.querySelector(`.${htmlObjName}`);
+        console.log(current)
+        if (!current || childName) return null;
+
+
+        const checkboxList = ["Top", "Right", "Left", "Bottom"].map(e => _getCheckbox(e));
+        const radioList = ["All", "None"].map(e => _getRadio(e));
+        const htmlObj = document.createElement('div');
+        htmlObj.className = htmlObjName;
+        htmlObj.innerHTML = `<div>${checkboxList}</div><div class="Polaris-Stack">${radioList}</div>`.replace(/,/g, "");
+        current.querySelector("div").insertAdjacentElement("afterend", htmlObj);
+        _addEventListiner(current);
+        _updateDirection(current);
+    }
+
+    return { init };
+}
+
+const init = () => {
+    const backBtn = $q("._2Ijyv");
+    if (backBtn) backBtn.style.display = "none";
+}
+
+setTimeout(() => {
+    init();
+}, 0);
+
 ({
+    $q: (leaf) => document.querySelector(leaf),
+
     _addJS: (url, callback) => {
         const head = document.head;
         const script = document.createElement("script");
@@ -110,6 +225,7 @@
     },
     toggleTag(value, { current }) {
         // TODO the value is the id ... i cannot set true/false!
+        _TEST.target.current.parentElement.nextElementSibling.querySelector("input").value
         const _1st = current.parentElement.nextElementSibling;
         const _2nd = _1st.nextElementSibling;
         const _3rd = _2nd.nextElementSibling;
@@ -143,6 +259,7 @@
         console.log("##########################", current);
     },
     uploadImage(value, { current }) {
+        console.log("---------------------", { value, current })
         globalThis.value = value;
         globalThis.current = current;
 
@@ -191,7 +308,7 @@
     setDateFormat(value, { current }) {
         current.querySelector("input").type = "date";
     },
-    setPaddingLabels(value, { current }) {},
+    setPaddingLabels(value, { current }) { },
 
     sanitizeInput(_, { current }) {
         const node = current.querySelector("[type='text']");
@@ -211,4 +328,8 @@
             }
         });
     },
+
+    addInputLineCheckbox: (_, { current }) => {
+        InputLineComponent().init(current);
+    }
 });

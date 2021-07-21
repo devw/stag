@@ -168,13 +168,28 @@ global_sections:
       hint: You can set the input line
       default: 0px solid black
       required: true
-    - id: "register|--input-line-bottom|"
-      type: cssline
-      label: Input Line Bottom
-      icon: EditMinor
-      hint: You can set the input line button
-      default: 1px solid black
-      required: true
+      config: {}
+      hooks: 
+        afterSettingUpdate: addInputLineCheckbox
+
+    - id: "register|--input-line-direction|"
+      type: text-input
+      label: input-line-direction
+      icon: ''
+      default: ''
+      hint: ''
+      required: false
+      config: {}
+      hooks: 
+        afterSettingUpdate: updateLineDirectionCheckboxes
+
+    # - id: "register|--input-line-bottom|"
+    #   type: cssline
+    #   label: Input Line Bottom
+    #   icon: EditMinor
+    #   hint: You can set the input line button
+    #   default: 1px solid black
+    #   required: true
     - id: "register|--input-margin|em"
       type: range-slider
       label: Input Field Vertical Spacing 
@@ -264,9 +279,9 @@ global_sections:
       hint: 'Specify the image URL'
       config:
         placeholder: Drag and Drop a file
-      # fileName: background
-      # hooks: 
-      #   afterSettingUpdate: uploadImage
+      fileName: background
+      hooks: 
+        afterSettingUpdate: uploadImage
     - id: "register|--bg-opacity-image|"
       type: range-slider
       label: Background Image Opacity 
@@ -461,7 +476,7 @@ global_sections:
 pages:
 - id: popup-de-login
   label: Popup de Login
-  iframeUrl: 'https://api.dev-kastorstudio.com/customize/reverse-proxy?url=https://{{shop}}&storefront_digest=cf10fa7ad10d22a1ad017417c84d7144a16a285a3d4e5d3a30400ad76c448627'
+  iframeUrl: 'https://api.dev-kastorstudio.com/customize/reverse-proxy?url=https://{{shop}}&storefront_digest={{storefront_digest}}'
   onSave: ''
   maxSections: 10
   sections:

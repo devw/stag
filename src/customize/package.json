@@ -1,0 +1,14 @@
+{
+  "name": "customize",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack  --mode=development",
+    "update:s3": "rm /tmp/config.yml /tmp/addons.js; cp config.yml addons.js /tmp/"
+  },
+  "dependencies": {
+    "webpack": "^5.45.1",
+    "webpack-cli": "^4.7.2"
+  }
+}

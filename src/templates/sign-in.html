@@ -5,12 +5,12 @@
     data-login-redirect="{{loginRedirect}}">
     <input type="hidden" name="form_type" value="customer_login" /><input type="hidden" name="utf8" value="✓" />
     <div>
-        <input type="email" name="customer[email]" autocomplete="email" class="input-text"
+        <input type="email" readonly name="customer[email]" autocomplete="email" class="input-text"
             placeholder="{{yourEmail}}" />
         <label>{{yourEmail}}</label>
     </div>
     <div>
-        <i class="fa fa-eye js-show-psw"></i>
+        <i class="fa fa-eye-slash js-show-psw"></i>
         <input type="password" name="customer[password]" class="input-text" placeholder="{{yourPassword}}"
             autocomplete="on" />
         <label>{{yourPassword}}</label>

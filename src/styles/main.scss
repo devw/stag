@@ -149,6 +149,13 @@ body.remove-scrolling {
         padding: var(--input-padding);
     }
 
+    .fa-eye-slash {
+        cursor: pointer;
+        position: absolute;
+        right: 5px;
+        padding: var(--input-padding);
+    }
+
     .action {
         color: var(--ternary-text-color, #0d3c32);
         margin-top: 15px;
