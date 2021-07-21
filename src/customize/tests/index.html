@@ -155,11 +155,6 @@
             return { init };
         }
 
-
-
-
-
-
         const setReactInputValue = (input, value) => {
             const previousValue = input.value;
             input.value = value;
@@ -172,9 +167,7 @@
         const addInputLineCheckbox = (_, { current }) => {
             InputLineComponent().init(current);
         };
-
         window.current = document.querySelector('[kc-panel-setting="register|--input-line|"]')
-
         addInputLineCheckbox("", { current });
 
     </script>
