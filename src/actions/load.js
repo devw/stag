@@ -40,10 +40,15 @@ const goToLanding = () => togglePage(IDs.LANDING_ID);
 
 const setBackBtn = () => $qq(`.js-back`).forEach(e => e.addEventListener("click", goToLanding));
 
+const getUrlParameter = (name) => {
+    var url_string = location.href
+    var url = new URL(url_string);
+    return url.searchParams.get(name);
+}
+
 exports.loadActions = () => {
     const { isActive } = JSON.parse(localStorage.getItem(STORAGE_CONFIG));
-    console.log("----- Is PopUp Active? -----", isActive)
-    if (!isActive) return null;
+    if (!isActive && getUrlParameter("preview_login_popup") !== "true") return null;
     initContainer();
     initLanding();
     initSignIn();
