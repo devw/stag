@@ -43,25 +43,26 @@ exports.cleanDateBlocks = (text) => {
 };
 
 const mendInputPadding = (padding, { formStyle }) => {
-    const ps = padding.split(" ");
     if (formStyle === "label-go-up") {
-        ps.splice(0, 1, "18px");
-        ps.splice(2, 1, "7px");
-        return ps.join(" ");
+        padding.splice(0, 1, "18px");
+        padding.splice(2, 1, "7px");
+        return padding.join(" ");
     }
     if (formStyle === "label-go-down") {
-        ps.splice(0, 1, "8px");
-        ps.splice(2, 1, "12px");
-        return ps.join(" ");
+        padding.splice(0, 1, "8px");
+        padding.splice(2, 1, "12px");
+        return padding.join(" ");
     }
-    return ps.join(" ");
+    return padding.join(" ");
 };
 
 exports.cleanStyle = (style, text) => {
     console.log("----cleanStyle-----", style)
-    const inputPadding = style["--input-padding"].trim();
-    const left = inputPadding.split(" ").slice(-1)[0];
+    const inputPadding = (style["--input-padding"].trim()).split(" ");
+    const [left, bottom] = [inputPadding[3], inputPadding[2]]
+    window.inputPadding = inputPadding;
     style["--label-left"] = left;
+    style["--label-bottom"] = bottom;
     style["--input-padding"] = mendInputPadding(inputPadding, text);
     return style;
 };

@@ -32,7 +32,7 @@ const getRemoteConfig = (shop) => {
 
 exports.getConfiguration = async () => {
     //TODO implements memoization
-    const SHOP = globalThis?.Shopify?.shop || "popup-login.myshopify.com";
+    const SHOP = globalThis?.Shopify?.shop;
     const endpoint = SHOP
         ? getRemoteConfig(SHOP)
         : getLocalConfig();
@@ -47,7 +47,7 @@ exports.storeMetafieldIntoShopify = async () => {
 
     if (!areThereMetafields) return null;
 
-    const endpoint = `${location.origin}/${PROXY_PATH}/metafield`;
+    const endpoint = `${location.origin}/customer/metafields`;
     const params = {
         method: "POST",
         headers: {

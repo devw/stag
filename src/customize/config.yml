@@ -1,7 +1,7 @@
 appId: login-popup
 title: Login Popup
 backUrl: 'https://{{shop}}/admin/apps/dev-login-popup'
-onSave: 'https://login-popup.eu.ngrok.io/dev/customize-callback'
+onSave: 'https://api.dev-kastorstudio.com/login-popup/customize/onsave'
 crispId: ''
 
 

@@ -109,11 +109,9 @@ const updateNoBlock = (event) => {
     if (!/--animation/.test(key)) updateCss({ "--animation": "none" });
     if (/^--/.test(key)) {
         if (key == "--input-padding") {
-            const left = valueAndUnit
-                .trim()
-                .split(" ")
-                .slice(-1)[0];
-            updateCss({ "--label-left": left });
+            const padding = (valueAndUnit.trim()).split(" ");
+            const [left, bottom] = [padding[3], padding[2]];
+            updateCss({ "--label-left": left, "--label-bottom": bottom });
         }
         updateCss({ [key]: valueAndUnit });
     } else {
