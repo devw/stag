@@ -21,7 +21,14 @@ const debounce = (fn, delay) => {
     };
 };
 
+const getUrlParameter = (name) => {
+    var url_string = location.href
+    var url = new URL(url_string);
+    return url.searchParams.get(name);
+}
+
 module.exports = {
+    getUrlParameter,
     updateCss,
     render,
     togglePage,

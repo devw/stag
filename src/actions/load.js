@@ -2,7 +2,7 @@ const { init: initLanding } = require("./landing");
 const { init: initSignIn } = require("./sign-in");
 const { init: initRegistration } = require("./register");
 const { init: initRecovery } = require("./recovery");
-const { $q, $qq, togglePage } = require("../utils/");
+const { $q, $qq, togglePage, getUrlParameter } = require("../utils/");
 const { IDs, STORAGE_CONFIG } = require("../config");
 
 //TODO refactoring too code repetition
@@ -40,21 +40,15 @@ const goToLanding = () => togglePage(IDs.LANDING_ID);
 
 const setBackBtn = () => $qq(`.js-back`).forEach(e => e.addEventListener("click", goToLanding));
 
-const getUrlParameter = (name) => {
-    var url_string = location.href
-    var url = new URL(url_string);
-    return url.searchParams.get(name);
-}
 
-const activeDefaultLogin = () =>
-    window.el__loginPopup?.removeEventListener("click", window.onClick_loginPopup, true);
 
 exports.loadActions = () => {
     const { isActive } = JSON.parse(localStorage.getItem(STORAGE_CONFIG));
-    if (!isActive && getUrlParameter("preview_login_popup") !== "true") {
-        activeDefaultLogin();
-        return null;
-    }
+
+    if (isActive == "false" && getUrlParameter("preview_login_popup") !== "true") return null;
+    const el = document.body.querySelector('[href="/account/login"]');
+    el.addEventListener("click", (e) => e.preventDefault());
+    console.log(el)
     initContainer();
     initLanding();
     initSignIn();

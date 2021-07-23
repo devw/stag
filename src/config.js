@@ -3,7 +3,7 @@ module.exports = {
     STORAGE_METAFIELD: "login-popup-metafields",
     STORAGE_CONFIG: "login-popup-config",
     // TODO get it from the PROXY
-    ENDPOINT: "https://login-popup-dev-theme.s3.amazonaws.com",
+    ENDPOINT: "https://api.dev-kastorstudio.com/login-popup",
     CONFIG_FNAME: `configuration.json?a=${Date.now()}`,
     IDs: {
         APP_ID: "login-popup", // TODO you should not use this in CSS

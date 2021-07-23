@@ -142,8 +142,8 @@ const setDropDownPicker = () => {
 const updateCalendar = ({ target }) => {
     const root = target.closest("[block-id]");
     const s = `${ids.noCal} select option:checked, ${ids.noCal} input`;
-    const nums = Array.from(root.querySelectorAll(s)).map((e) => e.value);
-    root.querySelector(`${ids.cal}`).value = nums.join("-");
+    // const nums = Array.from(root.querySelectorAll(s)).map((e) => e.value);
+    // root.querySelector(`${ids.cal}`).value = nums.join("-");
 };
 
 exports.init = () => {

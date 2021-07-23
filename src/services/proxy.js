@@ -5,10 +5,12 @@ const {
     CONFIG_FNAME,
 } = require("../config");
 
+const { getUrlParameter } = require("../utils/");
+
 exports.getCustomerStatus = async (email) => {
     const SHOP = globalThis?.Shopify?.shop;
     const endpoint = SHOP
-        ? `${location.origin}/${PROXY_PATH}/customer-status/${email}?`
+        ? `${location.origin}/customer/${email}/status`
         : `http://localhost:3003/dev/customer-status/${email}?shop=popup-login.myshopify.com&`;
     const promise = await fetch(`${endpoint}t=${Date.now()}`).catch((err) => {
         throw `error getCustomerStatus: , ${err}`;
@@ -16,12 +18,24 @@ exports.getCustomerStatus = async (email) => {
     return await promise.json();
 };
 
+const getLocalConfig = () => {
+    const config = getUrlParameter("config") || CONFIG_FNAME;
+    return `data/${config}`;
+}
+
+const getRemoteConfig = (shop) => {
+    const customConfig = getUrlParameter("config");
+    return customConfig ?
+        `${ENDPOINT}/templates/${customConfig}`
+        : `${ENDPOINT}/${shop}/${CONFIG_FNAME}`;
+}
+
 exports.getConfiguration = async () => {
     //TODO implements memoization
-    const SHOP = globalThis?.Shopify?.shop;
+    const SHOP = globalThis?.Shopify?.shop || "popup-login.myshopify.com";
     const endpoint = SHOP
-        ? `${ENDPOINT}/${SHOP}/${CONFIG_FNAME}`
-        : `data/${CONFIG_FNAME}`;
+        ? getRemoteConfig(SHOP)
+        : getLocalConfig();
     const promise = await globalThis.fetch(endpoint);
     return promise;
 };

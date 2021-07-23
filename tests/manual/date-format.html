@@ -1,164 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.9/flatpickr.min.js"></script>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.9/flatpickr.min.js"></script>
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.9/flatpickr.min.css"
         /> -->
-        <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
-        />
-        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-        <style>
-            .container {
-                /* height: 100vh;
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <style>
+        .container {
+            /* height: 100vh;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 justify-content: center; */
-                width: 230px;
+            width: 230px;
+        }
+
+        .container .no-calendar {
+            display: inline-flex;
+            /* flex-wrap: wrap; */
+            gap: 12px;
+            width: 100%;
+        }
+
+        .container>.no-calendar>input::placeholder {
+            color: #666;
+        }
+
+        .container div select {
+            flex: 1;
+        }
+
+        .container div input {
+            width: 33%;
+        }
+
+        input[type="date"] {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- https://codepen.io/cheryllaird/pen/IarGc -->
+    <form action="">
+        <div class="container">
+            <input name="birthdate" type="date" min="1922-12-31" max="2022-12-31" placeholder="Date de naissance" />
+            <hr />
+
+            <div class="no-calendar"></div>
+            <label for="">No calendar</label>
+            <hr />
+
+            <div class="withCalendar"><input type="date" /></div>
+            <label for="">With calendar</label>
+        </div>
+    </form>
+    <script>
+        const $ = document.querySelector.bind(document);
+        const $$ = document.querySelectorAll.bind(document);
+
+        /*****************
+         * With calendar
+         * **************/
+
+        flatpickr(".withCalendar input", {
+            enableTime: false,
+            noCalendar: false,
+            dateFormat: "d-m-Y",
+        });
+        const format = (input) => {
+            if (input.value.length === 1) {
+                input.value = "0" + input.value;
             }
+        };
 
-            .container .no-calendar {
-                display: inline-flex;
-                /* flex-wrap: wrap; */
-                gap: 12px;
-                width: 100%;
-            }
+        /*****************
+         * No calendar
+         * **************/
 
-            .container > .no-calendar > input::placeholder {
-                color: #666;
-            }
+        const init = () => { };
 
-            .container div select {
-                flex: 1;
-            }
-            .container div input {
-                width: 33%;
-            }
-            input[type="date"] {
-                width: 100%;
-            }
-        </style>
-    </head>
-    <body>
-        <!-- https://codepen.io/cheryllaird/pen/IarGc -->
-        <form action="">
-            <div class="container">
-                <input
-                    name="birthdate"
-                    type="date"
-                    min="1922-12-31"
-                    max="2022-12-31"
-                    placeholder="Date de naissance"
-                />
-                <hr />
+        const ids = { d: "day", m: "month", y: "year" };
 
-                <div class="no-calendar"></div>
-                <label for="">No calendar</label>
-                <hr />
+        const updateCalendar = ({ target }) => {
+            const noCalendar = target.parentNode;
+            const nums = Array.from(
+                noCalendar.querySelectorAll("select option:checked")
+            ).map((e) => e.value);
+            noCalendar.parentNode.querySelector(
+                ".withCalendar input"
+            ).value = nums.join("-");
+        };
 
-                <div class="withCalendar"><input type="date" /></div>
-                <label for="">With calendar</label>
-            </div>
-        </form>
-        <script>
-            const $ = document.querySelector.bind(document);
-            const $$ = document.querySelectorAll.bind(document);
-
-            /*****************
-             * With calendar
-             * **************/
-
-            flatpickr(".withCalendar input", {
-                enableTime: false,
-                noCalendar: false,
-                dateFormat: "d-m-Y",
+        const setMonths = () => {
+            const months = moment.months();
+            const mElem = $(`#${ids.m}`);
+            mElem.innerHTML = "";
+            months.forEach((e, i) => {
+                const html = `<option value=${i + 1}>${e}</option>`;
+                mElem.innerHTML += html;
             });
-            const format = (input) => {
-                if (input.value.length === 1) {
-                    input.value = "0" + input.value;
-                }
-            };
+        };
 
-            /*****************
-             * No calendar
-             * **************/
+        const setDays = ({ target }) => {
+            const pNode = target.parentNode;
+            const y = pNode.querySelector(`#${ids.y} option:checked`).value;
+            const m = pNode.querySelector(`#${ids.m} option:checked`).value;
+            const daysCount = moment(`${y}-${m}`, "YYYY-MM").daysInMonth();
+            const d = pNode.querySelector(`#${ids.d}`);
+            d.innerHTML = "";
 
-            const init = () => {};
+            Array.from(new Array(daysCount)).forEach((e, i) => {
+                const html = `<option value=${i + 1}>${i + 1}</option>`;
+                d.innerHTML += html;
+            });
+        };
 
-            const ids = { d: "day", m: "month", y: "year" };
+        const setYears = (start, end) => {
+            const length = end - start;
+            const ys = Array.from({ length }, (v, k) => k + start);
+            const yElem = $(`#${ids.y}`);
+            ys.forEach((e) => {
+                const html = `<option value=${e}>${e}</option>`;
+                yElem.innerHTML += html;
+            });
+            yElem.dispatchEvent(new Event("change"));
+        };
 
-            const updateCalendar = ({ target }) => {
-                const noCalendar = target.parentNode;
-                const nums = Array.from(
-                    noCalendar.querySelectorAll("select option:checked")
-                ).map((e) => e.value);
-                noCalendar.parentNode.querySelector(
-                    ".withCalendar input"
-                ).value = nums.join("-");
-            };
-
-            const setMonths = () => {
-                const months = moment.months();
-                const mElem = $(`#${ids.m}`);
-                mElem.innerHTML = "";
-                months.forEach((e, i) => {
-                    const html = `<option value=${i + 1}>${e}</option>`;
-                    mElem.innerHTML += html;
-                });
-            };
-
-            const setDays = ({ target }) => {
-                const pNode = target.parentNode;
-                const y = pNode.querySelector(`#${ids.y} option:checked`).value;
-                const m = pNode.querySelector(`#${ids.m} option:checked`).value;
-                const daysCount = moment(`${y}-${m}`, "YYYY-MM").daysInMonth();
-                const d = pNode.querySelector(`#${ids.d}`);
-                d.innerHTML = "";
-
-                Array.from(new Array(daysCount)).forEach((e, i) => {
-                    const html = `<option value=${i + 1}>${i + 1}</option>`;
-                    d.innerHTML += html;
-                });
-            };
-
-            const setYears = (start, end) => {
-                const length = end - start;
-                const ys = Array.from({ length }, (v, k) => k + start);
-                const yElem = $(`#${ids.y}`);
-                ys.forEach((e) => {
-                    const html = `<option value=${e}>${e}</option>`;
-                    yElem.innerHTML += html;
-                });
-                yElem.dispatchEvent(new Event("change"));
-            };
-
-            let html = `
+        let html = `
                 <select id="${ids.d}"></select>
                 <select id="${ids.m}"></select>
                 <select id="${ids.y}"></select>
              `;
-            html = `
+        html = `
                 <input id="${ids.d}" placeholder="dd">
                 <input id="${ids.m}" placeholder="mm">
                 <input id="${ids.y}" placeholder="yyyy">
              `;
 
-            $(".no-calendar").innerHTML = html;
-            $(`#${ids.m}`).addEventListener("change", setDays);
-            $(`#${ids.y}`).addEventListener("change", setDays);
-            $$(".no-calendar select").forEach((e) => {
-                e.addEventListener("change", updateCalendar);
-            });
-            setMonths();
-            setYears(2015, 2025);
-        </script>
-    </body>
+        $(".no-calendar").innerHTML = html;
+        $(`#${ids.m}`).addEventListener("change", setDays);
+        $(`#${ids.y}`).addEventListener("change", setDays);
+        $$(".no-calendar select").forEach((e) => {
+            e.addEventListener("change", updateCalendar);
+        });
+        setMonths();
+        setYears(2015, 2025);
+    </script>
+</body>
+
 </html>

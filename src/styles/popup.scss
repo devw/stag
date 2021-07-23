@@ -6,11 +6,11 @@
 */
 #login-popup {
     .content {
-        z-index: 2;
-        display: flex;
         align-items: center;
+        display: flex;
         flex-direction: var(--img-position, column);
         gap: 18px;
+        z-index: 2;
     }
     /* 
     POPUP-FLOATING
@@ -48,16 +48,16 @@
     }
 
     .popup-full:before {
-        content: " ";
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100vw;
-        height: 100vh;
-        z-index: 1;
-        opacity: var(--bg-opacity-image, 1);
         background-image: var(--container-bg-image);
         background-size: cover;
+        content: " ";
+        height: 100vh;
+        left: 0;
+        opacity: var(--bg-opacity-image, 1);
+        position: absolute;
+        top: 0;
+        width: 100vw;
+        z-index: 1;
     }
 
     /* 
@@ -78,24 +78,24 @@
         POPUP-CENTERED
     */
     .popup-centered {
-        align-items: center;
-        height: 100vh;
-        justify-content: center;
-        opacity: 1;
-        right: 0;
-        top: 0;
         width: 100vw;
+        top: 0;
+        right: 0;
+        opacity: 1;
+        justify-content: center;
+        height: 100vh;
+        align-items: center;
     }
     .popup-centered:before {
-        content: " ";
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100vw;
-        height: 100vh;
-        z-index: 1;
-        opacity: var(--bg-opacity-image, 1);
         background-image: var(--container-bg-image);
         background-size: cover;
+        content: " ";
+        height: 100vh;
+        left: 0;
+        opacity: var(--bg-opacity-image, 1);
+        position: absolute;
+        top: 0;
+        width: 100vw;
+        z-index: 1;
     }
 }

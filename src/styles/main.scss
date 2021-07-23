@@ -19,7 +19,7 @@ body.remove-scrolling {
         padding: var(--content-padding, 1.5em);
         position: relative;
         max-height: 100vh;
-        min-height: 65%;
+        min-height: 28%;
         overflow-y: auto;
     }
 
@@ -49,12 +49,13 @@ body.remove-scrolling {
 
     // Title
     .title {
-        font-family: var(--large-font-family);
+        font-family: var(--title-font-family);
         font-size: var(--large-font-size);
-        font-weight: var(--large-font-weight);
+        font-weight: var(--title-font-weight);
         letter-spacing: var(--large-letter-spacing);
         line-height: var(--large-line-height);
         text-transform: var(--large-text-transform);
+        color: var(--title-color);
     }
 
     // Sub-title
@@ -68,12 +69,15 @@ body.remove-scrolling {
     // I need to refactor it
     .btn {
         border: none;
-        color: #fff;
+        color: var(--btn-color);
+        border: var(--btn-border);
         cursor: pointer;
         padding: 10px;
-        text-transform: uppercase;
+        text-transform: none;
         width: 100%;
         margin-top: 15px;
+        font-family: var(--btn-font-family);
+        font-size: var(--btn-font-size);
     }
     .btn .fa {
         font-size: 1.4em;

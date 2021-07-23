@@ -17,7 +17,7 @@
         border-right: var(--input-line-right, var(--input-line));
         border-left: var(--input-line-left, var(--input-line));
         border-bottom: var(--input-line-bottom, var(--input-line));
-        background-color: unset;
+        background-color: var(--input-bg-color, unset);
         outline: none;
         font-size: 1em;
         color: #333;
@@ -41,6 +41,11 @@
         padding-top: 0;
         padding-left: 0;
         left: var(--label-left, 10px);
+        font-weight: var(--label-font-weight)
+    }
+
+    label.label-choice-list {
+        font-weight: 400;
     }
 
     div.choice-block {
