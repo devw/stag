@@ -1,0 +1,146 @@
+{
+    "style": {
+        "--large-font-size": "2.1em",
+        "--medium-text-size": "1.1em",
+        "--container-border-radius": "0.1%",
+        "--title-color": "#0b163b",
+        "--title-font-weight": "600",
+        "--title-font-family": "Optima LT Pro, arial, sans-serif",
+        "--primary-text-color": "rgba(0,0,0,1)",
+        "--secondary-text-color": "rgba(0,0,0,1)",
+        "--ternary-text-color": "rgba(0,0,0,1)",
+        "--error-color": "rgba(208, 26, 26, 1)",
+        "--error-bg-color": "rgba(240, 207, 207, 1)",
+        "--btn-bg-color": "#000",
+        "--btn-color": "#fff",
+        "--btn-border": "",
+        "--btn-font-family": "BeaufortCondensedMedium",
+        "--btn-font-size": "1.5em",
+        "--input-padding": "15px 0px 10px 0px",
+        "--input-bg-color": "#fff",
+        "--input-line": "1px solid #111",
+        "--input-line-direction": "Bottom",
+        "--input-margin": "0.8em",
+        "--input-radius": "0.8px",
+        "--animation": "none",
+        "--content-bg-color": "#fff9f3",
+        "--container-bg-image": "https://cdn.shopify.com/s/files/1/2598/9270/products/Packshotfriandiseschatvolaille_600x.jpg?v=159948757",
+        "--bg-opacity-image": "1",
+        "--header-img": "https://cdn.shopify.com/s/files/1/0407/2855/9766/files/Ellipse_3_1.png?v=1596746569",
+        "--img-max-width": "200px",
+        "--img-position": "column",
+        "--label-font-weight": "700",
+        "--large-line-height": "25px"
+    },
+    "text": {
+        "choiceBlocks": [
+            {
+                "choiceList": [
+                    "(Optional) Keep me up to date with news."
+                ],
+                "hasMultiChoice": 0,
+                "hasMultiLine": false,
+                "hasLabel": 0,
+                "label": "",
+                "labelPosition": "inline",
+                "isTag": "hasTag",
+                "tag": "offer",
+                "namespace": "",
+                "key": "",
+                "id": "485fa168-2c98-48f3-9cd7-5a3431e204f7"
+            }
+        ],
+        "inputBlocks": [
+            {
+                "placeholder": "Your first name",
+                "name": "customer[first_name]",
+                "id": "484fd04f-4497-470a-9f71-5931e7a6a9bb"
+            },
+            {
+                "placeholder": "Your last name",
+                "name": "customer[last_name]",
+                "id": "a7a5bf59-bdea-4d93-97f8-555f2ba889f6"
+            },
+            {
+                "placeholder": "Write your email",
+                "name": "customer[email]"
+            },
+            {
+                "placeholder": "Write your password",
+                "error": true,
+                "name": "customer[password]"
+            }
+        ],
+        "dateBlocks": [
+            {
+                "placeholder": "Date of birth",
+                "pickerStyle": "calendar",
+                "minDate": 2015,
+                "maxDate": 2025,
+                "error": "This date is out of range",
+                "isTag": "hasMetafield",
+                "tag": "",
+                "namespace": "",
+                "key": "",
+                "id": "e56076af-355f-48e1-9e71-eeae6e56d1f0"
+            }
+        ],
+        "activateBlocks": [],
+        "loginRegister": "Log in / Register",
+        "enterYourEmailToContinue": "",
+        "yourEmail": "Write your email",
+        "validate": "Valider",
+        "hasSocialLogin": 0,
+        "blocks_order": [
+            "484fd04f-4497-470a-9f71-5931e7a6a9bb",
+            "a7a5bf59-bdea-4d93-97f8-555f2ba889f6",
+            "e56076af-355f-48e1-9e71-eeae6e56d1f0",
+            "485fa168-2c98-48f3-9cd7-5a3431e204f7"
+        ],
+        "createAccount": "Register",
+        "fillInfoToCreateAccount": "",
+        "registerAccount": "Subscribe",
+        "redirectAfterRegister": "",
+        "placeholder": "Date of birth",
+        "name": "customer[last_name]",
+        "pickerStyle": "calendar",
+        "minDate": 2015,
+        "maxDate": 2025,
+        "error": "This date is out of range",
+        "isTag": "hasTag",
+        "tag": "offer",
+        "namespace": "",
+        "key": "",
+        "undefined": "485fa168-2c98-48f3-9cd7-5a3431e204f7",
+        "hasMultiChoice": 0,
+        "hasMultiLine": false,
+        "hasLabel": 0,
+        "label": "",
+        "labelPosition": "inline",
+        "yourPassword": "Write your password",
+        "wrongPsw": "Incorrect password. Please, try again!",
+        "signIn": "Submit",
+        "loginRedirect": "products",
+        "activateTitle": "Activate",
+        "activateSubTitle": "We never save credit cart information. Registering makes checkout fast and east and saves your order information in your account.",
+        "activateBtn": "Resend the email",
+        "recoveryTitle": "Recover password",
+        "recoverySubTitle": "Enter your email to receive a reset password link.",
+        "recoveryBtn": "Recover",
+        "errorIcon": "label-none",
+        "formStyle": "label-go-up",
+        "layout": "popup-centered",
+        "hasPswMinLength": "",
+        "pswMinLength": 5,
+        "pswMinLengthErr": "The password must contain at least ? characters",
+        "hasPswMaxLength": "",
+        "pswMaxLength": 32,
+        "pswMaxLengthErr": "The password must contain at most 5 characters",
+        "hasPswUppercase": "",
+        "pswUppercaseErr": "The password must contain at least an uppercase character",
+        "hasPswNumber": "",
+        "pswNumberErr": "The password must contain at least a number",
+        "hasPswSpecialCharacter": "",
+        "pswSpecialCharacterErr": "The password must contain at least a special character"
+    }
+}
