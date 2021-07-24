@@ -1,11 +1,11 @@
 const { IDs } = require("../config");
-const { togglePage, toggleSecret, toggleLoading, $qq } = require("../utils");
+const { toggleSecret, toggleLoading, $qq } = require("../utils");
 const { isFormFilled, areInvalidInputs, sortBlocks, $q } = require("../utils");
 const { init: setDatePicker } = require("../utils/date");
 const { storeMetafieldIntoShopify } = require("../services");
 const { STORAGE_METAFIELD } = require("../config");
 
-const { REGISTER_ID, LANDING_ID } = IDs;
+const { REGISTER_ID } = IDs;
 
 let FORM, BTN;
 
@@ -18,11 +18,21 @@ const getTagOrMetafield = (tag) => `
     [type='hidden'][data-is-tag='${tag === "tag"}']
 `;
 
+const setOptionStyle = () => {
+    const setBorderRadius = (e) => {
+        console.log(e);
+        const options = e.querySelectorAll("[type='checkbox']");
+        if (options.length === 1) return null;
+        options.forEach(e => e.style.borderRadius = "50%");
+    }
+    $qq(".js-opt")?.forEach(setBorderRadius);
+}
+
 const onChoiceClick = ({ target, currentTarget }) => {
     if (!currentTarget.classList.contains(multiChoiceSelector)) {
-        currentTarget.querySelectorAll("[type='checkbox']").forEach((e) => {
-            e.checked = false;
-        });
+        const options = currentTarget.querySelectorAll("[type='checkbox']");
+        if (options.length === 1) return null;
+        options.forEach((e) => e.checked = false);
         target.checked = true;
     }
 };
@@ -80,4 +90,5 @@ exports.init = () => {
     $qq(".js-opt")?.forEach((e) => e.addEventListener("click", onChoiceClick));
     storeMetafieldIntoShopify();
     setDatePicker();
+    setOptionStyle();
 };

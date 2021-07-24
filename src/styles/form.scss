@@ -2,6 +2,7 @@
     form {
         display: flex;
         flex-direction: column;
+        font-family: var(--form-font-family);
         margin-top: 20px;
         padding: 0 10px;
     }
@@ -20,10 +21,15 @@
         border-right: var(--input-line-right, var(--input-line));
         border-top: var(--input-line-top, var(--input-line));
         color: #333;
+        font-family: var(--form-font-family);
         font-size: 1em;
         min-width: 100%;
         outline: none;
         padding: var(--input-padding);
+    }
+    .input-text:focus {
+        border-color: var(--border-color-focus);
+        box-shadow: var(--input-box-shadow);
     }
 
     label {
@@ -45,13 +51,13 @@
     }
 
     div.choice-block {
-        padding: var(--input-padding);
-        padding-top: 0;
-        padding-bottom: 0;
-        label,
-        input {
-            padding: unset;
-        }
+        // padding: var(--input-padding);
+        // padding-top: 0;
+        // padding-bottom: 0;
+        // label,
+        // input {
+        //     padding: unset;
+        // }
     }
 
     /* START - GO UP */
@@ -171,7 +177,7 @@
     }
 
     .choice-block.single-choice input[type="checkbox"] {
-        border-radius: 50%;
+        // border-radius: 50%;
         padding: 0.5em;
     }
 

@@ -57,10 +57,8 @@ const mendInputPadding = (padding, { formStyle }) => {
 };
 
 exports.cleanStyle = (style, text) => {
-    console.log("----cleanStyle-----", style)
     const inputPadding = (style["--input-padding"].trim()).split(" ");
     const [left, bottom] = [inputPadding[3], inputPadding[2]]
-    window.inputPadding = inputPadding;
     style["--label-left"] = left;
     style["--label-bottom"] = bottom;
     style["--input-padding"] = mendInputPadding(inputPadding, text);

@@ -2,6 +2,7 @@
     "style": {
         "--animation": "none",
         "--bg-opacity-image": "1",
+        "--border-color-focus": "#000",
         "--btn-bg-color": "#000",
         "--btn-border": "",
         "--btn-color": "#fff",
@@ -12,32 +13,34 @@
         "--content-bg-color": "#fff9f3",
         "--error-bg-color": "rgba(240, 207, 207, 1)",
         "--error-color": "rgba(208, 26, 26, 1)",
+        "--form-font-family": "crossten-book",
         "--header-img": "",
         "--img-max-width": "200px",
         "--img-position": "column",
         "--input-bg-color": "#fff",
-        "--input-line": "1px solid #111",
-        "--input-line-direction": "Bottom",
+        "--input-box-shadow": "0 0 0 3px rgb(27 44 19 / 10%)",
+        "--input-line": "1px solid #666",
+        "--input-line-direction": "All",
         "--input-margin": "0.8em",
         "--input-padding": "13px 12px 11px 12px",
         "--input-radius": "0.8px",
         "--label-font-weight": "500",
         "--large-font-size": "2.1em",
-        "--large-line-height": "25px",
+        "--large-line-height": "50px",
         "--medium-text-size": "1.1em",
         "--placeholder-color": "#666",
         "--primary-text-color": "rgba(0,0,0,1)",
         "--secondary-text-color": "rgba(0,0,0,1)",
         "--ternary-text-color": "rgba(0,0,0,1)",
         "--title-color": "#0b163b",
-        "--title-font-family": "Optima LT Pro, arial, sans-serif",
-        "--title-font-weight": "600"
+        "--title-font-family": "utopia-std-display",
+        "--title-font-weight": "400"
     },
     "text": {
         "choiceBlocks": [
             {
                 "choiceList": [
-                    "(Optional) Keep me up to date with news."
+                    "Keep me up to date with news."
                 ],
                 "hasMultiChoice": 0,
                 "hasMultiLine": false,
@@ -49,6 +52,37 @@
                 "namespace": "",
                 "key": "",
                 "id": "485fa168-2c98-48f3-9cd7-5a3431e204f7"
+            },
+            {
+                "choiceList": [
+                    "... and via SMS for last minute offers!"
+                ],
+                "hasMultiChoice": 0,
+                "hasMultiLine": false,
+                "hasLabel": 0,
+                "label": "",
+                "labelPosition": "inline",
+                "isTag": "hasTag",
+                "tag": "offer",
+                "namespace": "",
+                "key": "",
+                "id": "ss5fa168-2c98-48f3-9cd7-5a3431e204f7"
+            },
+            {
+                "choiceList": [
+                    "Madame",
+                    "Sir"
+                ],
+                "hasMultiChoice": 0,
+                "hasMultiLine": false,
+                "hasLabel": 0,
+                "label": "",
+                "labelPosition": "inline",
+                "isTag": "hasTag",
+                "tag": "offer",
+                "namespace": "",
+                "key": "",
+                "id": "gg5fa168-2c98-48f3-9cd7-5a3431e204f7"
             }
         ],
         "inputBlocks": [
@@ -64,12 +98,14 @@
             },
             {
                 "placeholder": "Write your email",
-                "name": "customer[email]"
+                "name": "customer[email]",
+                "id": "bba5bf59-bdea-4d93-97f8-555f2ba889f6"
             },
             {
                 "placeholder": "Write your password",
                 "error": true,
-                "name": "customer[password]"
+                "name": "customer[password]",
+                "id": "ppa5bf59-bdea-4d93-97f8-555f2ba889f6"
             }
         ],
         "dateBlocks": [
@@ -93,13 +129,17 @@
         "validate": "Valider",
         "hasSocialLogin": 0,
         "blocks_order": [
+            "gg5fa168-2c98-48f3-9cd7-5a3431e204f7",
             "484fd04f-4497-470a-9f71-5931e7a6a9bb",
             "a7a5bf59-bdea-4d93-97f8-555f2ba889f6",
+            "bba5bf59-bdea-4d93-97f8-555f2ba889f6",
             "e56076af-355f-48e1-9e71-eeae6e56d1f0",
-            "485fa168-2c98-48f3-9cd7-5a3431e204f7"
+            "ppa5bf59-bdea-4d93-97f8-555f2ba889f6",
+            "485fa168-2c98-48f3-9cd7-5a3431e204f7",
+            "ss5fa168-2c98-48f3-9cd7-5a3431e204f7"
         ],
         "createAccount": "Register",
-        "fillInfoToCreateAccount": "",
+        "fillInfoToCreateAccount": "Please complete the form to register.",
         "registerAccount": "Subscribe",
         "redirectAfterRegister": "",
         "placeholder": "Date of birth",
