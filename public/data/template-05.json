@@ -1,6 +1,6 @@
 {
     "style": {
-        "--animation": "slide-from-right",
+        "--animation": "slide-from-top",
         "--bg-opacity-image": "1",
         "--border-color-focus": "#000",
         "--btn-bg-color": "#000",
@@ -28,6 +28,7 @@
         "--large-font-size": "2.1em",
         "--large-line-height": "50px",
         "--medium-text-size": "1.1em",
+        "--partial-width": "420px",
         "--placeholder-color": "#666",
         "--primary-text-color": "rgba(0,0,0,1)",
         "--secondary-text-color": "rgba(0,0,0,1)",
@@ -170,7 +171,7 @@
         "recoveryBtn": "Recover",
         "errorIcon": "label-none",
         "formStyle": "label-go-up",
-        "layout": "popup-drawer",
+        "layout": "popup-full",
         "hasPswMinLength": "",
         "pswMinLength": 5,
         "pswMinLengthErr": "The password must contain at least ? characters",
