@@ -212,6 +212,17 @@ global_sections:
         min: 0
         max: 20
         step: 1
+    - id: "register|--border-color-focus|"
+      type: range-slider
+      label: Input Radius
+      icon: EditMinor
+      hint: You can set a rounded border to the text-type input
+      default: rgba(0, 0, 0, 1)
+      required: true
+      config:
+        min: 0
+        max: 20
+        step: 1
       
   blocks: 
 # ===============================================

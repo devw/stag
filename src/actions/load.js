@@ -46,9 +46,7 @@ exports.loadActions = () => {
     const { isActive } = JSON.parse(localStorage.getItem(STORAGE_CONFIG));
 
     if (isActive == "false" && getUrlParameter("preview_login_popup") !== "true") return null;
-    const el = document.body.querySelector('[href="/account/login"]');
-    el.addEventListener("click", (e) => e.preventDefault());
-    console.log(el)
+
     initContainer();
     initLanding();
     initSignIn();
