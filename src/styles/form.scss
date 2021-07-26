@@ -3,6 +3,7 @@
         display: flex;
         flex-direction: column;
         font-family: var(--form-font-family);
+        justify-content: center;
         margin-top: 20px;
         padding: 0 10px;
     }
@@ -48,16 +49,6 @@
 
     label.label-choice-list {
         font-weight: 400;
-    }
-
-    div.choice-block {
-        // padding: var(--input-padding);
-        // padding-top: 0;
-        // padding-bottom: 0;
-        // label,
-        // input {
-        //     padding: unset;
-        // }
     }
 
     /* START - GO UP */
@@ -177,7 +168,6 @@
     }
 
     .choice-block.single-choice input[type="checkbox"] {
-        // border-radius: 50%;
         padding: 0.5em;
     }
 

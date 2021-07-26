@@ -13,24 +13,25 @@ body.remove-scrolling {
     }
 
     .content {
-        color: var(--primary-text-color);
         background-color: var(--content-bg-color, #fff);
         border-radius: var(--container-border-radius);
-        padding: var(--content-padding, 1.5em);
-        position: relative;
+        color: var(--primary-text-color);
+        justify-content: var(--content-vertical-alignment);
         max-height: 100vh;
         min-height: 28%;
         overflow-y: auto;
+        padding: var(--content-padding, 1.5em);
+        position: relative;
     }
 
     .content .partials {
         max-height: 0;
         overflow: hidden;
-        min-width: 400px;
     }
     .content .partials.partials-show {
         max-height: 900px;
         transition: max-height .8s;
+        width: var(--partial-width);
     }
 
     .content #activate .activate {
@@ -112,7 +113,7 @@ body.remove-scrolling {
         position: absolute;
         top: 0px;
         right: 0px;
-        padding: var(--content-padding, 1.5em);
+        padding: 1.5em;
         color: var(--ternary-text-color, #0d3c32);
     }
 
