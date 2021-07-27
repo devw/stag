@@ -185,6 +185,8 @@ setTimeout(() => {
         }
     },
     cleanState(state, event) {
+
+        console.log("---cleanState---", JSON.stringify(state))
         const saveBtn = this._saveBtn();
         if (!saveBtn) return null;
         const { target, params } = event;
