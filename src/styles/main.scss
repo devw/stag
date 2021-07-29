@@ -13,6 +13,7 @@ body.remove-scrolling {
     }
 
     .content {
+        align-items: center;
         background-color: var(--content-bg-color, #fff);
         border-radius: var(--container-border-radius);
         color: var(--primary-text-color);
@@ -27,11 +28,11 @@ body.remove-scrolling {
     .content .partials {
         max-height: 0;
         overflow: hidden;
+        width: var(--partial-width);
     }
     .content .partials.partials-show {
         max-height: 900px;
         transition: max-height .8s;
-        width: var(--partial-width);
     }
 
     .content #activate .activate {
@@ -54,9 +55,9 @@ body.remove-scrolling {
         font-size: var(--large-font-size);
         font-weight: var(--title-font-weight);
         letter-spacing: var(--large-letter-spacing);
-        line-height: var(--large-line-height);
+        line-height: 50px;
         text-transform: var(--large-text-transform);
-        color: var(--title-color);
+        color: var(--primary-text-color);
     }
 
     // Sub-title

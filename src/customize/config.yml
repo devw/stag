@@ -78,14 +78,7 @@ global_sections:
       default: rgba(0,0,0,1)
       hint: It sets the background color.
       required: true
-    - id: "|--btn-color|"
-      type: color-picker
-      label: Text button color
-      icon: ColorsMajor
-      default: rgba(0,0,0,1)
-      hint: It sets the background color.
-      required: true
-      
+
     - id: "register|--title-font-family|"
       type: select
       label: Form font-family
@@ -164,42 +157,7 @@ global_sections:
         min: 200
         max: 600
         step: 2.5
-    
-    - id: "landing|--btn-font-size|em"
-      type: range-slider
-      label: Button font size
-      icon: EditMinor
-      default: 1.5
-      hint: It sets the size of the button text
-      required: true
-      config:
-        min: 1
-        max: 3
-        step: 0.1
-
-    - id: "register|--btn-font-family|"
-      type: select
-      label: Button form family
-      icon: EditMinor
-      default: None
-      hint: You can change the button text font-family
-      required: true
-      config:
-        options:
-        - title: None
-          value: ""
-        - title: BeaufortCondensedMedium
-          value: BeaufortCondensedMedium
-
-    - id: "register|--btn-border|"
-      type: cssline
-      label: Outline button border
-      icon: EditMinor
-      hint: You can set the button border
-      default: 1px solid rgba(255, 255, 255, 1)
-      required: true
-      config: {}
-
+  
     - id: "register|formStyle|"
       type: select
       label: Labels
@@ -343,12 +301,71 @@ global_sections:
       default: rgba(240, 207, 207, 1)
       hint: It sets the errors' background colour.
       required: true      
-  blocks: 
+  blocks: []
 # ===============================================
 #                GLOBAL SECTION
 #                   BUTTONS
 # ===============================================
 
+- id: buttons
+  label: Buttons
+  icon: ColorsMajor
+  groups:
+  - id: font-style
+    label: Fonts
+    settings:
+    - id: "|--btn-font-size|em"
+      type: range-slider
+      label: Button font size
+      icon: EditMinor
+      default: 1.5
+      hint: It sets the size of the button text
+      required: true
+      config:
+        min: 1
+        max: 3
+        step: 0.1
+
+    - id: "|--btn-font-family|"
+      type: select
+      label: Button form family
+      icon: EditMinor
+      default: None
+      hint: You can change the button text font-family
+      required: true
+      config:
+        options:
+        - title: None
+          value: ""
+        - title: BeaufortCondensedMedium
+          value: BeaufortCondensedMedium
+
+    - id: "|--btn-border|"
+      type: cssline
+      label: Outline button border
+      icon: EditMinor
+      hint: You can set the button border
+      default: 1px solid rgba(255, 255, 255, 1)
+      required: true
+      config: {}
+      
+    - id: "|--btn-color|"
+      type: color-picker
+      label: Text button color
+      icon: ColorsMajor
+      default: rgba(0,0,0,1)
+      hint: It sets the background color.
+      required: true
+
+    - id: "|--btn-bg-color|"
+      type: color-picker
+      label: Button background color
+      icon: ColorsMajor
+      default: rgba(0,0,0,1)
+      hint: It sets the background color.
+      required: true
+
+  blocks: []
 # ===============================================
 #                GLOBAL SECTION
 #                   THEME

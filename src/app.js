@@ -6,12 +6,16 @@ require("./styles/popup.scss");
 require("./styles/register.scss");
 const { loadTheme } = require("./actions");
 const { IDs } = require("./config");
+const { getConfiguration } = require("./services");
+const { parseConfiguration } = require("./utils");
 console.log("----s")
 
-setTimeout(() => {
+setTimeout(async () => {
     const node = document.createElement("div");
     node.setAttribute("id", IDs.APP_ID);
     document.body.prepend(node);
-    loadTheme();
+    const promise = await getConfiguration();
+    const config = parseConfiguration(await promise.json());
+    loadTheme(config);
 }, 0);
 

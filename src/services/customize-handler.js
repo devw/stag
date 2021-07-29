@@ -3,6 +3,8 @@ const { $q, $qq, togglePage, sortBlocks } = require("../utils/toggle.js");
 const { cleanChoiceBlock, cleanDateBlocks } = require("../utils/clean-config.js");
 const { IDs, STORAGE_CONFIG } = require("../config.js");
 const { loadActions } = require("../actions/load.js");
+const { loadTheme } = require("../actions");
+const { parseConfiguration: parseState } = require("../utils/cutomize.utils");
 
 let TEXT;
 
@@ -37,6 +39,11 @@ const disableBtns = () => {
 const getData = (event) => {
     const e = event.data ? event.data : event.detail.data;
     return e.data;
+};
+
+const getState = (event) => {
+    const e = event.data ? event.data : event.detail.data;
+    return e.state;
 };
 
 const getTarget = (event) => {
@@ -154,6 +161,7 @@ const kastorHandler = (event) => {
     console.log("kastorHandler: ", event);
     const target = getTarget(event);
     const data = getData(event);
+    if (!data) return null;
     const { block_type_id, block_id, state } = data;
 
     const [selector,] = parseEventData(event);
@@ -216,13 +224,46 @@ const kastorHandler = (event) => {
 
     updateNoBlock(event);
 };
+
+
+const parseStateProxy = (message) => {
+    // const state = getState(event);
+    const { state, event } = message?.data;
+
+    if (!event && !state) return null;
+    const { pages, global_sections } = state;
+    console.log("-------------state-----------", { pages, global_sections });
+    if (!pages) return null;
+    loadTheme(parseState({ pages, global_sections }));
+    const params = event?.params;
+    const [section_type, setting_id] = [params?.section_type, params?.setting_id];
+    const page = section_type?.split("|")[0] || setting_id?.split("|")[0];
+    if (page && page !== "") { changePage(page); } else {
+        changePage("landing");
+    }
+
+    // if (!state) return null;
+    // window.state = state;
+
+}
+
 if (
     /config_id/.test(location.href) ||
     window.location !== window.parent.location
 ) {
-    globalThis.addEventListener("message", kastorHandler);
-    setTimeout(() => changePage("landing"), 0);
+    // globalThis.addEventListener("message", kastorHandler);
+    console.log("------------customize handler-----")
+    globalThis.addEventListener("message", parseStateProxy);
+
+    // setTimeout(() => changePage("landing"), 0);
+    // if (window.state) { console.log("---scripptTag stata ----", window.state); parseState(window.state); }
 }
 
-globalThis.addEventListener("addonMessage", kastorHandler);
+
+// globalThis.addEventListener("addonMessage", kastorHandler);
+globalThis.addEventListener("addonMessage", parseStateProxy);
+
+window.parseState = parseState;
+window.loadTheme = loadTheme;
+window.changePage = changePage;
 
