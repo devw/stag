@@ -1,3 +1,13 @@
+window.addEventListener('message', function (e) {
+    // Get the sent data
+    if (e.data !== "fetchState") return null;
+    console.log("-----Received data from scriptTag----", { e }, window.cleanStateParams)
+    const [state, event] = [window.cleanStateParams[0], window.cleanStateParams[1]];
+    console.log("----------fetchState message", { state, event })
+    const _frame = document.querySelector("iframe");
+    _frame.contentWindow.postMessage({ state, event }, "*");
+});
+
 const $q = (leaf) => document.querySelector(leaf);
 
 const InputLineComponent = () => {
@@ -197,7 +207,7 @@ setTimeout(() => {
         }
     },
     cleanState(state, event) {
-
+        window.cleanStateParams = arguments;
         console.log("---cleanState---", { state, event });
 
 

@@ -263,6 +263,8 @@ if (
 // globalThis.addEventListener("addonMessage", kastorHandler);
 globalThis.addEventListener("addonMessage", parseStateProxy);
 
+window.parent.postMessage("fetchState", '*');
+
 window.parseState = parseState;
 window.loadTheme = loadTheme;
 window.changePage = changePage;
