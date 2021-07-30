@@ -14,72 +14,85 @@ global_sections:
   label: Fonts and Colors
   icon: ColorsMajor
   groups:
-  - id: font-style
-    label: Fonts
+  - id: colors
+    label: Colors
     settings:
+    - id: "|--primary-text-color|"
+      type: color-picker
+      label: Primary text color
+      icon: ColorsMajor
+      default: rgba(0,0,0,1)
+      hint: Title.
+      required: true
+
+    - id: "|--secondary-text-color|"
+      type: color-picker
+      label: Secondary text color
+      icon: ColorsMajor
+      default: rgba(0,0,0,1)
+      hint: paragraph.
+      required: true
+
+  - id: font-size
+    label: Font sizes
+    settings:
+
     - id: "landing|--large-font-size|em"
       type: range-slider
-      label: Title Size
+      label: Primary font size
       icon: EditMinor
       default: 2
-      hint: It sets the size of the title
+      hint: 
       required: true
       config:
         min: 1
         max: 3
         step: 0.1
+
+    - id: "register|--title-font-weight"
+      type: range-slider
+      label: Primary font weight
+      icon: EditMinor
+      default: 400
+      hint: 
+      required: true
+      config:
+        min: 100
+        max: 900
+        step: 100
+
     - id: 'landing|--medium-text-size|em'
       type: range-slider
-      label: Sub-Title Size
+      label: Secondary font-size
       icon: EditMinor
       default: 1.1
-      hint: It sets the size of the sub-title.
+      hint: 
       required: true
       config:
         min: 0.5
         max: 2
         step: 0.1
-    - id: '|--container-border-radius|%'
-      type: range-slider
-      label: Border Radius
+
+  - id: font-family
+    label: Font family
+    settings:
+    - id: "register|--title-font-family|"
+      type: select
+      label: Title font-family
       icon: EditMinor
-      default: 0.1
-      hint: It rounds the corners of the popup container.
+      default: None
+      hint: You can change the form text font-family
       required: true
       config:
-        min: 0.1
-        max: 3
-        step: 0.2
-    - id: "|--primary-text-color|"
-      type: color-picker
-      label: Primary Text Color
-      icon: ColorsMajor
-      default: rgba(0,0,0,1)
-      hint: It sets the text color.
-      required: true
-    - id: "|--secondary-text-color|"
-      type: color-picker
-      label: Secondary Text Color
-      icon: ColorsMajor
-      default: rgba(0,0,0,1)
-      hint: It sets the text color.
-      required: true
-    - id: "|--ternary-text-color|"
-      type: color-picker
-      label: Ternary Text Color
-      icon: ColorsMajor
-      default: rgba(0,0,0,1)
-      hint: It sets the text color.
-      required: true
-    - id: "|--content-bg-color|"
-      type: color-picker
-      label: Background color
-      icon: ColorsMajor
-      default: rgba(0,0,0,1)
-      hint: It sets the background color.
-      required: true
+        options:
+        - title: None
+          value: ""
+        - title: Archivo Narrow
+          value: "Archivo Narrow"
+        - title: BeaufortCondensedMedium
+          value: BeaufortCondensedMedium
 
-    - id: "register|--title-font-family|"
+    - id: "register|--form-font-family|"
       type: select
       label: Form font-family
       icon: EditMinor
@@ -95,19 +108,6 @@ global_sections:
         - title: BeaufortCondensedMedium
           value: BeaufortCondensedMedium
 
-    - id: "register|--title-font-weight"
-      type: range-slider
-      label: Label font weight
-      icon: EditMinor
-      default: 400
-      hint: 
-      required: true
-      config:
-        min: 100
-        max: 900
-        step: 100
-
-
   blocks: []
 # ===============================================
 #                GLOBAL SECTION
@@ -117,48 +117,40 @@ global_sections:
   label: Styling Web Forms
   icon: FormsMajor
   groups:
-  - id: Forms
-    label: Form (general settings)
+
+  - id: Labels
+    label: Input labels (placeholders)
     settings:
 
-
-    - id: "register|--label-color|"
+    - id: "|--ternary-text-color|"
       type: color-picker
-      label: Label Color
+      label: Label text color
       icon: ColorsMajor
-      default: rgba(0,0,0, 1)
-      hint: It sets the label color.
-      required: false
+      default: rgba(0,0,0,1)
 
-    - id: "register|--input-bg-color|"
-      type: color-picker
-      label: Input Background color
-      icon: ColorsMajor
-      default: rgba(255,255,255, 1)
-      hint: Background color in input and text fields
-      required: false
-
-    - id: "register|--input-box-shadow|"
-      type: color-picker
-      label: Input box shadow color
-      icon: ColorsMajor
-      default: rgba(255,255,255, 1)
-      hint: 
-      required: false
-
-    - id: "landing|--partial-width|px"
+    - id: "|--label-font-size|em"
       type: range-slider
-      label: Form width
+      label: Label font size
       icon: EditMinor
-      default: 400
-      hint: It sets the form's width
+      default: 1.5
       required: true
       config:
-        min: 200
-        max: 600
-        step: 2.5
-  
-    - id: "register|formStyle|"
+        min: 1
+        max: 3
+        step: 0.1
+
+    - id: "|--label-font-weight|"
+      type: range-slider
+      label: Label font weight
+      icon: EditMinor
+      default: 400
+      required: true
+      config:
+        min: 100
+        max: 900
+        step: 100
+
+    - id: "|formStyle|"
       type: select
       label: Labels
       icon: EditMinor
@@ -180,6 +172,26 @@ global_sections:
       hooks: 
         afterSettingUpdate: autocorrectPadding
 
+  - id: form-input
+    label: Form Input
+    settings:
+
+    - id: "register|--input-bg-color|"
+      type: color-picker
+      label: Input Background color
+      icon: ColorsMajor
+      default: rgba(255,255,255, 1)
+      hint: Background color in input and text fields
+      required: false
+
+    - id: "register|--input-box-shadow|"
+      type: color-picker
+      label: Input box shadow color
+      icon: ColorsMajor
+      default: rgba(255,255,255, 1)
+      hint: 
+      required: false
+
     - id: "register|--input-padding|"
       type: csspad
       label: Input Padding
@@ -191,6 +203,7 @@ global_sections:
         units: ["px", "%"]
       hooks: 
         afterSettingUpdate: setPaddingLabels
+  
     - id: "register|--input-line|"
       type: cssline
       label: Input Line
@@ -231,6 +244,7 @@ global_sections:
         min: 0
         max: 2
         step: 0.1
+
     - id: "register|--input-radius|px"
       type: range-slider
       label: Input Radius
@@ -242,6 +256,7 @@ global_sections:
         min: 0
         max: 20
         step: 1
+
     - id: "register|--border-color-focus|"
       type: color-picker
       label: Active focus border color
@@ -249,6 +264,12 @@ global_sections:
       default: rgba(0, 0, 0, 1)
       hint: It sets the errors' colour.
       required: true
+
+
+  - id: form-input-error
+    label: Input error
+    settings:
+
     - id: "register|errorIcon|"
       type: select
       label: Error Icon
@@ -270,21 +291,8 @@ global_sections:
           value: fa-times-circle
         - title: Times
           value: fa-times
-    - id: "register|--form-font-family|"
-      type: select
-      label: Form font-family
-      icon: EditMinor
-      default: None
-      hint: You can change the form text font-family
-      required: true
-      config:
-        options:
-        - title: None
-          value: ""
-        - title: Archivo Narrow
-          value: "Archivo Narrow"
-        - title: BeaufortCondensedMedium
-          value: BeaufortCondensedMedium
+
+
 
     - id: "register|--error-color|"
       type: color-picker
@@ -374,6 +382,75 @@ global_sections:
   label: Theme Layout
   icon: DetailedPopUpMajor
   groups:
+
+  - id: popup-container
+    label: Popup container
+    settings:
+
+    - id: "|--content-bg-color|"
+      type: color-picker
+      label: Popup background color
+      icon: ColorsMajor
+      default: rgba(0,0,0,1)
+      hint: It sets the background color.
+      required: true
+
+    - id: "landing|--partial-width|px"
+      type: range-slider
+      label: Form width
+      icon: EditMinor
+      default: 400
+      hint: It sets the form's width
+      required: true
+      config:
+        min: 200
+        max: 600
+        step: 2.5
+
+    - id: "landing|--content-width|px"
+      type: range-slider
+      label: Popup width
+      icon: EditMinor
+      default: 20
+      hint: It sets the form's width
+      required: true
+      config:
+        min: 250
+        max: 800
+        step: 5
+
+    - id: "landing|--content-padding-top|px"
+      type: range-slider
+      label: Popup padding top
+      icon: EditMinor
+      default: 20
+      config:
+        min: 0
+        max: 300
+        step: 2.5
+
+    - id: "landing|--content-padding-bottom|px"
+      type: range-slider
+      label: Popup padding bottom 
+      icon: EditMinor
+      default: 20
+      config:
+        min: 0
+        max: 300
+        step: 2.5
+
+    - id: '|--container-border-radius|%'
+      type: range-slider
+      label: Border Radius
+      icon: EditMinor
+      default: 0.5
+      hint: It rounds the corners of the popup container.
+      required: true
+      config:
+        min: 0
+        max: 10
+        step: 0.5
+
   - id: theme
     label: Theme
     settings:
@@ -448,18 +525,6 @@ global_sections:
       hooks: 
         afterSettingUpdate: uploadImage
 
-    - id: "register|--content-padding|"
-      type: csspad
-      label: Form Padding
-      icon: EditMinor
-      hint: You can change the input padding
-      default: 10 0 10 5
-      required: true
-      config:
-        units: ["px", "%"]
-      hooks: 
-        afterSettingUpdate: setPaddingLabels
-
     - id: "register|--bg-opacity-image|"
       type: range-slider
       label: Background Image Opacity 
@@ -509,17 +574,7 @@ global_sections:
         - title: Left
           value: row
 
-    - id: "register|--label-font-weight"
-      type: range-slider
-      label: Label font weight
-      icon: EditMinor
-      default: 400
-      hint: 
-      required: true
-      config:
-        min: 100
-        max: 900
-        step: 100
+
   
 
 
