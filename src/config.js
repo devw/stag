@@ -1,5 +1,5 @@
 module.exports = {
-    PROXY_PATH: "apps/dev",
+    PROXY_PATH: "apps/front",
     STORAGE_METAFIELD: "login-popup-metafields",
     STORAGE_CONFIG: "login-popup-config",
     // TODO get it from the PROXY

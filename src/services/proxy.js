@@ -6,13 +6,14 @@ const {
 } = require("../config");
 
 const { getUrlParameter } = require("../utils/");
+const proxyUrl = `${location.origin}/${PROXY_PATH}`
 
 exports.getCustomerStatus = async (email) => {
     const SHOP = globalThis?.Shopify?.shop;
     const endpoint = SHOP
-        ? `${location.origin}/customer/${email}/status`
-        : `http://localhost:3003/dev/customer-status/${email}?shop=popup-login.myshopify.com&`;
-    const promise = await fetch(`${endpoint}t=${Date.now()}`).catch((err) => {
+        ? `${proxyUrl}/customer/${email}/status`
+        : `http://localhost:4000/dev/customer/${email}/status`;
+    const promise = await fetch(`${endpoint}`).catch((err) => {
         throw `error getCustomerStatus: , ${err}`;
     });
     return await promise.json();
@@ -47,7 +48,7 @@ exports.storeMetafieldIntoShopify = async () => {
 
     if (!areThereMetafields) return null;
 
-    const endpoint = `${location.origin}/customer/metafields`;
+    const endpoint = `${proxyUrl}/customer/metafields`;
     const params = {
         method: "POST",
         headers: {
