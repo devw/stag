@@ -72,5 +72,5 @@
         "hasPswSpecialCharacter": "",
         "pswSpecialCharacterErr": "The password must contain at least a special character"
     },
-    "isActive": false
+    "isActive": true
 }

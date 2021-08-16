@@ -304,3 +304,13 @@ json = {
     value: "2px solid #e9d40a"
 };
 kastor(json)
+
+json = {
+    block_type_id: "register|dateBlocks|",
+    block_id: "ff0d9b2f-1375-4f16-bac3-17b957179033",
+    setting_id: "register|--animation|",
+    value: "calendar",
+    target: "setting:update",
+    state: { value: "shake" }
+};
+kastor(json);

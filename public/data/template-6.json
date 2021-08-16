@@ -11,7 +11,7 @@
         "--container-bg-image": "https://cdn.shopify.com/s/files/1/2598/9270/products/Packshotfriandiseschatvolaille_600x.jpg?v=159948757",
         "--container-border-radius": "0.1%",
         "--content-bg-color": "#fff",
-        "--content-padding": "50px",
+        "--content-width": "350px",
         "--content-vertical-alignment": "center",
         "--error-bg-color": "rgba(240, 207, 207, 1)",
         "--error-color": "rgba(208, 26, 26, 1)",
