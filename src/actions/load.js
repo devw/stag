@@ -45,7 +45,10 @@ const setBackBtn = () => $qq(`.js-back`).forEach(e => e.addEventListener("click"
 exports.loadActions = () => {
     const { isActive } = JSON.parse(localStorage.getItem(STORAGE_CONFIG));
 
-    if (isActive == "false" && getUrlParameter("preview_login_popup") !== "true") return null;
+    if (isActive === false && getUrlParameter("preview_login_popup") !== "true") return null;
+
+    const loginBtn = document.body.querySelector('[href="/account/login"]');
+    loginBtn?.addEventListener("click", (e) => e.preventDefault(), true);
 
     initContainer();
     initLanding();

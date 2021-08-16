@@ -21,7 +21,9 @@ body.remove-scrolling {
         max-height: 100vh;
         min-height: 28%;
         overflow-y: auto;
-        padding: var(--content-padding, 1.5em);
+        width: var(--content-width, auto);
+        padding-top: var(--content-padding-top, auto);
+        padding-bottom: var(--content-padding-bottom, auto);
         position: relative;
     }
 

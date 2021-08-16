@@ -10,8 +10,8 @@
 
     {{#inputBlocks}}
     <div block-id="{{id}}">
-        <input required type="text" class="input-text" name="{{name}}" placeholder="{{placeholder}}" />
-        <label>{{placeholder}}</label>
+        <input required type="text" class="input-text" name="{{name}}" id="{{name}}" placeholder="{{placeholder}}" />
+        <label for={{name}}>{{placeholder}}</label>
         {{#error}}
         <label class="label-error"><i class="fa {{errorIcon}}"></i>{{error}}
         </label>

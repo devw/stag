@@ -1,7 +1,7 @@
 appId: login-popup
 title: Login Popup
 backUrl: 'https://{{shop}}/admin/apps/dev-login-popup'
-onSave: 'https://login-popup-2.ngrok.io/dev/customize/onsave'
+onSave: 'https://login-popup.ngrok.io/dev/customize/onsave'
 crispId: ''
 
 
