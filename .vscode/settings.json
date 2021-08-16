@@ -5,5 +5,8 @@
         "**/.DS_Store": true
     },
     "editor.wordWrap": "wordWrapColumn",
-    "editor.wordWrapColumn": 120
+    "editor.wordWrapColumn": 120,
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#449b38",
+    }
 }
