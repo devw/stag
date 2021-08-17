@@ -2,7 +2,7 @@ const { $q, $qq, togglePage, sortBlocks } = require("../utils/toggle.js");
 const { IDs } = require("../config.js");
 const { loadActions } = require("../actions/load.js");
 const { loadTheme } = require("../actions");
-const { parseConfiguration: parseState } = require("../utils/cutomize.utils");
+const { parseConfiguration } = require("../utils/cutomize.utils");
 
 window.parsedState = null;
 
@@ -34,29 +34,38 @@ const loadPage = (event) => {
     }
 }
 
-const parseStateAndEvent = ({ state, event }) => {
+const parseState = (state) => {
     const { pages, global_sections } = state;
     if (!pages) return null;
-    window.parsedState = parseState({ pages, global_sections });
+    window.parsedState = parseConfiguration({ pages, global_sections });
     window.parsedState.style["--animation"] = "none";
     loadTheme(window.parsedState);
-    loadPage(event)
 }
 
-const loadAnimation = ({ setting_id, state }) => {
-    console.log("loadAnimation: ", setting_id, state.value);
-    window.parsedState.style["--animation"] = state.value;
+const loadAnimation = (value) => {
+    window.parsedState.style["--animation"] = value;
     loadTheme(window.parsedState);
-    loadPage({ event: { params: setting_id } })
 }
 
-const parseStateProxy = (message) => {
+const loadImage = (value) => {
+    console.log('value:', value)
+}
+
+const parseEvent = (event) => {
+    const { setting_id, value } = event.params;
+
+    if (/--animation/.test(setting_id)) loadAnimation(value);
+    if (/--container-bg-image/.test(setting_id)) loadImage(value);
+    loadPage(event);
+}
+
+const parseMessage = (message) => {
     //TODO use closure to avoid global variable window.parsedState
     console.log("-------message--------\n", message)
-    const { state, event, data } = message?.data || message?.detail?.data;
-
-    if (event && state) parseStateAndEvent({ state, event })
-    if (/--animation/.test(data?.setting_id)) loadAnimation(data)
+    const { state, event } = message?.data || message?.detail?.data;
+    if (!event && !state) return null;
+    parseState(state);
+    parseEvent(event);
 }
 
 if (
@@ -64,9 +73,9 @@ if (
     window.location !== window.parent.location
 ) {
     console.log("------------customize handler-----")
-    globalThis.addEventListener("message", parseStateProxy);
+    globalThis.addEventListener("message", parseMessage);
 }
 
-globalThis.addEventListener("addonMessage", parseStateProxy);
+globalThis.addEventListener("addonMessage", parseMessage);
 
 window.parent.postMessage("fetchState", '*');
