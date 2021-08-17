@@ -16,7 +16,7 @@
         "build:prod": "rm -rf dist; webpack --mode=production; cp -r public/* dist",
         "bk": "webpack --mode=development --env=in=./src/services/customize-handler.js --env=out=customizeHandler.js;",
         "lint": "eslint ./",
-        "update:s3": "rm /tmp/bundle.js /tmp/main.css; cp dist/bundle.js dist/main.css /tmp/"
+        "update:s3": "rm /tmp/bundle.js /tmp/main.css /tmp/config.yml; cp dist/bundle.js dist/main.css src/customize/config.yml /tmp/"
     },
     "devDependencies": {
         "@types/jest": "^26.0.21",

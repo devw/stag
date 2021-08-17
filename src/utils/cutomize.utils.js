@@ -54,6 +54,10 @@ module.exports.parseConfiguration = (jsonTree) => {
                 json.text[k].push(...Object.entries(e[1]).map(addBlockId));
             });
         }
+        if (/--container-bg-image|--header-img/.test(key)) {
+            const styleAttr = key.split("|")[1];
+            json.style[styleAttr] = obj.url;
+        }
 
         if (obj !== null && typeof obj == "object") {
             Object.entries(obj).forEach(([key, value]) => traverse(value, key));

@@ -73,6 +73,7 @@ if (
     window.location !== window.parent.location
 ) {
     console.log("------------customize handler-----")
+    globalThis.parseConfiguration = parseConfiguration;
     globalThis.addEventListener("message", parseMessage);
 }
 

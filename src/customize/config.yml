@@ -517,7 +517,7 @@ global_sections:
       type: dropzone
       label: Background Image
       icon: ''
-      default: 'https://cdn.shopify.com/s/files/1/2598/9270/products/Packshotfriandiseschatvolaille_600x.jpg?v=159948757'
+      default: ''
       hint: 'Specify the image URL'
       config:
         placeholder: Drag and Drop a file
@@ -537,14 +537,19 @@ global_sections:
         max: 1
         step: 0.05
     # Form image
+
     - id: "register|--header-img|"
-      type: text-input
-      label: Form Header Image
+      type: dropzone
+      label: Header image
       icon: ''
-      default: 'https://heritageah.com/wp-content/uploads/2020/06/iconfinder_pets-vet-pet_5413418.png'
+      default: ''
       hint: 'Specify the image URL'
       config:
-        url: true
+        placeholder: Drag and Drop a file
+      fileName: background
+      hooks: 
+        afterSettingUpdate: uploadImage
+
     - id: "register|--img-max-width|px"
       type: range-slider
       label: Image Width
