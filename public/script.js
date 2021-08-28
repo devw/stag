@@ -4,7 +4,7 @@
     // TODO fix with Shopify.shop
     const ENDPOINT = globalThis?.Shopify
         ? "https://login-popup-dev-configs.s3.amazonaws.com/public"
-        : "http://localhost:8082";
+        : "./";
 
     const addCSS = (url) => {
         const link = `<link rel="stylesheet" href="${url}" />`;
