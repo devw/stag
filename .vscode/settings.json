@@ -8,5 +8,6 @@
     "editor.wordWrapColumn": 120,
     "workbench.colorCustomizations": {
         "activityBar.background": "#449b38",
+        "tab.activeBorder": "#fff"
     }
 }

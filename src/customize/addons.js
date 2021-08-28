@@ -113,7 +113,7 @@ const InputLineComponent = () => {
 
 const init = () => {
     const backBtn = $q("._2Ijyv");
-    if (backBtn) backBtn.style.display = "none";
+    //if (backBtn) backBtn.style.display = "none";
 }
 
 setTimeout(() => {
