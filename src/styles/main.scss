@@ -72,7 +72,7 @@ body.remove-scrolling {
         color: var(--btn-color);
         border: var(--btn-border);
         cursor: pointer;
-        padding: 10px;
+        padding: var(--btn-padding, 10px);
         text-transform: none;
         width: 100%;
         margin-top: 15px;

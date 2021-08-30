@@ -334,6 +334,18 @@ global_sections:
         max: 3
         step: 0.1
 
+    - id: "|--btn-padding|px"
+      type: range-slider
+      label: Button padding
+      icon: EditMinor
+      default: 10
+      hint: It sets the padding of the button 
+      required: true
+      config:
+        min: 0
+        max: 20
+        step: 1
+
     - id: "|--btn-font-family|"
       type: select
       label: Button form family
