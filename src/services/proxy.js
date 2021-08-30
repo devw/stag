@@ -12,7 +12,7 @@ exports.getCustomerStatus = async (email) => {
     const SHOP = globalThis?.Shopify?.shop;
     const endpoint = SHOP
         ? `${proxyUrl}/customer/${email}/status`
-        : `http://localhost:4000/dev/customer/${email}/status`;
+        : `http://localhost:4000/dev/proxy/customer/${email}/status`;
     const promise = await fetch(`${endpoint}`).catch((err) => {
         throw `error getCustomerStatus: , ${err}`;
     });

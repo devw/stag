@@ -1,7 +1,7 @@
 appId: login-popup
 title: Login Popup
-backUrl: 'https://{{shop}}/admin/apps/dev-login-popup'
-onSave: 'https://login-popup.ngrok.io/dev/customize/onsave'
+backUrl: 'https://{{shop}}/admin/apps'
+onSave: 'https://api.dev-kastorstudio.com/login-popup/customize/onsave'
 crispId: ''
 
 
@@ -333,6 +333,18 @@ global_sections:
         min: 1
         max: 3
         step: 0.1
+
+    - id: "|--btn-padding|px"
+      type: range-slider
+      label: Button padding
+      icon: EditMinor
+      default: 10
+      hint: It sets the padding of the button 
+      required: true
+      config:
+        min: 0
+        max: 20
+        step: 1
 
     - id: "|--btn-font-family|"
       type: select
