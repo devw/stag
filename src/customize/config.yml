@@ -513,29 +513,29 @@ global_sections:
         - title: From Right
           value: slide-from-right
     # Background image
-    - id: "register|--container-bg-image|"
-      type: dropzone
-      label: Background Image
-      icon: ''
-      default: ''
-      hint: 'Specify the image URL'
-      config:
-        placeholder: Drag and Drop a file
-      fileName: background
-      hooks: 
-        afterSettingUpdate: uploadImage
+    # - id: "register|--container-bg-image|"
+    #   type: dropzone
+    #   label: Background Image
+    #   icon: ''
+    #   default: ''
+    #   hint: 'Specify the image URL'
+    #   config:
+    #     placeholder: Drag and Drop a file
+    #   fileName: background
+    #   hooks: 
+    #     afterSettingUpdate: uploadImage
 
-    - id: "register|--bg-opacity-image|"
-      type: range-slider
-      label: Background Image Opacity 
-      icon: EditMinor
-      default: 1
-      hint: You can change the background image opacity.
-      required: true
-      config:
-        min: 0
-        max: 1
-        step: 0.05
+    # - id: "register|--bg-opacity-image|"
+    #   type: range-slider
+    #   label: Background Image Opacity 
+    #   icon: EditMinor
+    #   default: 1
+    #   hint: You can change the background image opacity.
+    #   required: true
+    #   config:
+    #     min: 0
+    #     max: 1
+    #     step: 0.05
     # Form image
 
     - id: "register|--header-img|"

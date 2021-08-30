@@ -27,12 +27,15 @@ const disableBtns = () => {
 
 const loadPage = (event) => {
     const params = event?.params;
-    const section = params?.section_type || params?.setting_id || params?.section_type_id;
+    const section =
+        params?.section_type || params?.setting_id || params?.section_type_id;
     const page = section?.split("|")[0];
-    if (page && page !== "") { changePage(page); } else {
+    if (page && page !== "") {
+        changePage(page);
+    } else {
         changePage("landing");
     }
-}
+};
 
 const parseState = (state) => {
     const { pages, global_sections } = state;
@@ -40,43 +43,44 @@ const parseState = (state) => {
     window.parsedState = parseConfiguration({ pages, global_sections });
     window.parsedState.style["--animation"] = "none";
     loadTheme(window.parsedState);
-}
+};
 
 const loadAnimation = (value) => {
     window.parsedState.style["--animation"] = value;
     loadTheme(window.parsedState);
-}
+};
 
 const loadImage = (value) => {
-    console.log('value:', value)
-}
+    console.log("value:", value);
+};
 
 const parseEvent = (event) => {
+    if (!event?.params) return null;
     const { setting_id, value } = event.params;
 
     if (/--animation/.test(setting_id)) loadAnimation(value);
     if (/--container-bg-image/.test(setting_id)) loadImage(value);
     loadPage(event);
-}
+};
 
 const parseMessage = (message) => {
     //TODO use closure to avoid global variable window.parsedState
-    console.log("-------message--------\n", message)
+    console.log("-------message--------\n", message);
     const { state, event } = message?.data || message?.detail?.data;
     if (!event && !state) return null;
     parseState(state);
     parseEvent(event);
-}
+};
 
 if (
     /config_id/.test(location.href) ||
     window.location !== window.parent.location
 ) {
-    console.log("------------customize handler-----")
+    console.log("------------customize handler-----");
     globalThis.parseConfiguration = parseConfiguration;
     globalThis.addEventListener("message", parseMessage);
 }
 
 globalThis.addEventListener("addonMessage", parseMessage);
 
-window.parent.postMessage("fetchState", '*');
+window.parent.postMessage("fetchState", "*");
