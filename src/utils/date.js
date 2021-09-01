@@ -1,12 +1,12 @@
-const { $qq } = require("./toggle");
-const { addJS, addCSS } = require("./embed-code");
+const { $qq } = require('./toggle');
+const { addJS, addCSS } = require('./embed-code');
 
 const ids = {
-    d: "day",
-    m: "month",
-    y: "year",
-    cal: ".picker-date",
-    noCal: ".dropdown-date",
+    d: 'day',
+    m: 'month',
+    y: 'year',
+    cal: '.picker-date',
+    noCal: '.dropdown-date',
 };
 
 const setCalendarPicker = () => {
@@ -14,25 +14,25 @@ const setCalendarPicker = () => {
         setCalendar();
         return null;
     }
-    const baseUrl = "https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.9";
+    const baseUrl = 'https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.9';
     addJS(`${baseUrl}/flatpickr.min.js`, setCalendar);
     addCSS(`${baseUrl}/flatpickr.min.css`);
 };
 
 const checkDate = ({ target }) => {
     var input = target.value;
-    input = input.replace(/[^\d]/, "");
+    input = input.replace(/[^\d]/, '');
     target.value = input;
 };
 
 const getDateAttrs = (el) => {
     const a = [
-        "dateFormat",
-        "enableTime",
-        "minDate",
-        "maxDate",
-        "altInput",
-        "altFormat",
+        'dateFormat',
+        'enableTime',
+        'minDate',
+        'maxDate',
+        'altInput',
+        'altFormat',
     ];
     return a.reduce((a, c) => {
         const attr = el.getAttribute(c);
@@ -42,7 +42,7 @@ const getDateAttrs = (el) => {
 };
 
 const getHtml = (target) => {
-    const pickerStyle = target.closest("[block-id]").className;
+    const pickerStyle = target.closest('[block-id]').className;
 
     //TODO move these parts in templates/
     const selectHtml = `
@@ -56,7 +56,7 @@ const getHtml = (target) => {
         <input id="${ids.y}" placeholder="yyyy" maxlength="4">
     `;
     // return inputHtml;
-    return pickerStyle === "date-text" ? inputHtml : selectHtml;
+    return pickerStyle === 'date-text' ? inputHtml : selectHtml;
 };
 
 const getStartEnd = (el) => {
@@ -73,15 +73,15 @@ const setYears = (target) => {
     const ys = Array.from({ length }, (_, k) => k + parseInt(minDate));
     const yElem = target.querySelector(`select#${ids.y}`);
     if (!yElem) return null;
-    let html = "";
+    let html = '';
     ys.forEach((e) => (html += `<option value=${e}>${e}</option>`));
     yElem.innerHTML = html;
-    yElem.dispatchEvent(new Event("change"));
+    yElem.dispatchEvent(new Event('change'));
 };
 
 const setCalendar = () => {
-    document.querySelectorAll(".flatpickr-calendar").forEach((e) => e.remove());
-    const selector = "[block-id].calendar > .js-date";
+    document.querySelectorAll('.flatpickr-calendar').forEach((e) => e.remove());
+    const selector = '[block-id].calendar > .js-date';
     $qq(selector).forEach((e) => globalThis.flatpickr(e, getDateAttrs(e)));
 };
 
@@ -101,10 +101,10 @@ const setDays = ({ target }) => {
     const y = pNode.querySelector(`#${ids.y} option:checked`)?.value;
     const m = pNode.querySelector(`#${ids.m} option:checked`)?.value;
     if (!y || !m) return null;
-    const daysCount = globalThis.moment(`${y}-${m}`, "YYYY-MM").daysInMonth();
+    const daysCount = globalThis.moment(`${y}-${m}`, 'YYYY-MM').daysInMonth();
     const d = pNode.querySelector(`select#${ids.d}`);
     if (!d) return null;
-    let html = "";
+    let html = '';
     //TODO refactor needed
     Array.from(new Array(daysCount)).forEach(
         (_, i) => (html += `<option value=${i + 1}>${i + 1}</option>`)
@@ -117,14 +117,10 @@ const setDatePickers = () => $qq(ids.noCal).forEach(setDatePicker);
 const setDatePicker = (target) => {
     target.innerHTML = getHtml(target);
 
-    const freeInput = target.querySelectorAll(".dropdown-date>input");
-    const selectInput = target.querySelectorAll("select");
-    // freeInput.forEach((e) => e.addEventListener("input", checkFreeInput));
-    selectInput.forEach((e) => e.addEventListener("change", updateCalendar));
-    freeInput.forEach((e) => e.addEventListener("input", updateCalendar));
-    freeInput.forEach((e) => e.addEventListener("keyup", checkDate));
-    target.querySelector(`#${ids.m}`).addEventListener("change", setDays);
-    target.querySelector(`#${ids.y}`).addEventListener("change", setDays);
+    const freeInput = target.querySelectorAll('.dropdown-date>input');
+    freeInput.forEach((e) => e.addEventListener('keyup', checkDate));
+    target.querySelector(`#${ids.m}`).addEventListener('change', setDays);
+    target.querySelector(`#${ids.y}`).addEventListener('change', setDays);
 
     setMonths(target);
     setYears(target);
@@ -135,15 +131,8 @@ const setDropDownPicker = () => {
         setDatePickers();
         return null;
     }
-    const baseUrl = "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1";
+    const baseUrl = 'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1';
     addJS(`${baseUrl}/moment.min.js`, setDatePickers);
-};
-
-const updateCalendar = ({ target }) => {
-    const root = target.closest("[block-id]");
-    const s = `${ids.noCal} select option:checked, ${ids.noCal} input`;
-    // const nums = Array.from(root.querySelectorAll(s)).map((e) => e.value);
-    // root.querySelector(`${ids.cal}`).value = nums.join("-");
 };
 
 exports.init = () => {

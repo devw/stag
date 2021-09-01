@@ -1,9 +1,8 @@
-const { updateCss, render } = require("../utils");
-const { loadActions } = require("./load");
-const { STORAGE_CONFIG } = require("../config");
+const { updateCss, render } = require('../utils');
+const { loadActions } = require('./load');
+const { STORAGE_CONFIG } = require('../config');
 
 exports.loadTheme = async (config) => {
-
     localStorage.setItem(STORAGE_CONFIG, JSON.stringify(cleanConfig(config)));
     render(config.text);
     updateCss(config.style);

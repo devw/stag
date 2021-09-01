@@ -170,7 +170,7 @@ global_sections:
         - title: Label Down
           value: label-go-down
       hooks: 
-        afterSettingUpdate: autocorrectPadding
+        afterSettingUpdate: patchPadding
 
   - id: form-input
     label: Form Input

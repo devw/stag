@@ -18,7 +18,7 @@ const addMissingBlock = ({ text }, name, placeholder, error) => {
 const addBlockId = (e) => {
     const tmp = {};
     Object.keys(e[1]).forEach((k) => {
-        tmp[k.split("|")[1]] = e[1][k];
+        tmp[k.split('|')[1]] = e[1][k];
     });
     tmp.id = e[0];
 
@@ -27,7 +27,7 @@ const addBlockId = (e) => {
 
 const parseKeyValue = (key, obj) => {
     const [, id, unit] = key.split(/\|/);
-    const value = obj + (unit || "");
+    const value = obj + (unit || '');
     return { id: id, value: value };
 };
 
@@ -44,22 +44,23 @@ module.exports.parseConfiguration = (jsonTree) => {
     (function traverse(obj, key) {
         if (isRegisterSection(key)) {
             const { blocks_order } = Object.values(obj)[0];
-            json.text["blocks_order"] = blocks_order;
+            json.text['blocks_order'] = blocks_order;
         }
 
-        if (key === "blocks" && Object.keys(obj).length > 0) {
+        if (key === 'blocks' && Object.keys(obj).length > 0) {
             const blocks = Object.entries(obj);
             blocks.forEach((e) => {
-                const k = e[0].split("|")[1];
+                const k = e[0].split('|')[1];
                 json.text[k].push(...Object.entries(e[1]).map(addBlockId));
             });
         }
+        // it reads the object {url: '...', status: '...'} and it sets the css variable to the url
         if (/--container-bg-image|--header-img/.test(key)) {
-            const styleAttr = key.split("|")[1];
+            const styleAttr = key.split('|')[1];
             json.style[styleAttr] = obj.url;
         }
 
-        if (obj !== null && typeof obj == "object") {
+        if (obj !== null && typeof obj == 'object') {
             Object.entries(obj).forEach(([key, value]) => traverse(value, key));
         } else {
             const { id, value } = parseKeyValue(key, obj);
@@ -67,8 +68,8 @@ module.exports.parseConfiguration = (jsonTree) => {
         }
     })(jsonTree);
 
-    addMissingBlock(json, "customer[email]", "yourEmail");
-    addMissingBlock(json, "customer[password]", "yourPassword", true);
+    addMissingBlock(json, 'customer[email]', 'yourEmail');
+    addMissingBlock(json, 'customer[password]', 'yourPassword', true);
 
     return json;
 };
