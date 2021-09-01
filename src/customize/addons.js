@@ -210,7 +210,7 @@ setTimeout(() => {
         const elem = current.parentElement.nextElementSibling;
         elem.style.display = isChecked ? 'block' : 'none';
     },
-    autocorrectPadding(value, { current }) {
+    patchPadding(value, { current }) {
         const p =
             current.parentElement.nextElementSibling.querySelectorAll('input');
         if (value == 'label-go-down') {
