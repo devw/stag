@@ -63,11 +63,18 @@ const parseEvent = (event) => {
     loadPage(event);
 };
 
+const disableClick = () => {
+    document
+        .querySelector(`#${IDs.APP_ID}`)
+        .style.setProperty('pointer-events', 'none');
+};
+
 const parseMessage = (message) => {
     //TODO use closure to avoid global variable window.parsedState
+    console.log('-------message--------\n', message);
     const { state, event } = message?.data || message?.detail;
     if (!event && !state) return null;
-    console.log('-------message--------\n', message);
+    disableClick();
     parseState(state);
     parseEvent(event);
 };
@@ -81,5 +88,3 @@ if (
     globalThis.addEventListener('message', parseMessage);
     globalThis.addEventListener('addonMessage', parseMessage);
 }
-
-window.parent.postMessage('fetchState', '*');

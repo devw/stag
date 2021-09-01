@@ -1,13 +1,3 @@
-window.addEventListener('message', function (e) {
-    if (e.data !== 'fetchState') return null;
-    const [state, event] = [
-        window.cleanStateParams[0],
-        window.cleanStateParams[1],
-    ];
-    const _frame = document.querySelector('iframe');
-    _frame.contentWindow.postMessage({ state, event }, '*');
-});
-
 const $q = (leaf) => document.querySelector(leaf);
 
 const InputLineComponent = () => {
