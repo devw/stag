@@ -200,18 +200,7 @@ setTimeout(() => {
         const elem = current.parentElement.nextElementSibling;
         elem.style.display = isChecked ? 'block' : 'none';
     },
-    patchPadding(value, { current }) {
-        const p =
-            current.parentElement.nextElementSibling.querySelectorAll('input');
-        if (value == 'label-go-down') {
-            p[0].value = 6;
-            p[3].value = 12;
-        }
-        if (value == 'label-go-up') {
-            p[0].value = 13;
-            p[3].value = 7;
-        }
-    },
+
     cleanState(state, event) {
         window.cleanStateParams = arguments;
         console.log('---cleanState---', { state, event });

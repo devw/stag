@@ -169,8 +169,6 @@ global_sections:
           value: label-go-up
         - title: Label Down
           value: label-go-down
-      hooks: 
-        afterSettingUpdate: patchPadding
 
   - id: form-input
     label: Form Input
