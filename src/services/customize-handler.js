@@ -73,10 +73,10 @@ const parseMessage = (message) => {
 };
 
 if (
-    /config_id/.test(location.href) ||
-    window.location !== window.parent.location
+    window.location !== window.parent.location ||
+    /:\/\/localhost/.test(window.location.origin)
 ) {
-    console.log('------------customize handler-----');
+    console.log('-----customize handler-----');
     globalThis.parseConfiguration = parseConfiguration;
     globalThis.addEventListener('message', parseMessage);
     globalThis.addEventListener('addonMessage', parseMessage);
