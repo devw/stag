@@ -1,7 +1,7 @@
 appId: login-popup
 title: Login Popup
-backUrl: 'https://{{shop}}/admin/apps/dev-login-popup'
-onSave: 'https://api.dev-kastorstudio.com/login-popup/customize_update'
+backUrl: 'https://{{shop}}/admin/apps'
+onSave: 'https://api.dev-kastorstudio.com/login-popup/customize/onsave'
 crispId: ''
 
 
@@ -14,63 +14,100 @@ global_sections:
   label: Fonts and Colors
   icon: ColorsMajor
   groups:
-  - id: font-style
-    label: Fonts
+  - id: colors
+    label: Colors
     settings:
+    - id: "|--primary-text-color|"
+      type: color-picker
+      label: Primary text color
+      icon: ColorsMajor
+      default: rgba(0,0,0,1)
+      hint: Title.
+      required: true
+
+    - id: "|--secondary-text-color|"
+      type: color-picker
+      label: Secondary text color
+      icon: ColorsMajor
+      default: rgba(0,0,0,1)
+      hint: paragraph.
+      required: true
+
+  - id: font-size
+    label: Font sizes
+    settings:
+
     - id: "landing|--large-font-size|em"
       type: range-slider
-      label: Title Size
+      label: Primary font size
       icon: EditMinor
       default: 2
-      hint: It sets the size of the title
+      hint: 
       required: true
       config:
         min: 1
         max: 3
         step: 0.1
+
+    - id: "landing|--title-font-weight"
+      type: range-slider
+      label: Primary font weight
+      icon: EditMinor
+      default: 400
+      hint: 
+      required: true
+      config:
+        min: 100
+        max: 900
+        step: 100
+
     - id: 'landing|--medium-text-size|em'
       type: range-slider
-      label: Sub-Title Size
+      label: Secondary font-size
       icon: EditMinor
       default: 1.1
-      hint: It sets the size of the sub-title.
+      hint: 
       required: true
       config:
         min: 0.5
         max: 2
         step: 0.1
-    - id: '|--container-border-radius|%'
-      type: range-slider
-      label: Border Radius
+
+  - id: font-family
+    label: Font family
+    settings:
+    - id: "landing|--title-font-family|"
+      type: select
+      label: Title font-family
       icon: EditMinor
-      default: 0.1
-      hint: It rounds the corners of the popup container.
+      default: None
+      hint: You can change the form text font-family
       required: true
       config:
-        min: 0.1
-        max: 3
-        step: 0.2
-    - id: "|--primary-text-color|"
-      type: color-picker
-      label: Primary Text Color
-      icon: ColorsMajor
-      default: rgba(0,0,0,1)
-      hint: It sets the text color.
+        options:
+        - title: None
+          value: ""
+        - title: Archivo Narrow
+          value: "Archivo Narrow"
+        - title: BeaufortCondensedMedium
+          value: BeaufortCondensedMedium
+
+    - id: "landing|--form-font-family|"
+      type: select
+      label: Form font-family
+      icon: EditMinor
+      default: None
+      hint: You can change the form text font-family
       required: true
-    - id: "|--secondary-text-color|"
-      type: color-picker
-      label: Secondary Text Color
-      icon: ColorsMajor
-      default: rgba(0,0,0,1)
-      hint: It sets the text color.
-      required: true
-    - id: "|--ternary-text-color|"
-      type: color-picker
-      label: Ternary Text Color
-      icon: ColorsMajor
-      default: rgba(0,0,0,1)
-      hint: It sets the text color.
-      required: true
+      config:
+        options:
+        - title: None
+          value: ""
+        - title: Archivo Narrow
+          value: "Archivo Narrow"
+        - title: BeaufortCondensedMedium
+          value: BeaufortCondensedMedium
+
   blocks: []
 # ===============================================
 #                GLOBAL SECTION
@@ -80,59 +117,44 @@ global_sections:
   label: Styling Web Forms
   icon: FormsMajor
   groups:
-  - id: Forms
-    label: Form (general settings)
+
+  - id: Labels
+    label: Input labels (placeholders)
     settings:
-    - id: "register|errorIcon|"
-      type: select
-      label: Error Icon
-      icon: BugMajor
-      default: label-none
-      hint: You can change the error icon
+
+    - id: "|--ternary-text-color|"
+      type: color-picker
+      label: Label text color
+      icon: ColorsMajor
+      default: rgba(0,0,0,1)
+
+    - id: "|--label-font-size|em"
+      type: range-slider
+      label: Label font size
+      icon: EditMinor
+      default: 1.5
       required: true
       config:
-        options:
-        - title: none
-          value: ''
-        - title: Exclamation Triangle
-          value: fa-exclamation-triangle
-        - title: Bug
-          value: fa-bug
-        - title: Frown
-          value: fa-frown-o
-        - title: Times Circle
-          value: fa-times-circle
-        - title: Times
-          value: fa-times
-    - id: "register|--error-color|"
-      type: color-picker
-      label: Errors' Colour
-      icon: ColorsMajor
-      default: rgba(208, 26, 26, 1)
-      hint: It sets the errors' colour.
-      required: true
+        min: 1
+        max: 3
+        step: 0.1
 
-    - id: "register|--error-bg-color|"
-      type: color-picker
-      label: Errors' Background Colour
-      icon: ColorsMajor
-      default: rgba(240, 207, 207, 1)
-      hint: It sets the errors' background colour.
+    - id: "|--label-font-weight|"
+      type: range-slider
+      label: Label font weight
+      icon: EditMinor
+      default: 400
       required: true
+      config:
+        min: 100
+        max: 900
+        step: 100
 
-    - id: "register|--btn-bg-color|"
-      type: color-picker
-      label: Button Color
-      icon: ColorsMajor
-      default: rgba(222,113,84, 1)
-      hint: It sets the button background color.
-      required: true
-
-    - id: "register|formStyle|"
+    - id: "|formStyle|"
       type: select
       label: Labels
       icon: EditMinor
-      default: label-fixed
+      default: label-fixed-top
       hint: You can change the label position/animation
       required: true
       config:
@@ -148,7 +170,27 @@ global_sections:
         - title: Label Down
           value: label-go-down
       hooks: 
-        afterSettingUpdate: autocorrectPadding
+        afterSettingUpdate: patchPadding
+
+  - id: form-input
+    label: Form Input
+    settings:
+
+    - id: "register|--input-bg-color|"
+      type: color-picker
+      label: Input Background color
+      icon: ColorsMajor
+      default: rgba(255,255,255, 1)
+      hint: Background color in input and text fields
+      required: false
+
+    - id: "register|--input-box-shadow|"
+      type: color-picker
+      label: Input box shadow color
+      icon: ColorsMajor
+      default: rgba(255,255,255, 1)
+      hint: 
+      required: false
 
     - id: "register|--input-padding|"
       type: csspad
@@ -161,12 +203,13 @@ global_sections:
         units: ["px", "%"]
       hooks: 
         afterSettingUpdate: setPaddingLabels
+  
     - id: "register|--input-line|"
       type: cssline
       label: Input Line
       icon: EditMinor
       hint: You can set the input line
-      default: 0px solid black
+      default: 1px solid black
       required: true
       config: {}
       hooks: 
@@ -176,7 +219,7 @@ global_sections:
       type: text-input
       label: input-line-direction
       icon: ''
-      default: ''
+      default: 'Bottom'
       hint: ''
       required: false
       config: {}
@@ -201,24 +244,148 @@ global_sections:
         min: 0
         max: 2
         step: 0.1
+
     - id: "register|--input-radius|px"
       type: range-slider
       label: Input Radius
       icon: EditMinor
       hint: You can set a rounded border to the text-type input
-      default: 0.8
+      default: 0
       required: true
       config:
         min: 0
         max: 20
         step: 1
-      
-  blocks: 
+
+    - id: "register|--border-color-focus|"
+      type: color-picker
+      label: Active focus border color
+      icon: ColorsMajor
+      default: rgba(0, 0, 0, 1)
+      hint: It sets the errors' colour.
+      required: true
+
+
+  - id: form-input-error
+    label: Input error
+    settings:
+
+    - id: "register|errorIcon|"
+      type: select
+      label: Error Icon
+      icon: BugMajor
+      default: label-none
+      hint: You can change the error icon
+      required: true
+      config:
+        options:
+        - title: none
+          value: ''
+        - title: Exclamation Triangle
+          value: fa-exclamation-triangle
+        - title: Bug
+          value: fa-bug
+        - title: Frown
+          value: fa-frown-o
+        - title: Times Circle
+          value: fa-times-circle
+        - title: Times
+          value: fa-times
+
+
+
+    - id: "register|--error-color|"
+      type: color-picker
+      label: Errors' Colour
+      icon: ColorsMajor
+      default: rgba(208, 26, 26, 1)
+      hint: It sets the errors' colour.
+      required: true
+
+    - id: "register|--error-bg-color|"
+      type: color-picker
+      label: Errors' Background Colour
+      icon: ColorsMajor
+      default: rgba(240, 207, 207, 1)
+      hint: It sets the errors' background colour.
+      required: true      
+  blocks: []
 # ===============================================
 #                GLOBAL SECTION
 #                   BUTTONS
 # ===============================================
 
+- id: buttons
+  label: Buttons
+  icon: ColorsMajor
+  groups:
+  - id: font-style
+    label: Fonts
+    settings:
+    - id: "|--btn-font-size|em"
+      type: range-slider
+      label: Button font size
+      icon: EditMinor
+      default: 1.5
+      hint: It sets the size of the button text
+      required: true
+      config:
+        min: 1
+        max: 3
+        step: 0.1
+
+    - id: "|--btn-padding|px"
+      type: range-slider
+      label: Button padding
+      icon: EditMinor
+      default: 10
+      hint: It sets the padding of the button 
+      required: true
+      config:
+        min: 0
+        max: 20
+        step: 1
+
+    - id: "|--btn-font-family|"
+      type: select
+      label: Button form family
+      icon: EditMinor
+      default: None
+      hint: You can change the button text font-family
+      required: true
+      config:
+        options:
+        - title: None
+          value: ""
+        - title: BeaufortCondensedMedium
+          value: BeaufortCondensedMedium
+
+    - id: "|--btn-border|"
+      type: cssline
+      label: Outline button border
+      icon: EditMinor
+      hint: You can set the button border
+      default: 1px solid rgba(255, 255, 255, 1)
+      required: true
+      config: {}
+      
+    - id: "|--btn-color|"
+      type: color-picker
+      label: Text button color
+      icon: ColorsMajor
+      default: rgba(0,0,0,1)
+      hint: It sets the background color.
+      required: true
+
+    - id: "|--btn-bg-color|"
+      type: color-picker
+      label: Button background color
+      icon: ColorsMajor
+      default: rgba(0,0,0,1)
+      hint: It sets the background color.
+      required: true
+
+  blocks: []
 # ===============================================
 #                GLOBAL SECTION
 #                   THEME
@@ -227,6 +394,75 @@ global_sections:
   label: Theme Layout
   icon: DetailedPopUpMajor
   groups:
+
+  - id: popup-container
+    label: Popup container
+    settings:
+
+    - id: "|--content-bg-color|"
+      type: color-picker
+      label: Popup background color
+      icon: ColorsMajor
+      default: rgba(0,0,0,1)
+      hint: It sets the background color.
+      required: true
+
+    - id: "landing|--partial-width|px"
+      type: range-slider
+      label: Form width
+      icon: EditMinor
+      default: 400
+      hint: It sets the form's width
+      required: true
+      config:
+        min: 200
+        max: 600
+        step: 2
+
+    - id: "landing|--content-width|px"
+      type: range-slider
+      label: Popup width
+      icon: EditMinor
+      default: 20
+      hint: It sets the form's width
+      required: true
+      config:
+        min: 250
+        max: 800
+        step: 5
+
+    - id: "landing|--content-padding-top|px"
+      type: range-slider
+      label: Popup padding top
+      icon: EditMinor
+      default: 20
+      config:
+        min: 0
+        max: 300
+        step: 2.5
+
+    - id: "landing|--content-padding-bottom|px"
+      type: range-slider
+      label: Popup padding bottom 
+      icon: EditMinor
+      default: 20
+      config:
+        min: 0
+        max: 300
+        step: 2.5
+
+    - id: '|--container-border-radius|%'
+      type: range-slider
+      label: Border Radius
+      icon: EditMinor
+      default: 0.5
+      hint: It rounds the corners of the popup container.
+      required: true
+      config:
+        min: 0
+        max: 10
+        step: 0.5
+
   - id: theme
     label: Theme
     settings:
@@ -247,6 +483,24 @@ global_sections:
           value: popup-full
         - title: Floating
           value: popup-floating
+
+    - id: "register|--content-vertical-alignment|"
+      type: select
+      label: Vertical alignment
+      icon: EditMinor
+      default: center
+      hint: To align the text vertically
+      required: true
+      config:
+        options:
+        - title: Top
+          value: start
+        - title: Centered
+          value: center
+        - title: Bottom
+          value: flex-end
+          
+
     - id: register|--animation|
       type: select
       label: Animation
@@ -271,37 +525,43 @@ global_sections:
         - title: From Right
           value: slide-from-right
     # Background image
-    - id: "register|--container-bg-image|"
+    # - id: "register|--container-bg-image|"
+    #   type: dropzone
+    #   label: Background Image
+    #   icon: ''
+    #   default: ''
+    #   hint: 'Specify the image URL'
+    #   config:
+    #     placeholder: Drag and Drop a file
+    #   fileName: background
+    #   hooks: 
+    #     afterSettingUpdate: uploadImage
+
+    # - id: "register|--bg-opacity-image|"
+    #   type: range-slider
+    #   label: Background Image Opacity 
+    #   icon: EditMinor
+    #   default: 1
+    #   hint: You can change the background image opacity.
+    #   required: true
+    #   config:
+    #     min: 0
+    #     max: 1
+    #     step: 0.05
+    # Form image
+
+    - id: "register|--header-img|"
       type: dropzone
-      label: Background Image
+      label: Header image
       icon: ''
-      default: 'https://cdn.shopify.com/s/files/1/2598/9270/products/Packshotfriandiseschatvolaille_600x.jpg?v=159948757'
+      default: ''
       hint: 'Specify the image URL'
       config:
         placeholder: Drag and Drop a file
       fileName: background
       hooks: 
         afterSettingUpdate: uploadImage
-    - id: "register|--bg-opacity-image|"
-      type: range-slider
-      label: Background Image Opacity 
-      icon: EditMinor
-      default: 1
-      hint: You can change the background image opacity.
-      required: true
-      config:
-        min: 0
-        max: 1
-        step: 0.05
-    # Form image
-    - id: "register|--header-img|"
-      type: text-input
-      label: Form Header Image
-      icon: ''
-      default: 'https://heritageah.com/wp-content/uploads/2020/06/iconfinder_pets-vet-pet_5413418.png'
-      hint: 'Specify the image URL'
-      config:
-        url: true
+
     - id: "register|--img-max-width|px"
       type: range-slider
       label: Image Width
@@ -330,7 +590,11 @@ global_sections:
           value: column-reverse
         - title: Left
           value: row
+
+
   
+
+
   blocks: []
 
 

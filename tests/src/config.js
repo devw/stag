@@ -4,7 +4,7 @@ module.exports = {
     STORAGE_METAFIELD: "shopify-loginpopup-metafields",
     STORAGE_CONFIG: "shopify-loginpopup-configuration",
     // TODO get it from the PROXY
-    ENDPOINT: "https://login-popup-dev-theme.s3.amazonaws.com",
+    ENDPOINT: "https://kastor-customize-saves.s3.amazonaws.com/login-popup",
     CONFIG_FNAME: "configuration.json",
     IDs: {
         APP_ID: "login-popup",

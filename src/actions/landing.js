@@ -16,7 +16,7 @@ const setCustomers = async (email) => {
     const promise = getCustomerStatus(QUERY);
     const result = await promise;
     CUSTOMERS = [];
-    result.forEach((e) => CUSTOMERS.push(e));
+    result?.customers?.forEach((e) => CUSTOMERS.push(e));
 }
 
 const getUniqCustomer = (email) => {
@@ -57,13 +57,13 @@ const emailAutofill = () => {
 
 const checkStatusAndTogglePage = (customer) => {
     const state = customer?.state;
+    emailAutofill();
     if (!state) togglePage(REGISTER_ID);
-    if (state === "enabled") togglePage(SIGNIN_ID);
-    else if (state === "disabled") {
+    else if (state === "enabled") togglePage(SIGNIN_ID);
+    else {
         togglePage(ACTIVATE_ID);
         showProperActivate(customer);
     }
-    emailAutofill();
 }
 
 const autocomplete = ({ inputType }) => {

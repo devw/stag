@@ -1,8 +1,10 @@
 #login-popup {
     form {
-        margin-top: 20px;
         display: flex;
         flex-direction: column;
+        font-family: var(--form-font-family);
+        justify-content: center;
+        margin-top: 20px;
         padding: 0 10px;
     }
 
@@ -13,44 +15,40 @@
     }
 
     .input-text {
-        border-top: var(--input-line-top, var(--input-line));
-        border-right: var(--input-line-right, var(--input-line));
-        border-left: var(--input-line-left, var(--input-line));
+        background-color: var(--input-bg-color, unset);
         border-bottom: var(--input-line-bottom, var(--input-line));
-        background-color: unset;
-        outline: none;
-        font-size: 1em;
-        color: #333;
-        min-width: 100%;
-        padding: var(--input-padding);
+        border-left: var(--input-line-left, var(--input-line));
         border-radius: var(--input-radius, 8px);
+        border-right: var(--input-line-right, var(--input-line));
+        border-top: var(--input-line-top, var(--input-line));
+        color: #333;
+        font-family: var(--form-font-family);
+        font-size: 1em;
+        min-width: 100%;
+        outline: none;
+        padding: var(--input-padding);
+    }
+    .input-text:focus {
+        border-color: var(--border-color-focus);
+        box-shadow: var(--input-box-shadow);
     }
 
     label {
-        z-index: -1;
-        position: absolute;
         bottom: 0;
+        color: var(--ternary-text-color);
+        font-size: var(--label-font-size);
+        font-weight: var(--label-font-weight);
+        left: var(--label-left, 10px);
+        bottom: var(--label-bottom);
+        margin: unset;
+        position: absolute;
+        text-transform: var(--placeholder-text-transform);
         transform-origin: 0 0;
         transition: transform 0.3s ease-in-out;
-        background-color: var(--content-bg-color, #fff);
-        font-size: var(--placeholder-font-size);
-        color: var(--placeholder-color);
-        text-transform: var(--placeholder-text-transform);
-        margin: unset;
-        padding: var(--input-padding);
-        padding-top: 0;
-        padding-left: 0;
-        left: var(--label-left, 10px);
     }
 
-    div.choice-block {
-        padding: var(--input-padding);
-        padding-top: 0;
-        padding-bottom: 0;
-        label,
-        input {
-            padding: unset;
-        }
+    label.label-choice-list {
+        font-weight: 400;
     }
 
     /* START - GO UP */
@@ -65,7 +63,7 @@
 
     .label-go-up input:focus:not([type="checkbox"]) + label,
     .label-go-up input:not(:placeholder-shown):not([type="checkbox"]) + label {
-        transform: translateY(-1em) scale(0.8);
+        transform: translateY(-.8em) scale(0.8);
     }
     /* START - GO UP */
 
@@ -86,14 +84,14 @@
 
     .label-fixed-top :not([type="checkbox"]) + label,
     .label-fixed-bottom :not([type="checkbox"]) + label {
+        bottom: unset;
         display: block;
         font-size: 0.8em;
-        top: unset;
-        bottom: unset;
-        position: unset;
-        padding-top: 0;
         padding-bottom: 0;
         padding-left: var(--label-left);
+        padding-top: 0;
+        position: unset;
+        top: unset;
     }
     .label-fixed-top > div {
         display: flex;
@@ -119,14 +117,14 @@
     }
 
     :not([type="checkbox"]) label.label-error {
-        color: var(--error-color, rgb(208, 26, 26));
         background-color: var(--error-bg-color, rgb(240, 207, 207));
+        bottom: unset;
+        color: var(--error-color, rgb(208, 26, 26));
         display: none;
-        width: 100%;
-        top: unset;
         font-size: 0.8em;
         left: unset;
-        bottom: unset;
+        top: unset;
+        width: 100%;
     }
 
     label.label-error i {
@@ -158,19 +156,18 @@
     }
 
     .choice-block input[type="checkbox"] {
-        background-color: white;
-        vertical-align: middle;
-        border: 1px solid #ddd;
         -webkit-appearance: none;
-        outline: none;
+        background-color: white;
+        border: 1px solid #ddd;
         cursor: pointer;
+        outline: none;
+        vertical-align: middle;
     }
     .choice-block input[type="checkbox"]:checked {
         background-color: gray;
     }
 
     .choice-block.single-choice input[type="checkbox"] {
-        border-radius: 50%;
         padding: 0.5em;
     }
 

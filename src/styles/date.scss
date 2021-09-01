@@ -17,17 +17,17 @@
     }
 
     .dropdown-date {
+        column-gap: 40px;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        column-gap: 40px;
         > input {
             border: var(--input-line);
-            outline: none;
-            font-size: 1em;
             color: #333;
-            width: 100%;
-            padding: var(--input-padding);
+            font-size: 1em;
+            outline: none;
             padding-bottom: 0;
+            padding: var(--input-padding);
+            width: 100%;
         }
         > input::placeholder {
             color: #777 !important;

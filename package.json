@@ -7,7 +7,6 @@
         "port": "8082"
     },
     "scripts": {
-        "dev": "node src/index.js",
         "test": "jest --config ./jest-config.json",
         "coverage": "jest --collect-coverage --config ./jest-config.json",
         "coverage-open": "open coverage/lcov-report/index.html",
@@ -15,10 +14,8 @@
         "build:dev": "rm -rf dist; webpack --mode=development; cp -r public/* dist",
         "build:prod": "rm -rf dist; webpack --mode=production; cp -r public/* dist",
         "bk": "webpack --mode=development --env=in=./src/services/customize-handler.js --env=out=customizeHandler.js;",
-        "start": "cd dist; lsof -ti tcp:$npm_package_config_port | xargs kill; python3  -m http.server $npm_package_config_port &",
         "lint": "eslint ./",
-        "ngrok": "ngrok http $npm_package_config_port -subdomain=antoniooo",
-        "update:s3": "rm /tmp/bundle.js /tmp/main.css; cp dist/bundle.js dist/main.css /tmp/"
+        "update:s3": "rm /tmp/bundle.js /tmp/main.css /tmp/config.yml /tmp/addons.js; cp dist/bundle.js dist/main.css src/customize/config.yml src/customize/addons.js /tmp/"
     },
     "devDependencies": {
         "@types/jest": "^26.0.21",

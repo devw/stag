@@ -15,9 +15,9 @@
         "--input-margin": "0.8em",
         "--input-radius": "0.8px",
         "--animation": "none",
-        "--container-bg-image": "https://cdn.shopify.com/s/files/1/2598/9270/products/Packshotfriandiseschatvolaille_600x.jpg?v=159948757",
+        "--container-bg-image": "https://customize-uploaded-files.s3.amazonaws.com/alfred-devstrore-antonio/a9b9a6e7-05e0-41f7-838a-e400955e8161.jpg",
         "--bg-opacity-image": "1",
-        "--header-img": "https://heritageah.com/wp-content/uploads/2020/06/iconfinder_pets-vet-pet_5413418.png",
+        "--header-img": "https://customize-uploaded-files.s3.amazonaws.com/alfred-devstrore-antonio/a9b9a6e7-05e0-41f7-838a-e400955e8161.jpg",
         "--img-max-width": "200px",
         "--img-position": "column"
     },
@@ -39,7 +39,7 @@
         "loginRegister": "Connexion / Inscription",
         "enterYourEmailToContinue": "Renseignez votre adresse email pour continuer.",
         "yourEmail": "Write your email",
-        "validate": "Valider",
+        "validate": "Confirm",
         "hasSocialLogin": 0,
         "blocks_order": [],
         "createAccount": "Création de compte",
@@ -72,5 +72,5 @@
         "hasPswSpecialCharacter": "",
         "pswSpecialCharacterErr": "The password must contain at least a special character"
     },
-    "isActive": false
+    "isActive": true
 }

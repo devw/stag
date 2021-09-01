@@ -13,28 +13,28 @@ body.remove-scrolling {
     }
 
     .content {
-        color: var(--primary-text-color);
+        align-items: center;
         background-color: var(--content-bg-color, #fff);
         border-radius: var(--container-border-radius);
-        padding: var(--content-padding, 1.5em);
-        position: relative;
+        color: var(--primary-text-color);
+        justify-content: var(--content-vertical-alignment);
         max-height: 100vh;
-        min-height: 65%;
+        min-height: 28%;
         overflow-y: auto;
+        width: var(--content-width, auto);
+        padding-top: var(--content-padding-top, auto);
+        padding-bottom: var(--content-padding-bottom, auto);
+        position: relative;
     }
 
     .content .partials {
         max-height: 0;
         overflow: hidden;
-        min-width: 400px;
+        width: var(--partial-width);
     }
     .content .partials.partials-show {
         max-height: 900px;
         transition: max-height .8s;
-    }
-
-    .content #activate .activate {
-        display: none;
     }
 
     /*  ===================
@@ -49,12 +49,13 @@ body.remove-scrolling {
 
     // Title
     .title {
-        font-family: var(--large-font-family);
+        font-family: var(--title-font-family);
         font-size: var(--large-font-size);
-        font-weight: var(--large-font-weight);
+        font-weight: var(--title-font-weight);
         letter-spacing: var(--large-letter-spacing);
-        line-height: var(--large-line-height);
+        line-height: 50px;
         text-transform: var(--large-text-transform);
+        color: var(--primary-text-color);
     }
 
     // Sub-title
@@ -68,12 +69,15 @@ body.remove-scrolling {
     // I need to refactor it
     .btn {
         border: none;
-        color: #fff;
+        color: var(--btn-color);
+        border: var(--btn-border);
         cursor: pointer;
-        padding: 10px;
-        text-transform: uppercase;
+        padding: var(--btn-padding, 10px);
+        text-transform: none;
         width: 100%;
         margin-top: 15px;
+        font-family: var(--btn-font-family);
+        font-size: var(--btn-font-size);
     }
     .btn .fa {
         font-size: 1.4em;
@@ -108,7 +112,7 @@ body.remove-scrolling {
         position: absolute;
         top: 0px;
         right: 0px;
-        padding: var(--content-padding, 1.5em);
+        padding: 1.5em;
         color: var(--ternary-text-color, #0d3c32);
     }
 

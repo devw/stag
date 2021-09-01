@@ -71,9 +71,6 @@ exports.toggleLoading = (BTN) => {
 exports.togglePage = (id) => {
     $qq(".partials").forEach(e => e.classList.remove("partials-show"));
     $q(`#${id}`).classList.add("partials-show");
-    // $q(`#${id}`)
-    //     ?.querySelector("[type='password']")
-    //     ?.focus();
 };
 
 exports.$q = $q;
