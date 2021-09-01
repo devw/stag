@@ -281,71 +281,10 @@ setTimeout(() => {
         // globalThis.value = value;
         // globalThis.current = current;
     },
-    _addDragDrop: (current) => {
-        console.log(current);
-        const node = document.createElement('div');
-        node.innerHTML = `<input
-            type="file"
-            class="filepond"
-            name="filepond"
-            multiple
-            data-max-file-size="3MB"
-            data-max-files="3"
-        />`;
-        current.appendChild(node);
-        console.log('##########################', current);
-    },
-    uploadImage(value, { current }) {
-        console.log('---------------------', { value, current });
-        globalThis.value = value;
-        globalThis.current = current;
-
-        if (!globalThis.FilePond) {
-            this._addCSS(
-                'https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css'
-            );
-            this._addCSS('https://unpkg.com/filepond/dist/filepond.min.css');
-            this._addJS('https://devw.github.io/cvws/filepond.min.js', () => {
-                const e = document.querySelector("input[name='filepond']");
-                FilePond.registerPlugin(FilePondPluginImagePreview);
-                FilePond.create(e);
-
-                const pond = document.querySelector('.filepond--root');
-                const onUpdateImage = () => {
-                    setTimeout(() => {
-                        const imgData = document
-                            .querySelector('.filepond--file canvas')
-                            .toDataURL();
-                        current.querySelector('input').value = imgData;
-                        document
-                            .querySelector('iframe')
-                            .contentWindow.postMessage(
-                                {
-                                    data: {
-                                        setting_id:
-                                            'register|--container-bg-image|',
-                                        value: imgData,
-                                    },
-                                },
-                                '*'
-                            );
-                    }, 1000);
-                };
-                pond.addEventListener('FilePond:updatefiles', (e) => {
-                    console.log('File added', e);
-                    window.e = e;
-                    onUpdateImage();
-                });
-            });
-
-            this._addDragDrop(current);
-        }
-    },
 
     setDateFormat(value, { current }) {
         current.querySelector('input').type = 'date';
     },
-    setPaddingLabels(value, { current }) {},
 
     sanitizeInput(_, { current }) {
         const node = current.querySelector("[type='text']");

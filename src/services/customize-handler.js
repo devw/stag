@@ -32,8 +32,9 @@ const loadPage = (event) => {
     const page = section?.split('|')[0];
     if (page && page !== '') {
         changePage(page);
+        globalThis.prevPage = page;
     } else {
-        changePage('landing');
+        changePage(globalThis.prevPage || 'landing');
     }
 };
 

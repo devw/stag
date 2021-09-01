@@ -37,7 +37,7 @@ global_sections:
     label: Font sizes
     settings:
 
-    - id: "landing|--large-font-size|em"
+    - id: "|--large-font-size|em"
       type: range-slider
       label: Primary font size
       icon: EditMinor
@@ -49,7 +49,7 @@ global_sections:
         max: 3
         step: 0.1
 
-    - id: "landing|--title-font-weight"
+    - id: "|--title-font-weight"
       type: range-slider
       label: Primary font weight
       icon: EditMinor
@@ -61,7 +61,7 @@ global_sections:
         max: 900
         step: 100
 
-    - id: 'landing|--medium-text-size|em'
+    - id: '|--medium-text-size|em'
       type: range-slider
       label: Secondary font-size
       icon: EditMinor
@@ -76,7 +76,7 @@ global_sections:
   - id: font-family
     label: Font family
     settings:
-    - id: "landing|--title-font-family|"
+    - id: "|--title-font-family|"
       type: select
       label: Title font-family
       icon: EditMinor
@@ -92,7 +92,7 @@ global_sections:
         - title: BeaufortCondensedMedium
           value: BeaufortCondensedMedium
 
-    - id: "landing|--form-font-family|"
+    - id: "|--form-font-family|"
       type: select
       label: Form font-family
       icon: EditMinor
@@ -176,7 +176,7 @@ global_sections:
     label: Form Input
     settings:
 
-    - id: "register|--input-bg-color|"
+    - id: "|--input-bg-color|"
       type: color-picker
       label: Input Background color
       icon: ColorsMajor
@@ -184,7 +184,7 @@ global_sections:
       hint: Background color in input and text fields
       required: false
 
-    - id: "register|--input-box-shadow|"
+    - id: "|--input-box-shadow|"
       type: color-picker
       label: Input box shadow color
       icon: ColorsMajor
@@ -192,7 +192,7 @@ global_sections:
       hint: 
       required: false
 
-    - id: "register|--input-padding|"
+    - id: "|--input-padding|"
       type: csspad
       label: Input Padding
       icon: EditMinor
@@ -201,10 +201,8 @@ global_sections:
       required: true
       config:
         units: ["px", "%"]
-      hooks: 
-        afterSettingUpdate: setPaddingLabels
   
-    - id: "register|--input-line|"
+    - id: "|--input-line|"
       type: cssline
       label: Input Line
       icon: EditMinor
@@ -215,7 +213,7 @@ global_sections:
       hooks: 
         afterSettingUpdate: addInputLineCheckbox
 
-    - id: "register|--input-line-direction|"
+    - id: "|--input-line-direction|"
       type: text-input
       label: input-line-direction
       icon: ''
@@ -223,8 +221,6 @@ global_sections:
       hint: ''
       required: false
       config: {}
-      hooks: 
-        afterSettingUpdate: updateLineDirectionCheckboxes
 
     # - id: "register|--input-line-bottom|"
     #   type: cssline
@@ -233,7 +229,7 @@ global_sections:
     #   hint: You can set the input line button
     #   default: 1px solid black
     #   required: true
-    - id: "register|--input-margin|em"
+    - id: "|--input-margin|em"
       type: range-slider
       label: Input Field Vertical Spacing 
       icon: EditMinor
@@ -245,7 +241,7 @@ global_sections:
         max: 2
         step: 0.1
 
-    - id: "register|--input-radius|px"
+    - id: "|--input-radius|px"
       type: range-slider
       label: Input Radius
       icon: EditMinor
@@ -257,7 +253,7 @@ global_sections:
         max: 20
         step: 1
 
-    - id: "register|--border-color-focus|"
+    - id: "|--border-color-focus|"
       type: color-picker
       label: Active focus border color
       icon: ColorsMajor
@@ -270,7 +266,7 @@ global_sections:
     label: Input error
     settings:
 
-    - id: "register|errorIcon|"
+    - id: "|errorIcon|"
       type: select
       label: Error Icon
       icon: BugMajor
@@ -292,9 +288,7 @@ global_sections:
         - title: Times
           value: fa-times
 
-
-
-    - id: "register|--error-color|"
+    - id: "|--error-color|"
       type: color-picker
       label: Errors' Colour
       icon: ColorsMajor
@@ -302,7 +296,7 @@ global_sections:
       hint: It sets the errors' colour.
       required: true
 
-    - id: "register|--error-bg-color|"
+    - id: "|--error-bg-color|"
       type: color-picker
       label: Errors' Background Colour
       icon: ColorsMajor
@@ -394,11 +388,9 @@ global_sections:
   label: Theme Layout
   icon: DetailedPopUpMajor
   groups:
-
   - id: popup-container
     label: Popup container
     settings:
-
     - id: "|--content-bg-color|"
       type: color-picker
       label: Popup background color
@@ -407,7 +399,7 @@ global_sections:
       hint: It sets the background color.
       required: true
 
-    - id: "landing|--partial-width|px"
+    - id: "|--partial-width|px"
       type: range-slider
       label: Form width
       icon: EditMinor
@@ -419,7 +411,7 @@ global_sections:
         max: 600
         step: 2
 
-    - id: "landing|--content-width|px"
+    - id: "|--content-width|px"
       type: range-slider
       label: Popup width
       icon: EditMinor
@@ -431,7 +423,7 @@ global_sections:
         max: 800
         step: 5
 
-    - id: "landing|--content-padding-top|px"
+    - id: "|--content-padding-top|px"
       type: range-slider
       label: Popup padding top
       icon: EditMinor
@@ -441,7 +433,7 @@ global_sections:
         max: 300
         step: 2.5
 
-    - id: "landing|--content-padding-bottom|px"
+    - id: "|--content-padding-bottom|px"
       type: range-slider
       label: Popup padding bottom 
       icon: EditMinor
@@ -466,7 +458,7 @@ global_sections:
   - id: theme
     label: Theme
     settings:
-    - id: "register|layout|"
+    - id: "|layout|"
       type: select
       label: Layout Mode
       icon: EditMinor
@@ -484,7 +476,7 @@ global_sections:
         - title: Floating
           value: popup-floating
 
-    - id: "register|--content-vertical-alignment|"
+    - id: "|--content-vertical-alignment|"
       type: select
       label: Vertical alignment
       icon: EditMinor
@@ -499,9 +491,8 @@ global_sections:
           value: center
         - title: Bottom
           value: flex-end
-          
 
-    - id: register|--animation|
+    - id: "|--animation|"
       type: select
       label: Animation
       icon: EditMinor
@@ -534,8 +525,6 @@ global_sections:
     #   config:
     #     placeholder: Drag and Drop a file
     #   fileName: background
-    #   hooks: 
-    #     afterSettingUpdate: uploadImage
 
     # - id: "register|--bg-opacity-image|"
     #   type: range-slider
@@ -550,7 +539,7 @@ global_sections:
     #     step: 0.05
     # Form image
 
-    - id: "register|--header-img|"
+    - id: "|--header-img|"
       type: dropzone
       label: Header image
       icon: ''
@@ -559,10 +548,8 @@ global_sections:
       config:
         placeholder: Drag and Drop a file
       fileName: background
-      hooks: 
-        afterSettingUpdate: uploadImage
 
-    - id: "register|--img-max-width|px"
+    - id: "|--img-max-width|px"
       type: range-slider
       label: Image Width
       icon: EditMinor
@@ -573,7 +560,7 @@ global_sections:
         min: 100
         max: 300
         step: 10
-    - id: "register|--img-position|"
+    - id: "|--img-position|"
       type: select
       label: Image Position
       icon: EditMinor
@@ -590,10 +577,6 @@ global_sections:
           value: column-reverse
         - title: Left
           value: row
-
-
-  
-
 
   blocks: []
 
