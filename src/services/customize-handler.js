@@ -40,14 +40,14 @@ const loadPage = (event) => {
 const parseState = (state) => {
     const { pages, global_sections } = state;
     if (!pages) return null;
-    window.parsedState = parseConfiguration({ pages, global_sections });
-    window.parsedState.style['--animation'] = 'none';
-    loadTheme(window.parsedState);
+    globalThis.parsedState = parseConfiguration({ pages, global_sections });
+    globalThis.parsedState.style['--animation'] = 'none';
+    loadTheme(globalThis.parsedState);
 };
 
 const loadAnimation = (value) => {
-    window.parsedState.style['--animation'] = value;
-    loadTheme(window.parsedState);
+    globalThis.parsedState.style['--animation'] = value;
+    loadTheme(globalThis.parsedState);
 };
 
 const loadImage = (value) => {
@@ -64,9 +64,8 @@ const parseEvent = (event) => {
 };
 
 const disableClick = () => {
-    document
-        .querySelector(`#${IDs.APP_ID}`)
-        .style.setProperty('pointer-events', 'none');
+    const nodeApp = document.querySelector(`#${IDs.APP_ID}`);
+    nodeApp.style.setProperty('pointer-events', 'none');
 };
 
 const parseMessage = (message) => {

@@ -13,7 +13,7 @@ var detail = {
                                 },
                                 'form-group-landing-section': {
                                     'landing|yourEmail|': 'Write your email',
-                                    'landing|validate|': 'Submit',
+                                    'landing|validate|': 'Valider',
                                     'landing|hasSocialLogin|': 0,
                                 },
                             },
@@ -26,7 +26,7 @@ var detail = {
                             groups: {
                                 'register-section-header-group': {
                                     'register|createAccount|':
-                                        'Account creation ',
+                                        'Création de compte',
                                     'register|fillInfoToCreateAccount|': '',
                                 },
                                 'register||': {
@@ -35,8 +35,27 @@ var detail = {
                                     'register|redirectAfterRegister|': '',
                                 },
                             },
-                            blocks: {},
-                            blocks_order: [],
+                            blocks: {
+                                'register|inputBlocks|email': {
+                                    '89ed0e70-d646-4e0a-b817-1a60be104370': {
+                                        'register|name|': 'customer[email]',
+                                        'register|message|':
+                                            'This block can be used to sort the input fields present in the register form',
+                                    },
+                                },
+                                'register|inputBlocks|firstName': {
+                                    '730511bf-4fa5-4a2e-8b0b-b41e83a37d41': {
+                                        'register|placeholder|':
+                                            'Your first name',
+                                        'register|name|':
+                                            'customer[first_name]',
+                                    },
+                                },
+                            },
+                            blocks_order: [
+                                '730511bf-4fa5-4a2e-8b0b-b41e83a37d41',
+                                '89ed0e70-d646-4e0a-b817-1a60be104370',
+                            ],
                         },
                     },
                     'signin||': {
@@ -44,12 +63,12 @@ var detail = {
                             groups: {
                                 'signin||': {
                                     'signin|yourPassword|':
-                                        'Write your passwords!',
+                                        'Write your password',
                                     'signin|wrongPsw|':
                                         'Incorrect password. Please, try again!',
                                     'signin|signIn|': 'Submit',
                                     'signin|loginRedirect|': 'products',
-                                    'signin|loginTitle|': 'Login  ',
+                                    'signin|loginTitle|': 'Login ',
                                 },
                             },
                             blocks: {},
@@ -136,10 +155,10 @@ var detail = {
             buttons: {
                 groups: {
                     'font-style': {
-                        '|--btn-font-size|em': '1.3',
-                        '|--btn-font-family|': 'None',
+                        '|--btn-font-size|em': '1.4',
+                        '|--btn-font-family|': 'BeaufortCondensedMedium',
                         '|--btn-border|': '1px solid #000000',
-                        '|--btn-color|': 'rgba(0,0,0,1)',
+                        '|--btn-color|': 'rgba(12,5,5,1)',
                         '|--btn-bg-color|': 'rgba(255,255,255,1)',
                         '|--btn-padding|px': '5',
                     },
@@ -156,9 +175,13 @@ var detail = {
                         'landing|--content-width|px': '375',
                         'landing|--content-padding-bottom|px': '0',
                         'landing|--content-padding-top|px': '0',
+                        '|--partial-width|px': '320',
+                        '|--content-width|px': '465',
+                        '|--content-padding-top|px': '17.5',
+                        '|--content-padding-bottom|px': '52.5',
                     },
                     theme: {
-                        'register|layout|': 'popup-centered',
+                        'register|layout|': 'popup-drawer',
                         'register|--content-vertical-alignment|': 'center',
                         'register|--animation|': 'slide-from-right',
                         'register|--container-bg-image|':
@@ -169,6 +192,13 @@ var detail = {
                         'register|--img-max-width|px': 200,
                         'register|--img-position|': 'column',
                         'register|--label-font-weight': 400,
+                        '|layout|': 'popup-centered',
+                        '|--header-img|': {
+                            statusCode: 200,
+                            url: 'https://customize-uploaded-files.s3.amazonaws.com/alfred-devstrore-antonio/14c6be6e-90cf-4605-900c-5ac2dfd4afed.png?AWSAccessKeyId=ASIA443P2P5PCCSMYZWB&Expires=1630513653&Signature=%2Bm0hwZK%2BTGnrTO9E6FJZe%2Bz1oXw%3D&x-amz-security-token=IQoJb3JpZ2luX2VjELn%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJGMEQCIExMnIrs3cVjQUvVA0WWkLnRUmIMsiV9tcBopWnj60VpAiAu%2BrYfdLCH6YA6B8QapVGlTTFCdLXUicocbY1kv895YiqiAgjx%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAIaDDg4NjYwODM5NjEyNiIMM4LE3wzEp6Dve7FHKvYBi7wFPwmRd1AYpsK2C7v066EbXX8TmWJg%2BB%2BuKjfS5x%2BROIWThP0Lb8EAm%2FRDg90xW7sZUSD%2BxWkzDV1PxlFw%2BpP3RmQyn4An62JM%2Fazl%2FTJJuJTnOqkqU5qGOoWg5i9SNxwNFAITs6RA2nYxtMEGtH1eeH%2F4GyMrCHZSnN9fMu6bg6d5MOvjB3nInqpJy4OHpXDIM7TvbUERxd5C%2FTif2M2wKlEAIWhZyk7ooyhwcnExC8W1M6Gf%2FEt2em%2F8%2BPDC0I540IKWv2twO%2B2UjH9UQaMGqZn1oJZ54C18letZmyEFYix%2BoPV8KIo1K3Lj%2BfKEaFCxO7sVMO%2FMvokGOpsBmDHMkfOM%2B3WI762fRno%2FSR%2FJdmULKqRjVXkO%2Bl0J8ZHWXTIUZ6QGwlOKUdRd15JWNal1h%2F5PYNmiju1L%2FHQ0N5YfO9A3l1ifXRuJ1k5nsSHMsX1nnzr8WnaSQ4KlCOpS6W93A%2Bf%2BZKiLwJYe1bZlsl0PvwmvxRD6QvjRuNYZ1ThqQREuWNLqslZ2YYrUhhPPTX6NEWCHmrQe9Ok%3D',
+                        },
+                        '|--img-max-width|px': '180',
+                        '|--animation|': 'fade-in-show',
                     },
                 },
                 blocks: {},
@@ -203,12 +233,10 @@ var detail = {
         action: 'trigger',
         target: 'setting:update',
         params: {
-            value: 'Write your passwords!',
-            page_id: 'popup-de-login',
-            section_id: '27accd6e-afda-4c14-ad32-35a14c466035',
-            section_type_id: 'signin||',
-            setting_id: 'signin|yourPassword|',
-            group_id: 'signin||',
+            value: 'fade-in-show',
+            setting_id: '|--animation|',
+            global_section_group_id: 'theme',
+            global_section_id: 'theme',
         },
     },
 };
