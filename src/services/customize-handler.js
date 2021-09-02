@@ -81,7 +81,7 @@ const parseMessage = (message) => {
 
 if (
     window.location !== window.parent.location ||
-    /:\/\/localhost/.test(window.location.origin)
+    /:\/\/localhost|127\.0\.0\.1/.test(window.location.origin)
 ) {
     console.log('-----customize handler-----');
     globalThis.parseConfiguration = parseConfiguration;

@@ -245,6 +245,7 @@ var detail = {
 };
 
 var customizeEvent = new CustomEvent('message', { detail });
+
 globalThis.dispatchEvent(customizeEvent);
 
 (() => {
