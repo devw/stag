@@ -143,6 +143,9 @@ var detail = {
                         'register|--input-margin|em': '0.8',
                         'register|--input-radius|px': '0',
                         'register|--border-color-focus|': 'rgba(0, 0, 0, 1)',
+                        '|--input-padding|': '0px 0px 0px 0px ',
+                        '|--input-line|': '1px solid black',
+                        '|--input-radius|px': '3',
                     },
                     'form-input-error': {
                         'register|errorIcon|': 'label-none',
@@ -169,14 +172,13 @@ var detail = {
                 groups: {
                     'popup-container': {
                         '|--content-bg-color|': 'rgba(255,255,255,1)',
-                        'landing|--partial-width|px': '265',
+                        'landing|--form-width|px': '265',
                         'register|--content-padding|': '10px 0px 10px 5px ',
                         '|--container-border-radius|%': '0',
                         'landing|--content-width|px': '375',
                         'landing|--content-padding-bottom|px': '0',
                         'landing|--content-padding-top|px': '0',
-                        '|--partial-width|px': '320',
-                        '|--content-width|px': '465',
+                        '|--form-width|px': '248',
                         '|--content-padding-top|px': '17.5',
                         '|--content-padding-bottom|px': '52.5',
                     },
@@ -195,10 +197,11 @@ var detail = {
                         '|layout|': 'popup-centered',
                         '|--header-img|': {
                             statusCode: 200,
-                            url: 'https://customize-uploaded-files.s3.amazonaws.com/alfred-devstrore-antonio/14c6be6e-90cf-4605-900c-5ac2dfd4afed.png?AWSAccessKeyId=ASIA443P2P5PCCSMYZWB&Expires=1630513653&Signature=%2Bm0hwZK%2BTGnrTO9E6FJZe%2Bz1oXw%3D&x-amz-security-token=IQoJb3JpZ2luX2VjELn%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJGMEQCIExMnIrs3cVjQUvVA0WWkLnRUmIMsiV9tcBopWnj60VpAiAu%2BrYfdLCH6YA6B8QapVGlTTFCdLXUicocbY1kv895YiqiAgjx%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAIaDDg4NjYwODM5NjEyNiIMM4LE3wzEp6Dve7FHKvYBi7wFPwmRd1AYpsK2C7v066EbXX8TmWJg%2BB%2BuKjfS5x%2BROIWThP0Lb8EAm%2FRDg90xW7sZUSD%2BxWkzDV1PxlFw%2BpP3RmQyn4An62JM%2Fazl%2FTJJuJTnOqkqU5qGOoWg5i9SNxwNFAITs6RA2nYxtMEGtH1eeH%2F4GyMrCHZSnN9fMu6bg6d5MOvjB3nInqpJy4OHpXDIM7TvbUERxd5C%2FTif2M2wKlEAIWhZyk7ooyhwcnExC8W1M6Gf%2FEt2em%2F8%2BPDC0I540IKWv2twO%2B2UjH9UQaMGqZn1oJZ54C18letZmyEFYix%2BoPV8KIo1K3Lj%2BfKEaFCxO7sVMO%2FMvokGOpsBmDHMkfOM%2B3WI762fRno%2FSR%2FJdmULKqRjVXkO%2Bl0J8ZHWXTIUZ6QGwlOKUdRd15JWNal1h%2F5PYNmiju1L%2FHQ0N5YfO9A3l1ifXRuJ1k5nsSHMsX1nnzr8WnaSQ4KlCOpS6W93A%2Bf%2BZKiLwJYe1bZlsl0PvwmvxRD6QvjRuNYZ1ThqQREuWNLqslZ2YYrUhhPPTX6NEWCHmrQe9Ok%3D',
+                            url: 'https://download.logo.wine/logo/Google_Chrome/Google_Chrome-Logo.wine.png',
                         },
-                        '|--img-max-width|px': '180',
+                        '|--img-max-width|px': '220',
                         '|--animation|': 'fade-in-show',
+                        '|--img-position|': 'column-reverse',
                     },
                 },
                 blocks: {},
@@ -240,6 +243,11 @@ var detail = {
         },
     },
 };
-
 var customizeEvent = new CustomEvent('message', { detail });
 globalThis.dispatchEvent(customizeEvent);
+
+(() => {
+    var el = document.querySelector('#login-popup');
+    el.style.setProperty('--large-font-size', '2em');
+    el.style.setProperty('--img-position', 'column');
+})();

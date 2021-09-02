@@ -6,7 +6,7 @@
         "--ternary-text-color": "rgba(0,0,0,1)",
         "--secondary-text-color": "rgba(0,0,0,1)",
         "--primary-text-color": "rgba(0,0,0,1)",
-        "--partial-width": "380px",
+        "--form-width": "380px",
         "--medium-text-size": "1.1em",
         "--large-font-size": "1.6em",
         "--label-font-weight": "700",
@@ -27,8 +27,7 @@
         "--btn-color": "#222",
         "--btn-bg-color": "#fdc951",
         "--bg-opacity-image": "1",
-        "--animation": "none",
-        "--content-width": "440px"
+        "--animation": "none"
     },
     "text": {
         "choiceBlocks": [

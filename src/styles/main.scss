@@ -21,7 +21,6 @@ body.remove-scrolling {
         max-height: 100vh;
         min-height: 28%;
         overflow-y: auto;
-        width: var(--content-width, auto);
         padding-top: var(--content-padding-top, auto);
         padding-bottom: var(--content-padding-bottom, auto);
         position: relative;
@@ -30,7 +29,6 @@ body.remove-scrolling {
     .content .partials {
         max-height: 0;
         overflow: hidden;
-        width: var(--partial-width);
     }
     .content .partials.partials-show {
         max-height: 900px;
