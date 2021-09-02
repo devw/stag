@@ -6,8 +6,15 @@
     },
     "editor.wordWrap": "wordWrapColumn",
     "editor.wordWrapColumn": 120,
+    "liveServer.settings.ignoreFiles": [
+        ".vscode/**",
+        "**/*.scss",
+        "**/*.sass",
+        "**/*.js",
+    ],
     "workbench.colorCustomizations": {
         "activityBar.background": "#449b38",
-        "tab.activeBorder": "#fff"
-    }
+        "tab.activeBorder": "#fff",
+        "tab.activeBorderTop": "#fff"
+    },
 }
