@@ -8,7 +8,8 @@
     "editor.wordWrapColumn": 120,
     "liveServer.settings.ignoreFiles": [
         ".vscode/**",
-        "src/**"
+        "src/**",
+        "tests/**"
     ],
     "workbench.colorCustomizations": {
         "activityBar.background": "#449b38",

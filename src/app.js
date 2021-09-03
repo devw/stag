@@ -4,6 +4,7 @@ require('./styles/form.scss');
 require('./styles/main.scss');
 require('./styles/popup.scss');
 require('./styles/register.scss');
+require('./styles/reset.scss');
 const { loadTheme } = require('./actions');
 const { IDs } = require('./config');
 const { getConfiguration } = require('./services');
