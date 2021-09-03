@@ -1,19 +1,36 @@
 <div class="title">{{createAccount}}</div>
 <div class="sub-title text t-4">{{fillInfoToCreateAccount}}</div>
 
-<form method="POST" accept-charset="UTF-8" novalidate="novalidate" class="{{formStyle}}"
-    blocks_order="{{blocks_order}}">
+<form
+    method="POST"
+    accept-charset="UTF-8"
+    novalidate="novalidate"
+    class="{{formStyle}}"
+    blocks_order="{{blocks_order}}"
+>
     <input type="hidden" name="return_to" value="{{redirectAfterRegister}}" />
     <input type="hidden" name="customer[tags]" value="" />
 
-    <input type="hidden" name="form_type" value="create_customer" /><input type="hidden" name="utf8" value="✓" />
+    <input type="hidden" name="form_type" value="create_customer" /><input
+        type="hidden"
+        name="utf8"
+        value="✓"
+    />
 
     {{#inputBlocks}}
     <div block-id="{{id}}">
-        <input required type="text" class="input-text" name="{{name}}" id="{{name}}" placeholder="{{placeholder}}" />
-        <label for={{name}}>{{placeholder}}</label>
+        <input
+            required
+            type="text"
+            class="input-text"
+            name="{{name}}"
+            id="{{name}}"
+            placeholder="{{placeholder}}"
+        />
+        <label for="{{name}}">{{placeholder}}</label>
         {{#error}}
-        <label class="label-error"><i class="fa {{errorIcon}}"></i>{{error}}
+        <label class="label-error"
+            ><i class="fa {{errorIcon}}"></i>{{error}}
         </label>
         {{/error}}
     </div>
@@ -22,15 +39,24 @@
     <!-- choiceBlocks -->
     <!-- lineStyle can be multi-line-->
     {{#choiceBlocks}}
-    <div block-id="{{id}}" class="choice-block js-opt  {{choiceStyle}} {{lineStyle}}">
+    <div
+        block-id="{{id}}"
+        class="choice-block js-opt  {{choiceStyle}} {{lineStyle}}"
+    >
         {{#hasLabel}}
         <label class="{{labelPosition}}">{{label}}</label>
         {{/hasLabel}}
         <!-- choice-list -->
         {{#choiceList }}
         <div>
-            <input type="checkbox" value="{{.}}" data-is-tag="{{isTag}}" data-tag="{{tag}}"
-                data-namespace="{{namespace}}" data-key="{{key}}" />
+            <input
+                type="checkbox"
+                value="{{.}}"
+                data-is-tag="{{isTag}}"
+                data-tag="{{tag}}"
+                data-namespace="{{namespace}}"
+                data-key="{{key}}"
+            />
             <label class="label-choice-list">{{.}}</label>
         </div>
         {{/choiceList}}
@@ -48,12 +74,27 @@
     {{#dateBlocks}}
     <div block-id="{{id}}" class="{{pickerStyle}}">
         <div class="dropdown-date"></div>
-        <input class="input-text picker-date js-date" required type="text" data-is-tag="{{isTag}}" minDate="{{minDate}}"
-            maxDate="{{maxDate}}" placeholder="{{placeholder}}" data-tag="{{tag}}" data-namespace="{{namespace}}"
-            data-key="{{key}}" altFormat="j-F-Y" altInput="true" enableTime="{{enableTime}}" mode="{{mode}}"
-            inputStyle="{{inputStyle}}" time_24hr="{{time_24hr}}" />
+        <input
+            class="input-text picker-date js-date"
+            required
+            type="text"
+            data-is-tag="{{isTag}}"
+            minDate="{{minDate}}"
+            maxDate="{{maxDate}}"
+            placeholder="{{placeholder}}"
+            data-tag="{{tag}}"
+            data-namespace="{{namespace}}"
+            data-key="{{key}}"
+            altFormat="j-F-Y"
+            altInput="true"
+            enableTime="{{enableTime}}"
+            mode="{{mode}}"
+            inputStyle="{{inputStyle}}"
+            time_24hr="{{time_24hr}}"
+        />
         <label>{{placeholder}}</label>
-        <label class="label-error"><i class="fa {{errorIcon}}"></i>{{error}}
+        <label class="label-error"
+            ><i class="fa {{errorIcon}}"></i>{{error}}
         </label>
     </div>
     {{/dateBlocks}}
