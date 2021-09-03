@@ -28,10 +28,7 @@
         "--img-max-width": "200px",
         "--img-position": "column",
         "--label-font-weight": "700",
-        "--partial-width": "300px",
-        "--content-width": "680px",
-        "--content-padding-top": "20px",
-        "--content-padding-bottom": "20px"
+        "--form-width": "300px"
     },
     "text": {
         "choiceBlocks": [

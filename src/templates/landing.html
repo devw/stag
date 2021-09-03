@@ -3,15 +3,26 @@
 <form action="javascript:void(0);" class="{{formStyle}}">
     <div>
         {{#hasSocialLogin }}
-        <input type="submit" style="
+        <input
+            type="submit"
+            style="
                 background: none;
                 border: none;
                 font-weight: 900;
                 cursor: pointer;
                 position: absolute;
-            " disabled="" value="OK" />
+            "
+            disabled=""
+            value="OK"
+        />
         {{/hasSocialLogin }}
-        <input class="input-text" id="email" name="email" placeholder="{{yourEmail}}" type="email" />
+        <input
+            class="input-text"
+            id="email"
+            name="email"
+            placeholder="{{yourEmail}}"
+            type="email"
+        />
         <label for="email">{{yourEmail}}</label>
     </div>
     {{#hasSocialLogin }}
@@ -26,6 +37,7 @@
         <button class="btn btn-primary" disabled="">
             {{validate}} &nbsp;<i class="fa fa-spinner fa-spin off"></i>
         </button>
+        <label for="">&nbsp;</label>
     </div>
     {{/hasSocialLogin }}
 </form>

@@ -28,7 +28,7 @@
         "--large-font-size": "2.1em",
         "--large-line-height": "50px",
         "--medium-text-size": "1.1em",
-        "--partial-width": "420px",
+        "--form-width": "420px",
         "--placeholder-color": "#666",
         "--primary-text-color": "rgba(0,0,0,1)",
         "--secondary-text-color": "rgba(0,0,0,1)",
@@ -40,9 +40,7 @@
     "text": {
         "choiceBlocks": [
             {
-                "choiceList": [
-                    "Keep me up to date with news."
-                ],
+                "choiceList": ["Keep me up to date with news."],
                 "hasMultiChoice": 0,
                 "hasMultiLine": false,
                 "hasLabel": 0,
@@ -55,9 +53,7 @@
                 "id": "485fa168-2c98-48f3-9cd7-5a3431e204f7"
             },
             {
-                "choiceList": [
-                    "... and via SMS for last minute offers!"
-                ],
+                "choiceList": ["... and via SMS for last minute offers!"],
                 "hasMultiChoice": 0,
                 "hasMultiLine": false,
                 "hasLabel": 0,
@@ -70,10 +66,7 @@
                 "id": "ss5fa168-2c98-48f3-9cd7-5a3431e204f7"
             },
             {
-                "choiceList": [
-                    "Madame",
-                    "Sir"
-                ],
+                "choiceList": ["Madame", "Sir"],
                 "hasMultiChoice": 0,
                 "hasMultiLine": false,
                 "hasLabel": 0,

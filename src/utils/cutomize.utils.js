@@ -15,6 +15,11 @@ const addMissingBlock = ({ text }, name, placeholder, error) => {
     }
 };
 
+const sortKeys = (obj) =>
+    Object.keys(obj)
+        .sort()
+        .reduce((acc, key) => ({ ...acc, [key]: obj[key] }), {});
+
 const addBlockId = (e) => {
     const tmp = {};
     Object.keys(e[1]).forEach((k) => {
@@ -70,6 +75,8 @@ module.exports.parseConfiguration = (jsonTree) => {
 
     addMissingBlock(json, 'customer[email]', 'yourEmail');
     addMissingBlock(json, 'customer[password]', 'yourPassword', true);
+    json.style = sortKeys(json.style);
+    console.log('json:', json);
 
     return json;
 };

@@ -1,13 +1,21 @@
 {
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 140,
     "files.exclude": {
         "**/node_modules/": true,
         "**/dist/": true,
         "**/.DS_Store": true
     },
-    "editor.wordWrap": "wordWrapColumn",
-    "editor.wordWrapColumn": 120,
+    "files.autoSave": "onFocusChange",
+    "liveServer.settings.ignoreFiles": [
+        ".vscode/**",
+        "src/**",
+        "tests/**",
+        "public/**"
+    ],
     "workbench.colorCustomizations": {
         "activityBar.background": "#449b38",
-        "tab.activeBorder": "#fff"
-    }
+        "tab.activeBorder": "#fff",
+        "tab.activeBorderTop": "#fff"
+    },
 }

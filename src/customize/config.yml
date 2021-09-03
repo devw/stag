@@ -397,7 +397,7 @@ global_sections:
       hint: It sets the background color.
       required: true
 
-    - id: "|--partial-width|px"
+    - id: "|--form-width|px"
       type: range-slider
       label: Form width
       icon: EditMinor
@@ -408,38 +408,6 @@ global_sections:
         min: 200
         max: 600
         step: 2
-
-    - id: "|--content-width|px"
-      type: range-slider
-      label: Popup width
-      icon: EditMinor
-      default: 20
-      hint: It sets the form's width
-      required: true
-      config:
-        min: 250
-        max: 800
-        step: 5
-
-    - id: "|--content-padding-top|px"
-      type: range-slider
-      label: Popup padding top
-      icon: EditMinor
-      default: 20
-      config:
-        min: 0
-        max: 300
-        step: 2.5
-
-    - id: "|--content-padding-bottom|px"
-      type: range-slider
-      label: Popup padding bottom 
-      icon: EditMinor
-      default: 20
-      config:
-        min: 0
-        max: 300
-        step: 2.5
 
     - id: '|--container-border-radius|%'
       type: range-slider
@@ -569,12 +537,12 @@ global_sections:
         options:
         - title: Top
           value: column
-        - title: Right
-          value: row-reverse
+        # - title: Right
+        #   value: row-reverse
         - title: Bottom
           value: column-reverse
-        - title: Left
-          value: row
+        # - title: Left
+        #   value: row
 
   blocks: []
 

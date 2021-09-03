@@ -1,32 +1,64 @@
 {
     "style": {
+        "--animation": "fade-in-show",
+        "--bg-opacity-image": "1",
+        "--border-color-focus": "rgba(0, 0, 0, 1)",
+        "--btn-bg-color": "rgba(255,255,255,1)",
+        "--btn-border": "1px solid #000000",
+        "--btn-color": "rgba(12,5,5,1)",
+        "--btn-font-family": "BeaufortCondensedMedium",
+        "--btn-font-size": "1.4em",
+        "--btn-padding": "5px",
+        "--container-bg-image": "url(url(https://cdn.shopify.com/s/files/1/2598/9270/products/Packshotfriandiseschatvolaille_600x.jpg?v=159948757))",
+        "--container-border-radius": "0%",
+        "--content-bg-color": "rgba(255,255,255,1)",
+        "--content-padding": "10 0 10 5",
+        "--content-padding-bottom": "52.5px",
+        "--content-padding-top": "17.5px",
+        "--content-vertical-alignment": "center",
+        "--content-width": "375px",
+        "--error-bg-color": "rgba(240, 207, 207, 1)",
+        "--error-color": "rgba(208, 26, 26, 1)",
+        "--form-font-family": "None",
+        "--form-padding": "20px",
+        "--form-width": "248px",
+        "--header-img": "url(url(https://download.logo.wine/logo/Google_Chrome/Google_Chrome-Logo.wine.png))",
+        "--img-max-width": "220px",
+        "--img-position": "column-reverse",
+        "--input-bg-color": "rgba(255,255,255, 1)",
+        "--input-box-shadow": "rgba(255,255,255, 1)",
+        "--input-line": "1px solid black",
+        "--input-line-direction": "All",
+        "--input-line-bottom": "var(--input-line)",
+        "--input-line-left": "var(--input-line)",
+        "--input-line-right": "var(--input-line)",
+        "--input-line-top": "var(--input-line)",
+        "--input-margin": "0.8em",
+        "--input-padding": "0px 0px 0px 0px ",
+        "--input-radius": "3px",
+        "--label-font-size": "1.5em",
+        "--label-font-weight": "400",
         "--large-font-size": "2em",
         "--medium-text-size": "1.1em",
-        "--container-border-radius": "0.1%",
         "--primary-text-color": "rgba(0,0,0,1)",
         "--secondary-text-color": "rgba(0,0,0,1)",
         "--ternary-text-color": "rgba(0,0,0,1)",
-        "--error-color": "rgba(208, 26, 26, 1)",
-        "--error-bg-color": "rgba(240, 207, 207, 1)",
-        "--btn-bg-color": "rgba(222,113,84, 1)",
-        "--input-padding": "10px 0px 10px 5px ",
-        "--input-line": "2px solid #4a8",
-        "--input-line-direction": "bottom",
-        "--input-margin": "0.8em",
-        "--input-radius": "0.8px",
-        "--animation": "none",
-        "--container-bg-image": "https://customize-uploaded-files.s3.amazonaws.com/alfred-devstrore-antonio/a9b9a6e7-05e0-41f7-838a-e400955e8161.jpg",
-        "--bg-opacity-image": "1",
-        "--header-img": "https://customize-uploaded-files.s3.amazonaws.com/alfred-devstrore-antonio/a9b9a6e7-05e0-41f7-838a-e400955e8161.jpg",
-        "--img-max-width": "200px",
-        "--img-position": "column"
+        "--title-font-family": "None",
+        "--title-font-weight": "400"
     },
     "text": {
         "choiceBlocks": [],
         "inputBlocks": [
             {
-                "placeholder": "Write your email",
-                "name": "customer[email]"
+                "name": "customer[email]",
+                "message": "This block can be used to sort the input fields present in the register form",
+                "id": "89ed0e70-d646-4e0a-b817-1a60be104370",
+                "placeholder": "Write your email"
+            },
+            {
+                "placeholder": "Your first name",
+                "name": "customer[first_name]",
+                "id": "730511bf-4fa5-4a2e-8b0b-b41e83a37d41"
             },
             {
                 "placeholder": "Write your password",
@@ -36,28 +68,34 @@
         ],
         "dateBlocks": [],
         "activateBlocks": [],
-        "loginRegister": "Connexion / Inscription",
-        "enterYourEmailToContinue": "Renseignez votre adresse email pour continuer.",
+        "loginRegister": "HI THERE",
+        "enterYourEmailToContinue": "",
         "yourEmail": "Write your email",
-        "validate": "Confirm",
+        "validate": "Valider",
         "hasSocialLogin": 0,
-        "blocks_order": [],
+        "blocks_order": [
+            "730511bf-4fa5-4a2e-8b0b-b41e83a37d41",
+            "89ed0e70-d646-4e0a-b817-1a60be104370"
+        ],
         "createAccount": "Création de compte",
-        "fillInfoToCreateAccount": "Renseignez vos informations pour créer votre compte Franklin.",
+        "fillInfoToCreateAccount": "",
         "registerAccount": "Créer un compte",
         "redirectAfterRegister": "",
+        "message": "This block can be used to sort the input fields present in the register form",
+        "undefined": "https://download.logo.wine/logo/Google_Chrome/Google_Chrome-Logo.wine.png",
         "yourPassword": "Write your password",
         "wrongPsw": "Incorrect password. Please, try again!",
         "signIn": "Submit",
         "loginRedirect": "products",
+        "loginTitle": "Login ",
         "activateTitle": "Activate",
         "activateSubTitle": "Fill in your email to activate your account.",
         "activateBtn": "Resend the email",
         "recoveryTitle": "Recover password",
         "recoverySubTitle": "Enter your email to receive a reset password link.",
         "recoveryBtn": "Recover",
+        "formStyle": "label-fixed-top",
         "errorIcon": "label-none",
-        "formStyle": "label-go-up",
         "layout": "popup-centered",
         "hasPswMinLength": "",
         "pswMinLength": 5,
@@ -70,7 +108,29 @@
         "hasPswNumber": "",
         "pswNumberErr": "The password must contain at least a number",
         "hasPswSpecialCharacter": "",
-        "pswSpecialCharacterErr": "The password must contain at least a special character"
-    },
-    "isActive": true
+        "pswSpecialCharacterErr": "The password must contain at least a special character",
+        "partials": [
+            {
+                "id": "landing",
+                "html": "<div class=\"title\">HI THERE</div>\n<div class=\"sub-title\"></div>\n<form action=\"javascript:void(0);\" class=\"label-fixed-top\">\n    <div>\n        <input class=\"input-text\" id=\"email\" name=\"email\" placeholder=\"Write your email\" type=\"email\" />\n        <label for=\"email\">Write your email</label>\n    </div>\n    <div>\n        <button class=\"btn btn-primary\" disabled=\"\">\n            Valider &nbsp;<i class=\"fa fa-spinner fa-spin off\"></i>\n        </button>\n    </div>\n</form>"
+            },
+            {
+                "id": "register",
+                "html": "<div class=\"title\">Création de compte</div>\n<div class=\"sub-title text t-4\"></div>\n\n<form method=\"POST\" accept-charset=\"UTF-8\" novalidate=\"novalidate\" class=\"label-fixed-top\"\n    blocks_order=\"730511bf-4fa5-4a2e-8b0b-b41e83a37d41,89ed0e70-d646-4e0a-b817-1a60be104370\">\n    <input type=\"hidden\" name=\"return_to\" value=\"\" />\n    <input type=\"hidden\" name=\"customer[tags]\" value=\"\" />\n\n    <input type=\"hidden\" name=\"form_type\" value=\"create_customer\" /><input type=\"hidden\" name=\"utf8\" value=\"✓\" />\n\n    <div block-id=\"89ed0e70-d646-4e0a-b817-1a60be104370\">\n        <input required type=\"text\" class=\"input-text\" name=\"customer[email]\" id=\"customer[email]\" placeholder=\"Write your email\" />\n        <label for=customer[email]>Write your email</label>\n    </div>\n    <div block-id=\"730511bf-4fa5-4a2e-8b0b-b41e83a37d41\">\n        <input required type=\"text\" class=\"input-text\" name=\"customer[first_name]\" id=\"customer[first_name]\" placeholder=\"Your first name\" />\n        <label for=customer[first_name]>Your first name</label>\n    </div>\n    <div block-id=\"\">\n        <input required type=\"text\" class=\"input-text\" name=\"customer[password]\" id=\"customer[password]\" placeholder=\"Write your password\" />\n        <label for=customer[password]>Write your password</label>\n        <label class=\"label-error\"><i class=\"fa label-none\"></i>true\n        </label>\n    </div>\n\n    <!-- choiceBlocks -->\n    <!-- lineStyle can be multi-line-->\n\n    <!--date blocks-->\n\n\n    <!-- Subscribe newsletter checkbox The news letter is like choiceList -->\n\n    \n    <div>\n        <button class=\"btn btn-primary\" disabled=\"\">\n            Créer un compte &nbsp;<i class=\"fa fa-spinner fa-spin off\"></i>\n        </button>\n    </div>\n</form>\n<div class=\"action js-back\"><i class=\"fa fa-arrow-left\"></i> Back</div>"
+            },
+            {
+                "id": "signin",
+                "html": "<div class=\"title\">Login </div>\n<div class=\"sub-title\"></div>\n\n<form method=\"post\" accept-charset=\"UTF-8\" novalidate=\"novalidate\" class=\"label-fixed-top\"\n    data-login-redirect=\"products\">\n    <input type=\"hidden\" name=\"form_type\" value=\"customer_login\" /><input type=\"hidden\" name=\"utf8\" value=\"✓\" />\n    <div>\n        <input type=\"email\" readonly name=\"customer[email]\" autocomplete=\"email\" class=\"input-text\"\n            placeholder=\"Write your email\" />\n        <label>Write your email</label>\n    </div>\n    <div>\n        <i class=\"fa fa-eye-slash js-show-psw\"></i>\n        <input type=\"password\" name=\"customer[password]\" class=\"input-text\" placeholder=\"Write your password\"\n            autocomplete=\"on\" />\n        <label>Write your password</label>\n        <label class=\"label-error js-signin-err\"><i class=\"fa label-none\"></i>Incorrect password. Please, try again!</label>\n    </div>\n    <button class=\"btn btn-primary\" disabled=\"\">\n        Submit &nbsp;<i class=\"fa fa-spinner fa-spin off\"></i>\n    </button>\n</form>\n<div class=\"action js-recovery\">Recover password</div>\n<div class=\"action js-back\"><i class=\"fa fa-arrow-left\"></i> Back</div>"
+            },
+            {
+                "id": "activate",
+                "html": "<div class=\"activate activate-no-tag\">\n    <div class=\"title\">Activate</div>\n    <div class=\"sub-title\">Fill in your email to activate your account.</div>\n    <form method=\"post\" accept-charset=\"UTF-8\" novalidate=\"novalidate\" class=\"label-fixed-top\">\n        <input type=\"hidden\" name=\"form_type\" value=\"customer_login\" /><input type=\"hidden\" name=\"utf8\" value=\"✓\" />\n        <button class=\"btn btn-primary\">\n            Resend the email &nbsp;<i class=\"fa fa-spinner fa-spin off\"></i>\n        </button>\n    </form>\n</div>\n"
+            },
+            {
+                "id": "recovery",
+                "html": "<div class=\"title\">Recover password</div>\n<div class=\"sub-title\">Enter your email to receive a reset password link.</div>\n<form method=\"post\" accept-charset=\"UTF-8\" class=\"label-fixed-top\">\n    <input\n        type=\"hidden\"\n        name=\"form_type\"\n        value=\"recover_customer_password\"\n    /><input type=\"hidden\" name=\"utf8\" value=\"✓\" />\n    <div>\n        <input\n            class=\"input-text\"\n            name=\"email\"\n            placeholder=\"Write your email\"\n            type=\"email\"\n        />\n        <label>Write your email</label>\n    </div>\n    <button class=\"btn btn-primary\">\n        Recover &nbsp;<i class=\"fa fa-spinner fa-spin off\"></i>\n    </button>\n</form>\n<div class=\"action js-back\"><i class=\"fa fa-arrow-left\"></i> Back</div>\n"
+            }
+        ],
+        "CONTAINER_ID": "container"
+    }
 }

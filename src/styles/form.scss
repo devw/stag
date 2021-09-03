@@ -4,8 +4,8 @@
         flex-direction: column;
         font-family: var(--form-font-family);
         justify-content: center;
-        margin-top: 20px;
-        padding: 0 10px;
+        padding: var(--form-padding, auto);
+        width: var(--form-width, auto);
     }
 
     form > div {
@@ -42,7 +42,6 @@
         bottom: var(--label-bottom);
         margin: unset;
         position: absolute;
-        text-transform: var(--placeholder-text-transform);
         transform-origin: 0 0;
         transition: transform 0.3s ease-in-out;
     }
@@ -61,9 +60,9 @@
         color: transparent;
     }
 
-    .label-go-up input:focus:not([type="checkbox"]) + label,
-    .label-go-up input:not(:placeholder-shown):not([type="checkbox"]) + label {
-        transform: translateY(-.8em) scale(0.8);
+    .label-go-up input:focus:not([type='checkbox']) + label,
+    .label-go-up input:not(:placeholder-shown):not([type='checkbox']) + label {
+        transform: translateY(-0.8em) scale(0.8);
     }
     /* START - GO UP */
 
@@ -71,9 +70,9 @@
     .label-go-down input::placeholder {
         color: transparent;
     }
-    .label-go-down input:focus:not([type="checkbox"]) + label,
+    .label-go-down input:focus:not([type='checkbox']) + label,
     .label-go-down
-        input:not(:placeholder-shown):not([type="checkbox"])
+        input:not(:placeholder-shown):not([type='checkbox'])
         + label {
         transform: translateY(1em) scale(0.8);
     }
@@ -82,8 +81,8 @@
     }
     /* START - GO DOWN */
 
-    .label-fixed-top :not([type="checkbox"]) + label,
-    .label-fixed-bottom :not([type="checkbox"]) + label {
+    .label-fixed-top :not([type='checkbox']) + label,
+    .label-fixed-bottom :not([type='checkbox']) + label {
         bottom: unset;
         display: block;
         font-size: 0.8em;
@@ -116,7 +115,7 @@
         display: none;
     }
 
-    :not([type="checkbox"]) label.label-error {
+    :not([type='checkbox']) label.label-error {
         background-color: var(--error-bg-color, rgb(240, 207, 207));
         bottom: unset;
         color: var(--error-color, rgb(208, 26, 26));
@@ -155,7 +154,7 @@
         min-width: unset;
     }
 
-    .choice-block input[type="checkbox"] {
+    .choice-block input[type='checkbox'] {
         -webkit-appearance: none;
         background-color: white;
         border: 1px solid #ddd;
@@ -163,15 +162,15 @@
         outline: none;
         vertical-align: middle;
     }
-    .choice-block input[type="checkbox"]:checked {
+    .choice-block input[type='checkbox']:checked {
         background-color: gray;
     }
 
-    .choice-block.single-choice input[type="checkbox"] {
+    .choice-block.single-choice input[type='checkbox'] {
         padding: 0.5em;
     }
 
-    .choice-block.multi-choice input[type="checkbox"] {
+    .choice-block.multi-choice input[type='checkbox'] {
         border-radius: 25%;
         padding: 0.5em;
     }

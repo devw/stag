@@ -9,7 +9,7 @@
         align-items: center;
         display: flex;
         flex-direction: var(--img-position, column);
-        gap: 18px;
+        gap: 0px; // TODO can I remove it?
         z-index: 2;
     }
     /* 
@@ -51,7 +51,7 @@
     .popup-full:before {
         background-image: var(--container-bg-image);
         background-size: cover;
-        content: " ";
+        content: ' ';
         height: 100vh;
         left: 0;
         opacity: var(--bg-opacity-image, 1);
@@ -90,7 +90,7 @@
     .popup-centered:before {
         background-image: var(--container-bg-image);
         background-size: cover;
-        content: " ";
+        content: ' ';
         height: 100vh;
         left: 0;
         opacity: var(--bg-opacity-image, 1);
