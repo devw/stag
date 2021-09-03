@@ -1,6 +1,6 @@
 const { IDs } = require('../config');
 
-const getRootNode = () => document.querySelector(`#${IDs.APP_ID}`);
+const getRootNode = () => document.body.shadowRoot.querySelector('div');
 const $q = (leaf) => getRootNode().querySelector(leaf);
 const $qq = (leaf) => getRootNode().querySelectorAll(leaf);
 

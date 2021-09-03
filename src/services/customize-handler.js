@@ -3,8 +3,9 @@ const { IDs } = require('../config.js');
 const { loadActions } = require('../actions/load.js');
 const { loadTheme } = require('../actions');
 const { parseConfiguration } = require('../utils/cutomize.utils');
+const { getRootNode } = require('../utils');
 
-window.parsedState = null;
+globalThis.parsedState = null;
 
 const changePage = (page) => {
     togglePage(page);
@@ -65,13 +66,14 @@ const parseEvent = (event) => {
 };
 
 const disableClick = () => {
-    const nodeApp = document.querySelector(`#${IDs.APP_ID}`);
+    const nodeApp = getRootNode();
     nodeApp.style.setProperty('pointer-events', 'none');
 };
 
 const parseMessage = (message) => {
     //TODO use closure to avoid global variable window.parsedState
     console.log('-------message--------\n', message);
+
     const { state, event } = message?.data || message?.detail;
     if (!event && !state) return null;
     disableClick();

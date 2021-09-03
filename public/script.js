@@ -1,25 +1,24 @@
 (() => {
-    const HEAD = document.getElementsByTagName("head")[0];
+    const HEAD = document.getElementsByTagName('head')[0];
 
-    // TODO fix with Shopify.shop
+    // TODO in prod the endpoint won't work (you can pass from proxy?)
     const ENDPOINT = globalThis?.Shopify
-        ? "https://login-popup-dev-configs.s3.amazonaws.com/public"
-        : "./";
+        ? 'https://login-popup-dev-configs.s3.amazonaws.com/public'
+        : './';
 
     const addCSS = (url) => {
         const link = `<link rel="stylesheet" href="${url}" />`;
-        HEAD.insertAdjacentHTML("afterbegin", link);
+        HEAD.insertAdjacentHTML('afterbegin', link);
     };
 
     const addJS = (url) => {
-        const script = document.createElement("script");
+        const script = document.createElement('script');
         script.src = url;
         HEAD.appendChild(script);
     };
 
     addJS(`${ENDPOINT}/bundle.js?t=${Math.random()}`);
-    addCSS(`${ENDPOINT}/main.css?t=${Math.random()}`);
     addCSS(
-        "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'
     );
-})()
+})();
