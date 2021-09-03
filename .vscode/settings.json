@@ -10,7 +10,8 @@
     "liveServer.settings.ignoreFiles": [
         ".vscode/**",
         "src/**",
-        "tests/**"
+        "tests/**",
+        "public/**"
     ],
     "workbench.colorCustomizations": {
         "activityBar.background": "#449b38",
