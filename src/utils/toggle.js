@@ -1,6 +1,8 @@
 const { IDs } = require('../config');
 
-const getRootNode = () => document.body.shadowRoot.querySelector('div');
+// TODO to fix because it hides the nav element
+const getRootNode = () =>
+    document.body.querySelector('nav').shadowRoot.querySelector('div');
 const $q = (leaf) => getRootNode().querySelector(leaf);
 const $qq = (leaf) => getRootNode().querySelectorAll(leaf);
 

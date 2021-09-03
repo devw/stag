@@ -18,6 +18,7 @@
     };
 
     addJS(`${ENDPOINT}/bundle.js?t=${Math.random()}`);
+    // TODO to fix because they are not inside the popup scope
     addCSS(
         'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'
     );

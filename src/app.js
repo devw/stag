@@ -4,7 +4,10 @@ const { getConfiguration } = require('./services');
 const { parseConfiguration } = require('./utils');
 
 setTimeout(async () => {
-    const shadowRoot = document.body.attachShadow({ mode: 'open' });
+    //TODO to fix because it hides the selected element
+    const shadowRoot = document
+        .querySelector('nav')
+        .attachShadow({ mode: 'open' });
     const node = document.createElement('login-popup');
     const promise = await getConfiguration();
     const config = parseConfiguration(await promise.json());
@@ -17,9 +20,9 @@ setTimeout(async () => {
 const getEndPoint = () =>
     globalThis?.Shopify
         ? 'https://login-popup-dev-configs.s3.amazonaws.com/public'
-        : './';
+        : '.';
 
 const getHtmlString = () => `
-        <link rel='stylesheet' href = '${getEndPoint()}./main.css';>
+        <link rel='stylesheet' href = '${getEndPoint()}/main.css';>
         <div id=${IDs.APP_ID}></div>
     `;
