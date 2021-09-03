@@ -1,11 +1,12 @@
 {
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 120,
     "files.exclude": {
         "**/node_modules/": true,
         "**/dist/": true,
         "**/.DS_Store": true
     },
-    "editor.wordWrap": "wordWrapColumn",
-    "editor.wordWrapColumn": 120,
+    "files.autoSave": "onFocusChange",
     "liveServer.settings.ignoreFiles": [
         ".vscode/**",
         "src/**",

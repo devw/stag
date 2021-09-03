@@ -13,7 +13,6 @@
         "--error-bg-color": "rgba(240, 207, 207, 1)",
         "--btn-bg-color": "#000",
         "--btn-color": "#fff",
-        "--content-padding-top": "30px",
         "--btn-border": "",
         "--btn-font-family": "BeaufortCondensedMedium",
         "--btn-font-size": "1.5em",
@@ -36,9 +35,7 @@
     "text": {
         "choiceBlocks": [
             {
-                "choiceList": [
-                    "(Optional) Keep me up to date with news."
-                ],
+                "choiceList": ["(Optional) Keep me up to date with news."],
                 "hasMultiChoice": 0,
                 "hasMultiLine": false,
                 "hasLabel": 0,

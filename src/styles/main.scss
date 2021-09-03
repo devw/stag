@@ -21,8 +21,6 @@ body.remove-scrolling {
         max-height: 100vh;
         min-height: 28%;
         overflow-y: auto;
-        padding-top: var(--content-padding-top, auto);
-        padding-bottom: var(--content-padding-bottom, auto);
         position: relative;
     }
 
@@ -53,7 +51,6 @@ body.remove-scrolling {
         font-weight: var(--title-font-weight);
         letter-spacing: var(--large-letter-spacing);
         line-height: 50px;
-        text-transform: var(--large-text-transform);
         color: var(--primary-text-color);
     }
 
@@ -72,7 +69,6 @@ body.remove-scrolling {
         border: var(--btn-border);
         cursor: pointer;
         padding: var(--btn-padding, 10px);
-        text-transform: none;
         width: 100%;
         margin-top: 15px;
         font-family: var(--btn-font-family);

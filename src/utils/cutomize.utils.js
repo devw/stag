@@ -71,5 +71,7 @@ module.exports.parseConfiguration = (jsonTree) => {
     addMissingBlock(json, 'customer[email]', 'yourEmail');
     addMissingBlock(json, 'customer[password]', 'yourPassword', true);
 
+    console.log(json);
+
     return json;
 };

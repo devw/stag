@@ -173,14 +173,11 @@ var detail = {
                     'popup-container': {
                         '|--content-bg-color|': 'rgba(255,255,255,1)',
                         'landing|--form-width|px': '265',
+                        '|--form-padding|px': '20',
                         'register|--content-padding|': '10px 0px 10px 5px ',
                         '|--container-border-radius|%': '0',
                         'landing|--content-width|px': '375',
-                        'landing|--content-padding-bottom|px': '0',
-                        'landing|--content-padding-top|px': '0',
                         '|--form-width|px': '248',
-                        '|--content-padding-top|px': '17.5',
-                        '|--content-padding-bottom|px': '52.5',
                     },
                     theme: {
                         'register|layout|': 'popup-drawer',
@@ -248,8 +245,12 @@ var customizeEvent = new CustomEvent('message', { detail });
 
 globalThis.dispatchEvent(customizeEvent);
 
+var el = document.querySelector('#login-popup');
+
 (() => {
-    var el = document.querySelector('#login-popup');
-    el.style.setProperty('--large-font-size', '2em');
-    el.style.setProperty('--img-position', 'column');
+    el.style.setProperty('pointer-events', 'all');
+    // el.style.setProperty('--large-font-size', '2em');
+    // el.style.setProperty('--img-position', 'column');
+    el.style.setProperty('--form-width', '500px');
+    el.style.setProperty('--form-padding', '10px');
 })();

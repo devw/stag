@@ -409,26 +409,6 @@ global_sections:
         max: 600
         step: 2
 
-    - id: "|--content-padding-top|px"
-      type: range-slider
-      label: Popup padding top
-      icon: EditMinor
-      default: 20
-      config:
-        min: 0
-        max: 300
-        step: 2.5
-
-    - id: "|--content-padding-bottom|px"
-      type: range-slider
-      label: Popup padding bottom 
-      icon: EditMinor
-      default: 20
-      config:
-        min: 0
-        max: 300
-        step: 2.5
-
     - id: '|--container-border-radius|%'
       type: range-slider
       label: Border Radius
