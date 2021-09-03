@@ -1,4 +1,4 @@
-var detail = {
+var defaultConfig = {
     state: {
         pages: {
             'popup-de-login': {
@@ -8,7 +8,8 @@ var detail = {
                         'f672a58c-aa43-46a9-9bbf-9026f150f1f8': {
                             groups: {
                                 'landing||': {
-                                    'landing|loginRegister|': 'HI THERE',
+                                    'landing|loginRegister|':
+                                        'Login or Register',
                                     'landing|enterYourEmailToContinue|': '',
                                 },
                                 'form-group-landing-section': {
@@ -137,13 +138,12 @@ var detail = {
                     'form-input': {
                         'register|--input-bg-color|': 'rgba(255,255,255, 1)',
                         'register|--input-box-shadow|': 'rgba(255,255,255, 1)',
-                        'register|--input-padding|': '10px 0px 10px 5px ',
+                        'register|--input-padding|px': '5',
                         'register|--input-line|': '1px solid black',
                         'register|--input-line-direction|': 'All',
                         'register|--input-margin|em': '0.8',
                         'register|--input-radius|px': '0',
                         'register|--border-color-focus|': 'rgba(0, 0, 0, 1)',
-                        '|--input-padding|': '0px 0px 0px 0px ',
                         '|--input-line|': '1px solid black',
                         '|--input-radius|px': '3',
                     },
@@ -173,8 +173,7 @@ var detail = {
                     'popup-container': {
                         '|--content-bg-color|': 'rgba(255,255,255,1)',
                         'landing|--form-width|px': '265',
-                        '|--form-padding|px': '20',
-                        'register|--content-padding|': '10px 0px 10px 5px ',
+                        '|--form-padding|': '10px 10px 40px 10px',
                         '|--container-border-radius|%': '0',
                         'landing|--content-width|px': '375',
                         '|--form-width|px': '248',
@@ -183,9 +182,6 @@ var detail = {
                         'register|layout|': 'popup-drawer',
                         'register|--content-vertical-alignment|': 'center',
                         'register|--animation|': 'slide-from-right',
-                        'register|--container-bg-image|':
-                            'https://cdn.shopify.com/s/files/1/2598/9270/products/Packshotfriandiseschatvolaille_600x.jpg?v=159948757',
-                        'register|--content-padding|': '10 0 10 5',
                         'register|--bg-opacity-image|': 1,
                         'register|--header-img|': '',
                         'register|--img-max-width|px': 200,
@@ -194,11 +190,11 @@ var detail = {
                         '|layout|': 'popup-centered',
                         '|--header-img|': {
                             statusCode: 200,
-                            url: 'https://download.logo.wine/logo/Google_Chrome/Google_Chrome-Logo.wine.png',
+                            url: 'https://icon-library.com/images/shopify-icon/shopify-icon-27.jpg',
                         },
                         '|--img-max-width|px': '220',
                         '|--animation|': 'fade-in-show',
-                        '|--img-position|': 'column-reverse',
+                        '|--img-position|': 'column',
                     },
                 },
                 blocks: {},
@@ -234,14 +230,14 @@ var detail = {
         target: 'setting:update',
         params: {
             value: 'fade-in-show',
-            setting_id: '|--animation|',
+            setting_id: 'register|--animation|',
             global_section_group_id: 'theme',
             global_section_id: 'theme',
         },
     },
 };
 
-var customizeEvent = new CustomEvent('message', { detail });
+var customizeEvent = new CustomEvent('message', { detail: defaultConfig });
 
 globalThis.dispatchEvent(customizeEvent);
 
@@ -251,6 +247,6 @@ var el = document.querySelector('#login-popup');
     el.style.setProperty('pointer-events', 'all');
     // el.style.setProperty('--large-font-size', '2em');
     // el.style.setProperty('--img-position', 'column');
-    el.style.setProperty('--form-width', '500px');
-    el.style.setProperty('--form-padding', '10px');
+    // el.style.setProperty('--form-width', '500px');
+    // el.style.setProperty('--form-padding', '10px');
 })();
