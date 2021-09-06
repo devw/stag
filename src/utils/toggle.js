@@ -1,9 +1,10 @@
 const { IDs } = require('../config');
+const { getShadowDOM } = require('./shadow-dom');
 
-// TODO to fix because it hides the nav element
-const getRootNode = () =>
-    document.body.querySelector('nav').shadowRoot.querySelector('div');
+const getRootNode = () => getShadowDOM().shadowRoot.querySelector('div');
+
 const $q = (leaf) => getRootNode().querySelector(leaf);
+
 const $qq = (leaf) => getRootNode().querySelectorAll(leaf);
 
 const getBlocksAttr = () => {
