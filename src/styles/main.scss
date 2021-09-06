@@ -4,161 +4,95 @@ body.remove-scrolling {
     overflow: hidden;
 }
 
-#login-popup {
-    > div {
-        text-align: center;
-        z-index: 99;
-        position: absolute;
-        animation: var(--animation) 1.5s;
-    }
+#login-popup > div {
+    text-align: center;
+    z-index: 99;
+    position: absolute;
+    animation: var(--animation) 1.5s;
+}
 
-    .content {
-        align-items: center;
-        background-color: var(--content-bg-color, #fff);
-        border-radius: var(--container-border-radius);
-        color: var(--primary-text-color);
-        justify-content: var(--content-vertical-alignment);
-        max-height: 100vh;
-        min-height: 28%;
-        overflow-y: auto;
-        position: relative;
-    }
+.content {
+    align-items: center;
+    background-color: var(--content-bg-color, #fff);
+    border-radius: var(--container-border-radius);
+    color: var(--primary-text-color);
+    justify-content: var(--content-vertical-alignment);
+    max-height: 100vh;
+    min-height: 28%;
+    overflow-y: auto;
+    padding: var(--content-padding, 0px);
+    position: relative;
+}
 
-    .content .partials {
-        max-height: 0;
-        overflow: hidden;
-        width: var(--form-width, auto);
-    }
-    .content .partials.partials-show {
-        max-height: 900px;
-        transition: max-height 0.8s;
-    }
+.content .partials {
+    max-height: 0;
+    overflow: hidden;
+    width: var(--form-width, auto);
+}
+.content .partials.partials-show {
+    max-height: 900px;
+    transition: max-height 0.8s;
+}
 
-    /*  ===================
+/*  ===================
     Components
     =================== */
 
-    // Header Image
-    .header-img {
-        content: var(--header-img);
-        max-width: var(--img-max-width, 200px);
-        padding-top: 15px;
-    }
+// Header Image
+.header-img {
+    content: var(--header-img);
+    max-width: var(--img-max-width, 200px);
+    padding-top: 15px;
+}
 
-    // Title
-    .title {
-        font-family: var(--title-font-family);
-        font-size: var(--large-font-size);
-        font-weight: var(--title-font-weight);
-        letter-spacing: var(--large-letter-spacing);
-        line-height: 50px;
-        color: var(--primary-text-color);
-    }
+// Title
+.title {
+    font-family: var(--title-font-family);
+    font-size: var(--large-font-size);
+    font-weight: var(--title-font-weight);
+    letter-spacing: var(--large-letter-spacing);
+    line-height: 50px;
+    color: var(--primary-text-color);
+}
 
-    // Sub-title
-    .sub-title {
-        font-size: var(--medium-text-size);
-        font-weight: var(--medium-font-weight);
-        color: var(--secondary-text-color, #02100a);
-        padding: 0px 30px;
-    }
+// Sub-title
+.sub-title {
+    font-size: var(--medium-text-size);
+    font-weight: var(--medium-font-weight);
+    color: var(--secondary-text-color, #02100a);
+    padding: 0px 30px;
+}
 
-    // Buttons
-    // I need to refactor it
-    .btn {
-        border: none;
-        color: var(--btn-color);
-        border: var(--btn-border);
-        cursor: pointer;
-        padding: var(--btn-padding, 10px);
-        width: 100%;
-        font-family: var(--btn-font-family);
-        font-size: var(--btn-font-size);
-    }
+// 4.1 checkbox
+.checkbox {
+    margin-right: 10px;
+    min-width: unset;
+}
 
-    .btn .fa.off {
-        display: none;
-    }
+.checkbox-container {
+    align-items: center;
+    display: flex;
+    margin-top: 14px;
+}
 
-    .btn.btn-primary,
-    .btn.btn-primary:focus {
-        background-color: var(--btn-bg-color);
-    }
-    .btn.btn-primary:hover {
-        background-color: var(--btn-bg-color);
-    }
+// 4.1 input fields
+.mandatory-container {
+    margin-top: 10px;
+}
 
-    .btn:disabled,
-    .btn[disabled] {
-        // background-color: var(--btn-disabled-bg-color);
-        opacity: 0.7;
-        cursor: not-allowed;
-    }
-
-    .btn-small {
-        width: 40%;
-        margin: 20px auto;
-    }
-
-    .btn-close .fa {
-        -webkit-text-stroke: 5px white;
-        font-size: 1.8em;
-    }
-
-    // 4.1 checkbox
-    .checkbox {
-        margin-right: 10px;
-        min-width: unset;
-    }
-
-    .checkbox-container {
-        align-items: center;
-        display: flex;
-        margin-top: 14px;
-    }
-
-    // 4.1 input fields
-    .mandatory-container {
-        margin-top: 10px;
-    }
-
-    /*  ===================
+/*  ===================
     Icons
     =================== */
 
-    .fa-eye {
-        cursor: pointer;
-        position: absolute;
-        right: 5px;
-    }
+.fa-eye {
+    cursor: pointer;
+    position: absolute;
+    right: 5px;
+}
 
-    .fa-eye-slash {
-        cursor: pointer;
-        position: absolute;
-        right: 5px;
-        padding: var(--input-padding);
-    }
-
-    .btn-back {
-        cursor: pointer;
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        padding: 1.5em;
-        color: var(--ternary-text-color, #0d3c32);
-    }
-
-    .btn-close {
-        cursor: pointer;
-        position: absolute;
-        top: 0px;
-        right: 0px;
-        padding: 1.5em;
-        color: var(--ternary-text-color, #0d3c32);
-    }
-
-    .btn-recovery {
-        cursor: pointer;
-        text-align: center;
-    }
+.fa-eye-slash {
+    cursor: pointer;
+    position: absolute;
+    right: 5px;
+    padding: var(--input-padding);
 }

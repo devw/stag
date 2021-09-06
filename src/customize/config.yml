@@ -87,6 +87,8 @@ global_sections:
         options:
         - title: None
           value: ""
+        - title: sans-serif
+          value: sans-serif
         - title: Archivo Narrow
           value: "Archivo Narrow"
         - title: BeaufortCondensedMedium
@@ -338,6 +340,16 @@ global_sections:
         max: 20
         step: 1
 
+    - id: "|--btn-margin|"
+      type: csspad
+      label: Button Margin
+      icon: EditMinor
+      hint: You can change the button margin
+      default: 10 0 10 5
+      required: true
+      config:
+        units: ["px", "%"]
+
     - id: "|--btn-font-family|"
       type: select
       label: Button form family
@@ -408,6 +420,26 @@ global_sections:
         min: 200
         max: 600
         step: 2
+
+    - id: "|--form-padding|"
+      type: csspad
+      label: Form Padding
+      icon: EditMinor
+      hint: You can change the input padding
+      default: 10 0 10 5
+      required: true
+      config:
+        units: ["px", "%"]
+
+    - id: "|--content-padding|"
+      type: csspad
+      label: Content Padding
+      icon: EditMinor
+      hint: You can change the input padding
+      default: 0 0 0 0
+      required: true
+      config:
+        units: ["px", "%"]
 
     - id: '|--container-border-radius|%'
       type: range-slider
