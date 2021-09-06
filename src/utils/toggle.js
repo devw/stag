@@ -75,6 +75,7 @@ exports.toggleLoading = (BTN) => {
 exports.togglePage = (id) => {
     $qq('.partials').forEach((e) => e.classList.remove('partials-show'));
     $q(`#${id}`).classList.add('partials-show');
+    $q('.js-back').style.display = IDs.LANDING_ID === id ? 'none' : 'block';
 };
 
 exports.$q = $q;
