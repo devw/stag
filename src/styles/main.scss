@@ -27,6 +27,7 @@ body.remove-scrolling {
     .content .partials {
         max-height: 0;
         overflow: hidden;
+        width: var(--form-width, auto);
     }
     .content .partials.partials-show {
         max-height: 900px;
@@ -59,6 +60,7 @@ body.remove-scrolling {
         font-size: var(--medium-text-size);
         font-weight: var(--medium-font-weight);
         color: var(--secondary-text-color, #02100a);
+        padding: 0px 30px;
     }
 
     // Buttons
