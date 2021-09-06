@@ -57,7 +57,10 @@ const loadImage = (value) => {
 };
 
 const parseEvent = (event) => {
-    if (!event?.params) return null;
+    if (!event?.params) {
+        changePage(globalThis.prevPage || 'landing');
+        return null;
+    }
     const { setting_id, value } = event.params;
 
     if (/--animation/.test(setting_id)) loadAnimation(value);
@@ -67,14 +70,14 @@ const parseEvent = (event) => {
 
 const disableClick = () => {
     const nodeApp = getRootNode();
-    nodeApp.style.setProperty('pointer-events', 'none');
+    // nodeApp.style.setProperty('pointer-events', 'none');
 };
 
 const parseMessage = (message) => {
     //TODO use closure to avoid global variable window.parsedState
     console.log('-------message--------\n', message);
-
     const { state, event } = message?.data || message?.detail;
+
     if (!event && !state) return null;
     disableClick();
     parseState(state);
