@@ -1,27 +1,27 @@
-const { IDs } = require("../config");
-const Mustache = require("mustache");
-const { pages, container } = require("../templates");
-const { $q } = require("../utils/toggle");
+const { IDs } = require('../config');
+const Mustache = require('mustache');
+const { pages, container } = require('../templates');
+const { $q } = require('../utils/toggle');
 const {
     cleanChoiceBlock,
     cleanInputBlocks,
     cleanDateBlocks,
     cleanStyle,
-} = require("./clean-config");
+} = require('./clean-config');
 
 const updateInputFields = () => {
     // you should move this piece of code in render method otherwise it will be not visible on customize
     const pswElem = $q("[name='customer[password]']");
-    let newNode = document.createElement("i");
-    newNode.classList.add("fa", "fa-eye", "js-show-psw");
-    pswElem.type = "password";
+    let newNode = document.createElement('i');
+    newNode.classList.add('gg-eye', 'fa-eye', 'js-show-psw');
+    pswElem.type = 'password';
     pswElem.parentNode.insertBefore(newNode, pswElem);
     const emailElem = $q("[name='customer[email]']");
-    emailElem.type = "email";
+    emailElem.type = 'email';
 };
 
 exports.render = (text) => {
-    const { getRootNode } = require("../utils");
+    const { getRootNode } = require('../utils');
     const partials = Object.keys(pages).map((id) => ({
         id: id,
         html: Mustache.render(pages[id], text),

@@ -1,7 +1,10 @@
 const { IDs } = require('../config');
+const { getShadowDOM } = require('./shadow-dom');
 
-const getRootNode = () => document.querySelector(`#${IDs.APP_ID}`);
+const getRootNode = () => getShadowDOM().shadowRoot.querySelector('div');
+
 const $q = (leaf) => getRootNode().querySelector(leaf);
+
 const $qq = (leaf) => getRootNode().querySelectorAll(leaf);
 
 const getBlocksAttr = () => {
@@ -72,6 +75,7 @@ exports.toggleLoading = (BTN) => {
 exports.togglePage = (id) => {
     $qq('.partials').forEach((e) => e.classList.remove('partials-show'));
     $q(`#${id}`).classList.add('partials-show');
+    $q('.js-back').style.display = IDs.LANDING_ID === id ? 'none' : 'block';
 };
 
 exports.$q = $q;

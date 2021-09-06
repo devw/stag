@@ -1,79 +1,46 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Output Management</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <style>
+            nav {
+                text-align: right;
+                margin: 20px 120px;
+            }
+            body {
+                background: rgb(177, 213, 250);
+            }
+        </style>
+        <link rel="icon" href="./favicon.ico" />
+    </head>
 
-<head>
-    <meta charset="utf-8" />
-    <title>Output Management</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <style>
-        nav {
-            text-align: right;
-            margin: 20px 120px;
-        }
-    </style>
-    <link rel="icon" href="./favicon.ico" />
-    <link rel="stylesheet" href="https://unpkg.com/@shopify/polaris@5/dist/styles.css" />
-    <link rel="stylesheet" href="https://use.typekit.net/flz5qbr.css">
-    <link href="http://fonts.cdnfonts.com/css/optima-nova-lt-pro" rel="stylesheet">
-</head>
-
-<body>
-    <nav>
-        <a href="/account/login" class="site-header__account">
-            <span class="icon__fallback-text">Log in</span>
-        </a>
-    </nav>
-    <script>
-        (function () {
-            function asyncLoad() {
-                var urls = [
-                    // "https://login-popup-dev-configs.s3.amazonaws.com/public/script.js?t=1",
-                    "./script.js",
-                ];
-                for (var i = 0; i < urls.length; i++) {
-                    var s = document.createElement("script");
-                    s.type = "text/javascript";
-                    s.async = true;
-                    s.src = urls[i];
-                    var x = document.getElementsByTagName("script")[0];
-                    x.parentNode.insertBefore(s, x);
+    <body>
+        <nav>
+            <a href="/account/login" class="site-header__account">
+                <span class="icon__fallback-text">Log in</span>
+            </a>
+        </nav>
+        <script>
+            (function () {
+                function asyncLoad() {
+                    var urls = ['./script.js'];
+                    for (var i = 0; i < urls.length; i++) {
+                        var s = document.createElement('script');
+                        s.type = 'text/javascript';
+                        s.async = true;
+                        s.src = urls[i];
+                        var x = document.getElementsByTagName('script')[0];
+                        x.parentNode.insertBefore(s, x);
+                    }
                 }
-            }
-            if (window.attachEvent) {
-                window.attachEvent("onload", asyncLoad);
-            } else {
-                window.addEventListener("load", asyncLoad, false);
-            }
-        })();
-
-        globalThis.kastor = ({
-            setting_id,
-            value,
-            block_type_id,
-            target,
-            block_id,
-            order,
-            state,
-            block_settings,
-        }) => {
-            const detail = {
-                data: {
-                    data: {
-                        block_id,
-                        block_type_id,
-                        setting_id,
-                        value,
-                        order,
-                        state,
-                        block_settings,
-                    },
-                    target,
-                },
-            };
-            const kastorEvent = new CustomEvent("message", { detail });
-            globalThis.dispatchEvent(kastorEvent);
-        };
-    </script>
-</body>
-
+                if (window.attachEvent) {
+                    window.attachEvent('onload', asyncLoad);
+                } else {
+                    window.addEventListener('load', asyncLoad, false);
+                }
+            })();
+        </script>
+    </body>
 </html>

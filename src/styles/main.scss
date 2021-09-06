@@ -27,6 +27,7 @@ body.remove-scrolling {
     .content .partials {
         max-height: 0;
         overflow: hidden;
+        width: var(--form-width, auto);
     }
     .content .partials.partials-show {
         max-height: 900px;
@@ -59,6 +60,7 @@ body.remove-scrolling {
         font-size: var(--medium-text-size);
         font-weight: var(--medium-font-weight);
         color: var(--secondary-text-color, #02100a);
+        padding: 0px 30px;
     }
 
     // Buttons
@@ -72,9 +74,6 @@ body.remove-scrolling {
         width: 100%;
         font-family: var(--btn-font-family);
         font-size: var(--btn-font-size);
-    }
-    .btn .fa {
-        font-size: 1.4em;
     }
 
     .btn .fa.off {
@@ -101,15 +100,6 @@ body.remove-scrolling {
         margin: 20px auto;
     }
 
-    .btn-close {
-        cursor: pointer;
-        position: absolute;
-        top: 0px;
-        right: 0px;
-        padding: 1.5em;
-        color: var(--ternary-text-color, #0d3c32);
-    }
-
     .btn-close .fa {
         -webkit-text-stroke: 5px white;
         font-size: 1.8em;
@@ -133,14 +123,13 @@ body.remove-scrolling {
     }
 
     /*  ===================
-    Partials
+    Icons
     =================== */
 
     .fa-eye {
         cursor: pointer;
         position: absolute;
         right: 5px;
-        padding: var(--input-padding);
     }
 
     .fa-eye-slash {
@@ -150,9 +139,26 @@ body.remove-scrolling {
         padding: var(--input-padding);
     }
 
-    .action {
-        color: var(--ternary-text-color, #0d3c32);
+    .btn-back {
         cursor: pointer;
-        padding-bottom: 18px;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        padding: 1.5em;
+        color: var(--ternary-text-color, #0d3c32);
+    }
+
+    .btn-close {
+        cursor: pointer;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        padding: 1.5em;
+        color: var(--ternary-text-color, #0d3c32);
+    }
+
+    .btn-recovery {
+        cursor: pointer;
+        text-align: center;
     }
 }
