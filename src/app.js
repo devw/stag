@@ -18,10 +18,10 @@ setTimeout(async () => {
 const getEndPoint = () => (globalThis?.Shopify ? `${ENDPOINT}/public` : '.');
 
 const getHtmlString = () => `
-        <link rel='stylesheet' href='${getEndPoint()}/main.css'>
-        <div id=${IDs.APP_ID}></div>
+        <link rel='stylesheet' href='${getEndPoint()}/main.css' />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-        <link rel="stylesheet" href="http://fonts.cdnfonts.com/css/optima-nova-lt-pro" />
-        <link rel="stylesheet" href="https://use.typekit.net/flz5qbr.css" />
-        <link rel="stylesheet" href="https://unpkg.com/@shopify/polaris@5/dist/styles.css" />
+        <div id=${IDs.APP_ID}></div>
+        <link href='https://css.gg/close.css' rel='stylesheet'>
+        <link href='https://css.gg/arrow-left.css' rel='stylesheet'>
+        <link href='https://css.gg/eye.css' rel='stylesheet'>
     `;
