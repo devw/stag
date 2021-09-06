@@ -87,6 +87,8 @@ global_sections:
         options:
         - title: None
           value: ""
+        - title: sans-serif
+          value: sans-serif
         - title: Archivo Narrow
           value: "Archivo Narrow"
         - title: BeaufortCondensedMedium
