@@ -1,24 +1,49 @@
 <div class="title">{{loginTitle}}</div>
 <div class="sub-title">{{enterEmailPswToConnect}}</div>
 
-<form method="post" accept-charset="UTF-8" novalidate="novalidate" class="{{formStyle}}"
-    data-login-redirect="{{loginRedirect}}">
-    <input type="hidden" name="form_type" value="customer_login" /><input type="hidden" name="utf8" value="✓" />
+<form
+    method="post"
+    accept-charset="UTF-8"
+    novalidate="novalidate"
+    class="{{formStyle}}"
+    data-login-redirect="{{loginRedirect}}"
+>
+    <input type="hidden" name="form_type" value="customer_login" /><input
+        type="hidden"
+        name="utf8"
+        value="✓"
+    />
     <div>
-        <input type="email" readonly name="customer[email]" autocomplete="email" class="input-text"
-            placeholder="{{yourEmail}}" />
+        <input
+            type="email"
+            readonly
+            name="customer[email]"
+            autocomplete="email"
+            class="input-text"
+            placeholder="{{yourEmail}}"
+        />
         <label>{{yourEmail}}</label>
     </div>
     <div>
         <i class="fa fa-eye-slash js-show-psw"></i>
-        <input type="password" name="customer[password]" class="input-text" placeholder="{{yourPassword}}"
-            autocomplete="on" />
+        <input
+            type="password"
+            name="customer[password]"
+            class="input-text"
+            placeholder="{{yourPassword}}"
+            autocomplete="on"
+        />
         <label>{{yourPassword}}</label>
-        <label class="label-error js-signin-err"><i class="fa {{errorIcon}}"></i>{{wrongPsw}}</label>
+        <label class="label-error js-signin-err"
+            ><i class="fa {{errorIcon}}"></i>{{wrongPsw}}</label
+        >
     </div>
-    <button class="btn btn-primary" disabled="">
-        {{signIn}} &nbsp;<i class="fa fa-spinner fa-spin off"></i>
-    </button>
+    <div>
+        <button class="btn btn-primary" disabled="">
+            {{signIn}} &nbsp;<i class="fa fa-spinner fa-spin off"></i>
+        </button>
+        <label for="">&nbsp;</label>
+    </div>
 </form>
 <div class="action js-recovery">Recover password{{recoverPsw}}</div>
 <div class="action js-back"><i class="fa fa-arrow-left"></i> Back</div>
