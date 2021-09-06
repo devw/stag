@@ -431,6 +431,16 @@ global_sections:
       config:
         units: ["px", "%"]
 
+    - id: "|--content-padding|"
+      type: csspad
+      label: Content Padding
+      icon: EditMinor
+      hint: You can change the input padding
+      default: 0 0 0 0
+      required: true
+      config:
+        units: ["px", "%"]
+
     - id: '|--container-border-radius|%'
       type: range-slider
       label: Border Radius
