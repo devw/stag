@@ -121,12 +121,12 @@
                     "|--ternary-text-color|": "rgba(0,0,0,1)",
                     "|--label-font-size|em": 1.5,
                     "|--label-font-weight|": 400,
-                    "|formStyle|": "label-fixed-top"
+                    "|formStyle|": "label-fixed-bottom"
                 },
                 "form-input": {
                     "register|--input-bg-color|": "rgba(255,255,255, 1)",
                     "register|--input-box-shadow|": "rgba(255,255,255, 1)",
-                    "register|--input-padding|px": "5",
+                    "register|--input-padding|px": "8",
                     "register|--input-line|": "1px solid black",
                     "register|--input-line-direction|": "All",
                     "register|--input-margin|em": "0.8",
@@ -161,10 +161,10 @@
                 "popup-container": {
                     "|--content-bg-color|": "rgba(255,255,255,1)",
                     "landing|--form-width|px": "265",
-                    "|--form-padding|": "10px 10px 30px 10px",
+                    "|--form-padding|": "10px 50px 50px 50px",
                     "|--container-border-radius|%": "0",
                     "landing|--content-width|px": "375",
-                    "|--form-width|px": "248"
+                    "|--form-width|px": "348"
                 },
                 "theme": {
                     "register|layout|": "popup-drawer",

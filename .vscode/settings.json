@@ -6,7 +6,7 @@
         "**/dist/": true,
         "**/.DS_Store": true
     },
-    "files.autoSave": "onFocusChange",
+    "files.autoSave": "off",
     "liveServer.settings.ignoreFiles": [
         ".vscode/**",
         "src/**",
