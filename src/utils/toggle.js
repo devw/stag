@@ -56,7 +56,7 @@ exports.updateCss = (cssVars) => {
 
 exports.toggleSecret = ({ target }) => {
     target.classList.toggle('fa-eye-slash');
-    target.classList.toggle('fa-eye');
+    target.classList.toggle('gg-eye');
     const secret = target.nextElementSibling;
     secret.type = secret.type === 'password' ? 'text' : 'password';
 };
