@@ -27,6 +27,7 @@ body.remove-scrolling {
 .content .partials {
     max-height: 0;
     overflow: hidden;
+    font-family: var(--font-family, sans-serif);
     width: var(--form-width, auto);
 }
 .content .partials.partials-show {
@@ -47,7 +48,6 @@ body.remove-scrolling {
 
 // Title
 .title {
-    font-family: var(--title-font-family);
     font-size: var(--large-font-size);
     font-weight: var(--title-font-weight);
     letter-spacing: var(--large-letter-spacing);

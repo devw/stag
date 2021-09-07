@@ -92,8 +92,7 @@
                     "|--medium-text-size|em": 1.1
                 },
                 "font-family": {
-                    "|--title-font-family|": "None",
-                    "|--form-font-family|": "None"
+                    "|--font-family|": "None"
                 }
             },
             "blocks": {}
@@ -128,7 +127,6 @@
             "groups": {
                 "font-style": {
                     "landing|--btn-font-size|em": 1.5,
-                    "register|--btn-font-family|": "None",
                     "register|--btn-border|": "1px solid rgba(255,",
                     "|--btn-color|": "rgba(245,235,235,1)",
                     "|--btn-bg-color|": "rgba(239,142,61,1)"
@@ -148,7 +146,6 @@
                     "|layout|": "popup-floating",
                     "|--content-vertical-alignment|": "center",
                     "|--animation|": "slide-from-top",
-                    "register|--container-bg-image|": "https://cdn.shopify.com/s/files/1/2598/9270/products/Packshotfriandiseschatvolaille_600x.jpg?v=159948757",
                     "register|--content-padding|": "10px 20px 10px 20px ",
                     "|--bg-opacity-image|": 1,
                     "|--header-img|": "https://heritageah.com/wp-content/uploads/2020/06/iconfinder_pets-vet-pet_5413418.png",

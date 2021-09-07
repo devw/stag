@@ -49,17 +49,23 @@ global_sections:
         max: 3
         step: 0.1
 
-    - id: "|--title-font-weight"
-      type: range-slider
+    - id: "|--title-font-weight|"
+      type: select
       label: Primary font weight
       icon: EditMinor
-      default: 400
-      hint: 
+      default: None
+      hint: You can change the button text font-family
       required: true
       config:
-        min: 100
-        max: 900
-        step: 100
+        options:
+        - title: Normal
+          value: normal
+        - title: Bold
+          value: bold
+        - title: Lighter
+          value: lighter
+        - title: Bolder
+          value: bolder
 
     - id: '|--medium-text-size|em'
       type: range-slider
@@ -76,39 +82,52 @@ global_sections:
   - id: font-family
     label: Font family
     settings:
-    - id: "|--title-font-family|"
+    - id: "|--font-family|"
       type: select
-      label: Title font-family
+      label: Family names
       icon: EditMinor
       default: None
-      hint: You can change the form text font-family
+      hint: You can change the fonts
       required: true
       config:
         options:
-        - title: None
-          value: ""
-        - title: sans-serif
-          value: sans-serif
-        - title: Archivo Narrow
-          value: "Archivo Narrow"
-        - title: BeaufortCondensedMedium
-          value: BeaufortCondensedMedium
+        - title: American Typewriter
+          value: American Typewriter, serif  
+        - title: Andalé Mono
+          value: Andalé Mono, monospace              
+        - title: Arial
+          value: Arial, sans-serif
+        - title: Arial Black
+          value: Arial Black, sans-serif
+        - title: Bradley Hand
+          value: Bradley Hand, cursive  
+        - title: Brush Script MT
+          value: Brush Script MT, cursive
+        - title: Comic Sans MS
+          value: Comic Sans MS, cursive
+        - title: Courier
+          value: Courier, monospace
+        - title: Didot
+          value: Didot, serif
+        - title: Georgia
+          value: Georgia, serif
+        - title: Impact
+          value: Impact, sans-serif
+        - title: Lucida Console
+          value: Lucida Console, monospace  
+        - title: Luminari
+          value: Luminari, fantasy 
+        - title: Monaco
+          value: Monaco, monospace
+        - title: Tahoma
+          value: Tahoma, sans-serif
+        - title: Times New Roman
+          value: Times New Roman, serif
+        - title: Trebuchet MS
+          value: Trebuchet MS, sans-serif
+        - title: Verdana
+          value: Verdana, sans-serif
 
-    - id: "|--form-font-family|"
-      type: select
-      label: Form font-family
-      icon: EditMinor
-      default: None
-      hint: You can change the form text font-family
-      required: true
-      config:
-        options:
-        - title: None
-          value: ""
-        - title: Archivo Narrow
-          value: "Archivo Narrow"
-        - title: BeaufortCondensedMedium
-          value: BeaufortCondensedMedium
 
   blocks: []
 # ===============================================
@@ -349,20 +368,6 @@ global_sections:
       required: true
       config:
         units: ["px", "%"]
-
-    - id: "|--btn-font-family|"
-      type: select
-      label: Button font-family
-      icon: EditMinor
-      default: None
-      hint: You can change the button text font-family
-      required: true
-      config:
-        options:
-        - title: None
-          value: ""
-        - title: BeaufortCondensedMedium
-          value: BeaufortCondensedMedium
 
     - id: "|--btn-font-weight|"
       type: select

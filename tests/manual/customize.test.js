@@ -10,7 +10,9 @@ var _event = {
 };
 var detail = {};
 var customizeEvent = new CustomEvent('message', { detail });
-var el = document.querySelector('#login-popup');
+var el = document.body
+    .querySelector('login-popup')
+    .shadowRoot.querySelector('div');
 detail.state = state;
 detail.event = _event;
 globalThis.dispatchEvent(customizeEvent);

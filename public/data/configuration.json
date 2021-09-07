@@ -6,7 +6,6 @@
         "--btn-bg-color": "rgba(255,255,255,1)",
         "--btn-border": "1px solid #000000",
         "--btn-color": "rgba(12,5,5,1)",
-        "--btn-font-family": "BeaufortCondensedMedium",
         "--btn-font-size": "1.4em",
         "--btn-padding": "5px",
         "--container-bg-image": "url(url(https://cdn.shopify.com/s/files/1/2598/9270/products/Packshotfriandiseschatvolaille_600x.jpg?v=159948757))",
@@ -17,7 +16,6 @@
         "--content-width": "375px",
         "--error-bg-color": "rgba(240, 207, 207, 1)",
         "--error-color": "rgba(208, 26, 26, 1)",
-        "--form-font-family": "None",
         "--form-padding": "20px",
         "--form-width": "248px",
         "--header-img": "url(url(https://download.logo.wine/logo/Google_Chrome/Google_Chrome-Logo.wine.png))",
@@ -41,7 +39,6 @@
         "--primary-text-color": "rgba(0,0,0,1)",
         "--secondary-text-color": "rgba(0,0,0,1)",
         "--ternary-text-color": "rgba(0,0,0,1)",
-        "--title-font-family": "None",
         "--title-font-weight": "400"
     },
     "text": {

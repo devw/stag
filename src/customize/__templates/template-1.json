@@ -139,7 +139,7 @@
                     "|--medium-text-size|em": 1.1
                 },
                 "font-family": {
-                    "|--title-font-family|": "BeaufortCondensedMedium"
+                    "|--font-family|": "BeaufortCondensedMedium"
                 }
             },
             "blocks": {}
@@ -174,7 +174,6 @@
             "groups": {
                 "font-style": {
                     "--btn-font-size|em": 1.5,
-                    "|--btn-font-family|": "None",
                     "|--btn-color|": "rgba(34,34,34,1)",
                     "|--btn-bg-color|": "rgba(253,201,81,1)",
                     "|--btn-border|": "0px solid #092dc5"
@@ -195,7 +194,6 @@
                     "|layout|": "popup-floating",
                     "|--content-vertical-alignment|": "center",
                     "|--animation|": "none",
-                    "|--container-bg-image|": "https://cdn.shopify.com/s/files/1/2598/9270/products/Packshotfriandiseschatvolaille_600x.jpg?v=159948757",
                     "|--bg-opacity-image|": 1,
                     "|--header-img|": "",
                     "|--img-max-width|px": 200,

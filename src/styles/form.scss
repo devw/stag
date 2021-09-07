@@ -2,7 +2,6 @@
     form {
         display: flex;
         flex-direction: column;
-        font-family: var(--form-font-family);
         justify-content: center;
         padding: var(--form-padding, auto);
         width: var(--form-width, auto);
@@ -22,7 +21,6 @@
         border-right: var(--input-line-right, var(--input-line));
         border-top: var(--input-line-top, var(--input-line));
         color: #333;
-        font-family: var(--form-font-family);
         font-size: 1em;
         min-width: 100%;
         outline: none;
