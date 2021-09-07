@@ -150,7 +150,6 @@
                     "|layout|": "popup-centered",
                     "|--content-vertical-alignment|": "center",
                     "|--animation|": "none",
-                    "|--container-bg-image|": "https://cdn.shopify.com/s/files/1/2598/9270/products/Packshotfriandiseschatvolaille_600x.jpg?v=159948757",
                     "|--bg-opacity-image|": 1,
                     "|--header-img|": "https://cdn.shopify.com/s/files/1/0407/2855/9766/files/Ellipse_3_1.png?v=1596746569",
                     "|--img-max-width|px": 200,
