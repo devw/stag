@@ -352,7 +352,7 @@ global_sections:
 
     - id: "|--btn-font-family|"
       type: select
-      label: Button form family
+      label: Button font-family
       icon: EditMinor
       default: None
       hint: You can change the button text font-family
@@ -363,6 +363,24 @@ global_sections:
           value: ""
         - title: BeaufortCondensedMedium
           value: BeaufortCondensedMedium
+
+    - id: "|--btn-font-weight|"
+      type: select
+      label: Button font-weight
+      icon: EditMinor
+      default: None
+      hint: You can change the button text font-family
+      required: true
+      config:
+        options:
+        - title: Normal
+          value: normal
+        - title: Bold
+          value: bold
+        - title: Lighter
+          value: lighter
+        - title: Bolder
+          value: bolder
 
     - id: "|--btn-border|"
       type: cssline
@@ -524,7 +542,7 @@ global_sections:
     #     placeholder: Drag and Drop a file
     #   fileName: background
 
-    # - id: "register|--bg-opacity-image|"
+    # - id: "|--bg-opacity-image|"
     #   type: range-slider
     #   label: Background Image Opacity 
     #   icon: EditMinor

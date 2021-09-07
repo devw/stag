@@ -13,8 +13,6 @@
         "--container-border-radius": "0%",
         "--content-bg-color": "rgba(255,255,255,1)",
         "--content-padding": "10 0 10 5",
-        "--content-padding-bottom": "52.5px",
-        "--content-padding-top": "17.5px",
         "--content-vertical-alignment": "center",
         "--content-width": "375px",
         "--error-bg-color": "rgba(240, 207, 207, 1)",
