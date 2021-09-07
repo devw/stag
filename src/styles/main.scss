@@ -16,7 +16,6 @@ body.remove-scrolling {
     background-color: var(--content-bg-color, #fff);
     border-radius: var(--container-border-radius);
     color: var(--primary-text-color);
-    font-family: var(--font-family, sans-serif);
     justify-content: var(--content-vertical-alignment);
     max-height: 100vh;
     min-height: 28%;
@@ -28,6 +27,7 @@ body.remove-scrolling {
 .content .partials {
     max-height: 0;
     overflow: hidden;
+    font-family: var(--font-family, sans-serif);
     width: var(--form-width, auto);
 }
 .content .partials.partials-show {

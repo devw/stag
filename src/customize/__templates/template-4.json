@@ -94,8 +94,7 @@
                     "|--medium-text-size|em": 1.1
                 },
                 "font-family": {
-                    "|--title-font-family|": "None",
-                    "|--form-font-family|": "None"
+                    "|--font-family|": "None"
                 }
             },
             "blocks": {}
@@ -130,7 +129,6 @@
             "groups": {
                 "font-style": {
                     "|--btn-font-size|em": 1.5,
-                    "|--btn-font-family|": "None",
                     "|--btn-border|": "0px solid #092dc5",
                     "|--btn-color|": "rgba(255,255,255,1)",
                     "|--btn-bg-color|": "rgba(0,0,0,1)"

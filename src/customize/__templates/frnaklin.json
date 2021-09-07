@@ -92,8 +92,7 @@
                     "|--medium-text-size|em": 1.1
                 },
                 "font-family": {
-                    "|--title-font-family|": "None",
-                    "|--form-font-family|": "None"
+                    "|--font-family|": "None"
                 }
             },
             "blocks": {}
@@ -128,7 +127,6 @@
             "groups": {
                 "font-style": {
                     "landing|--btn-font-size|em": 1.5,
-                    "register|--btn-font-family|": "None",
                     "register|--btn-border|": "1px solid rgba(255,",
                     "|--btn-color|": "rgba(245,235,235,1)",
                     "|--btn-bg-color|": "rgba(239,142,61,1)"

@@ -139,7 +139,7 @@
                     "|--medium-text-size|em": 1.1
                 },
                 "font-family": {
-                    "|--title-font-family|": "BeaufortCondensedMedium"
+                    "|--font-family|": "BeaufortCondensedMedium"
                 }
             },
             "blocks": {}
@@ -174,7 +174,6 @@
             "groups": {
                 "font-style": {
                     "--btn-font-size|em": 1.5,
-                    "|--btn-font-family|": "None",
                     "|--btn-color|": "rgba(34,34,34,1)",
                     "|--btn-bg-color|": "rgba(253,201,81,1)",
                     "|--btn-border|": "0px solid #092dc5"

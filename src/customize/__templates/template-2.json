@@ -96,8 +96,7 @@
                     "|--title-font-weight": "500"
                 },
                 "font-family": {
-                    "|--title-font-family|": "Archivo Narrow",
-                    "|--form-font-family|": "Archivo Narrow"
+                    "|--font-family|": "Archivo Narrow"
                 }
             },
             "blocks": {}
@@ -132,7 +131,6 @@
             "groups": {
                 "font-style": {
                     "|--btn-font-size|em": "1.8",
-                    "|--btn-font-family|": "BeaufortCondensedMedium",
                     "|--btn-border|": "2px solid #092dc5",
                     "|--btn-color|": "rgba(9,45,197,1)",
                     "|--btn-bg-color|": "rgba(255,255,255,1)",
