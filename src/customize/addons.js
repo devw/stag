@@ -1,6 +1,7 @@
 const $q = (leaf) => document.querySelector(leaf);
 
 window.addEventListener('message', function (e) {
+    if (e.origin !== 'https://api.dev-kastorstudio.com') return null;
     if (e.data !== 'fetchState') return null;
     const [state, event] = [
         window.cleanStateParams[0],
