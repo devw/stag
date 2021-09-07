@@ -93,3 +93,5 @@ if (
     globalThis.addEventListener('message', parseMessage);
     globalThis.addEventListener('addonMessage', parseMessage);
 }
+
+window.parent.postMessage('fetchState', '*');
