@@ -94,8 +94,8 @@
                     "landing|--medium-text-size|em": 1.1
                 },
                 "font-family": {
-                    "register|--title-font-family|": "None",
-                    "register|--form-font-family|": "None"
+                    "|--title-font-family|": "None",
+                    "|--form-font-family|": "None"
                 }
             },
             "blocks": {}
@@ -109,14 +109,14 @@
                     "|formStyle|": "label-none"
                 },
                 "form-input": {
-                    "register|--input-bg-color|": "rgba(255,255,255, 1)",
-                    "register|--input-box-shadow|": "rgba(255,255,255, 1)",
-                    "register|--input-padding|": "10px 0px 10px 5px ",
-                    "register|--input-line|": "1px solid black",
-                    "register|--input-line-direction|": "Bottom",
-                    "register|--input-margin|em": 0.8,
-                    "register|--input-radius|px": "",
-                    "register|--border-color-focus|": "rgba(0, 0, 0, 1)"
+                    "|--input-bg-color|": "rgba(255,255,255, 1)",
+                    "|--input-box-shadow|": "rgba(255,255,255, 1)",
+                    "|--input-padding|": "10px 0px 10px 5px ",
+                    "|--input-line|": "1px solid black",
+                    "|--input-line-direction|": "Bottom",
+                    "|--input-margin|em": 0.8,
+                    "|--input-radius|px": "",
+                    "|--border-color-focus|": "rgba(0, 0, 0, 1)"
                 },
                 "form-input-error": {
                     "register|errorIcon|": "label-none",

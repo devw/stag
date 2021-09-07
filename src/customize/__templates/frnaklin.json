@@ -92,8 +92,8 @@
                     "landing|--medium-text-size|em": 1.1
                 },
                 "font-family": {
-                    "register|--title-font-family|": "None",
-                    "register|--form-font-family|": "None"
+                    "|--title-font-family|": "None",
+                    "|--form-font-family|": "None"
                 }
             },
             "blocks": {}
@@ -107,14 +107,14 @@
                     "|formStyle|": "label-fixed-top"
                 },
                 "form-input": {
-                    "register|--input-bg-color|": "rgba(255,255,255, 1)",
-                    "register|--input-box-shadow|": "rgba(255,255,255, 1)",
-                    "register|--input-padding|": "10 0 10 5",
-                    "register|--input-line|": "1px solid black",
-                    "register|--input-line-direction|": "Bottom",
-                    "register|--input-margin|em": 0.8,
-                    "register|--input-radius|px": "",
-                    "register|--border-color-focus|": "rgba(0, 0, 0, 1)"
+                    "|--input-bg-color|": "rgba(255,255,255, 1)",
+                    "|--input-box-shadow|": "rgba(255,255,255, 1)",
+                    "|--input-padding|": "10 0 10 5",
+                    "|--input-line|": "1px solid black",
+                    "|--input-line-direction|": "Bottom",
+                    "|--input-margin|em": 0.8,
+                    "|--input-radius|px": "",
+                    "|--border-color-focus|": "rgba(0, 0, 0, 1)"
                 },
                 "form-input-error": {
                     "register|errorIcon|": "label-none",
@@ -142,21 +142,19 @@
                     "|--content-bg-color|": "rgba(255,255,255,1)",
                     "landing|--partial-width|px": 400,
                     "landing|--content-width|px": "485",
-                    "landing|--content-padding-top|px": 20,
-                    "landing|--content-padding-bottom|px": 20,
                     "|--container-border-radius|%": 0.5
                 },
                 "theme": {
-                    "register|layout|": "popup-floating",
-                    "register|--content-vertical-alignment|": "center",
-                    "register|--animation|": "slide-from-top",
+                    "|layout|": "popup-floating",
+                    "|--content-vertical-alignment|": "center",
+                    "|--animation|": "slide-from-top",
                     "register|--container-bg-image|": "https://cdn.shopify.com/s/files/1/2598/9270/products/Packshotfriandiseschatvolaille_600x.jpg?v=159948757",
                     "register|--content-padding|": "10px 20px 10px 20px ",
-                    "register|--bg-opacity-image|": 1,
-                    "register|--header-img|": "https://heritageah.com/wp-content/uploads/2020/06/iconfinder_pets-vet-pet_5413418.png",
-                    "register|--img-max-width|px": 200,
-                    "register|--img-position|": "column",
-                    "register|--label-font-weight": 400
+                    "|--bg-opacity-image|": 1,
+                    "|--header-img|": "https://heritageah.com/wp-content/uploads/2020/06/iconfinder_pets-vet-pet_5413418.png",
+                    "|--img-max-width|px": 200,
+                    "|--img-position|": "column",
+                    "|--label-font-weight": 400
                 }
             },
             "blocks": {}

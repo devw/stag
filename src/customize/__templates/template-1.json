@@ -139,7 +139,7 @@
                     "|--medium-text-size|em": 1.1
                 },
                 "font-family": {
-                    "register|--title-font-family|": "BeaufortCondensedMedium"
+                    "|--title-font-family|": "BeaufortCondensedMedium"
                 }
             },
             "blocks": {}

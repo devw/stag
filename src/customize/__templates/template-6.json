@@ -109,8 +109,8 @@
                     "landing|--medium-text-size|em": 1.1
                 },
                 "font-family": {
-                    "register|--title-font-family|": "None",
-                    "register|--form-font-family|": "None"
+                    "|--title-font-family|": "None",
+                    "|--form-font-family|": "None"
                 }
             },
             "blocks": {}
@@ -159,21 +159,21 @@
             "groups": {
                 "popup-container": {
                     "|--content-bg-color|": "rgba(255,255,255,1)",
-                    "landing|--form-width|px": "265",
+                    "|--form-width|px": "265",
                     "|--form-padding|": "10px 50px 50px 50px ",
                     "|--container-border-radius|%": "0",
                     "|--form-width|px": "348",
                     "|--content-padding|": "0px 35px 0px 35px "
                 },
                 "theme": {
-                    "register|layout|": "popup-drawer",
-                    "register|--content-vertical-alignment|": "center",
-                    "register|--animation|": "slide-from-right",
-                    "register|--bg-opacity-image|": 1,
-                    "register|--header-img|": "",
-                    "register|--img-max-width|px": 200,
-                    "register|--img-position|": "column",
-                    "register|--label-font-weight": 400,
+                    "|layout|": "popup-drawer",
+                    "|--content-vertical-alignment|": "center",
+                    "|--animation|": "slide-from-right",
+                    "|--bg-opacity-image|": 1,
+                    "|--header-img|": "",
+                    "|--img-max-width|px": 200,
+                    "|--img-position|": "column",
+                    "|--label-font-weight": 400,
                     "|layout|": "popup-drawer",
                     "|--header-img|": {},
                     "|--img-max-width|px": "220",
