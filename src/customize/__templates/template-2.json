@@ -105,16 +105,12 @@
         "form": {
             "groups": {
                 "Labels": {
-                    "register|--label-color|": "rgba(0,0,0, 1)",
-                    "register|formStyle|": "label-go-up",
+                    "|formStyle|": "label-go-up",
                     "|--label-font-size|em": "1.2",
                     "|--ternary-text-color|": "rgba(2,1,1,1)",
                     "|--label-font-weight|": "700"
                 },
                 "form-input": {
-                    "register|errorIcon|": "label-none",
-                    "register|--error-color|": "rgba(208, 26, 26, 1)",
-                    "register|--error-bg-color|": "rgba(240, 207, 207, 1)",
                     "|--input-padding|": "24px 0px 10px 5px ",
                     "|--input-line|": "2px solid #c5bdbc",
                     "|--input-line-direction|": "Bottom",
@@ -125,9 +121,9 @@
                     "|--border-color-focus|": "rgba(14,8,8,1)"
                 },
                 "form-input-error": {
-                    "register|errorIcon|": "label-none",
-                    "register|--error-color|": "rgba(208, 26, 26, 1)",
-                    "register|--error-bg-color|": "rgba(240, 207, 207, 1)"
+                    "|errorIcon|": "label-none",
+                    "|--error-color|": "rgba(208, 26, 26, 1)",
+                    "|--error-bg-color|": "rgba(240, 207, 207, 1)"
                 }
             },
             "blocks": {}

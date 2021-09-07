@@ -138,9 +138,9 @@
                     "|--input-line-direction|": "All"
                 },
                 "form-input-error": {
-                    "register|errorIcon|": "label-none",
-                    "register|--error-color|": "rgba(208, 26, 26, 1)",
-                    "register|--error-bg-color|": "rgba(240, 207, 207, 1)"
+                    "|errorIcon|": "label-none",
+                    "|--error-color|": "rgba(208, 26, 26, 1)",
+                    "|--error-bg-color|": "rgba(240, 207, 207, 1)"
                 }
             },
             "blocks": {}
