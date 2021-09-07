@@ -89,9 +89,9 @@
                     "|--ternary-text-color|": "rgba(0,0,0,1)"
                 },
                 "font-size": {
-                    "landing|--large-font-size|em": 2,
-                    "register|--title-font-weight": 400,
-                    "landing|--medium-text-size|em": 1.1,
+                    "|--large-font-size|em": 2,
+                    "|--title-font-weight": 400,
+                    "|--medium-text-size|em": 1.1,
                     "|--large-font-size|em": "2.2",
                     "|--title-font-weight": "500"
                 },
