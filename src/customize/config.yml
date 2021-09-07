@@ -542,7 +542,7 @@ global_sections:
     #     placeholder: Drag and Drop a file
     #   fileName: background
 
-    # - id: "register|--bg-opacity-image|"
+    # - id: "|--bg-opacity-image|"
     #   type: range-slider
     #   label: Background Image Opacity 
     #   icon: EditMinor
