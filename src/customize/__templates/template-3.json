@@ -1,1 +1,228 @@
-{"pages":{"popup-de-login":{"order":[],"sections":{"landing||":{"b6e40a7c-ec02-4058-94c4-e77127644d33":{"groups":{"landing||":{"landing|loginRegister|":"Login / Register","landing|enterYourEmailToContinue|":"Enter your email address to continue."},"form-group-landing-section":{"landing|yourEmail|":"Write your email","landing|validate|":"Submit","landing|hasSocialLogin|":0}},"blocks":{},"blocks_order":[]}},"register|section|":{"3cb16cc7-2891-43bb-a4ba-33bc823275f8":{"groups":{"register-section-header-group":{"register|createAccount|":"Création de compte","register|fillInfoToCreateAccount|":""},"register||":{"register|registerAccount|":"Créer un compte","register|redirectAfterRegister|":""}},"blocks":{"register|inputBlocks|email":{"c414b9c0-5372-4155-b44c-c112f458c21b":{"register|name|":"customer[email]","register|message|":"This block can be used to sort the input fields present in the register form"}},"register|inputBlocks|password":{"66c3ab09-b511-42e7-a97a-686bc9a07530":{"register|name|":"customer[password]","register|error|":"true","register|message|":"This block can be used to sort the input fields present in the register form"}},"register|inputBlocks|firstName":{"fc14b043-4300-444b-a513-e73f36f2caa7":{"register|placeholder|":"Your first name","register|name|":"customer[first_name]"}},"register|inputBlocks|lastName":{"eaaf0b51-8bfe-4ea9-8c7a-8eabb9d4896f":{"register|placeholder|":"Your last name","register|name|":"customer[last_name]"}},"register|dateBlocks|hasBirth":{"6b40f1b1-2dc8-40f7-bdef-061013cb6661":{"register|placeholder|birth":"Write your birthdate","register|pickerStyle|":"calendar","register|maxDate|":1,"register|minDate|":99,"register|error|":"Your birthdate should be between 0 and 99","register|isTag|":"hasTag","register|tag|":"birth:","register|namespace|":"","register|key|":""}}},"blocks_order":["c414b9c0-5372-4155-b44c-c112f458c21b","66c3ab09-b511-42e7-a97a-686bc9a07530","fc14b043-4300-444b-a513-e73f36f2caa7","eaaf0b51-8bfe-4ea9-8c7a-8eabb9d4896f","6b40f1b1-2dc8-40f7-bdef-061013cb6661"]}},"signin||":{"818b595c-72f4-479b-b180-019558b5ef62":{"groups":{"signin||":{"signin|yourPassword|":"Write your password","signin|wrongPsw|":"Incorrect password. Please, try again!","signin|signIn|":"Submit","signin|loginRedirect|":"products","signin|loginTitle|":"Login"}},"blocks":{},"blocks_order":[]}},"activate||":{"be68adc8-06fb-4ba7-8547-3bfac717a7bf":{"groups":{"activate|activate-section-header-group|":{"activate|activateTitle|":"Activate","activate|activateSubTitle|":"Fill in your email to activate your account.","activate|activateBtn|":"Resend the email"}},"blocks":{},"blocks_order":[]}},"recovery||":{"6899e69e-6656-45b2-b405-80b0df9804e5":{"groups":{"recovery|recovery-section-header-group|":{"recovery|recoveryTitle|":"Recover password","recovery|recoverySubTitle|":"Enter your email to receive a reset password link.","recovery|recoveryBtn|":"Recover"}},"blocks":{},"blocks_order":[]}}}}},"global_sections":{"styles":{"groups":{"colors":{"|--primary-text-color|":"rgba(0,0,0,1)","|--secondary-text-color|":"rgba(0,0,0,1)"},"font-size":{"|--large-font-size|em":2,"|--title-font-weight":400,"|--medium-text-size|em":1.1},"font-family":{"|--title-font-family|":"None","|--form-font-family|":"None"}},"blocks":{}},"form":{"groups":{"Labels":{"|--ternary-text-color|":"rgba(0,0,0,1)","|--label-font-size|em":"1.9","|--label-font-weight|":"600","|formStyle|":"label-fixed-top"},"form-input":{"|--input-bg-color|":"rgba(255,255,255, 1)","|--input-box-shadow|":"rgba(255,255,255, 1)","|--input-padding|":"10px 0px 10px 5px ","|--input-line|":"2px solid #c5bdbc","|--input-line-direction|":"All","|--input-margin|em":0.8,"|--input-radius|px":"","|--border-color-focus|":"rgba(0, 0, 0, 1)"},"form-input-error":{"|errorIcon|":"label-none","|--error-color|":"rgba(208, 26, 26, 1)","|--error-bg-color|":"rgba(240, 207, 207, 1)"}},"blocks":{}},"buttons":{"groups":{"font-style":{"|--btn-font-size|em":1.5,"|--btn-font-family|":"None","|--btn-border|":"0px solid #092dc5","|--btn-color|":"rgba(255,255,255,1)","|--btn-bg-color|":"rgba(0,0,0,1)"}},"blocks":{}},"theme":{"groups":{"popup-container":{"|--content-bg-color|":"rgba(255,250,240,1)","|--partial-width|px":400,"|--content-padding|":"10px 30px 30px 30px ","|--container-border-radius|%":"0","|--content-width|px":"520","|--form-padding|":"10px 0px 10px 0px ","|--form-width|px":"348"},"theme":{"|layout|":"popup-centered","|--content-vertical-alignment|":"center","|--animation|":"none","|--bg-opacity-image|":1,"|--header-img|":"","|--img-max-width|px":200,"|--img-position|":"column","|--label-font-weight":400}},"blocks":{}},"register|passwordPolicy|":{"groups":{"theme":{"register|hasPswMinLength|":"","register|pswMinLength|":5,"register|pswMinLengthErr|":"The password must contain at least ? characters","register|hasPswMaxLength|":"","register|pswMaxLength|":32,"register|pswMaxLengthErr|":"The password must contain at most 5 characters","register|hasPswUppercase|":"","register|pswUppercaseErr|":"The password must contain at least an uppercase character","register|hasPswNumber|":"","register|pswNumberErr|":"The password must contain at least a number","register|hasPswSpecialCharacter|":"","register|pswSpecialCharacterErr|":"The password must contain at least a special character"}},"blocks":{}}}}
+{
+    "pages": {
+        "popup-de-login": {
+            "order": [],
+            "sections": {
+                "landing||": {
+                    "b6e40a7c-ec02-4058-94c4-e77127644d33": {
+                        "groups": {
+                            "landing||": {
+                                "landing|loginRegister|": "Login / Register",
+                                "landing|enterYourEmailToContinue|": "Enter your email address to continue."
+                            },
+                            "form-group-landing-section": {
+                                "landing|yourEmail|": "Write your email",
+                                "landing|validate|": "Submit",
+                                "landing|hasSocialLogin|": 0
+                            }
+                        },
+                        "blocks": {},
+                        "blocks_order": []
+                    }
+                },
+                "register|section|": {
+                    "3cb16cc7-2891-43bb-a4ba-33bc823275f8": {
+                        "groups": {
+                            "register-section-header-group": {
+                                "register|createAccount|": "Création de compte",
+                                "register|fillInfoToCreateAccount|": ""
+                            },
+                            "register||": {
+                                "register|registerAccount|": "Créer un compte",
+                                "register|redirectAfterRegister|": ""
+                            }
+                        },
+                        "blocks": {
+                            "register|inputBlocks|email": {
+                                "c414b9c0-5372-4155-b44c-c112f458c21b": {
+                                    "register|name|": "customer[email]",
+                                    "register|message|": "This block can be used to sort the input fields present in the register form"
+                                }
+                            },
+                            "register|inputBlocks|password": {
+                                "66c3ab09-b511-42e7-a97a-686bc9a07530": {
+                                    "register|name|": "customer[password]",
+                                    "register|error|": "true",
+                                    "register|message|": "This block can be used to sort the input fields present in the register form"
+                                }
+                            },
+                            "register|inputBlocks|firstName": {
+                                "fc14b043-4300-444b-a513-e73f36f2caa7": {
+                                    "register|placeholder|": "Your first name",
+                                    "register|name|": "customer[first_name]"
+                                }
+                            },
+                            "register|inputBlocks|lastName": {
+                                "eaaf0b51-8bfe-4ea9-8c7a-8eabb9d4896f": {
+                                    "register|placeholder|": "Your last name",
+                                    "register|name|": "customer[last_name]"
+                                }
+                            },
+                            "register|dateBlocks|hasBirth": {
+                                "6b40f1b1-2dc8-40f7-bdef-061013cb6661": {
+                                    "register|placeholder|birth": "Write your birthdate",
+                                    "register|pickerStyle|": "calendar",
+                                    "register|maxDate|": 1,
+                                    "register|minDate|": 99,
+                                    "register|error|": "Your birthdate should be between 0 and 99",
+                                    "register|isTag|": "hasTag",
+                                    "register|tag|": "birth:",
+                                    "register|namespace|": "",
+                                    "register|key|": ""
+                                }
+                            }
+                        },
+                        "blocks_order": [
+                            "c414b9c0-5372-4155-b44c-c112f458c21b",
+                            "66c3ab09-b511-42e7-a97a-686bc9a07530",
+                            "fc14b043-4300-444b-a513-e73f36f2caa7",
+                            "eaaf0b51-8bfe-4ea9-8c7a-8eabb9d4896f",
+                            "6b40f1b1-2dc8-40f7-bdef-061013cb6661"
+                        ]
+                    }
+                },
+                "signin||": {
+                    "818b595c-72f4-479b-b180-019558b5ef62": {
+                        "groups": {
+                            "signin||": {
+                                "signin|yourPassword|": "Write your password",
+                                "signin|wrongPsw|": "Incorrect password. Please, try again!",
+                                "signin|signIn|": "Submit",
+                                "signin|loginRedirect|": "products",
+                                "signin|loginTitle|": "Login"
+                            }
+                        },
+                        "blocks": {},
+                        "blocks_order": []
+                    }
+                },
+                "activate||": {
+                    "be68adc8-06fb-4ba7-8547-3bfac717a7bf": {
+                        "groups": {
+                            "activate|activate-section-header-group|": {
+                                "activate|activateTitle|": "Activate",
+                                "activate|activateSubTitle|": "Fill in your email to activate your account.",
+                                "activate|activateBtn|": "Resend the email"
+                            }
+                        },
+                        "blocks": {},
+                        "blocks_order": []
+                    }
+                },
+                "recovery||": {
+                    "6899e69e-6656-45b2-b405-80b0df9804e5": {
+                        "groups": {
+                            "recovery|recovery-section-header-group|": {
+                                "recovery|recoveryTitle|": "Recover password",
+                                "recovery|recoverySubTitle|": "Enter your email to receive a reset password link.",
+                                "recovery|recoveryBtn|": "Recover"
+                            }
+                        },
+                        "blocks": {},
+                        "blocks_order": []
+                    }
+                }
+            }
+        }
+    },
+    "global_sections": {
+        "styles": {
+            "groups": {
+                "colors": {
+                    "|--primary-text-color|": "rgba(0,0,0,1)",
+                    "|--secondary-text-color|": "rgba(0,0,0,1)"
+                },
+                "font-size": {
+                    "|--large-font-size|em": 2,
+                    "|--title-font-weight": 400,
+                    "|--medium-text-size|em": 1.1
+                },
+                "font-family": {
+                    "|--title-font-family|": "None",
+                    "|--form-font-family|": "None"
+                }
+            },
+            "blocks": {}
+        },
+        "form": {
+            "groups": {
+                "Labels": {
+                    "|--ternary-text-color|": "rgba(0,0,0,1)",
+                    "|--label-font-size|em": "1.9",
+                    "|--label-font-weight|": "600",
+                    "|formStyle|": "label-fixed-top"
+                },
+                "form-input": {
+                    "|--input-bg-color|": "rgba(255,255,255, 1)",
+                    "|--input-box-shadow|": "rgba(255,255,255, 1)",
+                    "|--input-padding|": "10px 0px 10px 5px ",
+                    "|--input-line|": "2px solid #c5bdbc",
+                    "|--input-line-direction|": "All",
+                    "|--input-margin|em": 0.8,
+                    "|--input-radius|px": "",
+                    "|--border-color-focus|": "rgba(0, 0, 0, 1)"
+                },
+                "form-input-error": {
+                    "|errorIcon|": "label-none",
+                    "|--error-color|": "rgba(208, 26, 26, 1)",
+                    "|--error-bg-color|": "rgba(240, 207, 207, 1)"
+                }
+            },
+            "blocks": {}
+        },
+        "buttons": {
+            "groups": {
+                "font-style": {
+                    "|--btn-font-size|em": 1.5,
+                    "|--btn-font-family|": "None",
+                    "|--btn-border|": "0px solid #092dc5",
+                    "|--btn-color|": "rgba(255,255,255,1)",
+                    "|--btn-bg-color|": "rgba(0,0,0,1)"
+                }
+            },
+            "blocks": {}
+        },
+        "theme": {
+            "groups": {
+                "popup-container": {
+                    "|--content-bg-color|": "rgba(255,250,240,1)",
+                    "|--partial-width|px": 400,
+                    "|--content-padding|": "10px 30px 30px 30px ",
+                    "|--container-border-radius|%": "0",
+                    "|--form-padding|": "10px 0px 10px 0px ",
+                    "|--form-width|px": "348"
+                },
+                "theme": {
+                    "|layout|": "popup-centered",
+                    "|--content-vertical-alignment|": "center",
+                    "|--animation|": "none",
+                    "|--bg-opacity-image|": 1,
+                    "|--header-img|": "",
+                    "|--img-max-width|px": 200,
+                    "|--img-position|": "column",
+                    "|--label-font-weight": 400
+                }
+            },
+            "blocks": {}
+        },
+        "register|passwordPolicy|": {
+            "groups": {
+                "theme": {
+                    "register|hasPswMinLength|": "",
+                    "register|pswMinLength|": 5,
+                    "register|pswMinLengthErr|": "The password must contain at least ? characters",
+                    "register|hasPswMaxLength|": "",
+                    "register|pswMaxLength|": 32,
+                    "register|pswMaxLengthErr|": "The password must contain at most 5 characters",
+                    "register|hasPswUppercase|": "",
+                    "register|pswUppercaseErr|": "The password must contain at least an uppercase character",
+                    "register|hasPswNumber|": "",
+                    "register|pswNumberErr|": "The password must contain at least a number",
+                    "register|hasPswSpecialCharacter|": "",
+                    "register|pswSpecialCharacterErr|": "The password must contain at least a special character"
+                }
+            },
+            "blocks": {}
+        }
+    }
+}
