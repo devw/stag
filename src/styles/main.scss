@@ -84,14 +84,16 @@ body.remove-scrolling {
     Icons
     =================== */
 
-.gg-eye {
-    cursor: pointer;
-    position: absolute;
-    right: 5px;
-}
-
-i.fa-eye-slash {
+i.gg-eye {
     cursor: pointer;
     position: absolute;
     bottom: 5px;
+    right: 5px;
+}
+
+i.gg-eye-alt {
+    cursor: pointer;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
 }
