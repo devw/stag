@@ -24,4 +24,5 @@ const getHtmlString = () => `
         <link href='https://css.gg/close.css' rel='stylesheet'>
         <link href='https://css.gg/arrow-left.css' rel='stylesheet'>
         <link href='https://css.gg/eye.css' rel='stylesheet'>
+        <link href='https://css.gg/eye-alt.css' rel='stylesheet'>
     `;

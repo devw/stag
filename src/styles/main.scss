@@ -84,15 +84,16 @@ body.remove-scrolling {
     Icons
     =================== */
 
-.fa-eye {
+i.gg-eye {
     cursor: pointer;
     position: absolute;
+    bottom: 5px;
     right: 5px;
 }
 
-.fa-eye-slash {
+i.gg-eye-alt {
     cursor: pointer;
     position: absolute;
+    bottom: 5px;
     right: 5px;
-    padding: var(--input-padding);
 }
