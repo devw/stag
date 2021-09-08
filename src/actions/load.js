@@ -2,6 +2,7 @@ const { init: initLanding } = require('./landing');
 const { init: initSignIn } = require('./sign-in');
 const { init: initRegistration } = require('./register');
 const { init: initRecovery } = require('./recovery');
+const { init: initActivate } = require('./activate');
 const { $q, $qq, togglePage, getUrlParameter } = require('../utils/');
 const { IDs, STORAGE_CONFIG } = require('../config');
 
@@ -53,6 +54,7 @@ exports.loadActions = () => {
     initSignIn();
     initRegistration();
     initRecovery();
+    initActivate();
     require('../services/customize-handler');
     setBackBtn();
 };
