@@ -49,7 +49,6 @@ exports.sendInvite = async (accountId) => {
     console.log(endpoint);
     if (!accountId) return null;
     const promise = await globalThis.fetch(endpoint);
-    console.log('promise:', promise);
     return promise;
 };
 
