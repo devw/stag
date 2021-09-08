@@ -156,7 +156,7 @@ global_sections:
       default: 1.5
       required: true
       config:
-        min: 1
+        min: 0.4
         max: 3
         step: 0.1
 
@@ -210,6 +210,18 @@ global_sections:
       default: rgba(255,255,255, 1)
       hint: 
       required: false
+
+    - id: "|--input-font-size|em"
+      type: range-slider
+      label: Input font size
+      icon: EditMinor
+      default: 1
+      hint: It sets the size of the input text
+      required: true
+      config:
+        min: 0.9
+        max: 3
+        step: 0.1
 
     - id: "|--input-padding|"
       type: csspad
@@ -448,7 +460,7 @@ global_sections:
       type: csspad
       label: Form Padding
       icon: EditMinor
-      hint: You can change the input padding
+      hint: You can change the form padding
       default: 10 0 10 5
       required: true
       config:
@@ -458,7 +470,7 @@ global_sections:
       type: csspad
       label: Content Padding
       icon: EditMinor
-      hint: You can change the input padding
+      hint: You can change the content padding
       default: 0 0 0 0
       required: true
       config:
