@@ -364,7 +364,7 @@ global_sections:
       label: Button Margin
       icon: EditMinor
       hint: You can change the button margin
-      default: 10 0 10 5
+      default: 0 0 0 0
       required: true
       config:
         units: ["px", "%"]
@@ -771,7 +771,7 @@ pages:
         type: text-input
         label: Title
         icon: EditMinor
-        default: 'Connexion / Inscription'
+        default: 'Login / Register'
         hint: 'The title of the landing section'
         required: true
         config: {}
@@ -779,7 +779,7 @@ pages:
         type: text-input
         label: Subtitle
         icon: EditMinor
-        default: 'Renseignez votre adresse email pour continuer.'
+        default: Enter your email address to continue.
         # hint: The text is shown below the title to give additional information to the customer.
         required: true
         config:
@@ -811,7 +811,7 @@ pages:
         type: text-input
         label: Submit button
         icon: BuyButtonMajor
-        default: 'Valider'
+        default: 'Submit'
         hint: 'Label shown on the submit button'
         required: true
         config: {}
@@ -846,7 +846,7 @@ pages:
         type: text-input
         label: Title
         icon: ''
-        default: 'Création de compte'
+        default: Register
         # hint: 'The title of the register section'
         required: true
         config: {}
@@ -854,7 +854,7 @@ pages:
         type: text-input
         label: Subtitle
         icon: ''
-        default: 'Renseignez vos informations pour créer votre compte Franklin.'
+        default: Fill in your data to create your account.
         # hint: The text is shown below the title to give additional information to the customer.
         required: true
         config:
