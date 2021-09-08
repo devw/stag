@@ -1,181 +1,176 @@
-#login-popup {
-    form {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        padding: var(--form-padding, auto);
-        width: var(--form-width, auto);
-    }
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--form-padding, auto);
+    width: var(--form-width, auto);
+}
 
-    form > div {
-        margin: var(--input-margin, 0.8em) 0 0 0;
-        position: relative;
-        text-align: left;
-    }
+form > div {
+    margin: var(--input-margin, 0.8em) 0 0 0;
+    position: relative;
+    text-align: left;
+}
 
-    .input-text {
-        background-color: var(--input-bg-color, unset);
-        border-bottom: var(--input-line-bottom, var(--input-line));
-        border-left: var(--input-line-left, var(--input-line));
-        border-radius: var(--input-radius, 8px);
-        border-right: var(--input-line-right, var(--input-line));
-        border-top: var(--input-line-top, var(--input-line));
-        color: #333;
-        font-size: 1em;
-        min-width: 100%;
-        outline: none;
-        padding: var(--input-padding);
-    }
-    .input-text:focus {
-        border-color: var(--border-color-focus);
-        box-shadow: var(--input-box-shadow);
-    }
+.input-text {
+    background-color: var(--input-bg-color, unset);
+    border-bottom: var(--input-line-bottom, var(--input-line));
+    border-left: var(--input-line-left, var(--input-line));
+    border-radius: var(--input-radius, 8px);
+    border-right: var(--input-line-right, var(--input-line));
+    border-top: var(--input-line-top, var(--input-line));
+    color: #333;
+    font-size: 1em;
+    min-width: 100%;
+    outline: none;
+    padding: var(--input-padding);
+}
+.input-text:focus {
+    border-color: var(--border-color-focus);
+    box-shadow: var(--input-box-shadow);
+}
 
-    label {
-        bottom: 0;
-        color: var(--ternary-text-color);
-        font-size: var(--label-font-size);
-        font-weight: var(--label-font-weight);
-        left: var(--label-left, 10px);
-        bottom: var(--label-bottom);
-        margin: unset;
-        position: absolute;
-        transform-origin: 0 0;
-        transition: transform 0.3s ease-in-out;
-    }
+input + label {
+    bottom: 0;
+    color: var(--ternary-text-color);
+    font-size: var(--label-font-size);
+    font-weight: var(--label-font-weight);
+    left: var(--label-left, 10px);
+    bottom: var(--label-bottom);
+    margin: unset;
+    position: absolute;
+    transform-origin: 0 0;
+    transition: transform 0.3s ease-in-out;
+}
 
-    label.label-choice-list {
-        font-weight: 400;
-    }
+label.label-choice-list {
+    font-weight: 400;
+}
 
-    /* START - GO UP */
-    .label-go-up input::placeholder {
-        color: transparent;
-    }
+/* START - GO UP */
+.label-go-up input::placeholder {
+    color: transparent;
+}
 
-    /* START - GO UP */
-    .label-go-up input::placeholder {
-        color: transparent;
-    }
+/* START - GO UP */
+.label-go-up input::placeholder {
+    color: transparent;
+}
 
-    .label-go-up input:focus:not([type='checkbox']) + label,
-    .label-go-up input:not(:placeholder-shown):not([type='checkbox']) + label {
-        transform: translateY(-0.8em) scale(0.8);
-    }
-    /* START - GO UP */
+.label-go-up input:focus:not([type='checkbox']) + label,
+.label-go-up input:not(:placeholder-shown):not([type='checkbox']) + label {
+    transform: translateY(-0.8em) scale(0.8);
+}
+/* START - GO UP */
 
-    /* START - GO DOWN */
-    .label-go-down input::placeholder {
-        color: transparent;
-    }
-    .label-go-down input:focus:not([type='checkbox']) + label,
-    .label-go-down
-        input:not(:placeholder-shown):not([type='checkbox'])
-        + label {
-        transform: translateY(1em) scale(0.8);
-    }
-    .label-go-down input {
-        // padding-bottom: 15px;
-    }
-    /* START - GO DOWN */
+/* START - GO DOWN */
+.label-go-down input::placeholder {
+    color: transparent;
+}
+.label-go-down input:focus:not([type='checkbox']) + label,
+.label-go-down input:not(:placeholder-shown):not([type='checkbox']) + label {
+    transform: translateY(1em) scale(0.8);
+}
+.label-go-down input {
+    // padding-bottom: 15px;
+}
+/* START - GO DOWN */
 
-    .label-fixed-top :not([type='checkbox']) + label,
-    .label-fixed-bottom :not([type='checkbox']) + label {
-        bottom: unset;
-        display: block;
-        font-size: 0.8em;
-        padding-bottom: 0;
-        padding-left: var(--label-left);
-        padding-top: 0;
-        position: unset;
-        top: unset;
-    }
-    .label-fixed-top > div {
-        display: flex;
-        flex-direction: column-reverse;
-    }
-    .label-fixed-bottom > div {
-        display: flex;
-        flex-direction: column;
-    }
+.label-fixed-top :not([type='checkbox']) + label,
+.label-fixed-bottom :not([type='checkbox']) + label {
+    bottom: unset;
+    display: block;
+    padding-bottom: 0;
+    padding-left: var(--label-left);
+    padding-top: 0;
+    position: unset;
+    top: unset;
+}
+.label-fixed-top > div {
+    display: flex;
+    flex-direction: column-reverse;
+}
+.label-fixed-bottom > div {
+    display: flex;
+    flex-direction: column;
+}
 
-    .label-fixed-top input::placeholder,
-    .label-fixed-bottom input::placeholder {
-        color: transparent;
-    }
+.label-fixed-top input::placeholder,
+.label-fixed-bottom input::placeholder {
+    color: transparent;
+}
 
-    .label-fixed-top label:not(.label-error).hidden,
-    .label-fixed-bottom label:not(.label-error).hidden {
-        display: none;
-    }
+.label-fixed-top label:not(.label-error).hidden,
+.label-fixed-bottom label:not(.label-error).hidden {
+    display: none;
+}
 
-    .label-none label {
-        display: none;
-    }
+.label-none label {
+    display: none;
+}
 
-    :not([type='checkbox']) label.label-error {
-        background-color: var(--error-bg-color, rgb(240, 207, 207));
-        bottom: unset;
-        color: var(--error-color, rgb(208, 26, 26));
-        display: none;
-        font-size: 0.8em;
-        left: unset;
-        top: unset;
-        width: 100%;
-    }
+:not([type='checkbox']) label.label-error {
+    background-color: var(--error-bg-color, rgb(240, 207, 207));
+    bottom: unset;
+    color: var(--error-color, rgb(208, 26, 26));
+    display: none;
+    font-size: 0.8em;
+    left: unset;
+    top: unset;
+    width: 100%;
+}
 
-    label.label-error i {
-        margin-right: 3px;
-    }
+label.label-error i {
+    margin-right: 3px;
+}
 
-    // CHOICE BLOCK
-    div.choice-block {
-        margin: 1.1em 0 0 0;
-        display: block;
-    }
+// CHOICE BLOCK
+div.choice-block {
+    margin: 1.1em 0 0 0;
+    display: block;
+}
 
-    .choice-block > div {
-        display: inline-block;
-    }
+.choice-block > div {
+    display: inline-block;
+}
 
-    .choice-block.multi-line > div {
-        display: block;
-    }
+.choice-block.multi-line > div {
+    display: block;
+}
 
-    .choice-block label {
-        opacity: 1;
-        position: unset;
-        display: inline-block;
-    }
+.choice-block label {
+    opacity: 1;
+    position: unset;
+    display: inline-block;
+}
 
-    .choice-block input {
-        min-width: unset;
-    }
+.choice-block input {
+    min-width: unset;
+}
 
-    .choice-block input[type='checkbox'] {
-        -webkit-appearance: none;
-        background-color: white;
-        border: 1px solid #ddd;
-        cursor: pointer;
-        outline: none;
-        vertical-align: middle;
-    }
-    .choice-block input[type='checkbox']:checked {
-        background-color: gray;
-    }
+.choice-block input[type='checkbox'] {
+    -webkit-appearance: none;
+    background-color: white;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    outline: none;
+    vertical-align: middle;
+}
+.choice-block input[type='checkbox']:checked {
+    background-color: gray;
+}
 
-    .choice-block.single-choice input[type='checkbox'] {
-        padding: 0.5em;
-    }
+.choice-block.single-choice input[type='checkbox'] {
+    padding: 0.5em;
+}
 
-    .choice-block.multi-choice input[type='checkbox'] {
-        border-radius: 25%;
-        padding: 0.5em;
-    }
-    .choice-block .inline {
-        display: inline;
-    }
-    .choice-block .block {
-        display: block;
-    }
+.choice-block.multi-choice input[type='checkbox'] {
+    border-radius: 25%;
+    padding: 0.5em;
+}
+.choice-block .inline {
+    display: inline;
+}
+.choice-block .block {
+    display: block;
 }
