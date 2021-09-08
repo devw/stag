@@ -20,7 +20,7 @@ form > div {
     border-right: var(--input-line-right, var(--input-line));
     border-top: var(--input-line-top, var(--input-line));
     color: #333;
-    font-size: 1em;
+    font-size: var(--input-font-size, 1em);
     min-width: 100%;
     outline: none;
     padding: var(--input-padding);
