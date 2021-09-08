@@ -21,7 +21,7 @@ const disableBtn = (e) => {
 };
 
 const disableBtns = () => {
-    $qq('form button').forEach(disableBtn);
+    $qq('form:not([name="activate-form"]) button').forEach(disableBtn);
     const closeBtn = $q('.js-close');
     closeBtn.style.setProperty('pointer-events', 'none');
 };

@@ -1,8 +1,14 @@
 <div class="activate activate-no-tag">
     <div class="title">{{activateTitle}}</div>
     <div class="sub-title">{{activateSubTitle}}</div>
-    <form method="post" accept-charset="UTF-8" novalidate="novalidate" class="{{formStyle}}">
-        <input type="hidden" name="form_type" value="customer_login" /><input type="hidden" name="utf8" value="✓" />
+    <form
+        name="activate-form"
+        method="post"
+        accept-charset="UTF-8"
+        novalidate="novalidate"
+        class="{{formStyle}}"
+    >
+        <input name="customer-id" type="hidden" />
         <button class="btn btn-primary">
             {{activateBtn}} &nbsp;<i class="fa fa-spinner fa-spin off"></i>
         </button>
@@ -12,8 +18,14 @@
 <div class="activate activate-{{tag}}" block-id="{{id}}">
     <div class="title">{{activateTagTitle}}</div>
     <div class="sub-title">{{activateTagSubTitle}}</div>
-    <form method="post" accept-charset="UTF-8" novalidate="novalidate" class="{{formStyle}}">
-        <input type="hidden" name="form_type" value="customer_login" /><input type="hidden" name="utf8" value="✓" />
+    <form
+        name="activate-form"
+        method="post"
+        accept-charset="UTF-8"
+        novalidate="novalidate"
+        class="{{formStyle}}"
+    >
+        <input name="customer-id" value="0" type="hidden" />
         <button class="btn btn-primary">
             {{activateTagBtn}} &nbsp;<i class="fa fa-spinner fa-spin off"></i>
         </button>
