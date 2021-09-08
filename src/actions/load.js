@@ -42,14 +42,19 @@ const goToLanding = () => togglePage(IDs.LANDING_ID);
 const setBackBtn = () =>
     $qq(`.js-back`).forEach((e) => e.addEventListener('click', goToLanding));
 
-exports.loadActions = () => {
+const isDisable = () => {
     const { isActive } = JSON.parse(localStorage.getItem(STORAGE_CONFIG));
-    const loginBtn = document.body.querySelector('[href="/account/login"]');
+    return (
+        isActive === false && getUrlParameter('preview_login_popup') !== 'true'
+    );
+};
 
-    if (isActive === false && getUrlParameter('preview_login_popup') !== 'true')
-        return null;
-    loginBtn?.addEventListener('click', (e) => e.preventDefault(), true);
-    initContainer();
+exports.loadActions = () => {
+    if (!isDisable()) {
+        const loginBtn = document.body.querySelector('[href="/account/login"]');
+        loginBtn?.addEventListener('click', (e) => e.preventDefault(), true);
+        initContainer();
+    }
     initLanding();
     initSignIn();
     initRegistration();
