@@ -62,10 +62,13 @@ const emailAutofill = () => {
 };
 
 const checkStatusAndTogglePage = (customer) => {
-    const { state, id } = customer;
     emailAutofill();
-    if (!state) togglePage(REGISTER_ID);
-    else if (state === 'enabled') togglePage(SIGNIN_ID);
+    if (!customer) {
+        togglePage(REGISTER_ID);
+        return null;
+    }
+    const { state, id } = customer;
+    if (state === 'enabled') togglePage(SIGNIN_ID);
     else {
         togglePage(ACTIVATE_ID);
         $q('[name="customer-id"]').value = id;
@@ -83,8 +86,8 @@ const autocomplete = ({ inputType }) => {
     checkStatusAndTogglePage(customer);
 };
 
-const toggleButton = async ({ target }) => {
-    const email = target.value;
+const toggleButton = async () => {
+    const email = getEmail();
     const isEmail = /[\w.]+@\w+\.[a-z]{2,}/.test(email);
     isEmail ? activeBtn() : disableBtn();
 };
@@ -94,7 +97,7 @@ exports.init = () => {
     BTN = form.querySelector('button');
     EMAIL = form.querySelector("[type='email']");
 
-    form.addEventListener('input', debounce(toggleButton, 200));
+    form.addEventListener('input', debounce(toggleButton, 100));
     form.addEventListener('submit', onSubmit);
     EMAIL.addEventListener('input', updateCustomers);
     EMAIL.addEventListener('change', autocomplete);
