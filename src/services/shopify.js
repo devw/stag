@@ -1,11 +1,11 @@
-const { $q } = require("../utils");
+const { $q } = require('../utils');
 
 const selectors = {
-    close: ".js-close",
-    shopifyRes: ".js-shopify-response",
-    isLogged: "#customer_logout_link",
-    wrongPsw: "#customer_login",
-    captcha: ".shopify-challenge__button.btn",
+    close: '.js-close',
+    shopifyRes: '.js-shopify-response',
+    isLogged: '#customer_logout_link',
+    wrongPsw: '#customer_login',
+    captcha: '.shopify-challenge__button.btn',
 };
 
 exports.sendHttpRequest = (method, e) => {
@@ -31,12 +31,12 @@ const shopifyResult = (html) => ({
 });
 
 const parseShopifyResponse = ({ target }, response) => {
-    const htmlResponse = new DOMParser().parseFromString(response, "text/html");
+    const htmlResponse = new DOMParser().parseFromString(response, 'text/html');
     const resp = shopifyResult(htmlResponse);
     console.log(resp);
     if (resp.isLogged) $q(selectors.close).click();
-    else if (resp.hasWrongPsw) $q(".js-signin-err").style.display = "block";
+    else if (resp.hasWrongPsw) $q('.js-signin-err').style.display = 'block';
     //TODO take the message from configuration
-    else if (resp.hasChallenge) target.submit();
+    else if (resp.hasChallenge) $q('[name="register-form"]').submit();
     return resp;
 };
