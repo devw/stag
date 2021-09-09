@@ -26,7 +26,6 @@ const filterCss = (cssVars) => {
         cssVars['--content-padding'] = '25px';
         cssVars['--form-padding'] = 'auto';
         cssVars['--header-img'] = '';
-        // text.layout = 'popup-full';
     }
 };
 
