@@ -200,7 +200,8 @@ detail = {
                         '900377a9-6edc-4ce9-ba2d-85a0a2880b70': {
                             groups: {
                                 'activate|activate-section-header-group|': {
-                                    'activate|activateTitle|': 'Activate',
+                                    'activate|activateTitle|':
+                                        'Activate no Tag',
                                     'activate|activateSubTitle|':
                                         'Please click on the SUBMIT button to activate your account.',
                                     'activate|activateBtn|': 'SUBMIT',
@@ -209,18 +210,18 @@ detail = {
                             blocks: {
                                 'activate|activateBlocks|tag': {
                                     '694bd974-227a-4d14-9c3d-a7aff960da05': {
-                                        'activate|tag|': 'tag_name',
+                                        'activate|tag|': 'tag_name_1',
                                         'activate|activateTagTitle|':
-                                            'Activate',
+                                            'Activate Tag 1',
                                         'activate|activateTagSubTitle|':
                                             'Fill in your email to activate your account.',
                                         'activate|activateTagBtn|':
                                             'Resend the email',
                                     },
                                     '39588239-4c4f-432a-b82e-b375cf77ea43': {
-                                        'activate|tag|': 'tag_name',
+                                        'activate|tag|': 'tag_name_2',
                                         'activate|activateTagTitle|':
-                                            'Activate',
+                                            'Activate Tag 2',
                                         'activate|activateTagSubTitle|':
                                             'Fill in your email to activate your account.',
                                         'activate|activateTagBtn|':
@@ -366,38 +367,15 @@ detail = {
     },
     event: {
         action: 'trigger',
-        target: 'block:add',
+        target: 'setting:update',
         params: {
+            value: 'xxxxxxxxxxxxx',
             page_id: 'popup-de-login',
             section_id: '900377a9-6edc-4ce9-ba2d-85a0a2880b70',
             section_type_id: 'activate||',
+            setting_id: 'activate|activateTagTitle|',
             block_type_id: 'activate|activateBlocks|tag',
-            block_id: '39588239-4c4f-432a-b82e-b375cf77ea43',
-            block_settings: {
-                'activate|tag|': 'tag_name',
-                'activate|activateTagTitle|': 'Activate',
-                'activate|activateTagSubTitle|':
-                    'Fill in your email to activate your account.',
-                'activate|activateTagBtn|': 'Resend the email',
-            },
-            blocks: {
-                'activate|activateBlocks|tag': {
-                    '694bd974-227a-4d14-9c3d-a7aff960da05': {
-                        'activate|tag|': 'tag_name',
-                        'activate|activateTagTitle|': 'Activate',
-                        'activate|activateTagSubTitle|':
-                            'Fill in your email to activate your account.',
-                        'activate|activateTagBtn|': 'Resend the email',
-                    },
-                    '39588239-4c4f-432a-b82e-b375cf77ea43': {
-                        'activate|tag|': 'tag_name',
-                        'activate|activateTagTitle|': 'Activate',
-                        'activate|activateTagSubTitle|':
-                            'Fill in your email to activate your account.',
-                        'activate|activateTagBtn|': 'Resend the email',
-                    },
-                },
-            },
+            block_id: '694bd974-227a-4d14-9c3d-a7aff960da05',
         },
     },
 };
