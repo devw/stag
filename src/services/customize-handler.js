@@ -70,7 +70,7 @@ const parseEvent = (event) => {
 
 const disableClick = () => {
     const nodeApp = getRootNode();
-    nodeApp.style.setProperty('pointer-events', 'none');
+    // nodeApp.style.setProperty('pointer-events', 'none');
 };
 
 const parseMessage = (message) => {

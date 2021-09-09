@@ -1,1 +1,189 @@
-{"pages":{"popup-de-login":{"order":[],"sections":{"landing||":{"fea69080-5672-4122-8516-458909629a8a":{"groups":{"landing||":{"landing|loginRegister|":"LOGIN / REGISTER","landing|enterYourEmailToContinue|":"Fill in your data to create your account."},"form-group-landing-section":{"landing|yourEmail|":"Write your email","landing|validate|":"Valider","landing|hasSocialLogin|":0}},"blocks":{},"blocks_order":[]}},"register|section|":{"1e181624-0eae-4c40-a7c1-d8845564d7b3":{"groups":{"register-section-header-group":{"register|createAccount|":"Création de compte","register|fillInfoToCreateAccount|":"Renseignez vos informations pour créer votre compte Franklin."},"register||":{"register|registerAccount|":"Créer un compte","register|redirectAfterRegister|":""}},"blocks":{},"blocks_order":[]}},"signin||":{"a3f6c4cf-56e7-42c5-ab11-64bff5b6e85f":{"groups":{"signin||":{"signin|yourPassword|":"Write your password","signin|wrongPsw|":"Incorrect password. Please, try again!","signin|signIn|":"Submit","signin|loginRedirect|":"products","signin|enterEmailPswToConnect|":"Enter your email address and password to connect. ","signin|loginTitle|":"Login"}},"blocks":{},"blocks_order":[]}},"activate||":{"0a23e170-c938-4fcb-a282-727e824edfc0":{"groups":{"activate|activate-section-header-group|":{"activate|activateTitle|":"Activate ","activate|activateSubTitle|":"Fill in your email to activate your account. ","activate|activateBtn|":"Resend the email"}},"blocks":{},"blocks_order":[]}},"recovery||":{"e671b7d0-54e1-4b93-863a-b1d211e73a8a":{"groups":{"recovery|recovery-section-header-group|":{"recovery|recoveryTitle|":"Recover password","recovery|recoverySubTitle|":"Enter your email to receive a reset password link.","recovery|recoveryBtn|":"Recover"}},"blocks":{},"blocks_order":[]}}}}},"global_sections":{"styles":{"groups":{"colors":{"|--primary-text-color|":"rgba(0,0,0,1)","|--secondary-text-color|":"rgba(0,0,0,1)"},"font-size":{"landing|--large-font-size|em":2,"register|--title-font-weight":400,"landing|--medium-text-size|em":1.1},"font-family":{"register|--title-font-family|":"None","register|--form-font-family|":"None"}},"blocks":{}},"form":{"groups":{"Labels":{"|--ternary-text-color|":"rgba(0,0,0,1)","|--label-font-size|em":1.5,"|--label-font-weight|":400,"|formStyle|":"label-none"},"form-input":{"register|--input-bg-color|":"rgba(255,255,255, 1)","register|--input-box-shadow|":"rgba(255,255,255, 1)","register|--input-padding|":"10px 0px 10px 5px ","register|--input-line|":"1px solid black","register|--input-line-direction|":"Bottom","register|--input-margin|em":0.8,"register|--input-radius|px":"","register|--border-color-focus|":"rgba(0, 0, 0, 1)"},"form-input-error":{"register|errorIcon|":"label-none","register|--error-color|":"rgba(208, 26, 26, 1)","register|--error-bg-color|":"rgba(240, 207, 207, 1)"}},"blocks":{}},"buttons":{"groups":{"font-style":{"|--btn-font-size|em":"1.3","|--btn-font-family|":"None","|--btn-border|":"0px solid #0b0b0b","|--btn-color|":"rgba(255,255,255,1)","|--btn-bg-color|":"rgba(0,0,0,1)","|--btn-margin|":"20px 0px 0px 0px ","|--btn-padding|px":"9"}},"blocks":{}},"theme":{"groups":{"popup-container":{"|--content-bg-color|":"rgba(255,255,255,1)","|--content-padding|":"20px 50px 40px 50px ","|--container-border-radius|%":"0.5","|--form-width|px":"300","|--form-padding|":"0px 0px 0px 0px "},"theme":{"|layout|":"popup-centered","|--content-vertical-alignment|":"center","|--animation|":"none","|--container-bg-image|":"https://cdn.shopify.com/s/files/1/2598/9270/products/Packshotfriandiseschatvolaille_600x.jpg?v=159948757","|--bg-opacity-image|":1,"|--header-img|":{"statusCode":200,"url":"https://customize-uploaded-files.s3.amazonaws.com/alfred-devstrore-antonio/68e5e1f3-879a-4a2e-9464-f345a9fe9793.png?AWSAccessKeyId=ASIA443P2P5PLQW2UMFV&Expires=1631100701&Signature=Gzi5UH%2BBZ1oLFUHs%2BhLSVK6IkZ0%3D&x-amz-security-token=IQoJb3JpZ2luX2VjEFwaCXVzLWVhc3QtMSJHMEUCIQCiAuCaSqX%2Fz55SnVgZMoOXqzoje%2B%2BWZrBAazurzDjdfAIgFyivPLySl9DZmliusgQPT33vatUE4Vw65vXKcD9dMgsqogIIpP%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARACGgw4ODY2MDgzOTYxMjYiDO77SiQeXgAzVGGK3ir2AbjefWcVNGR9%2BhJ8ytFUCPhWl6VIMO8I8h5s6dNaJXeuJtoy0YEYQERkUF2IpDMYyKsGJAdzEmn4S7efHmKml6DmpQNqBQqWmfb06svx%2ByZsWZsn6AsVpXRzmYQfE%2FuhSPdIHgyzDgpgMENkx5lwxJFysSme%2F1GwCRdvNUmfOSI0wBk09SFjaJdqhdgYf%2BVYAI2srlJN2f6UXhk%2FRToFFCtlDkTCxqUsHX%2BWPphJZbeXCq%2FyIk6yjtHzD16talgV68m4MGN8fmeHLdBKvs%2BoPVYrG0fBBnRikahEvw4KaMoy0fekNB2LRpCYqNasBCZKu5%2BTarDtvDCXt%2BKJBjqaAVfRR7l2rk4fqZdIO0UyCXcqTIbBMoC%2FBrsl28m3Z0irdTPSvMXtlCag2wAroy9Z8jjbzXwE7cfFb8UBIEtq7zO3ymzaeqKhcn7VyEc96xeLTvlBPxRqnvFC56cfnUGeFH%2BDJhLEpHchPGs142unF4ktVGBghHVY46nok0fb%2FLnj6jjg6lF0jC%2B6F9CgMVXKY3z1qgt0MHpBvj0%3D"},"|--img-max-width|px":"250","|--img-position|":"column","|--label-font-weight":400}},"blocks":{}},"register|passwordPolicy|":{"groups":{"theme":{"register|hasPswMinLength|":"","register|pswMinLength|":5,"register|pswMinLengthErr|":"The password must contain at least ? characters","register|hasPswMaxLength|":"","register|pswMaxLength|":32,"register|pswMaxLengthErr|":"The password must contain at most 5 characters","register|hasPswUppercase|":"","register|pswUppercaseErr|":"The password must contain at least an uppercase character","register|hasPswNumber|":"","register|pswNumberErr|":"The password must contain at least a number","register|hasPswSpecialCharacter|":"","register|pswSpecialCharacterErr|":"The password must contain at least a special character"}},"blocks":{}}}}
+{
+    "pages": {
+        "popup-de-login": {
+            "order": [],
+            "sections": {
+                "landing||": {
+                    "fea69080-5672-4122-8516-458909629a8a": {
+                        "groups": {
+                            "landing||": {
+                                "landing|loginRegister|": "LOGIN / REGISTER",
+                                "landing|enterYourEmailToContinue|": "Fill in your data to create your account."
+                            },
+                            "form-group-landing-section": {
+                                "landing|yourEmail|": "Write your email",
+                                "landing|validate|": "Valider",
+                                "landing|hasSocialLogin|": 0
+                            }
+                        },
+                        "blocks": {},
+                        "blocks_order": []
+                    }
+                },
+                "register|section|": {
+                    "1e181624-0eae-4c40-a7c1-d8845564d7b3": {
+                        "groups": {
+                            "register-section-header-group": {
+                                "register|createAccount|": "Création de compte",
+                                "register|fillInfoToCreateAccount|": "Renseignez vos informations pour créer votre compte Franklin."
+                            },
+                            "register||": {
+                                "register|registerAccount|": "Créer un compte",
+                                "register|redirectAfterRegister|": ""
+                            }
+                        },
+                        "blocks": {},
+                        "blocks_order": []
+                    }
+                },
+                "signin||": {
+                    "a3f6c4cf-56e7-42c5-ab11-64bff5b6e85f": {
+                        "groups": {
+                            "signin||": {
+                                "signin|yourPassword|": "Write your password",
+                                "signin|wrongPsw|": "Incorrect password. Please, try again!",
+                                "signin|signIn|": "Submit",
+                                "signin|loginRedirect|": "products",
+                                "signin|enterEmailPswToConnect|": "Enter your email address and password to connect. ",
+                                "signin|loginTitle|": "Login"
+                            }
+                        },
+                        "blocks": {},
+                        "blocks_order": []
+                    }
+                },
+                "activate||": {
+                    "0a23e170-c938-4fcb-a282-727e824edfc0": {
+                        "groups": {
+                            "activate|activate-section-header-group|": {
+                                "activate|activateTitle|": "Activate ",
+                                "activate|activateSubTitle|": "Fill in your email to activate your account. ",
+                                "activate|activateBtn|": "Resend the email"
+                            }
+                        },
+                        "blocks": {},
+                        "blocks_order": []
+                    }
+                },
+                "recovery||": {
+                    "e671b7d0-54e1-4b93-863a-b1d211e73a8a": {
+                        "groups": {
+                            "recovery|recovery-section-header-group|": {
+                                "recovery|recoveryTitle|": "Recover password",
+                                "recovery|recoverySubTitle|": "Enter your email to receive a reset password link.",
+                                "recovery|recoveryBtn|": "Recover"
+                            }
+                        },
+                        "blocks": {},
+                        "blocks_order": []
+                    }
+                }
+            }
+        }
+    },
+    "global_sections": {
+        "styles": {
+            "groups": {
+                "colors": {
+                    "|--primary-text-color|": "rgba(0,0,0,1)",
+                    "|--secondary-text-color|": "rgba(0,0,0,1)"
+                },
+                "font-size": {
+                    "landing|--large-font-size|em": 2,
+                    "register|--title-font-weight": 400,
+                    "landing|--medium-text-size|em": 1.1
+                },
+                "font-family": {
+                    "register|--title-font-family|": "None",
+                    "register|--form-font-family|": "None"
+                }
+            },
+            "blocks": {}
+        },
+        "form": {
+            "groups": {
+                "Labels": {
+                    "|--ternary-text-color|": "rgba(0,0,0,1)",
+                    "|--label-font-size|em": 1.5,
+                    "|--label-font-weight|": 400,
+                    "|formStyle|": "label-none"
+                },
+                "form-input": {
+                    "register|--input-bg-color|": "rgba(255,255,255, 1)",
+                    "register|--input-box-shadow|": "rgba(255,255,255, 1)",
+                    "register|--input-padding|": "10px 0px 10px 5px ",
+                    "register|--input-line|": "1px solid black",
+                    "register|--input-line-direction|": "Bottom",
+                    "register|--input-margin|em": 0.8,
+                    "register|--input-radius|px": "",
+                    "register|--border-color-focus|": "rgba(0, 0, 0, 1)"
+                },
+                "form-input-error": {
+                    "register|errorIcon|": "label-none",
+                    "register|--error-color|": "rgba(208, 26, 26, 1)",
+                    "register|--error-bg-color|": "rgba(240, 207, 207, 1)"
+                }
+            },
+            "blocks": {}
+        },
+        "buttons": {
+            "groups": {
+                "font-style": {
+                    "|--btn-font-size|em": "1.3",
+                    "|--btn-font-family|": "None",
+                    "|--btn-border|": "0px solid #0b0b0b",
+                    "|--btn-color|": "rgba(255,255,255,1)",
+                    "|--btn-bg-color|": "rgba(0,0,0,1)",
+                    "|--btn-margin|": "20px 0px 0px 0px ",
+                    "|--btn-padding|px": "9"
+                }
+            },
+            "blocks": {}
+        },
+        "theme": {
+            "groups": {
+                "popup-container": {
+                    "|--content-bg-color|": "rgba(255,255,255,1)",
+                    "|--content-padding|": "20px 50px 40px 50px ",
+                    "|--container-border-radius|%": "0.5",
+                    "|--form-width|px": "300",
+                    "|--form-padding|": "0px 0px 0px 0px "
+                },
+                "theme": {
+                    "|layout|": "popup-centered",
+                    "|--content-vertical-alignment|": "center",
+                    "|--animation|": "none",
+                    "|--container-bg-image|": "https://cdn.shopify.com/s/files/1/2598/9270/products/Packshotfriandiseschatvolaille_600x.jpg?v=159948757",
+                    "|--bg-opacity-image|": 1,
+                    "|--header-img|": {
+                        "statusCode": 200,
+                        "url": "https://customize-uploaded-files.s3.amazonaws.com/alfred-devstrore-antonio/68e5e1f3-879a-4a2e-9464-f345a9fe9793.png?AWSAccessKeyId=ASIA443P2P5PLQW2UMFV&Expires=1631100701&Signature=Gzi5UH%2BBZ1oLFUHs%2BhLSVK6IkZ0%3D&x-amz-security-token=IQoJb3JpZ2luX2VjEFwaCXVzLWVhc3QtMSJHMEUCIQCiAuCaSqX%2Fz55SnVgZMoOXqzoje%2B%2BWZrBAazurzDjdfAIgFyivPLySl9DZmliusgQPT33vatUE4Vw65vXKcD9dMgsqogIIpP%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARACGgw4ODY2MDgzOTYxMjYiDO77SiQeXgAzVGGK3ir2AbjefWcVNGR9%2BhJ8ytFUCPhWl6VIMO8I8h5s6dNaJXeuJtoy0YEYQERkUF2IpDMYyKsGJAdzEmn4S7efHmKml6DmpQNqBQqWmfb06svx%2ByZsWZsn6AsVpXRzmYQfE%2FuhSPdIHgyzDgpgMENkx5lwxJFysSme%2F1GwCRdvNUmfOSI0wBk09SFjaJdqhdgYf%2BVYAI2srlJN2f6UXhk%2FRToFFCtlDkTCxqUsHX%2BWPphJZbeXCq%2FyIk6yjtHzD16talgV68m4MGN8fmeHLdBKvs%2BoPVYrG0fBBnRikahEvw4KaMoy0fekNB2LRpCYqNasBCZKu5%2BTarDtvDCXt%2BKJBjqaAVfRR7l2rk4fqZdIO0UyCXcqTIbBMoC%2FBrsl28m3Z0irdTPSvMXtlCag2wAroy9Z8jjbzXwE7cfFb8UBIEtq7zO3ymzaeqKhcn7VyEc96xeLTvlBPxRqnvFC56cfnUGeFH%2BDJhLEpHchPGs142unF4ktVGBghHVY46nok0fb%2FLnj6jjg6lF0jC%2B6F9CgMVXKY3z1qgt0MHpBvj0%3D"
+                    },
+                    "|--img-max-width|px": "250",
+                    "|--img-position|": "column",
+                    "|--label-font-weight": 400
+                }
+            },
+            "blocks": {}
+        },
+        "register|passwordPolicy|": {
+            "groups": {
+                "theme": {
+                    "register|hasPswMinLength|": "",
+                    "register|pswMinLength|": 5,
+                    "register|pswMinLengthErr|": "The password must contain at least ? characters",
+                    "register|hasPswMaxLength|": "",
+                    "register|pswMaxLength|": 32,
+                    "register|pswMaxLengthErr|": "The password must contain at most 5 characters",
+                    "register|hasPswUppercase|": "",
+                    "register|pswUppercaseErr|": "The password must contain at least an uppercase character",
+                    "register|hasPswNumber|": "",
+                    "register|pswNumberErr|": "The password must contain at least a number",
+                    "register|hasPswSpecialCharacter|": "",
+                    "register|pswSpecialCharacterErr|": "The password must contain at least a special character"
+                }
+            },
+            "blocks": {}
+        }
+    }
+}
