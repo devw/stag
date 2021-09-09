@@ -15,6 +15,7 @@ body.remove-scrolling {
     align-items: center;
     background-color: var(--content-bg-color, #fff);
     border-radius: var(--container-border-radius);
+    border: 1px solid #bbb;
     color: var(--primary-text-color);
     justify-content: var(--content-vertical-alignment);
     min-height: 28%;
