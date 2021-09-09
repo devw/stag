@@ -19,7 +19,15 @@ const filterCss = (cssVars) => {
     pics.forEach((e) => {
         if (cssVars[e]) cssVars[e] = `url(${cssVars[e]})`;
     });
-    // return view;
+    if (document.documentElement.clientWidth <= 540) {
+        console.log('----cssVars----', cssVars);
+        cssVars['--form-width'] = 'auto';
+        cssVars['--btn-margin'] = 'auto';
+        cssVars['--content-padding'] = '25px';
+        cssVars['--form-padding'] = 'auto';
+        cssVars['--header-img'] = '';
+        // text.layout = 'popup-full';
+    }
 };
 
 const mendInputLineDirection = (style) => {

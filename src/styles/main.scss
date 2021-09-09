@@ -90,10 +90,19 @@ i.gg-eye {
     bottom: 5px;
     right: 5px;
 }
+.label-fixed-bottom i.gg-eye {
+    bottom: unset;
+    top: 10px;
+}
 
 i.gg-eye-alt {
     cursor: pointer;
     position: absolute;
     bottom: 5px;
     right: 5px;
+}
+
+.label-fixed-bottom i.gg-eye-alt {
+    bottom: unset;
+    top: 10px;
 }
