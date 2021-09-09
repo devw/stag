@@ -38,7 +38,8 @@ const loadPage = (event) => {
     } else {
         changePage(globalThis.prevPage || 'landing');
     }
-    if (IDs.ACTIVATE_ID === page) handleActivateBlock(event);
+    if (IDs.ACTIVATE_ID === (page || globalThis.prevPage))
+        handleActivateBlock(event);
 };
 
 const handleActivateBlock = (event) => {
