@@ -28,6 +28,7 @@ exports.render = (text) => {
     }));
     text.partials = partials;
     text.CONTAINER_ID = IDs.CONTAINER_ID;
+    if (document.documentElement.clientWidth <= 540) text.layout = 'popup-full';
     getRootNode().innerHTML = Mustache.render(container, text);
     updateInputFields();
 };
