@@ -31,11 +31,23 @@ const loadPage = (event) => {
     const section =
         params?.section_type || params?.setting_id || params?.section_type_id;
     const page = section?.split('|')[0];
+
     if (page && page !== '') {
         changePage(page);
         globalThis.prevPage = page;
     } else {
         changePage(globalThis.prevPage || 'landing');
+    }
+    if (IDs.ACTIVATE_ID === page) handleActivateBlock(event);
+};
+
+const handleActivateBlock = (event) => {
+    const block_id = event?.params?.block_id;
+    $qq('.activate').forEach((e) => (e.style.display = 'none'));
+    if (block_id) {
+        $q(`[block-id="${block_id}"]`).style.display = 'block';
+    } else {
+        $q('.activate-no-tag').style.display = 'block';
     }
 };
 
