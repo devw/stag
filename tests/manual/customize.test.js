@@ -369,13 +369,9 @@ detail = {
         action: 'trigger',
         target: 'setting:update',
         params: {
-            value: 'xxxxxxxxxxxxx',
-            page_id: 'popup-de-login',
-            section_id: '900377a9-6edc-4ce9-ba2d-85a0a2880b70',
-            section_type_id: 'activate||',
-            setting_id: 'activate|activateTagTitle|',
-            block_type_id: 'activate|activateBlocks|tag',
             block_id: '694bd974-227a-4d14-9c3d-a7aff960da05',
+            block_type: 'activate|activateBlocks|tag',
+            page_id: 'popup-de-login',
         },
     },
 };
