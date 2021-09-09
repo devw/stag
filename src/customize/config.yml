@@ -452,8 +452,8 @@ global_sections:
       hint: It sets the form's width
       required: true
       config:
-        min: 200
-        max: 600
+        min: 350
+        max: 800
         step: 2
 
     - id: "|--form-padding|"

@@ -15,9 +15,9 @@ body.remove-scrolling {
     align-items: center;
     background-color: var(--content-bg-color, #fff);
     border-radius: var(--container-border-radius);
+    border: 1px solid #bbb;
     color: var(--primary-text-color);
     justify-content: var(--content-vertical-alignment);
-    max-height: 100vh;
     min-height: 28%;
     overflow-y: auto;
     padding: var(--content-padding, 0px);
