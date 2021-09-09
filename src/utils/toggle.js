@@ -28,8 +28,6 @@ const filterCss = (cssVars) => {
         cssVars['--header-img'] = '';
         // text.layout = 'popup-full';
     }
-
-    // return view;
 };
 
 const mendInputLineDirection = (style) => {
