@@ -3,7 +3,7 @@ const { IDs } = require('../config.js');
 const { loadActions } = require('../actions/load.js');
 const { loadTheme } = require('../actions');
 const { parseConfiguration } = require('../utils/cutomize.utils');
-const { getRootNode } = require('../utils');
+const { getRootNode, showMessage } = require('../utils');
 
 globalThis.parsedState = null;
 
@@ -105,6 +105,10 @@ if (
     globalThis.parseConfiguration = parseConfiguration;
     globalThis.addEventListener('message', parseMessage);
     globalThis.addEventListener('addonMessage', parseMessage);
+    showMessage(
+        'Please, click on the buttons shown in the sidebar to show up the login pop-up in preview mode.',
+        'info'
+    );
 }
 
-window.parent.postMessage('fetchState', '*');
+// window.parent.postMessage('fetchState', '*');
