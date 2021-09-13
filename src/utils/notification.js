@@ -2,8 +2,6 @@ const { $q } = require('../utils/toggle.js');
 const { IDs } = require('../config.js');
 
 exports.showMessage = (message, messageType = 'info') => {
-    console.log('showMessage:', message);
-
     const node = document.createElement('div');
     const icons = { info: '&#8505;', warn: '&#9888;' };
 
@@ -16,5 +14,5 @@ exports.showMessage = (message, messageType = 'info') => {
         <i class="ico">${icons[messageType]}</i>
       ${message}`;
         node.classList.add('bar-show');
-    }, 0);
+    }, 1000);
 };

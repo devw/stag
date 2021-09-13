@@ -2,7 +2,8 @@ const { $q, $qq, togglePage, sortBlocks } = require('../utils/toggle.js');
 const { IDs } = require('../config.js');
 const { loadActions } = require('../actions/load.js');
 const { loadTheme } = require('../actions');
-const { getRootNode, showMessage, parseConfiguration } = require('../utils');
+const { parseConfiguration } = require('../utils/cutomize.utils');
+const { getRootNode, showMessage } = require('../utils');
 
 globalThis.parsedState = null;
 
@@ -105,8 +106,11 @@ if (
     globalThis.addEventListener('message', parseMessage);
     globalThis.addEventListener('addonMessage', parseMessage);
     showMessage(
-        'Please, click on the buttons shown in the sidebar to show up the login pop-up in preview mode.',
-        'info'
+        'Please, click on the buttons shown in the sidebar to show up the "login pop-up".'
+    );
+    showMessage(
+        'In the customize mode, the "login popup" works only in preview mode.',
+        'warn'
     );
 }
 
