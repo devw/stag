@@ -8,14 +8,17 @@ const { IDs, STORAGE_CONFIG } = require('../config');
 
 //TODO refactoring too code repetition
 
+const getLoginBtns = () =>
+    document.body.querySelectorAll('[href="/account/login"]');
+
 const closeApp = () => {
     $q(`#${IDs.CONTAINER_ID}`).style.setProperty('display', 'none');
     document.body.classList.remove('remove-scrolling');
 };
 
 const initContainer = () => {
-    const LINK_BTN = document.body.querySelector('[href="/account/login"]');
-    LINK_BTN?.addEventListener('click', openAccount, true);
+    const LINK_BTNs = getLoginBtns();
+    LINK_BTNs.forEach((e) => e?.addEventListener('click', openAccount, true));
     $q(`.js-close`).addEventListener('click', closeApp);
 };
 
@@ -51,8 +54,10 @@ const isDisable = () => {
 
 exports.loadActions = () => {
     if (!isDisable()) {
-        const loginBtn = document.body.querySelector('[href="/account/login"]');
-        loginBtn?.addEventListener('click', (e) => e.preventDefault(), true);
+        const loginBtns = getLoginBtns();
+        loginBtns.forEach((e) =>
+            e?.addEventListener('click', (e) => e.preventDefault(), true)
+        );
         initContainer();
     }
     initLanding();
