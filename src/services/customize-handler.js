@@ -2,8 +2,7 @@ const { $q, $qq, togglePage, sortBlocks } = require('../utils/toggle.js');
 const { IDs } = require('../config.js');
 const { loadActions } = require('../actions/load.js');
 const { loadTheme } = require('../actions');
-const { parseConfiguration } = require('../utils/cutomize.utils');
-const { getRootNode, showMessage } = require('../utils');
+const { getRootNode, showMessage, parseConfiguration } = require('../utils');
 
 globalThis.parsedState = null;
 
