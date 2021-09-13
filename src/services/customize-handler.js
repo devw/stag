@@ -82,8 +82,8 @@ const parseEvent = (event) => {
 };
 
 const disableClick = () => {
-    const nodeApp = getRootNode();
-    // nodeApp.style.setProperty('pointer-events', 'none');
+    $q('.js-close').style.setProperty('pointer-events', 'none');
+    $q('.js-back').style.setProperty('pointer-events', 'none');
 };
 
 const parseMessage = (message) => {
