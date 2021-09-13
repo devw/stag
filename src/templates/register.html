@@ -51,12 +51,13 @@
         {{#choiceList }}
         <div>
             <input
-                type="checkbox"
+                type="radio"
                 value="{{.}}"
                 data-is-tag="{{isTag}}"
                 data-tag="{{tag}}"
                 data-namespace="{{namespace}}"
                 data-key="{{key}}"
+                name="{{tag}}"
             />
             <label class="label-choice-list">{{.}}</label>
         </div>
