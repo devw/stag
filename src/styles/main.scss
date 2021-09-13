@@ -19,6 +19,7 @@ body.remove-scrolling {
     color: var(--primary-text-color);
     justify-content: var(--content-vertical-alignment);
     min-height: 28%;
+    max-height: 200vh;
     overflow-y: auto;
     padding: var(--content-padding, 0px);
     position: relative;
@@ -29,10 +30,14 @@ body.remove-scrolling {
     overflow: hidden;
     font-family: var(--font-family, sans-serif);
     width: var(--form-width, auto);
+    opacity: 0;
 }
 .content .partials.partials-show {
-    max-height: 900px;
-    transition: max-height 0.8s;
+    max-height: inherit;
+    transition-property: max-height, opacity;
+    transition-duration: 1.8s;
+    transition-timing-function: ease-out;
+    opacity: 1;
 }
 
 /*  ===================

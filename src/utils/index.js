@@ -13,6 +13,7 @@ const {
     areInvalidInputs,
 } = require('./input-checker');
 const { $q, $qq, getRootNode } = require('./toggle');
+const { showMessage } = require('./notification');
 
 const debounce = (fn, delay) => {
     let timeoutId;
@@ -40,6 +41,7 @@ module.exports = {
     isValidEmail,
     parseConfiguration,
     render,
+    showMessage,
     sortBlocks,
     toggleLoading,
     togglePage,
