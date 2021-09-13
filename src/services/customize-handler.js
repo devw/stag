@@ -3,7 +3,7 @@ const { IDs } = require('../config.js');
 const { loadActions } = require('../actions/load.js');
 const { loadTheme } = require('../actions');
 const { parseConfiguration } = require('../utils/cutomize.utils');
-const { getRootNode, showMessage } = require('../utils');
+const { showMessage } = require('../utils');
 
 globalThis.parsedState = null;
 
@@ -82,8 +82,10 @@ const parseEvent = (event) => {
 };
 
 const disableClick = () => {
-    $q('.js-close').style.setProperty('pointer-events', 'none');
-    $q('.js-back').style.setProperty('pointer-events', 'none');
+    setTimeout(() => {
+        $q('.js-close').style.setProperty('pointer-events', 'none');
+        $q('.js-back').style.setProperty('pointer-events', 'none');
+    }, 0);
 };
 
 const parseMessage = (message) => {
