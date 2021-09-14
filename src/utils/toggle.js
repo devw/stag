@@ -20,7 +20,6 @@ const filterCss = (cssVars) => {
         if (cssVars[e]) cssVars[e] = `url(${cssVars[e]})`;
     });
     if (document.documentElement.clientWidth <= 540) {
-        console.log('----cssVars----', cssVars);
         cssVars['--form-width'] = 'auto';
         cssVars['--btn-margin'] = 'auto';
         cssVars['--content-padding'] = '25px';

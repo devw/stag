@@ -11,7 +11,6 @@ const addMissingBlock = ({ text }, name, placeholder, error) => {
     } else {
         block.placeholder = text[placeholder];
         block.error = error;
-        console.log(block);
     }
 };
 
@@ -76,7 +75,6 @@ module.exports.parseConfiguration = (jsonTree) => {
     addMissingBlock(json, 'customer[email]', 'yourEmail');
     addMissingBlock(json, 'customer[password]', 'yourPassword', true);
     json.style = sortKeys(json.style);
-    console.log('json:', json);
 
     return json;
 };

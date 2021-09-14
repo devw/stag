@@ -110,7 +110,6 @@ const InputLineComponent = () => {
     const init = (current) => {
         const htmlObjName = 'checkboxes';
         const childName = current?.querySelector(`.${htmlObjName}`);
-        console.log(current);
         if (!current || childName) return null;
 
         const checkboxList = ['Top', 'Right', 'Left', 'Bottom'].map((e) =>
@@ -214,7 +213,6 @@ setTimeout(() => {
 
     cleanState(state, event) {
         window.cleanStateParams = arguments;
-        console.log('---cleanState---', { state, event });
 
         const _frame = document.querySelector('iframe');
 
@@ -308,6 +306,8 @@ setTimeout(() => {
     addInputLineCheckbox: (_, { current }) => {
         InputLineComponent().init(current);
     },
+
+    addActivateBlockMessage: (_, { current }) => {},
 
     _afterSettingUpdate() {
         console.log(arguments);

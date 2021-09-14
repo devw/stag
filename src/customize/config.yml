@@ -1625,6 +1625,8 @@ pages:
         hint: ''
         required: true
         config: {}
+        hooks: 
+          afterSettingUpdate: addActivateBlockMessage
     blocks: 
     # ===============================================
     #       REGISTER  SECTION / BLOCKS
