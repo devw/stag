@@ -307,7 +307,21 @@ setTimeout(() => {
         InputLineComponent().init(current);
     },
 
-    addActivateBlockMessage: (_, { current }) => {},
+    addActivateBlockMessage: (_, { current }) => {
+        const header = current
+            .closest('section')
+            .nextSibling.querySelector('header');
+        header.insertAdjacentHTML(
+            'afterend',
+            `<header class="_1cUIu">
+            <div class="_2yJCP">
+                    <h3 class="_3Gq1y">
+                        <span class="_3qhqZ">This blocks can be used to have customized activate pages based on TAG account</span>
+                    </h3>
+                </div>
+            </header>`
+        );
+    },
 
     _afterSettingUpdate() {
         console.log(arguments);
