@@ -1,10 +1,11 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { EnvironmentPlugin } = require('webpack');
 
-module.exports = (env) => ({
-    entry: env?.in || './src/app.js',
+let config = {
+    entry: './src/app.js',
     output: {
-        filename: env?.out || 'bundle.js',
+        filename: 'script.js',
         path: path.resolve(path.resolve(), 'dist'),
     },
     module: {
@@ -19,5 +20,29 @@ module.exports = (env) => ({
             },
         ],
     },
-    plugins: [new MiniCssExtractPlugin()],
-});
+};
+
+module.exports = (_, argv) => {
+    const mode = argv.mode || 'production';
+    console.log('mode:', mode);
+
+    const environment = {
+        development: {
+            S3_CONFIGURATIONS:
+                'https://login-popup-dev-configs.s3.amazonaws.com',
+        },
+        production: {
+            S3_CONFIGURATIONS:
+                'https://login-popup-prod-configs.s3.amazonaws.com',
+        },
+    };
+
+    config.plugins = [
+        new MiniCssExtractPlugin(),
+        new EnvironmentPlugin({
+            NODE_ENV: mode,
+            ...environment[mode],
+        }),
+    ];
+    return config;
+};
