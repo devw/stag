@@ -15,7 +15,7 @@
         "build:prod": "rm -rf dist; webpack --mode=production; cp -r public/* dist",
         "bk": "webpack --mode=development --env=in=./src/services/customize-handler.js --env=out=customizeHandler.js;",
         "lint": "eslint ./",
-        "s3:cp:js": "aws s3 cp dist/bundle.js s3://login-popup-dev-configs/public/ --acl public-read",
+        "s3:cp:js": "aws s3 cp dist/script.js s3://login-popup-dev-configs/public/ --acl public-read",
         "s3:cp:css": "aws s3 cp dist/main.css s3://login-popup-dev-configs/public/ --acl public-read",
         "s3:cp:config.yml": "aws s3 cp src/customize/config.yml s3://kastor-customize-configurations/login-popup/config.yml --acl public-read",
         "s3:template:import": "aws s3 cp s3://kastor-customize-saves/login-popup/alfred-devstrore-antonio.myshopify.com/template-XXX.json   src/customize/__templates/",
