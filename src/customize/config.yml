@@ -1,7 +1,7 @@
 appId: login-popup
 title: Login Popup
 backUrl: 'https://{{shop}}/admin/apps/login-popup'
-onSave: 'https://api.dev-kastorstudio.com/login-popup/customize/onsave'
+onSave: 'https://api.kastorstudio.com/login-popup/customize/onsave'
 crispId: ''
 
 
