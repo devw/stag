@@ -78,7 +78,7 @@
         "layout": "popup-centered",
         "hasPswMinLength": "",
         "pswMinLength": 5,
-        "pswMinLengthErr": "The password must contain at least ? characters",
+        "pswMinLengthErr": "The password must contain at least 5 characters",
         "hasPswMaxLength": "",
         "pswMaxLength": 32,
         "pswMaxLengthErr": "The password must contain at most 5 characters",

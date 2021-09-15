@@ -656,7 +656,7 @@ global_sections:
       type: text-input
       label: Minimum Password Length Error
       icon: ''
-      default: 'The password must contain at least ? characters'
+      default: 'The password must contain at least 5 characters'
       hint: 'Error message for typing a password with a number of characters less than ?'
       required: true
       config:
@@ -866,7 +866,7 @@ pages:
         type: text-input
         label: Subtitle
         icon: ''
-        default: Fill in your data to create your account.
+        default: ''
         # hint: The text is shown below the title to give additional information to the customer.
         required: true
         config:

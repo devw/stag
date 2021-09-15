@@ -345,7 +345,7 @@ detail = {
                         'register|hasPswMinLength|': '',
                         'register|pswMinLength|': 5,
                         'register|pswMinLengthErr|':
-                            'The password must contain at least ? characters',
+                            'The password must contain at least 5 characters',
                         'register|hasPswMaxLength|': '',
                         'register|pswMaxLength|': 32,
                         'register|pswMaxLengthErr|':
