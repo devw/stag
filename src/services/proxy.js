@@ -40,13 +40,11 @@ exports.getConfiguration = async () => {
 };
 
 exports.sendInvite = async (accountId) => {
-    console.log('accountId:', accountId);
     const SHOP = globalThis?.Shopify?.shop;
     const endpoint = SHOP
         ? `${proxyUrl}/account/${accountId}/sendInvite`
         : `http://localhost:4000/dev/proxy/account/${accountId}/sendInvite`;
 
-    console.log(endpoint);
     if (!accountId) return null;
     const promise = await globalThis.fetch(endpoint);
     return promise;

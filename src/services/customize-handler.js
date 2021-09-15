@@ -65,10 +65,6 @@ const loadAnimation = (value) => {
     loadTheme(globalThis.parsedState);
 };
 
-const loadImage = (value) => {
-    console.log('value:', value);
-};
-
 const parseEvent = (event) => {
     if (!event?.params) {
         changePage(globalThis.prevPage || 'landing');
@@ -77,7 +73,6 @@ const parseEvent = (event) => {
     const { setting_id, value } = event.params;
 
     if (/--animation/.test(setting_id)) loadAnimation(value);
-    if (/--container-bg-image/.test(setting_id)) loadImage(value);
     loadPage(event);
 };
 
@@ -90,7 +85,6 @@ const disableClick = () => {
 
 const parseMessage = (message) => {
     //TODO use closure to avoid global variable window.parsedState
-    console.log('-------message--------\n', message);
     const { state, event } = message?.data || message?.detail;
 
     if (!event && !state) return null;
@@ -103,7 +97,6 @@ if (
     window.location !== window.parent.location ||
     /:\/\/localhost|127\.0\.0\.1/.test(window.location.origin)
 ) {
-    console.log('-----customize handler-----');
     globalThis.parseConfiguration = parseConfiguration;
     globalThis.addEventListener('message', parseMessage);
     globalThis.addEventListener('addonMessage', parseMessage);

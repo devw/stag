@@ -110,7 +110,6 @@ const InputLineComponent = () => {
     const init = (current) => {
         const htmlObjName = 'checkboxes';
         const childName = current?.querySelector(`.${htmlObjName}`);
-        console.log(current);
         if (!current || childName) return null;
 
         const checkboxList = ['Top', 'Right', 'Left', 'Bottom'].map((e) =>
@@ -214,7 +213,6 @@ setTimeout(() => {
 
     cleanState(state, event) {
         window.cleanStateParams = arguments;
-        console.log('---cleanState---', { state, event });
 
         const _frame = document.querySelector('iframe');
 
@@ -307,6 +305,22 @@ setTimeout(() => {
 
     addInputLineCheckbox: (_, { current }) => {
         InputLineComponent().init(current);
+    },
+
+    addActivateBlockMessage: (_, { current }) => {
+        const header = current
+            .closest('section')
+            .nextSibling.querySelector('header');
+        header.insertAdjacentHTML(
+            'afterend',
+            `<header class="_1cUIu">
+            <div class="_2yJCP">
+                    <h3 class="_3Gq1y">
+                        <span class="_3qhqZ">This blocks can be used to have customized activate pages based on TAG account</span>
+                    </h3>
+                </div>
+            </header>`
+        );
     },
 
     _afterSettingUpdate() {

@@ -7,6 +7,9 @@
         "**/.DS_Store": true
     },
     "files.autoSave": "off",
+    "[json]": {
+        "editor.formatOnSave": true
+    },
     "liveServer.settings.ignoreFiles": [
         ".vscode/**",
         "src/**",

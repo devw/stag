@@ -33,7 +33,6 @@ const shopifyResult = (html) => ({
 const parseShopifyResponse = ({ target }, response) => {
     const htmlResponse = new DOMParser().parseFromString(response, 'text/html');
     const resp = shopifyResult(htmlResponse);
-    console.log(resp);
     if (resp.isLogged) $q(selectors.close).click();
     else if (resp.hasWrongPsw) $q('.js-signin-err').style.display = 'block';
     //TODO take the message from configuration
