@@ -101,7 +101,7 @@ if (
     globalThis.addEventListener('message', parseMessage);
     globalThis.addEventListener('addonMessage', parseMessage);
     showMessage(
-        'Please, click on the buttons shown in the sidebar to show up the "login pop-up".'
+        'Click on the page (landing or ...) in the sidebar to show up the "login pop-up".'
     );
     showMessage(
         'In the customize mode, the "login popup" works only in preview mode.',
