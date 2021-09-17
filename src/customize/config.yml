@@ -143,6 +143,26 @@ global_sections:
     label: Input labels (placeholders)
     settings:
 
+    - id: "|formStyle|"
+      type: select
+      label: Labels
+      icon: EditMinor
+      default: label-fixed-top
+      hint: You can change the label position/animation
+      required: true
+      config:
+        options:
+        - title: None
+          value: label-none
+        - title: Fixed on Top
+          value: label-fixed-top
+        - title: Fixed on Bottom
+          value: label-fixed-bottom
+        - title: Label Up
+          value: label-go-up
+        - title: Label Down
+          value: label-go-down
+
     - id: "|--ternary-text-color|"
       type: color-picker
       label: Label text color
@@ -170,26 +190,6 @@ global_sections:
         min: 100
         max: 900
         step: 100
-
-    - id: "|formStyle|"
-      type: select
-      label: Labels
-      icon: EditMinor
-      default: label-fixed-top
-      hint: You can change the label position/animation
-      required: true
-      config:
-        options:
-        - title: None
-          value: label-none
-        - title: Fixed on Top
-          value: label-fixed-top
-        - title: Fixed on Bottom
-          value: label-fixed-bottom
-        - title: Label Up
-          value: label-go-up
-        - title: Label Down
-          value: label-go-down
 
   - id: form-input
     label: Form Input
