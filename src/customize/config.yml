@@ -158,9 +158,9 @@ global_sections:
           value: label-fixed-top
         - title: Fixed on Bottom
           value: label-fixed-bottom
-        - title: Focus Animation (Go up)
+        - title: Animation on focus (Go up)
           value: label-go-up
-        - title: Focus Animation (Go down)
+        - title: Animation on focus (Go down)
           value: label-go-down
 
     - id: "|--ternary-text-color|"
