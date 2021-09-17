@@ -1,13 +1,11 @@
 /* THE BASE */
 .bar {
-    padding: 10px;
     margin: 1vw;
     width: 0px;
     position: relative;
     overflow: hidden;
     white-space: nowrap;
     visibility: hidden;
-    text-align: left;
     font-size: 1.2em;
 }
 .bar-show {
@@ -16,19 +14,12 @@
     width: 94vw;
     visibility: visible;
     display: flex;
-    gap: 18px;
 }
 
 .bar-show > div {
     padding: 10px;
     align-items: center;
-}
-
-div.ico {
-    width: 25px;
-    height: 25px;
-    font-style: normal;
-    border-radius: 50%;
+    display: flex;
 }
 
 div.message {
