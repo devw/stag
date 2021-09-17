@@ -35,8 +35,6 @@ input + label {
     color: var(--ternary-text-color);
     font-size: var(--label-font-size);
     font-weight: var(--label-font-weight);
-    left: var(--label-left, 10px);
-    bottom: var(--label-bottom);
     margin: unset;
     position: absolute;
     transform-origin: 0 0;
@@ -81,7 +79,6 @@ label.label-choice-list {
     bottom: unset;
     display: block;
     padding-bottom: 0;
-    padding-left: var(--label-left);
     padding-top: 0;
     position: unset;
     top: unset;
