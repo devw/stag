@@ -67,8 +67,8 @@ label.label-choice-list {
     color: transparent;
 }
 
-.label-go-up input:focus:not([type="checkbox"]) + label,
-.label-go-up input:not(:placeholder-shown):not([type="checkbox"]) + label {
+.label-go-up input:focus:not([type='checkbox']) + label,
+.label-go-up input:not(:placeholder-shown):not([type='checkbox']) + label {
     transform: translateY(calc(var(--input-font-size) * -1.7)) scale(0.85);
 }
 /* START - GO UP */
@@ -77,15 +77,15 @@ label.label-choice-list {
 .label-go-down input::placeholder {
     color: transparent;
 }
-.label-go-down input:focus:not([type="checkbox"]) + label,
-.label-go-down input:not(:placeholder-shown):not([type="checkbox"]) + label {
+.label-go-down input:focus:not([type='checkbox']) + label,
+.label-go-down input:not(:placeholder-shown):not([type='checkbox']) + label {
     transform: translateY(calc(var(--input-font-size) * 1.4)) scale(0.8);
 }
 
 /* START - GO DOWN */
 
-.label-fixed-top :not([type="checkbox"]) + label,
-.label-fixed-bottom :not([type="checkbox"]) + label {
+.label-fixed-top :not([type='checkbox']) + label,
+.label-fixed-bottom :not([type='checkbox']) + label {
     bottom: unset;
     display: block;
     padding-bottom: 0;
@@ -116,7 +116,7 @@ label.label-choice-list {
     display: none;
 }
 
-:not([type="checkbox"]) label.label-error {
+:not([type='checkbox']) label.label-error {
     background-color: var(--error-bg-color, rgb(240, 207, 207));
     bottom: unset;
     color: var(--error-color, rgb(208, 26, 26));
@@ -155,22 +155,22 @@ div.choice-block {
     min-width: unset;
 }
 
-.choice-block input[type="checkbox"] {
+.choice-block input[type='checkbox'] {
     background-color: white;
     border: 1px solid #ddd;
     cursor: pointer;
     outline: none;
     vertical-align: middle;
 }
-.choice-block input[type="checkbox"]:checked {
+.choice-block input[type='checkbox']:checked {
     background-color: gray;
 }
 
-.choice-block.single-choice input[type="checkbox"] {
+.choice-block.single-choice input[type='checkbox'] {
     padding: 0.5em;
 }
 
-.choice-block.multi-choice input[type="checkbox"] {
+.choice-block.multi-choice input[type='checkbox'] {
     border-radius: 25%;
     padding: 0.5em;
 }

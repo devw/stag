@@ -17,6 +17,7 @@
         "public/**"
     ],
     "prettier.singleQuote": true,
+    "prettier.printWidth": 120,
     "workbench.colorCustomizations": {
         "activityBar.background": "#449b38",
         "tab.activeBorder": "#fff",
