@@ -8,11 +8,9 @@
     white-space: nowrap;
     visibility: hidden;
     text-align: left;
-    font-size: 1em;
+    font-size: 1.2em;
 }
 .bar-show {
-    // top: 0px;
-    // position: fixed;
     transition-duration: 1000ms;
     transition-property: width;
     width: 94vw;
@@ -44,17 +42,22 @@
 /* ICONS */
 
 i.ico {
-    display: inline-block;
-    font-style: normal;
-    font-weight: bold;
-    text-align: center;
+    display: inline-flex;
+    align-items: center;
     width: 25px;
     height: 25px;
+    font-style: normal;
     border-radius: 50%;
+    justify-content: center;
 }
 
 .info i.ico {
     background: #6598ea;
+    color: #fff;
+}
+
+.warn i.ico {
+    background: #9e9c7a;
     color: #fff;
 }
 
