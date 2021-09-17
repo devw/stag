@@ -16,7 +16,7 @@
         "tests/**",
         "public/**"
     ],
-    "prettier.singleQuote": false,
+    "prettier.singleQuote": true,
     "workbench.colorCustomizations": {
         "activityBar.background": "#449b38",
         "tab.activeBorder": "#fff",

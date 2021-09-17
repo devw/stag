@@ -15,6 +15,30 @@
     transition-property: width;
     width: 94vw;
     visibility: visible;
+    display: flex;
+    gap: 18px;
+}
+
+.bar-show > div {
+    padding: 10px;
+    align-items: center;
+}
+
+div.ico {
+    width: 25px;
+    height: 25px;
+    font-style: normal;
+    border-radius: 50%;
+}
+
+div.message {
+    flex-grow: 1;
+}
+
+div.close {
+    color: #888;
+    cursor: pointer;
+    font-size: 1.3em;
 }
 
 /* THE VARIATIONS */
@@ -40,32 +64,22 @@
 }
 
 /* ICONS */
-
-i.ico {
-    display: inline-flex;
+i {
+    display: flex;
     align-items: center;
-    width: 25px;
-    height: 25px;
-    font-style: normal;
-    border-radius: 50%;
     justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-style: normal;
 }
 
-.info i.ico {
+.info i {
     background: #6598ea;
     color: #fff;
 }
 
-.warn i.ico {
+.warn i {
     background: #9e9c7a;
     color: #fff;
-}
-
-div.close {
-    color: #888;
-    cursor: pointer;
-    font-size: 1.3em;
-    position: absolute;
-    right: 10px;
-    top: 15%;
 }

@@ -10,9 +10,9 @@ exports.showMessage = (message, messageType = 'info') => {
     node.classList.add(messageType);
 
     setTimeout(() => {
-        node.innerHTML = `<div class="close" onclick="this.parentElement.remove()">&times;</div>
-        <i class="ico">${icons[messageType]}</i>
-      ${message}`;
+        node.innerHTML = `<div class="ico"><i>${icons[messageType]}</i></div>
+          <div class="message">${message}</div>
+          <div class="close" onclick="this.parentElement.remove()">&times;</div>`;
         node.classList.add('bar-show');
-    }, 1000);
+    }, 600);
 };
