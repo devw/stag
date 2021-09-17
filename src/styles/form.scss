@@ -7,7 +7,7 @@ form {
 }
 
 form > div {
-    margin: var(--input-margin, 0.8em) 0 0 0;
+    margin-top: var(--input-font-size);
     position: relative;
     text-align: left;
 }
@@ -58,7 +58,7 @@ label.label-choice-list {
 
 .label-go-up input:focus:not([type='checkbox']) + label,
 .label-go-up input:not(:placeholder-shown):not([type='checkbox']) + label {
-    transform: translateY(-0.8em) scale(0.8);
+    transform: translateY(calc(var(--input-font-size) * -1.05)) scale(0.7);
 }
 /* START - GO UP */
 
