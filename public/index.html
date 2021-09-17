@@ -40,6 +40,29 @@
                 } else {
                     window.addEventListener('load', asyncLoad, false);
                 }
+
+                globalThis.custmoize = (state, page = 'landing') => {
+                    var _event = {
+                        action: 'trigger',
+                        target: 'setting:update',
+                        params: {
+                            value: 'fade-in-show',
+                            setting_id: `${page}|--animation|`,
+                            global_section_group_id: 'theme',
+                            global_section_id: 'theme',
+                        },
+                    };
+                    var detail = {};
+                    var el = document.body
+                        .querySelector('login-popup')
+                        .shadowRoot.querySelector('div');
+                    detail.state = state;
+                    detail.event = _event;
+                    globalThis.detail = detail;
+                    globalThis.dispatchEvent(
+                        new CustomEvent('message', { detail })
+                    );
+                };
             })();
         </script>
     </body>
