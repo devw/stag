@@ -8,15 +8,10 @@
     class="{{formStyle}}"
     data-login-redirect="{{loginRedirect}}"
 >
-    <input type="hidden" name="form_type" value="customer_login" /><input
-        type="hidden"
-        name="utf8"
-        value="✓"
-    />
+    <input type="hidden" name="form_type" value="customer_login" /><input type="hidden" name="utf8" value="✓" />
     <div>
         <input
             type="email"
-            readonly
             name="customer[email]"
             autocomplete="email"
             class="input-text"
@@ -27,21 +22,18 @@
     <div>
         <i class="gg-eye js-show-psw"></i>
         <input
+            id="CustomerPassword"
             type="password"
             name="customer[password]"
             class="input-text"
             placeholder="{{yourPassword}}"
             autocomplete="on"
         />
-        <label>{{yourPassword}}</label>
-        <label class="label-error js-signin-err"
-            ><i class="fa {{errorIcon}}"></i>{{wrongPsw}}</label
-        >
+        <label for="CustomerPassword">{{yourPassword}}</label>
+        <label class="label-error js-signin-err"><i class="fa {{errorIcon}}"></i>{{wrongPsw}}</label>
     </div>
     <div>
-        <button class="btn btn-primary" disabled="">
-            {{signIn}} &nbsp;<i class="fa fa-spinner fa-spin off"></i>
-        </button>
+        <button class="btn btn-primary" disabled="">{{signIn}} &nbsp;<i class="fa fa-spinner fa-spin off"></i></button>
         <label for="">&nbsp;</label>
     </div>
 </form>

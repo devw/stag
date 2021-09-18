@@ -1,22 +1,35 @@
 /* THE BASE */
 .bar {
-    padding: 10px;
     margin: 1vw;
     width: 0px;
     position: relative;
     overflow: hidden;
     white-space: nowrap;
     visibility: hidden;
-    text-align: left;
-    font-size: 1em;
+    font-size: 1.2em;
 }
 .bar-show {
-    // top: 0px;
-    // position: fixed;
     transition-duration: 1000ms;
     transition-property: width;
     width: 94vw;
     visibility: visible;
+    display: flex;
+}
+
+.bar-show > div {
+    padding: 10px;
+    align-items: center;
+    display: flex;
+}
+
+div.message {
+    flex-grow: 1;
+}
+
+div.close {
+    color: #888;
+    cursor: pointer;
+    font-size: 1.3em;
 }
 
 /* THE VARIATIONS */
@@ -42,27 +55,22 @@
 }
 
 /* ICONS */
-
-i.ico {
-    display: inline-block;
-    font-style: normal;
-    font-weight: bold;
-    text-align: center;
-    width: 25px;
-    height: 25px;
+i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
+    font-style: normal;
 }
 
-.info i.ico {
+.info i {
     background: #6598ea;
     color: #fff;
 }
 
-div.close {
-    color: #888;
-    cursor: pointer;
-    font-size: 1.3em;
-    position: absolute;
-    right: 10px;
-    top: 15%;
+.warn i {
+    background: #9e9c7a;
+    color: #fff;
 }
