@@ -12,7 +12,7 @@ var BTN,
 
 const getEmail = () => EMAIL.value;
 const setEmail = (email) => (EMAIL.value = email);
-const getEmailFields = () => $qq("[type='email']");
+const getEmailFields = () => $qq("[type='email']:not([not-readonly])");
 
 const setCustomers = async (email) => {
     QUERY = email;
@@ -28,16 +28,13 @@ const getUniqCustomer = (email) => {
 };
 
 const getMatchCustomer = (email) => {
-    const customers = CUSTOMERS.filter((e) =>
-        new RegExp(`^${email}`).test(e.email)
-    );
+    const customers = CUSTOMERS.filter((e) => new RegExp(`^${email}`).test(e.email));
     if (customers.length === 1) return customers[0];
 };
 
 const updateCustomers = async (event) => {
     const email = getEmail();
-    if (email.length < 6 || event.inputType === 'deleteContentBackward')
-        return null;
+    if (email.length < 6 || event.inputType === 'deleteContentBackward') return null;
     if (!new RegExp(`^${QUERY}`).test(email)) await setCustomers(email);
     autocomplete(event);
 };
@@ -58,7 +55,10 @@ const onSubmit = async () => {
 const emailAutofill = () => {
     const email = getEmail();
     const fields = getEmailFields();
-    fields.forEach((e) => (e.value = email));
+    fields.forEach((e) => {
+        e.value = email;
+        e.setAttribute('readonly', true);
+    });
 };
 
 const checkStatusAndTogglePage = (customer) => {
@@ -78,8 +78,7 @@ const checkStatusAndTogglePage = (customer) => {
 
 const autocomplete = ({ inputType }) => {
     const email = getEmail();
-    if (!/[\w.]+@\w{1,}\./.test(email) || inputType === 'deleteContentBackward')
-        return null;
+    if (!/[\w.]+@\w{1,}\./.test(email) || inputType === 'deleteContentBackward') return null;
     const customer = getMatchCustomer(email);
     if (!customer) return null;
     setEmail(customer.email);
