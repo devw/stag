@@ -5,7 +5,7 @@ const { EnvironmentPlugin } = require('webpack');
 let config = {
     entry: './src/app.js',
     output: {
-        filename: 'script.js',
+        filename: 'configs/script.js',
         path: path.resolve(path.resolve(), 'dist'),
     },
     module: {
@@ -28,17 +28,15 @@ module.exports = (_, argv) => {
 
     const environment = {
         development: {
-            S3_CONFIGURATIONS:
-                'https://login-popup-dev-configs.s3.amazonaws.com',
+            S3_CONFIGURATIONS: 'https://login-popup-dev-configs.s3.amazonaws.com',
         },
         production: {
-            S3_CONFIGURATIONS:
-                'https://login-popup-prod-configs.s3.amazonaws.com',
+            S3_CONFIGURATIONS: 'https://login-popup-prod-configs.s3.amazonaws.com',
         },
     };
 
     config.plugins = [
-        new MiniCssExtractPlugin(),
+        new MiniCssExtractPlugin({ filename: 'configs/main.css' }),
         new EnvironmentPlugin({
             NODE_ENV: mode,
             ...environment[mode],
