@@ -17,8 +17,6 @@ exports.sendHttpRequest = (method, event) => {
               xhr.send(new FormData(target));
               xhr.onload = () => {
                   console.log('xhr.response: ', xhr.response);
-                  //   if (xhr.status >= 400) res(xhr.response);
-                  //   else
                   res(parseShopifyResponse(target, xhr.response));
               };
               xhr.onerror = (err) => {
@@ -58,4 +56,3 @@ const parseShopifyResponse = (target, response) => {
     }
     return resp;
 };
-window.$q = $q;
