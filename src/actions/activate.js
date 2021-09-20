@@ -1,5 +1,5 @@
 const { IDs } = require('../config');
-const { $q } = require('../utils');
+const { $q, toggleLoading } = require('../utils');
 const { sendInvite } = require('../services');
 
 exports.init = () => {
@@ -10,5 +10,9 @@ exports.init = () => {
 const onSubmit = async (e) => {
     e.preventDefault();
     const cid = $q('[name="customer-id"]').value;
-    sendInvite(cid);
+    const btn = e.path[0].querySelector('button');
+    toggleLoading(btn);
+    await sendInvite(cid);
+    toggleLoading(btn);
+    $q('.js-close').click();
 };

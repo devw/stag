@@ -16,8 +16,8 @@ const getEmailFields = () => $qq("[type='email']:not([not-readonly])");
 
 const setCustomers = async (email) => {
     QUERY = email;
-    const promise = getCustomerStatus(QUERY);
-    const result = await promise;
+    disableBtn();
+    const result = await getCustomerStatus(QUERY);
     CUSTOMERS = [];
     result?.customers?.forEach((e) => CUSTOMERS.push(e));
 };

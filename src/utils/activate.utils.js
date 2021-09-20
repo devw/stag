@@ -1,6 +1,8 @@
 const { $q, $qq } = require('../utils');
 
 exports.showProperActivate = (customer) => {
+    // TODO to fix.  $q(`.activate-${tag[0]}`) is not add to dom
+    return null;
     hideActivateView();
     const tags = customer.tags.split(',').map((e) => e.trim());
     const tag = tags.filter((e) => !!$q(`.activate-${e}`));
