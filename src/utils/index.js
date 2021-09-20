@@ -1,17 +1,8 @@
 const { render, parseConfiguration } = require('./load-pages');
 const { getShadowDOM } = require('./shadow-dom');
-const {
-    togglePage,
-    toggleSecret,
-    toggleLoading,
-    updateCss,
-    sortBlocks,
-} = require('./toggle');
-const {
-    isValidEmail,
-    isFormFilled,
-    areInvalidInputs,
-} = require('./input-checker');
+const { addJS, addCSS } = require('./embed-code');
+const { togglePage, toggleSecret, toggleLoading, updateCss, sortBlocks } = require('./toggle');
+const { isValidEmail, isFormFilled, areInvalidInputs } = require('./input-checker');
 const { $q, $qq, getRootNode } = require('./toggle');
 const { showMessage } = require('./notification');
 
@@ -47,4 +38,6 @@ module.exports = {
     togglePage,
     toggleSecret,
     updateCss,
+    addJS,
+    addCSS,
 };
