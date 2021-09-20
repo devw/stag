@@ -15,7 +15,7 @@ setTimeout(async () => {
     loadTheme(config);
 }, 0);
 
-const getEndPoint = () => (globalThis?.Shopify ? `${ENDPOINT}/public` : '.');
+const getEndPoint = () => (globalThis?.Shopify ? `${ENDPOINT}/public` : './configs/');
 
 const getHtmlString = () => `
         <link rel='stylesheet' href='${getEndPoint()}/main.css?t=${Math.random()}' />
