@@ -22,6 +22,4 @@ const getHtmlString = () => `
         <link rel='stylesheet' href='${getEndPoint()}/main.css?t=${Math.random()}' />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
         <div id=${IDs.APP_ID}></div>
-        <link href='https://css.gg/close.css' rel='stylesheet'>
-        <link href='https://css.gg/arrow-left.css' rel='stylesheet'>
     `;
