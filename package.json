@@ -15,12 +15,12 @@
         "build:prod": "rm -rf dist; webpack --mode=production; cp -r public/* dist",
         "bk": "webpack --mode=development --env=in=./src/services/customize-handler.js --env=out=customizeHandler.js;",
         "lint": "eslint ./",
-        "s3:config:sync:dev": "aws --profile alfred-dev s3 sync dist/configs/ s3://login-popup-dev-configs/public/ --acl public-read",
-        "s3:config:sync:prod": "aws --profile alfred-prod s3 sync dist/configs/ s3://login-popup-prod-configs/public/ --acl public-read",
-        "s3:templates:sync:prod": "aws --profile alfred-prod s3 sync src/s3/kastor-customize-saves/__templates/login-popup s3://customize-prod-saves/__templates/login-popup/",
-        "s3:cp:config.yml": "aws s3 cp src/customize/config.yml s3://kastor-customize-configurations/login-popup/config.yml --acl public-read",
-        "s3:template:import": "aws s3 cp s3://kastor-customize-saves/login-popup/alfred-devstrore-antonio.myshopify.com/template-XXX.json   src/customize/__templates/",
-        "s3:template:export": "aws s3 cp src/customize/__templates/template-XXX.json s3://kastor-customize-saves/login-popup/alfred-devstrore-antonio.myshopify.com/"
+        "s3:config:export:dev": "aws --profile alfred-dev s3 sync dist/configs/ s3://login-popup-dev-configs/public/ --acl public-read",
+        "s3:config:export:prod": "aws --profile alfred-prod s3 sync dist/configs/ s3://login-popup-prod-configs/public/ --acl public-read",
+        "s3:templates:export:prod": "aws --profile alfred-prod s3 sync src/s3/kastor-customize-saves/__templates/login-popup s3://customize-prod-saves/__templates/login-popup/",
+        "s3:templates:export:shop": "aws --profile alfred-dev s3 sync src/s3/kastor-customize-saves/__templates/login-popup s3://kastor-customize-saves/login-popup/login-poup-staging.myshopify.com/",
+        "s3:templates:import:shop": "aws --profile alfred-dev s3 sync s3://kastor-customize-saves/login-popup/login-poup-staging.myshopify.com/ src/s3/kastor-customize-saves/__templates/login-popup",
+        "s3:cp:config.yml": "aws s3 cp src/customize/config.yml s3://kastor-customize-configurations/login-popup/config.yml --acl public-read"
     },
     "devDependencies": {
         "@types/jest": "^26.0.21",
