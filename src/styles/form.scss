@@ -14,7 +14,6 @@ form > div {
 
 form.label-go-up > div,
 form.label-go-down > div {
-    margin-top: calc(var(--input-font-size) + var(--label-font-size));
     position: relative;
     text-align: left;
 }
