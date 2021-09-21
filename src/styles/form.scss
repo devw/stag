@@ -14,13 +14,8 @@ form > div {
 
 form.label-go-up > div,
 form.label-go-down > div {
-    margin-top: calc(var(--input-font-size) + var(--label-font-size));
     position: relative;
     text-align: left;
-}
-
-form.label-fixed-bottom i.gg-eye {
-    top: 0px;
 }
 
 .input-text {
@@ -47,7 +42,9 @@ input + label {
     font-size: var(--label-font-size);
     font-weight: var(--label-font-weight);
     left: 0;
-    margin: unset;
+    margin: var(--input-padding);
+    margin-bottom: 0px;
+    margin-top: 0px;
     position: absolute;
     transform-origin: 0 0;
     transition: transform 0.3s ease-in-out;
@@ -69,7 +66,7 @@ label.label-choice-list {
 
 .label-go-up input:focus:not([type='checkbox']) + label,
 .label-go-up input:not(:placeholder-shown):not([type='checkbox']) + label {
-    transform: translateY(calc(var(--input-font-size) * -1.7)) scale(0.85);
+    transform: translateY(calc(var(--input-font-size) * -1.2)) scale(0.85);
 }
 /* START - GO UP */
 
