@@ -32,9 +32,7 @@ const mendInputLineDirection = (style) => {
     const dirVal = style['--input-line-direction'];
     if (!dirVal) return null;
     let directions = ['left', 'right', 'top', 'bottom'];
-    directions.forEach(
-        (e) => (style[`--input-line-${e}`] = 'var(--input-line)')
-    );
+    directions.forEach((e) => (style[`--input-line-${e}`] = 'var(--input-line)'));
     if (/all/i.test(dirVal)) return null;
     directions = directions.filter((e) => !new RegExp(e, 'i').test(dirVal));
     directions.forEach((e) => (style[`--input-line-${e}`] = 'none'));
@@ -61,8 +59,8 @@ exports.updateCss = (cssVars) => {
 };
 
 exports.toggleSecret = ({ target }) => {
-    target.classList.toggle('gg-eye-alt');
-    target.classList.toggle('gg-eye');
+    target.classList.toggle('fa-eye-slash');
+    target.classList.toggle('fa-eye');
     const secret = target.nextElementSibling;
     secret.type = secret.type === 'password' ? 'text' : 'password';
 };

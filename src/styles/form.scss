@@ -19,10 +19,6 @@ form.label-go-down > div {
     text-align: left;
 }
 
-form.label-fixed-bottom i.gg-eye {
-    top: 0px;
-}
-
 .input-text {
     background-color: var(--input-bg-color, unset);
     border-bottom: var(--input-line-bottom, var(--input-line));
@@ -47,7 +43,9 @@ input + label {
     font-size: var(--label-font-size);
     font-weight: var(--label-font-weight);
     left: 0;
-    margin: unset;
+    margin: var(--input-padding);
+    margin-bottom: 0px;
+    margin-top: 0px;
     position: absolute;
     transform-origin: 0 0;
     transition: transform 0.3s ease-in-out;
