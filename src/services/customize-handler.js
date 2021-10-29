@@ -3,7 +3,7 @@ const { IDs } = require('../config.js');
 const { loadActions } = require('../actions/load.js');
 const { loadTheme } = require('../actions');
 const { parseConfiguration } = require('../utils/cutomize.utils');
-const { showMessage } = require('../utils');
+const { showMessage, cleanConfiguration } = require('../utils');
 
 globalThis.parsedState = null;
 
@@ -54,6 +54,7 @@ const parseState = (state) => {
     const { pages, global_sections } = state;
     if (!pages) return null;
     globalThis.parsedState = parseConfiguration({ pages, global_sections });
+    globalThis.parsedState = cleanConfiguration(globalThis.parsedState);
     globalThis.parsedState.style['--animation'] = 'none';
     loadTheme(globalThis.parsedState);
 };

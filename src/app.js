@@ -2,13 +2,13 @@ require('./styles/index.scss');
 const { loadTheme } = require('./actions');
 const { IDs, ENDPOINT } = require('./config');
 const { getConfiguration } = require('./services');
-const { parseConfiguration, getShadowDOM, addCSS } = require('./utils');
+const { cleanConfiguration, getShadowDOM, addCSS } = require('./utils');
 
 setTimeout(async () => {
     const shadowRoot = getShadowDOM();
     const node = document.createElement('login-popup');
     const promise = await getConfiguration();
-    const config = parseConfiguration(await promise.json());
+    const config = cleanConfiguration(await promise.json());
 
     shadowRoot.prepend(node);
     node.innerHTML = getHtmlString();

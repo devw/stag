@@ -28,7 +28,7 @@ exports.render = (text) => {
     updateInputFields();
 };
 
-exports.parseConfiguration = (config) => {
+exports.cleanConfiguration = (config) => {
     const { text, style } = config;
 
     config.text = cleanInputBlocks(text);

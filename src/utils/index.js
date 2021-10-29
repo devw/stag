@@ -1,4 +1,4 @@
-const { render, parseConfiguration } = require('./load-pages');
+const { render, cleanConfiguration } = require('./load-pages');
 const { getShadowDOM } = require('./shadow-dom');
 const { addJS, addCSS } = require('./embed-code');
 const { togglePage, toggleSecret, toggleLoading, updateCss, sortBlocks } = require('./toggle');
@@ -30,7 +30,7 @@ module.exports = {
     getUrlParameter,
     isFormFilled,
     isValidEmail,
-    parseConfiguration,
+    cleanConfiguration,
     render,
     showMessage,
     sortBlocks,
