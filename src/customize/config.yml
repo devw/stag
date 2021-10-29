@@ -2,6 +2,7 @@ appId: login-popup
 title: Login Popup
 backUrl: 'https://{{shop}}/admin/apps/login-popup'
 onSave: 'https://api.kastorstudio.com/login-popup/customize/onsave'
+#onSave: 'https://alfred-devbox-api-2.ngrok.io/dev/customize/onsave'
 crispId: ''
 
 
@@ -537,29 +538,28 @@ global_sections:
           value: slide-from-bottom
         - title: From Right
           value: slide-from-right
-    # Background image
-    # - id: "register|--container-bg-image|"
-    #   type: dropzone
-    #   label: Background Image
-    #   icon: ''
-    #   default: ''
-    #   hint: 'Specify the image URL'
-    #   config:
-    #     placeholder: Drag and Drop a file
-    #   fileName: background
+    
+    - id: "|--container-bg-image|"
+      type: dropzone
+      label: Background Image
+      icon: ''
+      default: ''
+      hint: 'Specify the image URL'
+      config:
+        placeholder: Drag and Drop a file
+      fileName: background
 
-    # - id: "|--bg-opacity-image|"
-    #   type: range-slider
-    #   label: Background Image Opacity 
-    #   icon: EditMinor
-    #   default: 1
-    #   hint: You can change the background image opacity.
-    #   required: true
-    #   config:
-    #     min: 0
-    #     max: 1
-    #     step: 0.05
-    # Form image
+    - id: "|--bg-opacity-image|"
+      type: range-slider
+      label: Background Image Opacity 
+      icon: EditMinor
+      default: 1
+      hint: You can change the background image opacity.
+      required: true
+      config:
+        min: 0
+        max: 1
+        step: 0.05
 
     - id: "|--header-img|"
       type: dropzone
