@@ -131,7 +131,6 @@ label.label-error i {
 // CHOICE BLOCK
 div.choice-block {
     margin: 1.1em 0 0 0;
-    display: flex;
     flex-direction: row;
 }
 
@@ -141,6 +140,7 @@ div.choice-block.multi-line {
 
 .choice-block > div {
     display: flex;
+    align-items: center;
 }
 
 .choice-block label {
