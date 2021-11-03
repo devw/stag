@@ -3,7 +3,7 @@ const { IDs } = require('../config.js');
 const { loadActions } = require('../actions/load.js');
 const { loadTheme } = require('../actions');
 const { parseConfiguration } = require('../utils/cutomize.utils');
-const { showMessage } = require('../utils');
+const { showMessage, cleanConfiguration } = require('../utils');
 
 globalThis.parsedState = null;
 
@@ -28,8 +28,7 @@ const disableBtns = () => {
 
 const loadPage = (event) => {
     const params = event?.params;
-    const section =
-        params?.section_type || params?.setting_id || params?.section_type_id;
+    const section = params?.section_type || params?.setting_id || params?.section_type_id;
     const page = section?.split('|')[0];
 
     if (page && page !== '') {
@@ -38,8 +37,7 @@ const loadPage = (event) => {
     } else {
         changePage(globalThis.prevPage || 'landing');
     }
-    if (IDs.ACTIVATE_ID === (page || globalThis.prevPage))
-        handleActivateBlock(event);
+    if (IDs.ACTIVATE_ID === (page || globalThis.prevPage)) handleActivateBlock(event);
 };
 
 const handleActivateBlock = (event) => {
@@ -56,6 +54,7 @@ const parseState = (state) => {
     const { pages, global_sections } = state;
     if (!pages) return null;
     globalThis.parsedState = parseConfiguration({ pages, global_sections });
+    globalThis.parsedState = cleanConfiguration(globalThis.parsedState);
     globalThis.parsedState.style['--animation'] = 'none';
     loadTheme(globalThis.parsedState);
 };
@@ -93,20 +92,12 @@ const parseMessage = (message) => {
     parseEvent(event);
 };
 
-if (
-    window.location !== window.parent.location ||
-    /:\/\/localhost|127\.0\.0\.1/.test(window.location.origin)
-) {
+if (window.location !== window.parent.location || /:\/\/localhost|127\.0\.0\.1/.test(window.location.origin)) {
     globalThis.parseConfiguration = parseConfiguration;
     globalThis.addEventListener('message', parseMessage);
     globalThis.addEventListener('addonMessage', parseMessage);
-    showMessage(
-        'Click on the page (landing or ...) in the sidebar to show up the "login pop-up".'
-    );
-    showMessage(
-        'In the customize mode, the "login popup" works only in preview mode.',
-        'warn'
-    );
+    showMessage('Click on the page (landing or ...) in the sidebar to show up the "login pop-up".');
+    showMessage('In the customize mode, the "login popup" works only in preview mode.', 'exclamation-triangle');
 }
 
 // window.parent.postMessage('fetchState', '*');

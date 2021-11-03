@@ -131,15 +131,16 @@ label.label-error i {
 // CHOICE BLOCK
 div.choice-block {
     margin: 1.1em 0 0 0;
-    display: block;
+    display: flex;
+    flex-direction: row;
+}
+
+div.choice-block.multi-line {
+    flex-direction: column;
 }
 
 .choice-block > div {
-    display: inline-block;
-}
-
-.choice-block.multi-line > div {
-    display: block;
+    display: flex;
 }
 
 .choice-block label {
