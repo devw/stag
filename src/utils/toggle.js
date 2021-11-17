@@ -29,13 +29,10 @@ const filterCss = (cssVars) => {
 };
 
 const mendInputLineDirection = (style) => {
-    const dirVal = style['--input-line-direction'];
+    const dirVal = style['--input-border'].split(' ').map((e) => e === 'true');
     if (!dirVal) return null;
-    let directions = ['left', 'right', 'top', 'bottom'];
-    directions.forEach((e) => (style[`--input-line-${e}`] = 'var(--input-line)'));
-    if (/all/i.test(dirVal)) return null;
-    directions = directions.filter((e) => !new RegExp(e, 'i').test(dirVal));
-    directions.forEach((e) => (style[`--input-line-${e}`] = 'none'));
+    let directions = ['top', 'right', 'bottom', 'left'];
+    directions.forEach((e, i) => (style[`--input-line-${e}`] = dirVal[i] ? 'var(--input-line)' : 'None'));
 };
 
 exports.sortBlocks = () => {
